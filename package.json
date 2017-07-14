@@ -1,0 +1,26 @@
+{
+  "name": "masifunde-fe",
+  "version": "1.0.0",
+  "description": "Frontend for the Masifunde website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/futurice/masifunde-fe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/futurice/masifunde-fe/issues"
+  },
+  "homepage": "https://github.com/futurice/masifunde-fe#readme",
+  "dependencies": {
+    "next": "^2.4.7",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
