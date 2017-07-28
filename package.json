@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
   "dependencies": {
+    "contentful": "^4.5.0",
     "next": "^2.4.7",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.6.0",
