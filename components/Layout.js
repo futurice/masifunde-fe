@@ -1,14 +1,15 @@
 import Head from 'next/head';
 import Header from './Header';
+import Navigation from './Navigation'
 
 const Layout = (props) => (
   <div>
     <Head>
       <title>Masifunde</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
     </Head>
-    <Header />
+    <Navigation activePage={props.activePage}/>
     {props.children}
   </div>
 );
