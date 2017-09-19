@@ -1,14 +1,9 @@
-import Link from 'next/link';
+import Navigation from './Navigation'
 
 export default function Header() {
   return (
     <div>
-      <Link href='/'>
-        <a>Home</a>
-      </Link>
-      <Link href='/about'>
-        <a>About</a>
-      </Link>
+      <Navigation />
     </div>
   );
 }
