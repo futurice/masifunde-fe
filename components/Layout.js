@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Header from './Header';
 import Navigation from './Navigation'
+import Impressum from './Impressum'
 
 const Layout = (props) => (
   <div>
@@ -11,6 +12,7 @@ const Layout = (props) => (
     </Head>
     <Navigation activePage={props.activePage}/>
     {props.children}
+    <Impressum />
   </div>
 );
 
