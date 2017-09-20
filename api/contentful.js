@@ -8,26 +8,31 @@ const client = createClient({
   accessToken: ACCESS_TOKEN
 });
 
-export function getContentTypes() {
-  return client.getContentTypes()
-    .then((response) => {
-      console.log(`${response.total} content types found`);
-      return response.items;
+function fetchEntriesForContentType (contentType) {
+  return client.getEntries({
+      content_type: contentType
     })
-    .catch((error) => {
-      console.log('\nError occurred while fetching Content Types:');
-      console.error(error);
-    });
+  .then((response) => response.items)
+  .catch((error) => {
+    console.log(chalk.red(`\nError occurred while fetching Entries for ${chalk.cyan(contentType.name)}:`))
+    console.error(error)
+  })
 }
 
-export function getEntriesForContentType(contentType) {
-  return client.getEntries({ content_type: contentType.sys.id })
-    .then((response) => {
-      console.log(`${response.total} entries found for content type ${contentType.name}`);
-      return response.items;
+export function fetchIndividualPortraits() {
+  var portraitsArray = []
+
+  return fetchEntriesForContentType("individualPortraits")
+  .then((individualPortraits) => {
+    individualPortraits.forEach((portrait) => {
+      console.log("Portrait:", portrait)
+      portraitsArray.push({
+        "name":portrait.fields.name,
+        "profileImage":portrait.fields.profileImage,
+        "programName":portrait.fields.programName,
+        "description":portrait.fields.description
+      })
     })
-    .catch((error) => {
-      console.log(`\nError occurred while fetching Entries for ${chalk.cyan(contentType.name)}:`);
-      console.error(error);
-    });
+    return portraitsArray
+  })
 }

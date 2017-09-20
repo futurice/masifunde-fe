@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { Button, Container, Row, Col } from 'reactstrap';
 import * as texts from '../text/home-strings';
-
-
+import { fetchIndividualPortraits } from '../api/contentful'
 import Layout from '../components/Layout';
-import * as api from '../api/contentful';
+
+
 
 const Index = (props) => (
   <Layout activePage="home">
@@ -24,6 +24,10 @@ const Index = (props) => (
     <h1>{props.title}</h1>
     <p>{props.text}</p>
     <Button color='danger'>I am a Reactstrap button</Button>
+
+    <p>Content types:</p>
+    <p></p>
+
     </Container>
   </Layout>
 );
@@ -40,5 +44,14 @@ const Index = (props) => (
 //     text: newsItem.fields.text
 //   };
 // }
+
+
+Index.getInitialProps = async function() {
+  const resultJSON = await fetchIndividualPortraits()
+
+  console.log("Result:", resultJSON)
+
+  return resultJSON
+}
 
 export default Index;
