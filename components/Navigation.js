@@ -41,7 +41,7 @@ export default function Navigation(props) {
             <Link href="/"><a style={(props.activePage === "home") ? activeLinkStyle : linkStyle}>Was wir machen</a></Link>
             <Link href="/about"><a style={(props.activePage === "we") ? activeLinkStyle : linkStyle}>Wer wir sind</a></Link>
             <Link href="/howtohelp"><a style={(props.activePage === "you") ? activeLinkStyle : linkStyle}>Wie Sie helfen</a></Link>
-            <Link href="#"><a><Button color='primary' style={buttonStyle}>Spenden</Button></a></Link>
+            <Link href="/payment"><a><Button color='primary' style={buttonStyle}>Spenden</Button></a></Link>
           </div>
         </Col>
       </Row>
