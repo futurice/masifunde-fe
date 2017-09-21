@@ -37,7 +37,7 @@ export function fetchIndividualPortraits() {
     individualPortraits.forEach((portrait) => {
       portraitsArray.push({
         "name":portrait.fields.name,
-        "profileImage":portrait.fields.profileImage.url,
+        "profileImage":portrait.fields.profileImage,
         "programName":portrait.fields.programName,
         "description":portrait.fields.description
       })
@@ -55,7 +55,7 @@ export function fetchPost() {
       postsArray.push({
         "title":post.fields.title,
         "description":post.fields.description,
-        "image":post.fields.image.url,
+        "image":post.fields.image,
       })
     })
     return postsArray
@@ -71,7 +71,7 @@ export function fetchTeamMembers() {
       teamMembersArray.push({
         "title":teamMember.fields.title,
         "description":teamMember.fields.description,
-        "image":teamMember.fields.image.url,
+        "image":teamMember.fields.image,
       })
     })
     return teamMembersArray
@@ -87,7 +87,7 @@ export function fetchOutro() {
       outrosArray.push({
         "title":outro.fields.title,
         "description":outro.fields.description,
-        "image":outro.fields.image.url,
+        "image":outro.fields.image,
       })
     })
     return outrosArray
@@ -102,7 +102,7 @@ export function fetchSuccessStories() {
       successStoriesArray.push({
         "title":successStory.fields.title,
         "description":successStory.fields.description,
-        "image":successStory.fields.image.url,
+        "image":successStory.fields.image,
       })
     })
     return successStoriesArray
@@ -115,11 +115,10 @@ export function fetchSectionIntroduction() {
   return fetchEntriesForContentType("sectionIntroduction")
   .then((sectionIntroductions) => {
     sectionIntroductions.forEach((sectionIntro) => {
-      console.log("SuccessStory:", sectionIntro)
       sectionIntroArray.push({
         "title":sectionIntro.fields.title,
         "longDescription":sectionIntro.fields.longDescription,
-        "background":sectionIntro.fields.background.url,
+        "background":sectionIntro.fields.background,
         "mediaContent":sectionIntro.fields.mediaContent,
         "location":sectionIntro.fields.location,
       })
