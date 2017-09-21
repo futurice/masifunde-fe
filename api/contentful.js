@@ -71,14 +71,18 @@ export function fetchTeamMembers() {
   .then((individualPortraits) => {
     individualPortraits.forEach((teamMember) => {
       teamMembersArray.push({
-        "title":teamMember.fields.title,
-        "description":teamMember.fields.description,
-        "image":teamMember.fields.image,
+        "name":teamMember.fields.name,
+        "responsibilityArea":teamMember.fields.responsibilityArea,
+        "profileImage":teamMember.fields.profileImage,
+        "email":teamMember.fields.email,
+        "social":teamMember.fields.social,
+        "type":teamMember.fields.type,
       })
     })
     return teamMembersArray
   })
 }
+
 export function fetchOutro() {
   var outrosArray = []
 
@@ -95,6 +99,7 @@ export function fetchOutro() {
     return outrosArray
   })
 }
+
 export function fetchSuccessStories() {
   var successStoriesArray = []
 

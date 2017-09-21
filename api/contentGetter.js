@@ -98,3 +98,48 @@ export async function getFreizeitangebotePost() {
 export async function getLifeSkillsTrainingPost() {
   return getPost('lifeskills')
 }
+
+
+/*******************************************
+ * TEAM FETCHERS
+ *******************************************/
+async function getTeamMembers(type) {
+  var result = {}
+  const teamMembers = await fetchTeamMembers()
+  teamMembers.filter((member) => {
+    return member.type === type })
+  .map((member) => {
+
+    result["name"] = member.name
+    result["responsibilityArea"] = member.responsibilityArea
+    result["email"] = member.email
+    result["social"] = member.social
+    if (member.profileImage !== undefined) {
+      result["profileImageUrl"] = member.profileImage.fields.file.url
+      result["profileImageWidth"] = member.profileImage.fields.file.details.image.width
+      result["profileImageHeight"] = member.profileImage.fields.file.details.image.height
+      result["profileImageContentType"] = member.profileImage.fields.file.contentType
+    }
+  })
+  return result
+}
+
+export async function getManagerTeamMembers() {
+  return getTeamMembers('management')
+}
+
+export async function getVolunteerTeamMembers() {
+  return getTeamMembers('volunteer')
+}
+
+export async function getEmployeeTeamMembers() {
+  return getTeamMembers('employee')
+}
+
+export async function getOtherTeamMembers() {
+  return getTeamMembers('other')
+}
+
+export async function getAuthorTeamMembers() {
+  return getTeamMembers('author')
+}
