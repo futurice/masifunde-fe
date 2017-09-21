@@ -48,14 +48,16 @@ export function fetchIndividualPortraits() {
 
 export function fetchPost() {
   var postsArray = []
-
   return fetchEntriesForContentType("post")
   .then((posts) => {
     posts.forEach((post) => {
       postsArray.push({
         "title":post.fields.title,
-        "description":post.fields.description,
-        "image":post.fields.image,
+        "content":post.fields.content,
+        "author":post.fields.author,
+        "hideAuthor":post.fields.hideAuthor,
+        "published":post.fields.published,
+        "type":post.fields.type
       })
     })
     return postsArray
