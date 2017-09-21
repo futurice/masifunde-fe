@@ -19,20 +19,128 @@ function fetchEntriesForContentType (contentType) {
   })
 }
 
+/****************************************
+ * API calls
+ * - fetchIndividualPortraits
+ * - fetchPost
+ * - fetchTeamMembers
+ * - fetchOutro
+ * - fetchSuccessStories
+ * - fetchSectionIntroduction
+ * - fetchOpenPositions
+*****************************************/
 export function fetchIndividualPortraits() {
   var portraitsArray = []
 
   return fetchEntriesForContentType("individualPortraits")
   .then((individualPortraits) => {
     individualPortraits.forEach((portrait) => {
-      console.log("Portrait:", portrait)
       portraitsArray.push({
         "name":portrait.fields.name,
-        "profileImage":portrait.fields.profileImage,
+        "profileImage":portrait.fields.profileImage.url,
         "programName":portrait.fields.programName,
         "description":portrait.fields.description
       })
     })
     return portraitsArray
+  })
+}
+
+export function fetchPost() {
+  var postsArray = []
+
+  return fetchEntriesForContentType("post")
+  .then((posts) => {
+    posts.forEach((post) => {
+      postsArray.push({
+        "title":post.fields.title,
+        "description":post.fields.description,
+        "image":post.fields.image.url,
+      })
+    })
+    return postsArray
+  })
+}
+
+export function fetchTeamMembers() {
+  var teamMembersArray = []
+
+  return fetchEntriesForContentType("teamMembers")
+  .then((individualPortraits) => {
+    individualPortraits.forEach((teamMember) => {
+      teamMembersArray.push({
+        "title":teamMember.fields.title,
+        "description":teamMember.fields.description,
+        "image":teamMember.fields.image.url,
+      })
+    })
+    return teamMembersArray
+  })
+}
+export function fetchOutro() {
+  var outrosArray = []
+
+  return fetchEntriesForContentType("outro")
+  .then((outros) => {
+    outros.forEach((outro) => {
+      console.log("SuccessStory:", outro)
+      outrosArray.push({
+        "title":outro.fields.title,
+        "description":outro.fields.description,
+        "image":outro.fields.image.url,
+      })
+    })
+    return outrosArray
+  })
+}
+export function fetchSuccessStories() {
+  var successStoriesArray = []
+
+  return fetchEntriesForContentType("successStories")
+  .then((successStories) => {
+    successStories.forEach((successStory) => {
+      successStoriesArray.push({
+        "title":successStory.fields.title,
+        "description":successStory.fields.description,
+        "image":successStory.fields.image.url,
+      })
+    })
+    return successStoriesArray
+  })
+}
+
+export function fetchSectionIntroduction() {
+  var sectionIntroArray = []
+
+  return fetchEntriesForContentType("sectionIntroduction")
+  .then((sectionIntroductions) => {
+    sectionIntroductions.forEach((sectionIntro) => {
+      console.log("SuccessStory:", sectionIntro)
+      sectionIntroArray.push({
+        "title":sectionIntro.fields.title,
+        "longDescription":sectionIntro.fields.longDescription,
+        "background":sectionIntro.fields.background.url,
+        "mediaContent":sectionIntro.fields.mediaContent,
+        "location":sectionIntro.fields.location,
+      })
+    })
+    return sectionIntroArray
+  })
+}
+
+export function fetchOpenPositions() {
+  var openPositionsArray = []
+
+  return fetchEntriesForContentType("openPositions")
+  .then((openPositions) => {
+    openPositions.forEach((openPosition) => {
+      openPositionsArray.push({
+        "title":openPosition.fields.title,
+        "description":openPosition.fields.description,
+        "location":openPosition.fields.location,
+        "areOfWork":openPosition.fields.areOfWork,
+      })
+    })
+    return openPositionsArray
   })
 }
