@@ -29,16 +29,20 @@ const buttonStyle = {
   border: 'none',
 }
 
+const homeImageStyle = {
+  cursor: 'pointer',
+}
+
 export default function Navigation(props) {
   return (
     <Container style={containerStyle}>
       <Row >
         <Col xs="4" sm="4" md="4" lg="4" xl="4">
-          <img src="../static/Masifunde-Logo.png" />
+          <Link href="/"><img src="../static/Masifunde-Logo.png" style={homeImageStyle}/></Link>
         </Col>
         <Col xs="8" sm="8" md="8" lg="8" xl="8">
           <div style={linkContainerStyle}>
-            <Link href="/"><a style={(props.activePage === "home") ? activeLinkStyle : linkStyle}>Was wir machen</a></Link>
+            <Link href="/werwirsind"><a style={(props.activePage === "what") ? activeLinkStyle : linkStyle}>Was wir machen</a></Link>
             <Link href="/about"><a style={(props.activePage === "we") ? activeLinkStyle : linkStyle}>Wer wir sind</a></Link>
             <Link href="/howtohelp"><a style={(props.activePage === "you") ? activeLinkStyle : linkStyle}>Wie Sie helfen</a></Link>
             <Link href="/payment"><a><Button color='primary' style={buttonStyle}>Spenden</Button></a></Link>

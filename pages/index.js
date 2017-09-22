@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { Button, Container, Row, Col } from 'reactstrap';
 import * as texts from '../text/home-strings';
-import { fetchIndividualPortraits } from '../api/contentful'
 import Layout from '../components/Layout';
+import { getAuthorTeamMembers, getEmployeeTeamMembers } from '../api/contentGetter'
 
 
 
 const Index = (props) => (
-  <Layout activePage="home">
+  <Layout activePage="index">
     <Container>
       <Row>
         Some text
@@ -47,7 +47,7 @@ const Index = (props) => (
 
 
 Index.getInitialProps = async function() {
-  const resultJSON = await fetchIndividualPortraits()
+  const resultJSON = await getAuthorTeamMembers()
 
   console.log("Result:", resultJSON)
 
