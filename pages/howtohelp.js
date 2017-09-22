@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button, Container, Row, Col } from 'reactstrap';
 import * as texts from '../text/home-strings';
+import { getWieSieHelfenIntro } from '../api/contentGetter'
 
 
 import Layout from '../components/Layout';
@@ -23,15 +24,30 @@ const rowStyle = {
   marginBottom: "100",
 }
 
+const topRowStyle = {
+  marginBottom: "100",
+  backgroundColor: "Gainsboro"
+}
+
 const colOvalStyle = {
-  textAlign: "center"
+  textAlign: "right"
+}
+
+const titleStyle = {
+  marginTop: "50",
+  marginBottom: "50"
 }
 
 const Howtohelp = (props) => (
   <Layout activePage="you">
     <Container>
-      <Row style={rowStyle}>
+      <Row style={topRowStyle}>
         {/* Section intro part */}
+        <Col xs="1" sm="1" md="1" lg="1" xl="1"/>
+        <Col xs="6" sm="6" md="6" lg="6" xl="6" style={titleStyle}>
+          <h2>{props.intro.title}</h2>
+        </Col>
+        <Col xs="5" sm="5" md="5" lg="5" xl="5"/>
       </Row>
       <Row style={rowStyle}>
         {/* Financial support part */}
@@ -49,7 +65,7 @@ const Howtohelp = (props) => (
         <Col xs="7" sm="7" md="7" lg="7" xl="7">
           <h1>Ehrenamtliche Unterstützung</h1>
           <p>Möchtest du dich für gerechte Bildungschancen für Kinder und Jugendliche in Walmer Township einsetzen? Unser Team in Deutschland basiert auf dem ehrenamtlichen Engagement zahlreicher junger Berufstätiger, Studenten und Schüler in der ganzen Republik.</p>
-          <Button color='primary' style={buttonStyle}>Learn about becoming a vlunteer</Button>
+          <Button color='primary' style={buttonStyle}>Learn about becoming a volunteer</Button>
         </Col>
         <Col xs="2" sm="2" md="2" lg="2" xl="2"/>
       </Row>
@@ -66,5 +82,11 @@ const Howtohelp = (props) => (
     </Container>
   </Layout>
 );
+
+Howtohelp.getInitialProps = async function() {
+  const resultJSON = await getWieSieHelfenIntro()
+  console.log("Result:", resultJSON)
+  return { intro: resultJSON }
+}
 
 export default Howtohelp;

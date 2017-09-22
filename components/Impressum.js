@@ -49,22 +49,22 @@ export default function Impressum() {
           <Col style={colStyle}>Blog</Col>
         </Row>
         <Row>
-        <Col style={colStyle}>Approach</Col>
-        <Col style={colStyle}>Team South Africa</Col>
-        <Col style={colStyle}>Spenden</Col>
-        <Col style={colStyle}>Kontakt</Col>
+          <Col style={colStyle}>Approach</Col>
+          <Col style={colStyle}>Team South Africa</Col>
+          <Col style={colStyle}>Spenden</Col>
+          <Col style={colStyle}>Kontakt</Col>
         </Row>
         <Row>
-        <Col style={colStyle}>Impact</Col>
-        <Col style={colStyle}>Team Deutschland</Col>
-        <Col style={colStyle}>Become a volunteer</Col>
-        <Col style={colStyle}>Presse</Col>
+          <Col style={colStyle}>Impact</Col>
+          <Col style={colStyle}>Team Deutschland</Col>
+          <Col style={colStyle}>Become a volunteer</Col>
+          <Col style={colStyle}>Presse</Col>
         </Row>
         <Row>
-        <Col style={colStyle}></Col>
-        <Col style={colStyle}>Partners</Col>
-        <Col style={colStyle}>Open positions</Col>
-        <Col style={colStyle}>Newsletter</Col>
+          <Col style={colStyle}></Col>
+          <Col style={colStyle}>Partners</Col>
+          <Col style={colStyle}>Open positions</Col>
+          <Col style={colStyle}>Newsletter</Col>
         </Row>
       </Container>
       <Container style={copyrightStyle}>
