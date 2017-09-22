@@ -25,6 +25,10 @@ const Index = (props) => (
     <p>{props.text}</p>
     <Button color='danger'>I am a Reactstrap button</Button>
 
+    <br/>
+    <Link href="/donate">DONATE</Link>
+    <br/>
+
     <p>Content types:</p>
     <p></p>
 
