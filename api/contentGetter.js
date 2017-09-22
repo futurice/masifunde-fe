@@ -41,7 +41,7 @@ export async function getWerWirSindIntro() {
 }
 
 export async function getWieSieHelfenIntro() {
-  return getIntro('Wie Sie helfen')
+  return getIntro('WieSieHelfen')
 }
 
 

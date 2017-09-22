@@ -9,7 +9,7 @@ import * as api from '../api/contentful';
 const Howtohelp = (props) => (
   <Layout activePage="what">
     <Container>
-      <p>BLA</p>
+      
     </Container>
   </Layout>
 );
