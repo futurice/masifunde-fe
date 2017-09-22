@@ -109,7 +109,6 @@ async function getTeamMembers(type) {
   teamMembers.filter((member) => {
     return member.type === type })
   .map((member) => {
-
     result["name"] = member.name
     result["responsibilityArea"] = member.responsibilityArea
     result["email"] = member.email
