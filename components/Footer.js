@@ -14,7 +14,6 @@ const containerStyle = {
   borderTop: '1px solid #BBB',
   paddingTop: 20,
   paddingBottom: 20,
-
 }
 
 const colStyle = {
@@ -38,7 +37,7 @@ const socialStyle = {
   marginRight: 5,
 }
 
-export default function Impressum() {
+export default function Footer() {
   return (
     <Container>
       <Container style={containerStyle}>
