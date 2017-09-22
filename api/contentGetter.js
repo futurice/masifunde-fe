@@ -48,7 +48,7 @@ export async function getWieSieHelfenIntro() {
 /*******************************************
  * POST FETCHERS
  *******************************************/
-async function getPost(type) {
+async function getAllPostsOf(type) {
   var result = {}
   const postItems = await fetchPost()
   postItems.filter((item) => {
@@ -84,19 +84,23 @@ async function getPost(type) {
 }
 
 export async function getSozialdienstPost() {
-  return getPost('sozialdienst')
+  return getAllPostsOf('sozialdienst')
 }
 
 export async function getSchuleUndAusbildungPost() {
-  return getPost('schuleausbildung')
+  return getAllPostsOf('schuleausbildung')
 }
 
 export async function getFreizeitangebotePost() {
-  return getPost('freizeitangebote')
+  return getAllPostsOf('freizeitangebote')
 }
 
 export async function getLifeSkillsTrainingPost() {
-  return getPost('lifeskills')
+  return getAllPostsOf('lifeskills')
+}
+
+export async function getAllBlogs() {
+  return getAllPostsOf('blog')
 }
 
 
