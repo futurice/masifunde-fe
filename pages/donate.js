@@ -33,6 +33,7 @@ const contactStyle = {
   paddingLeft: 200,
   paddingRight: 200,
   height: 200,
+  marginTop: 80,
   textAlign: "center",
   verticalAlign: "middle"
 }
@@ -77,8 +78,8 @@ const sectionTitleStyle = {
 
 const sectionDividerStyle = {
   border: '0.5px solid #BBB',
-  marginTop: 50,
-  marginBottom: 50,
+  marginTop: 80,
+  marginBottom: 80,
 }
 
 const radioGroupStyle = {
@@ -168,7 +169,7 @@ const Donate = (props) => (
         <Col xs="4" sm="4" md="4" lg="4" xl="4" />
         <Col xs="2" sm="2" md="2" lg="2" xl="2"><Button style={amountButtonStyle}>100€</Button></Col>
         <Col xs="2" sm="2" md="2" lg="2" xl="2"><Button style={amountButtonStyle}>200€</Button></Col>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4"><Input></Input></Col>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4"><Input placeholder="Other amount €"/></Col>
       </Row>
       <Row style={sectionTitleStyle}>
         <Col xs="4" sm="4" md="4" lg="4" xl="4" />
