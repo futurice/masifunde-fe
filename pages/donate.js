@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button, Container, Row, Col, Radio, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Container, Row, Col, Radio, FormGroup, Label, Input , PropTypes } from 'reactstrap';
 import * as texts from '../text/home-strings';
 
 
@@ -25,7 +25,37 @@ const pickDestinationStyle ={
 
 const contactStyle = {
   fontSize: 16,
-  background: "red"
+  position: "relative",
+  width: "100%",
+  background: "#d8d8d8",
+  paddingTop: 50,
+  paddingBottom: 50,
+  paddingLeft: 200,
+  paddingRight: 200,
+  height: 200,
+  textAlign: "center",
+  verticalAlign: "middle"
+}
+
+const contactTextStyle = {
+  fontSize: 32
+}
+
+const leftCol = {
+  float: "left",
+  width: "59%",
+  textAlign: "left",
+  verticalAlign: "center",
+  display: "inline-block"
+}
+
+const rightCol = {
+  float: "left",
+  width: "39%",
+  textAlign: "left",
+  paddingLeft: 50,
+  verticalAlign: "center",
+  display: "inline-block"
 }
 
 const phoneIconStyle ={
@@ -227,28 +257,21 @@ const Donate = (props) => (
         </Col>
         <Col xs="1" sm="1" md="1" lg="1" xl="1"/>
       </Row>
-
-      <Row style={sectionDividerStyle} />
-
-
-      <Row style={contactStyle}>
-        <Col>
-          <Row>
-            <Col>
-              <b style={contactStyle}>Have something to ask? We are happy to answer your questions</b>
-              <br/>
-            </Col>
-            <Col>
-              <Row><Col><img src="../static/phone-2.svg" style={phoneIconStyle}/><a style={contactStyle}>+49 303 303 303</a></Col></Row>
-              <Row><Col><img src="../static/at-sign.svg" style={phoneIconStyle}/><a style={contactStyle}>contact@masifunde.de</a></Col></Row>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-
-
     </Container>
+
+      <div style={contactStyle}>
+        <div style={leftCol}><b style={contactTextStyle}>Have something to ask? We are happy to answer your questions</b></div>
+        <div style={rightCol}>
+          <div><img src="../static/phone-2.svg" style={phoneIconStyle}/><a>+49 303 303 303</a></div>
+          <div><img src="../static/at-sign.svg" style={phoneIconStyle}/><a>contact@masifunde.de</a></div>
+        </div>
+      </div>
+
+
+
   </Layout>
 );
+
+
 
 export default Donate;
