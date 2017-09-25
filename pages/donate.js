@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button, Container, Row, Col } from 'reactstrap';
+import { Button, Container, Row, Col, Radio, FormGroup, Label, Input } from 'reactstrap';
 import * as texts from '../text/home-strings';
 
 
@@ -25,6 +25,7 @@ const pickDestinationStyle ={
 
 const contactStyle = {
   fontSize: 16,
+  background: "red"
 }
 
 const phoneIconStyle ={
@@ -33,11 +34,53 @@ const phoneIconStyle ={
   margin: 10,
 }
 
-const divStyle = {
+const countryInfoStyle = {
   border: '1px solid #BBB',
   margintTop: 45,
   marginRight: 15,
   padding: 20,
+}
+
+const sectionTitleStyle = {
+  marginTop: 20
+}
+
+const sectionDividerStyle = {
+  border: '0.5px solid #BBB',
+  marginTop: 50,
+  marginBottom: 50,
+}
+
+const radioGroupStyle = {
+  float: "left",
+  marginLeft: 30
+}
+
+const amountButtonStyle = {
+  paddingTop: 10,
+  paddingBottom: 10,
+  paddingLeft: 40,
+  paddingRight: 40,
+  color: 'white',
+  backgroundColor: 'gray',
+  border: 'none',
+  width: "100%"
+}
+
+const lightGreyButtonStyle = {
+  paddingTop: 10,
+  paddingBottom: 10,
+  paddingLeft: 40,
+  paddingRight: 40,
+  color: 'black',
+  backgroundColor: '#d8d8d8',
+  border: 'none',
+  width: "100%",
+}
+
+const labelStyle = {
+  textAlign: "right",
+  fontSize: 18,
 }
 
 const Donate = (props) => (
@@ -52,42 +95,152 @@ const Donate = (props) => (
         <Col xs="2" sm="2" md="2" lg="2" xl="2"/>
       </Row>
       <Row>
-        <Col xs="9" sm="9" md="9" lg="9" xl="9" style={pickDestinationStyle}>
-          Pick a destination
+        <Col style={sectionTitleStyle}>
+          <h3>Pick a destination</h3>
         </Col>
-        <Col xs="3" sm="3" md="3" lg="3" xl="3"/>
-      </Row>
-      <Row>
-        <Col style={divStyle}>
+        <Col style={countryInfoStyle}>
           <h3>Germany</h3>
           <br />
           <a>Description of the masifunde work in the destination</a>
         </Col>
-        <Col style={divStyle}>
+        <Col style={countryInfoStyle}>
           <h3>South Africa</h3>
           <br />
           <a>Description of the masifunde work in the destination</a>
         </Col>
-        <Col style={divStyle}>
-          <h3>Monthly project</h3>
-          <br />
-          <a>Description of the masifunde work in the destination</a>
+
+      </Row>
+
+      <Row style={sectionDividerStyle} />
+
+      <Row>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4" style={sectionTitleStyle}>
+          <h3>Choose an amount</h3>
         </Col>
+        <Col xs="8" sm="8" md="8" lg="8" xl="8">
+          <Row>I want to donate:
+            <FormGroup tag="fieldset" >
+              <FormGroup check style={radioGroupStyle}><Label check><Input type="radio" name="radio1" />{' '}Once</Label></FormGroup>
+              <FormGroup check style={radioGroupStyle}><Label check><Input type="radio" name="radio1" />{' '}Monthly</Label></FormGroup>
+              <FormGroup check style={radioGroupStyle}><Label check><Input type="radio" name="radio1" />{' '}Annually</Label></FormGroup>
+            </FormGroup>
+          </Row>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4" />
+        <Col xs="2" sm="2" md="2" lg="2" xl="2"><Button style={amountButtonStyle}>5€</Button></Col>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2"><Button style={amountButtonStyle}>10€</Button></Col>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2"><Button style={amountButtonStyle}>20€</Button></Col>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2"><Button style={amountButtonStyle}>50€</Button></Col>
+      </Row>
+      <Row style={sectionTitleStyle}>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4" />
+        <Col xs="2" sm="2" md="2" lg="2" xl="2"><Button style={amountButtonStyle}>100€</Button></Col>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2"><Button style={amountButtonStyle}>200€</Button></Col>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4"><Input></Input></Col>
+      </Row>
+      <Row style={sectionTitleStyle}>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4" />
+        <Col xs="8" sm="8" md="8" lg="8" xl="8"><Button style={lightGreyButtonStyle}>Your impact with 50€: 15 schoolbooks for a student</Button></Col>
+      </Row>
+
+      <Row style={sectionDividerStyle} />
+
+      <Row>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4" style={sectionTitleStyle}>
+          <h3>Enter personal details</h3>
+        </Col>
+        <Col xs="8" sm="8" md="8" lg="8" xl="8">
+          <FormGroup check><Label check><Input type="checkbox" />{' '}I want to gift this donation</Label></FormGroup>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4"/>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2" style={labelStyle}>
+          Anrede und Titel
+        </Col>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2">
+          <FormGroup><Input type="select" name="select" id="exampleSelect"><option>Mrs.</option><option>Miss</option><option>Mr.</option></Input></FormGroup>
+        </Col>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2">
+        <FormGroup><Input type="select" name="select" id="exampleSelect"><option>Dr.</option><option>Ing.</option></Input></FormGroup>
+        </Col>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2"/>
+      </Row>
+      <Row>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4"/>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2" style={labelStyle}>
+          Name
+        </Col>
+        <Col xs="5" sm="5" md="5" lg="5" xl="5">
+          <FormGroup>
+            <Input type="text" name="name" id="name"  placeholder="Vorname Nachname"/>
+          </FormGroup>
+        </Col>
+        <Col xs="1" sm="1" md="1" lg="1" xl="1"/>
+      </Row>
+
+      <Row>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4"/>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2" style={labelStyle}>
+          Firma(Optional)
+        </Col>
+        <Col xs="5" sm="5" md="5" lg="5" xl="5">
+          <FormGroup>
+            <Input type="text" name="firma" id="firma"/>
+          </FormGroup>
+        </Col>
+        <Col xs="1" sm="1" md="1" lg="1" xl="1"/>
+      </Row>
+      <FormGroup tag="fieldset" >
+        <Row>
+          <Col xs="4" sm="4" md="4" lg="4" xl="4"/>
+          <Col xs="2" sm="2" md="2" lg="2" xl="2" style={labelStyle}>
+            Donation certificate
+          </Col>
+          <Col xs="5" sm="5" md="5" lg="5" xl="5">
+            <FormGroup check style={radioGroupStyle}><Label check><Input type="radio" name="radio1" />{' '}PDF file via e-mail</Label></FormGroup>
+          </Col>
+          <Col xs="1" sm="1" md="1" lg="1" xl="1"/>
+        </Row>
+        <Row>
+          <Col xs="4" sm="4" md="4" lg="4" xl="4"/>
+          <Col xs="2" sm="2" md="2" lg="2" xl="2">
+          </Col>
+          <Col xs="5" sm="5" md="5" lg="5" xl="5">
+            <FormGroup check style={radioGroupStyle}><Label check><Input type="radio" name="radio1" />{' '}Printed document via post</Label></FormGroup>
+          </Col>
+          <Col xs="1" sm="1" md="1" lg="1" xl="1"/>
+        </Row>
+      </FormGroup>
+
+      <Row>
+        <Col xs="4" sm="4" md="4" lg="4" xl="4"/>
+        <Col xs="2" sm="2" md="2" lg="2" xl="2" style={labelStyle}>
+          Email
+        </Col>
+        <Col xs="5" sm="5" md="5" lg="5" xl="5">
+          <FormGroup>
+            <Input type="email" name="email" id="email" />
+          </FormGroup>
+        </Col>
+        <Col xs="1" sm="1" md="1" lg="1" xl="1"/>
+      </Row>
+
+      <Row style={sectionDividerStyle} />
+
+
+      <Row style={contactStyle}>
         <Col>
           <Row>
             <Col>
               <b style={contactStyle}>Have something to ask? We are happy to answer your questions</b>
               <br/>
             </Col>
-          </Row>
-          <Row>
             <Col>
-              <img src="../static/phone-2.svg" style={phoneIconStyle}/><a style={contactStyle}>+49 303 303 303</a>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-            <img src="../static/at-sign.svg" style={phoneIconStyle}/><a style={contactStyle}>contact@masifunde.de</a>
+              <Row><Col><img src="../static/phone-2.svg" style={phoneIconStyle}/><a style={contactStyle}>+49 303 303 303</a></Col></Row>
+              <Row><Col><img src="../static/at-sign.svg" style={phoneIconStyle}/><a style={contactStyle}>contact@masifunde.de</a></Col></Row>
             </Col>
           </Row>
         </Col>

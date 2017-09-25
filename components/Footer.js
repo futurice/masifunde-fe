@@ -18,7 +18,7 @@ const containerStyle = {
 
 const colStyle = {
   textAlign: 'center',
-  fontSize: 10,
+  fontSize: 14,
   marginBottom: 5,
 }
 
