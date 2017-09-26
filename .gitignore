@@ -59,3 +59,6 @@ typings/
 
 # Next directory
 .next
+
+# Mac files
+.DS_Store
