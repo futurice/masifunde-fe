@@ -150,3 +150,23 @@ export function fetchOpenPositions() {
     return openPositionsArray
   })
 }
+
+export function fetchAbout() {
+  var openPositionsArray = []
+
+    return fetchEntriesForContentType("about")
+    .then((aboutElements) => {
+      aboutElements.forEach((element) => {
+        openPositionsArray.push({
+          "title":element.fields.title,
+          "subtitle":element.fields.subtitle,
+          "paragraphOneTitle":element.fields.paragraphOneTitle,
+          "paragraphOneText":element.fields.paragraphOneText,
+          "paragraphTwoTitle":element.fields.paragraphTwoTitle,
+          "paragraphTwoText":element.fields.paragraphTwoText,
+          "partnersImage":element.fields.partnersImage,
+        })
+      })
+      return openPositionsArray
+    })
+}

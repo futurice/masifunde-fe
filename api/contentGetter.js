@@ -6,6 +6,7 @@ import {
   fetchTeamMembers,
   fetchOutro,
   fetchPost,
+  fetchAbout,
 } from '../api/contentful'
 
 /*******************************************
@@ -145,4 +146,29 @@ export async function getOtherTeamMembers() {
 
 export async function getAuthorTeamMembers() {
   return getTeamMembers('author')
+}
+
+
+/*******************************************
+ * ABOUT FETCHERS
+ *******************************************/
+
+export async function getAboutFields() {
+  var result = {}
+  const aboutElements = await fetchAbout()
+  aboutElements.map((element) => {
+    result["title"] = element.title
+    result["subtitle"] = element.subtitle
+    result["paragraphOneTitle"] = element.paragraphOneTitle
+    result["paragraphOneText"] = element.paragraphOneText
+    result["paragraphTwoTitle"] = element.paragraphTwoTitle
+    result["paragraphTwoText"] = element.paragraphTwoText
+    if (element.partnersImage !== undefined) {
+      result["partnersImageUrl"] = "https:" + element.partnersImage.fields.file.url
+      result["partnersImageWidth"] = element.partnersImage.fields.file.details.image.width
+      result["partnersImageHeight"] = element.partnersImage.fields.file.details.image.height
+      result["partnersImageContentType"] = element.partnersImage.fields.file.contentType
+    }
+  })
+  return result
 }
