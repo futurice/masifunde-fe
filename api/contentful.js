@@ -117,12 +117,12 @@ export function fetchOpenPositions() {
 }
 
 export function fetchAbout() {
-  var openPositionsArray = []
+  var resultArray = []
 
     return fetchEntriesForContentType("about")
     .then((aboutElements) => {
       aboutElements.forEach((element) => {
-        openPositionsArray.push({
+        resultArray.push({
           "title":element.fields.title,
           "subtitle":element.fields.subtitle,
           "paragraphOneTitle":element.fields.paragraphOneTitle,
@@ -132,6 +132,27 @@ export function fetchAbout() {
           "partnersImage":element.fields.partnersImage,
         })
       })
-      return openPositionsArray
+      return resultArray
+    })
+}
+
+export function fetchWieSieHelfen() {
+  var resultArray = []
+
+    return fetchEntriesForContentType("wieSieHelfen")
+    .then((elements) => {
+      elements.forEach((element) => {
+        resultArray.push({
+          "title":element.fields.title,
+          "paragraphOneTitle":element.fields.paragraphOneTitle,
+          "paragraphOneText":element.fields.paragraphOneText,
+          "paragraphTwoTitle":element.fields.paragraphTwoTitle,
+          "paragraphTwoText":element.fields.paragraphTwoText,
+          "paragraphThreeTitle":element.fields.paragraphTwoTitle,
+          "paragraphThreeText":element.fields.paragraphTwoText,
+          "partnersImage":element.fields.partnersImage,
+        })
+      })
+      return resultArray
     })
 }

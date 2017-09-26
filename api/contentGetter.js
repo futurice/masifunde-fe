@@ -5,6 +5,7 @@ import {
   fetchTeamMembers,
   fetchPost,
   fetchAbout,
+  fetchWieSieHelfen,
 } from '../api/contentful'
 
 
@@ -112,7 +113,7 @@ export async function getAuthorTeamMembers() {
 
 
 /*******************************************
- * ABOUT FETCHERS
+ * ABOUT - FETCHERS
  *******************************************/
 
 export async function getAboutFields() {
@@ -125,6 +126,31 @@ export async function getAboutFields() {
     result["paragraphOneText"] = element.paragraphOneText
     result["paragraphTwoTitle"] = element.paragraphTwoTitle
     result["paragraphTwoText"] = element.paragraphTwoText
+    if (element.partnersImage !== undefined) {
+      result["partnersImageUrl"] = "https:" + element.partnersImage.fields.file.url
+      result["partnersImageWidth"] = element.partnersImage.fields.file.details.image.width
+      result["partnersImageHeight"] = element.partnersImage.fields.file.details.image.height
+      result["partnersImageContentType"] = element.partnersImage.fields.file.contentType
+    }
+  })
+  return result
+}
+
+/*******************************************
+ * WIE SIE HELFEN / HOW TO HELP - FETCHERS
+ *******************************************/
+
+export async function getWieSieHelfenFields() {
+  var result = {}
+  const elements = await fetchWieSieHelfen()
+  elements.map((element) => {
+    result["title"] = element.title
+    result["paragraphOneTitle"] = element.paragraphOneTitle
+    result["paragraphOneText"] = element.paragraphOneText
+    result["paragraphTwoTitle"] = element.paragraphTwoTitle
+    result["paragraphTwoText"] = element.paragraphTwoText
+    result["paragraphThreeTitle"] = element.paragraphThreeTitle
+    result["paragraphThreeText"] = element.paragraphThreeText
     if (element.partnersImage !== undefined) {
       result["partnersImageUrl"] = "https:" + element.partnersImage.fields.file.url
       result["partnersImageWidth"] = element.partnersImage.fields.file.details.image.width

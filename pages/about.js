@@ -98,9 +98,6 @@ const About = (props) => (
 
 About.getInitialProps = async function() {
   const resultJSON = await getAboutFields()
-
-  console.log("Result:", resultJSON)
-
   return resultJSON
 }
 
