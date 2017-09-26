@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Button, Container, Row, Col } from 'reactstrap';
-import * as texts from '../text/home-strings';
 import Layout from '../components/Layout';
 import { getAboutFields } from '../api/contentGetter'
 

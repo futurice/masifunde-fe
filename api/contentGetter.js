@@ -1,49 +1,11 @@
 import {
   fetchIndividualPortraits,
   fetchSuccessStories,
-  fetchSectionIntroduction,
   fetchOpenPositions,
   fetchTeamMembers,
-  fetchOutro,
   fetchPost,
   fetchAbout,
 } from '../api/contentful'
-
-/*******************************************
- * INTRODUCTION SECTION FETCHERS
- *******************************************/
-async function getIntro(type) {
-  var result = {}
-  const introItems = await fetchSectionIntroduction()
-  introItems.filter((item) => {
-    return item.location === type
-  })
-  .map((item) => {
-    result["title"] = item.title
-    result["longDescription"] = item.longDescription
-    if(item.background !== undefined) {
-      result["imageUrl"] = item.background.fields.file.url
-      result["imageWidth"] = item.background.fields.file.details.image.width
-      result["imageHeight"] = item.background.fields.file.details.image.height
-      result["imageContentType"] = item.background.fields.file.contentType
-    } else {
-      result["imageUrl"] = ""
-    }
-  })
-  return result
-}
-
-export async function getWasWirMachenIntro() {
-  return getIntro('WasWirMachen')
-}
-
-export async function getWerWirSindIntro() {
-  return getIntro('Wer wir sind')
-}
-
-export async function getWieSieHelfenIntro() {
-  return getIntro('WieSieHelfen')
-}
 
 
 /*******************************************

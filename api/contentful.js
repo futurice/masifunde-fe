@@ -83,23 +83,6 @@ export function fetchTeamMembers() {
   })
 }
 
-export function fetchOutro() {
-  var outrosArray = []
-
-  return fetchEntriesForContentType("outro")
-  .then((outros) => {
-    outros.forEach((outro) => {
-      console.log("SuccessStory:", outro)
-      outrosArray.push({
-        "title":outro.fields.title,
-        "description":outro.fields.description,
-        "image":outro.fields.image,
-      })
-    })
-    return outrosArray
-  })
-}
-
 export function fetchSuccessStories() {
   var successStoriesArray = []
 
@@ -113,24 +96,6 @@ export function fetchSuccessStories() {
       })
     })
     return successStoriesArray
-  })
-}
-
-export function fetchSectionIntroduction() {
-  var sectionIntroArray = []
-
-  return fetchEntriesForContentType("sectionIntroduction")
-  .then((sectionIntroductions) => {
-    sectionIntroductions.forEach((sectionIntro) => {
-      sectionIntroArray.push({
-        "title":sectionIntro.fields.title,
-        "longDescription":sectionIntro.fields.longDescription,
-        "background":sectionIntro.fields.background,
-        "mediaContent":sectionIntro.fields.mediaContent,
-        "location":sectionIntro.fields.location,
-      })
-    })
-    return sectionIntroArray
   })
 }
 
