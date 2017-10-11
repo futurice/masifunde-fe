@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+import React from 'react'
 import Link from 'next/link'
 import { Container, Row, Col, Button } from 'reactstrap'
 
@@ -13,12 +15,10 @@ const activeLinkStyle = {
 }
 
 const linkContainerStyle = {
-  float: "right,"
+  float: 'right',
 }
 
 const containerStyle = {
-  marginTop: "auto",
-  marginBottom: "auto",
   marginTop: 20,
   marginBottom: 20,
 }
@@ -36,19 +36,54 @@ const homeImageStyle = {
 export default function Navigation(props) {
   return (
     <Container style={containerStyle}>
-      <Row >
+      <Row>
         <Col xs="4" sm="4" md="4" lg="4" xl="4">
-          <Link href="/"><img src="../static/Masifunde-Logo.png" style={homeImageStyle}/></Link>
+          <Link href="/">
+            <img
+              src="../static/Masifunde-Logo.png"
+              style={homeImageStyle}
+              alt=""
+            />
+          </Link>
         </Col>
         <Col xs="8" sm="8" md="8" lg="8" xl="8">
           <div style={linkContainerStyle}>
-            <Link href="/waswirmachen"><a style={(props.activePage === "what") ? activeLinkStyle : linkStyle}>Was wir machen</a></Link>
-            <Link href="/about"><a style={(props.activePage === "we") ? activeLinkStyle : linkStyle}>Wer wir sind</a></Link>
-            <Link href="/howtohelp"><a style={(props.activePage === "you") ? activeLinkStyle : linkStyle}>Wie Sie helfen</a></Link>
-            <Link href="/donate"><a><Button color='primary' style={buttonStyle}>Spenden</Button></a></Link>
+            <Link href="/waswirmachen">
+              <a
+                href="#url"
+                style={
+                  props.activePage === 'what' ? activeLinkStyle : linkStyle
+                }
+              >
+                Was wir machen
+              </a>
+            </Link>
+            <Link href="/about">
+              <a
+                href="#url"
+                style={props.activePage === 'we' ? activeLinkStyle : linkStyle}
+              >
+                Wer wir sind
+              </a>
+            </Link>
+            <Link href="/howtohelp">
+              <a
+                href="#url"
+                style={props.activePage === 'you' ? activeLinkStyle : linkStyle}
+              >
+                Wie Sie helfen
+              </a>
+            </Link>
+            <Link href="/donate">
+              <a href="#url">
+                <Button color="primary" style={buttonStyle}>
+                  Spenden
+                </Button>
+              </a>
+            </Link>
           </div>
         </Col>
       </Row>
     </Container>
-  );
+  )
 }

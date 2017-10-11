@@ -1,40 +1,36 @@
-import Link from 'next/link';
-import { Button, Container, Row, Col } from 'reactstrap';
-import * as texts from '../text/home-strings';
-import Layout from '../components/Layout';
-import { getAuthorTeamMembers, getEmployeeTeamMembers } from '../api/contentGetter'
+/* eslint-disable react/prop-types */
+import React from 'react'
+import Link from 'next/link'
+import { Button, Container, Row, Col } from 'reactstrap'
+import * as texts from '../text/home-strings'
+import Layout from '../components/Layout'
+import { getAuthorTeamMembers } from '../api/contentGetter'
 
-
-
-const Index = (props) => (
+const Index = props => (
   <Layout activePage="index">
     <Container>
-      <Row>
-        Some text
-      </Row>
+      <Row>Some text</Row>
       <Row>
         <Col>
           <Row>{texts.mainTitle}</Row>
           <Row>{texts.mainText}</Row>
         </Col>
-        <Col>
-        </Col>
+        <Col />
       </Row>
 
-    <h1>{props.title}</h1>
-    <p>{props.text}</p>
-    <Button color='danger'>I am a Reactstrap button</Button>
+      <h1>{props.title}</h1>
+      <p>{props.text}</p>
+      <Button color="danger">I am a Reactstrap button</Button>
 
-    <br/>
-    <Link href="/donate">DONATE</Link>
-    <br/>
+      <br />
+      <Link href="/donate">DONATE</Link>
+      <br />
 
-    <p>Content types:</p>
-    <p></p>
-
+      <p>Content types:</p>
+      <p />
     </Container>
   </Layout>
-);
+)
 
 // Index.getInitialProps = async function() {
 //   const types = await api.getContentTypes();
@@ -49,13 +45,12 @@ const Index = (props) => (
 //   };
 // }
 
-
-Index.getInitialProps = async function() {
+Index.getInitialProps = async function getInitialProps() {
   const resultJSON = await getAuthorTeamMembers()
 
-  console.log("Result:", resultJSON)
+  console.log('Result:', resultJSON)
 
   return resultJSON
 }
 
-export default Index;
+export default Index

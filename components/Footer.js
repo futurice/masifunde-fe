@@ -1,13 +1,10 @@
+import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import Link from 'next/link'
 import FaTwitter from 'react-icons/lib/fa/twitter'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
 
-
 const containerStyle = {
-  marginTop: "auto",
-  marginBottom: "auto",
   marginTop: 20,
   marginBottom: 20,
   borderBottom: '1px solid #BBB',
@@ -60,7 +57,7 @@ export default function Footer() {
           <Col style={colStyle}>Presse</Col>
         </Row>
         <Row>
-          <Col style={colStyle}></Col>
+          <Col style={colStyle} />
           <Col style={colStyle}>Partners</Col>
           <Col style={colStyle}>Open positions</Col>
           <Col style={colStyle}>Newsletter</Col>
@@ -69,12 +66,22 @@ export default function Footer() {
       <Container style={copyrightStyle}>
         <Row>
           <Col>
-            <h4><FaTwitter style={socialStyle} /><FaYoutubePlay style={socialStyle} /><FaFacebook style={socialStyle} /></h4>
+            <h4>
+              <FaTwitter style={socialStyle} />
+              <FaYoutubePlay style={socialStyle} />
+              <FaFacebook style={socialStyle} />
+            </h4>
           </Col>
         </Row>
-        <Row><Col style={copyrightRowStyle}>Copyright 2017 Masifunde Learner Development</Col></Row>
-        <Row><Col style={copyrightRowStyle}>Impressum und Datenschutzt</Col></Row>
+        <Row>
+          <Col style={copyrightRowStyle}>
+            Copyright 2017 Masifunde Learner Development
+          </Col>
+        </Row>
+        <Row>
+          <Col style={copyrightRowStyle}>Impressum und Datenschutzt</Col>
+        </Row>
       </Container>
     </Container>
-  );
+  )
 }

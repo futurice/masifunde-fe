@@ -1,25 +1,25 @@
-import { createClient } from 'contentful';
+import { createClient } from 'contentful'
 
-const SPACE_ID = '6jocdllnp50q';
-const ACCESS_TOKEN = '5c8090d12bc2bf8dc695353cc398cd5e48eb56c214325884284bfdbfef4ba5ed';
+const SPACE_ID = '6jocdllnp50q'
+const ACCESS_TOKEN = '5c8090d12bc2bf8dc695353cc398cd5e48eb56c214325884284bfdbfef4ba5ed'
 
 const client = createClient({
   space: SPACE_ID,
-  accessToken: ACCESS_TOKEN
-});
+  accessToken: ACCESS_TOKEN,
+})
 
-function fetchEntriesForContentType (contentType) {
+function fetchEntriesForContentType(contentType) {
   return client.getEntries({
-      content_type: contentType
-    })
-  .then((response) => response.items)
-  .catch((error) => {
-    console.log(chalk.red(`\nError occurred while fetching Entries for ${chalk.cyan(contentType.name)}:`))
-    console.error(error)
+    content_type: contentType,
   })
+    .then(response => response.items)
+    .catch((error) => {
+      console.log(`\nError occurred while fetching Entries for ${contentType.name}:`)
+      console.error(error)
+    })
 }
 
-/****************************************
+/** **************************************
  * API calls
  * - fetchIndividualPortraits
  * - fetchPost
@@ -28,108 +28,108 @@ function fetchEntriesForContentType (contentType) {
  * - fetchSuccessStories
  * - fetchSectionIntroduction
  * - fetchOpenPositions
-*****************************************/
+**************************************** */
 export function fetchIndividualPortraits() {
-  var portraitsArray = []
+  const portraitsArray = []
 
-  return fetchEntriesForContentType("individualPortraits")
-  .then((individualPortraits) => {
-    individualPortraits.forEach((portrait) => {
-      portraitsArray.push({
-        "name":portrait.fields.name,
-        "profileImage":portrait.fields.profileImage,
-        "programName":portrait.fields.programName,
-        "description":portrait.fields.description
+  return fetchEntriesForContentType('individualPortraits')
+    .then((individualPortraits) => {
+      individualPortraits.forEach((portrait) => {
+        portraitsArray.push({
+          name: portrait.fields.name,
+          profileImage: portrait.fields.profileImage,
+          programName: portrait.fields.programName,
+          description: portrait.fields.description,
+        })
       })
+      return portraitsArray
     })
-    return portraitsArray
-  })
 }
 
 export function fetchPost() {
-  var postsArray = []
-  return fetchEntriesForContentType("post")
-  .then((posts) => {
-    posts.forEach((post) => {
-      postsArray.push({
-        "title":post.fields.title,
-        "content":post.fields.content,
-        "author":post.fields.author,
-        "hideAuthor":post.fields.hideAuthor,
-        "published":post.fields.published,
-        "type":post.fields.type
+  const postsArray = []
+  return fetchEntriesForContentType('post')
+    .then((posts) => {
+      posts.forEach((post) => {
+        postsArray.push({
+          title: post.fields.title,
+          content: post.fields.content,
+          author: post.fields.author,
+          hideAuthor: post.fields.hideAuthor,
+          published: post.fields.published,
+          type: post.fields.type,
+        })
       })
+      return postsArray
     })
-    return postsArray
-  })
 }
 
 export function fetchTeamMembers() {
-  var teamMembersArray = []
+  const teamMembersArray = []
 
-  return fetchEntriesForContentType("teamMembers")
-  .then((individualPortraits) => {
-    individualPortraits.forEach((teamMember) => {
-      teamMembersArray.push({
-        "name":teamMember.fields.name,
-        "responsibilityArea":teamMember.fields.responsibilityArea,
-        "profileImage":teamMember.fields.profileImage,
-        "email":teamMember.fields.email,
-        "social":teamMember.fields.social,
-        "type":teamMember.fields.type,
+  return fetchEntriesForContentType('teamMembers')
+    .then((individualPortraits) => {
+      individualPortraits.forEach((teamMember) => {
+        teamMembersArray.push({
+          name: teamMember.fields.name,
+          responsibilityArea: teamMember.fields.responsibilityArea,
+          profileImage: teamMember.fields.profileImage,
+          email: teamMember.fields.email,
+          social: teamMember.fields.social,
+          type: teamMember.fields.type,
+        })
       })
+      return teamMembersArray
     })
-    return teamMembersArray
-  })
 }
 
 export function fetchSuccessStories() {
-  var successStoriesArray = []
+  const successStoriesArray = []
 
-  return fetchEntriesForContentType("successStories")
-  .then((successStories) => {
-    successStories.forEach((successStory) => {
-      successStoriesArray.push({
-        "title":successStory.fields.title,
-        "description":successStory.fields.description,
-        "image":successStory.fields.image,
+  return fetchEntriesForContentType('successStories')
+    .then((successStories) => {
+      successStories.forEach((successStory) => {
+        successStoriesArray.push({
+          title: successStory.fields.title,
+          description: successStory.fields.description,
+          image: successStory.fields.image,
+        })
       })
+      return successStoriesArray
     })
-    return successStoriesArray
-  })
 }
 
 export function fetchOpenPositions() {
-  var openPositionsArray = []
+  const openPositionsArray = []
 
-  return fetchEntriesForContentType("openPositions")
-  .then((openPositions) => {
-    openPositions.forEach((openPosition) => {
-      openPositionsArray.push({
-        "title":openPosition.fields.title,
-        "description":openPosition.fields.description,
-        "location":openPosition.fields.location,
-        "areOfWork":openPosition.fields.areOfWork,
+  return fetchEntriesForContentType('openPositions')
+    .then((openPositions) => {
+      openPositions.forEach((openPosition) => {
+        openPositionsArray.push({
+          title: openPosition.fields.title,
+          description: openPosition.fields.description,
+          location: openPosition.fields.location,
+          areOfWork: openPosition.fields.areOfWork,
+        })
       })
+      return openPositionsArray
     })
-    return openPositionsArray
-  })
 }
 
 export function fetchAbout() {
-  var resultArray = []
+  const resultArray = []
 
-    return fetchEntriesForContentType("about")
+  return fetchEntriesForContentType('about')
     .then((aboutElements) => {
       aboutElements.forEach((element) => {
         resultArray.push({
-          "title":element.fields.title,
-          "subtitle":element.fields.subtitle,
-          "paragraphOneTitle":element.fields.paragraphOneTitle,
-          "paragraphOneText":element.fields.paragraphOneText,
-          "paragraphTwoTitle":element.fields.paragraphTwoTitle,
-          "paragraphTwoText":element.fields.paragraphTwoText,
-          "partnersImage":element.fields.partnersImage,
+          title: element.fields.title,
+          subtitle: element.fields.subtitle,
+          paragraphOneTitle: element.fields.paragraphOneTitle,
+          paragraphOneText: element.fields.paragraphOneText,
+          paragraphTwoTitle: element.fields.paragraphTwoTitle,
+          paragraphTwoText: element.fields.paragraphTwoText,
+          partnersImage: element.fields.partnersImage,
         })
       })
       return resultArray
@@ -137,20 +137,20 @@ export function fetchAbout() {
 }
 
 export function fetchWieSieHelfen() {
-  var resultArray = []
+  const resultArray = []
 
-    return fetchEntriesForContentType("wieSieHelfen")
+  return fetchEntriesForContentType('wieSieHelfen')
     .then((elements) => {
       elements.forEach((element) => {
         resultArray.push({
-          "title":element.fields.title,
-          "paragraphOneTitle":element.fields.paragraphOneTitle,
-          "paragraphOneText":element.fields.paragraphOneText,
-          "paragraphTwoTitle":element.fields.paragraphTwoTitle,
-          "paragraphTwoText":element.fields.paragraphTwoText,
-          "paragraphThreeTitle":element.fields.paragraphTwoTitle,
-          "paragraphThreeText":element.fields.paragraphTwoText,
-          "partnersImage":element.fields.partnersImage,
+          title: element.fields.title,
+          paragraphOneTitle: element.fields.paragraphOneTitle,
+          paragraphOneText: element.fields.paragraphOneText,
+          paragraphTwoTitle: element.fields.paragraphTwoTitle,
+          paragraphTwoText: element.fields.paragraphTwoText,
+          paragraphThreeTitle: element.fields.paragraphTwoTitle,
+          paragraphThreeText: element.fields.paragraphTwoText,
+          partnersImage: element.fields.partnersImage,
         })
       })
       return resultArray

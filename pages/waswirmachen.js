@@ -1,17 +1,12 @@
-import Link from 'next/link';
-import { Button, Container, Row, Col } from 'reactstrap';
-import * as texts from '../text/home-strings';
+import React from 'react'
+import { Container } from 'reactstrap'
 
+import Layout from '../components/Layout'
 
-import Layout from '../components/Layout';
-import * as api from '../api/contentful';
-
-const Howtohelp = (props) => (
+const Howtohelp = () => (
   <Layout activePage="what">
-    <Container>
-      
-    </Container>
+    <Container />
   </Layout>
-);
+)
 
-export default Howtohelp;
+export default Howtohelp
