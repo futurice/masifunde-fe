@@ -8,7 +8,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext .js,.js ."
+    "lint": "eslint --ext .js,.js .",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/futurice/masifunde-fe/issues"
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "git add"]
   },
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
   "dependencies": {
@@ -36,6 +40,8 @@
     "eslint-config-airbnb": "^16.0.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.4.0"
+    "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.3"
   }
 }
