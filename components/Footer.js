@@ -13,16 +13,15 @@ const containerStyle = {
   paddingBottom: 20,
 }
 
-const colStyle = {
-  textAlign: 'center',
+const LinksContainer = {
   fontSize: 14,
-  marginBottom: 5,
 }
 
 const copyrightStyle = {
   fontSize: 10,
   textAlign: 'center',
   marginTop: 50,
+  marginBottom: 50,
 }
 
 const copyrightRowStyle = {
@@ -38,30 +37,50 @@ export default function Footer() {
   return (
     <Container>
       <Container style={containerStyle}>
-        <Row>
-          <Col style={colStyle}>Was wir machen</Col>
-          <Col style={colStyle}>Wer sind wir</Col>
-          <Col style={colStyle}>Wie Sie helfen</Col>
-          <Col style={colStyle}>Blog</Col>
-        </Row>
-        <Row>
-          <Col style={colStyle}>Approach</Col>
-          <Col style={colStyle}>Team South Africa</Col>
-          <Col style={colStyle}>Spenden</Col>
-          <Col style={colStyle}>Kontakt</Col>
-        </Row>
-        <Row>
-          <Col style={colStyle}>Impact</Col>
-          <Col style={colStyle}>Team Deutschland</Col>
-          <Col style={colStyle}>Become a volunteer</Col>
-          <Col style={colStyle}>Presse</Col>
-        </Row>
-        <Row>
-          <Col style={colStyle} />
-          <Col style={colStyle}>Partners</Col>
-          <Col style={colStyle}>Open positions</Col>
-          <Col style={colStyle}>Newsletter</Col>
-        </Row>
+        <div className="row" style={LinksContainer}>
+
+          <div className="col-sm">
+            <div className="row">
+              <div className="col">
+                <ul className="list-unstyled">
+                  <li>Was wir machen</li>
+                  <li>Approach</li>
+                  <li>Impact</li>
+                </ul>
+              </div>
+              <div className="col">
+                <ul className="list-unstyled">
+                  <li>Wer sind wir</li>
+                  <li>Team South Africa</li>
+                  <li>Team Deutschland</li>
+                  <li>Partners</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-sm">
+            <div className="row">
+              <div className="col">
+                <ul className="list-unstyled">
+                  <li>Wie Sie helfen</li>
+                  <li>Spenden</li>
+                  <li>Become volunteer</li>
+                  <li>Open positions</li>
+                </ul>
+              </div>
+              <div className="col">
+                <ul className="list-unstyled">
+                  <li>Blog</li>
+                  <li>Kontakt</li>
+                  <li>Presse</li>
+                  <li>Newsletter</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </Container>
       <Container style={copyrightStyle}>
         <Row>
