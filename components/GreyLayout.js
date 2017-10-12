@@ -12,7 +12,7 @@ const GreyLayout = props => (
       <title>Masifunde</title>
       <link
         rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta/dist/css/bootstrap.min.css"
       />
       <link
         rel="stylesheet"
