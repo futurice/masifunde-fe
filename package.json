@@ -31,13 +31,13 @@
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
   "dependencies": {
     "contentful": "^4.6.2",
-    "next": "^3.2.2",
+    "next": "^4.0.3",
     "prop-types": "^15.6.0",
-    "react": "^15.6.1",
+    "react": "^16.0.0",
     "react-addons-transition-group": "^15.6.2",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.0.0",
     "react-icons": "^2.2.7",
-    "reactstrap": "^4.8.0"
+    "reactstrap": "^5.0.0-alpha.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
