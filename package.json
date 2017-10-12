@@ -32,6 +32,7 @@
   "dependencies": {
     "contentful": "^4.6.2",
     "next": "^3.2.2",
+    "prop-types": "^15.6.0",
     "react": "^15.6.1",
     "react-addons-transition-group": "^15.6.2",
     "react-dom": "^15.6.1",

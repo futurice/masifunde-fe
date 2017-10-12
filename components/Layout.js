@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react'
+import PropTypes from 'prop-types'
 import Head from 'next/head'
 import Navigation from './Navigation'
 import Footer from './Footer'
@@ -7,7 +7,7 @@ import Footer from './Footer'
 const Layout = props => (
   <div>
     <Head>
-      <title>Masifunde</title>
+      <title>{props.title}</title>
       <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
@@ -22,5 +22,15 @@ const Layout = props => (
     <Footer />
   </div>
 )
+
+Layout.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  activePage: PropTypes.string.isRequired,
+}
+
+Layout.defaultProps = {
+  title: 'Masifunde',
+}
 
 export default Layout
