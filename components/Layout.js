@@ -8,6 +8,7 @@ const Layout = props => (
   <div>
     <Head>
       <title>{props.title}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta/dist/css/bootstrap.min.css"
