@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .js,.js .",
+    "prettier": "prettier --write 'src/**/*.{js,jsx,css,json}'",
     "precommit": "lint-staged"
   },
   "repository": {
@@ -22,7 +23,10 @@
     "url": "https://github.com/futurice/masifunde-fe/issues"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
   "dependencies": {
@@ -42,6 +46,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "husky": "^0.14.3",
-    "lint-staged": "^4.2.3"
+    "lint-staged": "^4.2.3",
+    "prettier": "^1.7.4"
   }
 }
