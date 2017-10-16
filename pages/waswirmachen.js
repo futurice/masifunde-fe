@@ -4,7 +4,7 @@ import { Container } from 'reactstrap'
 import Layout from '../components/Layout'
 
 const Howtohelp = () => (
-  <Layout activePage="what">
+  <Layout>
     <Container />
   </Layout>
 )

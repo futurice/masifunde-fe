@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 import { getAuthorTeamMembers } from '../api/contentGetter'
 
 const Index = props => (
-  <Layout activePage="index">
+  <Layout>
     <Container>
       <Row>Some text</Row>
       <Row>

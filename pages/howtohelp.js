@@ -36,7 +36,7 @@ const titleStyle = {
 }
 
 const Howtohelp = props => (
-  <Layout activePage="you">
+  <Layout>
     <Container>
       <Row style={topRowStyle}>
         {/* Section intro part */}

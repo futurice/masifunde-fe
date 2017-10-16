@@ -53,7 +53,7 @@ const footerTitle = {
 }
 
 const About = props => (
-  <Layout activePage="we">
+  <Layout title="About page">
     <Container>
       <Row>
         <Col style={titleStyle}>

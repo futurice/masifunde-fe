@@ -114,7 +114,7 @@ const labelStyle = {
 }
 
 const Donate = () => (
-  <Layout activePage="we">
+  <Layout>
     <Container style={containerStyle}>
       <Row>
         <Col xs="2" sm="2" md="2" lg="2" xl="2" />

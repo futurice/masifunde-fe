@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import Navigation from './Navigation'
+
+import Navigation from './Navigation/'
 import Footer from './Footer'
 
 const Layout = props => (
@@ -18,7 +19,7 @@ const Layout = props => (
         href="https://fonts.googleapis.com/css?family=Lato"
       />
     </Head>
-    <Navigation activePage={props.activePage} />
+    <Navigation />
     {props.children}
     <Footer />
   </div>
@@ -27,7 +28,6 @@ const Layout = props => (
 Layout.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node.isRequired,
-  activePage: PropTypes.string.isRequired,
 }
 
 Layout.defaultProps = {
