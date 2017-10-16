@@ -31,7 +31,7 @@
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
   "dependencies": {
     "contentful": "^4.6.2",
-    "next": "^4.0.3",
+    "next": "^4.1.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-addons-transition-group": "^15.6.2",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
-    "eslint": "^4.8.0",
+    "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.0.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
