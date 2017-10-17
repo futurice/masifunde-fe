@@ -13,7 +13,7 @@ const StyledLink = styled.a`
 
 function NavigationLink({ children, router, href }) {
   return (
-    <NavItem primary={false}>
+    <NavItem>
       <Link href={href} passHref>
         <StyledLink
           isActive={router.pathname === href}
