@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "eslint --ext .js,.js .",
     "prettier": "prettier --write 'src/**/*.{js,jsx,css,json}'",
     "precommit": "lint-staged"
@@ -32,6 +32,7 @@
   "dependencies": {
     "contentful": "^4.6.2",
     "next": "^4.1.0",
+    "next-routes": "^1.1.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-addons-transition-group": "^15.6.2",
