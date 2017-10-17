@@ -1,35 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { NavItem, NavLink } from 'reactstrap'
+import { NavItem } from 'reactstrap'
 import { withRouter } from 'next/router'
 import Link from 'next/link'
+import styled from 'styled-components'
 
-const linkStyle = {
-  color: 'black',
-}
-
-const activeLinkStyle = {
-  ...linkStyle,
-  textDecoration: 'underline',
-}
+const StyledLink = styled.a`
+  color: black;
+  text-align: right;
+  ${({ isActive }) => (isActive && 'text-decoration: underline;')}
+  
+  @media screen and (min-width: 768px){
+    text-align: left;
+  }
+`
 
 function NavigationLink({ children, router, href }) {
-  let style
-
-  if (router.pathname === href) {
-    style = activeLinkStyle
-  } else {
-    style = linkStyle
-  }
-
   return (
     <NavItem>
       <Link href={href} passHref>
-        <NavLink
-          style={style}
+        <StyledLink
+          className="nav-link"
+          isActive={router.pathname === href}
         >
           {children}
-        </NavLink>
+        </StyledLink>
       </Link>
     </NavItem>
   )

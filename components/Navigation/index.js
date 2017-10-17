@@ -11,10 +11,6 @@ const containerStyle = {
   marginBottom: 20,
 }
 
-const links = {
-  textAlign: 'right',
-}
-
 class Navigation extends Component {
   state = {
     isOpen: false,
@@ -34,7 +30,7 @@ class Navigation extends Component {
             </Link>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar style={links}>
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavigatoinLink href="/waswirmachen">Was wir machen</NavigatoinLink>
               <NavigatoinLink href="/about">Wer wir sind</NavigatoinLink>

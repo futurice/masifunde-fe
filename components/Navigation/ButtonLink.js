@@ -1,35 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { NavItem, NavLink } from 'reactstrap'
+import { NavItem } from 'reactstrap'
 import { withRouter } from 'next/router'
 import Link from 'next/link'
+import styled from 'styled-components'
 
-const buttonStyle = {
-  color: 'white',
-  backgroundColor: 'black',
-  border: 'none',
-}
-
-const activeButtonStyle = {
-  ...buttonStyle,
-  backgroundColor: 'gray',
-}
+const StyledLink = styled.a`
+  color: white !important;
+  border: none;
+  background-color: ${({ isActive }) => (isActive ? 'gray' : 'black')};
+`
 
 function NavigationLink({ children, router, href }) {
-  let style
-
-  if (router.pathname === href) {
-    style = activeButtonStyle
-  } else {
-    style = buttonStyle
-  }
-
   return (
-    <NavItem>
+    <NavItem primary={false}>
       <Link href={href} passHref>
-        <NavLink className="btn btn-primary" style={style}>
+        <StyledLink
+          isActive={router.pathname === href}
+          className="nav-link btn btn-primary"
+        >
           {children}
-        </NavLink>
+        </StyledLink>
       </Link>
     </NavItem>
   )
