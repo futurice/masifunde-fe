@@ -1,9 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
+import { injectGlobal } from 'styled-components'
 
 import Navigation from './Navigation/'
 import Footer from './Footer'
+
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
+  body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+  }
+`
 
 function createTitle(title) {
   if (title === '') {
@@ -26,7 +35,7 @@ const Layout = props => (
       />
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Lato"
+        href="https://fonts.googleapis.com/css?family=Lato:400,700"
       />
     </Head>
     <Navigation />
