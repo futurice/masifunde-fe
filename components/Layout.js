@@ -9,7 +9,8 @@ const Layout = props => (
   <div>
     <Head>
       <title>{props.title}</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta name="description" content={props.description} />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta/dist/css/bootstrap.min.css"
@@ -27,11 +28,13 @@ const Layout = props => (
 
 Layout.propTypes = {
   title: PropTypes.string,
+  description: PropTypes.string,
   children: PropTypes.node.isRequired,
 }
 
 Layout.defaultProps = {
   title: 'Masifunde',
+  description: 'Masifunde',
 }
 
 export default Layout
