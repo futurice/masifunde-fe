@@ -5,10 +5,19 @@ import Head from 'next/head'
 import Navigation from './Navigation/'
 import Footer from './Footer'
 
+function createTitle(title) {
+  if (title === '') {
+    return 'Masifunde'
+  }
+
+  return `${title} - Masifunde`
+}
+
+
 const Layout = props => (
   <div>
     <Head>
-      <title>{props.title}</title>
+      <title>{createTitle(props.title)}</title>
       <meta name="description" content={props.description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link
@@ -33,8 +42,8 @@ Layout.propTypes = {
 }
 
 Layout.defaultProps = {
-  title: 'Masifunde',
-  description: 'Masifunde',
+  title: '',
+  description: '',
 }
 
 export default Layout
