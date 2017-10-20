@@ -32,7 +32,7 @@ const Layout = props => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta/dist/css/bootstrap.min.css"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.2/dist/css/bootstrap.min.css"
       />
       <link
         rel="stylesheet"
