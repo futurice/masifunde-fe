@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
+import ReactMarkdown from 'react-markdown'
 
-import { fetchSingleEntry } from '../api/contentfulService'
+import { fetchWasWirMachen } from '../api/contentful'
 import Layout from '../components/Layout'
 
 const VideoIframe = styled.iframe`
@@ -15,7 +16,7 @@ const VideoIframe = styled.iframe`
 `
 const VideoContainer = styled.div`
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 54%; /* 16:9 */
   padding-top: 25px;
   height: 0;
   margin-bottom: 100px;
@@ -34,10 +35,6 @@ const H1 = styled.h1`
   line-height: 1.36;
 `
 
-const Paragraph = styled.p`
-  white-space: pre-line;
-`
-
 const BoldHeading = styled.h2`
   font-weight: 700;
   text-align: center;
@@ -48,6 +45,9 @@ const ProjectImage = styled.img`
   border-radius: 50%;
   height: 61px;
   width: 61px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const ProjectText = styled.p`
@@ -102,7 +102,7 @@ const HowToHelp = ({
         />
       </VideoContainer>
       <BoldHeading>{introHeading}</BoldHeading>
-      <ProjectContainer className="row">
+      <div className="row">
         <ProjectContainer className="col-md-6">
           <ProjectTitle>Project title</ProjectTitle>
 
@@ -171,7 +171,7 @@ const HowToHelp = ({
             <Button className="btn btn-primary">Mehr über unseren pädagogischen Ansatz</Button>
           </div>
         </ProjectContainer>
-      </ProjectContainer>
+      </div>
 
       <H1>
         Our programmes are designed to use resources sparingly to achieve the most sustainable
@@ -210,7 +210,7 @@ const HowToHelp = ({
       <div className="row justify-content-center">
         <div className="col col-md-8 col-lg-6">
           <BoldHeading>{outroHeading}</BoldHeading>
-          <Paragraph>{outroText}</Paragraph>
+          <ReactMarkdown source={outroText} />
         </div>
       </div>
     </Container>
@@ -232,21 +232,7 @@ HowToHelp.propTypes = {
 }
 
 HowToHelp.getInitialProps = async function initialProps() {
-  const content = await fetchSingleEntry('pageApproachDE')
-  const projects = content.projects.map(({ fields }) => ({ ...fields, image: fields.image.fields }))
-
-  const formattedContent = {
-    ...content,
-    heroImage: {
-      ...content.heroImage.fields,
-      url: content.heroImage.fields.file.url,
-    },
-    projects,
-  }
-
-  console.log(formattedContent)
-
-  return formattedContent
+  return fetchWasWirMachen()
 }
 
 export default HowToHelp
