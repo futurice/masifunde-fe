@@ -1,4 +1,4 @@
-import { fetchEntriesForContentType } from './contentfulService'
+import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 
 /** **************************************
  * API calls
@@ -25,6 +25,24 @@ export function fetchIndividualPortraits() {
       })
       return portraitsArray
     })
+}
+
+export async function fetchWasWirMachen() {
+  const content = await fetchSingleEntry('pageWasWirMachen')
+  // const projects = content.projects.map(({ fields }) => ({
+  //   ...fields,
+  //   image: fields.image.fields,
+  // }))
+
+  console.log(content)
+
+  return {
+    ...content,
+    heroImage: {
+      ...content.heroImage.fields,
+      url: content.heroImage.fields.file.url,
+    },
+  }
 }
 
 export function fetchPost() {
