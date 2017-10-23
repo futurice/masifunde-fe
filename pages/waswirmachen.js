@@ -1,3 +1,4 @@
+/* eslint-disable function-paren-newline */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Container } from 'reactstrap'
@@ -80,13 +81,17 @@ const Number = styled.span`
 `
 
 const HowToHelp = ({
-  title,
+  centerHeading,
+  heroImage,
   introHeading,
+  metaDescription,
+  metaTitle,
   outroHeading,
   outroText,
-  metaTitle,
-  metaDescription,
-  heroImage,
+  stats,
+  statsButton,
+  statsHeading,
+  title,
   youtubeVideo,
 }) => (
   <Layout title={metaTitle} description={metaDescription}>
@@ -150,19 +155,19 @@ const HowToHelp = ({
             </div>
           </ProjectDescriptionContainer>
           <div className="row">
-            <div className="col-sm-3 d-flex flex-column align-items-center">
+            <div className="col-sm d-flex flex-column align-items-center">
               <ProjectImage src="http://via.placeholder.com/61x61" />
               <ProjectText>Scholarships and Stipends</ProjectText>
             </div>
-            <div className="col-sm-3 d-flex flex-column align-items-center">
+            <div className="col-sm d-flex flex-column align-items-center">
               <ProjectImage src="http://via.placeholder.com/61x61" />
               <ProjectText>Educational Centre</ProjectText>
             </div>
-            <div className="col-sm-3 d-flex flex-column align-items-center">
+            <div className="col-sm d-flex flex-column align-items-center">
               <ProjectImage src="http://via.placeholder.com/61x61" />
               <ProjectText>Scholarships and Stipends</ProjectText>
             </div>
-            <div className="col-sm-3 d-flex flex-column align-items-center">
+            <div className="col-sm d-flex flex-column align-items-center">
               <ProjectImage src="http://via.placeholder.com/61x61" />
               <ProjectText>Scholarships and Stipends</ProjectText>
             </div>
@@ -173,37 +178,24 @@ const HowToHelp = ({
         </ProjectContainer>
       </div>
 
-      <H1>
-        Our programmes are designed to use resources sparingly to achieve the most sustainable
-        dissemination of educational content possible.
-      </H1>
+      <H1>{centerHeading}</H1>
 
       <ProjectContainer>
-        <BoldHeading>Our Impact in South Africa in 2017</BoldHeading>
+        <BoldHeading>{statsHeading}</BoldHeading>
         <div className="row justify-content-center">
           <div className="col col-md-10 col-lg-8">
             <div className="row">
-              <div className="col-sm-3 d-flex flex-column align-items-center">
-                <Number>270</Number>
-                <ProjectText>Scholarships and Stipends</ProjectText>
-              </div>
-              <div className="col-sm-3 d-flex flex-column align-items-center">
-                <Number>270</Number>
-                <ProjectText>Scholarships and Stipends</ProjectText>
-              </div>
-              <div className="col-sm-3 d-flex flex-column align-items-center">
-                <Number>270</Number>
-                <ProjectText>Scholarships and Stipends</ProjectText>
-              </div>
-              <div className="col-sm-3 d-flex flex-column align-items-center">
-                <Number>270</Number>
-                <ProjectText>Scholarships and Stipends</ProjectText>
-              </div>
+              {stats.map(stat => (
+                <div className="col-sm d-flex flex-column align-items-center">
+                  <Number>{stat.number}</Number>
+                  <ProjectText>{stat.description}</ProjectText>
+                </div>
+              ))}
             </div>
           </div>
         </div>
         <div className="row justify-content-center">
-          <Button className="btn btn-primary">Mehr darüber, was wir bewirken</Button>
+          <Button className="btn btn-primary">{statsButton}</Button>
         </div>
       </ProjectContainer>
 
@@ -218,17 +210,26 @@ const HowToHelp = ({
 )
 
 HowToHelp.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  introHeading: PropTypes.string.isRequired,
-  outroHeading: PropTypes.string.isRequired,
-  outroText: PropTypes.string.isRequired,
-  youtubeVideo: PropTypes.string.isRequired,
+  centerHeading: PropTypes.string.isRequired,
   heroImage: PropTypes.shape({
     url: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
+  introHeading: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string.isRequired,
+  metaTitle: PropTypes.string.isRequired,
+  outroHeading: PropTypes.string.isRequired,
+  outroText: PropTypes.string.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      number: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+  statsButton: PropTypes.string.isRequired,
+  statsHeading: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  youtubeVideo: PropTypes.string.isRequired,
 }
 
 HowToHelp.getInitialProps = async function initialProps() {

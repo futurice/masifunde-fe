@@ -1,5 +1,15 @@
 import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 
+/**
+ * Contentful always returns array objects which are nested with 'fields' object
+ *
+ * @param response
+ * @returns { T | Array<Field>}
+ */
+function unwrapFields(response) {
+  return response.fields
+}
+
 /** **************************************
  * API calls
  * - fetchIndividualPortraits
@@ -29,15 +39,10 @@ export function fetchIndividualPortraits() {
 
 export async function fetchWasWirMachen() {
   const content = await fetchSingleEntry('pageWasWirMachen')
-  // const projects = content.projects.map(({ fields }) => ({
-  //   ...fields,
-  //   image: fields.image.fields,
-  // }))
-
-  console.log(content)
 
   return {
     ...content,
+    stats: content.stats.map(unwrapFields),
     heroImage: {
       ...content.heroImage.fields,
       url: content.heroImage.fields.file.url,
