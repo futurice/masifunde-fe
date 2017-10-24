@@ -88,6 +88,7 @@ const HowToHelp = ({
   metaTitle,
   outroHeading,
   outroText,
+  programmes,
   stats,
   statsButton,
   statsHeading,
@@ -108,74 +109,31 @@ const HowToHelp = ({
       </VideoContainer>
       <BoldHeading>{introHeading}</BoldHeading>
       <div className="row">
-        <ProjectContainer className="col-md-6">
-          <ProjectTitle>Project title</ProjectTitle>
+        {programmes.map(program => (
+          <ProjectContainer className="col-md d-flex flex-column" key={program.title}>
+            <ProjectTitle>{program.title}</ProjectTitle>
 
-          <ProjectDescriptionContainer className="row justify-content-md-center">
-            <div className="col-lg-10">
-              <ProjectDescription>
-                We focus on the creation of holistic and qualitative educational opportunities in We
-                focus on the creation of holistic and qualitative educational opportunities in We
-                focus on the creation of holistic and qualitative educational opportunities in
-              </ProjectDescription>
+            <ProjectDescriptionContainer className="row justify-content-md-center">
+              <div className="col-lg-10">
+                <ProjectDescription>{program.description}</ProjectDescription>
+              </div>
+            </ProjectDescriptionContainer>
+            <div className="row">
+              {program.projects.map(project => (
+                <div
+                  className="col-sm d-flex flex-column align-items-center"
+                  key={`${project.image.url} ${project.name}`}
+                >
+                  <ProjectImage src={project.image.url} alt={project.image.title} />
+                  <ProjectText>{project.name}</ProjectText>
+                </div>
+              ))}
             </div>
-          </ProjectDescriptionContainer>
-          <div className="row">
-            <div className="col-sm-3 d-flex flex-column align-items-center">
-              <ProjectImage src="http://via.placeholder.com/61x61" />
-              <ProjectText>Scholarships and Stipends</ProjectText>
+            <div className="row justify-content-center">
+              <Button className="btn btn-primary">{program.button}</Button>
             </div>
-            <div className="col-sm-3 d-flex flex-column align-items-center">
-              <ProjectImage src="http://via.placeholder.com/61x61" />
-              <ProjectText>Educational Centre</ProjectText>
-            </div>
-            <div className="col-sm-3 d-flex flex-column align-items-center">
-              <ProjectImage src="http://via.placeholder.com/61x61" />
-              <ProjectText>Scholarships and Stipends</ProjectText>
-            </div>
-            <div className="col-sm-3 d-flex flex-column align-items-center">
-              <ProjectImage src="http://via.placeholder.com/61x61" />
-              <ProjectText>Scholarships and Stipends</ProjectText>
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <Button className="btn btn-primary">Mehr über unseren pädagogischen Ansatz</Button>
-          </div>
-        </ProjectContainer>
-
-        <ProjectContainer className="col-md-6 d-flex flex-column">
-          <ProjectTitle>Project title</ProjectTitle>
-
-          <ProjectDescriptionContainer className="row justify-content-md-center">
-            <div className="col-lg-10">
-              <ProjectDescription>
-                We focus on the creation of holistic and qualitative educational opportunities in
-                Walmer .
-              </ProjectDescription>
-            </div>
-          </ProjectDescriptionContainer>
-          <div className="row">
-            <div className="col-sm d-flex flex-column align-items-center">
-              <ProjectImage src="http://via.placeholder.com/61x61" />
-              <ProjectText>Scholarships and Stipends</ProjectText>
-            </div>
-            <div className="col-sm d-flex flex-column align-items-center">
-              <ProjectImage src="http://via.placeholder.com/61x61" />
-              <ProjectText>Educational Centre</ProjectText>
-            </div>
-            <div className="col-sm d-flex flex-column align-items-center">
-              <ProjectImage src="http://via.placeholder.com/61x61" />
-              <ProjectText>Scholarships and Stipends</ProjectText>
-            </div>
-            <div className="col-sm d-flex flex-column align-items-center">
-              <ProjectImage src="http://via.placeholder.com/61x61" />
-              <ProjectText>Scholarships and Stipends</ProjectText>
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <Button className="btn btn-primary">Mehr über unseren pädagogischen Ansatz</Button>
-          </div>
-        </ProjectContainer>
+          </ProjectContainer>
+        ))}
       </div>
 
       <H1>{centerHeading}</H1>
@@ -186,7 +144,10 @@ const HowToHelp = ({
           <div className="col col-md-10 col-lg-8">
             <div className="row">
               {stats.map(stat => (
-                <div className="col-sm d-flex flex-column align-items-center">
+                <div
+                  className="col-sm d-flex flex-column align-items-center"
+                  key={`${stat.number} ${stat.description}`}
+                >
                   <Number>{stat.number}</Number>
                   <ProjectText>{stat.description}</ProjectText>
                 </div>
@@ -220,6 +181,22 @@ HowToHelp.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   outroHeading: PropTypes.string.isRequired,
   outroText: PropTypes.string.isRequired,
+  programmes: PropTypes.arrayOf(
+    PropTypes.shape({
+      button: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      projects: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          image: PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired,
+          }).isRequired,
+        }).isRequired,
+      ).isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
   stats: PropTypes.arrayOf(
     PropTypes.shape({
       number: PropTypes.string.isRequired,

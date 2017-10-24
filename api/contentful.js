@@ -40,8 +40,34 @@ export function fetchIndividualPortraits() {
 export async function fetchWasWirMachen() {
   const content = await fetchSingleEntry('pageWasWirMachen')
 
+  function createProject(project) {
+    return {
+      ...project.fields,
+      image: {
+        title: project.fields.image.fields.title,
+        url: project.fields.image.fields.file.url,
+      },
+    }
+  }
+
+  const programmes = [
+    {
+      title: content.projectsTitleSa,
+      description: content.projectsDescriptionSa,
+      projects: content.projectsSa.map(createProject),
+      button: content.projectsButtonSa,
+    },
+    {
+      title: content.projectsTitleDe,
+      description: content.projectsDescriptionDe,
+      projects: content.projectsDe.map(createProject),
+      button: content.projectsButtonDe,
+    },
+  ]
+
   return {
     ...content,
+    programmes,
     stats: content.stats.map(unwrapFields),
     heroImage: {
       ...content.heroImage.fields,
