@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown'
 
 import { fetchWasWirMachen } from '../api/contentful'
 import Layout from '../components/Layout'
+import { getContentfulLocale } from '../utils/locale'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -209,8 +210,8 @@ HowToHelp.propTypes = {
   youtubeVideo: PropTypes.string.isRequired,
 }
 
-HowToHelp.getInitialProps = async function initialProps() {
-  return fetchWasWirMachen()
+HowToHelp.getInitialProps = async function initialProps({ query }) {
+  return fetchWasWirMachen(getContentfulLocale(query))
 }
 
 export default HowToHelp
