@@ -37,8 +37,8 @@ export function fetchIndividualPortraits() {
     })
 }
 
-export async function fetchWasWirMachen() {
-  const content = await fetchSingleEntry('pageWasWirMachen')
+export async function fetchWasWirMachen(locale) {
+  const content = await fetchSingleEntry('pageWasWirMachen', locale)
 
   function createProject(project) {
     return {
