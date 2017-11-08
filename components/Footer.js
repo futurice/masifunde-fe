@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
+import Link from 'next/link'
 import { Container, Row, Col } from 'reactstrap'
 import FaTwitter from 'react-icons/lib/fa/twitter'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
@@ -72,7 +74,11 @@ export default function Footer() {
               <div className="col">
                 <ul className="list-unstyled">
                   <li>Blog</li>
-                  <li>Kontakt</li>
+                  <li>
+                    <Link href="/contact">
+                      <a>Kontakt</a>
+                    </Link>
+                  </li>
                   <li>Presse</li>
                   <li>Newsletter</li>
                 </ul>
