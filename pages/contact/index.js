@@ -5,9 +5,10 @@ import styled from 'styled-components'
 import _chunk from 'lodash/chunk'
 import ReactMarkdown from 'react-markdown'
 
-import { fetchContactPage } from '../api/contentful'
+import ProfilePicture from './ProfilePicture'
+import { fetchContactPage } from '../../api/contentful'
 
-import Layout from '../components/Layout'
+import Layout from '../../components/Layout'
 
 const MainHeading = styled.h1`
   text-align: center;
@@ -45,19 +46,13 @@ const Contact = ({
       <SecondaryHeading>{contactsHeading}</SecondaryHeading>
       <PictureContainer className="row justify-content-center">
         {contacts.map(contact => (
-          <div
-            className="col-6 col-md-3 col-lg-2"
+          <ProfilePicture
             key={`${contact.imageUrl} ${contact.title} ${contact.name}`}
-          >
-            <img
-              className="img-fluid"
-              src={contact.imageUrl}
-              alt={`${contact.title} ${contact.name}`}
-            />
-            <div>{contact.title}</div>
-            <div>{contact.name}</div>
-            <div>{contact.email}</div>
-          </div>
+            imageUrl={contact.imageUrl}
+            title={contact.title}
+            name={contact.name}
+            email={contact.email}
+          />
         ))}
       </PictureContainer>
 
@@ -65,19 +60,13 @@ const Contact = ({
       {_chunk(regionalContacts, 4).map(contactsChunk => (
         <PictureContainer className="row justify-content-sm-center">
           {contactsChunk.map(contact => (
-            <div
-              className="col-6 col-md-3 col-lg-2"
+            <ProfilePicture
               key={`${contact.imageUrl} ${contact.title} ${contact.name}`}
-            >
-              <img
-                className="img-fluid"
-                src={contact.imageUrl}
-                alt={`${contact.title} ${contact.name}`}
-              />
-              <div>{contact.title}</div>
-              <div>{contact.name}</div>
-              <div>{contact.email}</div>
-            </div>
+              imageUrl={contact.imageUrl}
+              title={contact.title}
+              name={contact.name}
+              email={contact.email}
+            />
           ))}
         </PictureContainer>
       ))}
