@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container } from 'reactstrap'
 
+import { RouteNames } from '../../routes'
 import NavigationLink from './NavigationLink'
 import ButtonLink from './ButtonLink'
 
@@ -32,10 +33,10 @@ class Navigation extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavigationLink href="/what-we-do">Was wir machen</NavigationLink>
-              <NavigationLink href="/who-we-are">Wer wir sind</NavigationLink>
-              <NavigationLink href="/how-to-support">Wie Sie helfen</NavigationLink>
-              <ButtonLink href="/donate">Spenden</ButtonLink>
+              <NavigationLink href={RouteNames.WhatWeDo}>Was wir machen</NavigationLink>
+              <NavigationLink href={RouteNames.WhoWeAre}>Wer wir sind</NavigationLink>
+              <NavigationLink href={RouteNames.HowToSupport}>Wie Sie helfen</NavigationLink>
+              <ButtonLink href={RouteNames.Donate}>Spenden</ButtonLink>
             </Nav>
           </Collapse>
         </Navbar>
