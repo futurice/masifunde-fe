@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { Button, Container, Row, Col } from 'reactstrap'
-import { getWieSieHelfenFields } from '../api/contentGetter'
-import Layout from '../components/Layout'
+import { getWieSieHelfenFields } from '../../api/contentGetter'
+import Layout from '../../components/Layout'
 
 const buttonStyle = {
   color: 'white',

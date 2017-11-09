@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container } from 'reactstrap'
 
-import NavigatoinLink from './NavigationLink'
+import NavigationLink from './NavigationLink'
 import ButtonLink from './ButtonLink'
 
 const containerStyle = {
@@ -32,9 +32,9 @@ class Navigation extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavigatoinLink href="/waswirmachen">Was wir machen</NavigatoinLink>
-              <NavigatoinLink href="/about">Wer wir sind</NavigatoinLink>
-              <NavigatoinLink href="/howtohelp">Wie Sie helfen</NavigatoinLink>
+              <NavigationLink href="/what-we-do">Was wir machen</NavigationLink>
+              <NavigationLink href="/who-we-are">Wer wir sind</NavigationLink>
+              <NavigationLink href="/how-to-support">Wie Sie helfen</NavigationLink>
               <ButtonLink href="/donate">Spenden</ButtonLink>
             </Nav>
           </Collapse>

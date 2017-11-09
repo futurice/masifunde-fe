@@ -2,8 +2,8 @@
 import React from 'react'
 import Link from 'next/link'
 import { Button, Container, Row, Col } from 'reactstrap'
-import Layout from '../components/Layout'
-import { getAboutFields } from '../api/contentGetter'
+import Layout from '../../components/Layout'
+import { getAboutFields } from '../../api/contentGetter'
 
 const silhouetteStyle = {
   color: 'black',

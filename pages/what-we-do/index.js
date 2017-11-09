@@ -5,9 +5,9 @@ import { Container } from 'reactstrap'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 
-import { fetchWasWirMachen } from '../api/contentful'
-import Layout from '../components/Layout'
-import { getContentfulLocale } from '../utils/locale'
+import { fetchWhatWeDoPage } from '../../api/contentful'
+import Layout from '../../components/Layout'
+import { getContentfulLocale } from '../../utils/locale'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -81,7 +81,7 @@ const Number = styled.span`
   font-size: 44px;
 `
 
-const HowToHelp = ({
+const WhatWeDo = ({
   centerHeading,
   heroImage,
   introHeading,
@@ -128,13 +128,13 @@ const HowToHelp = ({
                   <ProjectImage src={project.image.url} alt={project.image.title} />
                   <ProjectText>{project.name}</ProjectText>
                 </div>
-              ))}
+                ))}
             </div>
             <div className="row justify-content-center">
               <Button className="btn btn-primary">{program.button}</Button>
             </div>
           </ProjectContainer>
-        ))}
+          ))}
       </div>
 
       <H1>{centerHeading}</H1>
@@ -152,7 +152,7 @@ const HowToHelp = ({
                   <Number>{stat.number}</Number>
                   <ProjectText>{stat.description}</ProjectText>
                 </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>
@@ -171,7 +171,8 @@ const HowToHelp = ({
   </Layout>
 )
 
-HowToHelp.propTypes = {
+
+WhatWeDo.propTypes = {
   centerHeading: PropTypes.string.isRequired,
   heroImage: PropTypes.shape({
     url: PropTypes.string.isRequired,
@@ -210,8 +211,9 @@ HowToHelp.propTypes = {
   youtubeVideo: PropTypes.string.isRequired,
 }
 
-HowToHelp.getInitialProps = async function initialProps({ query }) {
-  return fetchWasWirMachen(getContentfulLocale(query))
+WhatWeDo.getInitialProps = async function initialProps({ query, asPath }) {
+  console.log(asPath)
+  return fetchWhatWeDoPage(getContentfulLocale(query))
 }
 
-export default HowToHelp
+export default WhatWeDo
