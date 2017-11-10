@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { NavItem } from 'reactstrap'
 import { withRouter } from 'next/router'
-import Link from 'next/link'
 import styled from 'styled-components'
+
+import { Link } from '../../routes'
 
 const StyledLink = styled.a`
   color: white !important;
@@ -14,7 +16,7 @@ const StyledLink = styled.a`
 function NavigationLink({ children, router, href }) {
   return (
     <NavItem>
-      <Link href={href} passHref>
+      <Link route={href} passHref>
         <StyledLink
           isActive={router.pathname === href}
           className="nav-link btn btn-primary"
