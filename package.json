@@ -13,7 +13,8 @@
     "build-static": "next build && next export && npm run copy",
     "copy": "cp robots.txt out",
     "start": "NODE_ENV=production node server.js",
-    "lint": "eslint --ext .js,.js .",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.js .",
+    "lint-fix": "npm run lint -- --fix",
     "prettier": "prettier --write 'src/**/*.{js,jsx,css,json}'",
     "precommit": "lint-staged"
   },
@@ -29,8 +30,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
+      "eslint"
     ]
   },
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
