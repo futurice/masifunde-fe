@@ -6,6 +6,7 @@ function addRoute(pattern, page) {
   routes.add({ name: page, pattern, page })
 }
 
+// Paths to pages
 const Index = '/home'
 const WhatWeDo = '/what-we-do'
 const ApproachDE = '/what-we-do/approach-de'
