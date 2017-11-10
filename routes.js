@@ -19,8 +19,8 @@ const HowToSupport = '/how-to-support'
 const BecomeSponsor = '/how-to-support/become-sponsor'
 const BecomeVolunteer = '/how-to-support/become-volunteer'
 const BecomePartner = '/how-to-support/become-partner'
-const Donate = '/how-to-support/donate'
-const Contact = '/how-to-support/contact'
+const Donate = '/donate'
+const Contact = '/contact'
 
 // Register the routes
 addRoute('/', Index)
