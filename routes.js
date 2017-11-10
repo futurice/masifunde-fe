@@ -1,9 +1,7 @@
-const nextRoutes = require('next-routes')
-// eslint-disable-next-line no-multi-assign
-const routes = module.exports = nextRoutes()
+const nextRoutes = require('next-routes')()
 
 function addRoute(pattern, page) {
-  routes.add({ name: page, pattern, page })
+  nextRoutes.add({ name: page, pattern, page })
 }
 
 // Paths to pages
@@ -44,7 +42,7 @@ addRoute('/kontakt', Contact)
 // addRoute('/:locale(en)?/was-wir-machen', WhatWeDo)
 
 // Share route names
-routes.RouteNames = {
+nextRoutes.RouteNames = {
   Index,
   WhatWeDo,
   ApproachDE,
@@ -61,3 +59,5 @@ routes.RouteNames = {
   Donate,
   Contact,
 }
+
+module.exports = nextRoutes
