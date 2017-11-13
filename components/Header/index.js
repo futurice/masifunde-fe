@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container } from 'reactstrap'
 
 import { RouteNames } from '../../routes'
@@ -12,7 +13,7 @@ const containerStyle = {
   marginBottom: 20,
 }
 
-class Navigation extends Component {
+class Header extends Component {
   state = {
     isOpen: false,
   }
@@ -22,6 +23,10 @@ class Navigation extends Component {
   }
 
   render() {
+    const {
+      donateText, howToSupportText, whoWeAreText, whatWeDoText,
+    } = this.props
+
     return (
       <Container style={containerStyle}>
         <Navbar color="faded" light expand="md">
@@ -33,10 +38,10 @@ class Navigation extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavigationLink href={RouteNames.WhatWeDo}>Was wir machen</NavigationLink>
-              <NavigationLink href={RouteNames.WhoWeAre}>Wer wir sind</NavigationLink>
-              <NavigationLink href={RouteNames.HowToSupport}>Wie Sie helfen</NavigationLink>
-              <ButtonLink href={RouteNames.Donate}>Spenden</ButtonLink>
+              <NavigationLink href={RouteNames.WhatWeDo}>{whatWeDoText}</NavigationLink>
+              <NavigationLink href={RouteNames.WhoWeAre}>{whoWeAreText}</NavigationLink>
+              <NavigationLink href={RouteNames.HowToSupport}>{howToSupportText}</NavigationLink>
+              <ButtonLink href={RouteNames.Donate}>{donateText}</ButtonLink>
             </Nav>
           </Collapse>
         </Navbar>
@@ -45,4 +50,13 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation
+export const propTypes = {
+  whatWeDoText: PropTypes.string.isRequired,
+  whoWeAreText: PropTypes.string.isRequired,
+  howToSupportText: PropTypes.string.isRequired,
+  donateText: PropTypes.string.isRequired,
+}
+
+Header.propTypes = propTypes
+
+export default Header

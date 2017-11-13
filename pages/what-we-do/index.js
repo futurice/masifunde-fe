@@ -5,6 +5,8 @@ import { Container } from 'reactstrap'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 
+import { propTypes as headerPropTypes } from '../../components/Header/index'
+import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
 import { fetchWhatWeDoPage } from '../../api/contentful'
 import Layout from '../../components/Layout'
 import { getContentfulLocale } from '../../utils/locale'
@@ -95,8 +97,13 @@ const WhatWeDo = ({
   statsHeading,
   title,
   youtubeVideo,
+  headerData,
 }) => (
-  <Layout title={metaTitle} description={metaDescription}>
+  <Layout
+    title={metaTitle}
+    description={metaDescription}
+    headerData={headerData}
+  >
     <Hero src={heroImage.url} alt={heroImage.title} />
     <Container>
       <H1>{title}</H1>
@@ -209,11 +216,11 @@ WhatWeDo.propTypes = {
   statsHeading: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   youtubeVideo: PropTypes.string.isRequired,
+  headerData: PropTypes.shape(headerPropTypes).isRequired,
 }
 
-WhatWeDo.getInitialProps = async function initialProps({ query, asPath }) {
-  console.log(asPath)
+WhatWeDo.getInitialProps = async function initialProps({ query }) {
   return fetchWhatWeDoPage(getContentfulLocale(query))
 }
 
-export default WhatWeDo
+export default WithHeaderAndFooterData(WhatWeDo)
