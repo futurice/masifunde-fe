@@ -9,7 +9,7 @@ import { propTypes as headerPropTypes } from '../../components/Header/index'
 import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
 import { fetchWhatWeDoPage } from '../../api/contentful'
 import Layout from '../../components/Layout'
-import { getContentfulLocale } from '../../utils/locale'
+import { getLocaleFromQuery } from '../../utils/locale'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -220,7 +220,7 @@ WhatWeDo.propTypes = {
 }
 
 WhatWeDo.getInitialProps = async function initialProps({ query }) {
-  return fetchWhatWeDoPage(getContentfulLocale(query))
+  return fetchWhatWeDoPage(getLocaleFromQuery(query))
 }
 
 export default WithHeaderAndFooterData(WhatWeDo)

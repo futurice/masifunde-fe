@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-export function getContentfulLocale(queryObject) {
+export function getLocaleFromQuery(queryObject) {
   if (queryObject && queryObject.locale) {
     return queryObject.locale
   }
