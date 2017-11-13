@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
+import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
 
@@ -35,7 +36,23 @@ const socialStyle = {
   marginRight: 5,
 }
 
-export default function Footer() {
+function Footer({
+  whatWeDoText,
+  approachSaText,
+  approachDeText,
+  impactText,
+  whoWeAreText,
+  teamSaText,
+  teamDeText,
+  partnersText,
+  howToSupportText,
+  donateText,
+  becomeSponsorText,
+  becomeVolunteerText,
+  becomePartnerText,
+  contactText,
+  copyrightText,
+}) {
   return (
     <Container>
       <Container style={containerStyle}>
@@ -47,22 +64,22 @@ export default function Footer() {
                 <ul className="list-unstyled">
                   <li>
                     <Link route={RouteNames.WhatWeDo} passHref>
-                      <a>Was wir machen</a>
+                      <a>{whatWeDoText}</a>
                     </Link>
                   </li>
                   <li>
                     <Link route={RouteNames.ApproachSA} passHref>
-                      <a>Approach South Africa</a>
+                      <a>{approachSaText}</a>
                     </Link>
                   </li>
                   <li>
                     <Link route={RouteNames.ApproachDE} passHref>
-                      <a>Approach Deutchland</a>
+                      <a>{approachDeText}</a>
                     </Link>
                   </li>
                   <li>
                     <Link route={RouteNames.Impact} passHref>
-                      <a>Impact</a>
+                      <a>{impactText}</a>
                     </Link>
                   </li>
                 </ul>
@@ -71,22 +88,22 @@ export default function Footer() {
                 <ul className="list-unstyled">
                   <li>
                     <Link route={RouteNames.WhoWeAre} passHref>
-                      <a>Wer sind wir</a>
+                      <a>{whoWeAreText}</a>
                     </Link>
                   </li>
                   <li>
                     <Link route={RouteNames.TeamSA} passHref>
-                      <a>Team South Africa</a>
+                      <a>{teamSaText}</a>
                     </Link>
                   </li>
                   <li>
                     <Link route={RouteNames.TeamDE} passHref>
-                      <a>Team Deutschland</a>
+                      <a>{teamDeText}</a>
                     </Link>
                   </li>
                   <li>
                     <Link route={RouteNames.Partners} passHref>
-                      <a>Partners</a>
+                      <a>{partnersText}</a>
                     </Link>
                   </li>
                 </ul>
@@ -100,27 +117,27 @@ export default function Footer() {
                 <ul className="list-unstyled">
                   <li>
                     <Link route={RouteNames.HowToSupport} passHref>
-                      <a>Wie Sie helfen</a>
+                      <a>{howToSupportText}</a>
                     </Link>
                   </li>
                   <li>
                     <Link route={RouteNames.Donate} passHref>
-                      <a>Spenden</a>
+                      <a>{donateText}</a>
                     </Link>
                   </li>
                   <li>
                     <Link route={RouteNames.BecomeSponsor} passHref>
-                      <a>Sponsor</a>
+                      <a>{becomeSponsorText}</a>
                     </Link>
                   </li>
                   <li>
                     <Link route={RouteNames.BecomeVolunteer} passHref>
-                      <a>Volunteer</a>
+                      <a>{becomeVolunteerText}</a>
                     </Link>
                   </li>
                   <li>
                     <Link route={RouteNames.BecomePartner} passHref>
-                      <a>Open Partner</a>
+                      <a>{becomePartnerText}</a>
                     </Link>
                   </li>
                 </ul>
@@ -129,7 +146,7 @@ export default function Footer() {
                 <ul className="list-unstyled">
                   <li>
                     <Link route={RouteNames.Contact} passHref>
-                      <a>Kontakt</a>
+                      <a>{contactText}</a>
                     </Link>
                   </li>
                 </ul>
@@ -150,7 +167,7 @@ export default function Footer() {
         </Row>
         <Row>
           <Col style={copyrightRowStyle}>
-            © 2017 Masifunde Learner Development
+            {copyrightText}
           </Col>
         </Row>
         <Row>
@@ -160,3 +177,25 @@ export default function Footer() {
     </Container>
   )
 }
+
+export const propTypes = {
+  whatWeDoText: PropTypes.string.isRequired,
+  approachSaText: PropTypes.string.isRequired,
+  approachDeText: PropTypes.string.isRequired,
+  impactText: PropTypes.string.isRequired,
+  whoWeAreText: PropTypes.string.isRequired,
+  teamSaText: PropTypes.string.isRequired,
+  teamDeText: PropTypes.string.isRequired,
+  partnersText: PropTypes.string.isRequired,
+  howToSupportText: PropTypes.string.isRequired,
+  donateText: PropTypes.string.isRequired,
+  becomeSponsorText: PropTypes.string.isRequired,
+  becomeVolunteerText: PropTypes.string.isRequired,
+  becomePartnerText: PropTypes.string.isRequired,
+  contactText: PropTypes.string.isRequired,
+  copyrightText: PropTypes.string.isRequired,
+}
+
+Footer.propTypes = propTypes
+
+export default Footer
