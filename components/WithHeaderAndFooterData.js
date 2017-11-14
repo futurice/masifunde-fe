@@ -1,7 +1,10 @@
 import React from 'react'
 
 import { getLocaleFromQuery } from '../utils/locale'
-import { fetchHeaderData } from '../api/contentful'
+import {
+  fetchHeaderData,
+  fetchFooterData,
+} from '../api/contentful'
 
 export default function WithHeaderAndFooterData(Page) {
   const GetInitialPropsWrapper = props => (
@@ -11,10 +14,12 @@ export default function WithHeaderAndFooterData(Page) {
   GetInitialPropsWrapper.getInitialProps = async function getInitialPropsWrapper(ctx) {
     const locale = getLocaleFromQuery(ctx.query)
     const headerData = await fetchHeaderData(locale)
+    const footerData = await fetchFooterData(locale)
     const pageInitialProps = Page.getInitialProps ? await Page.getInitialProps(ctx) : {}
 
     return {
       headerData,
+      footerData,
       ...pageInitialProps,
     }
   }

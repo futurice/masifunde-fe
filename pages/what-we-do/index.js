@@ -5,7 +5,8 @@ import { Container } from 'reactstrap'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 
-import { propTypes as headerPropTypes } from '../../components/Header/index'
+import { propTypes as headerPropTypes } from '../../components/Header'
+import { propTypes as footerPropTypes } from '../../components/Footer'
 import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
 import { fetchWhatWeDoPage } from '../../api/contentful'
 import Layout from '../../components/Layout'
@@ -98,12 +99,15 @@ const WhatWeDo = ({
   title,
   youtubeVideo,
   headerData,
+  footerData,
 }) => (
   <Layout
     title={metaTitle}
     description={metaDescription}
     headerData={headerData}
+    footerData={footerData}
   >
+    {console.log('footerData:', footerData)}
     <Hero src={heroImage.url} alt={heroImage.title} />
     <Container>
       <H1>{title}</H1>
@@ -217,6 +221,7 @@ WhatWeDo.propTypes = {
   title: PropTypes.string.isRequired,
   youtubeVideo: PropTypes.string.isRequired,
   headerData: PropTypes.shape(headerPropTypes).isRequired,
+  footerData: PropTypes.shape(footerPropTypes).isRequired,
 }
 
 WhatWeDo.getInitialProps = async function initialProps({ query }) {

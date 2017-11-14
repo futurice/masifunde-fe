@@ -80,6 +80,10 @@ export async function fetchHeaderData(locale) {
   return fetchSingleEntry('header', locale)
 }
 
+export async function fetchFooterData(locale) {
+  return fetchSingleEntry('footer', locale)
+}
+
 export async function fetchContactPage(locale) {
   const content = await fetchSingleEntry('pageKontakt', locale)
 
