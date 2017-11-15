@@ -7,7 +7,8 @@ import { Link } from '../routes'
 
 const BannerContainer = styled.div`
   background-color: gray;
-  padding: 50px 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
 `
 
 const Headline = styled.h2`
@@ -20,18 +21,14 @@ const Button = styled.a`
 
 function Banner({ headline, buttonText, buttonLink }) {
   return (
-    <div className="container-fluid">
-      <BannerContainer className="row">
-        <div className="col d-flex flex-column align-items-center justify-content-center">
-          <Headline>{headline}</Headline>
-          <Link route={buttonLink} passHref>
-            <Button className="btn btn-primary">
-              {buttonText}
-            </Button>
-          </Link>
-        </div>
-      </BannerContainer>
-    </div>
+    <BannerContainer className="col d-flex flex-column align-items-center justify-content-center">
+      <Headline>{headline}</Headline>
+      <Link route={buttonLink} passHref>
+        <Button className="btn btn-primary">
+          {buttonText}
+        </Button>
+      </Link>
+    </BannerContainer>
   )
 }
 
