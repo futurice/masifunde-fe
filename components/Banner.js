@@ -8,6 +8,7 @@ import { Link } from '../routes'
 const BannerContainer = styled.div`
   background-color: gray;
   padding-top: 50px;
+  min-height: 350px;
   padding-bottom: 50px;
 `
 
