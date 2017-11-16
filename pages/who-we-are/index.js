@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Container, Row, Col } from 'reactstrap'
@@ -8,7 +9,7 @@ import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
 import { propTypes as footerProps } from '../../components/Footer'
 import { propTypes as headerProps } from '../../components/Header'
 import Button from '../../components/Button'
-import { RouteNames } from '../../routes'
+import { Link, RouteNames } from '../../routes'
 import Layout from '../../components/Layout'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
@@ -63,11 +64,15 @@ const About = ({
       <Row className="justify-content-md-center">
         <Col lg="5" xl="5" className="d-flex flex-column align-items-center justify-content-center">
           <img className="img-fluid" src="../static/de-silhouette.svg" alt="" />
-          <Button>Unternehmenspartner werden</Button>
+          <Link route={RouteNames.TeamDE} passHref>
+            <Button>Unternehmenspartner werden</Button>
+          </Link>
         </Col>
         <Col lg="5" xl="5" className="d-flex flex-column align-items-center justify-content-center">
           <img className="img-fluid" src="../static/sa-silhouette.svg" alt="" />
-          <Button>Unternehmenspartner werden</Button>
+          <Link route={RouteNames.TeamSA} passHref>
+            <Button>Unternehmenspartner werden</Button>
+          </Link>
         </Col>
       </Row>
       <Row>
@@ -82,7 +87,9 @@ const About = ({
       </Row>
       <Row>
         <Col className="d-flex flex-column align-items-center">
-          <Button>Unternehmenspartner werden</Button>
+          <Link route={RouteNames.Partners} passHref>
+            <Button>Unternehmenspartner werden</Button>
+          </Link>
         </Col>
       </Row>
     </Container>
