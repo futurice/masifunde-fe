@@ -16,10 +16,8 @@ CustomButton.propTypes = {
   className: PropTypes.string.isRequired,
 }
 
-const StyledButton = styled(CustomButton)`
+export default styled(CustomButton)`
   background-color: black;
   border-color: black;
   color: white !important;
 `
-
-export default StyledButton

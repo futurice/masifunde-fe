@@ -3,11 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NavItem } from 'reactstrap'
 import { withRouter } from 'next/router'
-import styled from 'styled-components'
 
+import Button from '../Button'
 import { Link } from '../../routes'
 
-const StyledLink = styled.a`
+const ExtendedButton = Button.extend`
   color: white !important;
   border: none;
   background-color: ${({ isActive }) => (isActive ? 'gray' : 'black')};
@@ -17,12 +17,12 @@ function NavigationLink({ children, router, href }) {
   return (
     <NavItem>
       <Link route={href} passHref>
-        <StyledLink
+        <ExtendedButton
           isActive={router.pathname === href}
           className="nav-link btn btn-primary"
         >
           {children}
-        </StyledLink>
+        </ExtendedButton>
       </Link>
     </NavItem>
   )

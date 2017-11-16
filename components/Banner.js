@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import Button from './Button'
 import { Link } from '../routes'
 
 const BannerContainer = styled.div`
@@ -16,16 +17,12 @@ const Headline = styled.h2`
   margin-bottom: 30px;
 `
 
-const Button = styled.a`
-  color: white;
-`
-
 function Banner({ headline, buttonText, buttonLink }) {
   return (
     <BannerContainer className="col d-flex flex-column align-items-center justify-content-center">
       <Headline>{headline}</Headline>
       <Link route={buttonLink} passHref>
-        <Button className="btn btn-primary">
+        <Button>
           {buttonText}
         </Button>
       </Link>
