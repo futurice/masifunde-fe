@@ -19,7 +19,7 @@ function NavigationLink({ children, router, href }) {
       <Link route={href} passHref>
         <ExtendedButton
           isActive={router.pathname === href}
-          className="nav-link btn btn-primary"
+          className="nav-link"
         >
           {children}
         </ExtendedButton>
