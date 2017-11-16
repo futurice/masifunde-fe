@@ -1,5 +1,11 @@
 const nextRoutes = require('next-routes')()
 
+/**
+ * Creates routes where page and name are the same
+ *
+ * @param  {string} pattern
+ * @param {string} page
+ */
 function addRoute(pattern, page) {
   nextRoutes.add({ name: page, pattern, page })
 }

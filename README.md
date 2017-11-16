@@ -1,111 +1,68 @@
-# masifunde-fe
-Frontend for the Masifunde website
-
-## Dependencies
-
-* Node.js
-
-## Getting started
-
-----------------
-
-
 # Masifunde
-> Additional information or tag line
 
-A brief description of your project, what it is used for.
+Frontend for the Masifunde website. https://masifunde.netlify.com
 
 ## Installing / Getting started
 
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
-
 ```shell
-commands here
+npm isntall
+npm run dev
 ```
 
-Here you should say what actually happens when you execute the code above.
+This will run nodemon with `server.js` which will run next.js development environment on port
+`3000`.
 
 ## Developing
 
 ### Built With
-List main libraries, frameworks used including versions (React, Angular etc...)
+
+[Next.js](https://github.com/zeit/next.js/), [React](https://reactjs.org/),
+[Styled-components](https://www.styled-components.com/),
+[Bootstrap 4 (beta)](https://getbootstrap.com), [React-Strap](https://reactstrap.github.io),
+[Contentful](https://www.contentful.com/).
 
 ### Prerequisites
-What is needed to set up the dev environment. For instance, global dependencies or any other tools. include download links.
 
-
-### Setting up Dev
-
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
-
-```shell
-git clone https://github.com/your/your-project.git
-cd your-project/
-packagemanager install
-```
-
-And state what happens step-by-step. If there is any virtual environment, local server or database feeder needed, explain here.
+Node 8 is required with NPM.
 
 ### Building
 
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here. for example:
+The generate:
 
 ```shell
-./configure
-make
-make install
+npm run build-static
 ```
 
-Here again you should state what actually happens when the code above gets
-executed.
+It will run next.js `next build && next export` commands which will generate static files in folder
+`out`. It will ONLY export routes which are defined in `next.config.js` file.
 
 ### Deploying / Publishing
-give instructions on how to build and release a new version
-In case there's some step you have to take that publishes this project to a
-server, this is the right time to state it.
 
-```shell
-packagemanager deploy your-project -s server.com -u username -p password
-```
-
-And again you'd need to tell what the previous code actually does.
-
-## Versioning
-
-We can maybe use [SemVer](http://semver.org/) for versioning. For the versions available, see the [link to tags on this repository](/tags).
-
+[Netlify](https://www.netlify.com/) will deploy run `npm run build-static
+` command the whenever anything is pushed to `master` branch since it is
+connected to this github repository. After that the changes should be reachable on https://masifunde.netlify.com.
 
 ## Configuration
 
-Here you should write what are all of the configurations a user can enter when
-using the project.
+* Contentful credentials are hard coded.
+* Robots are defined in `robots.txt` and all included always in export. IMPORTANT - at the moment it
+  blocks all the crawlers.
+* Routes are defined in `routes.js` file with library
+  [next-routes](https://www.npmjs.com/package/next-routes) library. It has all the definitions and
+  the mapping of the routes.
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
-Explain what these tests test and why.
-
-```shell
-Give an example
-```
+No test for now.
 
 ## Style guide
 
-Explain your code style and show how to check it.
+Project uses EsLint Airbnb style guide without no semi columns. The `precommit` git hook will
+automatically runs EsLint to check if the code complies with the rules if it fails then it will not
+push to git branch.
 
 ## Api Reference
 
-If the api is external, link to api documentation. If not describe your api including authentication methods as well as explaining all the endpoints with their required parameters.
-
-
-## Database
-
-Explaining what database (and version) has been used. Provide download links.
-Documents your database design and schemas, relations etc... 
-
-## Licensing
-
-State what the license is and how to find the text version of the license.
+The project uses [Contentful](https://www.contentful.com/) javascript package. To understand better
+the API structure you should login into Contentful and have a look into `Content models` to see how
+they are structured. The credentials can be found at https://password.futurice.com/.
