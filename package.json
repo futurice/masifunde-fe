@@ -35,17 +35,16 @@
   },
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
   "dependencies": {
-    "contentful": "^5.0.3",
+    "contentful": "^5.0.4",
     "lodash": "^4.17.4",
     "next": "^4.1.4",
     "next-routes": "^1.1.0",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
-    "react-addons-transition-group": "^15.6.2",
     "react-dom": "^16.1.1",
     "react-icons": "^2.2.7",
     "react-markdown": "^2.5.1",
-    "reactstrap": "^5.0.0-alpha.3",
+    "reactstrap": "^5.0.0-alpha.4",
     "styled-components": "^2.2.3"
   },
   "devDependencies": {
