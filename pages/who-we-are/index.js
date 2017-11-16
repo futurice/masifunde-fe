@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Container, Row, Col } from 'reactstrap'
 import styled from 'styled-components'
 
+import { fetchWhoWeArePage } from '../../api/contentful'
 import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
 import { propTypes as footerProps } from '../../components/Footer'
 import { propTypes as headerProps } from '../../components/Header'
@@ -11,7 +12,6 @@ import { RouteNames } from '../../routes'
 import Layout from '../../components/Layout'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
-import { getAboutFields } from '../../api/contentGetter'
 
 const Heading1 = styled.h1`
   text-align: center;
@@ -34,6 +34,8 @@ const About = ({
   paragraphTwoText,
   footerData,
   headerData,
+  bannerHeadline,
+  bannerText,
 }) => (
   <Layout title="About page" headerData={headerData} footerData={footerData}>
     <Hero headline="Text" imageUrl="//via.placeholder.com/350x150/555" />
@@ -86,8 +88,8 @@ const About = ({
     </Container>
 
     <Banner
-      headline="Unsere Geschichte"
-      buttonText="Masifundes Gründung und Entwicklung"
+      headline={bannerHeadline}
+      buttonText={bannerText}
       buttonLink={RouteNames.BecomeVolunteer}
     />
   </Layout>
@@ -100,13 +102,14 @@ About.propTypes = {
   paragraphOneText: PropTypes.string.isRequired,
   paragraphTwoTitle: PropTypes.string.isRequired,
   paragraphTwoText: PropTypes.string.isRequired,
+  bannerHeadline: PropTypes.string.isRequired,
+  bannerText: PropTypes.string.isRequired,
   headerData: PropTypes.shape(footerProps).isRequired,
   footerData: PropTypes.shape(headerProps).isRequired,
 }
 
 About.getInitialProps = async function initialProps() {
-  const resultJSON = await getAboutFields()
-  return resultJSON
+  return fetchWhoWeArePage()
 }
 
 export default WithHeaderAndFooterData(About)

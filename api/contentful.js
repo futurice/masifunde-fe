@@ -84,6 +84,10 @@ export async function fetchFooterData(locale) {
   return fetchSingleEntry('footer', locale)
 }
 
+export async function fetchWhoWeArePage(locale) {
+  return fetchSingleEntry('about', locale)
+}
+
 export async function fetchContactPage(locale) {
   const content = await fetchSingleEntry('pageKontakt', locale)
 
@@ -170,25 +174,6 @@ export function fetchOpenPositions() {
     })
 }
 
-export function fetchAbout() {
-  const resultArray = []
-
-  return fetchEntriesForContentType('about')
-    .then((aboutElements) => {
-      aboutElements.forEach((element) => {
-        resultArray.push({
-          title: element.fields.title,
-          subtitle: element.fields.subtitle,
-          paragraphOneTitle: element.fields.paragraphOneTitle,
-          paragraphOneText: element.fields.paragraphOneText,
-          paragraphTwoTitle: element.fields.paragraphTwoTitle,
-          paragraphTwoText: element.fields.paragraphTwoText,
-          partnersImage: element.fields.partnersImage,
-        })
-      })
-      return resultArray
-    })
-}
 
 export function fetchWieSieHelfen() {
   const resultArray = []
