@@ -1,154 +1,112 @@
-/* eslint-disable react/prop-types */
 import React from 'react'
-import Link from 'next/link'
-import { Button, Container, Row, Col } from 'reactstrap'
+import PropTypes from 'prop-types'
+import { Container, Row, Col } from 'reactstrap'
+import styled from 'styled-components'
+
+import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
+import { propTypes as footerProps } from '../../components/Footer'
+import { propTypes as headerProps } from '../../components/Header'
+import Button from '../../components/Button'
+import { RouteNames } from '../../routes'
 import Layout from '../../components/Layout'
+import Hero from '../../components/Hero'
+import Banner from '../../components/Banner'
 import { getAboutFields } from '../../api/contentGetter'
 
-const silhouetteStyle = {
-  color: 'black',
-  fill: 'currentColor',
-  marginLeft: 50,
-  marginRight: 50,
-  marginTop: 80,
-  marginBottom: 80,
-}
+const Heading1 = styled.h1`
+  text-align: center;
+`
 
-const titleStyle = {
-  marginTop: 70,
-  marginBottom: 30,
-  textAlign: 'center',
-}
+const Heading2 = styled.h2`
+  text-align: center;
+`
 
-const paragraphTitleStyle = {
-  marginTop: 90,
-  marginBottom: 20,
-  textAlign: 'center',
-}
+const Paragraph = styled.p`
+  text-align: center;
+`
 
-const buttonStyle = {
-  color: 'white',
-  backgroundColor: 'black',
-  border: 'none',
-}
-
-const contactStyle = {
-  fontSize: 16,
-  position: 'relative',
-  width: '100%',
-  background: '#d8d8d8',
-  paddingTop: 50,
-  paddingBottom: 50,
-  paddingLeft: 200,
-  paddingRight: 200,
-  height: 220,
-  marginTop: 80,
-  textAlign: 'center',
-  verticalAlign: 'middle',
-}
-
-const footerTitle = {
-  fontSize: 32,
-  marginBottom: 30,
-}
-
-const About = props => (
-  <Layout title="About page">
+const About = ({
+  title,
+  subtitle,
+  paragraphOneTitle,
+  paragraphOneText,
+  paragraphTwoTitle,
+  paragraphTwoText,
+  footerData,
+  headerData,
+}) => (
+  <Layout title="About page" headerData={headerData} footerData={footerData}>
+    <Hero headline="Text" imageUrl="//via.placeholder.com/350x150/555" />
     <Container>
       <Row>
-        <Col style={titleStyle}>
-          <h1>{props.title}</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2" />
-        <Col xs="8" sm="8" md="8" lg="8" xl="8">
-          <center>
-            <p>{props.subtitle}</p>
-          </center>
-        </Col>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2" />
-      </Row>
-      <Row>
-        <Col style={paragraphTitleStyle}>
-          <h2>{props.paragraphOneTitle}</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs="3" sm="3" md="3" lg="3" xl="3" />
-        <Col xs="6" sm="6" md="6" lg="6" xl="6">
-          <center>
-            <p>{props.paragraphOneText}</p>
-          </center>
-        </Col>
-        <Col xs="3" sm="3" md="3" lg="3" xl="3" />
-      </Row>
-      <Row>
         <Col>
-          <center>
-            <img
-              src="../static/de-silhouette.svg"
-              style={silhouetteStyle}
-              alt=""
-            />
-            <img
-              src="../static/sa-silhouette.svg"
-              style={silhouetteStyle}
-              alt=""
-            />
-          </center>
+          <Heading1>{title}</Heading1>
         </Col>
       </Row>
-      <Row>
-        <Col style={paragraphTitleStyle}>
-          <h2>{props.paragraphTwoTitle}</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs="3" sm="3" md="3" lg="3" xl="3" />
-        <Col xs="6" sm="6" md="6" lg="6" xl="6">
-          <center>
-            <p>{props.paragraphTwoText}</p>
-          </center>
-        </Col>
-        <Col xs="3" sm="3" md="3" lg="3" xl="3" />
-      </Row>
-      <Row>
-        <Col>
-          <img src={props.partnersImageUrl} alt="" />
+      <Row className="justify-content-md-center">
+        <Col lg="8" xl="8">
+          <Paragraph>{subtitle}</Paragraph>
         </Col>
       </Row>
       <Row>
         <Col>
-          <center>
-            <Button color="primary" style={buttonStyle}>
-              Unternehmenspartner werden
-            </Button>
-          </center>
+          <Heading2>{paragraphOneTitle}</Heading2>
+        </Col>
+      </Row>
+      <Row className="justify-content-md-center">
+        <Col lg="6" xl="6">
+          <Paragraph>{paragraphOneText}</Paragraph>
+        </Col>
+      </Row>
+      <Row className="justify-content-md-center">
+        <Col lg="5" xl="5" className="d-flex flex-column align-items-center justify-content-center">
+          <img className="img-fluid" src="../static/de-silhouette.svg" alt="" />
+          <Button>Unternehmenspartner werden</Button>
+        </Col>
+        <Col lg="5" xl="5" className="d-flex flex-column align-items-center justify-content-center">
+          <img className="img-fluid" src="../static/sa-silhouette.svg" alt="" />
+          <Button>Unternehmenspartner werden</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Heading2>{paragraphTwoTitle}</Heading2>
+        </Col>
+      </Row>
+      <Row className="justify-content-md-center">
+        <Col lg="6" xl="6">
+          <Paragraph>{paragraphTwoText}</Paragraph>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="d-flex flex-column align-items-center">
+          <Button>Unternehmenspartner werden</Button>
         </Col>
       </Row>
     </Container>
 
-    <div style={contactStyle}>
-      <div style={footerTitle}>
-        <b>Unsere Geschichte</b>
-      </div>
-      <div>
-        <Link href="/">
-          <a href="#url">
-            <Button color="primary" style={buttonStyle}>
-              Masifundes Gründung und Entwicklung
-            </Button>
-          </a>
-        </Link>
-      </div>
-    </div>
+    <Banner
+      headline="Unsere Geschichte"
+      buttonText="Masifundes Gründung und Entwicklung"
+      buttonLink={RouteNames.BecomeVolunteer}
+    />
   </Layout>
 )
+
+About.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  paragraphOneTitle: PropTypes.string.isRequired,
+  paragraphOneText: PropTypes.string.isRequired,
+  paragraphTwoTitle: PropTypes.string.isRequired,
+  paragraphTwoText: PropTypes.string.isRequired,
+  headerData: PropTypes.shape(footerProps).isRequired,
+  footerData: PropTypes.shape(headerProps).isRequired,
+}
 
 About.getInitialProps = async function initialProps() {
   const resultJSON = await getAboutFields()
   return resultJSON
 }
 
-export default About
+export default WithHeaderAndFooterData(About)
