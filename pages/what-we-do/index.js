@@ -8,7 +8,7 @@ import ReactMarkdown from 'react-markdown'
 import { propTypes as headerPropTypes } from '../../components/Header'
 import { propTypes as footerPropTypes } from '../../components/Footer'
 import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
-import { fetchWhatWeDoPage } from '../../api/contentful'
+import { fetchWhatWeDoPage } from '../../api/whatWeDo'
 import Layout from '../../components/Layout'
 import { getLocaleFromQuery } from '../../utils/locale'
 

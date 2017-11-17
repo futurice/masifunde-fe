@@ -6,7 +6,7 @@ import _chunk from 'lodash/chunk'
 import ReactMarkdown from 'react-markdown'
 
 import ProfilePicture from './ProfilePicture'
-import { fetchContactPage } from '../../api/contentful'
+import { fetchContactPage } from '../../api/contact'
 
 import Layout from '../../components/Layout'
 
