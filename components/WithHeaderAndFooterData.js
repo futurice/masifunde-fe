@@ -4,7 +4,7 @@ import { getLocaleFromQuery } from '../utils/locale'
 import {
   fetchHeaderData,
   fetchFooterData,
-} from '../api/contentful'
+} from '../api/common'
 
 export default function WithHeaderAndFooterData(Page) {
   const GetInitialPropsWrapper = props => (

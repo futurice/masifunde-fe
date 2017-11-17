@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { Button, Container, Row, Col } from 'reactstrap'
-import { getWieSieHelfenFields } from '../../api/contentGetter'
+import { fetchHowToSupportPage } from '../../api/howToSupport'
 import Layout from '../../components/Layout'
 
 const buttonStyle = {
@@ -98,7 +98,7 @@ const Howtohelp = props => (
 )
 
 Howtohelp.getInitialProps = async function getInitialProps() {
-  const resultJSON = await getWieSieHelfenFields()
+  const resultJSON = await fetchHowToSupportPage()
   console.log('Result:', resultJSON)
   return resultJSON
 }

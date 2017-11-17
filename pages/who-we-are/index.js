@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Container, Row, Col } from 'reactstrap'
 import styled from 'styled-components'
 
-import { fetchWhoWeArePage } from '../../api/contentful'
+import { fetchWhoWeArePage } from '../../api/whoWeAre'
 import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
 import { propTypes as footerProps } from '../../components/Footer'
 import { propTypes as headerProps } from '../../components/Header'
