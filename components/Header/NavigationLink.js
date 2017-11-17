@@ -21,7 +21,7 @@ function NavigationLink({ children, router, href }) {
   return (
     <NavItem>
       <Link route={href} passHref>
-        <StyledLink className="nav-link" isActive={router.pathname === href}>
+        <StyledLink className="nav-link" isActive={router.pathname.includes(href)}>
           {children}
         </StyledLink>
       </Link>
