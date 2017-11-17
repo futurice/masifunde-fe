@@ -37,8 +37,14 @@ const About = ({
   headerData,
   bannerHeadline,
   bannerText,
+  metaDescription,
 }) => (
-  <Layout title="About page" headerData={headerData} footerData={footerData}>
+  <Layout
+    title="About page"
+    headerData={headerData}
+    footerData={footerData}
+    metaDescription={metaDescription}
+  >
     <Hero headline="Text" imageUrl="//via.placeholder.com/350x150/555" />
     <Container>
       <Row>
@@ -105,6 +111,7 @@ const About = ({
 About.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string,
   paragraphOneTitle: PropTypes.string.isRequired,
   paragraphOneText: PropTypes.string.isRequired,
   paragraphTwoTitle: PropTypes.string.isRequired,
@@ -113,6 +120,10 @@ About.propTypes = {
   bannerText: PropTypes.string.isRequired,
   headerData: PropTypes.shape(footerProps).isRequired,
   footerData: PropTypes.shape(headerProps).isRequired,
+}
+
+About.defaultProps = {
+  metaDescription: undefined,
 }
 
 About.getInitialProps = async function initialProps() {

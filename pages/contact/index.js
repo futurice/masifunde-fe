@@ -39,7 +39,7 @@ const Contact = ({
   email,
   telephone,
 }) => (
-  <Layout title={metaTitle} description={metaDescription}>
+  <Layout title={metaTitle} metaDescription={metaDescription}>
     <div className="container">
       <MainHeading>{mainHeading}</MainHeading>
 

@@ -103,7 +103,7 @@ const WhatWeDo = ({
 }) => (
   <Layout
     title={metaTitle}
-    description={metaDescription}
+    metaDescription={metaDescription}
     headerData={headerData}
     footerData={footerData}
   >
