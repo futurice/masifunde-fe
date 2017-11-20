@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ProfilePicture = ({
+const TeamMember = ({
   imageUrl, title, subtitle, email,
 }) => (
   <div className="col-6 col-md-3 col-lg-2">
@@ -12,15 +12,15 @@ const ProfilePicture = ({
   </div>
 )
 
-ProfilePicture.propTypes = {
+TeamMember.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   email: PropTypes.string,
 }
 
-ProfilePicture.defaultProps = {
+TeamMember.defaultProps = {
   email: '',
 }
 
-export default ProfilePicture
+export default TeamMember
