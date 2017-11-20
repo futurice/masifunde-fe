@@ -15,6 +15,7 @@ const BannerContainer = styled.div`
 
 const Headline = styled.h2`
   margin-bottom: 30px;
+  text-align: center;
 `
 
 function Banner({ headline, buttonText, buttonLink }) {
