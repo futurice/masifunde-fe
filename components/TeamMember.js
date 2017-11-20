@@ -16,7 +16,11 @@ ProfilePicture.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
+  email: PropTypes.string,
+}
+
+ProfilePicture.defaultProps = {
+  email: '',
 }
 
 export default ProfilePicture
