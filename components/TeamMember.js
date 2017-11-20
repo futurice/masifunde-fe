@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const ProfilePicture = ({
-  imageUrl, title, name, email,
+  imageUrl, title, subtitle, email,
 }) => (
   <div className="col-6 col-md-3 col-lg-2">
-    <img className="img-fluid" src={imageUrl} alt={`${title} - ${name}`} />
+    <img className="img-fluid" src={imageUrl} alt={`${title} - ${subtitle}`} />
     <div>{title}</div>
-    <div>{name}</div>
+    <div>{subtitle}</div>
     <div>{email}</div>
   </div>
 )
@@ -15,7 +15,7 @@ const ProfilePicture = ({
 ProfilePicture.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
 }
 

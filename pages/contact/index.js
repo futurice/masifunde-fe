@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import _chunk from 'lodash/chunk'
 import ReactMarkdown from 'react-markdown'
 
-import ProfilePicture from './ProfilePicture'
+import TeamMember from '../../components/TeamMember'
 import { fetchContactPage } from '../../api/contact'
 
 import Layout from '../../components/Layout'
@@ -46,11 +46,11 @@ const Contact = ({
       <SecondaryHeading>{contactsHeading}</SecondaryHeading>
       <PictureContainer className="row justify-content-center">
         {contacts.map(contact => (
-          <ProfilePicture
+          <TeamMember
             key={`${contact.imageUrl} ${contact.title} ${contact.name}`}
             imageUrl={contact.imageUrl}
             title={contact.title}
-            name={contact.name}
+            subtitle={contact.name}
             email={contact.email}
           />
         ))}
@@ -60,11 +60,11 @@ const Contact = ({
       {_chunk(regionalContacts, 4).map(contactsChunk => (
         <PictureContainer className="row justify-content-sm-center">
           {contactsChunk.map(contact => (
-            <ProfilePicture
+            <TeamMember
               key={`${contact.imageUrl} ${contact.title} ${contact.name}`}
               imageUrl={contact.imageUrl}
               title={contact.title}
-              name={contact.name}
+              subtitle={contact.name}
               email={contact.email}
             />
           ))}
