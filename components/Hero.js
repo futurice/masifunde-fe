@@ -7,6 +7,7 @@ const HeroContainer = styled.div`
   width: 100%;
   background: url("${({ imageUrl }) => imageUrl}") center no-repeat;
   background-size: cover;
+  margin-bottom: 50px;
   
   @media screen and (max-width: 768px){
     padding: 0 15px;
@@ -15,7 +16,6 @@ const HeroContainer = styled.div`
 
 const Headline = styled.h1`
   color: white;
-  max-width: 480px;
 `
 
 function Hero({ headline, imageUrl }) {

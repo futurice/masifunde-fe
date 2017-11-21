@@ -1,118 +1,150 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/anchor-is-valid, function-paren-newline, react/no-array-index-key */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container, Row, Col } from 'reactstrap'
 import styled from 'styled-components'
 
 import { fetchWhoWeArePage } from '../../api/whoWeAre'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
+import { propTypes as footerProps } from '../../components/Footer'
+import { propTypes as headerProps } from '../../components/Header'
 import Button from '../../components/Button'
 import { Link, RouteNames } from '../../routes'
+import Layout from '../../components/Layout'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
-import Head from '../../components/Head'
-
-const Heading1 = styled.h1`
-  text-align: center;
-`
+import Markdown from '../../components/Markdown'
+import PartnersList from '../../components/PartnersList'
 
 const Heading2 = styled.h2`
   text-align: center;
+  margin-bottom: 3rem;
 `
 
-const Paragraph = styled.p`
+const StyledMarkdown = styled(Markdown)`
   text-align: center;
+  margin-bottom: 3rem;
+`
+
+const Image = styled.img`
+  margin-bottom: 3rem;
 `
 
 const About = ({
   title,
-  subtitle,
   paragraphOneTitle,
   paragraphOneText,
   paragraphTwoTitle,
   paragraphTwoText,
+  paragraphThreeTitle,
+  paragraphThreeText,
+  footerData,
+  headerData,
   bannerHeadline,
   bannerText,
   metaDescription,
+  partnersButtonText,
+  teamSaButtonText,
+  teamDeButtonText,
+  partnersListOne,
+  partnersListTwo,
 }) => (
-  <div>
-    <Head title="About page" description={metaDescription} />
-    <Hero headline="Text" imageUrl="//via.placeholder.com/350x150/555" />
-    <Container>
-      <Row>
-        <Col>
-          <Heading1>{title}</Heading1>
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Col lg="8" xl="8">
-          <Paragraph>{subtitle}</Paragraph>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
+  <Layout
+    title="About page"
+    headerData={headerData}
+    footerData={footerData}
+    metaDescription={metaDescription}
+  >
+    <Hero headline={title} imageUrl="//via.placeholder.com/350x150/555" />
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-lg-8 d-flex flex-column align-items-center">
           <Heading2>{paragraphOneTitle}</Heading2>
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Col lg="6" xl="6">
-          <Paragraph>{paragraphOneText}</Paragraph>
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Col lg="5" xl="5" className="d-flex flex-column align-items-center justify-content-center">
-          <img className="img-fluid" src="../static/de-silhouette.svg" alt="" />
+          <StyledMarkdown source={paragraphOneText} />
+        </div>
+      </div>
+      <div className="row justify-content-md-center">
+        <div className="col-lg-4 d-flex flex-column align-items-center justify-content-end">
+          <Image className="img-fluid" src="../static/de-silhouette.svg" alt="" />
           <Link route={RouteNames.TeamDE} passHref>
-            <Button>Unternehmenspartner werden</Button>
+            <Button>{teamDeButtonText}</Button>
           </Link>
-        </Col>
-        <Col lg="5" xl="5" className="d-flex flex-column align-items-center justify-content-center">
-          <img className="img-fluid" src="../static/sa-silhouette.svg" alt="" />
+        </div>
+        <div className="col-lg-4 d-flex flex-column align-items-center justify-content-end">
+          <Image className="img-fluid" src="../static/sa-silhouette.svg" alt="" />
           <Link route={RouteNames.TeamSA} passHref>
-            <Button>Unternehmenspartner werden</Button>
+            <Button>{teamSaButtonText}</Button>
           </Link>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
+        </div>
+      </div>
+      <div className="row justify-content-md-center">
+        <div className="col-lg-8">
           <Heading2>{paragraphTwoTitle}</Heading2>
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Col lg="6" xl="6">
-          <Paragraph>{paragraphTwoText}</Paragraph>
-        </Col>
-      </Row>
-      <Row>
-        <Col className="d-flex flex-column align-items-center">
+          <StyledMarkdown source={paragraphTwoText} />
+        </div>
+      </div>
+
+      <PartnersList partnersList={partnersListOne} />
+
+      <div className="row">
+        <div className="col d-flex flex-column align-items-center">
           <Link route={RouteNames.Partners} passHref>
-            <Button>Unternehmenspartner werden</Button>
+            <Button>{partnersButtonText}</Button>
           </Link>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+      <div className="row justify-content-md-center">
+        <div className="col-lg-8">
+          <Heading2>{paragraphThreeTitle}</Heading2>
+          <StyledMarkdown source={paragraphThreeText} />
+        </div>
+      </div>
+
+      <PartnersList partnersList={partnersListTwo} />
+    </div>
 
     <Banner
       headline={bannerHeadline}
       buttonText={bannerText}
       buttonLink={RouteNames.BecomeVolunteer}
     />
-  </div>
+  </Layout>
 )
 
 About.propTypes = {
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   paragraphOneTitle: PropTypes.string.isRequired,
   paragraphOneText: PropTypes.string.isRequired,
   paragraphTwoTitle: PropTypes.string.isRequired,
   paragraphTwoText: PropTypes.string.isRequired,
+  paragraphThreeText: PropTypes.string.isRequired,
+  paragraphThreeTitle: PropTypes.string.isRequired,
+  partnersButtonText: PropTypes.string.isRequired,
+  teamDeButtonText: PropTypes.string.isRequired,
+  teamSaButtonText: PropTypes.string.isRequired,
   bannerHeadline: PropTypes.string.isRequired,
+  partnersListOne: PropTypes.arrayOf(
+    PropTypes.shape({
+      imageUrl: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  ),
+  partnersListTwo: PropTypes.arrayOf(
+    PropTypes.shape({
+      imageUrl: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  ),
   bannerText: PropTypes.string.isRequired,
+  headerData: PropTypes.shape(headerProps).isRequired,
+  footerData: PropTypes.shape(footerProps).isRequired,
 }
 
 About.defaultProps = {
+  partnersListOne: [],
+  partnersListTwo: [],
   metaDescription: undefined,
 }
 
@@ -120,4 +152,4 @@ About.getInitialProps = async function initialProps() {
   return fetchWhoWeArePage()
 }
 
-export default LayoutWrapper(About)
+export default WithHeaderAndFooterData(About)
