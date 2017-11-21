@@ -107,7 +107,6 @@ const WhatWeDo = ({
     headerData={headerData}
     footerData={footerData}
   >
-    {console.log('footerData:', footerData)}
     <Hero src={heroImage.url} alt={heroImage.title} />
     <Container>
       <H1>{title}</H1>
