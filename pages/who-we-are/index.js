@@ -5,14 +5,12 @@ import { Container, Row, Col } from 'reactstrap'
 import styled from 'styled-components'
 
 import { fetchWhoWeArePage } from '../../api/whoWeAre'
-import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
-import { propTypes as footerProps } from '../../components/Footer'
-import { propTypes as headerProps } from '../../components/Header'
+import LayoutWrapper from '../../components/LayoutWrapper'
 import Button from '../../components/Button'
 import { Link, RouteNames } from '../../routes'
-import Layout from '../../components/Layout'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
+import Head from '../../components/Head'
 
 const Heading1 = styled.h1`
   text-align: center;
@@ -33,18 +31,12 @@ const About = ({
   paragraphOneText,
   paragraphTwoTitle,
   paragraphTwoText,
-  footerData,
-  headerData,
   bannerHeadline,
   bannerText,
   metaDescription,
 }) => (
-  <Layout
-    title="About page"
-    headerData={headerData}
-    footerData={footerData}
-    metaDescription={metaDescription}
-  >
+  <div>
+    <Head title="About page" description={metaDescription} />
     <Hero headline="Text" imageUrl="//via.placeholder.com/350x150/555" />
     <Container>
       <Row>
@@ -105,7 +97,7 @@ const About = ({
       buttonText={bannerText}
       buttonLink={RouteNames.BecomeVolunteer}
     />
-  </Layout>
+  </div>
 )
 
 About.propTypes = {
@@ -118,8 +110,6 @@ About.propTypes = {
   paragraphTwoText: PropTypes.string.isRequired,
   bannerHeadline: PropTypes.string.isRequired,
   bannerText: PropTypes.string.isRequired,
-  headerData: PropTypes.shape(footerProps).isRequired,
-  footerData: PropTypes.shape(headerProps).isRequired,
 }
 
 About.defaultProps = {
@@ -130,4 +120,4 @@ About.getInitialProps = async function initialProps() {
   return fetchWhoWeArePage()
 }
 
-export default WithHeaderAndFooterData(About)
+export default LayoutWrapper(About)

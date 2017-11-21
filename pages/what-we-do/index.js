@@ -5,12 +5,10 @@ import { Container } from 'reactstrap'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 
-import { propTypes as headerPropTypes } from '../../components/Header'
-import { propTypes as footerPropTypes } from '../../components/Footer'
-import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
+import LayoutWrapper from '../../components/LayoutWrapper'
 import { fetchWhatWeDoPage } from '../../api/whatWeDo'
-import Layout from '../../components/Layout'
 import { getLocaleFromQuery } from '../../utils/locale'
+import Head from '../../components/Head'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -98,15 +96,9 @@ const WhatWeDo = ({
   statsHeading,
   title,
   youtubeVideo,
-  headerData,
-  footerData,
 }) => (
-  <Layout
-    title={metaTitle}
-    metaDescription={metaDescription}
-    headerData={headerData}
-    footerData={footerData}
-  >
+  <div>
+    <Head title={metaTitle} description={metaDescription} />
     <Hero src={heroImage.url} alt={heroImage.title} />
     <Container>
       <H1>{title}</H1>
@@ -178,7 +170,7 @@ const WhatWeDo = ({
         </div>
       </div>
     </Container>
-  </Layout>
+  </div>
 )
 
 
@@ -219,12 +211,10 @@ WhatWeDo.propTypes = {
   statsHeading: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   youtubeVideo: PropTypes.string.isRequired,
-  headerData: PropTypes.shape(headerPropTypes).isRequired,
-  footerData: PropTypes.shape(footerPropTypes).isRequired,
 }
 
 WhatWeDo.getInitialProps = async function initialProps({ query }) {
   return fetchWhatWeDoPage(getLocaleFromQuery(query))
 }
 
-export default WithHeaderAndFooterData(WhatWeDo)
+export default LayoutWrapper(WhatWeDo)

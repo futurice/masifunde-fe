@@ -4,11 +4,13 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import _chunk from 'lodash/chunk'
 import ReactMarkdown from 'react-markdown'
+import { Container } from 'reactstrap'
 
 import TeamMember from '../../components/TeamMember'
 import { fetchContactPage } from '../../api/contact'
 
-import Layout from '../../components/Layout'
+import Head from '../../components/Head'
+import LayoutWrapper from '../../components/LayoutWrapper'
 
 const MainHeading = styled.h1`
   text-align: center;
@@ -39,8 +41,9 @@ const Contact = ({
   email,
   telephone,
 }) => (
-  <Layout title={metaTitle} metaDescription={metaDescription}>
-    <div className="container">
+  <div>
+    <Head title={metaTitle} description={metaDescription} />
+    <Container>
       <MainHeading>{mainHeading}</MainHeading>
 
       <SecondaryHeading>{contactsHeading}</SecondaryHeading>
@@ -85,8 +88,8 @@ const Contact = ({
           <p>{email}</p>
         </div>
       </AdressContainer>
-    </div>
-  </Layout>
+    </Container>
+  </div>
 )
 
 Contact.propTypes = {
@@ -120,4 +123,4 @@ Contact.getInitialProps = async function initialProps() {
   return fetchContactPage()
 }
 
-export default Contact
+export default LayoutWrapper(Contact)

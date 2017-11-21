@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Markdown from '../../components/Markdown'
-import Layout from '../../components/Layout'
 import { fetchTeamDePage } from '../../api/whoWeAre'
 import { getLocaleFromQuery } from '../../utils/locale'
-import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
+import LayoutWrapper from '../../components/LayoutWrapper'
 import Banner from '../../components/Banner'
 import TeamMember from '../../components/TeamMember'
+import Head from '../../components/Head'
 
 const LocationsList = styled.ul`
   column-count: 2;
@@ -45,8 +45,11 @@ const TeamDe = ({
   sectionOneList,
   sectionOneImage,
   teamMembers,
+  metaTitle,
+  metaDescription,
 }) => (
-  <Layout>
+  <div>
+    <Head title={metaTitle} description={metaDescription} />
     <Container>
       <h1>{title}</h1>
       <Paragraph source={pageDescription} />
@@ -75,10 +78,12 @@ const TeamDe = ({
       </section>
     </Container>
     <Banner buttonLink="a" buttonText={bannerButtonText} headline={bannerTitle} />
-  </Layout>
+  </div>
 )
 
 TeamDe.propTypes = {
+  metaTitle: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   pageDescription: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
@@ -105,5 +110,5 @@ TeamDe.getInitialProps = async function initialProps({ query }) {
   return fetchTeamDePage(getLocaleFromQuery(query))
 }
 
-export default WithHeaderAndFooterData(TeamDe)
+export default LayoutWrapper(TeamDe)
 

@@ -1,15 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { getLocaleFromQuery } from '../utils/locale'
 import {
   fetchHeaderData,
   fetchFooterData,
 } from '../api/common'
+import Layout from './Layout'
 
-export default function WithHeaderAndFooterData(Page) {
-  const GetInitialPropsWrapper = props => (
-    <Page {...props} />
+import { propTypes as headerPropTypes } from '../components/Header/index'
+import { propTypes as footerPropTypes } from '../components/Footer'
+
+export default function LayoutWrapper(Page) {
+  const GetInitialPropsWrapper = ({ headerData, footerData, ...rest }) => (
+    <Layout headerData={headerData} footerData={footerData}>
+      <Page {...rest} />
+    </Layout>
   )
+
+  GetInitialPropsWrapper.propTypes = {
+    headerData: PropTypes.shape(headerPropTypes).isRequired,
+    footerData: PropTypes.shape(footerPropTypes).isRequired,
+  }
 
   GetInitialPropsWrapper.getInitialProps = async function getInitialPropsWrapper(ctx) {
     const locale = getLocaleFromQuery(ctx.query)

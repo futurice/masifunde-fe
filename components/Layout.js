@@ -28,22 +28,9 @@ injectGlobal`
   }
 `
 
-function createTitle(title) {
-  if (title === '') {
-    return 'Masifunde'
-  }
-
-  return `${title} - Masifunde`
-}
-
-const Layout = ({
-  title, metaDescription, headerData, children, footerData,
-}) => (
+const Layout = ({ headerData, children, footerData }) => (
   <div>
     <Head>
-      <title>{createTitle(title)}</title>
-      {/* If the content is undefined then it doesn't render the description */}
-      <meta name="description" content={metaDescription} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link
         rel="stylesheet"
@@ -79,16 +66,12 @@ const Layout = ({
 )
 
 Layout.propTypes = {
-  title: PropTypes.string,
-  metaDescription: PropTypes.string,
   children: PropTypes.node.isRequired,
   headerData: PropTypes.shape(headerPropTypes),
   footerData: PropTypes.shape(footerPropTypes),
 }
 
 Layout.defaultProps = {
-  title: '',
-  metaDescription: undefined,
   headerData: {
     whatWeDoText: 'Was wir machen',
     whoWeAreText: 'Who we are',
