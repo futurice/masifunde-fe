@@ -16,7 +16,7 @@ const ExtendedButton = Button.extend`
 function NavigationLink({ children, router, href }) {
   return (
     <NavItem>
-      <Link route={href} passHref>
+      <Link route={href} passHref prefetch>
         <ExtendedButton
           isActive={router.pathname === href}
           className="nav-link"

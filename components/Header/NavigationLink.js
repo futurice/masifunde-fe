@@ -20,7 +20,7 @@ const StyledLink = styled.a`
 function NavigationLink({ children, router, href }) {
   return (
     <NavItem>
-      <Link route={href} passHref>
+      <Link route={href} passHref prefetch>
         <StyledLink className="nav-link" isActive={router.pathname.includes(href)}>
           {children}
         </StyledLink>
