@@ -9,11 +9,13 @@ import { Link } from '../routes'
 const BannerContainer = styled.div`
   background-color: gray;
   padding-top: 50px;
+  height: 0px;
   min-height: 350px;
   padding-bottom: 50px;
 `
 
 const Headline = styled.h2`
+  width: 100%;
   margin-bottom: 30px;
   text-align: center;
 `
