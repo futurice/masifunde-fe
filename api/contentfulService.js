@@ -10,6 +10,7 @@ const client = createClient({
 
 export function fetchEntriesForContentType(contentType, locale = 'de') {
   return client.getEntries({
+    include: 10,
     content_type: contentType,
     locale,
   })
