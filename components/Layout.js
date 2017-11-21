@@ -13,6 +13,19 @@ injectGlobal`
     font-weight: 400;
     color: #333333;
   }
+  
+  h1, h2 {
+    text-align: center;
+    line-height: 1.36;
+  }
+  
+  h1 {
+    margin-bottom: 2.2rem;
+  }
+  
+  h2 {
+    margin-bottom: 0.6rem;
+  }
 `
 
 function createTitle(title) {
