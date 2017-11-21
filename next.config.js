@@ -1,7 +1,7 @@
 const Routes = require('./routes')
 
 // It can't handle complex patterns like: /blog/:id/
-function createNextRoutesFromNextRoutes() {
+function createRoutesFromNextRoutes() {
   return Routes.routes.reduce((map, { pattern, page }) => {
     // eslint-disable-next-line no-param-reassign
     map[pattern] = { page }
@@ -11,6 +11,6 @@ function createNextRoutesFromNextRoutes() {
 
 module.exports = {
   exportPathMap() {
-    return createNextRoutesFromNextRoutes()
+    return createRoutesFromNextRoutes()
   },
 }
