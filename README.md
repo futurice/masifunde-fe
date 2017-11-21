@@ -61,6 +61,30 @@ Project uses EsLint Airbnb style guide without no semi columns. The `precommit` 
 automatically runs EsLint to check if the code complies with the rules if it fails then it will not
 push to git branch.
 
+### Contentful model naming convention
+Meta data:
+* metaTitle - Title of the web page shown in the tab of the browser
+* metaDescription - SEO (150 chars)
+
+Hero (hero image not through Contentful):
+* heroTitle - Text on top of the hero image
+
+Page intro:
+* introHeading - The main header on the page (usually the h1)
+* introMarkdown - The intro text to the page
+
+Banner:
+* bannerTitle
+* bannerButtonText
+
+Page section:
+For each section of the page, we prefix the fields with "section<number>":
+* section2Title
+* section2Markdown
+* section2Image
+* section2List
+* section2ReferenceList
+
 ## Api Reference
 
 The project uses [Contentful](https://www.contentful.com/) javascript package. To understand better
