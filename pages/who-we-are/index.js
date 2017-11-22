@@ -38,6 +38,7 @@ const About = ({
   bannerHeadline,
   bannerText,
   metaDescription,
+  metaTitle,
   partnersButtonText,
   teamSaButtonText,
   teamDeButtonText,
@@ -45,7 +46,7 @@ const About = ({
   partnersListTwo,
 }) => (
   <div>
-    <Head title="About page" description={metaDescription} />
+    <Head title={metaTitle} description={metaDescription} />
     <Hero headline={title} imageUrl="//via.placeholder.com/350x150/555" />
     <div className="container">
       <div className="row justify-content-center">
@@ -104,6 +105,7 @@ const About = ({
 
 About.propTypes = {
   title: PropTypes.string.isRequired,
+  metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   paragraphOneTitle: PropTypes.string.isRequired,
   paragraphOneText: PropTypes.string.isRequired,
