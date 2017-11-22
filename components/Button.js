@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-function CustomButton(props) {
-  const { children, className } = props
+function CustomButton({ children, className, href }) {
   return (
-    <a {...props} className={`btn btn-primary ${className}`}>
+    <a href={href} className={`btn btn-primary ${className}`}>
       {children}
     </a>
   )
@@ -14,6 +13,11 @@ function CustomButton(props) {
 CustomButton.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string.isRequired,
+  href: PropTypes.string,
+}
+
+CustomButton.defaultProps = {
+  href: undefined,
 }
 
 export default styled(CustomButton)`
