@@ -1,15 +1,7 @@
 import React from 'react'
-import {
-  Button,
-  Container,
-  Row,
-  Col,
-  FormGroup,
-  Label,
-  Input,
-} from 'reactstrap'
+import { Button, Container, Row, Col, FormGroup, Label, Input } from 'reactstrap'
 
-import Layout from '../components/Layout'
+import LayoutWrapper from '../components/LayoutWrapper'
 
 const containerStyle = {
   paddingLeft: 30,
@@ -114,16 +106,26 @@ const labelStyle = {
 }
 
 const Donate = () => (
-  <Layout>
+  <div>
     <Container style={containerStyle}>
+      <script
+        type="text/javascript"
+        src="https://secure.fundraisingbox.com/app/paymentJS?hash=7vznwvrggwrjsufu"
+      />
+      <a href="http://www.fundraisingbox.com">
+        <img
+          border="0"
+          src="https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png"
+          alt="FundraisingBox Logo"
+        />
+      </a>
       <Row>
         <Col xs="2" sm="2" md="2" lg="2" xl="2" />
         <Col xs="8" sm="8" md="8" lg="8" xl="8" style={titleStyle}>
           <h1>Durch Bildung Chancen ermöglichen</h1>
           <p>
-            When donating to Masifunde, you have the option to choose whether
-            you want your money to go towards our work in South Africa or in
-            Germany.
+            When donating to Masifunde, you have the option to choose whether you want your money to
+            go towards our work in South Africa or in Germany.
           </p>
         </Col>
         <Col xs="2" sm="2" md="2" lg="2" xl="2" />
@@ -135,16 +137,12 @@ const Donate = () => (
         <Col style={countryInfoStyle}>
           <h3>Germany</h3>
           <br />
-          <a href="#url">
-            Description of the masifunde work in the destination
-          </a>
+          <a href="#url">Description of the masifunde work in the destination</a>
         </Col>
         <Col style={countryInfoStyle}>
           <h3>South Africa</h3>
           <br />
-          <a href="#url">
-            Description of the masifunde work in the destination
-          </a>
+          <a href="#url">Description of the masifunde work in the destination</a>
         </Col>
       </Row>
 
@@ -258,12 +256,7 @@ const Donate = () => (
         </Col>
         <Col xs="5" sm="5" md="5" lg="5" xl="5">
           <FormGroup>
-            <Input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Vorname Nachname"
-            />
+            <Input type="text" name="name" id="name" placeholder="Vorname Nachname" />
           </FormGroup>
         </Col>
         <Col xs="1" sm="1" md="1" lg="1" xl="1" />
@@ -326,9 +319,7 @@ const Donate = () => (
 
     <div style={contactStyle}>
       <div style={leftCol}>
-        <b style={contactTextStyle}>
-          Have something to ask? We are happy to answer your questions
-        </b>
+        <b style={contactTextStyle}>Have something to ask? We are happy to answer your questions</b>
       </div>
       <div style={rightCol}>
         <div>
@@ -341,7 +332,7 @@ const Donate = () => (
         </div>
       </div>
     </div>
-  </Layout>
+  </div>
 )
 
-export default Donate
+export default LayoutWrapper(Donate)
