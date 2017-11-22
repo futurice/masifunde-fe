@@ -4,12 +4,10 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { fetchWhoWeArePage } from '../../api/whoWeAre'
-import WithHeaderAndFooterData from '../../components/WithHeaderAndFooterData'
-import { propTypes as footerProps } from '../../components/Footer'
-import { propTypes as headerProps } from '../../components/Header'
+import LayoutWrapper from '../../components/LayoutWrapper'
+import Head from '../../components/Head'
 import Button from '../../components/Button'
 import { Link, RouteNames } from '../../routes'
-import Layout from '../../components/Layout'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import Markdown from '../../components/Markdown'
@@ -37,8 +35,6 @@ const About = ({
   paragraphTwoText,
   paragraphThreeTitle,
   paragraphThreeText,
-  footerData,
-  headerData,
   bannerHeadline,
   bannerText,
   metaDescription,
@@ -48,12 +44,8 @@ const About = ({
   partnersListOne,
   partnersListTwo,
 }) => (
-  <Layout
-    title="About page"
-    headerData={headerData}
-    footerData={footerData}
-    metaDescription={metaDescription}
-  >
+  <div>
+    <Head title="About page" description={metaDescription} />
     <Hero headline={title} imageUrl="//via.placeholder.com/350x150/555" />
     <div className="container">
       <div className="row justify-content-center">
@@ -107,7 +99,7 @@ const About = ({
       buttonText={bannerText}
       buttonLink={RouteNames.BecomeVolunteer}
     />
-  </Layout>
+  </div>
 )
 
 About.propTypes = {
@@ -138,8 +130,6 @@ About.propTypes = {
     }).isRequired,
   ),
   bannerText: PropTypes.string.isRequired,
-  headerData: PropTypes.shape(headerProps).isRequired,
-  footerData: PropTypes.shape(footerProps).isRequired,
 }
 
 About.defaultProps = {
@@ -152,4 +142,4 @@ About.getInitialProps = async function initialProps() {
   return fetchWhoWeArePage()
 }
 
-export default WithHeaderAndFooterData(About)
+export default LayoutWrapper(About)
