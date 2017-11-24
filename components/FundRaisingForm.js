@@ -23,35 +23,35 @@ class FundRaisingForm extends Component {
   }
 }
 
-function ScriptParametersWrapper({ amount }) {
-  const URL = 'https://secure.fundraisingbox.com/app/paymentJS'
+function ScriptParametersWrapper({ hash, amount, projectId }) {
+  const BaseUrl = 'https://secure.fundraisingbox.com/app/paymentJS'
 
   // Info about parameters
   // https://developer.fundraisingbox.com/docs/form-prepopulation-api
   const parameters = {
-    hash: 'j3ip42zwp3mlewb9',
+    hash,
     amount,
-    fb_project_id: 3522, // Select fund
+    fb_project_id: projectId, // Select fund
   }
+  const FullUrl = `${BaseUrl}?${stringify(parameters)}`
 
-  const Form = ReactAsyncScript(
-    FundRaisingForm,
-    `${URL}?${stringify(parameters)}`,
-    {
-      globalName: 'FundRaisingBox',
-      removeOnUnmount: true,
-    },
-  )
+  const Form = ReactAsyncScript(FundRaisingForm, FullUrl, {
+    globalName: 'FundRaisingBox',
+    removeOnUnmount: true,
+  })
 
   return <Form />
 }
 
 ScriptParametersWrapper.propTypes = {
+  hash: PropTypes.string.isRequired,
   amount: PropTypes.number,
+  projectId: PropTypes.number,
 }
 
 ScriptParametersWrapper.defaultProps = {
   amount: undefined,
+  projectId: undefined,
 }
 
 export default ScriptParametersWrapper
