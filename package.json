@@ -37,7 +37,7 @@
   "dependencies": {
     "contentful": "^5.0.5",
     "lodash": "^4.17.4",
-    "mem": "^3.0.0",
+    "memoizee": "^0.4.11",
     "next": "^4.1.4",
     "next-routes": "^1.1.0",
     "prop-types": "^15.6.0",
