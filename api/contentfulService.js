@@ -1,4 +1,5 @@
 import { createClient } from 'contentful'
+import memoize from 'mem'
 
 const SPACE_ID = '6jocdllnp50q'
 const ACCESS_TOKEN = '5c8090d12bc2bf8dc695353cc398cd5e48eb56c214325884284bfdbfef4ba5ed'
@@ -31,3 +32,5 @@ export function fetchSingleEntry(contentType, locale = 'de') {
       return pages[0]
     })
 }
+
+export const fetchMemoizedSingleEntry = memoize(fetchSingleEntry)

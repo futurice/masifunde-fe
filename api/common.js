@@ -1,9 +1,9 @@
-import { fetchSingleEntry } from './contentfulService'
+import { fetchMemoizedSingleEntry } from './contentfulService'
 
 export async function fetchHeaderData(locale) {
-  return fetchSingleEntry('header', locale)
+  return fetchMemoizedSingleEntry('header', locale)
 }
 
 export async function fetchFooterData(locale) {
-  return fetchSingleEntry('footer', locale)
+  return fetchMemoizedSingleEntry('footer', locale)
 }
