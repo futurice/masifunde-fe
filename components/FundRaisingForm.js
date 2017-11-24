@@ -25,9 +25,13 @@ class FundRaisingForm extends Component {
 
 function ScriptParametersWrapper({ amount }) {
   const URL = 'https://secure.fundraisingbox.com/app/paymentJS'
+
+  // Info about parameters
+  // https://developer.fundraisingbox.com/docs/form-prepopulation-api
   const parameters = {
     hash: 'j3ip42zwp3mlewb9',
     amount,
+    fb_project_id: 3522, // Select fund
   }
 
   const Form = ReactAsyncScript(
