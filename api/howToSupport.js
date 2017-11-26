@@ -1,44 +1,14 @@
 /* eslint-disable import/prefer-default-export */
-import { fetchEntriesForContentType } from './contentfulService'
+import { fetchMemoizedSingleEntry } from './contentfulService'
+import { unwrapImage } from './common'
 
-function fetchWieSieHelfen() {
-  const resultArray = []
-
-  return fetchEntriesForContentType('wieSieHelfen')
-    .then((elements) => {
-      elements.forEach((element) => {
-        resultArray.push({
-          title: element.fields.title,
-          paragraphOneTitle: element.fields.paragraphOneTitle,
-          paragraphOneText: element.fields.paragraphOneText,
-          paragraphTwoTitle: element.fields.paragraphTwoTitle,
-          paragraphTwoText: element.fields.paragraphTwoText,
-          paragraphThreeTitle: element.fields.paragraphTwoTitle,
-          paragraphThreeText: element.fields.paragraphTwoText,
-          partnersImage: element.fields.partnersImage,
-        })
-      })
-      return resultArray
-    })
-}
-
-export async function fetchHowToSupportPage() {
-  const result = {}
-  const elements = await fetchWieSieHelfen()
-  elements.forEach((element) => {
-    result.title = element.title
-    result.paragraphOneTitle = element.paragraphOneTitle
-    result.paragraphOneText = element.paragraphOneText
-    result.paragraphTwoTitle = element.paragraphTwoTitle
-    result.paragraphTwoText = element.paragraphTwoText
-    result.paragraphThreeTitle = element.paragraphThreeTitle
-    result.paragraphThreeText = element.paragraphThreeText
-    if (element.partnersImage !== undefined) {
-      result.partnersImageUrl = `https:${element.partnersImage.fields.file.url}`
-      result.partnersImageWidth = element.partnersImage.fields.file.details.image.width
-      result.partnersImageHeight = element.partnersImage.fields.file.details.image.height
-      result.partnersImageContentType = element.partnersImage.fields.file.contentType
-    }
-  })
-  return result
+export async function fetchHowToSupportPage(locale) {
+  const content = await fetchMemoizedSingleEntry('pageWieSieHelfen', locale)
+  return {
+    ...content,
+    section1Image: unwrapImage(content.section1Image),
+    section2Image: unwrapImage(content.section2Image),
+    section3Image: unwrapImage(content.section3Image),
+    section4Image: unwrapImage(content.section4Image),
+  }
 }
