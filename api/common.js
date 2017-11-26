@@ -7,3 +7,8 @@ export async function fetchHeaderData(locale) {
 export async function fetchFooterData(locale) {
   return fetchMemoizedSingleEntry('footer', locale)
 }
+
+export const unwrapImage = image => ({
+  url: image.fields.file.url,
+  title: image.fields.title,
+})
