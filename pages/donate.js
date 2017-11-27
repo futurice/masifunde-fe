@@ -1,18 +1,8 @@
-import React from 'react'
-import { Button, Container, Row, Col, FormGroup, Label, Input } from 'reactstrap'
+import React, { Component } from 'react'
+import { Button, Input } from 'reactstrap'
 
+import FundRaisingForm from '../components/FundRaisingForm'
 import LayoutWrapper from '../components/LayoutWrapper'
-
-const containerStyle = {
-  paddingLeft: 30,
-  paddingRight: 30,
-}
-
-const titleStyle = {
-  textAlign: 'center',
-  marginTop: 30,
-  marginBottom: 30,
-}
 
 const contactStyle = {
   fontSize: 16,
@@ -58,13 +48,10 @@ const phoneIconStyle = {
 
 const countryInfoStyle = {
   border: '1px solid #BBB',
-  margintTop: 45,
-  marginRight: 15,
-  padding: 20,
 }
 
 const sectionTitleStyle = {
-  marginTop: 20,
+  marginBottom: 20,
 }
 
 const sectionDividerStyle = {
@@ -73,16 +60,12 @@ const sectionDividerStyle = {
   marginBottom: 80,
 }
 
-const radioGroupStyle = {
-  float: 'left',
-  marginLeft: 30,
-}
-
 const amountButtonStyle = {
   paddingTop: 10,
   paddingBottom: 10,
   paddingLeft: 40,
   paddingRight: 40,
+  minWidth: 20,
   color: 'white',
   backgroundColor: 'gray',
   border: 'none',
@@ -100,239 +83,194 @@ const lightGreyButtonStyle = {
   width: '100%',
 }
 
-const labelStyle = {
-  textAlign: 'right',
-  fontSize: 18,
+// eslint-disable-next-line react/prefer-stateless-function
+class Donate extends Component {
+  render() {
+    return (
+      <div>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-8">
+              <h1>Durch Bildung Chancen ermöglichen</h1>
+              <p>
+                Da wir in Deutschland rein ehrenamtlich arbeiten, garantieren wir Ihnen, dass 100
+                Prozent der Spenden für unsere Arbeit vor Ort eingesetzt werden. Transparenz ist ein
+                Grundsatz unserer Mittelverwendung.
+              </p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col" style={sectionTitleStyle}>
+              <h3>Where do you want to give?</h3>
+            </div>
+            <div className="col-sm" style={countryInfoStyle}>
+              <h3>Germany</h3>
+              <br />
+              <a href="#url">Description of the masifunde work in the destination</a>
+            </div>
+            <div className="col-sm" style={countryInfoStyle}>
+              <h3>South Africa</h3>
+              <br />
+              <a href="#url">Description of the masifunde work in the destination</a>
+            </div>
+          </div>
+
+          <div className="row" style={sectionDividerStyle} />
+
+          <div className="row">
+            <div className="col-sm-3" style={sectionTitleStyle}>
+              <h3>Choose an amount</h3>
+            </div>
+            <div className="col">
+              <div className="row" style={sectionTitleStyle}>
+                <div className="col">
+                  <Button style={amountButtonStyle}>5€</Button>
+                </div>
+                <div className="col">
+                  <Button style={amountButtonStyle}>10€</Button>
+                </div>
+                <div className="col">
+                  <Button style={amountButtonStyle}>20€</Button>
+                </div>
+                <div className="col">
+                  <Button style={amountButtonStyle}>50€</Button>
+                </div>
+              </div>
+              <div className="row" style={sectionTitleStyle}>
+                <div className="col">
+                  <Button style={amountButtonStyle}>100€</Button>
+                </div>
+                <div className="col">
+                  <Button style={amountButtonStyle}>200€</Button>
+                </div>
+                <div className="col">
+                  <Input placeholder="Other amount €" />
+                </div>
+              </div>
+              <div className="row" style={sectionTitleStyle}>
+                <div className="col">
+                  <Button style={lightGreyButtonStyle}>
+                    Your impact with 50€: 15 schoolbooks for a student
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="row" style={sectionDividerStyle} />
+
+          <div>
+            <h2>Enter personal details</h2>
+            {/* Anrede und Titel */}
+            <div className="form-group row">
+              <span className="col-sm-3 col-form-label" id="titleInputs">
+                Anrede und Titel
+              </span>
+              <div className="col-sm-2">
+                <select aria-labelledby="titleInputs" className="form-control">
+                  <option selected>Choose...</option>
+                  <option>Frau</option>
+                  <option>Herr</option>
+                </select>
+              </div>
+              <div className="col-sm-4">
+                <input type="email" className="form-control" aria-labelledby="titleInputs" />
+              </div>
+            </div>
+            {/* Email */}
+            <label className="form-group row" htmlFor="inputEmail">
+              <span className="col-sm-3 col-form-label">Email</span>
+              <div className="col-sm-6">
+                <input type="email" className="form-control" id="inputEmail" />
+              </div>
+            </label>
+            {/* Name */}
+            <div className="form-group row">
+              <span className="col-sm-3 col-form-label" id="name-inputs">
+                Name
+              </span>
+              <div className="col-sm-3">
+                <input className="form-control" aria-labelledby="name-inputs" />
+              </div>
+              <div className="col-sm-3">
+                <input className="form-control" aria-labelledby="name-inputs" />
+              </div>
+            </div>
+            {/* TO GET ALL COUNTRIES: https://restcountries.eu/rest/v2/all?fields=name;alpha2Code */}
+            {/* receipt ? */}
+            <label className="form-group row" htmlFor="receipt-input">
+              <span className="col-sm-3 col-form-label">Spendequittung?</span>
+              <div className="col-sm-6">
+                <select id="receipt-input" className="form-control">
+                  <option selected>Choose...</option>
+                  <option>Once</option>
+                  <option>Twice</option>
+                </select>
+              </div>
+            </label>
+            {/* Firma */}
+            <label className="form-group row" htmlFor="company-input">
+              <span className="col-sm-3 col-form-label">Firma</span>
+              <div className="col-sm-6">
+                <input type="email" className="form-control" id="company-input" />
+              </div>
+            </label>
+            {/* Address */}
+            <label className="form-group row" htmlFor="address-input">
+              <span className="col-sm-3 col-form-label">Adresse</span>
+              <div className="col-sm-6">
+                <input type="email" className="form-control" id="address-input" />
+              </div>
+            </label>
+            {/* PLZ und Ort */}
+            <div className="form-group row">
+              <span className="col-sm-3 col-form-label" id="zip-code-city-inputs">
+                LZ und Ort
+              </span>
+              <div className="col-sm-3">
+                <input className="form-control" aria-labelledby="zip-code-city-inputs" />
+              </div>
+              <div className="col-sm-3">
+                <input className="form-control" aria-labelledby="zip-code-city-inputs" />
+              </div>
+            </div>
+            {/* Land */}
+            <label className="form-group row" htmlFor="country-input">
+              <span className="col-sm-3 col-form-label">Country</span>
+              <div className="col-sm-6">
+                <select id="country-input" className="form-control">
+                  <option selected>Choose...</option>
+                  <option>Once</option>
+                  <option>Twice</option>
+                </select>
+              </div>
+            </label>
+
+            <FundRaisingForm hash="j3ip42zwp3mlewb9" />
+          </div>
+
+        </div>
+
+        <div style={contactStyle}>
+          <div style={leftCol}>
+            <b style={contactTextStyle}>
+              Have something to ask? We are happy to answer your questions
+            </b>
+          </div>
+          <div style={rightCol}>
+            <div>
+              <img src="../static/phone-2.svg" style={phoneIconStyle} alt="" />
+              <a href="#url">+49 303 303 303</a>
+            </div>
+            <div>
+              <img src="../static/at-sign.svg" style={phoneIconStyle} alt="" />
+              <a href="#url">contact@masifunde.de</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
-
-const Donate = () => (
-  <div>
-    <Container style={containerStyle}>
-      <script
-        type="text/javascript"
-        src="https://secure.fundraisingbox.com/app/paymentJS?hash=7vznwvrggwrjsufu"
-      />
-      <a href="http://www.fundraisingbox.com">
-        <img
-          border="0"
-          src="https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png"
-          alt="FundraisingBox Logo"
-        />
-      </a>
-      <Row>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2" />
-        <Col xs="8" sm="8" md="8" lg="8" xl="8" style={titleStyle}>
-          <h1>Durch Bildung Chancen ermöglichen</h1>
-          <p>
-            When donating to Masifunde, you have the option to choose whether you want your money to
-            go towards our work in South Africa or in Germany.
-          </p>
-        </Col>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2" />
-      </Row>
-      <Row>
-        <Col style={sectionTitleStyle}>
-          <h3>Pick a destination</h3>
-        </Col>
-        <Col style={countryInfoStyle}>
-          <h3>Germany</h3>
-          <br />
-          <a href="#url">Description of the masifunde work in the destination</a>
-        </Col>
-        <Col style={countryInfoStyle}>
-          <h3>South Africa</h3>
-          <br />
-          <a href="#url">Description of the masifunde work in the destination</a>
-        </Col>
-      </Row>
-
-      <Row style={sectionDividerStyle} />
-
-      <Row>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4" style={sectionTitleStyle}>
-          <h3>Choose an amount</h3>
-        </Col>
-        <Col xs="8" sm="8" md="8" lg="8" xl="8">
-          <Row>
-            I want to donate:
-            <FormGroup tag="fieldset">
-              <FormGroup check style={radioGroupStyle}>
-                <Label check>
-                  <Input type="radio" name="radio1" /> Once
-                </Label>
-              </FormGroup>
-              <FormGroup check style={radioGroupStyle}>
-                <Label check>
-                  <Input type="radio" name="radio1" /> Monthly
-                </Label>
-              </FormGroup>
-              <FormGroup check style={radioGroupStyle}>
-                <Label check>
-                  <Input type="radio" name="radio1" /> Annually
-                </Label>
-              </FormGroup>
-            </FormGroup>
-          </Row>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4" />
-        <Col xs="2" sm="2" md="2" lg="2" xl="2">
-          <Button style={amountButtonStyle}>5€</Button>
-        </Col>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2">
-          <Button style={amountButtonStyle}>10€</Button>
-        </Col>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2">
-          <Button style={amountButtonStyle}>20€</Button>
-        </Col>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2">
-          <Button style={amountButtonStyle}>50€</Button>
-        </Col>
-      </Row>
-      <Row style={sectionTitleStyle}>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4" />
-        <Col xs="2" sm="2" md="2" lg="2" xl="2">
-          <Button style={amountButtonStyle}>100€</Button>
-        </Col>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2">
-          <Button style={amountButtonStyle}>200€</Button>
-        </Col>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4">
-          <Input placeholder="Other amount €" />
-        </Col>
-      </Row>
-      <Row style={sectionTitleStyle}>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4" />
-        <Col xs="8" sm="8" md="8" lg="8" xl="8">
-          <Button style={lightGreyButtonStyle}>
-            Your impact with 50€: 15 schoolbooks for a student
-          </Button>
-        </Col>
-      </Row>
-
-      <Row style={sectionDividerStyle} />
-
-      <Row>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4" style={sectionTitleStyle}>
-          <h3>Enter personal details</h3>
-        </Col>
-        <Col xs="8" sm="8" md="8" lg="8" xl="8">
-          <FormGroup check>
-            <Label check>
-              <Input type="checkbox" /> I want to gift this donation
-            </Label>
-          </FormGroup>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4" />
-        <Col xs="2" sm="2" md="2" lg="2" xl="2" style={labelStyle}>
-          Anrede und Titel
-        </Col>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2">
-          <FormGroup>
-            <Input type="select" name="select" id="exampleSelect">
-              <option>Mrs.</option>
-              <option>Miss</option>
-              <option>Mr.</option>
-            </Input>
-          </FormGroup>
-        </Col>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2">
-          <FormGroup>
-            <Input type="select" name="select" id="exampleSelect">
-              <option>Dr.</option>
-              <option>Ing.</option>
-            </Input>
-          </FormGroup>
-        </Col>
-        <Col xs="2" sm="2" md="2" lg="2" xl="2" />
-      </Row>
-      <Row>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4" />
-        <Col xs="2" sm="2" md="2" lg="2" xl="2" style={labelStyle}>
-          Name
-        </Col>
-        <Col xs="5" sm="5" md="5" lg="5" xl="5">
-          <FormGroup>
-            <Input type="text" name="name" id="name" placeholder="Vorname Nachname" />
-          </FormGroup>
-        </Col>
-        <Col xs="1" sm="1" md="1" lg="1" xl="1" />
-      </Row>
-
-      <Row>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4" />
-        <Col xs="2" sm="2" md="2" lg="2" xl="2" style={labelStyle}>
-          Firma(Optional)
-        </Col>
-        <Col xs="5" sm="5" md="5" lg="5" xl="5">
-          <FormGroup>
-            <Input type="text" name="firma" id="firma" />
-          </FormGroup>
-        </Col>
-        <Col xs="1" sm="1" md="1" lg="1" xl="1" />
-      </Row>
-      <FormGroup tag="fieldset">
-        <Row>
-          <Col xs="4" sm="4" md="4" lg="4" xl="4" />
-          <Col xs="2" sm="2" md="2" lg="2" xl="2" style={labelStyle}>
-            Donation certificate
-          </Col>
-          <Col xs="5" sm="5" md="5" lg="5" xl="5">
-            <FormGroup check style={radioGroupStyle}>
-              <Label check>
-                <Input type="radio" name="radio1" /> PDF file via e-mail
-              </Label>
-            </FormGroup>
-          </Col>
-          <Col xs="1" sm="1" md="1" lg="1" xl="1" />
-        </Row>
-        <Row>
-          <Col xs="4" sm="4" md="4" lg="4" xl="4" />
-          <Col xs="2" sm="2" md="2" lg="2" xl="2" />
-          <Col xs="5" sm="5" md="5" lg="5" xl="5">
-            <FormGroup check style={radioGroupStyle}>
-              <Label check>
-                <Input type="radio" name="radio1" /> Printed document via post
-              </Label>
-            </FormGroup>
-          </Col>
-          <Col xs="1" sm="1" md="1" lg="1" xl="1" />
-        </Row>
-      </FormGroup>
-
-      <Row>
-        <Col xs="4" sm="4" md="4" lg="4" xl="4" />
-        <Col xs="2" sm="2" md="2" lg="2" xl="2" style={labelStyle}>
-          Email
-        </Col>
-        <Col xs="5" sm="5" md="5" lg="5" xl="5">
-          <FormGroup>
-            <Input type="email" name="email" id="email" />
-          </FormGroup>
-        </Col>
-        <Col xs="1" sm="1" md="1" lg="1" xl="1" />
-      </Row>
-    </Container>
-
-    <div style={contactStyle}>
-      <div style={leftCol}>
-        <b style={contactTextStyle}>Have something to ask? We are happy to answer your questions</b>
-      </div>
-      <div style={rightCol}>
-        <div>
-          <img src="../static/phone-2.svg" style={phoneIconStyle} alt="" />
-          <a href="#url">+49 303 303 303</a>
-        </div>
-        <div>
-          <img src="../static/at-sign.svg" style={phoneIconStyle} alt="" />
-          <a href="#url">contact@masifunde.de</a>
-        </div>
-      </div>
-    </div>
-  </div>
-)
 
 export default LayoutWrapper(Donate)
