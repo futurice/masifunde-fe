@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { injectGlobal } from 'styled-components'
+import { injectGlobal, ThemeProvider } from 'styled-components'
 
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
@@ -12,6 +12,7 @@ injectGlobal`
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     color: #333333;
+    background-color: #faf2e6;
   }
   
   h1, h2 {
@@ -28,41 +29,52 @@ injectGlobal`
   }
 `
 
+const theme = {
+  orange: '#FE9933',
+  orangeRed: '#FF621D',
+  green: '#17DD73',
+  darkGreen: '#00C078',
+  blue: '#4176F9',
+  linkBlue: '#4176F9',
+}
+
 const Layout = ({ headerData, children, footerData }) => (
-  <div>
-    <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.2/dist/css/bootstrap.min.css"
+  <ThemeProvider theme={theme}>
+    <div>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.2/dist/css/bootstrap.min.css"
+        />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
+      </Head>
+      <Header
+        whatWeDoText={headerData.whatWeDoText}
+        whoWeAreText={headerData.whoWeAreText}
+        howToSupportText={headerData.howToSupportText}
+        donateText={headerData.donateText}
       />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700" />
-    </Head>
-    <Header
-      whatWeDoText={headerData.whatWeDoText}
-      whoWeAreText={headerData.whoWeAreText}
-      howToSupportText={headerData.howToSupportText}
-      donateText={headerData.donateText}
-    />
-    {children}
-    <Footer
-      whatWeDoText={footerData.whatWeDoText}
-      approachSaText={footerData.approachSaText}
-      approachDeText={footerData.approachDeText}
-      impactText={footerData.impactText}
-      whoWeAreText={footerData.whoWeAreText}
-      teamSaText={footerData.teamSaText}
-      teamDeText={footerData.teamDeText}
-      partnersText={footerData.partnersText}
-      howToSupportText={footerData.howToSupportText}
-      donateText={footerData.donateText}
-      becomeSponsorText={footerData.becomeSponsorText}
-      becomeVolunteerText={footerData.becomeVolunteerText}
-      becomePartnerText={footerData.becomePartnerText}
-      contactText={footerData.contactText}
-      copyrightText={footerData.copyrightText}
-    />
-  </div>
+      {children}
+      <Footer
+        whatWeDoText={footerData.whatWeDoText}
+        approachSaText={footerData.approachSaText}
+        approachDeText={footerData.approachDeText}
+        impactText={footerData.impactText}
+        whoWeAreText={footerData.whoWeAreText}
+        teamSaText={footerData.teamSaText}
+        teamDeText={footerData.teamDeText}
+        partnersText={footerData.partnersText}
+        howToSupportText={footerData.howToSupportText}
+        donateText={footerData.donateText}
+        becomeSponsorText={footerData.becomeSponsorText}
+        becomeVolunteerText={footerData.becomeVolunteerText}
+        becomePartnerText={footerData.becomePartnerText}
+        contactText={footerData.contactText}
+        copyrightText={footerData.copyrightText}
+      />
+    </div>
+  </ThemeProvider>
 )
 
 Layout.propTypes = {
