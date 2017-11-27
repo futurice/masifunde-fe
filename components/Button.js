@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 function CustomButton({ children, className, href }) {
   return (
-    <a href={href} className={`btn btn-primary ${className}`}>
+    <a href={href} className={`btn ${className}`}>
       {children}
     </a>
   )
@@ -20,8 +20,56 @@ CustomButton.defaultProps = {
   href: undefined,
 }
 
-export default styled(CustomButton)`
-  background-color: black;
-  border-color: black;
-  color: white !important;
+const StyledButton = styled(CustomButton)`
+  font-family: 'Lato', 'sans-serif';
+  background-color: transparent;
+  outline: none;
+  box-shadow: none !important;
+  border-radius: 20px;
+  padding: 0.2rem 0.9rem;
+  border-width: 2px;
+  font-weight: bold;
+  
+  ${props => props.type === 'primary' && css`
+    font-weight: 900;
+    color: ${props.theme.darkGreen};
+    border-color: ${props.theme.green};
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    
+    &:hover {
+      color: white;
+      background-color: ${props.theme.green};
+    }
+  `}
+  
+  ${props => props.type === 'secondary' && css`
+    color: ${props.theme.orange};
+    border-color: ${props.theme.orangeRed};
+    
+    &:hover {
+      color: white;
+      background-color: ${props.theme.orangeRed};
+    }
+  `}
+  
+  ${props => props.type === 'banner' && css`
+    color: white;
+    border-color: white;
+    
+    &:hover {
+      color: ${props.theme.orange};
+      background-color: white;
+    }
+  `}
 `
+
+StyledButton.propTypes = {
+  type: PropTypes.oneOf(['primary', 'secondary', 'banner']),
+}
+
+StyledButton.defaultProps = {
+  type: 'secondary',
+}
+
+export default StyledButton
