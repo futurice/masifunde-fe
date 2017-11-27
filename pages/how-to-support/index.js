@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
@@ -6,9 +7,11 @@ import styled from 'styled-components'
 import { fetchHowToSupportPage } from '../../api/howToSupport'
 import { getLocaleFromQuery } from '../../utils/locale'
 import LayoutWrapper from '../../components/LayoutWrapper'
+import { Link, RouteNames } from '../../routes'
 import Head from '../../components/Head'
 import Hero from '../../components/Hero'
 import Markdown from '../../components/Markdown'
+import Button from '../../components/Button'
 
 const Paragraph = styled(Markdown)`
   text-align: center;
@@ -18,28 +21,30 @@ const H2 = styled.h2`
   text-align: left;
 `
 
+const HR = styled.hr`
+  border-color: ${props => props.theme.orange};
+  margin: auto 13%;
+`
+
 const Section = ({
-  image, title, markdown, buttonText,
+  image, title, markdown, buttonText, buttonType, buttonLink,
 }) => (
-  <SectionContainer>
-    <img src={image.url} alt={image.tile} />
-    <SectionContentContainer>
+  <SectionContainer className="row">
+    <div className="col-md-3 ">
+      <img className="img-fluid" src={image.url} alt={image.tile} />
+    </div>
+    <div className="col-md-9">
       <H2>{title}</H2>
       <Markdown source={markdown} />
-      <button>{buttonText}</button>
-    </SectionContentContainer>
+      <Link route={buttonLink} passHref>
+        <Button type={buttonType}>{buttonText}</Button>
+      </Link>
+    </div>
   </SectionContainer>
 )
 
 const SectionContainer = styled.div`
-  display: flex;
   padding: 3rem 0;
-`
-
-const SectionContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 1.4rem;
 `
 
 Section.propTypes = {
@@ -50,6 +55,8 @@ Section.propTypes = {
   title: PropTypes.string.isRequired,
   markdown: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
+  buttonType: PropTypes.string.isRequired,
+  buttonLink: PropTypes.string.isRequired,
 }
 
 const HowToSupport = ({
@@ -86,25 +93,33 @@ const HowToSupport = ({
         title={section1Title}
         markdown={section1Markdown}
         image={section1Image}
+        buttonType="primary"
+        buttonLink={RouteNames.Donate}
       />
       <Section
         buttonText={section2ButtonText}
         title={section2Title}
         markdown={section2Markdown}
         image={section2Image}
+        buttonType="secondary"
+        buttonLink={RouteNames.Donate}
       />
-      <hr />
+      <HR />
       <Section
         buttonText={section3ButtonText}
         title={section3Title}
         markdown={section3Markdown}
         image={section3Image}
+        buttonType="secondary"
+        buttonLink={RouteNames.Donate}
       />
       <Section
         buttonText={section4ButtonText}
         title={section4Title}
         markdown={section4Markdown}
         image={section4Image}
+        buttonType="secondary"
+        buttonLink={RouteNames.Donate}
       />
     </Container>
   </div>
