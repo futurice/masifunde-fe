@@ -12,3 +12,5 @@ export const unwrapImage = image => ({
   url: image.fields.file.url,
   title: image.fields.title,
 })
+
+export const unwrapRegion = region => region.fields.name
