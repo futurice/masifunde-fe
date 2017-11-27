@@ -88,7 +88,7 @@ const ApproachDe = ({
         {projects.map(project => (
           <Project
             key={project.name}
-            className={`col-md-${Math.floor(12 / projects.length)}`}
+            className="col-md"
             image={project.image}
             name={project.name}
             description={project.description}
