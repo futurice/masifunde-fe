@@ -32,8 +32,12 @@ function Hero({ headline, imageUrl }) {
 }
 
 Hero.propTypes = {
-  headline: PropTypes.string.isRequired,
+  headline: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
+}
+
+Hero.defaultProps = {
+  headline: undefined,
 }
 
 export default Hero
