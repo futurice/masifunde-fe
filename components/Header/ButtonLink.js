@@ -7,22 +7,16 @@ import { withRouter } from 'next/router'
 import Button from '../Button'
 import { Link } from '../../routes'
 
-const ExtendedButton = Button.extend`
-  color: white !important;
-  border: none;
-  background-color: ${({ isActive }) => (isActive ? 'gray' : 'black')};
-`
-
 function NavigationLink({ children, router, href }) {
   return (
     <NavItem>
       <Link route={href} passHref prefetch>
-        <ExtendedButton
+        <Button
+          type="primary"
           isActive={router.pathname === href}
-          className="nav-link"
         >
           {children}
-        </ExtendedButton>
+        </Button>
       </Link>
     </NavItem>
   )
