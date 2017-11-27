@@ -1,14 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const Title = styled.div`
+  font-weight: bold;
+`
 
 const TeamMember = ({
   imageUrl, title, subtitle, email,
 }) => (
   <div className="col-6 col-md-3 col-lg-2">
     <img className="img-fluid" src={imageUrl} alt={`${title} - ${subtitle}`} />
-    <div>{title}</div>
+    <Title>{title}</Title>
     <div>{subtitle}</div>
-    <div>{email}</div>
+    <a href={`mailto:${email}`}>{email}</a>
   </div>
 )
 
