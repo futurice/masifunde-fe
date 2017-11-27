@@ -87,7 +87,7 @@ const ApproachDe = ({
       <ProjectsContainer className="row">
         {projects.map(project => (
           <Project
-            key={project.name}
+            key={`${project.name}${project.image}`}
             className="col-md"
             image={project.image}
             name={project.name}
