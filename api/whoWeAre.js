@@ -1,5 +1,5 @@
 import { fetchSingleEntry } from './contentfulService'
-import { unwrapImage } from './common'
+import { unwrapImage, unwrapRegion } from './common'
 
 export async function fetchWhoWeArePage(locale) {
   return fetchSingleEntry('about', locale)
@@ -7,8 +7,6 @@ export async function fetchWhoWeArePage(locale) {
 
 export async function fetchTeamDePage(locale) {
   const content = await fetchSingleEntry('pageTeamDe', locale)
-
-  const unwrapRegion = region => region.fields.name
 
   const unwrapTeamMembers = (teamMembers = []) =>
     teamMembers.map((teamMember) => {
