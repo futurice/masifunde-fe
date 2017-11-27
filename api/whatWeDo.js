@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { fetchSingleEntry } from './contentfulService'
+import { unwrapImage } from './common'
 
 function unwrapFields(response) {
   return response.fields
@@ -41,5 +42,18 @@ export async function fetchWhatWeDoPage(locale) {
       ...content.heroImage.fields,
       url: content.heroImage.fields.file.url,
     },
+  }
+}
+
+const unwrapProjects = ({ fields }) => ({
+  ...fields,
+  image: unwrapImage(fields.image),
+})
+
+export async function fetchApproachDePage(locale) {
+  const content = await fetchSingleEntry('pageApproachDE', locale)
+  return {
+    ...content,
+    projects: content.projects.map(unwrapProjects),
   }
 }
