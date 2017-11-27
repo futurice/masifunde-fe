@@ -18,12 +18,13 @@ const Head = ({ title, description }) => (
   </NextJsHead>)
 
 Head.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   description: PropTypes.string,
 }
 
 Head.defaultProps = {
   description: undefined,
+  title: '',
 }
 
 export default Head
