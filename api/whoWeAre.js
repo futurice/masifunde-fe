@@ -8,11 +8,11 @@ export async function fetchWhoWeArePage(locale) {
     ...response,
     partnersListOne: response.partnersListOne.map(partners => ({
       ...partners.fields,
-      imageUrl: partners.fields.logo.fields.file.url,
+      image: unwrapImage(partners.fields.logo),
     })),
     partnersListTwo: response.partnersListTwo.map(partners => ({
       ...partners.fields,
-      imageUrl: partners.fields.logo.fields.file.url,
+      image: unwrapImage(partners.fields.logo),
     })),
   }
 }

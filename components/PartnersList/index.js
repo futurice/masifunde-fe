@@ -3,30 +3,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _chunk from 'lodash/chunk'
 
-import Partner from './Partner'
+import Partner, { propTypes as partnerPropTypes } from './Partner'
 
 const PartnersList = ({ partnersList }) =>
   _chunk(partnersList, 5).map((partnersListChunk, idx) => (
     <div className="row justify-content-sm-center" key={idx}>
-      {partnersListChunk.map(({ imageUrl, name, link }) => (
+      {partnersListChunk.map(({ image, name, link }) => (
         <Partner
           link={link}
-          imageUrl={imageUrl}
+          image={image}
           name={name}
-          key={`${imageUrl} ${name}`}
+          key={`${image.url} ${name}`}
         />
       ))}
     </div>
   ))
 
-PartnersList.propTypes = {
+export const propTypes = {
   partnersList: PropTypes.arrayOf(
-    PropTypes.shape({
-      imageUrl: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
+    PropTypes.shape(partnerPropTypes),
   ).isRequired,
 }
+
+PartnersList.propTypes = propTypes
 
 export default PartnersList
