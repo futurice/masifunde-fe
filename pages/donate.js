@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Input } from 'reactstrap'
+import { Form, Field } from 'react-final-form'
+import styled from 'styled-components'
 
 import FundRaisingForm from '../components/FundRaisingForm'
 import LayoutWrapper from '../components/LayoutWrapper'
@@ -83,8 +85,47 @@ const lightGreyButtonStyle = {
   width: '100%',
 }
 
+const ErrorMessage = styled.span`
+  display: inline-block;
+  margin-left: 0.4rem;
+  color: #dc3545;
+`
+
 // eslint-disable-next-line react/prefer-stateless-function
 class Donate extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+    this.submitForm = this.submitForm.bind(this)
+    this.validateForm = this.validateForm.bind(this)
+  }
+  submitForm() {
+    this.formRef.click()
+  }
+  validateForm(values) {
+    const errors = {}
+    const isRequired = (key) => {
+      if (!values[key]) {
+        errors[key] = 'Required'
+      }
+    }
+    isRequired('anrede')
+    isRequired('tittel')
+    isRequired('firstName')
+    isRequired('lastName')
+    isRequired('company')
+    isRequired('email')
+    isRequired('address')
+    isRequired('lz')
+    isRequired('ort')
+    isRequired('receipt')
+    isRequired('country')
+    if (!Object.keys(errors).length) {
+      this.setState({ ...this.state, values })
+    }
+    return errors
+  }
+  formInputClassFactory = meta => `form-control ${meta.error && meta.touched ? 'is-invalid' : ''}`
   render() {
     return (
       <div>
@@ -159,95 +200,215 @@ class Donate extends Component {
 
           <div className="row" style={sectionDividerStyle} />
 
-          <div>
-            <h2>Enter personal details</h2>
-            {/* Anrede und Titel */}
-            <div className="form-group row">
-              <span className="col-sm-3 col-form-label" id="titleInputs">
-                Anrede und Titel
-              </span>
-              <div className="col-sm-2">
-                <select aria-labelledby="titleInputs" className="form-control">
-                  <option selected>Choose...</option>
-                  <option>Frau</option>
-                  <option>Herr</option>
-                </select>
-              </div>
-              <div className="col-sm-4">
-                <input type="email" className="form-control" aria-labelledby="titleInputs" />
-              </div>
-            </div>
-            {/* Email */}
-            <label className="form-group row" htmlFor="inputEmail">
-              <span className="col-sm-3 col-form-label">Email</span>
-              <div className="col-sm-6">
-                <input type="email" className="form-control" id="inputEmail" />
-              </div>
-            </label>
-            {/* Name */}
-            <div className="form-group row">
-              <span className="col-sm-3 col-form-label" id="name-inputs">
-                Name
-              </span>
-              <div className="col-sm-3">
-                <input className="form-control" aria-labelledby="name-inputs" />
-              </div>
-              <div className="col-sm-3">
-                <input className="form-control" aria-labelledby="name-inputs" />
-              </div>
-            </div>
-            {/* TO GET ALL COUNTRIES: https://restcountries.eu/rest/v2/all?fields=name;alpha2Code */}
-            {/* receipt ? */}
-            <label className="form-group row" htmlFor="receipt-input">
-              <span className="col-sm-3 col-form-label">Spendequittung?</span>
-              <div className="col-sm-6">
-                <select id="receipt-input" className="form-control">
-                  <option selected>Choose...</option>
-                  <option>Once</option>
-                  <option>Twice</option>
-                </select>
-              </div>
-            </label>
-            {/* Firma */}
-            <label className="form-group row" htmlFor="company-input">
-              <span className="col-sm-3 col-form-label">Firma</span>
-              <div className="col-sm-6">
-                <input type="email" className="form-control" id="company-input" />
-              </div>
-            </label>
-            {/* Address */}
-            <label className="form-group row" htmlFor="address-input">
-              <span className="col-sm-3 col-form-label">Adresse</span>
-              <div className="col-sm-6">
-                <input type="email" className="form-control" id="address-input" />
-              </div>
-            </label>
-            {/* PLZ und Ort */}
-            <div className="form-group row">
-              <span className="col-sm-3 col-form-label" id="zip-code-city-inputs">
-                LZ und Ort
-              </span>
-              <div className="col-sm-3">
-                <input className="form-control" aria-labelledby="zip-code-city-inputs" />
-              </div>
-              <div className="col-sm-3">
-                <input className="form-control" aria-labelledby="zip-code-city-inputs" />
-              </div>
-            </div>
-            {/* Land */}
-            <label className="form-group row" htmlFor="country-input">
-              <span className="col-sm-3 col-form-label">Country</span>
-              <div className="col-sm-6">
-                <select id="country-input" className="form-control">
-                  <option selected>Choose...</option>
-                  <option>Once</option>
-                  <option>Twice</option>
-                </select>
-              </div>
-            </label>
+          <Form
+            onSubmit={() => {}}
+            validate={this.validateForm}
+            render={({ handleSubmit }) => (
+              <form onSubmit={handleSubmit}>
+                <h2>Enter personal details</h2>
+                {/* Anrede und Titel */}
+                <div className="form-group row">
+                  <span className="col-sm-3 col-form-label" id="titleInputs">
+                    Anrede und Titel
+                  </span>
+                  <div className="col-sm-2">
+                    <Field name="anrede">
+                      {({ input, meta }) => (
+                        <div className="d-flex align-items-center" >
+                          <select
+                            {...input}
+                            className={this.formInputClassFactory(meta)}
+                            aria-labelledby="titleInputs"
+                          >
+                            <option value={null} />
+                            <option value="Frau">Frau</option>
+                            <option value="Herr">Herr</option>
+                          </select>
+                          {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                        </div>
 
-            <FundRaisingForm hash="j3ip42zwp3mlewb9" />
-          </div>
+                      )}
+                    </Field>
+                  </div>
+                  <Field name="tittel">
+                    {({ input, meta }) => (
+                      <div className="col-sm-4 d-flex align-items-center">
+                        <input
+                          {...input}
+                          type="text"
+                          className={this.formInputClassFactory(meta)}
+                          aria-labelledby="titleInputs"
+                        />
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                {/* Email */}
+                <Field name="email">
+                  {({ input, meta }) => (
+                    <label className="form-group row" htmlFor="inputEmail">
+                      <span className="col-sm-3 col-form-label">Email</span>
+                      <div className="col-sm-6 d-flex align-items-center">
+                        <input
+                          {...input}
+                          type="email"
+                          className={this.formInputClassFactory(meta)}
+                          id="inputEmail"
+                        />
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    </label>
+                  )}
+                </Field>
+                {/* Name */}
+                <div className="form-group row">
+                  <span className="col-sm-3 col-form-label" id="name-inputs">
+                    Name
+                  </span>
+                  <div className="col-sm-3">
+                    <Field name="firstName">
+                      {({ input, meta }) => (
+                        <div className="d-flex align-items-center">
+                          <input
+                            {...input}
+                            type="text"
+                            className={this.formInputClassFactory(meta)}
+                            aria-labelledby="name-inputs"
+                          />
+                          {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                        </div>
+                      )}
+                    </Field>
+                  </div>
+                  <div className="col-sm-3">
+                    <Field name="lastName">
+                      {({ input, meta }) => (
+                        <div className="d-flex align-items-center">
+                          <input
+                            {...input}
+                            type="text"
+                            className={this.formInputClassFactory(meta)}
+                            aria-labelledby="name-inputs"
+                          />
+                          {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                        </div>
+                      )}
+                    </Field>
+                  </div>
+                </div>
+                {/* TO GET ALL COUNTRIES: https://restcountries.eu/rest/v2/all?fields=name;alpha2Code */}
+                {/* receipt ? */}
+                <label className="form-group row" htmlFor="receipt-input">
+                  <span className="col-sm-3 col-form-label">Spendequittung?</span>
+                  <Field name="receipt">
+                    {({ input, meta }) => (
+                      <div className="col-sm-6 d-flex align-items-center" >
+                        <select
+                          {...input}
+                          id="receipt-input"
+                          className={this.formInputClassFactory(meta)}
+                        >
+                          <option value={null} />
+                          <option value="once">Once</option>
+                          <option value="twice">Twice</option>
+                        </select>
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    )}
+                  </Field>
+                </label>
+                {/* Firma */}
+                <Field name="company">
+                  {({ input, meta }) => (
+                    <label className="form-group row" htmlFor="company-input">
+                      <span className="col-sm-3 col-form-label">Firma</span>
+                      <div className="col-sm-6 d-flex align-items-center">
+                        <input
+                          {...input}
+                          type="text"
+                          className={this.formInputClassFactory(meta)}
+                          id="company-input"
+                        />
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    </label>
+                  )}
+                </Field>
+                {/* Address */}
+                <Field name="address">
+                  {({ input, meta }) => (
+                    <label className="form-group row" htmlFor="address-input">
+                      <span className="col-sm-3 col-form-label">Adresse</span>
+                      <div className="col-sm-6 d-flex align-items-center">
+                        <input
+                          {...input}
+                          type="text"
+                          className={this.formInputClassFactory(meta)}
+                          id="address-input"
+                        />
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    </label>
+                  )}
+                </Field>
+                {/* PLZ und Ort */}
+                <div className="form-group row">
+                  <span className="col-sm-3 col-form-label" id="zip-code-city-inputs">
+                    LZ und Ort
+                  </span>
+                  <Field name="lz">
+                    {({ input, meta }) => (
+                      <div className="col-sm-3 d-flex align-items-center">
+                        <input
+                          {...input}
+                          className={this.formInputClassFactory(meta)}
+                          aria-labelledby="zip-code-city-inputs"
+                        />
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    )}
+                  </Field>
+                  <Field name="ort">
+                    {({ input, meta }) => (
+                      <div className="col-sm-3 d-flex align-items-center">
+                        <input
+                          {...input}
+                          className={this.formInputClassFactory(meta)}
+                          aria-labelledby="zip-code-city-inputs"
+                        />
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                {/* Land */}
+                <label className="form-group row" htmlFor="country-input">
+                  <span className="col-sm-3 col-form-label">Country</span>
+                  <Field name="country">
+                    {({ input, meta }) => (
+                      <div className="col-sm-6 d-flex align-items-center" >
+                        <select
+                          {...input}
+                          id="country-input"
+                          className={this.formInputClassFactory(meta)}
+                        >
+                          <option value={null} />
+                          <option value="once">Once</option>
+                          <option value="twice">Twice</option>
+                        </select>
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    )}
+                  </Field>
+                </label>
+
+                <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
+                <FundRaisingForm onClick={this.submitForm} hash="j3ip42zwp3mlewb9" {...this.state.values} />
+              </form>
+            )
+            }
+          />
 
         </div>
 

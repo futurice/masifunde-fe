@@ -9,7 +9,14 @@ class FundRaisingForm extends Component {
   render() {
     return (
       <div>
-        <div id="fbIframeDiv" style={{ position: 'relative' }} />
+        <div
+          id="fbIframeDiv"
+          onClick={this.props.onClick}
+          onKeyPress={this.props.onClick}
+          role="button"
+          tabIndex={0}
+          style={{ position: 'relative' }}
+        />
         <a target="_blank" rel="noopener noreferrer" href="http://www.fundraisingbox.com">
           <img
             border="0"
@@ -23,7 +30,13 @@ class FundRaisingForm extends Component {
   }
 }
 
-function ScriptParametersWrapper({ hash, amount, projectId }) {
+FundRaisingForm.propTypes = {
+  onClick: PropTypes.func.isRequired,
+}
+
+function ScriptParametersWrapper({
+  hash, amount, projectId, onClick,
+}) {
   const BaseUrl = 'https://secure.fundraisingbox.com/app/paymentJS'
 
   // Info about parameters
@@ -40,13 +53,14 @@ function ScriptParametersWrapper({ hash, amount, projectId }) {
     removeOnUnmount: true,
   })
 
-  return <Form />
+  return <Form onClick={onClick} />
 }
 
 ScriptParametersWrapper.propTypes = {
   hash: PropTypes.string.isRequired,
   amount: PropTypes.number,
   projectId: PropTypes.number,
+  onClick: PropTypes.func.isRequired,
 }
 
 ScriptParametersWrapper.defaultProps = {
