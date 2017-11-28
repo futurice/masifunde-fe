@@ -36,6 +36,7 @@
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
   "dependencies": {
     "contentful": "^5.0.5",
+    "final-form": "^1.0.0",
     "lodash": "^4.17.4",
     "memoizee": "^0.4.11",
     "next": "^4.2.0",
@@ -45,6 +46,7 @@
     "query-string": "^5.0.1",
     "react": "^16.2.0",
     "react-async-script": "^0.9.1",
+    "react-final-form": "^1.0.0",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
     "react-markdown": "^2.5.1",
