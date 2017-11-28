@@ -11,7 +11,7 @@ import { Link, RouteNames } from '../../routes'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import Markdown from '../../components/Markdown'
-import PartnersList from '../../components/PartnersList'
+import PartnersList, { propTypes as partnersListPropTypes } from '../../components/PartnersList'
 
 const Heading2 = styled.h2`
   text-align: center;
@@ -117,20 +117,10 @@ About.propTypes = {
   teamDeButtonText: PropTypes.string.isRequired,
   teamSaButtonText: PropTypes.string.isRequired,
   bannerHeadline: PropTypes.string.isRequired,
-  partnersListOne: PropTypes.arrayOf(
-    PropTypes.shape({
-      imageUrl: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-  ),
-  partnersListTwo: PropTypes.arrayOf(
-    PropTypes.shape({
-      imageUrl: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-  ),
+  // eslint-disable-next-line react/no-typos
+  partnersListOne: partnersListPropTypes.partnersList,
+  // eslint-disable-next-line react/no-typos
+  partnersListTwo: partnersListPropTypes.partnersList,
   bannerText: PropTypes.string.isRequired,
 }
 

@@ -1,19 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Partner = ({ imageUrl, name, link }) => (
-  <div className="col-sm-2 d-flex flex-column align-items-center" key={`${imageUrl} ${name}`}>
+const Partner = ({ image, name, link }) => (
+  <div className="col-sm-2 d-flex flex-column align-items-center">
     <a href={link}>
-      <img className="img-fluid" src={imageUrl} alt={name} />
+      <img className="img-fluid" src={image.url} alt={image.title} />
       <div>{name}</div>
     </a>
   </div>
 )
 
-Partner.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
+export const propTypes = {
+  image: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
   link: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 }
+
+Partner.propTypes = propTypes
 
 export default Partner
