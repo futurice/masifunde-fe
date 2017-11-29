@@ -107,47 +107,52 @@ class Donate extends Component {
       <Fragment>
         <Head title={metaTitle} description={metaDescription} />
         <div className="container">
+
+          <h1>{introHeading}</h1>
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <h1>{introHeading}</h1>
               <Markdown source={introMarkdown} />
             </div>
           </div>
           <h3>{section1title}</h3>
 
           <div className="row">
-            <div className="col" data-toggle="buttons">
-              <CountryLabel htmlFor="countryInputDe" isActive>
-                <input
-                  type="radio"
-                  name="country"
-                  value="de"
-                  selected
-                  id="countryInputDe"
-                  autoComplete="off"
-                />
-                <Markdown source={section1MarkdownDe} />
-              </CountryLabel>
-            </div>
-            <div className="col" data-toggle="buttons">
-              <CountryLabel htmlFor="countryInputSa">
-                <input
-                  type="radio"
-                  name="country"
-                  value="sa"
-                  id="countryInputSa"
-                  autoComplete="off"
-                />
-                <Markdown source={section1MarkdownSa} />
-              </CountryLabel>
+            <div className="col offset-lg-3">
+              <div className="row">
+                <div className="col" data-toggle="buttons">
+                  <CountryLabel htmlFor="countryInputDe" isActive>
+                    <input
+                      type="radio"
+                      name="country"
+                      value="de"
+                      selected
+                      id="countryInputDe"
+                      autoComplete="off"
+                    />
+                    <Markdown source={section1MarkdownDe} />
+                  </CountryLabel>
+                </div>
+                <div className="col" data-toggle="buttons">
+                  <CountryLabel htmlFor="countryInputSa">
+                    <input
+                      type="radio"
+                      name="country"
+                      value="sa"
+                      id="countryInputSa"
+                      autoComplete="off"
+                    />
+                    <Markdown source={section1MarkdownSa} />
+                  </CountryLabel>
+                </div>
+              </div>
             </div>
           </div>
 
           <Divider />
 
+          <h3>{section2title}</h3>
           <div className="row">
-            <div className="col">
-              <h3>{section2title}</h3>
+            <div className="col offset-lg-3">
               {section2ReferenceList.map(({ value, name }) => (
                 <LabelButton
                   className="btn"
@@ -169,7 +174,7 @@ class Donate extends Component {
 
           <h3>{section3Title}</h3>
           <div className="row">
-            <div className="col">
+            <div className="col offset-lg-3">
               {section3ReferenceList.map(({ text, value }) => (
                 <LabelButton
                   className="btn"
