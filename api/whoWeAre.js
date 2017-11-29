@@ -1,5 +1,5 @@
 import { fetchSingleEntry } from './contentfulService'
-import { unwrapImage } from './common'
+import { unwrapImage, unwrapTeamMembers } from './common'
 
 export async function fetchWhoWeArePage(locale) {
   return fetchSingleEntry('about', locale)
@@ -8,22 +8,19 @@ export async function fetchWhoWeArePage(locale) {
 export async function fetchTeamDePage(locale) {
   const content = await fetchSingleEntry('pageTeamDe', locale)
 
-  const unwrapRegion = region => region.fields.name
-
-  const unwrapTeamMembers = (teamMembers = []) =>
-    teamMembers.map((teamMember) => {
-      const { fields } = teamMember
-      return {
-        id: teamMember.sys.id,
-        name: fields.name,
-        image: unwrapImage(fields.profileImage),
-        region: unwrapRegion(fields.region),
-      }
-    })
-
   return {
     ...content,
     sectionOneImage: unwrapImage(content.sectionOneImage),
+    teamMembers: unwrapTeamMembers(content.teamMembers),
+  }
+}
+
+export async function fetchTeamSaPage(locale) {
+  const content = await fetchSingleEntry('pageTeamSa', locale)
+
+  return {
+    ...content,
+    introImage: unwrapImage(content.introImage),
     teamMembers: unwrapTeamMembers(content.teamMembers),
   }
 }

@@ -12,3 +12,16 @@ export const unwrapImage = image => ({
   url: image.fields.file.url,
   title: image.fields.title,
 })
+
+export const unwrapRegion = region => region.fields.name
+
+export const unwrapTeamMembers = (teamMembers = []) =>
+  teamMembers.map((teamMember) => {
+    const { fields } = teamMember
+    return {
+      id: teamMember.sys.id,
+      ...fields,
+      image: unwrapImage(fields.profileImage),
+      region: unwrapRegion(fields.region),
+    }
+  })
