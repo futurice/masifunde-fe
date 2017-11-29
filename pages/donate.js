@@ -54,18 +54,13 @@ const ErrorMessage = styled.span`
   color: #dc3545;
 `
 
-// eslint-disable-next-line react/prefer-stateless-function
 class Donate extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-    this.submitForm = this.submitForm.bind(this)
-    this.validateForm = this.validateForm.bind(this)
-  }
-  submitForm() {
+  state = {}
+
+  submitForm = () => {
     this.formRef.click()
   }
-  validateForm(values) {
+  validateForm = (values) => {
     const errors = {}
     const isRequired = (key) => {
       if (!values[key]) {
