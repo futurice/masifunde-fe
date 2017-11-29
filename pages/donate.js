@@ -25,14 +25,14 @@ const LabelButton = Button.withComponent('label').extend`
 
 const CountryLabel = styled.label`
   border-radius: 8px;
-  border: solid 3px #fe9933;
+  border: solid 3px ${props => props.theme.orange};
   color: #4f463f;
   padding: 20px;
   display: block !important;
   
   ${({ isActive }) => isActive && css`
     color: #fff;
-    background-color: #fe9933;
+    background-color: ${props => props.theme.orange};
   `}
 
   // Hide input (copied from boostrap)
@@ -61,6 +61,7 @@ class Donate extends Component {
     this.formRef.click()
   }
   validateForm = (values) => {
+    console.log(values)
     const errors = {}
     const isRequired = (key) => {
       if (!values[key]) {
@@ -116,96 +117,113 @@ class Donate extends Component {
           </div>
           <h3>{section1title}</h3>
 
-          <div className="row">
-            <div className="col offset-lg-3">
-              <div className="row">
-                <div className="col" data-toggle="buttons">
-                  <CountryLabel htmlFor="countryInputDe" isActive>
-                    <input
-                      type="radio"
-                      name="country"
-                      value="de"
-                      selected
-                      id="countryInputDe"
-                      autoComplete="off"
-                    />
-                    <Markdown source={section1MarkdownDe} />
-                  </CountryLabel>
-                </div>
-                <div className="col" data-toggle="buttons">
-                  <CountryLabel htmlFor="countryInputSa">
-                    <input
-                      type="radio"
-                      name="country"
-                      value="sa"
-                      id="countryInputSa"
-                      autoComplete="off"
-                    />
-                    <Markdown source={section1MarkdownSa} />
-                  </CountryLabel>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <Divider />
-
-          <h3>{section2title}</h3>
-          <div className="row">
-            <div className="col offset-lg-3">
-              {section2ReferenceList.map(({ value, name }) => (
-                <LabelButton
-                  className="btn"
-                  key={value}
-                  htmlFor={`frequencyInputOption${value}`}
-                >
-                  <input
-                    type="radio"
-                    name="value"
-                    value={value}
-                    id={`frequencyInputOption${value}`}
-                    autoComplete="off"
-                  />
-                  {name}
-                </LabelButton>
-              ))}
-            </div>
-          </div>
-
-          <h3>{section3Title}</h3>
-          <div className="row">
-            <div className="col offset-lg-3">
-              {section3ReferenceList.map(({ text, value }) => (
-                <LabelButton
-                  className="btn"
-                  key={value}
-                  htmlFor={`amountInputOption${value}`}
-                >
-                  <input
-                    type="radio"
-                    name="frequency"
-                    value={value}
-                    id={`amountInputOption${value}`}
-                    autoComplete="off"
-                  />
-                  {text}
-                </LabelButton>
-              ))}
-              <input
-                name="otherAmount"
-                className="form-control col-sm-3"
-                type="text"
-                placeholder={section3Text}
-              />
-            </div>
-          </div>
-
-          <Divider />
           <Form
             onSubmit={() => {}}
             validate={this.validateForm}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
+
+                <div className="row">
+                  <div className="col offset-lg-3">
+                    <Field name="country">
+                      {({ input }) => (
+                        <div className="row">
+                          <div className="col">
+                            <CountryLabel htmlFor="countryInputDe" isActive={input.value === 'de'}>
+                              <input
+                                {...input}
+                                type="radio"
+                                value="de"
+                                id="countryInputDe"
+                                autoComplete="off"
+                              />
+                              <Markdown source={section1MarkdownDe} />
+                            </CountryLabel>
+                          </div>
+                          <div className="col" data-toggle="buttons" i>
+                            <CountryLabel htmlFor="countryInputSa" isActive={input.value === 'sa'}>
+                              <input
+                                {...input}
+                                type="radio"
+                                value="sa"
+                                id="countryInputSa"
+                                autoComplete="off"
+                              />
+                              <Markdown source={section1MarkdownSa} />
+                            </CountryLabel>
+                          </div>
+                        </div>
+                      )}
+                    </Field>
+                  </div>
+                </div>
+
+
+                <Divider />
+
+                <h3>{section2title}</h3>
+                <div className="row">
+                  <div className="col offset-lg-3">
+                    {section2ReferenceList.map(({ value, name }) => (
+                      <Field name="frequency" key={value}>
+                        {({ input }) => (
+                          <LabelButton
+                            className="btn"
+                            isActive={input.value === value}
+                            key={value}
+                            htmlFor={`frequencyInputOption${value}`}
+                          >
+                            <input
+                              {...input}
+                              type="radio"
+                              value={value}
+                              id={`frequencyInputOption${value}`}
+                              autoComplete="off"
+                            />
+                            {name}
+                          </LabelButton>
+                        )}
+                      </Field>
+                    ))}
+                  </div>
+                </div>
+
+
+                <h3>{section3Title}</h3>
+                <div className="row">
+                  <div className="col offset-lg-3">
+                    {section3ReferenceList.map(({ text, value }) => (
+                      <Field name="amount" key={value}>
+                        {({ input }) => (
+                          <LabelButton
+                            className="btn"
+                            isActive={parseInt(input.value, 10) === value}
+                            key={value}
+                            htmlFor={`amountInputOption${value}`}
+                          >
+                            <input
+                              {...input}
+                              type="radio"
+                              value={value}
+                              id={`amountInputOption${value}`}
+                              autoComplete="off"
+                            />
+                            {text}
+                          </LabelButton>
+                        )}
+                      </Field>
+                    ))}
+                    <input
+                      name="otherAmount"
+                      className="form-control col-sm-3"
+                      type="text"
+                      placeholder={section3Text}
+                    />
+                  </div>
+                </div>
+
+                <Divider />
+
                 <h2>{section4Title}</h2>
                 {/* Anrede und Titel */}
                 <div className="form-group row">
