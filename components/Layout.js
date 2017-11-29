@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { injectGlobal, ThemeProvider } from 'styled-components'
@@ -103,7 +103,7 @@ injectGlobal`
 
 const Layout = ({ headerData, children, footerData }) => (
   <ThemeProvider theme={theme}>
-    <div>
+    <Fragment>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
@@ -138,7 +138,7 @@ const Layout = ({ headerData, children, footerData }) => (
         contactText={footerData.contactText}
         copyrightText={footerData.copyrightText}
       />
-    </div>
+    </Fragment>
   </ThemeProvider>
 )
 
