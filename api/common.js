@@ -14,3 +14,10 @@ export const unwrapImage = image => ({
 })
 
 export const unwrapRegion = region => region.fields.name
+
+export const unwrapPortrait = portrait => ({
+  ...portrait,
+  page1Image: unwrapImage(portrait.fields.page1Image),
+  page2Image: unwrapImage(portrait.fields.page2Image),
+  page3Image: unwrapImage(portrait.fields.page3Image),
+})
