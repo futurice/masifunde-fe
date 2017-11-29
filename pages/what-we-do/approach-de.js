@@ -9,6 +9,7 @@ import { fetchApproachDePage } from '../../api/whatWeDo'
 import Banner from '../../components/Banner'
 import Markdown from '../../components/Markdown'
 import Hero from '../../components/Hero'
+import HorizontalRuler from '../../components/HorizontalRuler'
 
 const H1 = styled.h1`
   text-align: center;
@@ -20,11 +21,6 @@ const H2 = styled.h2`
   font-weight: bold;
   margin-top: 1.1rem;
   margin-bottom: 1.3rem;
-`
-
-const HR = styled.hr`
-  border-color: ${props => props.theme.orange};
-  margin: 3rem 13% 5rem 13%;
 `
 
 const Tagline = styled.p`
@@ -81,7 +77,7 @@ const ApproachDe = ({
     <Hero imageUrl="//via.placeholder.com/350x150/555" />
     <Container>
       <Tagline>{title}</Tagline>
-      <HR />
+      <HorizontalRuler />
       <H1>{introHeading}</H1>
       <CenteredMarkdown source={introText} />
       <ProjectsContainer className="row">
