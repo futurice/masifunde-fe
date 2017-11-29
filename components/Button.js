@@ -21,15 +21,19 @@ CustomButton.defaultProps = {
 }
 
 const StyledButton = styled(CustomButton)`
+  font-size: 1.125rem;
   font-family: 'Lato', 'sans-serif';
+  font-weight: bold;
   background-color: transparent;
   outline: none;
   box-shadow: none !important;
-  border-radius: 47px;
   padding: 0.5rem 1.5rem;
+  border-radius: 47px;
   border-width: 3px;
-  font-weight: bold;
-  font-size: 1.125rem;
+
+  &:hover {
+    color: white;
+  }
   
   ${props => props.type === 'primary' && css`
     font-weight: 900;
@@ -39,9 +43,10 @@ const StyledButton = styled(CustomButton)`
     padding-bottom: 0.35rem;
     
     &:hover {
-      color: white;
       background-color: ${props.theme.green};
     }
+
+    ${props.isActive && `background-color: ${props.theme.green};`}
   `}
   
   ${props => props.type === 'secondary' && css`
@@ -49,17 +54,17 @@ const StyledButton = styled(CustomButton)`
     border-color: ${props.theme.orangeRed};
     
     &:hover {
-      color: white;
       background-color: ${props.theme.orangeRed};
     }
+
+    ${props.isActive && `background-color: ${props.theme.orangeRed};`}
   `}
   
   ${props => props.type === 'banner' && css`
     color: white;
     border-color: white;
-    
+
     &:hover {
-      color: ${props.theme.orange};
       background-color: white;
     }
   `}
