@@ -72,6 +72,7 @@ Hero (hero image not through Contentful):
 Page intro:
 * introHeading - The main header on the page (usually the h1)
 * introMarkdown - The intro text to the page
+* introImage - The intro image to the page
 
 Banner:
 * bannerTitle

@@ -2,7 +2,19 @@ import { fetchSingleEntry } from './contentfulService'
 import { unwrapImage, unwrapTeamMembers } from './common'
 
 export async function fetchWhoWeArePage(locale) {
-  return fetchSingleEntry('about', locale)
+  const response = await fetchSingleEntry('about', locale)
+
+  return {
+    ...response,
+    partnersListOne: response.partnersListOne.map(partners => ({
+      ...partners.fields,
+      image: unwrapImage(partners.fields.logo),
+    })),
+    partnersListTwo: response.partnersListTwo.map(partners => ({
+      ...partners.fields,
+      image: unwrapImage(partners.fields.logo),
+    })),
+  }
 }
 
 export async function fetchTeamDePage(locale) {

@@ -29,6 +29,16 @@ const AdressContainer = styled.div`
   text-align: center;
 `
 
+const mapContact = contact => (
+  <TeamMember
+    key={`${contact.image.url} ${contact.region} ${contact.name}`}
+    imageUrl={contact.image.url}
+    title={contact.region}
+    subtitle={contact.name}
+    email={contact.email}
+  />
+)
+
 const Contact = ({
   metaTitle,
   metaDescription,
@@ -48,31 +58,15 @@ const Contact = ({
 
       <SecondaryHeading>{contactsHeading}</SecondaryHeading>
       <PictureContainer className="row justify-content-center">
-        {contacts.map(contact => (
-          <TeamMember
-            key={`${contact.imageUrl} ${contact.title} ${contact.name}`}
-            imageUrl={contact.imageUrl}
-            title={contact.title}
-            subtitle={contact.name}
-            email={contact.email}
-          />
-        ))}
+        {contacts.map(mapContact)}
       </PictureContainer>
 
       <SecondaryHeading>{regionalContactsHeading}</SecondaryHeading>
-      {_chunk(regionalContacts, 4).map(contactsChunk => (
-        <PictureContainer className="row justify-content-sm-center">
-          {contactsChunk.map(contact => (
-            <TeamMember
-              key={`${contact.imageUrl} ${contact.title} ${contact.name}`}
-              imageUrl={contact.imageUrl}
-              title={contact.title}
-              subtitle={contact.name}
-              email={contact.email}
-            />
-          ))}
-        </PictureContainer>
-      ))}
+      <PictureContainer className="row justify-content-sm-center">
+        {_chunk(regionalContacts, 4).map(contactsChunk =>
+            contactsChunk.map(mapContact),
+        )}
+      </PictureContainer>
 
       <AdressContainer className="row">
         <div className="col-sm-4 d-flex flex-column align-items-center">
@@ -92,28 +86,28 @@ const Contact = ({
   </div>
 )
 
+const contactListPropType = PropTypes.arrayOf(
+  PropTypes.shape({
+    image: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
+    region: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string,
+  }).isRequired,
+)
+
 Contact.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string.isRequired,
   mainHeading: PropTypes.string.isRequired,
   contactsHeading: PropTypes.string.isRequired,
   regionalContactsHeading: PropTypes.string.isRequired,
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      imageUrl: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
-  regionalContacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      imageUrl: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
+  // eslint-disable-next-line react/no-typos
+  contacts: contactListPropType.isRequired,
+  // eslint-disable-next-line react/no-typos
+  regionalContacts: contactListPropType.isRequired,
   address: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   telephone: PropTypes.string.isRequired,
