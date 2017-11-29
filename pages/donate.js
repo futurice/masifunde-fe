@@ -1,89 +1,52 @@
-import React, { Component } from 'react'
-import { Button, Input } from 'reactstrap'
+/* eslint-disable function-paren-newline */
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
+import { RouteNames } from '../routes'
+import Banner from '../components/Banner'
+import Head from '../components/Head'
+import Button from '../components/Button'
+import { getLocaleFromQuery } from '../utils/locale'
+import { fetchDonatePage } from '../api/howToSupport'
 import FundRaisingForm from '../components/FundRaisingForm'
 import LayoutWrapper from '../components/LayoutWrapper'
+import Markdown from '../components/Markdown'
 
-const contactStyle = {
-  fontSize: 16,
-  position: 'relative',
-  width: '100%',
-  background: '#d8d8d8',
-  paddingTop: 50,
-  paddingBottom: 50,
-  paddingLeft: 200,
-  paddingRight: 200,
-  height: 200,
-  marginTop: 80,
-  textAlign: 'center',
-  verticalAlign: 'middle',
-}
+const LabelButton = Button.withComponent('label').extend`
+  // Hide input (copied from boostrap)
+  input {
+    position: absolute;
+    clip: rect(0,0,0,0);
+    pointer-events: none;
+  }
+`
 
-const contactTextStyle = {
-  fontSize: 32,
-}
+const CountryLabel = styled.label`
+  border-radius: 8px;
+  border: solid 3px #fe9933;
+  color: #4f463f;
+  padding: 20px;
+  display: block !important;
+  
+  ${({ isActive }) => isActive && css`
+    color: #fff;
+    background-color: #fe9933;
+  `}
 
-const leftCol = {
-  float: 'left',
-  width: '59%',
-  textAlign: 'left',
-  verticalAlign: 'center',
-  display: 'inline-block',
-}
+  // Hide input (copied from boostrap)
+  input {
+    position: absolute;
+    clip: rect(0,0,0,0);
+    pointer-events: none;
+  }
+`
 
-const rightCol = {
-  float: 'left',
-  width: '39%',
-  textAlign: 'left',
-  paddingLeft: 50,
-  verticalAlign: 'center',
-  display: 'inline-block',
-}
-
-const phoneIconStyle = {
-  height: 20,
-  width: 20,
-  margin: 10,
-}
-
-const countryInfoStyle = {
-  border: '1px solid #BBB',
-}
-
-const sectionTitleStyle = {
-  marginBottom: 20,
-}
-
-const sectionDividerStyle = {
-  border: '0.5px solid #BBB',
-  marginTop: 80,
-  marginBottom: 80,
-}
-
-const amountButtonStyle = {
-  paddingTop: 10,
-  paddingBottom: 10,
-  paddingLeft: 40,
-  paddingRight: 40,
-  minWidth: 20,
-  color: 'white',
-  backgroundColor: 'gray',
-  border: 'none',
-  width: '100%',
-}
-
-const lightGreyButtonStyle = {
-  paddingTop: 10,
-  paddingBottom: 10,
-  paddingLeft: 40,
-  paddingRight: 40,
-  color: 'black',
-  backgroundColor: '#d8d8d8',
-  border: 'none',
-  width: '100%',
-}
+const Divider = styled.div`
+  border: 0.5px solid #BBB;
+  margin: 50px 0;
+`
 
 const ErrorMessage = styled.span`
   display: inline-block;
@@ -127,84 +90,124 @@ class Donate extends Component {
   }
   formInputClassFactory = meta => `form-control ${meta.error && meta.touched ? 'is-invalid' : ''}`
   render() {
+    console.log(this.props)
+    const {
+      metaTitle,
+      metaDescription,
+      introHeading,
+      introMarkdown,
+      section1title,
+      section1MarkdownDe,
+      section1MarkdownSa,
+      section2title,
+      section2ReferenceList,
+      section3Title,
+      section3ReferenceList,
+      section3Text,
+      section4Title,
+      bannerTitle,
+      bannerButtonText,
+    } = this.props
+
     return (
-      <div>
+      <Fragment>
+        <Head title={metaTitle} description={metaDescription} />
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <h1>Durch Bildung Chancen ermöglichen</h1>
-              <p>
-                Da wir in Deutschland rein ehrenamtlich arbeiten, garantieren wir Ihnen, dass 100
-                Prozent der Spenden für unsere Arbeit vor Ort eingesetzt werden. Transparenz ist ein
-                Grundsatz unserer Mittelverwendung.
-              </p>
+              <h1>{introHeading}</h1>
+              <Markdown source={introMarkdown} />
             </div>
           </div>
+          <h3>{section1title}</h3>
+
           <div className="row">
-            <div className="col" style={sectionTitleStyle}>
-              <h3>Where do you want to give?</h3>
+            <div className="col" data-toggle="buttons">
+              <CountryLabel htmlFor="countryInputDe" isActive>
+                <input
+                  type="radio"
+                  name="country"
+                  value="de"
+                  selected
+                  id="countryInputDe"
+                  autoComplete="off"
+                />
+                <Markdown source={section1MarkdownDe} />
+              </CountryLabel>
             </div>
-            <div className="col-sm" style={countryInfoStyle}>
-              <h3>Germany</h3>
-              <br />
-              <a href="#url">Description of the masifunde work in the destination</a>
-            </div>
-            <div className="col-sm" style={countryInfoStyle}>
-              <h3>South Africa</h3>
-              <br />
-              <a href="#url">Description of the masifunde work in the destination</a>
+            <div className="col" data-toggle="buttons">
+              <CountryLabel htmlFor="countryInputSa">
+                <input
+                  type="radio"
+                  name="country"
+                  value="sa"
+                  id="countryInputSa"
+                  autoComplete="off"
+                />
+                <Markdown source={section1MarkdownSa} />
+              </CountryLabel>
             </div>
           </div>
 
-          <div className="row" style={sectionDividerStyle} />
+          <Divider />
 
           <div className="row">
-            <div className="col-sm-3" style={sectionTitleStyle}>
-              <h3>Choose an amount</h3>
-            </div>
             <div className="col">
-              <div className="row" style={sectionTitleStyle}>
-                <div className="col">
-                  <Button style={amountButtonStyle}>5€</Button>
-                </div>
-                <div className="col">
-                  <Button style={amountButtonStyle}>10€</Button>
-                </div>
-                <div className="col">
-                  <Button style={amountButtonStyle}>20€</Button>
-                </div>
-                <div className="col">
-                  <Button style={amountButtonStyle}>50€</Button>
-                </div>
-              </div>
-              <div className="row" style={sectionTitleStyle}>
-                <div className="col">
-                  <Button style={amountButtonStyle}>100€</Button>
-                </div>
-                <div className="col">
-                  <Button style={amountButtonStyle}>200€</Button>
-                </div>
-                <div className="col">
-                  <Input placeholder="Other amount €" />
-                </div>
-              </div>
-              <div className="row" style={sectionTitleStyle}>
-                <div className="col">
-                  <Button style={lightGreyButtonStyle}>
-                    Your impact with 50€: 15 schoolbooks for a student
-                  </Button>
-                </div>
-              </div>
+              <h3>{section2title}</h3>
+              {section2ReferenceList.map(({ value, name }) => (
+                <LabelButton
+                  className="btn"
+                  key={value}
+                  htmlFor={`frequencyInputOption${value}`}
+                >
+                  <input
+                    type="radio"
+                    name="value"
+                    value={value}
+                    id={`frequencyInputOption${value}`}
+                    autoComplete="off"
+                  />
+                  {name}
+                </LabelButton>
+              ))}
             </div>
           </div>
 
-          <div className="row" style={sectionDividerStyle} />
+          <h3>{section3Title}</h3>
+          <div className="row">
+            <div className="col">
+              {section3ReferenceList.map(({ text, value }) => (
+                <LabelButton
+                  className="btn"
+                  key={value}
+                  htmlFor={`amountInputOption${value}`}
+                >
+                  <input
+                    type="radio"
+                    name="frequency"
+                    value={value}
+                    id={`amountInputOption${value}`}
+                    autoComplete="off"
+                  />
+                  {text}
+                </LabelButton>
+              ))}
+              <input
+                name="otherAmount"
+                className="form-control col-sm-3"
+                type="text"
+                placeholder={section3Text}
+              />
+            </div>
+          </div>
+
+          <Divider />
           <Form
             onSubmit={() => {}}
             validate={this.validateForm}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-                <h2>Enter personal details</h2>
+                <h2>{section4Title}</h2>
                 {/* Anrede und Titel */}
                 <div className="form-group row">
                   <span className="col-sm-3 col-form-label" id="titleInputs">
@@ -213,7 +216,7 @@ class Donate extends Component {
                   <div className="col-sm-2">
                     <Field name="anrede">
                       {({ input, meta }) => (
-                        <div className="d-flex align-items-center" >
+                        <div className="d-flex align-items-center">
                           <select
                             {...input}
                             className={this.formInputClassFactory(meta)}
@@ -225,7 +228,6 @@ class Donate extends Component {
                           </select>
                           {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                         </div>
-
                       )}
                     </Field>
                   </div>
@@ -302,7 +304,7 @@ class Donate extends Component {
                   <span className="col-sm-3 col-form-label">Spendequittung?</span>
                   <Field name="receipt">
                     {({ input, meta }) => (
-                      <div className="col-sm-6 d-flex align-items-center" >
+                      <div className="col-sm-6 d-flex align-items-center">
                         <select
                           {...input}
                           id="receipt-input"
@@ -386,7 +388,7 @@ class Donate extends Component {
                   <span className="col-sm-3 col-form-label">Country</span>
                   <Field name="country">
                     {({ input, meta }) => (
-                      <div className="col-sm-6 d-flex align-items-center" >
+                      <div className="col-sm-6 d-flex align-items-center">
                         <select
                           {...input}
                           id="country-input"
@@ -404,33 +406,55 @@ class Donate extends Component {
 
                 <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
               </form>
-            )
-            }
+            )}
           />
-          <FundRaisingForm onMouseHover={this.submitForm} hash="j3ip42zwp3mlewb9" {...this.state.values} />
-
+          <FundRaisingForm
+            onMouseHover={this.submitForm}
+            hash="j3ip42zwp3mlewb9"
+            {...this.state.values}
+          />
         </div>
-
-        <div style={contactStyle}>
-          <div style={leftCol}>
-            <b style={contactTextStyle}>
-              Have something to ask? We are happy to answer your questions
-            </b>
-          </div>
-          <div style={rightCol}>
-            <div>
-              <img src="../static/phone-2.svg" style={phoneIconStyle} alt="" />
-              <a href="#url">+49 303 303 303</a>
-            </div>
-            <div>
-              <img src="../static/at-sign.svg" style={phoneIconStyle} alt="" />
-              <a href="#url">contact@masifunde.de</a>
-            </div>
-          </div>
-        </div>
-      </div>
+        <Banner
+          headline={bannerTitle}
+          buttonText={bannerButtonText}
+          buttonLink={RouteNames.Index}
+        />
+      </Fragment>
     )
   }
+}
+
+Donate.propTypes = {
+  metaTitle: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string.isRequired,
+  introHeading: PropTypes.string.isRequired,
+  introMarkdown: PropTypes.string.isRequired,
+  section1title: PropTypes.string.isRequired,
+  section1MarkdownDe: PropTypes.string.isRequired,
+  section1MarkdownSa: PropTypes.string.isRequired,
+  section2title: PropTypes.string.isRequired,
+  section2ReferenceList: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+  section3Title: PropTypes.string.isRequired,
+  section3Text: PropTypes.string.isRequired,
+  section3ReferenceList: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+  section4Title: PropTypes.string.isRequired,
+  bannerTitle: PropTypes.string.isRequired,
+  bannerButtonText: PropTypes.string.isRequired,
+}
+
+Donate.getInitialProps = async function initialProps({ query }) {
+  return fetchDonatePage(getLocaleFromQuery(query))
 }
 
 export default LayoutWrapper(Donate)
