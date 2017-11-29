@@ -90,7 +90,6 @@ class Donate extends Component {
   }
   formInputClassFactory = meta => `form-control ${meta.error && meta.touched ? 'is-invalid' : ''}`
   render() {
-    console.log(this.props)
     const {
       metaTitle,
       metaDescription,
