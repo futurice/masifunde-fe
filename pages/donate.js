@@ -199,7 +199,6 @@ class Donate extends Component {
           </div>
 
           <div className="row" style={sectionDividerStyle} />
-
           <Form
             onSubmit={() => {}}
             validate={this.validateForm}
@@ -404,11 +403,11 @@ class Donate extends Component {
                 </label>
 
                 <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
-                <FundRaisingForm onClick={this.submitForm} hash="j3ip42zwp3mlewb9" {...this.state.values} />
               </form>
             )
             }
           />
+          <FundRaisingForm onMouseHover={this.submitForm} hash="j3ip42zwp3mlewb9" {...this.state.values} />
 
         </div>
 

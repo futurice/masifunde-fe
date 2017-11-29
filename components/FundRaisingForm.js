@@ -1,21 +1,45 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import ReactAsyncScript from 'react-async-script'
 import { stringify } from 'query-string'
 import PropTypes from 'prop-types'
 
 // It is necessary class component since it is required for ref in ReactAsyncScript
 // eslint-disable-next-line react/prefer-stateless-function
+
+let interval = null
+
+let iframe = null
+
 class FundRaisingForm extends Component {
+  constructor(props) {
+    super(props)
+    this.iframeOnMouseover = this.iframeOnMouseover.bind(this)
+  }
+  componentDidMount() {
+    interval = setInterval(() => {
+      const iframeContainer = document.getElementById('fbIframeDiv')
+      const frame = iframeContainer.querySelector('iframe')
+      if (frame) {
+        iframe = frame
+        frame.addEventListener('mouseover', this.iframeOnMouseover)
+        clearInterval(interval)
+      }
+    }, 10)
+  }
+  componentWillUnmount() {
+    clearInterval(interval)
+    if (iframe) {
+      iframe.removeEventListener('mouseover', this.iframeOnMouseover)
+    }
+  }
+  iframeOnMouseover() {
+    this.props.onMouseHover()
+  }
   render() {
     return (
-      <div>
+      <Fragment>
         <div
           id="fbIframeDiv"
-          onClick={this.props.onClick}
-          onKeyPress={this.props.onClick}
-          role="button"
-          tabIndex={0}
-          style={{ position: 'relative' }}
         />
         <a target="_blank" rel="noopener noreferrer" href="http://www.fundraisingbox.com">
           <img
@@ -25,17 +49,17 @@ class FundRaisingForm extends Component {
             alt="FundraisingBox Logo"
           />
         </a>
-      </div>
+      </Fragment>
     )
   }
 }
 
 FundRaisingForm.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onMouseHover: PropTypes.func.isRequired,
 }
 
 function ScriptParametersWrapper({
-  hash, amount, projectId, onClick,
+  hash, amount, projectId, onMouseHover,
 }) {
   const BaseUrl = 'https://secure.fundraisingbox.com/app/paymentJS'
 
@@ -53,14 +77,14 @@ function ScriptParametersWrapper({
     removeOnUnmount: true,
   })
 
-  return <Form onClick={onClick} />
+  return <Form onMouseHover={onMouseHover} />
 }
 
 ScriptParametersWrapper.propTypes = {
   hash: PropTypes.string.isRequired,
   amount: PropTypes.number,
   projectId: PropTypes.number,
-  onClick: PropTypes.func.isRequired,
+  onMouseHover: PropTypes.func.isRequired,
 }
 
 ScriptParametersWrapper.defaultProps = {
