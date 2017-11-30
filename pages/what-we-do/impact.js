@@ -66,19 +66,16 @@ const mapPortraitToCarouselItems = (portrait) => {
     image: portrait.page1Image,
     heading: portrait.page1Heading,
     text: portrait.page1Text,
-    src: `${portrait.page1Heading} ${portrait.page1Image.url}`,
   }
   const item2 = {
     image: portrait.page2Image,
     heading: portrait.page2Heading,
     text: portrait.page2Text,
-    src: `${portrait.page2Heading} ${portrait.page2Image.url}`,
   }
   const item3 = {
     image: portrait.page3Image,
     heading: portrait.page3Heading,
     text: portrait.page3Text,
-    src: `${portrait.page3Heading} ${portrait.page3Image.url}`,
   }
   return [item1, item2, item3]
 }
