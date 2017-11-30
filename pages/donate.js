@@ -30,12 +30,12 @@ const CountryLabel = styled.label`
   padding: 20px;
   display: block !important;
 
-  ${({ isActive }) =>
-    isActive &&
-    css`
-      color: #fff;
-      background-color: ${props => props.theme.orange};
-    `} input {
+  ${({ isActive }) => isActive && css`
+    color: #fff;
+    background-color: ${props => props.theme.orange};
+  `} 
+  
+  input {
     position: absolute;
     clip: rect(0, 0, 0, 0);
     pointer-events: none;
