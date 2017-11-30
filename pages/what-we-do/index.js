@@ -9,21 +9,7 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 import { fetchWhatWeDoPage } from '../../api/whatWeDo'
 import { getLocaleFromQuery } from '../../utils/locale'
 import Head from '../../components/Head'
-
-const VideoIframe = styled.iframe`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`
-const VideoContainer = styled.div`
-  position: relative;
-  padding-bottom: 54%; /* 16:9 */
-  padding-top: 25px;
-  height: 0;
-  margin-bottom: 100px;
-`
+import YouTubeVideo from '../../components/YouTubeVideo'
 
 const Hero = styled.img`
   width: 100%;
@@ -102,14 +88,7 @@ const WhatWeDo = ({
     <Hero src={heroImage.url} alt={heroImage.title} />
     <Container>
       <H1>{title}</H1>
-      <VideoContainer>
-        <VideoIframe
-          title="Masifunde Video"
-          src={`https://www.youtube.com/embed/${youtubeVideo}?rel=0&amp;showinfo=0`}
-          frameBorder="0"
-          allowFullScreen
-        />
-      </VideoContainer>
+      <YouTubeVideo videoId={youtubeVideo} />
       <BoldHeading>{introHeading}</BoldHeading>
       <div className="row">
         {programmes.map(program => (
