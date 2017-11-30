@@ -441,7 +441,7 @@ class Donate extends Component {
 
 Donate.propTypes = {
   metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string,
   introHeading: PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
   section1title: PropTypes.string.isRequired,
@@ -466,6 +466,10 @@ Donate.propTypes = {
   section4Title: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
+}
+
+Donate.defaultProps = {
+  metaDescription: undefined,
 }
 
 Donate.getInitialProps = async function initialProps({ query }) {
