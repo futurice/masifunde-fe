@@ -53,6 +53,23 @@ const ErrorMessage = styled.span`
   color: #dc3545;
 `
 
+const fieldName = {
+  projectId: 'projectId',
+  salutation: 'salutation',
+  title: 'title',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  companyName: 'companyName',
+  address: 'address',
+  postCode: 'postCode',
+  city: 'city',
+  country: 'country',
+  email: 'email',
+  amount: 'amount',
+  paymentInterval: 'interval',
+  wantsReceipt: 'wantsReceipt',
+}
+
 class Donate extends Component {
   state = {}
 
@@ -66,17 +83,20 @@ class Donate extends Component {
         errors[key] = 'Required'
       }
     }
-    isRequired('anrede')
-    isRequired('tittel')
-    isRequired('firstName')
-    isRequired('lastName')
-    isRequired('company')
-    isRequired('email')
-    isRequired('address')
-    isRequired('lz')
-    isRequired('ort')
-    isRequired('receipt')
-    isRequired('country')
+    isRequired(fieldName.projectId)
+    isRequired(fieldName.amount)
+    isRequired(fieldName.paymentInterval)
+    isRequired(fieldName.salutation)
+    isRequired(fieldName.title)
+    isRequired(fieldName.firstName)
+    isRequired(fieldName.lastName)
+    isRequired(fieldName.companyName)
+    isRequired(fieldName.email)
+    isRequired(fieldName.address)
+    isRequired(fieldName.postCode)
+    isRequired(fieldName.city)
+    isRequired(fieldName.wantsReceipt)
+    isRequired(fieldName.country)
     if (!Object.keys(errors).length) {
       this.setState({ ...this.state, values })
     }
@@ -121,7 +141,7 @@ class Donate extends Component {
               <form onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col offset-lg-3">
-                    <Field name="country">
+                    <Field name={fieldName.projectId}>
                       {({ input }) => (
                         <div className="row">
                           <div className="col">
@@ -159,7 +179,7 @@ class Donate extends Component {
                 <h3>{section2title}</h3>
                 <div className="row">
                   <div className="col offset-lg-3">
-                    <Field name="frequency">
+                    <Field name={fieldName.paymentInterval}>
                       {({ input }) =>
                         section2ReferenceList.map(({ value, name }) => (
                           <LabelButton
@@ -186,7 +206,7 @@ class Donate extends Component {
                 <h3>{section3Title}</h3>
                 <div className="row">
                   <div className="col offset-lg-3">
-                    <Field name="amount">
+                    <Field name={fieldName.amount}>
                       {({ input }) =>
                         section3ReferenceList.map(({ text, value }) => (
                           <LabelButton
@@ -207,7 +227,7 @@ class Donate extends Component {
                         ))}
                     </Field>
 
-                    <Field name="otherAmount">
+                    <Field name={fieldName.amount}>
                       {({ input }) => (
                         <input
                           {...input}
@@ -229,7 +249,7 @@ class Donate extends Component {
                     Anrede und Titel
                   </span>
                   <div className="col-sm-2">
-                    <Field name="anrede">
+                    <Field name={fieldName.salutation}>
                       {({ input, meta }) => (
                         <div className="d-flex align-items-center">
                           <select
@@ -238,15 +258,15 @@ class Donate extends Component {
                             aria-labelledby="titleInputs"
                           >
                             <option value={null} />
-                            <option value="Frau">Frau</option>
-                            <option value="Herr">Herr</option>
+                            <option value="Mrs.">Frau</option>
+                            <option value="Mr.">Herr</option>
                           </select>
                           {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                         </div>
                       )}
                     </Field>
                   </div>
-                  <Field name="tittel">
+                  <Field name={fieldName.title}>
                     {({ input, meta }) => (
                       <div className="col-sm-4 d-flex align-items-center">
                         <input
@@ -261,7 +281,7 @@ class Donate extends Component {
                   </Field>
                 </div>
                 {/* Email */}
-                <Field name="email">
+                <Field name={fieldName.email}>
                   {({ input, meta }) => (
                     <label className="form-group row" htmlFor="inputEmail">
                       <span className="col-sm-3 col-form-label">Email</span>
@@ -283,7 +303,7 @@ class Donate extends Component {
                     Name
                   </span>
                   <div className="col-sm-3">
-                    <Field name="firstName">
+                    <Field name={fieldName.firstName}>
                       {({ input, meta }) => (
                         <div className="d-flex align-items-center">
                           <input
@@ -298,7 +318,7 @@ class Donate extends Component {
                     </Field>
                   </div>
                   <div className="col-sm-3">
-                    <Field name="lastName">
+                    <Field name={fieldName.lastName}>
                       {({ input, meta }) => (
                         <div className="d-flex align-items-center">
                           <input
@@ -313,11 +333,10 @@ class Donate extends Component {
                     </Field>
                   </div>
                 </div>
-                {/* TO GET ALL COUNTRIES: https://restcountries.eu/rest/v2/all?fields=name;alpha2Code */}
                 {/* receipt ? */}
                 <label className="form-group row" htmlFor="receipt-input">
                   <span className="col-sm-3 col-form-label">Spendequittung?</span>
-                  <Field name="receipt">
+                  <Field name={fieldName.wantsReceipt}>
                     {({ input, meta }) => (
                       <div className="col-sm-6 d-flex align-items-center">
                         <select
@@ -326,8 +345,9 @@ class Donate extends Component {
                           className={this.formInputClassFactory(meta)}
                         >
                           <option value={null} />
-                          <option value="once">Once</option>
-                          <option value="twice">Twice</option>
+                          <option value="no_receipt">no receipt</option>
+                          <option value="receipt_now">receipt now</option>
+                          <option value="receipt_end_of_year">receipt end of year</option>
                         </select>
                         {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                       </div>
@@ -335,7 +355,7 @@ class Donate extends Component {
                   </Field>
                 </label>
                 {/* Firma */}
-                <Field name="company">
+                <Field name={fieldName.companyName}>
                   {({ input, meta }) => (
                     <label className="form-group row" htmlFor="company-input">
                       <span className="col-sm-3 col-form-label">Firma</span>
@@ -352,7 +372,7 @@ class Donate extends Component {
                   )}
                 </Field>
                 {/* Address */}
-                <Field name="address">
+                <Field name={fieldName.address}>
                   {({ input, meta }) => (
                     <label className="form-group row" htmlFor="address-input">
                       <span className="col-sm-3 col-form-label">Adresse</span>
@@ -371,9 +391,9 @@ class Donate extends Component {
                 {/* PLZ und Ort */}
                 <div className="form-group row">
                   <span className="col-sm-3 col-form-label" id="zip-code-city-inputs">
-                    LZ und Ort
+                    PLZ und Ort
                   </span>
-                  <Field name="lz">
+                  <Field name={fieldName.postCode}>
                     {({ input, meta }) => (
                       <div className="col-sm-3 d-flex align-items-center">
                         <input
@@ -385,7 +405,7 @@ class Donate extends Component {
                       </div>
                     )}
                   </Field>
-                  <Field name="ort">
+                  <Field name={fieldName.city}>
                     {({ input, meta }) => (
                       <div className="col-sm-3 d-flex align-items-center">
                         <input
@@ -399,9 +419,10 @@ class Donate extends Component {
                   </Field>
                 </div>
                 {/* Land */}
+                {/* TO GET ALL COUNTRIES: https://restcountries.eu/rest/v2/all?fields=name;alpha2Code */}
                 <label className="form-group row" htmlFor="country-input">
                   <span className="col-sm-3 col-form-label">Country</span>
-                  <Field name="country">
+                  <Field name={fieldName.country}>
                     {({ input, meta }) => (
                       <div className="col-sm-6 d-flex align-items-center">
                         <select
@@ -410,8 +431,7 @@ class Donate extends Component {
                           className={this.formInputClassFactory(meta)}
                         >
                           <option value={null} />
-                          <option value="once">Once</option>
-                          <option value="twice">Twice</option>
+                          <option value="DE">Deutchland</option>
                         </select>
                         {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                       </div>
