@@ -432,7 +432,7 @@ class Donate extends Component {
         <Banner
           headline={bannerTitle}
           buttonText={bannerButtonText}
-          buttonLink={RouteNames.Index}
+          buttonLink={RouteNames.Contact}
         />
       </Fragment>
     )
