@@ -29,22 +29,21 @@ const CountryLabel = styled.label`
   color: #4f463f;
   padding: 20px;
   display: block !important;
-  
-  ${({ isActive }) => isActive && css`
-    color: #fff;
-    background-color: ${props => props.theme.orange};
-  `}
 
-  // Hide input (copied from boostrap)
-  input {
+  ${({ isActive }) =>
+    isActive &&
+    css`
+      color: #fff;
+      background-color: ${props => props.theme.orange};
+    `} input {
     position: absolute;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
     pointer-events: none;
   }
 `
 
 const Divider = styled.div`
-  border: 0.5px solid #BBB;
+  border: 0.5px solid #bbb;
   margin: 50px 0;
 `
 
@@ -61,7 +60,6 @@ class Donate extends Component {
     this.formRef.click()
   }
   validateForm = (values) => {
-    console.log(values)
     const errors = {}
     const isRequired = (key) => {
       if (!values[key]) {
@@ -108,7 +106,6 @@ class Donate extends Component {
       <Fragment>
         <Head title={metaTitle} description={metaDescription} />
         <div className="container">
-
           <h1>{introHeading}</h1>
           <div className="row justify-content-center">
             <div className="col-lg-8">
@@ -122,7 +119,6 @@ class Donate extends Component {
             validate={this.validateForm}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-
                 <div className="row">
                   <div className="col offset-lg-3">
                     <Field name="country">
@@ -158,15 +154,14 @@ class Donate extends Component {
                   </div>
                 </div>
 
-
                 <Divider />
 
                 <h3>{section2title}</h3>
                 <div className="row">
                   <div className="col offset-lg-3">
-                    {section2ReferenceList.map(({ value, name }) => (
-                      <Field name="frequency" key={value}>
-                        {({ input }) => (
+                    <Field name="frequency">
+                      {({ input }) =>
+                        section2ReferenceList.map(({ value, name }) => (
                           <LabelButton
                             className="btn"
                             isActive={input.value === value}
@@ -182,19 +177,18 @@ class Donate extends Component {
                             />
                             {name}
                           </LabelButton>
-                        )}
-                      </Field>
-                    ))}
+                        ))
+                      }
+                    </Field>
                   </div>
                 </div>
-
 
                 <h3>{section3Title}</h3>
                 <div className="row">
                   <div className="col offset-lg-3">
-                    {section3ReferenceList.map(({ text, value }) => (
-                      <Field name="amount" key={value}>
-                        {({ input }) => (
+                    <Field name="amount">
+                      {({ input }) =>
+                        section3ReferenceList.map(({ text, value }) => (
                           <LabelButton
                             className="btn"
                             isActive={parseInt(input.value, 10) === value}
@@ -210,9 +204,9 @@ class Donate extends Component {
                             />
                             {text}
                           </LabelButton>
-                        )}
-                      </Field>
-                    ))}
+                        ))
+                      }
+                    </Field>
                     <input
                       name="otherAmount"
                       className="form-control col-sm-3"
