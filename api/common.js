@@ -21,13 +21,14 @@ export const unwrapRegionalGroups = regionalGroups => ({
   regions: regionalGroups.fields.regions.map(unwrapRegion),
 })
 
-export const unwrapTeamMembers = (teamMembers = []) =>
-  teamMembers.map((teamMember) => {
-    const { fields } = teamMember
-    return {
-      id: teamMember.sys.id,
-      ...fields,
-      image: unwrapImage(fields.profileImage),
-      region: unwrapRegion(fields.region),
-    }
-  })
+export const unwrapTeamMember = (teamMember) => {
+  const { fields } = teamMember
+  return {
+    id: teamMember.sys.id,
+    ...fields,
+    image: unwrapImage(fields.profileImage),
+    region: unwrapRegion(fields.region),
+  }
+}
+
+export const unwrapTeamMembers = (teamMembers = []) => teamMembers.map(unwrapTeamMember)
