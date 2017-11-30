@@ -204,15 +204,19 @@ class Donate extends Component {
                             />
                             {text}
                           </LabelButton>
-                        ))
-                      }
+                        ))}
                     </Field>
-                    <input
-                      name="otherAmount"
-                      className="form-control col-sm-3"
-                      type="text"
-                      placeholder={section3Text}
-                    />
+
+                    <Field name="otherAmount">
+                      {({ input }) => (
+                        <input
+                          {...input}
+                          className="form-control col-sm-3"
+                          type="text"
+                          placeholder={section3Text}
+                        />
+                      )}
+                    </Field>
                   </div>
                 </div>
 
