@@ -10,24 +10,10 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 import Banner from '../../components/Banner'
 import TeamMember from '../../components/TeamMember'
 import Head from '../../components/Head'
-
-const LocationsList = styled.ul`
-  column-count: 2;
-  list-style-type: none;  
-  margin-bottom: 0;
-`
-
-const LocationListItem = styled.li`
-  padding: 0.6rem 2rem;
-  padding-left: 0;  
-`
+import RegionalGroups from '../../components/RegionalGroups'
 
 const TeamMemberList = styled.div`
   margin: 2rem 0 2.5rem 0;
-`
-
-const ImageContainer = styled.div`
-  margin: 3rem 0 4.5rem 0;
 `
 
 const Paragraph = styled(Markdown)`
@@ -55,14 +41,7 @@ const TeamDe = ({
       <section>
         <h2>{sectionOneTitle}</h2>
         <Paragraph source={sectionOneText} />
-        <ImageContainer className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center">
-          <img className="col-sm-12 col-md-6" src={regionalGroups.image.url} alt={regionalGroups.image.title} />
-          <LocationsList className="list-unstyled">
-            {regionalGroups.regions.map(place => (
-              <LocationListItem key={place}>{place}</LocationListItem>
-            ))}
-          </LocationsList>
-        </ImageContainer>
+        <RegionalGroups regionalGroups={regionalGroups} />
       </section>
       <section>
         <h2>{sectionTwoTitle}</h2>
