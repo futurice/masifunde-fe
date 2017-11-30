@@ -57,3 +57,11 @@ export async function fetchApproachDePage(locale) {
     projects: content.projects.map(unwrapProjects),
   }
 }
+
+export async function fetchApproachSaPage(locale) {
+  const content = await fetchSingleEntry('pageApproachSA', locale)
+  return {
+    ...content,
+    projects: content.projects.map(unwrapProjects),
+  }
+}
