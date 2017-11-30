@@ -46,7 +46,10 @@ const StyledButton = styled(CustomButton)`
       background-color: ${props.theme.green};
     }
 
-    ${props.isActive && `background-color: ${props.theme.green};`}
+    ${props.isActive && `
+      background-color: ${props.theme.green};
+      color: white;
+    `}
   `}
   
   ${props => props.type === 'secondary' && css`
@@ -57,7 +60,10 @@ const StyledButton = styled(CustomButton)`
       background-color: ${props.theme.orangeRed};
     }
 
-    ${props.isActive && `background-color: ${props.theme.orangeRed};`}
+    ${props.isActive && `
+      background-color: ${props.theme.orangeRed};
+      color: white;
+    `}  
   `}
   
   ${props => props.type === 'banner' && css`
