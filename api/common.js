@@ -26,3 +26,14 @@ export const unwrapStats = stat => ({
   ...stat.fields,
   icon: unwrapImage(stat.fields.icon),
 })
+
+export const unwrapTeamMembers = (teamMembers = []) =>
+  teamMembers.map((teamMember) => {
+    const { fields } = teamMember
+    return {
+      id: teamMember.sys.id,
+      ...fields,
+      image: unwrapImage(fields.profileImage),
+      region: unwrapRegion(fields.region),
+    }
+  })
