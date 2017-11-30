@@ -1,5 +1,5 @@
 import { fetchSingleEntry } from './contentfulService'
-import { unwrapImage, unwrapTeamMembers } from './common'
+import { unwrapImage, unwrapRegionalGroups, unwrapTeamMembers } from './common'
 
 export async function fetchWhoWeArePage(locale) {
   const response = await fetchSingleEntry('about', locale)
@@ -22,8 +22,8 @@ export async function fetchTeamDePage(locale) {
 
   return {
     ...content,
-    sectionOneImage: unwrapImage(content.sectionOneImage),
     teamMembers: unwrapTeamMembers(content.teamMembers),
+    regionalGroups: unwrapRegionalGroups(content.regionalGroups),
   }
 }
 

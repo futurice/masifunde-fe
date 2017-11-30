@@ -42,8 +42,7 @@ const TeamDe = ({
   sectionOneTitle,
   sectionOneText,
   sectionTwoTitle,
-  sectionOneList,
-  sectionOneImage,
+  regionalGroups,
   teamMembers,
   metaTitle,
   metaDescription,
@@ -57,9 +56,11 @@ const TeamDe = ({
         <h2>{sectionOneTitle}</h2>
         <Paragraph source={sectionOneText} />
         <ImageContainer className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center">
-          <img className="col-sm-12 col-md-6" src={sectionOneImage.url} alt={sectionOneImage.title} />
+          <img className="col-sm-12 col-md-6" src={regionalGroups.image.url} alt={regionalGroups.image.title} />
           <LocationsList className="list-unstyled">
-            {sectionOneList.map(place => <LocationListItem key={place}>{place}</LocationListItem>)}
+            {regionalGroups.regions.map(place => (
+              <LocationListItem key={place}>{place}</LocationListItem>
+            ))}
           </LocationsList>
         </ImageContainer>
       </section>
@@ -83,7 +84,7 @@ const TeamDe = ({
 
 TeamDe.propTypes = {
   metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string,
   title: PropTypes.string.isRequired,
   pageDescription: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
@@ -91,11 +92,14 @@ TeamDe.propTypes = {
   sectionOneTitle: PropTypes.string.isRequired,
   sectionOneText: PropTypes.string.isRequired,
   sectionTwoTitle: PropTypes.string.isRequired,
-  sectionOneImage: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+  regionalGroups: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
+    regions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   }).isRequired,
-  sectionOneList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   teamMembers: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -104,6 +108,10 @@ TeamDe.propTypes = {
       title: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired).isRequired,
+}
+
+TeamDe.defaultProps = {
+  metaDescription: undefined,
 }
 
 TeamDe.getInitialProps = async function initialProps({ query }) {
