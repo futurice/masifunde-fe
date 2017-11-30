@@ -19,6 +19,10 @@ const Headline = styled.h2`
   width: 100%;
   margin-bottom: 30px;
   text-align: center;
+  
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 `
 
 function Banner({ headline, buttonText, buttonLink }) {
