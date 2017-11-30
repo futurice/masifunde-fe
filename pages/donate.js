@@ -136,7 +136,7 @@ class Donate extends Component {
                               <Markdown source={section1MarkdownDe} />
                             </CountryLabel>
                           </div>
-                          <div className="col" data-toggle="buttons" i>
+                          <div className="col" data-toggle="buttons">
                             <CountryLabel htmlFor="countryInputSa" isActive={input.value === 'sa'}>
                               <input
                                 {...input}
