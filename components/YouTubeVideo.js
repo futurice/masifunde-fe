@@ -9,26 +9,30 @@ const VideoIframe = styled.iframe`
   width: 100%;
   height: 100%;
 `
-const VideoContainer = styled.div`
-  position: relative;
-  padding-bottom: 54%; /* 16:9 */
-  padding-top: 25px;
-  height: 0;
-  margin-bottom: 100px;
-`
 
-const YouTubeVideo = ({ videoId }) => (
-  <VideoContainer>
+const VideoContainer = ({
+  videoId,
+  className,
+}) => (
+  <div className={className}>
     <VideoIframe
       src={`https://www.youtube.com/embed/${videoId}?rel=0&amp;showinfo=0`}
       frameBorder="0"
       allowFullScreen
     />
-  </VideoContainer>
+  </div>
 )
 
-YouTubeVideo.propTypes = {
+VideoContainer.propTypes = {
   videoId: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 }
+
+const YouTubeVideo = styled(VideoContainer)`
+  position: relative;
+  padding-bottom: 54%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+`
 
 export default YouTubeVideo

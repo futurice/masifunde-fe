@@ -68,6 +68,10 @@ const Number = styled.span`
   font-size: 44px;
 `
 
+const StyledYouTubeVideo = YouTubeVideo.extend`
+  margin-bottom: 100px;
+`
+
 const WhatWeDo = ({
   centerHeading,
   heroImage,
@@ -88,7 +92,7 @@ const WhatWeDo = ({
     <Hero src={heroImage.url} alt={heroImage.title} />
     <Container>
       <H1>{title}</H1>
-      <YouTubeVideo videoId={youtubeVideo} />
+      <StyledYouTubeVideo videoId={youtubeVideo} />
       <BoldHeading>{introHeading}</BoldHeading>
       <div className="row">
         {programmes.map(program => (
