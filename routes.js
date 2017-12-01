@@ -20,11 +20,11 @@ const WhoWeAre = '/who-we-are'
 const TeamDE = '/who-we-are/team-de'
 const TeamSA = '/who-we-are/team-sa'
 const Partners = '/who-we-are/partners'
+const Donate = '/who-we-are/donate'
 const HowToSupport = '/how-to-support'
 const BecomeSponsor = '/how-to-support/become-sponsor'
 const BecomeVolunteer = '/how-to-support/become-volunteer'
 const BecomePartner = '/how-to-support/become-partner'
-const Donate = '/donate'
 const Contact = '/contact'
 
 // Register the routes
