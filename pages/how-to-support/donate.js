@@ -5,6 +5,7 @@ import { Form, Field } from 'react-final-form'
 import styled, { css } from 'styled-components'
 import _debaunce from 'lodash/debounce'
 
+import countries from '../../utils/countries'
 import { RouteNames } from '../../routes'
 import Banner from '../../components/Banner'
 import Head from '../../components/Head'
@@ -433,7 +434,9 @@ class Donate extends Component {
                           className={this.formInputClassFactory(meta)}
                         >
                           <option value={null} />
-                          <option value="DE">Deutchland</option>
+                          {Object.entries(countries).map(([countryKey, country]) => (
+                            <option value={countryKey}>{country}</option>
+                          ))}
                         </select>
                         {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                       </div>
