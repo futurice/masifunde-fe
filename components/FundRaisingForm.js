@@ -3,27 +3,25 @@ import ReactAsyncScript from 'react-async-script'
 import { stringify } from 'query-string'
 import PropTypes from 'prop-types'
 
-// It is necessary class component since it is required for ref in ReactAsyncScript
-// eslint-disable-next-line react/prefer-stateless-function
-
-let interval = null
-
+let intervalRef = null
 let iframe = null
 
+// / It is necessary class component since it is required for ref in ReactAsyncScript
+// eslint-disable-next-line react/prefer-stateless-function
 class FundRaisingForm extends Component {
   componentDidMount() {
-    interval = setInterval(() => {
+    intervalRef = setInterval(() => {
       const iframeContainer = document.getElementById('fbIframeDiv')
       const frame = iframeContainer.querySelector('iframe')
       if (frame) {
         iframe = frame
         frame.addEventListener('mouseover', this.iframeOnMouseover)
-        clearInterval(interval)
+        clearInterval(intervalRef)
       }
     }, 10)
   }
   componentWillUnmount() {
-    clearInterval(interval)
+    clearInterval(intervalRef)
     if (iframe) {
       iframe.removeEventListener('mouseover', this.iframeOnMouseover)
     }
