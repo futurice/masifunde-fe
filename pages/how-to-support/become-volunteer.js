@@ -12,6 +12,7 @@ import Banner from '../../components/Banner'
 import TeamMember from '../../components/TeamMember'
 import Markdown from '../../components/Markdown'
 import RegionalGroups from '../../components/RegionalGroups'
+import { RouteNames } from '../../routes'
 
 const CenteredMarkdown = styled(Markdown)`
   text-align: center;
@@ -63,7 +64,11 @@ const BecomeVolunteer = ({
       <CenteredMarkdown source={section3Markdown} />
       <RegionalGroups regionalGroups={regionalGroups} />
     </Container>
-    <Banner headline={bannerTitle} buttonText={bannerButtonText} buttonLink="a" />
+    <Banner
+      headline={bannerTitle}
+      buttonText={bannerButtonText}
+      buttonLink={RouteNames.Contact}
+    />
   </div>
 )
 
