@@ -32,9 +32,7 @@ class FundRaisingForm extends Component {
   render() {
     return (
       <Fragment>
-        <div
-          id="fbIframeDiv"
-        />
+        <div id="fbIframeDiv" style={{ position: 'relative' }} />
         <a target="_blank" rel="noopener noreferrer" href="http://www.fundraisingbox.com">
           <img
             border="0"
