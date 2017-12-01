@@ -41,7 +41,7 @@ addRoute('/wie-sie-helfen', HowToSupport)
 addRoute('/wie-sie-helfen/pate-werden', BecomeSponsor)
 addRoute('/wie-sie-helfen/aktiv-werden', BecomeVolunteer)
 addRoute('/wie-sie-helfen/partner-werden', BecomePartner)
-addRoute('/spenden', Donate)
+addRoute('/wie-sie-helfen/spenden', Donate)
 addRoute('/kontakt', Contact)
 
 // To use with translations
