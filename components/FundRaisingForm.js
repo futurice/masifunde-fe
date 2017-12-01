@@ -11,10 +11,6 @@ let interval = null
 let iframe = null
 
 class FundRaisingForm extends Component {
-  constructor(props) {
-    super(props)
-    this.iframeOnMouseover = this.iframeOnMouseover.bind(this)
-  }
   componentDidMount() {
     interval = setInterval(() => {
       const iframeContainer = document.getElementById('fbIframeDiv')
@@ -32,7 +28,7 @@ class FundRaisingForm extends Component {
       iframe.removeEventListener('mouseover', this.iframeOnMouseover)
     }
   }
-  iframeOnMouseover() {
+  iframeOnMouseover = () => {
     this.props.onMouseHover()
   }
   render() {
