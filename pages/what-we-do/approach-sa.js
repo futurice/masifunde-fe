@@ -13,6 +13,7 @@ import Banner from '../../components/Banner'
 import YouTubeVideo from '../../components/YouTubeVideo'
 import Project from '../../components/Project'
 import HorizontalRuler from '../../components/HorizontalRuler'
+import { RouteNames } from '../../routes'
 
 const H1 = styled.h1`
   text-align: center;
@@ -62,7 +63,11 @@ const ApproachSa = ({
       </ProjectsContainer>
       <StyledYouTubeVideo videoId={youTubeVideoId} />
     </Container>
-    <Banner headline={bannerTitle} buttonText={bannerButtonText} buttonLink="a" />
+    <Banner
+      headline={bannerTitle}
+      buttonText={bannerButtonText}
+      buttonLink={RouteNames.HowToSupport}
+    />
   </div>
 )
 
