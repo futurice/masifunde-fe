@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
 import styled, { css } from 'styled-components'
+import _debaunce from 'lodash/debounce'
 
 import { RouteNames } from '../routes'
 import Banner from '../components/Banner'
@@ -72,6 +73,7 @@ const fieldName = {
 
 class Donate extends Component {
   state = {}
+  debaunceSetState = _debaunce(this.setState, 500)
 
   submitForm = () => {
     this.formRef.click()
@@ -98,7 +100,7 @@ class Donate extends Component {
     isRequired(fieldName.wantsReceipt)
     isRequired(fieldName.country)
     if (!Object.keys(errors).length) {
-      this.setState({ ...this.state, values })
+      this.debaunceSetState({ ...this.state, values })
     }
     return errors
   }
