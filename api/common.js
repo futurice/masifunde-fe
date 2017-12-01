@@ -27,13 +27,20 @@ export const unwrapStats = stat => ({
   icon: unwrapImage(stat.fields.icon),
 })
 
-export const unwrapTeamMembers = (teamMembers = []) =>
-  teamMembers.map((teamMember) => {
-    const { fields } = teamMember
-    return {
-      id: teamMember.sys.id,
-      ...fields,
-      image: unwrapImage(fields.profileImage),
-      region: unwrapRegion(fields.region),
-    }
-  })
+export const unwrapRegionalGroups = regionalGroups => ({
+  name: regionalGroups.fields.name,
+  image: unwrapImage(regionalGroups.fields.image),
+  regions: regionalGroups.fields.regions.map(unwrapRegion),
+})
+
+export const unwrapTeamMember = (teamMember) => {
+  const { fields } = teamMember
+  return {
+    id: teamMember.sys.id,
+    ...fields,
+    image: unwrapImage(fields.profileImage),
+    region: unwrapRegion(fields.region),
+  }
+}
+
+export const unwrapTeamMembers = (teamMembers = []) => teamMembers.map(unwrapTeamMember)

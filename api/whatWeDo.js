@@ -58,7 +58,6 @@ export async function fetchApproachDePage(locale) {
   }
 }
 
-
 export async function fetchImpactPage(locale) {
   const content = await fetchSingleEntry('pageImpact', locale)
   return {
@@ -67,5 +66,13 @@ export async function fetchImpactPage(locale) {
     stats2: content.stats2.map(unwrapStats),
     portrait1: unwrapPortrait(content.portrait1),
     portrait2: unwrapPortrait(content.portrait2),
+  }
+}
+
+export async function fetchApproachSaPage(locale) {
+  const content = await fetchSingleEntry('pageApproachSA', locale)
+  return {
+    ...content,
+    projects: content.projects.map(unwrapProjects),
   }
 }

@@ -10,24 +10,10 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 import Banner from '../../components/Banner'
 import TeamMember from '../../components/TeamMember'
 import Head from '../../components/Head'
-
-const LocationsList = styled.ul`
-  column-count: 2;
-  list-style-type: none;  
-  margin-bottom: 0;
-`
-
-const LocationListItem = styled.li`
-  padding: 0.6rem 2rem;
-  padding-left: 0;  
-`
+import RegionalGroups from '../../components/RegionalGroups'
 
 const TeamMemberList = styled.div`
   margin: 2rem 0 2.5rem 0;
-`
-
-const ImageContainer = styled.div`
-  margin: 3rem 0 4.5rem 0;
 `
 
 const Paragraph = styled(Markdown)`
@@ -42,8 +28,7 @@ const TeamDe = ({
   sectionOneTitle,
   sectionOneText,
   sectionTwoTitle,
-  sectionOneList,
-  sectionOneImage,
+  regionalGroups,
   teamMembers,
   metaTitle,
   metaDescription,
@@ -56,12 +41,7 @@ const TeamDe = ({
       <section>
         <h2>{sectionOneTitle}</h2>
         <Paragraph source={sectionOneText} />
-        <ImageContainer className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center">
-          <img className="col-sm-12 col-md-6" src={sectionOneImage.url} alt={sectionOneImage.title} />
-          <LocationsList className="list-unstyled">
-            {sectionOneList.map(place => <LocationListItem key={place}>{place}</LocationListItem>)}
-          </LocationsList>
-        </ImageContainer>
+        <RegionalGroups regionalGroups={regionalGroups} />
       </section>
       <section>
         <h2>{sectionTwoTitle}</h2>
@@ -83,7 +63,7 @@ const TeamDe = ({
 
 TeamDe.propTypes = {
   metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string,
   title: PropTypes.string.isRequired,
   pageDescription: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
@@ -91,11 +71,14 @@ TeamDe.propTypes = {
   sectionOneTitle: PropTypes.string.isRequired,
   sectionOneText: PropTypes.string.isRequired,
   sectionTwoTitle: PropTypes.string.isRequired,
-  sectionOneImage: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+  regionalGroups: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
+    regions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   }).isRequired,
-  sectionOneList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   teamMembers: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -104,6 +87,10 @@ TeamDe.propTypes = {
       title: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired).isRequired,
+}
+
+TeamDe.defaultProps = {
+  metaDescription: undefined,
 }
 
 TeamDe.getInitialProps = async function initialProps({ query }) {

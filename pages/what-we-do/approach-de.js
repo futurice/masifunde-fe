@@ -10,17 +10,10 @@ import Banner from '../../components/Banner'
 import Markdown from '../../components/Markdown'
 import Hero from '../../components/Hero'
 import HorizontalRuler from '../../components/HorizontalRuler'
+import Project from '../../components/Project'
 
 const H1 = styled.h1`
   text-align: center;
-`
-
-const H2 = styled.h2`
-  text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-top: 1.1rem;
-  margin-bottom: 1.3rem;
 `
 
 const Tagline = styled.p`
@@ -38,29 +31,6 @@ const CenteredMarkdown = styled(Markdown)`
 const ProjectsContainer = styled.div`
   margin-top: 3rem;
 `
-
-const ProjectImage = styled.img`
-  max-width: 100%;
-`
-
-const Project = ({
-  className, image, name, description,
-}) => (
-  <div className={className}>
-    <ProjectImage className="mx-auto d-block" src={image.url} alt={image.tile} />
-    <H2>{name}</H2>
-    <Markdown source={description} />
-  </div>)
-
-Project.propTypes = {
-  className: PropTypes.string.isRequired,
-  image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-}
 
 const ApproachDe = ({
   metaTitle,
