@@ -101,7 +101,15 @@ class Donate extends Component {
     isRequired(fieldName.wantsReceipt)
     isRequired(fieldName.country)
     if (!Object.keys(errors).length) {
-      this.debaunceSetState({ ...this.state, values })
+      this.debaunceSetState({
+        ...this.state,
+        values: {
+          ...values,
+          // Cast to integer
+          [fieldName.amount]: Number(values[fieldName.amount]),
+          [fieldName.projectId]: Number([fieldName.projectId]),
+        },
+      })
     }
     return errors
   }
@@ -214,7 +222,7 @@ class Donate extends Component {
                         section3ReferenceList.map(({ text, value }) => (
                           <LabelButton
                             className="btn"
-                            isActive={parseInt(input.value, 10) === value}
+                            isActive={Number(input.value) === value}
                             key={value}
                             htmlFor={`amountInputOption${value}`}
                           >
