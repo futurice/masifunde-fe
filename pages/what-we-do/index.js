@@ -74,7 +74,6 @@ const StyledYouTubeVideo = YouTubeVideo.extend`
 
 const WhatWeDo = ({
   centerHeading,
-  heroImage,
   introHeading,
   metaDescription,
   metaTitle,
@@ -89,7 +88,7 @@ const WhatWeDo = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero src={heroImage.url} alt={heroImage.title} />
+    <Hero src="//via.placeholder.com/350x150/555" alt={title} />
     <Container>
       <H1>{title}</H1>
       <StyledYouTubeVideo videoId={youtubeVideo} />
@@ -159,10 +158,6 @@ const WhatWeDo = ({
 
 WhatWeDo.propTypes = {
   centerHeading: PropTypes.string.isRequired,
-  heroImage: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
   introHeading: PropTypes.string.isRequired,
   metaDescription: PropTypes.string.isRequired,
   metaTitle: PropTypes.string.isRequired,

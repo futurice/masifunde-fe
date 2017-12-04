@@ -38,10 +38,6 @@ export async function fetchWhatWeDoPage(locale) {
     ...content,
     programmes,
     stats: content.stats.map(unwrapFields),
-    heroImage: {
-      ...content.heroImage.fields,
-      url: content.heroImage.fields.file.url,
-    },
   }
 }
 
