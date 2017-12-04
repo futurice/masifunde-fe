@@ -159,7 +159,7 @@ const WhatWeDo = ({
 WhatWeDo.propTypes = {
   centerHeading: PropTypes.string.isRequired,
   introHeading: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string,
   metaTitle: PropTypes.string.isRequired,
   outroHeading: PropTypes.string.isRequired,
   outroText: PropTypes.string.isRequired,
@@ -189,6 +189,10 @@ WhatWeDo.propTypes = {
   statsHeading: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   youtubeVideo: PropTypes.string.isRequired,
+}
+
+WhatWeDo.defaultProps = {
+  metaDescription: undefined,
 }
 
 WhatWeDo.getInitialProps = async function initialProps({ query }) {
