@@ -38,7 +38,7 @@ const StatsSection = ({ title, stats }) => (
 
 StatsSection.propTypes = {
   title: PropTypes.string.isRequired,
-  stats: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  stats: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
 }
 
 const mapPortraitToCarouselItems = (portrait) => {
