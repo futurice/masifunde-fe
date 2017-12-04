@@ -36,7 +36,7 @@
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
   "dependencies": {
     "contentful": "^5.0.5",
-    "final-form": "^1.1.0",
+    "final-form": "^1.2.0",
     "lodash": "^4.17.4",
     "memoizee": "^0.4.11",
     "next": "^4.2.0",
