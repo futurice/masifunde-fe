@@ -55,6 +55,10 @@ const Divider = styled.div`
   margin: 50px 0;
 `
 
+const FundRaisingIfameContainer = styled.div`
+  padding: 0;
+`
+
 const ErrorMessage = styled.span`
   display: inline-block;
   margin-left: 0.4rem;
@@ -278,7 +282,7 @@ class Donate extends Component {
                 {/* Anrede und Titel */}
                 <div className="form-group row">
                   <FormLabel className="col-sm-3 col-form-label" id="titleInputs">
-                    Anrede* / Titel
+                    Anrede * / Titel
                   </FormLabel>
                   <div className="col-sm-2">
                     <Field name={fieldName.salutation}>
@@ -316,7 +320,7 @@ class Donate extends Component {
                 <Field name={fieldName.email}>
                   {({ input, meta }) => (
                     <label className="form-group row" htmlFor="inputEmail">
-                      <FormLabel className="col-sm-3 col-form-label">Email*</FormLabel>
+                      <FormLabel className="col-sm-3 col-form-label">Email *</FormLabel>
                       <div className="col-sm-6 d-flex align-items-center">
                         <input
                           {...input}
@@ -332,7 +336,7 @@ class Donate extends Component {
                 {/* Name */}
                 <div className="form-group row">
                   <FormLabel className="col-sm-3 col-form-label" id="name-inputs">
-                    Name*
+                    Name *
                   </FormLabel>
                   <div className="col-sm-3">
                     <Field name={fieldName.firstName}>
@@ -367,7 +371,7 @@ class Donate extends Component {
                 </div>
                 {/* receipt ? */}
                 <label className="form-group row" htmlFor="receipt-input">
-                  <FormLabel className="col-sm-3 col-form-label">Spendequittung*</FormLabel>
+                  <FormLabel className="col-sm-3 col-form-label">Spendequittung *</FormLabel>
                   <Field name={fieldName.wantsReceipt}>
                     {({ input, meta }) => (
                       <div className="col-sm-6 d-flex align-items-center">
@@ -407,7 +411,7 @@ class Donate extends Component {
                 <Field name={fieldName.address}>
                   {({ input, meta }) => (
                     <label className="form-group row" htmlFor="address-input">
-                      <FormLabel className="col-sm-3 col-form-label">Adresse*</FormLabel>
+                      <FormLabel className="col-sm-3 col-form-label">Adresse *</FormLabel>
                       <div className="col-sm-6 d-flex align-items-center">
                         <input
                           {...input}
@@ -423,7 +427,7 @@ class Donate extends Component {
                 {/* PLZ und Ort */}
                 <div className="form-group row">
                   <FormLabel className="col-sm-3 col-form-label" id="zip-code-city-inputs">
-                    PLZ* / Ort*
+                    PLZ * / Ort *
                   </FormLabel>
                   <Field name={fieldName.postCode}>
                     {({ input, meta }) => (
@@ -453,7 +457,7 @@ class Donate extends Component {
                 {/* Land */}
                 {/* TO GET ALL COUNTRIES: https://restcountries.eu/rest/v2/all?fields=name;alpha2Code */}
                 <label className="form-group row" htmlFor="country-input">
-                  <FormLabel className="col-sm-3 col-form-label">Country*</FormLabel>
+                  <FormLabel className="col-sm-3 col-form-label">Country *</FormLabel>
                   <Field name={fieldName.country}>
                     {({ input, meta }) => (
                       <div className="col-sm-6 d-flex align-items-center">
@@ -477,11 +481,13 @@ class Donate extends Component {
               </form>
             )}
           />
-          <FundRaisingIframe
-            onMouseHover={this.submitForm}
-            hash="j3ip42zwp3mlewb9"
-            {...this.state.values}
-          />
+          <FundRaisingIfameContainer className="col-sm-9">
+            <FundRaisingIframe
+              onMouseHover={this.submitForm}
+              hash="j3ip42zwp3mlewb9"
+              {...this.state.values}
+            />
+          </FundRaisingIfameContainer>
         </div>
         <Banner
           headline={bannerTitle}
