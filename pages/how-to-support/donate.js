@@ -435,7 +435,7 @@ class Donate extends Component {
                         >
                           <option value={null} />
                           {Object.entries(countries).map(([countryKey, country]) => (
-                            <option value={countryKey}>{country}</option>
+                            <option value={countryKey} key={countryKey}>{country}</option>
                           ))}
                         </select>
                         {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
