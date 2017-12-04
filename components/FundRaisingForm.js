@@ -118,9 +118,9 @@ ScriptParametersWrapper.propTypes = {
   email: PropTypes.string,
   firstName: PropTypes.string,
   hash: PropTypes.string.isRequired,
-  interval: PropTypes.oneOf([0, 1, 3, 6, 12]),
-  isPrivacyAccepted: PropTypes.oneOf([0, 1]),
-  isTermsAccepted: PropTypes.oneOf([0, 1]),
+  interval: PropTypes.oneOf([0, '0', 1, '1', 3, '3', 6, '6', 12, '12']),
+  isPrivacyAccepted: PropTypes.oneOf([0, '0', 1, '1']),
+  isTermsAccepted: PropTypes.oneOf([0, '0', 1, '1']),
   lastName: PropTypes.string,
   message: PropTypes.string,
   paymentMethod: PropTypes.oneOf([
@@ -139,8 +139,12 @@ ScriptParametersWrapper.propTypes = {
   projectId: PropTypes.number,
   salutation: PropTypes.oneOf(['Mr.', 'Mrs.']),
   title: PropTypes.string,
-  wantsNewsletter: PropTypes.oneOf([0, 1]),
-  wantsReceipt: PropTypes.oneOf(['no_receipt', 'receipt_now', 'receipt_end_of_year']),
+  wantsNewsletter: PropTypes.oneOf([0, '0', 1, '1']),
+  wantsReceipt: PropTypes.oneOf([
+    'no_receipt',
+    'receipt_now',
+    'receipt_end_of_year',
+  ]),
 }
 
 ScriptParametersWrapper.defaultProps = {
