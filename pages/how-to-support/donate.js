@@ -55,6 +55,10 @@ const ErrorMessage = styled.span`
   color: #dc3545;
 `
 
+const FormLabel = styled.span`
+  text-align: right;
+`
+
 const DeProjectId = '3522'
 const SaProjectId = '3523'
 const fieldName = {
@@ -264,9 +268,9 @@ class Donate extends Component {
                 <h2>{section4Title}</h2>
                 {/* Anrede und Titel */}
                 <div className="form-group row">
-                  <span className="col-sm-3 col-form-label" id="titleInputs">
+                  <FormLabel className="col-sm-3 col-form-label" id="titleInputs">
                     Anrede und Titel
-                  </span>
+                  </FormLabel>
                   <div className="col-sm-2">
                     <Field name={fieldName.salutation}>
                       {({ input, meta }) => (
@@ -303,7 +307,7 @@ class Donate extends Component {
                 <Field name={fieldName.email}>
                   {({ input, meta }) => (
                     <label className="form-group row" htmlFor="inputEmail">
-                      <span className="col-sm-3 col-form-label">Email</span>
+                      <FormLabel className="col-sm-3 col-form-label">Email</FormLabel>
                       <div className="col-sm-6 d-flex align-items-center">
                         <input
                           {...input}
@@ -318,9 +322,9 @@ class Donate extends Component {
                 </Field>
                 {/* Name */}
                 <div className="form-group row">
-                  <span className="col-sm-3 col-form-label" id="name-inputs">
+                  <FormLabel className="col-sm-3 col-form-label" id="name-inputs">
                     Name
-                  </span>
+                  </FormLabel>
                   <div className="col-sm-3">
                     <Field name={fieldName.firstName}>
                       {({ input, meta }) => (
@@ -354,7 +358,7 @@ class Donate extends Component {
                 </div>
                 {/* receipt ? */}
                 <label className="form-group row" htmlFor="receipt-input">
-                  <span className="col-sm-3 col-form-label">Spendequittung?</span>
+                  <FormLabel className="col-sm-3 col-form-label">Spendequittung?</FormLabel>
                   <Field name={fieldName.wantsReceipt}>
                     {({ input, meta }) => (
                       <div className="col-sm-6 d-flex align-items-center">
@@ -377,7 +381,7 @@ class Donate extends Component {
                 <Field name={fieldName.companyName}>
                   {({ input, meta }) => (
                     <label className="form-group row" htmlFor="company-input">
-                      <span className="col-sm-3 col-form-label">Firma</span>
+                      <FormLabel className="col-sm-3 col-form-label">Firma</FormLabel>
                       <div className="col-sm-6 d-flex align-items-center">
                         <input
                           {...input}
@@ -394,7 +398,7 @@ class Donate extends Component {
                 <Field name={fieldName.address}>
                   {({ input, meta }) => (
                     <label className="form-group row" htmlFor="address-input">
-                      <span className="col-sm-3 col-form-label">Adresse</span>
+                      <FormLabel className="col-sm-3 col-form-label">Adresse</FormLabel>
                       <div className="col-sm-6 d-flex align-items-center">
                         <input
                           {...input}
@@ -409,9 +413,9 @@ class Donate extends Component {
                 </Field>
                 {/* PLZ und Ort */}
                 <div className="form-group row">
-                  <span className="col-sm-3 col-form-label" id="zip-code-city-inputs">
+                  <FormLabel className="col-sm-3 col-form-label" id="zip-code-city-inputs">
                     PLZ und Ort
-                  </span>
+                  </FormLabel>
                   <Field name={fieldName.postCode}>
                     {({ input, meta }) => (
                       <div className="col-sm-3 d-flex align-items-center">
@@ -440,7 +444,7 @@ class Donate extends Component {
                 {/* Land */}
                 {/* TO GET ALL COUNTRIES: https://restcountries.eu/rest/v2/all?fields=name;alpha2Code */}
                 <label className="form-group row" htmlFor="country-input">
-                  <span className="col-sm-3 col-form-label">Country</span>
+                  <FormLabel className="col-sm-3 col-form-label">Country</FormLabel>
                   <Field name={fieldName.country}>
                     {({ input, meta }) => (
                       <div className="col-sm-6 d-flex align-items-center">
