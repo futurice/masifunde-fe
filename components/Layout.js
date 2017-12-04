@@ -14,7 +14,7 @@ injectGlobal`
     color: #4F463F;
     background-color: #faf2e6;
     line-height: 1.6;
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   a {
@@ -47,7 +47,7 @@ injectGlobal`
   
   h2 {
     line-height: 1.4;
-    margin-bottom: 3rem;
+    margin: 3rem 0;
     color: #FF621D;
   }
 

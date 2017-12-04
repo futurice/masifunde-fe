@@ -7,7 +7,8 @@ import Button from './Button'
 import { Link } from '../routes'
 
 const BannerWrapper = styled.div`
-  background-color: gray;
+  background-color: #FE9933;
+  background: url(/static/banner-pattern.svg) repeat;
 `
 
 const BannerContainer = styled.div`
@@ -19,10 +20,11 @@ const Headline = styled.h2`
   width: 100%;
   margin-bottom: 30px;
   text-align: center;
-  
+  color: white;
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
+  font-size: 40px;
 `
 
 function Banner({ headline, buttonText, buttonLink }) {
@@ -31,7 +33,7 @@ function Banner({ headline, buttonText, buttonLink }) {
       <BannerContainer className="container d-flex flex-column align-items-center justify-content-center">
         <Headline>{headline}</Headline>
         <Link route={buttonLink} passHref>
-          <Button>
+          <Button type="banner">
             {buttonText}
           </Button>
         </Link>

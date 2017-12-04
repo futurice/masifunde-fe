@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="264" height="223" viewBox="0 0 264 223">
+  <defs>
+    <rect id="banner-pattern-a" width="835" height="412" rx="3"/>
+    <polygon id="banner-pattern-c" points="0 540 1819.256 540 1819.256 0 0 0"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(-255 -45)">
+    <mask id="banner-pattern-b" fill="#fff">
+      <use xlink:href="#banner-pattern-a"/>
+    </mask>
+    <use fill="#FE9933" xlink:href="#banner-pattern-a"/>
+    <g mask="url(#banner-pattern-b)">
+      <g transform="translate(-508 -62)">
+        <mask id="banner-pattern-d" fill="#fff">
+          <use xlink:href="#banner-pattern-c"/>
+        </mask>
+        <polygon fill="#FE9933" points="978.483 113 966.97 132.941 989.996 132.941" mask="url(#banner-pattern-d)"/>
+        <polygon stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="978.483 113 966.97 132.941 989.996 132.941" mask="url(#banner-pattern-d)"/>
+        <polygon fill="#FE9933" points="982.932 120.843 978.483 113.137 974.033 120.843" mask="url(#banner-pattern-d)"/>
+        <polygon stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="982.932 120.843 978.483 113.137 974.033 120.843" mask="url(#banner-pattern-d)"/>
+        <polygon fill="#FE9933" points="966.917 187.845 990.048 187.845 990.048 132.808 966.917 132.808" mask="url(#banner-pattern-d)"/>
+        <polygon stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="966.917 187.845 990.048 187.845 990.048 132.808 966.917 132.808" mask="url(#banner-pattern-d)"/>
+        <polygon fill="#FE9933" points="966.917 187.845 990.048 187.845 990.048 181.996 966.917 181.996" mask="url(#banner-pattern-d)"/>
+        <polygon stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="966.917 187.845 990.048 187.845 990.048 181.996 966.917 181.996" mask="url(#banner-pattern-d)"/>
+        <path fill="#FE9933" d="M966.917,195.0925 C966.917,199.4595 970.458,202.9995 974.824,202.9995 L982.141,202.9995 C986.508,202.9995 990.048,199.4595 990.048,195.0925 L990.048,187.8445 L966.917,187.8445 L966.917,195.0925 Z" mask="url(#banner-pattern-d)"/>
+        <path stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M966.917,195.0925 C966.917,199.4595 970.458,202.9995 974.824,202.9995 L982.141,202.9995 C986.508,202.9995 990.048,199.4595 990.048,195.0925 L990.048,187.8445 L966.917,187.8445 L966.917,195.0925 Z" mask="url(#banner-pattern-d)"/>
+        <g mask="url(#banner-pattern-d)">
+          <g transform="translate(972 132)">
+            <path fill="#FE9933" d="M0.7705,0.8774 L0.7705,49.9954"/>
+            <path stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M0.7705,0.8774 L0.7705,49.9954"/>
+          </g>
+        </g>
+        <g mask="url(#banner-pattern-d)">
+          <g transform="translate(984 132)">
+            <path fill="#FE9933" d="M0.2031,0.8774 L0.2031,49.9954"/>
+            <path stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M0.2031,0.8774 L0.2031,49.9954"/>
+          </g>
+        </g>
+        <polygon fill="#FE9933" points="798.128 194.814 893.128 194.814 893.128 130.814 798.128 130.814" mask="url(#banner-pattern-d)"/>
+        <polygon stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="798.128 194.814 893.128 194.814 893.128 130.814 798.128 130.814" mask="url(#banner-pattern-d)"/>
+        <path fill="#FE9933" d="M846.1279,194.8142 L846.1279,131.8142 C846.1279,131.8142 837.1279,114.8142 805.1279,123.8142 L805.1279,185.8142 C805.1279,185.8142 840.1279,177.8142 846.1279,194.8142" mask="url(#banner-pattern-d)"/>
+        <path stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M846.1279,194.8142 L846.1279,131.8142 C846.1279,131.8142 837.1279,114.8142 805.1279,123.8142 L805.1279,185.8142 C805.1279,185.8142 840.1279,177.8142 846.1279,194.8142 Z" mask="url(#banner-pattern-d)"/>
+        <path fill="#FE9933" d="M846.1279,194.8142 L846.1279,131.8142 C846.1279,131.8142 855.1279,114.8142 887.1279,123.8142 L887.1279,185.8142 C887.1279,185.8142 852.1279,177.8142 846.1279,194.8142" mask="url(#banner-pattern-d)"/>
+        <path stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M846.1279,194.8142 L846.1279,131.8142 C846.1279,131.8142 855.1279,114.8142 887.1279,123.8142 L887.1279,185.8142 C887.1279,185.8142 852.1279,177.8142 846.1279,194.8142 Z" mask="url(#banner-pattern-d)"/>
+        <polygon fill="#FE9933" points="840.773 225 829.26 244.941 852.286 244.941" mask="url(#banner-pattern-d)"/>
+        <polygon stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="840.773 225 829.26 244.941 852.286 244.941" mask="url(#banner-pattern-d)"/>
+        <polygon fill="#FE9933" points="845.223 232.843 840.774 225.137 836.325 232.843" mask="url(#banner-pattern-d)"/>
+        <polygon stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="845.223 232.843 840.774 225.137 836.325 232.843" mask="url(#banner-pattern-d)"/>
+        <polygon fill="#FE9933" points="829.207 299.845 852.339 299.845 852.339 244.808 829.207 244.808" mask="url(#banner-pattern-d)"/>
+        <polygon stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="829.207 299.845 852.339 299.845 852.339 244.808 829.207 244.808" mask="url(#banner-pattern-d)"/>
+        <polygon fill="#FE9933" points="829.207 299.845 852.339 299.845 852.339 293.996 829.207 293.996" mask="url(#banner-pattern-d)"/>
+        <polygon stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="829.207 299.845 852.339 299.845 852.339 293.996 829.207 293.996" mask="url(#banner-pattern-d)"/>
+        <path fill="#FE9933" d="M829.2075,307.0925 C829.2075,311.4595 832.7485,314.9995 837.1155,314.9995 L844.4315,314.9995 C848.7985,314.9995 852.3395,311.4595 852.3395,307.0925 L852.3395,299.8445 L829.2075,299.8445 L829.2075,307.0925 Z" mask="url(#banner-pattern-d)"/>
+        <path stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M829.2075,307.0925 C829.2075,311.4595 832.7485,314.9995 837.1155,314.9995 L844.4315,314.9995 C848.7985,314.9995 852.3395,311.4595 852.3395,307.0925 L852.3395,299.8445 L829.2075,299.8445 L829.2075,307.0925 Z" mask="url(#banner-pattern-d)"/>
+        <g mask="url(#banner-pattern-d)">
+          <g transform="translate(835 244)">
+            <path fill="#FE9933" d="M0.061,0.8774 L0.061,49.9954"/>
+            <path stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M0.061,0.8774 L0.061,49.9954"/>
+          </g>
+        </g>
+        <g mask="url(#banner-pattern-d)">
+          <g transform="translate(846 244)">
+            <path fill="#FE9933" d="M0.4941,0.8774 L0.4941,49.9954"/>
+            <path stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M0.4941,0.8774 L0.4941,49.9954"/>
+          </g>
+        </g>
+        <polygon fill="#FE9933" points="926.128 306.814 1021.128 306.814 1021.128 242.814 926.128 242.814" mask="url(#banner-pattern-d)"/>
+        <polygon stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" points="926.128 306.814 1021.128 306.814 1021.128 242.814 926.128 242.814" mask="url(#banner-pattern-d)"/>
+        <path fill="#FE9933" d="M974.1279,306.8142 L974.1279,243.8142 C974.1279,243.8142 965.1279,226.8142 933.1279,235.8142 L933.1279,297.8142 C933.1279,297.8142 968.1279,289.8142 974.1279,306.8142" mask="url(#banner-pattern-d)"/>
+        <path stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M974.1279,306.8142 L974.1279,243.8142 C974.1279,243.8142 965.1279,226.8142 933.1279,235.8142 L933.1279,297.8142 C933.1279,297.8142 968.1279,289.8142 974.1279,306.8142 Z" mask="url(#banner-pattern-d)"/>
+        <path fill="#FE9933" d="M974.1279,306.8142 L974.1279,243.8142 C974.1279,243.8142 983.1279,226.8142 1015.1279,235.8142 L1015.1279,297.8142 C1015.1279,297.8142 980.1279,289.8142 974.1279,306.8142" mask="url(#banner-pattern-d)"/>
+        <path stroke="#FF8533" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M974.1279,306.8142 L974.1279,243.8142 C974.1279,243.8142 983.1279,226.8142 1015.1279,235.8142 L1015.1279,297.8142 C1015.1279,297.8142 980.1279,289.8142 974.1279,306.8142 Z" mask="url(#banner-pattern-d)"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -8,7 +8,6 @@ import FaFacebook from 'react-icons/lib/fa/facebook'
 import { Link, RouteNames } from '../routes'
 
 const containerStyle = {
-  marginTop: 60,
   marginBottom: 20,
   borderTop: '1px solid #ddd',
   paddingTop: 60,
