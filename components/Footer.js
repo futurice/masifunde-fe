@@ -8,12 +8,11 @@ import FaFacebook from 'react-icons/lib/fa/facebook'
 import { Link, RouteNames } from '../routes'
 
 const containerStyle = {
-  marginTop: 20,
+  marginTop: 60,
   marginBottom: 20,
-  borderBottom: '1px solid #BBB',
-  borderTop: '1px solid #BBB',
-  paddingTop: 20,
-  paddingBottom: 20,
+  borderTop: '1px solid #ddd',
+  paddingTop: 60,
+  paddingBottom: 0,
 }
 
 const LinksContainer = {
@@ -21,19 +20,20 @@ const LinksContainer = {
 }
 
 const copyrightStyle = {
-  fontSize: 10,
   textAlign: 'center',
   marginTop: 50,
-  marginBottom: 50,
+  marginBottom: 70,
 }
 
 const copyrightRowStyle = {
   textAlign: 'center',
+  fontSize: 14,
+  color: '#77695C',
 }
 
 const socialStyle = {
-  marginLeft: 5,
-  marginRight: 5,
+  marginLeft: 10,
+  marginRight: 10,
 }
 
 function Footer({
@@ -55,7 +55,7 @@ function Footer({
 }) {
   return (
     <Container>
-      <Container style={containerStyle}>
+      <Container style={containerStyle} class="footer">
         <div className="row" style={LinksContainer}>
 
           <div className="col-sm">

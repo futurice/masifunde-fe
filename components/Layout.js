@@ -9,24 +9,62 @@ import Footer, { propTypes as footerPropTypes } from './Footer'
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
   body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
-    color: #333333;
+    color: #4F463F;
     background-color: #faf2e6;
+    line-height: 1.6;
+    font-size: 18px;
   }
-  
-  h1, h2 {
+
+  a {
+    color: #225DBC;
+  }
+
+  .footer a, .footer a:visited {
+    color: #77695C;
+  }
+
+  .footer li {
+    padding: 0.3rem 0;
+  }
+
+  .footer ul li:first-of-type {
+    font-weight: 700;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Raleway';
+    font-weight: 800;
     text-align: center;
-    line-height: 1.36;
   }
   
   h1 {
+    line-height: 1.2;
     margin-bottom: 2.2rem;
+    color: #FF621D;
   }
   
   h2 {
-    margin-bottom: 0.6rem;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+    color: #FF621D;
   }
+
+  h3 {
+    line-height: 1.4;
+    color: #77695C;
+    font-weight: 400;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  p + p {
+    margin-top: 24px;
+  }
+
 `
 
 const theme = {
@@ -35,7 +73,7 @@ const theme = {
   green: '#17DD73',
   darkGreen: '#00C078',
   blue: '#4176F9',
-  linkBlue: '#4176F9',
+  linkBlue: '#225DBC',
 }
 
 const Layout = ({ headerData, children, footerData }) => (
@@ -48,6 +86,8 @@ const Layout = ({ headerData, children, footerData }) => (
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.2/dist/css/bootstrap.min.css"
         />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
+        <link href="https://fonts.googleapis.com/css?family=Raleway:700,800" rel="stylesheet" />
+
       </Head>
       <Header
         whatWeDoText={headerData.whatWeDoText}
