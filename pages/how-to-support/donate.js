@@ -93,7 +93,7 @@ class Donate extends Component {
     const errors = {}
     const isRequired = (key) => {
       if (!values[key]) {
-        errors[key] = 'Required'
+        errors[key] = '*'
       }
     }
     isRequired(fieldName.projectId)
@@ -103,7 +103,6 @@ class Donate extends Component {
     isRequired(fieldName.title)
     isRequired(fieldName.firstName)
     isRequired(fieldName.lastName)
-    isRequired(fieldName.companyName)
     isRequired(fieldName.email)
     isRequired(fieldName.address)
     isRequired(fieldName.postCode)
@@ -273,7 +272,7 @@ class Donate extends Component {
                 {/* Anrede und Titel */}
                 <div className="form-group row">
                   <FormLabel className="col-sm-3 col-form-label" id="titleInputs">
-                    Anrede und Titel
+                    Anrede* / Titel
                   </FormLabel>
                   <div className="col-sm-2">
                     <Field name={fieldName.salutation}>
@@ -311,7 +310,7 @@ class Donate extends Component {
                 <Field name={fieldName.email}>
                   {({ input, meta }) => (
                     <label className="form-group row" htmlFor="inputEmail">
-                      <FormLabel className="col-sm-3 col-form-label">Email</FormLabel>
+                      <FormLabel className="col-sm-3 col-form-label">Email*</FormLabel>
                       <div className="col-sm-6 d-flex align-items-center">
                         <input
                           {...input}
@@ -327,7 +326,7 @@ class Donate extends Component {
                 {/* Name */}
                 <div className="form-group row">
                   <FormLabel className="col-sm-3 col-form-label" id="name-inputs">
-                    Name
+                    Name*
                   </FormLabel>
                   <div className="col-sm-3">
                     <Field name={fieldName.firstName}>
@@ -362,7 +361,7 @@ class Donate extends Component {
                 </div>
                 {/* receipt ? */}
                 <label className="form-group row" htmlFor="receipt-input">
-                  <FormLabel className="col-sm-3 col-form-label">Spendequittung?</FormLabel>
+                  <FormLabel className="col-sm-3 col-form-label">Spendequittung*</FormLabel>
                   <Field name={fieldName.wantsReceipt}>
                     {({ input, meta }) => (
                       <div className="col-sm-6 d-flex align-items-center">
@@ -372,7 +371,7 @@ class Donate extends Component {
                           className={this.formInputClassFactory(meta)}
                         >
                           <option value={null} />
-                          <option value="no_receipt">no receipt</option>
+                          {/* <option value="no_receipt">no receipt</option> */}
                           <option value="receipt_now">receipt now</option>
                           <option value="receipt_end_of_year">receipt end of year</option>
                         </select>
@@ -402,7 +401,7 @@ class Donate extends Component {
                 <Field name={fieldName.address}>
                   {({ input, meta }) => (
                     <label className="form-group row" htmlFor="address-input">
-                      <FormLabel className="col-sm-3 col-form-label">Adresse</FormLabel>
+                      <FormLabel className="col-sm-3 col-form-label">Adresse*</FormLabel>
                       <div className="col-sm-6 d-flex align-items-center">
                         <input
                           {...input}
@@ -418,7 +417,7 @@ class Donate extends Component {
                 {/* PLZ und Ort */}
                 <div className="form-group row">
                   <FormLabel className="col-sm-3 col-form-label" id="zip-code-city-inputs">
-                    PLZ und Ort
+                    PLZ* / Ort*
                   </FormLabel>
                   <Field name={fieldName.postCode}>
                     {({ input, meta }) => (
@@ -448,7 +447,7 @@ class Donate extends Component {
                 {/* Land */}
                 {/* TO GET ALL COUNTRIES: https://restcountries.eu/rest/v2/all?fields=name;alpha2Code */}
                 <label className="form-group row" htmlFor="country-input">
-                  <FormLabel className="col-sm-3 col-form-label">Country</FormLabel>
+                  <FormLabel className="col-sm-3 col-form-label">Country*</FormLabel>
                   <Field name={fieldName.country}>
                     {({ input, meta }) => (
                       <div className="col-sm-6 d-flex align-items-center">
