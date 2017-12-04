@@ -55,6 +55,8 @@ const ErrorMessage = styled.span`
   color: #dc3545;
 `
 
+const DeProjectId = '3522'
+const SaProjectId = '3523'
 const fieldName = {
   projectId: 'projectId',
   salutation: 'salutation',
@@ -156,11 +158,14 @@ class Donate extends Component {
                       {({ input }) => (
                         <div className="row">
                           <div className="col">
-                            <CountryLabel htmlFor="countryInputDe" isActive={input.value === 'de'}>
+                            <CountryLabel
+                              htmlFor="countryInputDe"
+                              isActive={input.value === DeProjectId}
+                            >
                               <input
                                 {...input}
                                 type="radio"
-                                value="de"
+                                value={DeProjectId}
                                 id="countryInputDe"
                                 autoComplete="off"
                               />
@@ -168,11 +173,14 @@ class Donate extends Component {
                             </CountryLabel>
                           </div>
                           <div className="col" data-toggle="buttons">
-                            <CountryLabel htmlFor="countryInputSa" isActive={input.value === 'sa'}>
+                            <CountryLabel
+                              htmlFor="countryInputSa"
+                              isActive={input.value === SaProjectId}
+                            >
                               <input
                                 {...input}
                                 type="radio"
-                                value="sa"
+                                value={SaProjectId}
                                 id="countryInputSa"
                                 autoComplete="off"
                               />
