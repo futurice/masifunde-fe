@@ -3,6 +3,7 @@ import Carousel from 'nuka-carousel'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Markdown from './Markdown'
+import imagePropTypes from '../propTypes/image'
 
 const H3 = styled.h3`
   font-weight: bold;
@@ -49,7 +50,7 @@ const StyledSlider = styled(Carousel)`
   }
 `
 
-const SimpleSlider = ({ items }) => {
+const MasifundeCarousel = ({ items }) => {
   const settings = {
     wrapAround: true,
   }
@@ -68,8 +69,12 @@ const SimpleSlider = ({ items }) => {
   )
 }
 
-SimpleSlider.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+MasifundeCarousel.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    image: PropTypes.shape(imagePropTypes).isRequired,
+    heading: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  })).isRequired,
 }
 
-export default SimpleSlider
+export default MasifundeCarousel

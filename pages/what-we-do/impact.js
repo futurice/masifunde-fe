@@ -12,33 +12,13 @@ import HorizontalRuler from '../../components/HorizontalRuler'
 import Banner from '../../components/Banner'
 import Markdown from '../../components/Markdown'
 import Carousel from '../../components/Carousel'
-
-const CenteredSpan = styled.span`
-  text-align: center;
-`
+import Stat from '../../components/Stat'
+import { RouteNames } from '../../routes'
+import portraitPropTypes from '../../propTypes/portrait'
 
 const CenteredMarkdown = styled(Markdown)`
   text-align: center;
 `
-
-const Stat = ({
-  description, icon, number,
-}) => (
-  <div className="col-md d-flex flex-column align-items-center">
-    <img src={icon.url} alt={icon.title} />
-    <CenteredSpan>{number}</CenteredSpan>
-    <CenteredSpan>{description}</CenteredSpan>
-  </div>
-)
-
-Stat.propTypes = {
-  icon: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  number: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-}
 
 const StatsSection = ({ title, stats }) => (
   <Fragment>
@@ -110,7 +90,11 @@ const Impact = ({
       <h2>{outroTitle}</h2>
       <CenteredMarkdown source={outroMarkdown} />
     </Container>
-    <Banner headline={bannerText} buttonText={bannerButtonText} buttonLink="a" />
+    <Banner
+      headline={bannerText}
+      buttonText={bannerButtonText}
+      buttonLink={RouteNames.HowToSupport}
+    />
   </div>
 )
 
@@ -119,11 +103,11 @@ Impact.propTypes = {
   metaDescription: PropTypes.string,
   title: PropTypes.string.isRequired,
   stats1Title: PropTypes.string.isRequired,
-  stats1: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  stats1: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
   stats2Title: PropTypes.string.isRequired,
-  stats2: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  portrait1: PropTypes.shape().isRequired,
-  portrait2: PropTypes.shape().isRequired,
+  stats2: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
+  portrait1: PropTypes.shape(portraitPropTypes).isRequired,
+  portrait2: PropTypes.shape(portraitPropTypes).isRequired,
   outroTitle: PropTypes.string.isRequired,
   outroMarkdown: PropTypes.string.isRequired,
   bannerText: PropTypes.string.isRequired,
