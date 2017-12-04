@@ -12,7 +12,7 @@ import Head from '../../components/Head'
 import Button from '../../components/Button'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchDonatePage } from '../../api/howToSupport'
-import FundRaisingForm from '../../components/FundRaisingForm'
+import FundRaisingIframe from '../../components/FundRaisingIframe'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Markdown from '../../components/Markdown'
 
@@ -468,7 +468,7 @@ class Donate extends Component {
               </form>
             )}
           />
-          <FundRaisingForm
+          <FundRaisingIframe
             onMouseHover={this.submitForm}
             hash="j3ip42zwp3mlewb9"
             {...this.state.values}
