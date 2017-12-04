@@ -17,6 +17,8 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 import Markdown from '../../components/Markdown'
 
 const LabelButton = Button.withComponent('label').extend`
+  margin-right: 10px;
+
   // Hide input (copied from boostrap)
   input {
     position: absolute;
