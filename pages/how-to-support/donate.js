@@ -31,6 +31,12 @@ const CountryLabel = styled.label`
   color: #4f463f;
   padding: 20px;
   display: block !important;
+  cursor: pointer;
+  
+  &:hover {
+    color: #fff;
+    background-color: ${props => props.theme.orange};
+  }
 
   ${({ isActive }) => isActive && css`
     color: #fff;
