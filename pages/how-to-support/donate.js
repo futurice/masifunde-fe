@@ -56,7 +56,11 @@ const ErrorMessage = styled.span`
 `
 
 const FormLabel = styled.span`
-  text-align: right;
+  text-align: left;
+  
+  @media screen and (min-width: 576px){
+    text-align: right;
+  }
 `
 
 const DeProjectId = '3522'
