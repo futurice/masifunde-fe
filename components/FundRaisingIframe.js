@@ -8,7 +8,7 @@ let iframe = null
 
 // / It is necessary class component since it is required for ref in ReactAsyncScript
 // eslint-disable-next-line react/prefer-stateless-function
-class FundRaisingForm extends Component {
+class FundRaisingIframe extends Component {
   componentDidMount() {
     intervalRef = setInterval(() => {
       const iframeContainer = document.getElementById('fbIframeDiv')
@@ -46,7 +46,7 @@ class FundRaisingForm extends Component {
   }
 }
 
-FundRaisingForm.propTypes = {
+FundRaisingIframe.propTypes = {
   onMouseHover: PropTypes.func.isRequired,
 }
 
@@ -101,7 +101,7 @@ function ScriptParametersWrapper({
   }
   const FullUrl = `${BaseUrl}?${stringify(parameters)}`
 
-  const Form = ReactAsyncScript(FundRaisingForm, FullUrl, {
+  const Form = ReactAsyncScript(FundRaisingIframe, FullUrl, {
     globalName: 'FundRaisingBox',
     removeOnUnmount: true,
   })
