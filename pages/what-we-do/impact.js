@@ -41,25 +41,6 @@ StatsSection.propTypes = {
   stats: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
 }
 
-const mapPortraitToCarouselItems = (portrait) => {
-  const item1 = {
-    image: portrait.page1Image,
-    heading: portrait.page1Heading,
-    text: portrait.page1Text,
-  }
-  const item2 = {
-    image: portrait.page2Image,
-    heading: portrait.page2Heading,
-    text: portrait.page2Text,
-  }
-  const item3 = {
-    image: portrait.page3Image,
-    heading: portrait.page3Heading,
-    text: portrait.page3Text,
-  }
-  return [item1, item2, item3]
-}
-
 const Impact = ({
   metaTitle,
   metaDescription,
@@ -84,8 +65,8 @@ const Impact = ({
       <StatsSection title={stats1Title} stats={stats1} />
       <StatsSection title={stats2Title} stats={stats2} />
     </Container>
-    <Carousel items={mapPortraitToCarouselItems(portrait1)} />
-    <Carousel items={mapPortraitToCarouselItems(portrait2)} />
+    <Carousel portrait={portrait1} />
+    <Carousel portrait={portrait2} />
     <Container>
       <h2>{outroTitle}</h2>
       <CenteredMarkdown source={outroMarkdown} />
