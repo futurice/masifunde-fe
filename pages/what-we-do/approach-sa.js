@@ -38,7 +38,7 @@ const ApproachSa = ({
   introTitle,
   introMarkdown,
   projects,
-  youTubeVideoId,
+  youTubeVideo,
   bannerTitle,
   bannerButtonText,
 }) => (
@@ -61,7 +61,7 @@ const ApproachSa = ({
           />
         ))}
       </ProjectsContainer>
-      <StyledYouTubeVideo videoId={youTubeVideoId} />
+      <StyledYouTubeVideo youtubeVideo={youTubeVideo} />
     </Container>
     <Banner
       headline={bannerTitle}
@@ -85,7 +85,7 @@ ApproachSa.propTypes = {
       title: PropTypes.string.isRequired,
     }).isRequired,
   })).isRequired,
-  youTubeVideoId: PropTypes.string.isRequired,
+  youTubeVideo: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
 }
