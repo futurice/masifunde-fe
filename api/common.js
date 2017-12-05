@@ -22,10 +22,12 @@ export const unwrapPortrait = portrait => ({
   page3Image: unwrapImage(portrait.fields.page3Image),
 })
 
-export const unwrapStats = stat => ({
+export const unwrapStat = stat => ({
   ...stat.fields,
   icon: unwrapImage(stat.fields.icon),
 })
+
+export const unwrapStats = stats => stats.map(unwrapStat)
 
 export const unwrapRegionalGroups = regionalGroups => ({
   name: regionalGroups.fields.name,

@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { fetchSingleEntry } from './contentfulService'
-import { unwrapImage, unwrapPortrait, unwrapStats } from './common'
+import { unwrapImage, unwrapPortrait, unwrapStat } from './common'
 
 function unwrapFields(response) {
   return response.fields
@@ -58,8 +58,8 @@ export async function fetchImpactPage(locale) {
   const content = await fetchSingleEntry('pageImpact', locale)
   return {
     ...content,
-    stats1: content.stats1.map(unwrapStats),
-    stats2: content.stats2.map(unwrapStats),
+    stats1: content.stats1.map(unwrapStat),
+    stats2: content.stats2.map(unwrapStat),
     portrait1: unwrapPortrait(content.portrait1),
     portrait2: unwrapPortrait(content.portrait2),
   }
