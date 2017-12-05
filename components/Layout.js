@@ -17,6 +17,14 @@ injectGlobal`
     font-size: 1.125rem;
   }
 
+  @font-face {
+    font-family: 'banaueregular';
+    src: url('/static/fonts/banaue-regular-webfont.woff2') format('woff2'),
+         url('/static/fonts/banaue-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   a {
     color: #225DBC;
   }
