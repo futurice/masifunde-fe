@@ -18,6 +18,10 @@ import Markdown from '../../components/Markdown'
 
 const LabelButton = Button.withComponent('label').extend`
   margin-right: 10px;
+  
+  &:last-child {
+    margin-right: 0;
+  }
 
   // Hide input (copied from boostrap)
   input {
