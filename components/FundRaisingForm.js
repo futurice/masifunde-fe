@@ -1,0 +1,322 @@
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import { Form, Field } from 'react-final-form'
+import styled from 'styled-components'
+import _debaunce from 'lodash/debounce'
+
+import countries from '../utils/countries'
+import FundRaisingIframe from '../components/FundRaisingIframe'
+
+const FundRaisingIfameContainer = styled.div`
+  padding: 0;
+`
+
+const ErrorMessage = styled.span`
+  display: inline-block;
+  margin-left: 0.4rem;
+  color: #dc3545;
+`
+
+const FormLabel = styled.span`
+  text-align: left;
+  
+  @media screen and (min-width: 576px){
+    text-align: right;
+  }
+`
+
+const fieldName = {
+  address: 'address',
+  city: 'city',
+  companyName: 'companyName',
+  country: 'country',
+  email: 'email',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  postCode: 'postCode',
+  salutation: 'salutation',
+  title: 'title',
+  wantsReceipt: 'wantsReceipt',
+}
+
+class FundRaisingForm extends Component {
+  state = {
+    values: {
+      amount: this.props.amount,
+      projectId: this.props.projectId,
+      interval: this.props.interval,
+    },
+  }
+  debaunceSetState = _debaunce(this.setState, 500)
+
+  submitForm = () => {
+    this.formRef.click()
+  }
+  validateForm = (values) => {
+    const errors = {}
+    const isRequired = (key) => {
+      if (!values[key]) {
+        errors[key] = '*'
+      }
+    }
+    isRequired(fieldName.address)
+    isRequired(fieldName.city)
+    isRequired(fieldName.country)
+    isRequired(fieldName.email)
+    isRequired(fieldName.firstName)
+    isRequired(fieldName.lastName)
+    isRequired(fieldName.postCode)
+    isRequired(fieldName.salutation)
+    isRequired(fieldName.title)
+    isRequired(fieldName.wantsReceipt)
+    if (!Object.keys(errors).length) {
+      this.debaunceSetState({ ...this.state, values })
+    }
+    return errors
+  }
+
+  formInputClassFactory = meta => `form-control ${meta.error && meta.touched ? 'is-invalid' : ''}`
+
+  render() {
+    const {
+      interval,
+      amount,
+      projectId,
+    } = this.props
+
+    return (
+      <Fragment>
+        <Form
+          onSubmit={() => {}}
+          validate={this.validateForm}
+          render={({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              {/* Anrede und Titel */}
+              <div className="form-group row">
+                <FormLabel className="col-sm-3 col-form-label" id="titleInputs">
+                  Anrede * / Titel
+                </FormLabel>
+                <div className="col-sm-2">
+                  <Field name={fieldName.salutation}>
+                    {({ input, meta }) => (
+                      <div className="d-flex align-items-center">
+                        <select
+                          {...input}
+                          className={this.formInputClassFactory(meta)}
+                          aria-labelledby="titleInputs"
+                        >
+                          <option value={null} />
+                          <option value="Mrs.">Frau</option>
+                          <option value="Mr.">Herr</option>
+                        </select>
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                <Field name={fieldName.title}>
+                  {({ input, meta }) => (
+                    <div className="col-sm-4 d-flex align-items-center">
+                      <input
+                        {...input}
+                        type="text"
+                        className={this.formInputClassFactory(meta)}
+                        aria-labelledby="titleInputs"
+                      />
+                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                    </div>
+                  )}
+                </Field>
+              </div>
+              {/* Email */}
+              <Field name={fieldName.email}>
+                {({ input, meta }) => (
+                  <label className="form-group row" htmlFor="inputEmail">
+                    <FormLabel className="col-sm-3 col-form-label">Email *</FormLabel>
+                    <div className="col-sm-6 d-flex align-items-center">
+                      <input
+                        {...input}
+                        type="email"
+                        className={this.formInputClassFactory(meta)}
+                        id="inputEmail"
+                      />
+                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                    </div>
+                  </label>
+                )}
+              </Field>
+              {/* Name */}
+              <div className="form-group row">
+                <FormLabel className="col-sm-3 col-form-label" id="name-inputs">
+                  Name *
+                </FormLabel>
+                <div className="col-sm-3">
+                  <Field name={fieldName.firstName}>
+                    {({ input, meta }) => (
+                      <div className="d-flex align-items-center">
+                        <input
+                          {...input}
+                          type="text"
+                          className={this.formInputClassFactory(meta)}
+                          aria-labelledby="name-inputs"
+                        />
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                <div className="col-sm-3">
+                  <Field name={fieldName.lastName}>
+                    {({ input, meta }) => (
+                      <div className="d-flex align-items-center">
+                        <input
+                          {...input}
+                          type="text"
+                          className={this.formInputClassFactory(meta)}
+                          aria-labelledby="name-inputs"
+                        />
+                        {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+              </div>
+              {/* receipt ? */}
+              <label className="form-group row" htmlFor="receipt-input">
+                <FormLabel className="col-sm-3 col-form-label">Spendequittung *</FormLabel>
+                <Field name={fieldName.wantsReceipt}>
+                  {({ input, meta }) => (
+                    <div className="col-sm-6 d-flex align-items-center">
+                      <select
+                        {...input}
+                        id="receipt-input"
+                        className={this.formInputClassFactory(meta)}
+                      >
+                        <option value={null} />
+                        {/* <option value="no_receipt">no receipt</option> */}
+                        <option value="receipt_now">Ja, so schnell wie möglich</option>
+                        <option value="receipt_end_of_year">Ja, konsolidiert am Ende des Jahresr</option>
+                      </select>
+                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                    </div>
+                  )}
+                </Field>
+              </label>
+              {/* Firma */}
+              <Field name={fieldName.companyName}>
+                {({ input, meta }) => (
+                  <label className="form-group row" htmlFor="company-input">
+                    <FormLabel className="col-sm-3 col-form-label">Firma</FormLabel>
+                    <div className="col-sm-6 d-flex align-items-center">
+                      <input
+                        {...input}
+                        type="text"
+                        className={this.formInputClassFactory(meta)}
+                        id="company-input"
+                      />
+                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                    </div>
+                  </label>
+                )}
+              </Field>
+              {/* Address */}
+              <Field name={fieldName.address}>
+                {({ input, meta }) => (
+                  <label className="form-group row" htmlFor="address-input">
+                    <FormLabel className="col-sm-3 col-form-label">Adresse *</FormLabel>
+                    <div className="col-sm-6 d-flex align-items-center">
+                      <input
+                        {...input}
+                        type="text"
+                        className={this.formInputClassFactory(meta)}
+                        id="address-input"
+                      />
+                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                    </div>
+                  </label>
+                )}
+              </Field>
+              {/* PLZ und Ort */}
+              <div className="form-group row">
+                <FormLabel className="col-sm-3 col-form-label" id="zip-code-city-inputs">
+                  PLZ * / Ort *
+                </FormLabel>
+                <Field name={fieldName.postCode}>
+                  {({ input, meta }) => (
+                    <div className="col-sm-3 d-flex align-items-center">
+                      <input
+                        {...input}
+                        className={this.formInputClassFactory(meta)}
+                        aria-labelledby="zip-code-city-inputs"
+                      />
+                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                    </div>
+                  )}
+                </Field>
+                <Field name={fieldName.city}>
+                  {({ input, meta }) => (
+                    <div className="col-sm-3 d-flex align-items-center">
+                      <input
+                        {...input}
+                        className={this.formInputClassFactory(meta)}
+                        aria-labelledby="zip-code-city-inputs"
+                      />
+                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                    </div>
+                  )}
+                </Field>
+              </div>
+              {/* Land */}
+              <label className="form-group row" htmlFor="country-input">
+                <FormLabel className="col-sm-3 col-form-label">Country *</FormLabel>
+                <Field name={fieldName.country}>
+                  {({ input, meta }) => (
+                    <div className="col-sm-6 d-flex align-items-center">
+                      <select
+                        {...input}
+                        id="country-input"
+                        className={this.formInputClassFactory(meta)}
+                      >
+                        <option value={null} />
+                        {Object.entries(countries).map(([countryKey, country]) => (
+                          <option value={countryKey} key={countryKey}>{country}</option>
+                        ))}
+                      </select>
+                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                    </div>
+                  )}
+                </Field>
+              </label>
+
+              <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
+            </form>
+          )}
+        />
+        <FundRaisingIfameContainer className="col-sm-9">
+          <FundRaisingIframe
+            onMouseHover={this.submitForm}
+            hash="j3ip42zwp3mlewb9"
+            projectId={projectId}
+            amount={amount}
+            interval={interval}
+            {...this.state.values}
+          />
+        </FundRaisingIfameContainer>
+      </Fragment>
+    )
+  }
+}
+
+FundRaisingForm.propTypes = {
+  projectId: PropTypes.number,
+  amount: PropTypes.number,
+  interval: PropTypes.oneOf([0, '0', 1, '1', 3, '3', 6, '6', 12, '12']),
+}
+
+FundRaisingForm.defaultProps = {
+  projectId: undefined,
+  amount: undefined,
+  interval: undefined,
+}
+
+export default FundRaisingForm
