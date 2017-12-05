@@ -49,7 +49,7 @@ injectGlobal`
   
   h1 {
     line-height: 1.2;
-    margin-bottom: 2.2rem;
+    margin: 4rem 0;
     color: #FF621D;
   }
   
@@ -57,12 +57,15 @@ injectGlobal`
     line-height: 1.4;
     margin: 3rem 0;
     color: #FF621D;
+    font-size: 2.5rem;
   }
 
   h3 {
+    font-weight: 500;
     line-height: 1.4;
     color: #77695C;
     font-weight: 400;
+    font-size: 32px;
   }
 
   p {
@@ -114,7 +117,7 @@ const Layout = ({ headerData, children, footerData }) => (
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.2/dist/css/bootstrap.min.css"
         />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
-        <link href="https://fonts.googleapis.com/css?family=Raleway:700,800" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
 
       </Head>
       <Header

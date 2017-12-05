@@ -10,16 +10,15 @@ import { fetchWhatWeDoPage } from '../../api/whatWeDo'
 import { getLocaleFromQuery } from '../../utils/locale'
 import Head from '../../components/Head'
 import YouTubeVideo from '../../components/YouTubeVideo'
+import Button from '../../components/Button'
 
 const Hero = styled.img`
   width: 100%;
   height: 700px;
   object-fit: cover;
-  margin-bottom: 100px;
 `
 
 const H1 = styled.h1`
-  margin-bottom: 100px;
   text-align: center;
   line-height: 1.36;
 `
@@ -27,7 +26,6 @@ const H1 = styled.h1`
 const BoldHeading = styled.h2`
   font-weight: 700;
   text-align: center;
-  margin-bottom: 50px;
 `
 
 const ProjectImage = styled.img`
@@ -53,11 +51,6 @@ const ProjectDescriptionContainer = styled.div`
 
 const ProjectTitle = styled.h3`
   text-align: center;
-`
-
-const Button = styled.a`
-  background-color: white;
-  border: 1px solid black;
 `
 
 const ProjectContainer = styled.div`
@@ -115,7 +108,7 @@ const WhatWeDo = ({
                 ))}
             </div>
             <div className="row justify-content-center">
-              <Button className="btn btn-primary">{program.button}</Button>
+              <Button href="#" type="secondary">{program.button}</Button>
             </div>
           </ProjectContainer>
           ))}
@@ -141,7 +134,7 @@ const WhatWeDo = ({
           </div>
         </div>
         <div className="row justify-content-center">
-          <Button className="btn btn-primary">{statsButton}</Button>
+          <Button href="#" type="secondary">{statsButton}</Button>
         </div>
       </ProjectContainer>
 
