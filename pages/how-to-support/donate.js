@@ -79,6 +79,25 @@ const FormLabel = styled.span`
   }
 `
 
+const OtherAmountContainer = styled.div`
+  display: inline-block;
+  position: relative;
+`
+const EuroPostfix = styled.span`
+  position: absolute;
+  right: 0;
+  display: block;
+  transform: translate(0, -50%);
+  top: 50%;
+  pointer-events: none;
+  width: 25px;
+  text-align: center;
+  font-style: normal;
+  
+  font-family: Lato, sans-serif;
+  color: #77695c;
+`
+
 const DeProjectId = '3522'
 const SaProjectId = '3523'
 const fieldName = {
@@ -271,12 +290,15 @@ class Donate extends Component {
 
                     <Field name={fieldName.amount}>
                       {({ input }) => (
-                        <input
-                          {...input}
-                          className="form-control col-sm-3"
-                          type="text"
-                          placeholder={section3Text}
-                        />
+                        <OtherAmountContainer>
+                          <EuroPostfix>€</EuroPostfix>
+                          <input
+                            {...input}
+                            className="form-control"
+                            type="text"
+                            placeholder={section3Text}
+                          />
+                        </OtherAmountContainer>
                       )}
                     </Field>
                   </div>
