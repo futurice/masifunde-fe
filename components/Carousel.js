@@ -3,7 +3,7 @@ import Carousel from 'nuka-carousel'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Markdown from './Markdown'
-import imagePropTypes from '../propTypes/image'
+import portraitPropTypes from '../propTypes/portrait'
 
 const H3 = styled.h3`
   font-weight: bold;
@@ -50,10 +50,30 @@ const StyledSlider = styled(Carousel)`
   }
 `
 
-const MasifundeCarousel = ({ items }) => {
+const mapPortraitToCarouselItems = (portrait) => {
+  const item1 = {
+    image: portrait.page1Image,
+    heading: portrait.page1Heading,
+    text: portrait.page1Text,
+  }
+  const item2 = {
+    image: portrait.page2Image,
+    heading: portrait.page2Heading,
+    text: portrait.page2Text,
+  }
+  const item3 = {
+    image: portrait.page3Image,
+    heading: portrait.page3Heading,
+    text: portrait.page3Text,
+  }
+  return [item1, item2, item3]
+}
+
+const MasifundeCarousel = ({ portrait }) => {
   const settings = {
     wrapAround: true,
   }
+  const items = mapPortraitToCarouselItems(portrait)
   return (
     <StyledSlider {...settings}>
       {items.map(item => (
@@ -70,11 +90,7 @@ const MasifundeCarousel = ({ items }) => {
 }
 
 MasifundeCarousel.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    image: PropTypes.shape(imagePropTypes).isRequired,
-    heading: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-  })).isRequired,
+  portrait: PropTypes.shape(portraitPropTypes).isRequired,
 }
 
 export default MasifundeCarousel
