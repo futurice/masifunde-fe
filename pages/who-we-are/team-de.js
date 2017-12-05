@@ -11,6 +11,7 @@ import Banner from '../../components/Banner'
 import TeamMember from '../../components/TeamMember'
 import Head from '../../components/Head'
 import RegionalGroups from '../../components/RegionalGroups'
+import imagePropTypes from '../../propTypes/image'
 
 const TeamMemberList = styled.div`
   margin: 2rem 0 2.5rem 0;
@@ -73,19 +74,13 @@ TeamDe.propTypes = {
   sectionTwoTitle: PropTypes.string.isRequired,
   regionalGroups: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    image: PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired,
+    image: imagePropTypes.isRequired,
     regions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   }).isRequired,
   teamMembers: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    image: PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired,
+    image: imagePropTypes.isRequired,
   }).isRequired).isRequired,
 }
 
