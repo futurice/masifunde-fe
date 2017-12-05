@@ -45,7 +45,7 @@ const StyledButton = styled(CustomButton)`
   `}
   
   ${props => props.type === 'secondary' && css`
-    color: ${props.theme.orange};
+    color: ${props.theme.orangeRed};
     border-color: ${props.theme.orangeRed};
     
     &:hover {
