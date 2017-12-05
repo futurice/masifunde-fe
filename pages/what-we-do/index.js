@@ -91,7 +91,7 @@ const WhatWeDo = ({
     <Hero src="//via.placeholder.com/350x150/555" alt={title} />
     <Container>
       <H1>{title}</H1>
-      <StyledYouTubeVideo videoId={youtubeVideo} />
+      <StyledYouTubeVideo youtubeVideo={youtubeVideo} />
       <BoldHeading>{introHeading}</BoldHeading>
       <div className="row">
         {programmes.map(program => (
@@ -159,7 +159,7 @@ const WhatWeDo = ({
 WhatWeDo.propTypes = {
   centerHeading: PropTypes.string.isRequired,
   introHeading: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string,
   metaTitle: PropTypes.string.isRequired,
   outroHeading: PropTypes.string.isRequired,
   outroText: PropTypes.string.isRequired,
@@ -190,6 +190,11 @@ WhatWeDo.propTypes = {
   title: PropTypes.string.isRequired,
   youtubeVideo: PropTypes.string.isRequired,
 }
+
+WhatWeDo.defaultProps = {
+  metaDescription: undefined,
+}
+
 
 WhatWeDo.getInitialProps = async function initialProps({ query }) {
   return fetchWhatWeDoPage(getLocaleFromQuery(query))
