@@ -10,6 +10,7 @@ import TeamMember from '../../components/TeamMember'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchTeamSaPage } from '../../api/whoWeAre'
 import LayoutWrapper from '../../components/LayoutWrapper'
+import imagePropTypes from '../../propTypes/image'
 
 const Image = styled.img`
   width: 100%;
@@ -57,16 +58,10 @@ TeamSa.propTypes = {
   metaDescription: PropTypes.string,
   introTitle: PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
-  introImage: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
+  introImage: PropTypes.shape(imagePropTypes).isRequired,
   teamMembers: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    image: PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired,
+    image: PropTypes.shape(imagePropTypes).isRequired,
     responsibilityArea: PropTypes.string,
   })).isRequired,
   bannerTitle: PropTypes.string.isRequired,
