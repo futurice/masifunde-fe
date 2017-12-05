@@ -73,6 +73,9 @@ injectGlobal`
     margin-top: 24px;
   }
 
+  .handwritten {
+    font: normal 44px banaueregular;
+  }
 `
 
 const theme = {

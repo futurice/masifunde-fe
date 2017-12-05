@@ -130,7 +130,7 @@ const WhatWeDo = ({
             <div className="row">
               {stats.map(stat => (
                 <div
-                  className="col-sm d-flex flex-column align-items-center"
+                  className="col-sm d-flex flex-column align-items-center handwritten"
                   key={`${stat.number} ${stat.description}`}
                 >
                   <Number>{stat.number}</Number>
