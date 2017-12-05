@@ -76,6 +76,23 @@ injectGlobal`
   .handwritten {
     font: normal 44px banaueregular;
   }
+
+  //Bootstrap overrides
+  button.navbar-toggler {
+    border: 0;
+  }
+
+  .nav-item {
+    @media screen and (max-width: 768px) {
+      padding: 1rem 0;
+    }
+  }
+
+  .navbar-nav {
+    @media screen and (max-width: 768px) {
+      padding: 2rem 0;
+    }
+  }
 `
 
 const theme = {

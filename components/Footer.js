@@ -54,7 +54,7 @@ function Footer({
 }) {
   return (
     <Container>
-      <Container style={containerStyle} class="footer">
+      <Container style={containerStyle} className="footer">
         <div className="row" style={LinksContainer}>
 
           <div className="col-sm">
