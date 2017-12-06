@@ -51,7 +51,9 @@ class FundRaisingForm extends Component {
 
   submitForm = () => {
     this.formRef.click()
+    this.props.onSubmit()
   }
+
   validateForm = (values) => {
     const errors = {}
     const isRequired = (keysArray) => {
@@ -96,7 +98,7 @@ class FundRaisingForm extends Component {
           onSubmit={() => {}}
           validate={this.validateForm}
           render={({ handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => { handleSubmit(e); this.props.onSubmit() }}>
               {/* Anrede und Titel */}
               <div className="form-group row">
                 <FormLabel className="col-sm-3 col-form-label" id="titleInputs">
@@ -317,12 +319,14 @@ FundRaisingForm.propTypes = {
   projectId: PropTypes.number,
   amount: PropTypes.number,
   interval: PropTypes.oneOf([0, '0', 1, '1', 3, '3', 6, '6', 12, '12']),
+  onSubmit: PropTypes.func,
 }
 
 FundRaisingForm.defaultProps = {
   projectId: undefined,
   amount: undefined,
   interval: undefined,
+  onSubmit: () => {},
 }
 
 export default FundRaisingForm

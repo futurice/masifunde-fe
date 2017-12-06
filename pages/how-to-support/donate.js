@@ -99,10 +99,13 @@ class Donate extends Component {
       [fieldName.amount]: undefined,
     },
   }
+  debounceSetState = _debounce(this.setState, 500)
 
   isValid = meta => meta.error && meta.touched
 
-  debounceSetState = _debounce(this.setState, 500)
+  submitForm = () => {
+    this.formRef.click()
+  }
 
   validateForm = (values) => {
     const errors = {}
@@ -282,6 +285,7 @@ class Donate extends Component {
                     </Fragment>
                   )}
                 </Field>
+                <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
               </form>
             )}
           />
@@ -292,6 +296,7 @@ class Donate extends Component {
             interval={this.state.values.interval}
             amount={this.state.values.amount}
             projectId={this.state.values.projectId}
+            onSubmit={this.submitForm}
           />
         </div>
         <Banner
