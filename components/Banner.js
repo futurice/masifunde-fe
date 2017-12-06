@@ -12,11 +12,14 @@ const BannerWrapper = styled.div`
 `
 
 const BannerContainer = styled.div`
-  height: 0px;
+  height: auto;
   min-height: 350px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 `
 
-const Headline = styled.h2`
+const Headline = styled.span`
+  font-weight: bold;
   width: 100%;
   margin-bottom: 30px;
   text-align: center;
@@ -24,7 +27,7 @@ const Headline = styled.h2`
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  font-size: 40px;
+  font-size: 2.5rem;
 `
 
 function Banner({ headline, buttonText, buttonLink }) {
