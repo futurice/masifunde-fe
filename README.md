@@ -57,7 +57,7 @@ No test for now.
 
 ## Style guide
 
-Project uses EsLint Airbnb style guide without no semi columns. The `precommit` git hook will
+Project uses EsLint Airbnb style guide without semi columns. The `precommit` git hook will
 automatically runs EsLint to check if the code complies with the rules if it fails then it will not
 push to git branch.
 

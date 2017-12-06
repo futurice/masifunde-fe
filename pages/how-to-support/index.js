@@ -12,6 +12,7 @@ import Head from '../../components/Head'
 import Hero from '../../components/Hero'
 import Markdown from '../../components/Markdown'
 import Button from '../../components/Button'
+import HorizontalRuler from '../../components/HorizontalRuler'
 import { h3 } from '../../styling/typography'
 
 const Paragraph = styled(Markdown)`
@@ -22,11 +23,6 @@ const H2 = styled.h2`
   ${h3};
   text-align: left;
   margin: 0 0 8px;
-`
-
-const HR = styled.hr`
-  border-color: ${props => props.theme.orange};
-  margin: auto 13%;
 `
 
 const Section = ({
@@ -107,7 +103,7 @@ const HowToSupport = ({
         buttonType="secondary"
         buttonLink={RouteNames.Donate}
       />
-      <HR />
+      <HorizontalRuler />
       <Section
         buttonText={section3ButtonText}
         title={section3Title}
