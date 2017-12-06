@@ -15,6 +15,18 @@ export const unwrapImage = image => ({
 
 export const unwrapRegion = region => region.fields.name
 
+export const unwrapPortrait = portrait => ({
+  ...portrait.fields,
+  page1Image: unwrapImage(portrait.fields.page1Image),
+  page2Image: unwrapImage(portrait.fields.page2Image),
+  page3Image: unwrapImage(portrait.fields.page3Image),
+})
+
+export const unwrapStats = stat => ({
+  ...stat.fields,
+  icon: unwrapImage(stat.fields.icon),
+})
+
 export const unwrapRegionalGroups = regionalGroups => ({
   name: regionalGroups.fields.name,
   image: unwrapImage(regionalGroups.fields.image),

@@ -195,7 +195,6 @@ WhatWeDo.defaultProps = {
   metaDescription: undefined,
 }
 
-
 WhatWeDo.getInitialProps = async function initialProps({ query }) {
   return fetchWhatWeDoPage(getLocaleFromQuery(query))
 }

@@ -36,6 +36,7 @@ const theme = {
   darkGreen: '#00C078',
   blue: '#4176F9',
   linkBlue: '#4176F9',
+  pineCone: '#77695c',
 }
 
 const Layout = ({ headerData, children, footerData }) => (
