@@ -79,6 +79,10 @@ const EuroPostfix = styled.span`
   color: #77695c;
 `
 
+const SubHeader = styled.h3`
+  ${props => props.isValid && 'color: red;'};
+`
+
 const DeProjectId = '3522'
 const SaProjectId = '3523'
 const fieldName = {
@@ -95,6 +99,8 @@ class Donate extends Component {
       [fieldName.amount]: undefined,
     },
   }
+
+  isValid = meta => meta.error && meta.touched
 
   debounceSetState = _debounce(this.setState, 500)
 
@@ -158,128 +164,130 @@ class Donate extends Component {
             </div>
           </div>
 
-          <h3>{section1title} *</h3>
           <Form
             onSubmit={() => {}}
             validate={this.validateForm}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-                <div className="row">
-                  <div className="col offset-lg-3">
-                    <Field name={fieldName.projectId}>
-                      {({ input }) => (
-                        <div className="row">
-                          <div className="col">
-                            <CountryLabel
-                              htmlFor="countryInputDe"
-                              isActive={input.value === DeProjectId}
-                            >
-                              <input
-                                {...input}
-                                type="radio"
-                                value={DeProjectId}
-                                id="countryInputDe"
-                                autoComplete="off"
-                              />
-                              <Markdown source={section1MarkdownDe} />
-                            </CountryLabel>
-                          </div>
-                          <div className="col" data-toggle="buttons">
-                            <CountryLabel
-                              htmlFor="countryInputSa"
-                              isActive={input.value === SaProjectId}
-                            >
-                              <input
-                                {...input}
-                                type="radio"
-                                value={SaProjectId}
-                                id="countryInputSa"
-                                autoComplete="off"
-                              />
-                              <Markdown source={section1MarkdownSa} />
-                            </CountryLabel>
+                <Field name={fieldName.projectId}>
+                  {({ input, meta }) => (
+                    <Fragment>
+                      <SubHeader isValid={this.isValid(meta)}>{section1title} *</SubHeader>
+                      <div className="row">
+                        <div className="col offset-lg-3">
+                          <div className="row">
+                            <div className="col">
+                              <CountryLabel
+                                htmlFor="countryInputDe"
+                                isActive={input.value === DeProjectId}
+                              >
+                                <input
+                                  {...input}
+                                  type="radio"
+                                  value={DeProjectId}
+                                  id="countryInputDe"
+                                  autoComplete="off"
+                                />
+                                <Markdown source={section1MarkdownDe} />
+                              </CountryLabel>
+                            </div>
+                            <div className="col" data-toggle="buttons">
+                              <CountryLabel
+                                htmlFor="countryInputSa"
+                                isActive={input.value === SaProjectId}
+                              >
+                                <input
+                                  {...input}
+                                  type="radio"
+                                  value={SaProjectId}
+                                  id="countryInputSa"
+                                  autoComplete="off"
+                                />
+                                <Markdown source={section1MarkdownSa} />
+                              </CountryLabel>
+                            </div>
                           </div>
                         </div>
-                      )}
-                    </Field>
-                  </div>
-                </div>
+                      </div>
+                    </Fragment>
+                  )}
+                </Field>
 
                 <Divider />
 
-                <h3>{section2title} *</h3>
-                <div className="row">
-                  <div className="col offset-lg-3">
-                    <Field name={fieldName.paymentInterval}>
-                      {({ input }) =>
-                        section2ReferenceList.map(({ value, name }) => (
-                          <LabelButton
-                            className="btn"
-                            isActive={input.value === value}
-                            key={value}
-                            htmlFor={`frequencyInputOption${value}`}
-                          >
+                <Field name={fieldName.paymentInterval}>
+                  {({ input, meta }) => (
+                    <Fragment>
+                      <SubHeader isValid={this.isValid(meta)}>{section2title} *</SubHeader>
+                      <div className="row">
+                        <div className="col offset-lg-3">
+                          {section2ReferenceList.map(({ value, name }) => (
+                            <LabelButton
+                              className="btn"
+                              isActive={input.value === value}
+                              key={value}
+                              htmlFor={`frequencyInputOption${value}`}
+                            >
+                              <input
+                                {...input}
+                                type="radio"
+                                value={value}
+                                id={`frequencyInputOption${value}`}
+                                autoComplete="off"
+                              />
+                              {name}
+                            </LabelButton>
+                          ))}
+                        </div>
+                      </div>
+                    </Fragment>
+                  )}
+                </Field>
+
+                <Field name={fieldName.amount}>
+                  {({ input, meta }) => (
+                    <Fragment>
+                      <SubHeader isValid={this.isValid(meta)}>{section3Title} *</SubHeader>
+                      <div className="row">
+                        <div className="col offset-lg-3">
+                          {section3ReferenceList.map(({ text, value }) => (
+                            <LabelButton
+                              className="btn"
+                              isActive={Number(input.value) === value}
+                              key={value}
+                              htmlFor={`amountInputOption${value}`}
+                            >
+                              <input
+                                {...input}
+                                type="radio"
+                                value={value}
+                                id={`amountInputOption${value}`}
+                                autoComplete="off"
+                              />
+                              {text}
+                            </LabelButton>
+                          ))}
+
+                          <OtherAmountContainer>
+                            <EuroPostfix>€</EuroPostfix>
                             <input
                               {...input}
-                              type="radio"
-                              value={value}
-                              id={`frequencyInputOption${value}`}
-                              autoComplete="off"
+                              className="form-control"
+                              type="text"
+                              placeholder={section3Text}
                             />
-                            {name}
-                          </LabelButton>
-                        ))
-                      }
-                    </Field>
-                  </div>
-                </div>
-
-                <h3>{section3Title} *</h3>
-                <div className="row">
-                  <div className="col offset-lg-3">
-                    <Field name={fieldName.amount}>
-                      {({ input }) =>
-                        section3ReferenceList.map(({ text, value }) => (
-                          <LabelButton
-                            className="btn"
-                            isActive={Number(input.value) === value}
-                            key={value}
-                            htmlFor={`amountInputOption${value}`}
-                          >
-                            <input
-                              {...input}
-                              type="radio"
-                              value={value}
-                              id={`amountInputOption${value}`}
-                              autoComplete="off"
-                            />
-                            {text}
-                          </LabelButton>
-                        ))
-                      }
-                    </Field>
-
-                    <Field name={fieldName.amount}>
-                      {({ input }) => (
-                        <OtherAmountContainer>
-                          <EuroPostfix>€</EuroPostfix>
-                          <input
-                            {...input}
-                            className="form-control"
-                            type="text"
-                            placeholder={section3Text}
-                          />
-                        </OtherAmountContainer>
-                      )}
-                    </Field>
-                  </div>
-                </div>
+                          </OtherAmountContainer>
+                        </div>
+                      </div>
+                    </Fragment>
+                  )}
+                </Field>
               </form>
             )}
           />
 
           <Divider />
-          <h2>{section4Title}</h2>
+          <SubHeader>{section4Title}</SubHeader>
           <FundRaisingForm
             interval={this.state.values.interval}
             amount={this.state.values.amount}
