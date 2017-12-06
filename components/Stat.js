@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import imagePropTypes from '../propTypes/image'
+import { handwritten } from '../styling/typography'
 
 const CenteredSpan = styled.span`
   text-align: center;
@@ -16,6 +16,14 @@ const StatContainer = styled.div`
   margin-bottom: 30px;
 `
 
+const Number = CenteredSpan.extend`
+  ${handwritten}
+`
+
+const Image = styled.img`
+  margin-bottom: 0.6rem;
+`
+
 const Stat = ({
   textAbove, description, icon, number, className,
 }) => (
@@ -25,8 +33,8 @@ const Stat = ({
         <CenteredSpan>{textAbove}</CenteredSpan>
       </FixedHeight>
     )}
-    <img src={icon.url} alt={icon.title} />
-    <CenteredSpan>{number}</CenteredSpan>
+    {!!icon && (<Image src={icon.url} alt={icon.title} />)}
+    <Number>{number}</Number>
     <CenteredSpan>{description}</CenteredSpan>
   </StatContainer>
 )
@@ -34,7 +42,10 @@ const Stat = ({
 Stat.propTypes = {
   className: PropTypes.string,
   textAbove: PropTypes.string,
-  icon: PropTypes.shape(imagePropTypes).isRequired,
+  icon: PropTypes.shape({
+    url: PropTypes.string,
+    title: PropTypes.string,
+  }),
   number: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 }
@@ -42,6 +53,7 @@ Stat.propTypes = {
 Stat.defaultProps = {
   textAbove: undefined,
   className: '',
+  icon: undefined,
 }
 
 export default Stat

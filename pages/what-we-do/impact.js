@@ -27,9 +27,7 @@ const StatsSection = ({ title, stats }) => (
       {stats.map(stat => (
         <Stat
           key={stat.description}
-          description={stat.description}
-          icon={stat.icon}
-          number={stat.number}
+          {...stat}
         />
       ))}
     </div>
