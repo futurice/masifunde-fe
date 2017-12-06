@@ -54,21 +54,27 @@ class FundRaisingForm extends Component {
   }
   validateForm = (values) => {
     const errors = {}
-    const isRequired = (key) => {
-      if (!values[key]) {
-        errors[key] = '*'
-      }
+    const isRequired = (keysArray) => {
+      keysArray.forEach((key) => {
+        if (!values[key]) {
+          errors[key] = '*'
+        }
+      })
     }
-    isRequired(fieldName.address)
-    isRequired(fieldName.city)
-    isRequired(fieldName.country)
-    isRequired(fieldName.email)
-    isRequired(fieldName.firstName)
-    isRequired(fieldName.lastName)
-    isRequired(fieldName.postCode)
-    isRequired(fieldName.salutation)
-    isRequired(fieldName.title)
-    isRequired(fieldName.wantsReceipt)
+
+    isRequired([
+      fieldName.address,
+      fieldName.city,
+      fieldName.country,
+      fieldName.email,
+      fieldName.firstName,
+      fieldName.lastName,
+      fieldName.postCode,
+      fieldName.salutation,
+      fieldName.title,
+      fieldName.wantsReceipt,
+    ])
+
     if (!Object.keys(errors).length) {
       this.debaunceSetState({ ...this.state, values })
     }

@@ -100,14 +100,20 @@ class Donate extends Component {
 
   validateForm = (values) => {
     const errors = {}
-    const isRequired = (key) => {
-      if (!values[key]) {
-        errors[key] = '*'
-      }
+    const isRequired = (keysArray) => {
+      keysArray.forEach((key) => {
+        if (!values[key]) {
+          errors[key] = '*'
+        }
+      })
     }
-    isRequired(fieldName.projectId)
-    isRequired(fieldName.amount)
-    isRequired(fieldName.paymentInterval)
+
+    isRequired([
+      fieldName.projectId,
+      fieldName.amount,
+      fieldName.paymentInterval,
+    ])
+
     if (!Object.keys(errors).length) {
       this.debaunceSetState({
         ...this.state,
