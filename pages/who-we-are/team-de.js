@@ -49,6 +49,7 @@ const TeamDe = ({
         <TeamMemberList className="d-flex flex-wrap">
           {teamMembers.map(teamMember => (
             <TeamMember
+              className="col-12 col-md-3 col-lg-2"
               key={teamMember.name}
               imageUrl={teamMember.image.url}
               title={teamMember.name}

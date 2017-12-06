@@ -7,9 +7,9 @@ const Title = styled.div`
 `
 
 const TeamMember = ({
-  imageUrl, title, subtitle, email,
+  imageUrl, title, subtitle, email, className,
 }) => (
-  <div className="col-6 col-md-3 col-lg-2">
+  <div className={className}>
     <img className="img-fluid" src={imageUrl} alt={`${title} - ${subtitle}`} />
     <Title>{title}</Title>
     <div>{subtitle}</div>
@@ -22,10 +22,12 @@ TeamMember.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   email: PropTypes.string,
+  className: PropTypes.string,
 }
 
 TeamMember.defaultProps = {
   email: '',
+  className: '',
 }
 
 export default TeamMember

@@ -31,6 +31,7 @@ const AdressContainer = styled.div`
 
 const mapContact = contact => (
   <TeamMember
+    className="col-12 col-md-3 col-lg-2"
     key={`${contact.image.url} ${contact.region} ${contact.name}`}
     imageUrl={contact.image.url}
     title={contact.region}
