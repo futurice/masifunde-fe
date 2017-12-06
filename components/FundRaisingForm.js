@@ -41,12 +41,11 @@ const fieldName = {
 
 class FundRaisingForm extends Component {
   state = {
-    values: {
-      amount: this.props.amount,
-      projectId: this.props.projectId,
-      interval: this.props.interval,
-    },
+    fields: undefined,
   }
+
+  shouldComponentUpdate = (nextProps, nextState) => !!(nextProps.hiddenFields && nextState.fields)
+
   debounceSetState = _debounce(this.setState, 500)
 
   submitForm = () => {
@@ -54,11 +53,11 @@ class FundRaisingForm extends Component {
     this.props.onSubmit()
   }
 
-  validateForm = (values) => {
+  validateForm = (fields) => {
     const errors = {}
     const isRequired = (keysArray) => {
       keysArray.forEach((key) => {
-        if (!values[key]) {
+        if (!fields[key]) {
           errors[key] = '*'
         }
       })
@@ -78,7 +77,7 @@ class FundRaisingForm extends Component {
     ])
 
     if (!Object.keys(errors).length) {
-      this.debounceSetState({ ...this.state, values })
+      this.debounceSetState({ ...this.state, fields })
     }
     return errors
   }
@@ -87,9 +86,7 @@ class FundRaisingForm extends Component {
 
   render() {
     const {
-      interval,
-      amount,
-      projectId,
+      hiddenFields,
     } = this.props
 
     return (
@@ -304,10 +301,8 @@ class FundRaisingForm extends Component {
           <FundRaisingIframe
             onMouseHover={this.submitForm}
             hash="j3ip42zwp3mlewb9"
-            projectId={projectId}
-            amount={amount}
-            interval={interval}
-            {...this.state.values}
+            {...this.state.fields}
+            {...hiddenFields}
           />
         </FundRaisingIfameContainer>
       </Fragment>
@@ -316,16 +311,16 @@ class FundRaisingForm extends Component {
 }
 
 FundRaisingForm.propTypes = {
-  projectId: PropTypes.number,
-  amount: PropTypes.number,
-  interval: PropTypes.oneOf([0, '0', 1, '1', 3, '3', 6, '6', 12, '12']),
+  hiddenFields: PropTypes.shape({
+    projectId: PropTypes.number,
+    amount: PropTypes.number,
+    interval: PropTypes.oneOf([0, '0', 1, '1', 3, '3', 6, '6', 12, '12']),
+  }),
   onSubmit: PropTypes.func,
 }
 
 FundRaisingForm.defaultProps = {
-  projectId: undefined,
-  amount: undefined,
-  interval: undefined,
+  hiddenFields: undefined,
   onSubmit: () => {},
 }
 

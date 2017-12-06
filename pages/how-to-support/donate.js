@@ -93,7 +93,7 @@ const fieldName = {
 
 class Donate extends Component {
   state = {
-    values: {
+    fields: {
       [fieldName.projectId]: undefined,
       [fieldName.paymentInterval]: undefined,
       [fieldName.amount]: undefined,
@@ -107,11 +107,11 @@ class Donate extends Component {
     this.formRef.click()
   }
 
-  validateForm = (values) => {
+  validateForm = (fields) => {
     const errors = {}
     const isRequired = (keysArray) => {
       keysArray.forEach((key) => {
-        if (!values[key]) {
+        if (!fields[key]) {
           errors[key] = '*'
         }
       })
@@ -126,11 +126,11 @@ class Donate extends Component {
     if (!Object.keys(errors).length) {
       this.debounceSetState({
         ...this.state,
-        values: {
-          ...values,
+        fields: {
+          ...fields,
           // Cast to integer
-          [fieldName.amount]: Number(values[fieldName.amount]),
-          [fieldName.projectId]: Number(values[fieldName.projectId]),
+          [fieldName.amount]: Number(fields[fieldName.amount]),
+          [fieldName.projectId]: Number(fields[fieldName.projectId]),
         },
       })
     }
@@ -293,9 +293,7 @@ class Donate extends Component {
           <Divider />
           <SubHeader>{section4Title}</SubHeader>
           <FundRaisingForm
-            interval={this.state.values.interval}
-            amount={this.state.values.amount}
-            projectId={this.state.values.projectId}
+            hiddenFields={{ ...this.state.fields }}
             onSubmit={this.submitForm}
           />
         </div>
