@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
 import styled from 'styled-components'
-import _debaunce from 'lodash/debounce'
+import _debounce from 'lodash/debounce'
 
 import countries from '../utils/countries'
 import FundRaisingIframe from '../components/FundRaisingIframe'
@@ -47,7 +47,7 @@ class FundRaisingForm extends Component {
       interval: this.props.interval,
     },
   }
-  debaunceSetState = _debaunce(this.setState, 500)
+  debounceSetState = _debounce(this.setState, 500)
 
   submitForm = () => {
     this.formRef.click()
@@ -76,7 +76,7 @@ class FundRaisingForm extends Component {
     ])
 
     if (!Object.keys(errors).length) {
-      this.debaunceSetState({ ...this.state, values })
+      this.debounceSetState({ ...this.state, values })
     }
     return errors
   }

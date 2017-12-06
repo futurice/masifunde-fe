@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
 import styled, { css } from 'styled-components'
-import _debaunce from 'lodash/debounce'
+import _debounce from 'lodash/debounce'
 
 import { RouteNames } from '../../routes'
 import Banner from '../../components/Banner'
@@ -96,7 +96,7 @@ class Donate extends Component {
     },
   }
 
-  debaunceSetState = _debaunce(this.setState, 500)
+  debounceSetState = _debounce(this.setState, 500)
 
   validateForm = (values) => {
     const errors = {}
@@ -115,7 +115,7 @@ class Donate extends Component {
     ])
 
     if (!Object.keys(errors).length) {
-      this.debaunceSetState({
+      this.debounceSetState({
         ...this.state,
         values: {
           ...values,
