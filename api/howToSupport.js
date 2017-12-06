@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-import { fetchMemoizedSingleEntry } from './contentfulService'
-import { unwrapImage, unwrapRegionalGroups, unwrapTeamMember } from './common'
+import { fetchMemoizedSingleEntry, fetchSingleEntry } from './contentfulService'
+import { unwrapImage, unwrapPartners, unwrapRegionalGroups, unwrapTeamMember } from './common'
 
 export async function fetchHowToSupportPage(locale) {
   const content = await fetchMemoizedSingleEntry('pageWieSieHelfen', locale)
@@ -24,5 +24,14 @@ export async function fetchBecomeAVolunteerPage(locale) {
     regionalGroups: unwrapRegionalGroups(content.regionalGroups),
     section1TeamMember: unwrapTeamMember(content.section1TeamMember),
     volunteerOpenings: content.volunteerOpenings.map(unwrapVolunteerOpening),
+  }
+}
+
+export async function fetchBecomeAPartnerPage(locale) {
+  const content = await fetchSingleEntry('pageBecomeAPartner', locale)
+  return {
+    ...content,
+    partners: unwrapPartners(content.partners),
+    teamMember: unwrapTeamMember(content.teamMember),
   }
 }
