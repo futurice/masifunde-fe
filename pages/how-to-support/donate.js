@@ -280,7 +280,11 @@ class Donate extends Component {
 
           <Divider />
           <h2>{section4Title}</h2>
-          <FundRaisingForm {...this.state.values} />
+          <FundRaisingForm
+            interval={this.state.values.interval}
+            amount={this.state.values.amount}
+            projectId={this.state.values.projectId}
+          />
         </div>
         <Banner
           headline={bannerTitle}
