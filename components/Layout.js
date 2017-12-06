@@ -5,6 +5,17 @@ import { injectGlobal, ThemeProvider } from 'styled-components'
 
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
+import { h3 } from '../styling/typography'
+
+const theme = {
+  orange: '#FE9933',
+  orangeRed: '#FF621D',
+  green: '#17DD73',
+  darkGreen: '#00C078',
+  blue: '#4176F9',
+  linkBlue: '#225DBC',
+  greyText: '#77695C',
+}
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -26,11 +37,11 @@ injectGlobal`
   }
 
   a {
-    color: #225DBC;
+    color: ${theme.linkBlue};;
   }
 
   .footer a, .footer a:visited {
-    color: #77695C;
+    color: ${theme.greyText};
   }
 
   .footer li {
@@ -50,30 +61,26 @@ injectGlobal`
   h1 {
     line-height: 1.2;
     margin: 4rem 0;
-    color: #FF621D;
+    color: ${theme.orangeRed};
   }
   
   h2 {
     line-height: 1.4;
     margin: 3rem 0;
-    color: #FF621D;
+    color: ${theme.orangeRed};
     font-size: 2.5rem;
   }
 
   h3 {
-    font-weight: 500;
-    line-height: 1.4;
-    color: #77695C;
-    font-weight: 400;
-    font-size: 32px;
+   ${h3}
   }
 
   p {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   p + p {
-    margin-top: 24px;
+    margin-top: 1.5rem;
   }
 
   //Bootstrap overrides
@@ -93,15 +100,6 @@ injectGlobal`
     }
   }
 `
-
-const theme = {
-  orange: '#FE9933',
-  orangeRed: '#FF621D',
-  green: '#17DD73',
-  darkGreen: '#00C078',
-  blue: '#4176F9',
-  linkBlue: '#225DBC',
-}
 
 const Layout = ({ headerData, children, footerData }) => (
   <ThemeProvider theme={theme}>

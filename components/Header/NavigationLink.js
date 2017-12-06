@@ -10,9 +10,9 @@ import { Link } from '../../routes'
 const StyledLink = styled.a`
   font-weight: bold;
   text-align: right;
-  padding: 5px 0;
+  padding: 0.3125rem 0;
   margin-right: 2rem;
-  margin-bottom: 3px;
+  margin-bottom: 0.1875rem;
   color: inherit !important;
   ${({ isActive }) => (isActive && 'border-bottom: 3px solid #FE9933 !important; margin-bottom: 0;')}
   

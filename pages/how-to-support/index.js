@@ -12,13 +12,16 @@ import Head from '../../components/Head'
 import Hero from '../../components/Hero'
 import Markdown from '../../components/Markdown'
 import Button from '../../components/Button'
+import { h3 } from '../../styling/typography'
 
 const Paragraph = styled(Markdown)`
   text-align: center;
 `
 
-const H3 = styled.h3`
+const H2 = styled.h2`
+  ${h3};
   text-align: left;
+  margin: 0 0 8px;
 `
 
 const HR = styled.hr`
@@ -34,7 +37,7 @@ const Section = ({
       <img className="img-fluid" src={image.url} alt={image.tile} />
     </div>
     <div className="col-md-9">
-      <H3>{title}</H3>
+      <H2>{title}</H2>
       <Markdown source={markdown} />
       <Link route={buttonLink} passHref>
         <Button type={buttonType}>{buttonText}</Button>
