@@ -12,6 +12,7 @@ import portraitPropTypes from '../propTypes/portrait'
 import Stat from '../components/Stat'
 import { getLocaleFromQuery } from '../utils/locale'
 import { fetchHomePage } from '../api/home'
+import { RouteNames } from '../routes'
 
 const CarouselContainer = styled.div`
   margin-top: 8rem;
@@ -50,11 +51,19 @@ const Home = ({
         }
       </StatsContainer>
     </Container>
-    <Banner headline={banner1Title} buttonText={banner1ButtonText} buttonLink="a" />
+    <Banner
+      headline={banner1Title}
+      buttonText={banner1ButtonText}
+      buttonLink={RouteNames.WhatWeDo}
+    />
     <CarouselContainer>
       <Carousel portrait={portrait} />
     </CarouselContainer>
-    <Banner headline={banner2Title} buttonText={banner2ButtonText} buttonLink="b" />
+    <Banner
+      headline={banner2Title}
+      buttonText={banner2ButtonText}
+      buttonLink={RouteNames.Impact}
+    />
   </div>
 )
 
