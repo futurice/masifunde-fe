@@ -13,13 +13,16 @@ import Hero from '../../components/Hero'
 import Markdown from '../../components/Markdown'
 import Button from '../../components/Button'
 import HorizontalRuler from '../../components/HorizontalRuler'
+import { h3 } from '../../styling/typography'
 
 const Paragraph = styled(Markdown)`
   text-align: center;
 `
 
 const H2 = styled.h2`
+  ${h3};
   text-align: left;
+  margin: 0 0 8px;
 `
 
 const Section = ({

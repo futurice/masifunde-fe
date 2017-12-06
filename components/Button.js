@@ -25,10 +25,11 @@ const StyledButton = styled(CustomButton)`
   background-color: transparent;
   outline: none;
   box-shadow: none !important;
-  border-radius: 20px;
-  padding: 0.2rem 0.9rem;
-  border-width: 2px;
+  border-radius: 47px;
+  padding: 0.5rem 1.5rem;
+  border-width: 3px;
   font-weight: bold;
+  font-size: 1.125rem;
   
   ${props => props.type === 'primary' && css`
     font-weight: 900;
@@ -44,7 +45,7 @@ const StyledButton = styled(CustomButton)`
   `}
   
   ${props => props.type === 'secondary' && css`
-    color: ${props.theme.orange};
+    color: ${props.theme.orangeRed};
     border-color: ${props.theme.orangeRed};
     
     &:hover {

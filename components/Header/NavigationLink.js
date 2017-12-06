@@ -8,12 +8,22 @@ import styled from 'styled-components'
 import { Link } from '../../routes'
 
 const StyledLink = styled.a`
-  color: black;
+  font-weight: bold;
   text-align: right;
-  ${({ isActive }) => (isActive && 'text-decoration: underline;')}
+  padding: 0.3125rem 0;
+  margin-right: 2rem;
+  margin-bottom: 0.1875rem;
+  color: inherit !important;
+  ${({ isActive }) => (isActive && 'border-bottom: 3px solid #FE9933 !important; margin-bottom: 0;')}
   
-  @media screen and (min-width: 768px){
-    text-align: left;
+  @media screen and (max-width: 768px){
+    text-align: center;
+    margin-right: 0;
+  }
+
+  :hover {
+    border-bottom: 3px solid #77695c; 
+    margin-bottom: 0;
   }
 `
 
