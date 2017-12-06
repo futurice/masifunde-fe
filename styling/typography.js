@@ -7,7 +7,7 @@ export const handwritten = css`
 
 export const h3 = css`
     line-height: 1.4;
-    color: ${props => props.theme.greyText};
+    color: ${props => props.theme.pineCone};
     font-weight: normal;
     font-size: 2rem;
 `

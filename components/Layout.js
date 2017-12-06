@@ -14,8 +14,7 @@ const theme = {
   darkGreen: '#00C078',
   blue: '#4176F9',
   linkBlue: '#225DBC',
-  greyText: '#77695C',
-  pineCone: '#77695c',
+  pineCone: '#77695C',
 }
 
 // eslint-disable-next-line no-unused-expressions
