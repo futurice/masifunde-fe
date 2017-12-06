@@ -91,7 +91,7 @@ const WhatWeDo = ({
     <Hero src="//via.placeholder.com/350x150/555" alt={title} />
     <Container>
       <H1>{title}</H1>
-      <StyledYouTubeVideo videoId={youtubeVideo} />
+      <StyledYouTubeVideo youtubeVideo={youtubeVideo} />
       <BoldHeading>{introHeading}</BoldHeading>
       <div className="row">
         {programmes.map(program => (

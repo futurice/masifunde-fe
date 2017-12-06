@@ -42,6 +42,7 @@
     "next-routes": "^1.1.0",
     "nuka-carousel": "^3.0.0",
     "prop-types": "^15.6.0",
+    "query-string": "^5.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
