@@ -157,8 +157,8 @@ class Donate extends Component {
               <Markdown source={introMarkdown} />
             </div>
           </div>
-          <h3>{section1title}</h3>
 
+          <h3>{section1title} *</h3>
           <Form
             onSubmit={() => {}}
             validate={this.validateForm}
@@ -207,7 +207,7 @@ class Donate extends Component {
 
                 <Divider />
 
-                <h3>{section2title}</h3>
+                <h3>{section2title} *</h3>
                 <div className="row">
                   <div className="col offset-lg-3">
                     <Field name={fieldName.paymentInterval}>
@@ -234,7 +234,7 @@ class Donate extends Component {
                   </div>
                 </div>
 
-                <h3>{section3Title}</h3>
+                <h3>{section3Title} *</h3>
                 <div className="row">
                   <div className="col offset-lg-3">
                     <Field name={fieldName.amount}>
