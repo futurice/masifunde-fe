@@ -130,7 +130,7 @@ class Donate extends Component {
           ...values,
           // Cast to integer
           [fieldName.amount]: Number(values[fieldName.amount]),
-          [fieldName.projectId]: Number([fieldName.projectId]),
+          [fieldName.projectId]: Number(values[fieldName.projectId]),
         },
       })
     }
