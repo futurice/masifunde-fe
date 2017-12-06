@@ -88,7 +88,14 @@ const fieldName = {
 }
 
 class Donate extends Component {
-  state = {}
+  state = {
+    values: {
+      [fieldName.projectId]: undefined,
+      [fieldName.paymentInterval]: undefined,
+      [fieldName.amount]: undefined,
+    },
+  }
+
   debaunceSetState = _debaunce(this.setState, 500)
 
   validateForm = (values) => {
