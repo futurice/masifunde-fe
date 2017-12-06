@@ -11,6 +11,7 @@ import { getLocaleFromQuery } from '../../utils/locale'
 import Head from '../../components/Head'
 import YouTubeVideo from '../../components/YouTubeVideo'
 import Button from '../../components/Button'
+import { handwritten } from '../../styling/typography'
 
 const Hero = styled.img`
   width: 100%;
@@ -59,6 +60,7 @@ const ProjectContainer = styled.div`
 
 const Number = styled.span`
   font-size: 44px;
+  ${handwritten}
 `
 
 const StyledYouTubeVideo = YouTubeVideo.extend`
@@ -126,7 +128,7 @@ const WhatWeDo = ({
                   className="col-sm d-flex flex-column align-items-center"
                   key={`${stat.number} ${stat.description}`}
                 >
-                  <Number className="handwritten">{stat.number}</Number>
+                  <Number>{stat.number}</Number>
                   <ProjectText>{stat.description}</ProjectText>
                 </div>
                 ))}
