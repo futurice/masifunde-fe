@@ -26,3 +26,11 @@ export async function fetchBecomeAVolunteerPage(locale) {
     volunteerOpenings: content.volunteerOpenings.map(unwrapVolunteerOpening),
   }
 }
+
+export async function fetchBecomeASponsorPage(locale) {
+  const content = await fetchMemoizedSingleEntry('pagePateWerden', locale)
+  return {
+    ...content,
+    image: unwrapImage(content.image),
+  }
+}
