@@ -83,6 +83,18 @@ const SubHeader = styled.h3`
   ${props => props.isValid && 'color: #dc3545;'};
 `
 
+const AmountDescription = styled.div`
+  border-radius: 8px;
+  padding: 15px 40px;
+  background-color: #e9e0d3;
+
+  span {
+    font-weight: bold;
+    text-align: left;
+    color: #333333;
+  }
+`
+
 const DeProjectId = '3522'
 const SaProjectId = '3523'
 const fieldName = {
@@ -105,6 +117,13 @@ class Donate extends Component {
 
   submitForm = () => {
     this.formRef.click()
+  }
+
+  findAmountDescription = (searchedValue) => {
+    const object = this.props.section3ReferenceList.find(
+      ({ value }) => value === Number(searchedValue),
+    )
+    return object ? object.description : 'Other value'
   }
 
   validateForm = (fields) => {
@@ -270,7 +289,6 @@ class Donate extends Component {
                               {text}
                             </LabelButton>
                           ))}
-
                           <OtherAmountContainer>
                             <EuroPostfix>€</EuroPostfix>
                             <input
@@ -280,6 +298,14 @@ class Donate extends Component {
                               placeholder={section3Text}
                             />
                           </OtherAmountContainer>
+                          <AmountDescription>
+                            <span>
+                              {input.value
+                                ? this.findAmountDescription(input.value)
+                                : 'Select the suggested amount'
+                              }
+                            </span>
+                          </AmountDescription>
                         </div>
                       </div>
                     </Fragment>
@@ -292,10 +318,7 @@ class Donate extends Component {
 
           <Divider />
           <SubHeader>{section4Title}</SubHeader>
-          <FundRaisingForm
-            hiddenFields={{ ...this.state.fields }}
-            onSubmit={this.submitForm}
-          />
+          <FundRaisingForm hiddenFields={{ ...this.state.fields }} onSubmit={this.submitForm} />
         </div>
         <Banner
           headline={bannerTitle}
