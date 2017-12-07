@@ -80,7 +80,7 @@ const EuroPostfix = styled.span`
 `
 
 const SubHeader = styled.h3`
-  ${props => props.isValid && 'color: red;'};
+  ${props => props.isValid && 'color: #dc3545;'};
 `
 
 const DeProjectId = '3522'
