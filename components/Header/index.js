@@ -7,12 +7,17 @@ import styled from 'styled-components'
 
 import { RouteNames } from '../../routes'
 import NavigationLink from './NavigationLink'
-import ButtonLink from './ButtonLink'
 
 const HeaderWrapper = styled.div`
   background-color: #f4e3d6;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  height: ${props => props.height};
+  box-shadow: -1px 1px 1px 1px rgba(250, 242, 230, 0.25);
+`
+
+const Logo = styled.img`
+  width: 90%;
 `
 
 class Header extends Component {
@@ -26,25 +31,25 @@ class Header extends Component {
 
   render() {
     const {
-      donateText, howToSupportText, whoWeAreText, whatWeDoText,
+      donateText, howToSupportText, whoWeAreText, whatWeDoText, height,
     } = this.props
 
     return (
-      <HeaderWrapper>
+      <HeaderWrapper height={height} className="fixed-top d-flex align-items-center">
         <Container>
           <Navbar color="faded" light expand="md">
-            <NavbarBrand href="/">
+            <NavbarBrand href="/" className="d-flex align-items-center">
               <Link href={RouteNames.Index}>
-                <img src="../static/logo.svg" alt="Masifunde Logo" />
+                <Logo src="../static/logo.svg" alt="Masifunde Logo" />
               </Link>
             </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto d-flex align-items-center" navbar>
-                <NavigationLink href={RouteNames.WhatWeDo}>{whatWeDoText}</NavigationLink>
-                <NavigationLink href={RouteNames.WhoWeAre}>{whoWeAreText}</NavigationLink>
-                <NavigationLink href={RouteNames.HowToSupport}>{howToSupportText}</NavigationLink>
-                <ButtonLink href={RouteNames.Donate}>{donateText}</ButtonLink>
+                <NavigationLink type="link" href={RouteNames.WhatWeDo}>{whatWeDoText}</NavigationLink>
+                <NavigationLink type="link" href={RouteNames.WhoWeAre}>{whoWeAreText}</NavigationLink>
+                <NavigationLink type="link" href={RouteNames.HowToSupport}>{howToSupportText}</NavigationLink>
+                <NavigationLink type="button" href={RouteNames.Donate}>{donateText}</NavigationLink>
               </Nav>
             </Collapse>
           </Navbar>
@@ -61,6 +66,9 @@ export const propTypes = {
   donateText: PropTypes.string.isRequired,
 }
 
-Header.propTypes = propTypes
+Header.propTypes = {
+  ...propTypes,
+  height: PropTypes.string.isRequired,
+}
 
 export default Header
