@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { injectGlobal, ThemeProvider } from 'styled-components'
+import styled, { injectGlobal, ThemeProvider } from 'styled-components'
 
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
@@ -19,13 +19,21 @@ const theme = {
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
+  html {
+    font-size: 9pt; 
+    
+    @media (min-width: 992px) {
+      font-size: 11pt;
+    }
+   
+  }
+  
   body {
     font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
     color: #4F463F;
     background-color: #faf2e6;
     line-height: 1.6;
-    font-size: 1.125rem;
   }
 
   @font-face {
@@ -75,10 +83,6 @@ injectGlobal`
    ${h3}
   }
 
-  p {
-    font-size: 1.125rem;
-  }
-
   p + p {
     margin-top: 1.5rem;
   }
@@ -101,6 +105,12 @@ injectGlobal`
   }
 `
 
+const headerHeight = '4.5rem'
+
+const LayoutChildrenContainer = styled.div`
+  padding-top: ${headerHeight};
+`
+
 const Layout = ({ headerData, children, footerData }) => (
   <ThemeProvider theme={theme}>
     <Fragment>
@@ -115,12 +125,15 @@ const Layout = ({ headerData, children, footerData }) => (
 
       </Head>
       <Header
+        height={headerHeight}
         whatWeDoText={headerData.whatWeDoText}
         whoWeAreText={headerData.whoWeAreText}
         howToSupportText={headerData.howToSupportText}
         donateText={headerData.donateText}
       />
-      {children}
+      <LayoutChildrenContainer>
+        {children}
+      </LayoutChildrenContainer>
       <Footer
         whatWeDoText={footerData.whatWeDoText}
         approachSaText={footerData.approachSaText}

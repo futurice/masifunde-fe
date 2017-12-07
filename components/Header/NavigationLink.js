@@ -3,37 +3,41 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NavItem } from 'reactstrap'
 import { withRouter } from 'next/router'
-import styled from 'styled-components'
 
 import { Link } from '../../routes'
+import StyledLink from './Link'
+import Button from '../Button'
 
-const StyledLink = styled.a`
-  font-weight: bold;
-  text-align: right;
-  padding: 0.3125rem 0;
-  margin-right: 2rem;
-  margin-bottom: 0.1875rem;
-  color: inherit !important;
-  ${({ isActive }) => (isActive && 'border-bottom: 3px solid #FE9933 !important; margin-bottom: 0;')}
-  
-  @media screen and (max-width: 768px){
-    text-align: center;
-    margin-right: 0;
-  }
+const activeLinkBorderThickness = '3px'
 
-  :hover {
-    border-bottom: 3px solid #77695c; 
-    margin-bottom: 0;
-  }
-`
-
-function NavigationLink({ children, router, href }) {
+function NavigationLink({
+  children,
+  router,
+  href,
+  type,
+}) {
   return (
     <NavItem>
       <Link route={href} passHref prefetch>
-        <StyledLink className="nav-link" isActive={router.pathname.includes(href)}>
-          {children}
-        </StyledLink>
+        {type === 'link'
+          ? (
+            <StyledLink
+              activeBorderThickness={activeLinkBorderThickness}
+              className="nav-link"
+              isActive={router.pathname.includes(href)}
+            >
+              {children}
+            </StyledLink>
+          )
+          : (
+            <Button
+              type="primary"
+              isActive={router.pathname === href}
+            >
+              {children}
+            </Button>
+          )
+        }
       </Link>
     </NavItem>
   )
@@ -44,6 +48,11 @@ NavigationLink.propTypes = {
   href: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   router: PropTypes.any.isRequired,
+  type: PropTypes.oneOf(['link', 'button']),
+}
+
+NavigationLink.defaultProps = {
+  type: 'link',
 }
 
 export default withRouter(NavigationLink)
