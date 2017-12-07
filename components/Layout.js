@@ -5,7 +5,7 @@ import { injectGlobal, ThemeProvider } from 'styled-components'
 
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
-import { h3 } from '../styling/typography'
+import { pageTitle, sectionTitle, subtitle } from '../styling/typography'
 
 const theme = {
   orange: '#FE9933',
@@ -59,20 +59,15 @@ injectGlobal`
   }
   
   h1 {
-    line-height: 1.2;
-    margin: 4rem 0;
-    color: ${theme.orangeRed};
+    ${pageTitle}
   }
   
   h2 {
-    line-height: 1.4;
-    margin: 3rem 0;
-    color: ${theme.orangeRed};
-    font-size: 2.5rem;
+    ${sectionTitle}
   }
 
   h3 {
-   ${h3}
+    ${subtitle}
   }
 
   p {
