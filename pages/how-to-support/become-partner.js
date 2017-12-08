@@ -65,12 +65,12 @@ const BecomePartner = ({
       </div>
       <Section1Title>{section1Title}</Section1Title>
       <Section1Container className="row">
-        <div className="col-md-5 offset-md-2">
+        <div className="col-lg-5 offset-lg-2 col-md-7">
           <H3>{section1Subtitle}</H3>
           <Markdown source={section1Markdown} />
         </div>
         <TeamMember
-          className="col-md-2 offset-md-1"
+          className="col-lg-2 offset-lg-1 p-lg-0 offset-md-1 col-md-4"
           imageUrl={teamMember.image.url}
           title={teamMember.region}
           subtitle={teamMember.name}
