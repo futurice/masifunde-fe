@@ -70,16 +70,13 @@ const Contact = ({
       </PictureContainer>
 
       <AdressContainer className="row">
-        <div className="col-sm-4 d-flex flex-column align-items-center">
-          <img src="http://via.placeholder.com/50x50" alt="" />
+        <div className="col-sm-4">
           <p>{telephone}</p>
         </div>
-        <div className="col-sm-4 d-flex flex-column align-items-center">
-          <img src="http://via.placeholder.com/50x50" alt="" />
+        <div className="col-sm-4">
           <ReactMarkdown source={address} softBreak="br" />
         </div>
-        <div className="col-sm-4 d-flex flex-column align-items-center">
-          <img src="http://via.placeholder.com/50x50" alt="" />
+        <div className="col-sm-4">
           <p>{email}</p>
         </div>
       </AdressContainer>
