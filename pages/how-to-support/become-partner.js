@@ -11,6 +11,7 @@ import { fetchBecomeAPartnerPage } from '../../api/howToSupport'
 import Markdown from '../../components/Markdown'
 import TeamMember from '../../components/TeamMember'
 import Partner, { propTypes as partnerPropTypes } from '../../components/PartnersList/Partner'
+import { RouteNames } from '../../routes'
 
 const CenteredMarkdown = styled(Markdown)`
   text-align: center;
@@ -53,7 +54,14 @@ const BecomePartner = ({
       <h1>{introTitle}</h1>
       <CenteredMarkdown className="col-md-8 offset-md-2" source={introMarkdown} />
       <div className="row">
-        {partners.map(partner => (<StyledPartner key={partner.name} {...partner} />))}
+        {partners.map(partner => (
+          <StyledPartner
+            key={partner.name}
+            image={partner.image}
+            name={partner.name}
+            link={partner.link}
+          />
+        ))}
       </div>
       <Section1Title>{section1Title}</Section1Title>
       <Section1Container className="row">
@@ -66,13 +74,14 @@ const BecomePartner = ({
           imageUrl={teamMember.image.url}
           title={teamMember.region}
           subtitle={teamMember.name}
+          email={teamMember.email}
         />
       </Section1Container>
     </Container>
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}
-      buttonLink="a"
+      buttonLink={RouteNames.Contact}
     />
   </div>
 )
