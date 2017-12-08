@@ -136,6 +136,8 @@ const Layout = ({ headerData, children, footerData }) => (
         becomePartnerText={footerData.becomePartnerText}
         contactText={footerData.contactText}
         copyrightText={footerData.copyrightText}
+        masifundeYouTubeUrl={footerData.masifundeYouTubeUrl}
+        masifundeFacebookUrl={footerData.masifundeFacebookUrl}
       />
     </Fragment>
   </ThemeProvider>

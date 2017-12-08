@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
+import styled from 'styled-components'
 
 import { Link, RouteNames } from '../routes'
 
@@ -33,7 +34,18 @@ const copyrightRowStyle = {
 const socialStyle = {
   marginLeft: 10,
   marginRight: 10,
+  cursor: 'pointer',
 }
+
+const SocialLink = styled.a`
+  color: #444444;
+  opacity: 0.6;
+  
+  &:hover {
+    color: #444444 !important;
+    opacity: 1;
+  }
+`
 
 function Footer({
   whatWeDoText,
@@ -50,6 +62,8 @@ function Footer({
   becomePartnerText,
   contactText,
   copyrightText,
+  masifundeYouTubeUrl,
+  masifundeFacebookUrl,
 }) {
   return (
     <Container>
@@ -153,8 +167,12 @@ function Footer({
         <Row>
           <Col>
             <h4>
-              <FaYoutubePlay style={socialStyle} />
-              <FaFacebook style={socialStyle} />
+              <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
+                <FaYoutubePlay style={socialStyle} />
+              </SocialLink>
+              <SocialLink href={masifundeFacebookUrl} target="_blank" rel="noopener noreferrer">
+                <FaFacebook style={socialStyle} />
+              </SocialLink>
             </h4>
           </Col>
         </Row>
@@ -186,6 +204,8 @@ export const propTypes = {
   becomePartnerText: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
   copyrightText: PropTypes.string.isRequired,
+  masifundeYouTubeUrl: PropTypes.string.isRequired,
+  masifundeFacebookUrl: PropTypes.string.isRequired,
 }
 
 Footer.propTypes = propTypes
