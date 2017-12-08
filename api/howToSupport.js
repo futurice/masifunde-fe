@@ -1,6 +1,16 @@
 /* eslint-disable import/prefer-default-export */
 import { fetchMemoizedSingleEntry, fetchSingleEntry } from './contentfulService'
-import { unwrapImage, unwrapPartners, unwrapRegionalGroups, unwrapTeamMember } from './common'
+import { unwrapImage, unwrapPartners, unwrapRegionalGroups, unwrapTeamMember, unwrapFields } from './common'
+
+export async function fetchDonatePage(locale) {
+  const content = await fetchMemoizedSingleEntry('pageDonate', locale)
+
+  return {
+    ...content,
+    section2ReferenceList: content.section2ReferenceList.map(unwrapFields),
+    section3ReferenceList: content.section3ReferenceList.map(unwrapFields),
+  }
+}
 
 export async function fetchHowToSupportPage(locale) {
   const content = await fetchMemoizedSingleEntry('pageWieSieHelfen', locale)

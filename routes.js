@@ -21,10 +21,10 @@ const TeamDE = '/who-we-are/team-de'
 const TeamSA = '/who-we-are/team-sa'
 const Partners = '/who-we-are/partners'
 const HowToSupport = '/how-to-support'
+const Donate = '/how-to-support/donate'
 const BecomeSponsor = '/how-to-support/become-sponsor'
 const BecomeVolunteer = '/how-to-support/become-volunteer'
 const BecomePartner = '/how-to-support/become-partner'
-const Donate = '/donate'
 const Contact = '/contact'
 
 // Register the routes
@@ -41,7 +41,7 @@ addRoute('/wie-sie-helfen', HowToSupport)
 addRoute('/wie-sie-helfen/pate-werden', BecomeSponsor)
 addRoute('/wie-sie-helfen/aktiv-werden', BecomeVolunteer)
 addRoute('/wie-sie-helfen/partner-werden', BecomePartner)
-addRoute('/spenden', Donate)
+addRoute('/wie-sie-helfen/spenden', Donate)
 addRoute('/kontakt', Contact)
 
 // To use with translations

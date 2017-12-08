@@ -35,7 +35,7 @@ class Header extends Component {
           <Navbar color="faded" light expand="md">
             <NavbarBrand href="/">
               <Link href="/">
-                <img src="../static/Masifunde-Logo.png" alt="Masifunde Logo" />
+                <img src="../static/logo.svg" alt="Masifunde Logo" />
               </Link>
             </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />

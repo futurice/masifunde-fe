@@ -1,26 +1,59 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import imagePropTypes from '../propTypes/image'
+import { handwritten } from '../styling/typography'
 
 const CenteredSpan = styled.span`
   text-align: center;
+  max-width: 200px;
+`
+
+const FixedHeight = styled.div`
+  height: 65px;
+`
+
+const StatContainer = styled.div`
+  margin-bottom: 30px;
+`
+
+const Number = CenteredSpan.extend`
+  ${handwritten}
+`
+
+const Image = styled.img`
+  margin-bottom: 0.6rem;
 `
 
 const Stat = ({
-  description, icon, number,
+  textAbove, description, icon, number, className,
 }) => (
-  <div className="col-md d-flex flex-column align-items-center">
-    <img src={icon.url} alt={icon.title} />
-    <CenteredSpan>{number}</CenteredSpan>
+  <StatContainer className={`${className} d-flex flex-column align-items-center`}>
+    {!!textAbove && (
+      <FixedHeight className="d-flex align-items-center">
+        <CenteredSpan>{textAbove}</CenteredSpan>
+      </FixedHeight>
+    )}
+    {!!icon && (<Image src={icon.url} alt={icon.title} />)}
+    <Number>{number}</Number>
     <CenteredSpan>{description}</CenteredSpan>
-  </div>
+  </StatContainer>
 )
 
 Stat.propTypes = {
-  icon: PropTypes.shape(imagePropTypes).isRequired,
+  className: PropTypes.string,
+  textAbove: PropTypes.string,
+  icon: PropTypes.shape({
+    url: PropTypes.string,
+    title: PropTypes.string,
+  }),
   number: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+}
+
+Stat.defaultProps = {
+  textAbove: undefined,
+  className: '',
+  icon: undefined,
 }
 
 export default Stat
