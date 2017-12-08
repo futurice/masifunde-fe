@@ -1,12 +1,11 @@
 import { createClient } from 'contentful'
 import memoize from 'memoizee'
 
-const SPACE_ID = '6jocdllnp50q'
-const ACCESS_TOKEN = '5c8090d12bc2bf8dc695353cc398cd5e48eb56c214325884284bfdbfef4ba5ed'
+import { CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_SPACE_ID } from '../env'
 
 const client = createClient({
-  space: SPACE_ID,
-  accessToken: ACCESS_TOKEN,
+  space: CONTENTFUL_SPACE_ID,
+  accessToken: CONTENTFUL_ACCESS_TOKEN,
 })
 
 export function fetchEntriesForContentType(contentType, locale = 'de') {
