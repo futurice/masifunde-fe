@@ -1,33 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
-
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
-  body {
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
-    color: #333333;
-    background-color: #faf2e6;
-  }
-  
-  h1, h2 {
-    text-align: center;
-    line-height: 1.36;
-  }
-  
-  h1 {
-    margin-bottom: 2.2rem;
-  }
-  
-  h2 {
-    margin-bottom: 0.6rem;
-  }
-`
+import { h3 } from '../styling/typography'
 
 const theme = {
   orange: '#FE9933',
@@ -35,13 +13,97 @@ const theme = {
   green: '#17DD73',
   darkGreen: '#00C078',
   blue: '#4176F9',
-  linkBlue: '#4176F9',
-  pineCone: '#77695c',
+  linkBlue: '#225DBC',
+  pineCone: '#77695C',
 }
+
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
+  body {
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+    color: #4F463F;
+    background-color: #faf2e6;
+    line-height: 1.6;
+    font-size: 1.125rem;
+  }
+
+  @font-face {
+    font-family: 'banaueregular';
+    src: url('/static/fonts/banaue-regular-webfont.woff2') format('woff2'),
+         url('/static/fonts/banaue-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  a {
+    color: ${theme.linkBlue};;
+  }
+
+  .footer a, .footer a:visited {
+    color: ${theme.greyText};
+  }
+
+  .footer li {
+    padding: 0.3rem 0;
+  }
+
+  .footer ul li:first-of-type {
+    font-weight: 700;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Raleway';
+    font-weight: 800;
+    text-align: center;
+  }
+  
+  h1 {
+    line-height: 1.2;
+    margin: 4rem 0;
+    color: ${theme.orangeRed};
+  }
+  
+  h2 {
+    line-height: 1.4;
+    margin: 3rem 0;
+    color: ${theme.orangeRed};
+    font-size: 2.5rem;
+  }
+
+  h3 {
+   ${h3}
+  }
+
+  p {
+    font-size: 1.125rem;
+  }
+
+  p + p {
+    margin-top: 1.5rem;
+  }
+
+  //Bootstrap overrides
+  button.navbar-toggler {
+    border: 0;
+  }
+
+  .nav-item {
+    @media screen and (max-width: 768px) {
+      padding: 1rem 0;
+    }
+  }
+
+  .navbar-nav {
+    @media screen and (max-width: 768px) {
+      padding: 2rem 0;
+    }
+  }
+`
 
 const Layout = ({ headerData, children, footerData }) => (
   <ThemeProvider theme={theme}>
-    <div>
+    <Fragment>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
@@ -49,6 +111,8 @@ const Layout = ({ headerData, children, footerData }) => (
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.2/dist/css/bootstrap.min.css"
         />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
+        <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
+
       </Head>
       <Header
         whatWeDoText={headerData.whatWeDoText}
@@ -74,7 +138,7 @@ const Layout = ({ headerData, children, footerData }) => (
         contactText={footerData.contactText}
         copyrightText={footerData.copyrightText}
       />
-    </div>
+    </Fragment>
   </ThemeProvider>
 )
 

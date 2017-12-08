@@ -14,8 +14,10 @@ const HeroContainer = styled.div`
   }
 `
 
-const Headline = styled.h1`
+const Headline = styled.span`
   color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
 `
 
 function Hero({ headline, imageUrl }) {

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import queryString from 'query-string'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -11,20 +12,25 @@ const VideoIframe = styled.iframe`
 `
 
 const VideoContainer = ({
-  videoId,
+  youtubeVideo,
   className,
-}) => (
-  <div className={className}>
-    <VideoIframe
-      src={`https://www.youtube.com/embed/${videoId}?rel=0&amp;showinfo=0`}
-      frameBorder="0"
-      allowFullScreen
-    />
-  </div>
-)
+}) => {
+  const paramsString = youtubeVideo.substring(youtubeVideo.indexOf('?'))
+  const parsedParams = queryString.parse(paramsString)
+  const videoId = parsedParams.v
+  return (
+    <div className={className}>
+      <VideoIframe
+        src={`https://www.youtube.com/embed/${videoId}?rel=0&amp;showinfo=0`}
+        frameBorder="0"
+        allowFullScreen
+      />
+    </div>
+  )
+}
 
 VideoContainer.propTypes = {
-  videoId: PropTypes.string.isRequired,
+  youtubeVideo: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
 }
 

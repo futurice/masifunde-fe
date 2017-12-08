@@ -53,7 +53,7 @@ const TeamDe = ({
               key={teamMember.name}
               imageUrl={teamMember.image.url}
               title={teamMember.name}
-              subtitle={teamMember.region}
+              subtitle={teamMember.responsibilityArea}
             />))
           }
         </TeamMemberList>
@@ -82,6 +82,7 @@ TeamDe.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     image: imagePropTypes.isRequired,
+    responsibilityArea: PropTypes.string.isRequired,
   }).isRequired).isRequired,
 }
 

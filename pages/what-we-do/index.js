@@ -10,16 +10,16 @@ import { fetchWhatWeDoPage } from '../../api/whatWeDo'
 import { getLocaleFromQuery } from '../../utils/locale'
 import Head from '../../components/Head'
 import YouTubeVideo from '../../components/YouTubeVideo'
+import Button from '../../components/Button'
+import Stat from '../../components/Stat'
 
 const Hero = styled.img`
   width: 100%;
   height: 700px;
   object-fit: cover;
-  margin-bottom: 100px;
 `
 
 const H1 = styled.h1`
-  margin-bottom: 100px;
   text-align: center;
   line-height: 1.36;
 `
@@ -27,7 +27,6 @@ const H1 = styled.h1`
 const BoldHeading = styled.h2`
   font-weight: 700;
   text-align: center;
-  margin-bottom: 50px;
 `
 
 const ProjectImage = styled.img`
@@ -55,17 +54,8 @@ const ProjectTitle = styled.h3`
   text-align: center;
 `
 
-const Button = styled.a`
-  background-color: white;
-  border: 1px solid black;
-`
-
 const ProjectContainer = styled.div`
   margin-bottom: 80px;
-`
-
-const Number = styled.span`
-  font-size: 44px;
 `
 
 const StyledYouTubeVideo = YouTubeVideo.extend`
@@ -91,7 +81,7 @@ const WhatWeDo = ({
     <Hero src="//via.placeholder.com/350x150/555" alt={title} />
     <Container>
       <H1>{title}</H1>
-      <StyledYouTubeVideo videoId={youtubeVideo} />
+      <StyledYouTubeVideo youtubeVideo={youtubeVideo} />
       <BoldHeading>{introHeading}</BoldHeading>
       <div className="row">
         {programmes.map(program => (
@@ -115,7 +105,7 @@ const WhatWeDo = ({
                 ))}
             </div>
             <div className="row justify-content-center">
-              <Button className="btn btn-primary">{program.button}</Button>
+              <Button href="#" type="secondary">{program.button}</Button>
             </div>
           </ProjectContainer>
           ))}
@@ -129,19 +119,17 @@ const WhatWeDo = ({
           <div className="col col-md-10 col-lg-8">
             <div className="row">
               {stats.map(stat => (
-                <div
-                  className="col-sm d-flex flex-column align-items-center"
+                <Stat
+                  className="col-sm"
                   key={`${stat.number} ${stat.description}`}
-                >
-                  <Number>{stat.number}</Number>
-                  <ProjectText>{stat.description}</ProjectText>
-                </div>
+                  {...stat}
+                />
                 ))}
             </div>
           </div>
         </div>
         <div className="row justify-content-center">
-          <Button className="btn btn-primary">{statsButton}</Button>
+          <Button href="#" type="secondary">{statsButton}</Button>
         </div>
       </ProjectContainer>
 
