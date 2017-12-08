@@ -41,11 +41,12 @@ injectGlobal`
   }
 
   .footer a, .footer a:visited {
-    color: ${theme.greyText};
+    color: ${theme.pineCone};
   }
 
   .footer li {
     padding: 0.3rem 0;
+    color: #77695c;
   }
 
   .footer ul li:first-of-type {
