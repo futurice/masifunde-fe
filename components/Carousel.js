@@ -33,7 +33,7 @@ const StyledSlider = styled(Carousel)`
   }
   
   .slider-decorator-0, .slider-decorator-1 {
-    background-image: url(../static/carousel-arrow.svg);
+    background-image: url(/static/carousel-arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
