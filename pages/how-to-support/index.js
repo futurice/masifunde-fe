@@ -110,7 +110,7 @@ const HowToSupport = ({
         markdown={section3Markdown}
         image={section3Image}
         buttonType="secondary"
-        buttonLink={RouteNames.Donate}
+        buttonLink={RouteNames.BecomeVolunteer}
       />
       <Section
         buttonText={section4ButtonText}
@@ -118,7 +118,7 @@ const HowToSupport = ({
         markdown={section4Markdown}
         image={section4Image}
         buttonType="secondary"
-        buttonLink={RouteNames.Donate}
+        buttonLink={RouteNames.BecomePartner}
       />
     </Container>
   </div>

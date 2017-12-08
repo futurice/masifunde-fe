@@ -80,7 +80,7 @@ const About = ({
 
       <div className="row">
         <div className="col d-flex flex-column align-items-center">
-          <Link route={RouteNames.Partners} passHref>
+          <Link route={RouteNames.BecomePartner} passHref>
             <Button>{partnersButtonText}</Button>
           </Link>
         </div>

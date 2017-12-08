@@ -129,7 +129,6 @@ const Layout = ({ headerData, children, footerData }) => (
         whoWeAreText={footerData.whoWeAreText}
         teamSaText={footerData.teamSaText}
         teamDeText={footerData.teamDeText}
-        partnersText={footerData.partnersText}
         howToSupportText={footerData.howToSupportText}
         donateText={footerData.donateText}
         becomeSponsorText={footerData.becomeSponsorText}
@@ -163,7 +162,6 @@ Layout.defaultProps = {
     whoWeAreText: 'Wer sind wir',
     teamSaText: 'Team South Africa',
     teamDeText: 'Team Deutschland',
-    partnersText: 'Partners',
     howToSupportText: 'Wie Sie helfen',
     donateText: 'Spenden',
     becomeSponsorText: 'Sponsor',

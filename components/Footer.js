@@ -43,7 +43,6 @@ function Footer({
   whoWeAreText,
   teamSaText,
   teamDeText,
-  partnersText,
   howToSupportText,
   donateText,
   becomeSponsorText,
@@ -98,11 +97,6 @@ function Footer({
                   <li>
                     <Link route={RouteNames.TeamDE} passHref>
                       <a>{teamDeText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.Partners} passHref>
-                      <a>{partnersText}</a>
                     </Link>
                   </li>
                 </ul>
@@ -185,7 +179,6 @@ export const propTypes = {
   whoWeAreText: PropTypes.string.isRequired,
   teamSaText: PropTypes.string.isRequired,
   teamDeText: PropTypes.string.isRequired,
-  partnersText: PropTypes.string.isRequired,
   howToSupportText: PropTypes.string.isRequired,
   donateText: PropTypes.string.isRequired,
   becomeSponsorText: PropTypes.string.isRequired,
