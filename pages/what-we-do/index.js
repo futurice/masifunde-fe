@@ -12,6 +12,7 @@ import Head from '../../components/Head'
 import YouTubeVideo from '../../components/YouTubeVideo'
 import Button from '../../components/Button'
 import Stat from '../../components/Stat'
+import { RouteNames } from '../../routes'
 
 const Hero = styled.img`
   width: 100%;
@@ -105,7 +106,7 @@ const WhatWeDo = ({
                 ))}
             </div>
             <div className="row justify-content-center">
-              <Button href="#" type="secondary">{program.button}</Button>
+              <Button href={program.buttonLink} type="secondary">{program.button}</Button>
             </div>
           </ProjectContainer>
           ))}
@@ -129,7 +130,7 @@ const WhatWeDo = ({
           </div>
         </div>
         <div className="row justify-content-center">
-          <Button href="#" type="secondary">{statsButton}</Button>
+          <Button href={RouteNames.Impact} type="secondary">{statsButton}</Button>
         </div>
       </ProjectContainer>
 
@@ -153,6 +154,7 @@ WhatWeDo.propTypes = {
   outroText: PropTypes.string.isRequired,
   programmes: PropTypes.arrayOf(
     PropTypes.shape({
+      buttonLink: PropTypes.any.isRequired,
       button: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       projects: PropTypes.arrayOf(
