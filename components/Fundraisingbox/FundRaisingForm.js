@@ -44,7 +44,8 @@ class FundRaisingForm extends Component {
     fields: undefined,
   }
 
-  shouldComponentUpdate = (nextProps, nextState) => !!(nextProps.hiddenFields && nextState.fields)
+  shouldComponentUpdate = (nextProps, nextState) =>
+    ((Object.keys(nextProps.hiddenFields).length > 0) && nextState.fields)
 
   debounceSetState = _debounce(this.setState, 500)
 
@@ -72,7 +73,6 @@ class FundRaisingForm extends Component {
       fieldName.lastName,
       fieldName.postCode,
       fieldName.salutation,
-      fieldName.title,
       fieldName.wantsReceipt,
     ])
 

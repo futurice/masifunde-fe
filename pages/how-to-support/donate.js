@@ -61,11 +61,7 @@ const fieldName = {
 
 class Donate extends Component {
   state = {
-    fields: {
-      [fieldName.projectId]: undefined,
-      [fieldName.paymentInterval]: undefined,
-      [fieldName.amount]: undefined,
-    },
+    fields: {},
   }
   debounceSetState = _debounce(this.setState, 500)
 
