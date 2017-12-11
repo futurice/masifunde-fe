@@ -6,6 +6,8 @@ export async function fetchWhoWeArePage(locale) {
 
   return {
     ...response,
+    teamDeImage: unwrapImage(response.teamDeImage),
+    teamSaImage: unwrapImage(response.teamSaImage),
     partnersListOne: response.partnersListOne.map(unwrapPartner),
     partnersListTwo: response.partnersListTwo.map(unwrapPartner),
   }

@@ -19,8 +19,8 @@ const ImageContainer = styled.div`
 
 const RegionalGroups = ({ regionalGroups }) => (
   <ImageContainer className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center">
-    <img className="col-sm-12 col-md-6" src={regionalGroups.image.url} alt={regionalGroups.image.title} />
-    <LocationsList className="list-unstyled">
+    <img className="col-sm-12 col-md-4" src={regionalGroups.image.url} alt={regionalGroups.image.title} />
+    <LocationsList className="list-unstyled offset-md-1 col-md-3">
       {regionalGroups.regions.map(place => (
         <LocationListItem key={place}>{place}</LocationListItem>
       ))}
