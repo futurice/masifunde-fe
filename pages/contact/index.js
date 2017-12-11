@@ -98,7 +98,7 @@ const contactListPropType = PropTypes.arrayOf(
 
 Contact.propTypes = {
   metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string,
   mainHeading: PropTypes.string.isRequired,
   contactsHeading: PropTypes.string.isRequired,
   regionalContactsHeading: PropTypes.string.isRequired,
@@ -109,6 +109,10 @@ Contact.propTypes = {
   address: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   telephone: PropTypes.string.isRequired,
+}
+
+Contact.defaultProps = {
+  metaDescription: undefined,
 }
 
 Contact.getInitialProps = async function initialProps() {
