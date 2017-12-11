@@ -4,8 +4,8 @@ import { Form, Field } from 'react-final-form'
 import styled from 'styled-components'
 import _debounce from 'lodash/debounce'
 
-import countries from '../utils/countries'
-import FundRaisingIframe from '../components/FundRaisingIframe'
+import countries from '../../utils/countries'
+import FundRaisingIframe from './FundRaisingIframe'
 
 const FundRaisingIfameContainer = styled.div`
   padding: 0;

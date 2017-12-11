@@ -12,6 +12,7 @@ import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBecomeASponsorPage } from '../../api/howToSupport'
 import imagePropTypes from '../../propTypes/image'
 import { subtitle } from '../../styling/typography'
+import FundRaisingForm from '../../components/Fundraisingbox/FundRaisingForm'
 
 const H2 = styled.h2`
   ${subtitle}
@@ -46,6 +47,8 @@ const BecomeSponsor = ({
           </div>
         </div>
       </div>
+
+      <FundRaisingForm hiddenFields={{}} onSubmit={() => {}} />
     </Container>
     <Banner headline={bannerTitle} buttonText={bannerButtonText} buttonLink={RouteNames.Contact} />
   </div>
