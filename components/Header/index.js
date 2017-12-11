@@ -12,7 +12,7 @@ const HeaderWrapper = styled.div`
   background-color: #f4e3d6;
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
-  height: ${props => props.height};
+  min-height: ${props => props.height};
   box-shadow: -1px 1px 1px 1px rgba(250, 242, 230, 0.25);
 `
 
