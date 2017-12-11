@@ -70,7 +70,7 @@ Hero (hero image not through Contentful):
 * heroTitle - Text on top of the hero image
 
 Page intro:
-* introHeading - The main header on the page (usually the h1)
+* introTitle - The main header on the page (usually the h1)
 * introMarkdown - The intro text to the page
 * introImage - The intro image to the page
 
@@ -80,6 +80,13 @@ Banner:
 
 Page section:
 For each section of the page, we prefix the fields with "section<number>":
+* section1Title
+* section1Markdown
+* section1Image
+* section1List
+* section1ReferenceList
+
+
 * section2Title
 * section2Markdown
 * section2Image

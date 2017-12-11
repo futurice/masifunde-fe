@@ -34,7 +34,7 @@ class Header extends Component {
         <Container>
           <Navbar color="faded" light expand="md">
             <NavbarBrand href="/">
-              <Link href="/">
+              <Link href={RouteNames.Index}>
                 <img src="../static/logo.svg" alt="Masifunde Logo" />
               </Link>
             </NavbarBrand>

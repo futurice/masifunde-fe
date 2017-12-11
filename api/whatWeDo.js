@@ -1,10 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { fetchSingleEntry } from './contentfulService'
-import { unwrapImage, unwrapPortrait, unwrapStat } from './common'
-
-function unwrapFields(response) {
-  return response.fields
-}
+import { unwrapImage, unwrapFields, unwrapPortrait, unwrapStat } from './common'
 
 export async function fetchWhatWeDoPage(locale) {
   const content = await fetchSingleEntry('pageWasWirMachen', locale)
