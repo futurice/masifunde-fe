@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react'
-import Link from 'next/link'
 import PropTypes from 'prop-types'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container } from 'reactstrap'
 import styled from 'styled-components'
 
-import { RouteNames } from '../../routes'
+import { Link, RouteNames } from '../../routes'
 import NavigationLink from './NavigationLink'
 
 const HeaderWrapper = styled.div`
@@ -45,15 +44,14 @@ class Header extends Component {
       <HeaderWrapper className="fixed-top d-flex align-items-center">
         <Container>
           <StyledNavbar color="faded" light expand="md">
-            <StyledNavbarBrand
-              href="/"
-              height={height}
-              className="d-flex align-items-center"
-            >
-              <Link href={RouteNames.Index}>
+            <Link route={RouteNames.Index} passHref>
+              <StyledNavbarBrand
+                height={height}
+                className="d-flex align-items-center"
+              >
                 <Logo src="/static/logo.svg" alt="Masifunde Logo" />
-              </Link>
-            </StyledNavbarBrand>
+              </StyledNavbarBrand>
+            </Link>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto d-flex align-items-center" navbar>
