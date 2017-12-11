@@ -32,7 +32,6 @@ function NavigationLink({
           : (
             <Button
               type="primary"
-              isActive={router.pathname === href}
             >
               {children}
             </Button>
