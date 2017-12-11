@@ -19,7 +19,7 @@ export function fetchEntriesForContentType(contentType, config) {
     })
     .then(response => response.items)
     .catch((error) => {
-      console.log(`\nError occurred while fetching Entries for ${contentType.name}:`)
+      console.log(`Error occurred while fetching Entries for ${contentType.name}:`)
       console.error(error)
     })
 }
