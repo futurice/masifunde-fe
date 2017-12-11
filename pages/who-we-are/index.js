@@ -12,6 +12,7 @@ import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import Markdown from '../../components/Markdown'
 import PartnersList, { propTypes as partnersListPropTypes } from '../../components/PartnersList'
+import { imagePropTypes } from '../../propTypes/image'
 
 const Heading2 = styled.h2`
   text-align: center;
@@ -42,7 +43,9 @@ const About = ({
   metaDescription,
   metaTitle,
   partnersButtonText,
+  teamSaImage,
   teamSaButtonText,
+  teamDeImage,
   teamDeButtonText,
   partnersListOne,
   partnersListTwo,
@@ -59,13 +62,13 @@ const About = ({
       </div>
       <div className="row justify-content-md-center">
         <div className="col-lg-4 d-flex flex-column align-items-center">
-          <Image src="../static/map-de.svg" alt="" />
+          <Image src={teamDeImage.url} alt={teamDeImage.title} />
           <Link route={RouteNames.TeamDE} passHref>
             <Button>{teamDeButtonText}</Button>
           </Link>
         </div>
         <div className="col-lg-4 d-flex flex-column align-items-center">
-          <Image src="../static/map-sa.svg" alt="" />
+          <Image src={teamSaImage.url} alt={teamSaImage.title} />
           <Link route={RouteNames.TeamSA} passHref>
             <Button>{teamSaButtonText}</Button>
           </Link>
@@ -116,7 +119,9 @@ About.propTypes = {
   paragraphThreeText: PropTypes.string.isRequired,
   paragraphThreeTitle: PropTypes.string.isRequired,
   partnersButtonText: PropTypes.string.isRequired,
+  teamDeImage: PropTypes.shape(imagePropTypes).isRequired,
   teamDeButtonText: PropTypes.string.isRequired,
+  teamSaImage: PropTypes.shape(imagePropTypes).isRequired,
   teamSaButtonText: PropTypes.string.isRequired,
   bannerHeadline: PropTypes.string.isRequired,
   // eslint-disable-next-line react/no-typos
