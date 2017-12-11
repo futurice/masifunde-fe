@@ -133,23 +133,6 @@ class FundRaisingForm extends Component {
                   )}
                 </Field>
               </div>
-              {/* Email */}
-              <Field name={fieldName.email}>
-                {({ input, meta }) => (
-                  <label className="form-group row" htmlFor="inputEmail">
-                    <FormLabel className="col-sm-3 col-form-label">Email *</FormLabel>
-                    <div className="col-sm-6 d-flex align-items-center">
-                      <input
-                        {...input}
-                        type="email"
-                        className={this.formInputClassFactory(meta)}
-                        id="inputEmail"
-                      />
-                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
-                    </div>
-                  </label>
-                )}
-              </Field>
               {/* Name */}
               <div className="form-group row">
                 <FormLabel className="col-sm-3 col-form-label" id="name-inputs">
@@ -186,6 +169,23 @@ class FundRaisingForm extends Component {
                   </Field>
                 </div>
               </div>
+              {/* Email */}
+              <Field name={fieldName.email}>
+                {({ input, meta }) => (
+                  <label className="form-group row" htmlFor="inputEmail">
+                    <FormLabel className="col-sm-3 col-form-label">Email *</FormLabel>
+                    <div className="col-sm-6 d-flex align-items-center">
+                      <input
+                        {...input}
+                        type="email"
+                        className={this.formInputClassFactory(meta)}
+                        id="inputEmail"
+                      />
+                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                    </div>
+                  </label>
+                )}
+              </Field>
               {/* receipt ? */}
               <label className="form-group row" htmlFor="receipt-input">
                 <FormLabel className="col-sm-3 col-form-label">Spendequittung *</FormLabel>
