@@ -97,12 +97,6 @@ injectGlobal`
       padding: 1rem 0;
     }
   }
-
-  .navbar-nav {
-    @media screen and (max-width: 768px) {
-      padding: 2rem 0;
-    }
-  }
 `
 
 const headerHeight = '4.5rem'
