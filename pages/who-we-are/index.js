@@ -21,13 +21,26 @@ const Heading2 = styled.h2`
 
 const StyledMarkdown = styled(Markdown)`
   text-align: center;
-  margin-bottom: 3rem;
+`
+
+const StyledMarkdownNoMarginBottom = StyledMarkdown.extend`
+  p {
+    margin-bottom: 0;
+  }
 `
 
 const Image = styled.img`
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   width: 100%;
   height: 100%;
+`
+
+const CountryContainer = styled.div`
+  margin-top: 2rem;
+`
+
+const ImageContainer = styled.div`
+  flex-grow: 1;
 `
 
 const About = ({
@@ -57,22 +70,26 @@ const About = ({
       <div className="row justify-content-center">
         <div className="col-lg-8 d-flex flex-column align-items-center">
           <Heading2>{paragraphOneTitle}</Heading2>
-          <StyledMarkdown className="w-100" source={paragraphOneText} />
+          <StyledMarkdownNoMarginBottom className="w-100" source={paragraphOneText} />
         </div>
       </div>
       <div className="row justify-content-md-center">
-        <div className="col-lg-4 d-flex flex-column align-items-center">
-          <Image src={teamDeImage.url} alt={teamDeImage.title} />
+        <CountryContainer className="col-md-6 d-flex flex-column align-items-center">
+          <ImageContainer className="d-flex justify-content-center w-100 align-items-center">
+            <Image className="col-xs-8 col-sm-10 col-md-11 col-lg-10" src={teamDeImage.url} alt={teamDeImage.title} />
+          </ImageContainer>
           <Link route={RouteNames.TeamDE} passHref>
             <Button>{teamDeButtonText}</Button>
           </Link>
-        </div>
-        <div className="col-lg-4 d-flex flex-column align-items-center">
-          <Image src={teamSaImage.url} alt={teamSaImage.title} />
+        </CountryContainer>
+        <CountryContainer className="col-md-6 d-flex flex-column align-items-center">
+          <ImageContainer className="d-flex justify-content-center w-100 align-items-center">
+            <Image className="col-xs-8 col-sm-10 col-md-11 col-lg-10" src={teamSaImage.url} alt={teamSaImage.title} />
+          </ImageContainer>
           <Link route={RouteNames.TeamSA} passHref>
             <Button>{teamSaButtonText}</Button>
           </Link>
-        </div>
+        </CountryContainer>
       </div>
       <div className="row justify-content-md-center">
         <div className="col-lg-8">
