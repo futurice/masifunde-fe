@@ -42,5 +42,7 @@ export async function fetchBecomeASponsorPage(locale) {
   return {
     ...content,
     image: unwrapImage(content.image),
+    section2ReferenceList: content.section2ReferenceList.map(unwrapFields),
+    section3ReferenceList: content.section3ReferenceList.map(unwrapFields),
   }
 }
