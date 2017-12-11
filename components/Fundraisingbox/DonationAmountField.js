@@ -8,6 +8,8 @@ import { isValid } from './utils'
 
 const SubHeader = styled.h3`
   ${props => props.isValid && 'color: #dc3545;'};
+  margin-bottom: 1.4rem;
+  margin-top: 2rem;
 `
 
 const LabelButton = Button.withComponent('label').extend`
