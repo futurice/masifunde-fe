@@ -9,12 +9,14 @@ const client = createClient({
   host: CONTENTFUL_HOST,
 })
 
-export function fetchEntriesForContentType(contentType, locale = 'de') {
-  return client.getEntries({
-    include: 10,
-    content_type: contentType,
-    locale,
-  })
+export function fetchEntriesForContentType(contentType, config) {
+  return client
+    .getEntries({
+      include: 10,
+      content_type: contentType,
+      locale: 'de',
+      ...config,
+    })
     .then(response => response.items)
     .catch((error) => {
       console.log(`\nError occurred while fetching Entries for ${contentType.name}:`)
@@ -23,7 +25,7 @@ export function fetchEntriesForContentType(contentType, locale = 'de') {
 }
 
 export function fetchSingleEntry(contentType, locale = 'de') {
-  return fetchEntriesForContentType(contentType, locale)
+  return fetchEntriesForContentType(contentType, { locale, limit: 1 })
     .then(pages => pages.map(page => page.fields))
     .then((pages) => {
       if (pages.length === 0) {
