@@ -20,12 +20,11 @@ const theme = {
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
   html {
-    font-size: 9pt; 
-    
-    @media (min-width: 992px) {
-      font-size: 11pt;
+    //font-size: 75%; //9pt
+
+    @media screen and (min-width: 768px) {
+      font-size: 91%; //11pt
     }
-   
   }
   
   body {
