@@ -10,14 +10,21 @@ import NavigationLink from './NavigationLink'
 
 const HeaderWrapper = styled.div`
   background-color: #f4e3d6;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  min-height: ${props => props.height};
   box-shadow: -1px 1px 1px 1px rgba(250, 242, 230, 0.25);
 `
 
 const Logo = styled.img`
   width: 90%;
+`
+
+const StyledNavbar = styled(Navbar)`
+  padding: 0;
+`
+
+const StyledNavbarBrand = styled(NavbarBrand)`
+  min-height: ${props => props.height};
+  padding-top: 0;
+  padding-bottom: 0;
 `
 
 class Header extends Component {
@@ -35,14 +42,18 @@ class Header extends Component {
     } = this.props
 
     return (
-      <HeaderWrapper height={height} className="fixed-top d-flex align-items-center">
+      <HeaderWrapper className="fixed-top d-flex align-items-center">
         <Container>
-          <Navbar color="faded" light expand="md">
-            <NavbarBrand href="/" className="d-flex align-items-center">
+          <StyledNavbar color="faded" light expand="md">
+            <StyledNavbarBrand
+              href="/"
+              height={height}
+              className="d-flex align-items-center"
+            >
               <Link href={RouteNames.Index}>
                 <Logo src="/static/logo.svg" alt="Masifunde Logo" />
               </Link>
-            </NavbarBrand>
+            </StyledNavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto d-flex align-items-center" navbar>
@@ -52,7 +63,7 @@ class Header extends Component {
                 <NavigationLink type="button" href={RouteNames.Donate}>{donateText}</NavigationLink>
               </Nav>
             </Collapse>
-          </Navbar>
+          </StyledNavbar>
         </Container>
       </HeaderWrapper>
     )
