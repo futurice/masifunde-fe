@@ -8,19 +8,19 @@ export const handwritten = css`
 export const pageTitle = css`
     line-height: 1.2;
     margin: 4rem 0;
-    color: ${props => props.theme.orangeRed};
+    color: #FF621D;
 `
 
 export const sectionTitle = css`
     line-height: 1.4;
     margin: 3rem 0;
-    color: ${props => props.theme.orangeRed};
+    color: #FF621D;
     font-size: 2.5rem;
 `
 
 export const subtitle = css`
     line-height: 1.4;
-    color: ${props => props.theme.pineCone};
+    color: #77695C;
     font-weight: normal;
     font-size: 2rem;
     margin: 0 0 8px;

@@ -41,7 +41,7 @@ injectGlobal`
   }
 
   .footer a, .footer a:visited {
-    color: ${theme.greyText};
+    color: ${theme.pineCone};
   }
 
   .footer li {
