@@ -16,6 +16,7 @@ import FundRaisingForm from '../../components/Fundraisingbox/FundRaisingForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import { isValid } from '../../components/Fundraisingbox/utils'
+import Divider from '../../components/Fundraisingbox/Divider'
 
 const CountryLabel = styled.label`
   border-radius: 8px;
@@ -40,11 +41,6 @@ const CountryLabel = styled.label`
     clip: rect(0, 0, 0, 0);
     pointer-events: none;
   }
-`
-
-const Divider = styled.div`
-  border: 0.5px solid #bbb;
-  margin: 50px 0;
 `
 
 const SubHeader = styled.h3`
