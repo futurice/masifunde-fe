@@ -7,7 +7,7 @@ import Partner, { propTypes as partnerPropTypes } from './Partner'
 
 const PartnersList = ({ partnersList }) =>
   _chunk(partnersList, 5).map((partnersListChunk, idx) => (
-    <div className="row justify-content-sm-center" key={idx}>
+    <div className="row justify-content-sm-center align-items-center" key={idx}>
       {partnersListChunk.map(({ image, name, link }) => (
         <Partner
           link={link}

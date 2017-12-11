@@ -47,6 +47,13 @@ export const unwrapTeamMember = (teamMember) => {
 
 export const unwrapTeamMembers = (teamMembers = []) => teamMembers.map(unwrapTeamMember)
 
+export const unwrapPartner = partner => ({
+  ...partner.fields,
+  image: unwrapImage(partner.fields.logo),
+})
+
+export const unwrapPartners = partners => partners.map(unwrapPartner)
+
 export function unwrapFields(response) {
   return response.fields
 }
