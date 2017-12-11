@@ -37,7 +37,7 @@ const EuroPostfix = styled.span`
   font-style: normal;
 
   font-family: Lato, sans-serif;
-  color: #77695c;
+  color: ${props => props.theme.pineCone};
 `
 
 const AmountDescription = styled.div`
@@ -128,8 +128,8 @@ DonationAmountField.propTypes = {
   enableOtherAmount: PropTypes.bool,
   otherAmountPlaceholder: PropTypes.string,
   amounts: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
   }).isRequired).isRequired,
 }
 
