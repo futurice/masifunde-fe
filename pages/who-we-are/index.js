@@ -25,6 +25,8 @@ const StyledMarkdown = styled(Markdown)`
 
 const Image = styled.img`
   margin-bottom: 3rem;
+  width: 100%;
+  height: 100%;
 `
 
 const About = ({
@@ -52,18 +54,18 @@ const About = ({
       <div className="row justify-content-center">
         <div className="col-lg-8 d-flex flex-column align-items-center">
           <Heading2>{paragraphOneTitle}</Heading2>
-          <StyledMarkdown source={paragraphOneText} />
+          <StyledMarkdown className="w-100" source={paragraphOneText} />
         </div>
       </div>
       <div className="row justify-content-md-center">
-        <div className="col-lg-4 d-flex flex-column align-items-center justify-content-end">
-          <Image className="img-fluid" src="../static/de-silhouette.svg" alt="" />
+        <div className="col-lg-4 d-flex flex-column align-items-center">
+          <Image src="../static/map-de.svg" alt="" />
           <Link route={RouteNames.TeamDE} passHref>
             <Button>{teamDeButtonText}</Button>
           </Link>
         </div>
-        <div className="col-lg-4 d-flex flex-column align-items-center justify-content-end">
-          <Image className="img-fluid" src="../static/sa-silhouette.svg" alt="" />
+        <div className="col-lg-4 d-flex flex-column align-items-center">
+          <Image src="../static/map-sa.svg" alt="" />
           <Link route={RouteNames.TeamSA} passHref>
             <Button>{teamSaButtonText}</Button>
           </Link>
@@ -80,7 +82,7 @@ const About = ({
 
       <div className="row">
         <div className="col d-flex flex-column align-items-center">
-          <Link route={RouteNames.Partners} passHref>
+          <Link route={RouteNames.BecomePartner} passHref>
             <Button>{partnersButtonText}</Button>
           </Link>
         </div>

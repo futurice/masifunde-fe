@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+import { RouteNames } from '../routes'
 import { fetchSingleEntry } from './contentfulService'
 import { unwrapImage, unwrapFields, unwrapPortrait, unwrapStat } from './common'
 
@@ -17,12 +18,14 @@ export async function fetchWhatWeDoPage(locale) {
 
   const programmes = [
     {
+      buttonLink: RouteNames.ApproachSA,
       title: content.projectsTitleSa,
       description: content.projectsDescriptionSa,
       projects: content.projectsSa.map(createProject),
       button: content.projectsButtonSa,
     },
     {
+      buttonLink: RouteNames.ApproachDE,
       title: content.projectsTitleDe,
       description: content.projectsDescriptionDe,
       projects: content.projectsDe.map(createProject),

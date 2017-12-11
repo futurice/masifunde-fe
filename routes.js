@@ -19,7 +19,6 @@ const Impact = '/what-we-do/impact'
 const WhoWeAre = '/who-we-are'
 const TeamDE = '/who-we-are/team-de'
 const TeamSA = '/who-we-are/team-sa'
-const Partners = '/who-we-are/partners'
 const HowToSupport = '/how-to-support'
 const Donate = '/how-to-support/donate'
 const BecomeSponsor = '/how-to-support/become-sponsor'
@@ -36,7 +35,6 @@ addRoute('/was-wir-machen/effekte', Impact)
 addRoute('/wer-wir-sind', WhoWeAre)
 addRoute('/wer-wir-sind/team-de', TeamDE)
 addRoute('/wer-wir-sind/team-sa', TeamSA)
-addRoute('/wer-wir-sind/partner', Partners)
 addRoute('/wie-sie-helfen', HowToSupport)
 addRoute('/wie-sie-helfen/pate-werden', BecomeSponsor)
 addRoute('/wie-sie-helfen/aktiv-werden', BecomeVolunteer)
@@ -57,7 +55,6 @@ nextRoutes.RouteNames = {
   WhoWeAre,
   TeamDE,
   TeamSA,
-  Partners,
   HowToSupport,
   BecomeVolunteer,
   BecomeSponsor,

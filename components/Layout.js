@@ -41,11 +41,12 @@ injectGlobal`
   }
 
   .footer a, .footer a:visited {
-    color: ${theme.greyText};
+    color: ${theme.pineCone};
   }
 
   .footer li {
     padding: 0.3rem 0;
+    color: #77695c;
   }
 
   .footer ul li:first-of-type {
@@ -129,7 +130,6 @@ const Layout = ({ headerData, children, footerData }) => (
         whoWeAreText={footerData.whoWeAreText}
         teamSaText={footerData.teamSaText}
         teamDeText={footerData.teamDeText}
-        partnersText={footerData.partnersText}
         howToSupportText={footerData.howToSupportText}
         donateText={footerData.donateText}
         becomeSponsorText={footerData.becomeSponsorText}
@@ -137,6 +137,8 @@ const Layout = ({ headerData, children, footerData }) => (
         becomePartnerText={footerData.becomePartnerText}
         contactText={footerData.contactText}
         copyrightText={footerData.copyrightText}
+        masifundeYouTubeUrl={footerData.masifundeYouTubeUrl}
+        masifundeFacebookUrl={footerData.masifundeFacebookUrl}
       />
     </Fragment>
   </ThemeProvider>
@@ -163,7 +165,6 @@ Layout.defaultProps = {
     whoWeAreText: 'Wer sind wir',
     teamSaText: 'Team South Africa',
     teamDeText: 'Team Deutschland',
-    partnersText: 'Partners',
     howToSupportText: 'Wie Sie helfen',
     donateText: 'Spenden',
     becomeSponsorText: 'Sponsor',

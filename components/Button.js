@@ -72,6 +72,7 @@ const StyledButton = styled(CustomButton)`
     border-color: white;
 
     &:hover {
+      color: ${props.theme.orange};
       background-color: white;
     }
   `}
