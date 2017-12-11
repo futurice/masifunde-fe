@@ -40,7 +40,7 @@ class Header extends Component {
           <Navbar color="faded" light expand="md">
             <NavbarBrand href="/" className="d-flex align-items-center">
               <Link href={RouteNames.Index}>
-                <Logo src="../static/logo.svg" alt="Masifunde Logo" />
+                <Logo src="/static/logo.svg" alt="Masifunde Logo" />
               </Link>
             </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
