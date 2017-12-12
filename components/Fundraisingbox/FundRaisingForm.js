@@ -101,7 +101,7 @@ class FundRaisingForm extends Component {
                 <FormLabel className="col-sm-3 col-form-label" id="titleInputs">
                   Anrede * / Titel
                 </FormLabel>
-                <div className="col-sm-2">
+                <div className="col-sm-2 d-flex">
                   <Field name={fieldName.salutation}>
                     {({ input, meta }) => (
                       <div className="d-flex align-items-center">
