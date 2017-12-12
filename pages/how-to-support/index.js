@@ -25,12 +25,16 @@ const H2 = styled.h2`
   margin: 0 0 8px;
 `
 
+const Image = styled.img`
+  border-radius: ${props => props.theme.roundedImageBorderRadius};
+`
+
 const Section = ({
   image, title, markdown, buttonText, buttonType, buttonLink,
 }) => (
   <SectionContainer className="row">
     <div className="col-md-3 ">
-      <img className="img-fluid" src={image.url} alt={image.tile} />
+      <Image className="img-fluid" src={image.url} alt={image.tile} />
     </div>
     <div className="col-md-9">
       <H2>{title}</H2>

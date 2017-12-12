@@ -6,11 +6,15 @@ const Title = styled.div`
   font-weight: bold;
 `
 
+const Image = styled.img`
+  border-radius: ${props => props.theme.roundedImageBorderRadius};
+`
+
 const TeamMember = ({
   imageUrl, title, subtitle, email, className,
 }) => (
   <div className={className}>
-    <img className="img-fluid" src={imageUrl} alt={`${title} - ${subtitle}`} />
+    <Image className="img-fluid" src={imageUrl} alt={`${title} - ${subtitle}`} />
     <Title>{title}</Title>
     <div>{subtitle}</div>
     <a href={`mailto:${email}`}>{email}</a>
