@@ -7,7 +7,7 @@ import Button from '../../components/Button'
 import { isValid } from './utils'
 
 const SubHeader = styled.h3`
-  ${props => props.isValid && 'color: #dc3545;'};
+  ${props => props.isValid && `color: ${props.theme.bootstrapWarning};`};
   margin-bottom: 1.4rem;
   margin-top: 2rem;
 `

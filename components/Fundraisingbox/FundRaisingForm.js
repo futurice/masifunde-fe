@@ -14,7 +14,7 @@ const FundRaisingIfameContainer = styled.div`
 const ErrorMessage = styled.span`
   display: inline-block;
   margin-left: 0.4rem;
-  color: #dc3545;
+  color: ${props => props.theme.bootstrapWarning};
 `
 
 const FormLabel = styled.span`
