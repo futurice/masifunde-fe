@@ -135,7 +135,7 @@ class Donate extends Component {
                     <Fragment>
                       <SubHeader isInvalid={isInvalid(meta)}>{section1title} *</SubHeader>
                       <div className="row">
-                        <div className="col offset-lg-3">
+                        <div className="offset-md-3 col-md-7">
                           <div className="row">
                             <div className="col">
                               <CountryLabel

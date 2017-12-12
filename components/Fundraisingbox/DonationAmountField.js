@@ -3,28 +3,13 @@ import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 import styled from 'styled-components'
 
-import Button from '../../components/Button'
 import { isInvalid } from './utils'
+import LabelButton from './LabelButton'
 
 const SubHeader = styled.h3`
   ${props => props.isInvalid && `color: ${props.theme.error};`};
   margin-bottom: 1.4rem;
   margin-top: 2rem;
-`
-
-const LabelButton = Button.withComponent('label').extend`
-  margin-right: 10px;
-  
-  &:last-child {
-    margin-right: 0;
-  }
-
-  // Hide input (copied from boostrap)
-  input {
-    position: absolute;
-    clip: rect(0,0,0,0);
-    pointer-events: none;
-  }
 `
 
 const EuroPostfix = styled.span`
@@ -57,6 +42,7 @@ const AmountDescription = styled.div`
 const OtherAmountContainer = styled.div`
   display: inline-block;
   position: relative;
+  bottom: 0.5rem;
 `
 
 const findAmountDescription = (searchedValue, amounts) => {
@@ -76,7 +62,7 @@ const DonationAmountField = ({
       <Fragment>
         <SubHeader isInvalid={isInvalid(meta)}>{title} *</SubHeader>
         <div className="row">
-          <div className="col offset-lg-3">
+          <div className="offset-md-3 col-md-7">
             {amounts.map(({ text, value }) => (
               <LabelButton
                 className="btn"
