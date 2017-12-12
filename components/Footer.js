@@ -64,6 +64,7 @@ function Footer({
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
+  impressumText,
 }) {
   return (
     <Container className="footer">
@@ -184,7 +185,7 @@ function Footer({
         <Row>
           <Col style={copyrightRowStyle}>
             <Link route={RouteNames.Contact} passHref>
-              <a>Impressum</a>
+              <a>{impressumText}</a>
             </Link>
           </Col>
         </Row>
@@ -210,6 +211,7 @@ export const propTypes = {
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
+  impressumText: PropTypes.string.isRequired,
 }
 
 Footer.propTypes = propTypes
