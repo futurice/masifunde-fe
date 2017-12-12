@@ -20,6 +20,12 @@ const CenteredMarkdown = styled(Markdown)`
   text-align: center;
 `
 
+const ImageContainer = styled.div`
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+`
+
 const TeamSa = ({
   metaTitle,
   metaDescription,
@@ -35,9 +41,9 @@ const TeamSa = ({
     <Container>
       <h1>{introTitle}</h1>
       <CenteredMarkdown source={introMarkdown} />
-      <div className="d-flex justify-content-center align-items-center">
-        <Image src={introImage.url} alt={introImage.title} />
-      </div>
+      <ImageContainer className="d-flex justify-content-center align-items-center">
+        <Image className="col-md-6" src={introImage.url} alt={introImage.title} />
+      </ImageContainer>
       <div className="d-flex flex-wrap">
         {teamMembers.map(teamMember => (
           <TeamMember
