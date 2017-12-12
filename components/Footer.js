@@ -66,8 +66,8 @@ function Footer({
   masifundeFacebookUrl,
 }) {
   return (
-    <Container>
-      <Container style={containerStyle} className="footer">
+    <Container className="footer">
+      <Container style={containerStyle}>
         <div className="row" style={LinksContainer}>
 
           <div className="col-sm">
@@ -182,7 +182,11 @@ function Footer({
           </Col>
         </Row>
         <Row>
-          <Col style={copyrightRowStyle}>Impressum und Datenschutzt</Col>
+          <Col style={copyrightRowStyle}>
+            <Link route={RouteNames.Contact} passHref>
+              <a>Impressum</a>
+            </Link>
+          </Col>
         </Row>
       </Container>
     </Container>
