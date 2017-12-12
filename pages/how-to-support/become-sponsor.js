@@ -29,6 +29,10 @@ const H2NoTopMargin = H2.extend`
   margin-top: 0;
 `
 
+const Image = styled.img`
+  border-radius: ${props => props.theme.roundedImageBorderRadius};
+`
+
 const Learn4LifeId = '3520'
 const fieldName = {
   projectId: 'projectId',
@@ -108,7 +112,7 @@ class BecomeSponsor extends Component {
                 <Markdown source={introMarkdown2} />
               </div>
               <div className="col-12 col-md-5">
-                <img src={image.url} alt={image.title} />
+                <Image src={image.url} alt={image.title} />
               </div>
             </div>
           </div>
