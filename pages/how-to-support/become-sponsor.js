@@ -107,7 +107,7 @@ class BecomeSponsor extends Component {
                 <H2>{introSubtitle2}</H2>
                 <Markdown source={introMarkdown2} />
               </div>
-              <div className="img-fluid col-12 col-md-5">
+              <div className="col-12 col-md-5">
                 <img src={image.url} alt={image.title} />
               </div>
             </div>
