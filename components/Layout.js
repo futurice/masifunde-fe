@@ -115,34 +115,11 @@ const Layout = ({ headerData, children, footerData }) => (
         <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
 
       </Head>
-      <Header
-        height={headerHeight}
-        whatWeDoText={headerData.whatWeDoText}
-        whoWeAreText={headerData.whoWeAreText}
-        howToSupportText={headerData.howToSupportText}
-        donateText={headerData.donateText}
-      />
+      <Header height={headerHeight} {...headerData} />
       <LayoutChildrenContainer>
         {children}
       </LayoutChildrenContainer>
-      <Footer
-        whatWeDoText={footerData.whatWeDoText}
-        approachSaText={footerData.approachSaText}
-        approachDeText={footerData.approachDeText}
-        impactText={footerData.impactText}
-        whoWeAreText={footerData.whoWeAreText}
-        teamSaText={footerData.teamSaText}
-        teamDeText={footerData.teamDeText}
-        howToSupportText={footerData.howToSupportText}
-        donateText={footerData.donateText}
-        becomeSponsorText={footerData.becomeSponsorText}
-        becomeVolunteerText={footerData.becomeVolunteerText}
-        becomePartnerText={footerData.becomePartnerText}
-        contactText={footerData.contactText}
-        copyrightText={footerData.copyrightText}
-        masifundeYouTubeUrl={footerData.masifundeYouTubeUrl}
-        masifundeFacebookUrl={footerData.masifundeFacebookUrl}
-      />
+      <Footer {...footerData} />
     </Fragment>
   </ThemeProvider>
 )
