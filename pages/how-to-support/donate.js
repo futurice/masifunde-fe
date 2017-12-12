@@ -44,7 +44,7 @@ const CountryLabel = styled.label`
 `
 
 const SubHeader = styled.h3`
-  ${props => props.isValid && `color: ${props.theme.bootstrapWarning};`};
+  ${props => props.isValid && `color: ${props.theme.error};`};
 `
 
 const DeProjectId = '3531'

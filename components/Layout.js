@@ -15,7 +15,7 @@ const theme = {
   blue: '#4176F9',
   linkBlue: '#225DBC',
   pineCone: '#77695C',
-  bootstrapWarning: '#DC3545',
+  error: '#DC3545',
 }
 
 // eslint-disable-next-line no-unused-expressions
