@@ -12,6 +12,7 @@ import Markdown from '../../components/Markdown'
 import TeamMember from '../../components/TeamMember'
 import Partner, { propTypes as partnerPropTypes } from '../../components/PartnersList/Partner'
 import { RouteNames } from '../../routes'
+import imagePropTypes from '../../propTypes/image'
 
 const CenteredMarkdown = styled(Markdown)`
   text-align: center;
@@ -97,7 +98,12 @@ BecomePartner.propTypes = {
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   partners: PropTypes.arrayOf(PropTypes.shape(partnerPropTypes)).isRequired,
-  teamMember: PropTypes.shape(TeamMember.propTypes).isRequired,
+  teamMember: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    image: imagePropTypes.isRequired,
+    responsibilityArea: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 BecomePartner.defaultProps = {

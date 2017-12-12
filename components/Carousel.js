@@ -6,6 +6,7 @@ import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
 
 const H3 = styled.h3`
+  color: white;
   font-weight: bold;
 `
 

@@ -5,7 +5,7 @@ import styled, { injectGlobal, ThemeProvider } from 'styled-components'
 
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
-import { h3 } from '../styling/typography'
+import { pageTitle, sectionTitle, subtitle } from '../styling/typography'
 
 const theme = {
   orange: '#FE9933',
@@ -15,6 +15,7 @@ const theme = {
   blue: '#4176F9',
   linkBlue: '#225DBC',
   pineCone: '#77695C',
+  error: '#DC3545',
 }
 
 // eslint-disable-next-line no-unused-expressions
@@ -67,20 +68,15 @@ injectGlobal`
   }
   
   h1 {
-    line-height: 1.2;
-    margin: 4rem 0;
-    color: ${theme.orangeRed};
+    ${pageTitle}
   }
   
   h2 {
-    line-height: 1.4;
-    margin: 3rem 0;
-    color: ${theme.orangeRed};
-    font-size: 2.5rem;
+    ${sectionTitle}
   }
 
   h3 {
-   ${h3}
+    ${subtitle}
   }
 
   p + p {
