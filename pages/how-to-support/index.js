@@ -34,7 +34,7 @@ const Section = ({
 }) => (
   <SectionContainer className="row">
     <div className="col-md-3 ">
-      <Image className="img-fluid" src={image.url} alt={image.tile} />
+      <Image className="img-fluid" src={image.url} alt={image.title} />
     </div>
     <div className="col-md-9">
       <H2>{title}</H2>

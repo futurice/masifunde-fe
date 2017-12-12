@@ -4,8 +4,8 @@ import { Form, Field } from 'react-final-form'
 import styled from 'styled-components'
 import _debounce from 'lodash/debounce'
 
-import countries from '../utils/countries'
-import FundRaisingIframe from '../components/FundRaisingIframe'
+import countries from '../../utils/countries'
+import FundRaisingIframe from './FundRaisingIframe'
 
 const FundRaisingIfameContainer = styled.div`
   padding: 0;
@@ -14,7 +14,7 @@ const FundRaisingIfameContainer = styled.div`
 const ErrorMessage = styled.span`
   display: inline-block;
   margin-left: 0.4rem;
-  color: #dc3545;
+  color: ${props => props.theme.error};
 `
 
 const FormLabel = styled.span`
@@ -44,7 +44,8 @@ class FundRaisingForm extends Component {
     fields: undefined,
   }
 
-  shouldComponentUpdate = (nextProps, nextState) => !!(nextProps.hiddenFields && nextState.fields)
+  shouldComponentUpdate = (nextProps, nextState) =>
+    ((Object.keys(nextProps.hiddenFields).length > 0) && nextState.fields)
 
   debounceSetState = _debounce(this.setState, 500)
 
@@ -72,7 +73,6 @@ class FundRaisingForm extends Component {
       fieldName.lastName,
       fieldName.postCode,
       fieldName.salutation,
-      fieldName.title,
       fieldName.wantsReceipt,
     ])
 
@@ -133,23 +133,6 @@ class FundRaisingForm extends Component {
                   )}
                 </Field>
               </div>
-              {/* Email */}
-              <Field name={fieldName.email}>
-                {({ input, meta }) => (
-                  <label className="form-group row" htmlFor="inputEmail">
-                    <FormLabel className="col-sm-3 col-form-label">Email *</FormLabel>
-                    <div className="col-sm-6 d-flex align-items-center">
-                      <input
-                        {...input}
-                        type="email"
-                        className={this.formInputClassFactory(meta)}
-                        id="inputEmail"
-                      />
-                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
-                    </div>
-                  </label>
-                )}
-              </Field>
               {/* Name */}
               <div className="form-group row">
                 <FormLabel className="col-sm-3 col-form-label" id="name-inputs">
@@ -186,6 +169,23 @@ class FundRaisingForm extends Component {
                   </Field>
                 </div>
               </div>
+              {/* Email */}
+              <Field name={fieldName.email}>
+                {({ input, meta }) => (
+                  <label className="form-group row" htmlFor="inputEmail">
+                    <FormLabel className="col-sm-3 col-form-label">Email *</FormLabel>
+                    <div className="col-sm-6 d-flex align-items-center">
+                      <input
+                        {...input}
+                        type="email"
+                        className={this.formInputClassFactory(meta)}
+                        id="inputEmail"
+                      />
+                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                    </div>
+                  </label>
+                )}
+              </Field>
               {/* receipt ? */}
               <label className="form-group row" htmlFor="receipt-input">
                 <FormLabel className="col-sm-3 col-form-label">Spendequittung *</FormLabel>

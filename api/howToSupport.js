@@ -45,3 +45,13 @@ export async function fetchBecomeAPartnerPage(locale) {
     teamMember: unwrapTeamMember(content.teamMember),
   }
 }
+
+export async function fetchBecomeASponsorPage(locale) {
+  const content = await fetchMemoizedSingleEntry('pagePateWerden', locale)
+  return {
+    ...content,
+    image: unwrapImage(content.image),
+    section2ReferenceList: content.section2ReferenceList.map(unwrapFields),
+    section3ReferenceList: content.section3ReferenceList.map(unwrapFields),
+  }
+}
