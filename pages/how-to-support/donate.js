@@ -15,7 +15,7 @@ import Markdown from '../../components/Markdown'
 import FundRaisingForm from '../../components/Fundraisingbox/FundRaisingForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
-import { isValid } from '../../components/Fundraisingbox/utils'
+import { isInvalid } from '../../components/Fundraisingbox/utils'
 import Divider from '../../components/Fundraisingbox/Divider'
 
 const CountryLabel = styled.label`
@@ -44,7 +44,7 @@ const CountryLabel = styled.label`
 `
 
 const SubHeader = styled.h3`
-  ${props => props.isValid && `color: ${props.theme.error};`};
+  ${props => props.isInvalid && `color: ${props.theme.error};`};
 `
 
 const DeProjectId = '3531'
@@ -133,7 +133,7 @@ class Donate extends Component {
                 <Field name={fieldName.projectId}>
                   {({ input, meta }) => (
                     <Fragment>
-                      <SubHeader isValid={isValid(meta)}>{section1title} *</SubHeader>
+                      <SubHeader isInvalid={isInvalid(meta)}>{section1title} *</SubHeader>
                       <div className="row">
                         <div className="col offset-lg-3">
                           <div className="row">

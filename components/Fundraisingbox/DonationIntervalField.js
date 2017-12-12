@@ -4,10 +4,10 @@ import { Field } from 'react-final-form'
 import styled from 'styled-components'
 
 import Button from '../../components/Button'
-import { isValid } from './utils'
+import { isInvalid } from './utils'
 
 const SubHeader = styled.h3`
-  ${props => props.isValid && `color: ${props.theme.error};`};
+  ${props => props.isInvalid && `color: ${props.theme.error};`};
   margin-bottom: 1.4rem;
   margin-top: 1rem;
 `
@@ -35,7 +35,7 @@ const DonationIntervalField = ({
   <Field name={fieldName}>
     {({ input, meta }) => (
       <Fragment>
-        <SubHeader isValid={isValid(meta)}>{title} *</SubHeader>
+        <SubHeader isInvalid={isInvalid(meta)}>{title} *</SubHeader>
         <div className="row">
           <div className="col offset-lg-3">
             {intervals.map(({ value, name }) => (

@@ -1,2 +1,2 @@
 /* eslint-disable import/prefer-default-export */
-export const isValid = meta => meta.error && meta.touched
+export const isInvalid = meta => meta.error && meta.touched
