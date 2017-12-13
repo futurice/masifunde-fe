@@ -44,20 +44,52 @@ const H3 = styled.h3`
   color: white;
 `
 
-const Image = styled.img`
+const Image = styled.div`
+  background: url(${props => props.src});
   padding-right: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 65vw;
+  
+  @media screen and (min-width: 768px) {
+    background-size: cover;
+    height: auto;
+  }
 `
 
 const PaddedMarkdown = styled(Markdown)`
   padding-left: 0.8rem;
 `
 
+const carouselControlPadding = '1rem'
+
 const StyledCarousel = styled(Carousel)`
   margin-bottom: 50px !important;
   
+  &:hover {
+    @media screen and (min-width: 768px) {
+      .carousel-control-next, .carousel-control-prev {
+        opacity: 1;
+      }
+    }
+  }
+  
   .carousel-control-next, .carousel-control-prev {
-    opacity: 1;
     cursor: pointer;
+    display: flex;
+    opacity: 0;
+    transition: 200ms;
+  }
+  
+  .carousel-control-next {
+    justify-content: flex-end;
+    padding-right: ${carouselControlPadding};
+  }
+  
+  .carousel-control-prev {
+    justify-content: flex-start;
+    padding-left: ${carouselControlPadding};
   }
   
   .carousel-control-next-icon, .carousel-control-prev-icon {
@@ -73,6 +105,7 @@ const StyledCarousel = styled(Carousel)`
   .carousel-indicators {
     bottom: -50px !important;
     color: black;
+    padding-top: 25px;
     
     > li {
       &.active {
@@ -138,7 +171,7 @@ class MasifundeCarousel extends Component {
         altText={item.altText}
       >
         <div className="row">
-          <Image className="col-md-3 img-fluid h-100" src={item.image.url} alt={item.image.title} />
+          <Image className="col-md-3" src={item.image.url} alt={item.image.title} />
           <CarouselTextContainer className="col-md-9">
             <H3 className="row">{item.heading}</H3>
             <PaddedMarkdown className="row" source={item.text} />
