@@ -8,9 +8,13 @@ const Link = styled.a`
 
 const Image = styled.img`
   position: absolute;
-  width : 100%;
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
 `
 
 const ImageContainer = styled.div`
@@ -30,7 +34,7 @@ const Partner = ({
     <PartnerContainer>
       <Link href={link}>
         <ImageContainer>
-          <Image className="img-fluid" src={image.url} alt={image.title} />
+          <Image src={image.url} alt={image.title} />
         </ImageContainer>
         <div>{name}</div>
       </Link>
