@@ -21,7 +21,6 @@ const ImageContainer = styled.div`
 
 const PartnerContainer = styled.div`
   width: 160px;
-  height: 160px;
 `
 
 const Partner = ({
