@@ -38,7 +38,7 @@ const CarouselTextContainer = styled.div`
   background-color: ${props => props.theme.blue};
   color: white;
   padding: 1rem 4rem;
-  min-height: 300px;
+  min-height: 350px;
   
   @media screen and (min-width: 768px) {
     padding: 3rem 6rem;
