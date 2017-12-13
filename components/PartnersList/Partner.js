@@ -6,14 +6,36 @@ const Link = styled.a`
   height: 100%;
 `
 
+const Image = styled.img`
+  position: absolute;
+  width : 100%;
+  top: 50%;
+  transform: translateY(-50%);
+`
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+`
+
+const PartnerContainer = styled.div`
+  width: 160px;
+  height: 160px;
+`
+
 const Partner = ({
   image, name, link, className,
 }) => (
-  <div className={`col-sm-4 col-md-2 d-flex flex-column ${className}`}>
-    <Link href={link}>
-      <img className="img-fluid" src={image.url} alt={image.title} />
-      <div>{name}</div>
-    </Link>
+  <div className={`col-sm-4 col-md-2 d-flex justify-content-center ${className}`}>
+    <PartnerContainer>
+      <Link href={link}>
+        <ImageContainer>
+          <Image className="img-fluid" src={image.url} alt={image.title} />
+        </ImageContainer>
+        <div>{name}</div>
+      </Link>
+    </PartnerContainer>
   </div>
 )
 
