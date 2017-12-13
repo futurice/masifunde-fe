@@ -54,13 +54,11 @@ const Image = styled.div`
   padding-right: 0;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100%;
-  height: 65vw;
+  background-size: cover;
+`
+
+const MobileImage = styled.img`
   
-  @media screen and (min-width: 768px) {
-    background-size: cover;
-    height: auto;
-  }
 `
 
 const PaddedMarkdown = styled(Markdown)`
@@ -179,7 +177,8 @@ class MasifundeCarousel extends Component {
         altText={item.altText}
       >
         <div className="row">
-          <Image className="col-md-3" src={item.image.url} alt={item.image.title} />
+          <Image className="d-none d-md-block col-md-3" src={item.image.url} alt={item.image.title} />
+          <MobileImage className="d-md-none col-md-3 w-100 h-100" src={item.image.url} alt={item.image.title} />
           <CarouselTextContainer className="col-md-9">
             <H3 className="row">{item.heading}</H3>
             <PaddedMarkdown className="row" source={item.text} />
