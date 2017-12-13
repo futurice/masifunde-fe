@@ -10,6 +10,7 @@ import styled from 'styled-components'
 
 import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
+import { jpgCompression } from '../utils/constants'
 
 const mapPortraitToCarouselItems = (portrait) => {
   const item1 = {
@@ -50,7 +51,7 @@ const H3 = styled.h3`
 `
 
 const Image = styled.div`
-  background: url(${props => props.src});
+  background: url(${props => props.src}?q=${jpgCompression});
   padding-right: 0;
   background-position: center;
   background-repeat: no-repeat;
@@ -178,7 +179,7 @@ class MasifundeCarousel extends Component {
       >
         <div className="row">
           <Image className="d-none d-md-block col-md-3" src={item.image.url} alt={item.image.title} />
-          <MobileImage className="d-md-none col-md-3 w-100 h-100" src={item.image.url} alt={item.image.title} />
+          <MobileImage className="d-md-none col-md-3 w-100 h-100" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
           <CarouselTextContainer className="col-md-9">
             <H3 className="row">{item.heading}</H3>
             <PaddedMarkdown className="row" source={item.text} />
