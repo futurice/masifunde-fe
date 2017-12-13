@@ -13,11 +13,13 @@ const Image = styled.img`
 const TeamMember = ({
   imageUrl, title, subtitle, email, className,
 }) => (
-  <div className={className}>
-    <Image className="img-fluid" src={imageUrl} alt={`${title} - ${subtitle}`} />
-    <Title>{title}</Title>
-    <div>{subtitle}</div>
-    <a href={`mailto:${email}`}>{email}</a>
+  <div className={`d-flex flex-column align-items-center ${className}`}>
+    <div>
+      <Image className="img-fluid" src={imageUrl} alt={`${title} - ${subtitle}`} />
+      <Title>{title}</Title>
+      <div>{subtitle}</div>
+      <a href={`mailto:${email}`}>{email}</a>
+    </div>
   </div>
 )
 
