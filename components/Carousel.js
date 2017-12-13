@@ -36,7 +36,12 @@ const mapPortraitToCarouselItems = (portrait) => {
 const CarouselTextContainer = styled.div`
   background-color: ${props => props.theme.blue};
   color: white;
-  padding: 3rem 6rem;
+  padding: 1rem 4rem;
+  min-height: 300px;
+  
+  @media screen and (min-width: 768px) {
+    padding: 3rem 6rem;
+  }
 `
 
 const H3 = styled.h3`
@@ -63,9 +68,12 @@ const PaddedMarkdown = styled(Markdown)`
 `
 
 const carouselControlPadding = '1rem'
+const bootstrapColumnPadding = '15px'
 
 const StyledCarousel = styled(Carousel)`
   margin-bottom: 50px !important;
+  margin-left: -${bootstrapColumnPadding};
+  margin-right: -${bootstrapColumnPadding};
   
   &:hover {
     @media screen and (min-width: 768px) {
@@ -79,7 +87,7 @@ const StyledCarousel = styled(Carousel)`
     cursor: pointer;
     display: flex;
     opacity: 0;
-    transition: 200ms;
+    transition: 300ms;
   }
   
   .carousel-control-next {
