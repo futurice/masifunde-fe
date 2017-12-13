@@ -56,9 +56,11 @@ const Home = ({
       buttonText={banner1ButtonText}
       buttonLink={RouteNames.WhatWeDo}
     />
-    <CarouselContainer>
-      <Carousel portrait={portrait} />
-    </CarouselContainer>
+    <Container>
+      <CarouselContainer>
+        <Carousel portrait={portrait} />
+      </CarouselContainer>
+    </Container>
     <Banner
       headline={banner2Title}
       buttonText={banner2ButtonText}
