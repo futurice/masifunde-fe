@@ -1,57 +1,27 @@
 import React, { Component } from 'react'
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-} from 'reactstrap'
+import Carousel from 'nuka-carousel'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
 import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
 import { jpgCompression } from '../utils/constants'
-
-const mapPortraitToCarouselItems = (portrait) => {
-  const item1 = {
-    image: portrait.page1Image,
-    heading: portrait.page1Heading,
-    text: portrait.page1Text,
-    key: 1,
-  }
-  const item2 = {
-    image: portrait.page2Image,
-    heading: portrait.page2Heading,
-    text: portrait.page2Text,
-    key: 2,
-  }
-  const item3 = {
-    image: portrait.page3Image,
-    heading: portrait.page3Heading,
-    text: portrait.page3Text,
-    key: 3,
-  }
-  return [item1, item2, item3]
-}
-
-const CarouselTextContainer = styled.div`
-  background-color: ${props => props.theme.blue};
-  color: white;
-  padding: 1rem 4rem;
-  min-height: 350px;
-  
-  @media screen and (min-width: 768px) {
-    padding: 3rem 6rem;
-  }
-`
 
 const H3 = styled.h3`
   font-weight: bold;
   color: white;
 `
 
+const CarouselTextContainer = styled.div`
+  padding: 1.5rem 3rem;
+  color: white;
+`
+
+const PaddedMarkdown = styled(Markdown)`
+  padding: 0 1rem;
+`
+
 const Image = styled.div`
-  background: url(${props => props.src}?q=${jpgCompression});
+  background: url(${props => props.src});
   padding-right: 0;
   background-position: center;
   background-repeat: no-repeat;
@@ -59,151 +29,116 @@ const Image = styled.div`
 `
 
 const MobileImage = styled.img`
-  
+
 `
 
-const PaddedMarkdown = styled(Markdown)`
-  padding-left: 0.8rem;
-`
-
-const carouselControlPadding = '1rem'
 const bootstrapColumnPadding = '15px'
 
 const StyledCarousel = styled(Carousel)`
-  margin-bottom: 50px !important;
+  background: ${props => props.theme.blue};
+  margin-bottom: 90px;
   margin-left: -${bootstrapColumnPadding};
   margin-right: -${bootstrapColumnPadding};
   
   &:hover {
-    @media screen and (min-width: 768px) {
-      .carousel-control-next, .carousel-control-prev {
-        opacity: 1;
-      }
+    .slider-decorator-0, .slider-decorator-1 {
+      opacity: 1;
     }
   }
   
-  .carousel-control-next, .carousel-control-prev {
-    cursor: pointer;
-    display: flex;
+  .slider-decorator-2 {
+    bottom: -80px !important;
+    z-index: 10;
+    
+    li button {
+      color: ${props => props.theme.pineCone} !important;
+      font-size: 2.4rem !important;
+    }
+  }
+  
+  .slider-decorator-0, .slider-decorator-1 {
     opacity: 0;
     transition: 300ms;
-  }
-  
-  .carousel-control-next {
-    justify-content: flex-end;
-    padding-right: ${carouselControlPadding};
-  }
-  
-  .carousel-control-prev {
-    justify-content: flex-start;
-    padding-left: ${carouselControlPadding};
-  }
-  
-  .carousel-control-next-icon, .carousel-control-prev-icon {
-    width: 80px;
-    height: 80px;
     background-image: url(../static/carousel-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+    
+    button {
+      opacity: 0 !important;
+    }
   }
   
-  .carousel-control-prev-icon {
-    transform: rotateY(180deg);
-  }
- 
-  .carousel-indicators {
-    bottom: -50px !important;
-    color: black;
-    padding-top: 25px;
-    
-    > li {
-      &.active {
-        background-color: ${props => props.theme.pineCone};
-      }
-      
-      cursor: pointer;
-      border: 2px solid ${props => props.theme.pineCone};
-      height: 18px;
-      width: 18px;
-      border-radius: 100%;
-    }
+  .slider-decorator-0 {
+    transform: rotateY(180deg) translateY(-50%) !important;
   }
 `
 
+const SlideRow = styled.div`
+  margin-left: 0;
+  margin-right: 0;
+  height: 100%;
+`
+
+const mapPortraitToCarouselItems = (portrait) => {
+  const item1 = {
+    image: portrait.page1Image,
+    heading: portrait.page1Heading,
+    text: portrait.page1Text,
+  }
+  const item2 = {
+    image: portrait.page2Image,
+    heading: portrait.page2Heading,
+    text: portrait.page2Text,
+  }
+  const item3 = {
+    image: portrait.page3Image,
+    heading: portrait.page3Heading,
+    text: portrait.page3Text,
+  }
+  return [item1, item2, item3]
+}
+
 class MasifundeCarousel extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { activeIndex: 0, items: mapPortraitToCarouselItems(this.props.portrait) }
-    this.next = this.next.bind(this)
-    this.previous = this.previous.bind(this)
-    this.goToIndex = this.goToIndex.bind(this)
-    this.onExiting = this.onExiting.bind(this)
-    this.onExited = this.onExited.bind(this)
-  }
+  componentDidMount() {
+    const sliderList = this.carouselComponent.querySelector('ul.slider-list')
+    const firstSlide = sliderList.firstChild
 
-  onExiting() {
-    this.animating = true
-  }
-
-  onExited() {
-    this.animating = false
-  }
-
-  next() {
-    if (this.animating) return
-    const nextIndex = this.state.activeIndex === this.state.items.length - 1
-      ? 0
-      : this.state.activeIndex + 1
-    this.setState({ activeIndex: nextIndex })
-  }
-
-  previous() {
-    if (this.animating) return
-    const nextIndex = this.state.activeIndex === 0
-      ? this.state.items.length - 1
-      : this.state.activeIndex - 1
-    this.setState({ activeIndex: nextIndex })
-  }
-
-  goToIndex(newIndex) {
-    if (this.animating) return
-    this.setState({ activeIndex: newIndex })
+    setTimeout(() => {
+      sliderList.style.height = `${firstSlide.offsetHeight}px`
+    }, 1)
+    const sliderSlides = this.carouselComponent.querySelectorAll('li.slider-slide')
+    setTimeout(() => {
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < sliderSlides.length; i++) {
+        sliderSlides[i].style.height = '100%'
+      }
+    }, 1)
   }
 
   render() {
-    const { activeIndex, items } = this.state
-    const slides = items.map(item => (
-      <CarouselItem
-        onExiting={this.onExiting}
-        onExited={this.onExited}
-        key={item.key}
-        altText={item.altText}
-      >
-        <div className="row">
-          <Image className="d-none d-md-block col-md-3" src={item.image.url} alt={item.image.title} />
-          <MobileImage className="d-md-none col-md-3 w-100 h-100" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
-          <CarouselTextContainer className="col-md-9">
-            <H3 className="row">{item.heading}</H3>
-            <PaddedMarkdown className="row" source={item.text} />
-          </CarouselTextContainer>
-        </div>
-      </CarouselItem>
-    ))
-
+    const { portrait } = this.props
+    const settings = {
+      wrapAround: true,
+    }
+    const items = mapPortraitToCarouselItems(portrait)
     return (
-      <StyledCarousel
-        activeIndex={activeIndex}
-        next={this.next}
-        previous={this.previous}
-        interval={false}
-      >
-        <CarouselIndicators
-          items={items}
-          activeIndex={activeIndex}
-          onClickHandler={this.goToIndex}
-        />
-        {slides}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-      </StyledCarousel>
+      <div ref={(carousel) => { this.carouselComponent = carousel }}>
+        <StyledCarousel {...settings}>
+          {items.map(item => (
+            <SlideRow key={`${item.heading} ${item.image.url}`} className="row">
+              <Image className="d-none d-md-block col-md-3" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
+              <MobileImage className="d-md-none p-0 col-md-3 w-100 h-100" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
+              <CarouselTextContainer className="col-md-9">
+                <H3 className="row">{item.heading}</H3>
+                <PaddedMarkdown className="row" source={item.text} />
+              </CarouselTextContainer>
+            </SlideRow>
+          ))}
+        </StyledCarousel>
+      </div>
     )
   }
 }
