@@ -47,6 +47,14 @@ const SocialLink = styled.a`
   }
 `
 
+const Anchor = styled.a`
+  color: ${props => props.theme.pineCone};
+    
+  &:visited {
+    color: ${props => props.theme.pineCone};  
+  }
+`
+
 function Footer({
   whatWeDoText,
   approachSaText,
@@ -182,7 +190,12 @@ function Footer({
           </Col>
         </Row>
         <Row>
-          <Col style={copyrightRowStyle}>Impressum und Datenschutzt</Col>
+          <Col style={copyrightRowStyle}>
+            <Link route={RouteNames.Impressum} passHref>
+              <Anchor>Impressum </Anchor>
+            </Link>
+             und Datenschutzt
+          </Col>
         </Row>
       </Container>
     </Container>
