@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+html {
+    font-family: 'Lato', sans-serif;
+    color: #4F463F;
+}
+
+body {
+    margin: 0;
+}
+
+h1, h2 {
+    font-weight: normal;
+    color: #77695C;
+}
+
+.error_area {
+    color: #dc3545;
+    padding: 5px 20px;
+    display: inline-block;
+}
+
+.error_area:not(.bottom) {
+    display: none;
+}
+
+#amountBox, #donorData {
+    display: none;
+}
+
+.paymentDetails {
+    margin-top: 15px;
+}
+
+.paymentDetails .row {
+    margin-bottom: 1rem;
+}
+
+.paymentDetails div.field {
+    display: inline-flex;
+    align-items: center;
+}
+
+label.verror {
+    color: #dc3545;
+    margin-left: 0.4rem;
+}
+
+input#submitForm{
+    margin-bottom: 30px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 2px solid #17DD73;
+    font-weight: 900;
+    color: #00C078;
+    box-shadow: none !important;
+    outline: none;
+    background-color: transparent;
+    padding: 5px 20px;
+}
+
+input#submitForm:hover {
+    color: white;
+    background-color: #17DD73;
+}
+
+#bankConfirmation {
+    margin-top: 10px;
+}
+
+#bankConfirmation p {
+    display: inline;
+}
+
+.paymentDetails input[type="text"], .paymentDetails select {
+    padding: 0.375rem 0.75rem;
+    line-height: 1.5;
+    color: #495057;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    outline: none;
+    font-size: 16px;
+}
+
+.paymentDetails div.field input[type="text"]:focus, .paymentDetails select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.paymentDetails div.field {
+    width: 100%;
+}
+
+.paymentDetails > h2:first-of-type {
+    display: none;
+}
+
+.paymentDetails div.field > input {
+    width: 100%;
+}
+
+#paymentmethods {
+    display: flex;
+    flex-direction: column;
+}
+
+#paymentmethods label {
+    cursor: pointer;
+    padding-left: 60px;
+    height: 40px;
+    display: inline-block;
+    background-image: url(https://masifunde.netlify.com/static/fundraisingbox_payment_icons.png);
+    background-repeat: no-repeat;
+}
+
+#paymentmethods input#sepa_direct_debit + label {
+    background-position: 5px -160px;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+}
+
+
+#paymentmethods input#sepa_direct_debit + label span {
+    display: inline;
+}
+
+#paymentmethods input#sofortueberweisung + label {
+    background-position: 5px -120px;
+    padding-left: 70px;
+}
+
+#paymentmethods input#credit_card + label {
+    background-position: 5px -200px;
+    padding-left: 115px;
+}
+
+#paymentmethods input#paypal + label {
+    background-position: 5px -80px;
+    padding-left: 105px;
+}
+
+#paymentmethods .paymentmethod {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+#paymentmethods label span {
+    display: none;
+}
+
+/* Bootstrap breakpoint sm. Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .paymentDetails div.label {
+        text-align: right;
+        padding-right: 15px;
+        padding-left: 15px;
+        width: calc(33% - 30px);
+        display: inline-block;
+    }
+
+    .paymentDetails .row {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    .paymentDetails div.field {
+        padding-right: 15px;
+        padding-left: 15px;
+        width: calc(66% - 30px);
+    }
+
+    .paymentDetails div.field > input {
+        width: 100%;
+    }
+
+    #paymentmethods {
+        flex-direction: row;
+    }
+}
