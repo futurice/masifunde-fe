@@ -47,6 +47,14 @@ const SocialLink = styled.a`
   }
 `
 
+const Anchor = styled.a`
+  color: ${props => props.theme.pineCone};
+    
+  &:visited {
+    color: ${props => props.theme.pineCone};  
+  }
+`
+
 function Footer({
   whatWeDoText,
   approachSaText,
