@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Carousel from 'nuka-carousel'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import _throttle from 'lodash/throttle'
 import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
 import { jpgCompression } from '../utils/constants'
@@ -102,7 +103,16 @@ const mapPortraitToCarouselItems = (portrait) => {
 }
 
 class MasifundeCarousel extends Component {
-  componentDidMount() {
+  componentDidMount = () => {
+    this.resizeCarousel()
+    window.addEventListener('resize', this.throttleResizeCarousel, true)
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.throttleResizeCarousel, true)
+  }
+
+  resizeCarousel = () => {
     const sliderList = this.carouselComponent.querySelector('ul.slider-list')
     const firstSlide = sliderList.firstChild
 
@@ -111,13 +121,18 @@ class MasifundeCarousel extends Component {
     }, 1)
     const sliderSlides = this.carouselComponent.querySelectorAll('li.slider-slide')
     setTimeout(() => {
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < sliderSlides.length; i++) {
-        sliderSlides[i].style.height = '100%'
+      for (let i = 0; i < sliderSlides.length; i += 1) {
+        const sliderSlide = sliderSlides[i]
+        const mobileImage = sliderSlide.querySelector('img')
+        if (mobileImage.offsetHeight === 0) {
+          sliderSlide.style.height = '100%'
+        } else {
+          sliderSlide.style.height = 'auto'
+        }
       }
     }, 1)
   }
-
+  throttleResizeCarousel = _throttle(this.resizeCarousel, 1000)
   render() {
     const { portrait } = this.props
     const settings = {
