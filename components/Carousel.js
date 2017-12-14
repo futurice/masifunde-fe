@@ -40,6 +40,7 @@ const StyledCarousel = styled(Carousel)`
   margin-bottom: 90px;
   margin-left: -${bootstrapColumnPadding};
   margin-right: -${bootstrapColumnPadding};
+  width: calc(100% + ${bootstrapColumnPadding} + ${bootstrapColumnPadding}) !important;
   
   &:hover {
     .slider-decorator-0, .slider-decorator-1 {
