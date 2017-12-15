@@ -104,10 +104,10 @@ class FundRaisingForm extends Component {
                 <div className="col-sm-2 d-flex">
                   <Field name={fieldName.salutation}>
                     {({ input, meta }) => (
-                      <div className="d-flex align-items-center">
+                      <div className="d-flex align-items-center w-100">
                         <select
                           {...input}
-                          className={this.formInputClassFactory(meta)}
+                          className={`${this.formInputClassFactory(meta)}  w-100`}
                           aria-labelledby="titleInputs"
                         >
                           <option value={null} />
