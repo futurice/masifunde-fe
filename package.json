@@ -48,6 +48,7 @@
     "react-async-script": "^0.9.1",
     "react-dom": "^16.2.0",
     "react-final-form": "^1.2.0",
+    "react-ga": "^2.3.5",
     "react-icons": "^2.2.7",
     "react-markdown": "^2.5.1",
     "reactstrap": "^5.0.0-alpha.4",

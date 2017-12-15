@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 import styled, { injectGlobal, ThemeProvider } from 'styled-components'
 
+import withAnalytics from './withAnalytics'
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
 import { pageTitle, sectionTitle, subtitle } from '../styling/typography'
@@ -130,4 +131,4 @@ Layout.propTypes = {
   footerData: PropTypes.shape(footerPropTypes).isRequired,
 }
 
-export default Layout
+export default withAnalytics(Layout)
