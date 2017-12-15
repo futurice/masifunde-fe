@@ -13,7 +13,7 @@ const Image = styled.img`
 const TeamMember = ({
   imageUrl, title, subtitle, email, className,
 }) => (
-  <div className={`d-flex flex-column align-items-center ${className}`}>
+  <div className={className}>
     <div>
       <Image className="img-fluid" src={imageUrl} alt={`${title} - ${subtitle}`} />
       <Title>{title}</Title>
