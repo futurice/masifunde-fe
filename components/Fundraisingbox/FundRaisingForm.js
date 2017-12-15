@@ -200,7 +200,7 @@ class FundRaisingForm extends Component {
                         <option value={null} />
                         {/* <option value="no_receipt">no receipt</option> */}
                         <option value="receipt_now">Ja, so schnell wie möglich</option>
-                        <option value="receipt_end_of_year">Ja, konsolidiert am Ende des Jahresr</option>
+                        <option value="receipt_end_of_year">Ja, konsolidiert am Ende des Jahres</option>
                       </select>
                       {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                     </div>
