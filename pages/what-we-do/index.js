@@ -1,4 +1,5 @@
 /* eslint-disable function-paren-newline */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Container } from 'reactstrap'
@@ -12,7 +13,7 @@ import Head from '../../components/Head'
 import YouTubeVideo from '../../components/YouTubeVideo'
 import Button from '../../components/Button'
 import Stat from '../../components/Stat'
-import { RouteNames } from '../../routes'
+import { Link, RouteNames } from '../../routes'
 
 const Hero = styled.img`
   width: 100%;
@@ -106,7 +107,9 @@ const WhatWeDo = ({
                 ))}
             </div>
             <div className="row justify-content-center">
-              <Button href={program.buttonLink} type="secondary">{program.button}</Button>
+              <Link route={program.buttonLink} passHref>
+                <Button type="secondary">{program.button}</Button>
+              </Link>
             </div>
           </ProjectContainer>
           ))}
@@ -130,7 +133,9 @@ const WhatWeDo = ({
           </div>
         </div>
         <div className="row justify-content-center">
-          <Button href={RouteNames.Impact} type="secondary">{statsButton}</Button>
+          <Link route={RouteNames.Impact} passHref>
+            <Button type="secondary">{statsButton}</Button>
+          </Link>
         </div>
       </ProjectContainer>
 
