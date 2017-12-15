@@ -193,11 +193,11 @@ function Footer({
         <Row>
           <Col style={copyrightRowStyle}>
             <Link route={RouteNames.Contact} passHref>
-              <a>{impressumText} </a>
+              <Anchor>{impressumText} </Anchor>
             </Link>
             und
             <Link route={RouteNames.Datenschutz} passHref>
-              <a> Datenschutz</a>
+              <Anchor> Datenschutz</Anchor>
             </Link>
           </Col>
         </Row>
