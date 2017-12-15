@@ -47,7 +47,7 @@ const OtherAmountContainer = styled.div`
 
 const findAmountDescription = (searchedValue, amounts) => {
   const object = amounts.find(({ value }) => value === Number(searchedValue))
-  return object ? object.description : 'Other value'
+  return object ? object.description : null
 }
 
 const DonationAmountField = ({
@@ -58,55 +58,58 @@ const DonationAmountField = ({
   otherAmountPlaceholder,
 }) => (
   <Field name={fieldName}>
-    {({ input, meta }) => (
-      <Fragment>
-        <SubHeader isInvalid={isInvalid(meta)}>{title} *</SubHeader>
-        <div className="row">
-          <div className="offset-md-3 col-md-7">
-            {amounts.map(({ text, value }) => (
-              <LabelButton
-                className="btn"
-                isActive={Number(input.value) === value}
-                key={value}
-                htmlFor={`amountInputOption${value}`}
-              >
-                <input
-                  {...input}
-                  type="radio"
-                  value={value}
-                  id={`amountInputOption${value}`}
-                  autoComplete="off"
-                />
-                {text}
-              </LabelButton>
-            ))}
-            {enableOtherAmount
-              ? (
-                <Fragment>
-                  <OtherAmountContainer>
-                    <EuroPostfix>€</EuroPostfix>
-                    <input
-                      {...input}
-                      className="form-control"
-                      type="text"
-                      placeholder={otherAmountPlaceholder}
-                    />
-                  </OtherAmountContainer>
-                  <AmountDescription>
-                    <span>
-                      {input.value
-                        ? findAmountDescription(input.value, amounts)
-                        : 'Select the suggested amount'
-                      }
-                    </span>
-                  </AmountDescription>
-                </Fragment>)
-              : null
-            }
+    {({ input, meta }) => {
+      const otherAmountDescription = findAmountDescription(input.value, amounts)
+      return (
+        <Fragment>
+          <SubHeader isInvalid={isInvalid(meta)}>{title} *</SubHeader>
+          <div className="row">
+            <div className="offset-md-3 col-md-7">
+              {amounts.map(({ text, value }) => (
+                <LabelButton
+                  className="btn"
+                  isActive={Number(input.value) === value}
+                  key={value}
+                  htmlFor={`amountInputOption${value}`}
+                >
+                  <input
+                    {...input}
+                    type="radio"
+                    value={value}
+                    id={`amountInputOption${value}`}
+                    autoComplete="off"
+                  />
+                  {text}
+                </LabelButton>
+              ))}
+              {enableOtherAmount
+                ? (
+                  <Fragment>
+                    <OtherAmountContainer>
+                      <EuroPostfix>€</EuroPostfix>
+                      <input
+                        {...input}
+                        className="form-control"
+                        type="text"
+                        placeholder={otherAmountPlaceholder}
+                      />
+                    </OtherAmountContainer>
+                    {
+                      otherAmountDescription
+                        ? (
+                          <AmountDescription>
+                            <span>{otherAmountDescription}</span>
+                          </AmountDescription>)
+                        : null
+                    }
+                  </Fragment>)
+                : null
+              }
+            </div>
           </div>
-        </div>
-      </Fragment>
-    )}
+        </Fragment>
+      )
+    }}
   </Field>
 )
 
