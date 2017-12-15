@@ -195,7 +195,7 @@ function Footer({
             <Link route={RouteNames.Contact} passHref>
               <Anchor>{impressumText} </Anchor>
             </Link>
-            und
+            &
             <Link route={RouteNames.Datenschutz} passHref>
               <Anchor> Datenschutz</Anchor>
             </Link>
