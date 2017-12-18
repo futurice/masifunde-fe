@@ -3,8 +3,11 @@ import PropTypes from 'prop-types'
 import Markdown from 'react-markdown'
 import styled from 'styled-components'
 
+const imageSize = '6.25rem' // 100px
 const ProjectImage = styled.img`
   max-width: 100%;
+  height: ${imageSize};
+  width: ${imageSize};
 `
 
 const H2 = styled.h2`
