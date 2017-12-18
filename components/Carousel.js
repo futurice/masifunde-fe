@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, { Component } from 'react'
 import Carousel from 'nuka-carousel'
 import PropTypes from 'prop-types'
@@ -103,6 +104,8 @@ const mapPortraitToCarouselItems = (portrait) => {
   return [item1, item2, item3]
 }
 
+const mobileImageHidden = mobileImage => mobileImage.offsetHeight === 0
+
 class MasifundeCarousel extends Component {
   componentDidMount = () => {
     this.resizeCarousel()
@@ -113,26 +116,39 @@ class MasifundeCarousel extends Component {
     window.removeEventListener('resize', this.throttleResizeCarousel, true)
   }
 
-  resizeCarousel = () => {
+  setSlideContainerHeight = () => {
     const sliderList = this.carouselComponent.querySelector('ul.slider-list')
     const firstSlide = sliderList.firstChild
-
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       sliderList.style.height = `${firstSlide.offsetHeight}px`
-    }, 1)
-    const sliderSlides = this.carouselComponent.querySelectorAll('li.slider-slide')
-    setTimeout(() => {
-      for (let i = 0; i < sliderSlides.length; i += 1) {
-        const sliderSlide = sliderSlides[i]
-        const mobileImage = sliderSlide.querySelector('img')
-        if (mobileImage.offsetHeight === 0) {
-          sliderSlide.style.height = '100%'
-        } else {
-          sliderSlide.style.height = 'auto'
-        }
-      }
-    }, 1)
+    })
   }
+
+  adjustSlideHeightsToDisplayImage = () => {
+    const slides = this.carouselComponent.querySelectorAll('li.slider-slide')
+    requestAnimationFrame(() => {
+      slides.forEach((slide) => {
+        const mobileImage = slide.querySelector('img')
+        if (mobileImageHidden(mobileImage)) {
+          slide.style.height = '100%'
+        } else {
+          slide.style.height = 'auto'
+        }
+      })
+    })
+  }
+
+  resizeCarousel = () => {
+    /*
+    The nuka-carousel component doesn't properly size items.
+    It tries to calculate the height too early.
+    Hence we need to go programatically adjust the height.
+    The timeouts make sure the render has indeed happened before calculating the height.
+    */
+    this.setSlideContainerHeight()
+    this.adjustSlideHeightsToDisplayImage()
+  }
+
   throttleResizeCarousel = _throttle(this.resizeCarousel, 1000)
   render() {
     const { portrait } = this.props
