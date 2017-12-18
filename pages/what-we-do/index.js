@@ -14,17 +14,10 @@ import YouTubeVideo from '../../components/YouTubeVideo'
 import Button from '../../components/Button'
 import Stat from '../../components/Stat'
 import { Link, RouteNames } from '../../routes'
-
-const Hero = styled.img`
-  width: 100%;
-  height: 700px;
-  object-fit: cover;
-`
-
-const H1 = styled.h1`
-  text-align: center;
-  line-height: 1.36;
-`
+import Hero from '../../components/Hero'
+import Banner from '../../components/Banner'
+import HorizontalRuler from '../../components/HorizontalRuler'
+import { sectionTitle } from '../../styling/typography'
 
 const BoldHeading = styled.h2`
   font-weight: 700;
@@ -64,6 +57,14 @@ const StyledYouTubeVideo = YouTubeVideo.extend`
   margin-bottom: 100px;
 `
 
+const Paragraph = styled.p`
+  ${sectionTitle};
+  color: ${props => props.theme.orange};
+  font-weight: bold;
+  text-align: center;
+  margin: 5rem 0;
+`
+
 const WhatWeDo = ({
   centerHeading,
   introHeading,
@@ -75,14 +76,15 @@ const WhatWeDo = ({
   stats,
   statsButton,
   statsHeading,
-  title,
+  heroTitle,
   youtubeVideo,
+  bannerButtonText,
+  bannerTitle,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero src="//via.placeholder.com/350x150/555" alt={title} />
+    <Hero imageUrl="//via.placeholder.com/350x150/555" headline={heroTitle} />
     <Container>
-      <H1>{title}</H1>
       <StyledYouTubeVideo youtubeVideo={youtubeVideo} />
       <BoldHeading>{introHeading}</BoldHeading>
       <div className="row">
@@ -115,7 +117,9 @@ const WhatWeDo = ({
           ))}
       </div>
 
-      <H1>{centerHeading}</H1>
+      <HorizontalRuler />
+      <Paragraph>{centerHeading}</Paragraph>
+      <HorizontalRuler />
 
       <ProjectContainer>
         <BoldHeading>{statsHeading}</BoldHeading>
@@ -146,12 +150,18 @@ const WhatWeDo = ({
         </div>
       </div>
     </Container>
+    <Banner
+      headline={bannerTitle}
+      buttonText={bannerButtonText}
+      buttonLink={RouteNames.HowToSupport}
+    />
   </div>
 )
 
 
 WhatWeDo.propTypes = {
   centerHeading: PropTypes.string.isRequired,
+  heroTitle: PropTypes.string.isRequired,
   introHeading: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   metaTitle: PropTypes.string.isRequired,
@@ -182,8 +192,9 @@ WhatWeDo.propTypes = {
   ).isRequired,
   statsButton: PropTypes.string.isRequired,
   statsHeading: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   youtubeVideo: PropTypes.string.isRequired,
+  bannerButtonText: PropTypes.string.isRequired,
+  bannerTitle: PropTypes.string.isRequired,
 }
 
 WhatWeDo.defaultProps = {
