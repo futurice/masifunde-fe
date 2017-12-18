@@ -73,6 +73,7 @@ function Footer({
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
   impressumText,
+  datenschutzText,
 }) {
   return (
     <Container className="footer">
@@ -197,7 +198,7 @@ function Footer({
             </Link>
             &
             <Link route={RouteNames.Datenschutz} passHref>
-              <Anchor> Datenschutz</Anchor>
+              <Anchor> {datenschutzText}</Anchor>
             </Link>
           </Col>
         </Row>
@@ -224,6 +225,7 @@ export const propTypes = {
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
   impressumText: PropTypes.string.isRequired,
+  datenschutzText: PropTypes.string.isRequired,
 }
 
 Footer.propTypes = propTypes
