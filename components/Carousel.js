@@ -125,7 +125,7 @@ class MasifundeCarousel extends Component {
   }
 
   adjustSlideHeightsToDisplayImage = () => {
-    const slides = this.carouselComponent.querySelectorAll('li.slider-slide')
+    const slides = Array.from(this.carouselComponent.querySelectorAll('li.slider-slide'))
     requestAnimationFrame(() => {
       slides.forEach((slide) => {
         const mobileImage = slide.querySelector('img')
