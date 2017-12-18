@@ -68,7 +68,7 @@ const ApproachDe = ({
 
 ApproachDe.propTypes = {
   metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string,
   title: PropTypes.string.isRequired,
   introHeading: PropTypes.string.isRequired,
   introText: PropTypes.string.isRequired,
@@ -82,6 +82,10 @@ ApproachDe.propTypes = {
   })).isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
+}
+
+ApproachDe.defaultProps = {
+  metaDescription: undefined,
 }
 
 ApproachDe.getInitialProps = async function initialProps({ query }) {
