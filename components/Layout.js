@@ -114,7 +114,7 @@ const Layout = ({ headerData, children, footerData }) => (
         />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
         <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
+        <script src="https://cdn.jsdelivr.net/npm/babel-polyfill@6.26.0/dist/polyfill.min.js" />
       </Head>
       <Header height={headerHeight} {...headerData} />
       <LayoutChildrenContainer>
