@@ -13,7 +13,7 @@ const HeaderWrapper = styled.div`
 `
 
 const Logo = styled.img`
-  width: 90%;
+  width: 11rem;
 `
 
 const StyledNavbar = styled(Navbar)`
@@ -25,7 +25,7 @@ const StyledNavbar = styled(Navbar)`
 `
 
 const StyledNavbarBrand = styled(NavbarBrand)`
-  min-height: ${props => props.height};
+  height: ${props => props.height};
   padding-top: 0;
   padding-bottom: 0;
 `
