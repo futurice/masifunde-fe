@@ -115,67 +115,19 @@ const Layout = ({ headerData, children, footerData }) => (
         <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
 
       </Head>
-      <Header
-        height={headerHeight}
-        whatWeDoText={headerData.whatWeDoText}
-        whoWeAreText={headerData.whoWeAreText}
-        howToSupportText={headerData.howToSupportText}
-        donateText={headerData.donateText}
-      />
+      <Header height={headerHeight} {...headerData} />
       <LayoutChildrenContainer>
         {children}
       </LayoutChildrenContainer>
-      <Footer
-        whatWeDoText={footerData.whatWeDoText}
-        approachSaText={footerData.approachSaText}
-        approachDeText={footerData.approachDeText}
-        impactText={footerData.impactText}
-        whoWeAreText={footerData.whoWeAreText}
-        teamSaText={footerData.teamSaText}
-        teamDeText={footerData.teamDeText}
-        howToSupportText={footerData.howToSupportText}
-        donateText={footerData.donateText}
-        becomeSponsorText={footerData.becomeSponsorText}
-        becomeVolunteerText={footerData.becomeVolunteerText}
-        becomePartnerText={footerData.becomePartnerText}
-        contactText={footerData.contactText}
-        copyrightText={footerData.copyrightText}
-        masifundeYouTubeUrl={footerData.masifundeYouTubeUrl}
-        masifundeFacebookUrl={footerData.masifundeFacebookUrl}
-      />
+      <Footer {...footerData} />
     </Fragment>
   </ThemeProvider>
 )
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  headerData: PropTypes.shape(headerPropTypes),
-  footerData: PropTypes.shape(footerPropTypes),
-}
-
-Layout.defaultProps = {
-  headerData: {
-    whatWeDoText: 'Was wir machen',
-    whoWeAreText: 'Who we are',
-    howToSupportText: 'Wie Sie helfen',
-    donateText: 'Spenden',
-  },
-  footerData: {
-    whatWeDoText: 'Was wir machen',
-    approachSaText: 'Approach South Africa',
-    approachDeText: 'Approach Deutschland',
-    impactText: 'Impact',
-    whoWeAreText: 'Wer sind wir',
-    teamSaText: 'Team South Africa',
-    teamDeText: 'Team Deutschland',
-    howToSupportText: 'Wie Sie helfen',
-    donateText: 'Spenden',
-    becomeSponsorText: 'Sponsor',
-    becomeVolunteerText: 'Volunteer',
-    becomePartnerText: 'Open Partner',
-    contactText: 'Kontakt',
-    copyrightText: '© 2017 Masifunde Bildungsförderung e.V.',
-  },
+  headerData: PropTypes.shape(headerPropTypes).isRequired,
+  footerData: PropTypes.shape(footerPropTypes).isRequired,
 }
 
 export default Layout

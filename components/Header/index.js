@@ -18,6 +18,10 @@ const Logo = styled.img`
 
 const StyledNavbar = styled(Navbar)`
   padding: 0;
+  
+  a {
+    text-align: center;
+  }
 `
 
 const StyledNavbarBrand = styled(NavbarBrand)`

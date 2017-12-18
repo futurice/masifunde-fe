@@ -72,10 +72,11 @@ function Footer({
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
+  impressumText,
 }) {
   return (
-    <Container>
-      <Container style={containerStyle} className="footer">
+    <Container className="footer">
+      <Container style={containerStyle}>
         <div className="row" style={LinksContainer}>
 
           <div className="col-sm">
@@ -192,9 +193,12 @@ function Footer({
         <Row>
           <Col style={copyrightRowStyle}>
             <Link route={RouteNames.Impressum} passHref>
-              <Anchor>Impressum </Anchor>
+              <Anchor>{impressumText} </Anchor>
             </Link>
-             und Datenschutzt
+            &
+            <Link route={RouteNames.Datenschutz} passHref>
+              <Anchor> Datenschutz</Anchor>
+            </Link>
           </Col>
         </Row>
       </Container>
@@ -219,6 +223,7 @@ export const propTypes = {
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
+  impressumText: PropTypes.string.isRequired,
 }
 
 Footer.propTypes = propTypes
