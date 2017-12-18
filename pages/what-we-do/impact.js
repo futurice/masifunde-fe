@@ -62,9 +62,9 @@ const Impact = ({
       <HorizontalRuler />
       <StatsSection title={stats1Title} stats={stats1} />
       <StatsSection title={stats2Title} stats={stats2} />
+      <Carousel portrait={portrait1} />
+      <Carousel portrait={portrait2} />
     </Container>
-    <Carousel portrait={portrait1} />
-    <Carousel portrait={portrait2} />
     <Container>
       <h2>{outroTitle}</h2>
       <CenteredMarkdown source={outroMarkdown} />

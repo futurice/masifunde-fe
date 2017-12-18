@@ -1,13 +1,16 @@
-import React from 'react'
+/* eslint-disable no-param-reassign */
+import React, { Component } from 'react'
 import Carousel from 'nuka-carousel'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import _throttle from 'lodash/throttle'
 import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
+import { jpgCompression } from '../utils/constants'
 
 const H3 = styled.h3`
-  color: white;
   font-weight: bold;
+  color: white;
 `
 
 const CarouselTextContainer = styled.div`
@@ -19,12 +22,35 @@ const PaddedMarkdown = styled(Markdown)`
   padding: 0 1rem;
 `
 
-const StyledSlider = styled(Carousel)`
+const Image = styled.div`
+  background: url(${props => props.src});
+  padding-right: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+`
+
+const MobileImage = styled.img`
+
+`
+
+const bootstrapColumnPadding = '15px'
+
+const StyledCarousel = styled(Carousel)`
   background: ${props => props.theme.blue};
   margin-bottom: 90px;
+  margin-left: -${bootstrapColumnPadding};
+  margin-right: -${bootstrapColumnPadding};
+  width: calc(100% + ${bootstrapColumnPadding} + ${bootstrapColumnPadding}) !important;
+  
+  &:hover {
+    .slider-decorator-0, .slider-decorator-1 {
+      opacity: 1;
+    }
+  }
   
   .slider-decorator-2 {
-    bottom: -90px !important;
+    bottom: -80px !important;
     z-index: 10;
     
     li button {
@@ -34,7 +60,9 @@ const StyledSlider = styled(Carousel)`
   }
   
   .slider-decorator-0, .slider-decorator-1 {
-    background-image: url(/static/carousel-arrow.svg);
+    opacity: 0;
+    transition: 300ms;
+    background-image: url(../static/carousel-arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -49,6 +77,12 @@ const StyledSlider = styled(Carousel)`
   .slider-decorator-0 {
     transform: rotateY(180deg) translateY(-50%) !important;
   }
+`
+
+const SlideRow = styled.div`
+  margin-left: 0;
+  margin-right: 0;
+  height: 100%;
 `
 
 const mapPortraitToCarouselItems = (portrait) => {
@@ -70,24 +104,75 @@ const mapPortraitToCarouselItems = (portrait) => {
   return [item1, item2, item3]
 }
 
-const MasifundeCarousel = ({ portrait }) => {
-  const settings = {
-    wrapAround: true,
+const mobileImageHidden = mobileImage => mobileImage.offsetHeight === 0
+
+class MasifundeCarousel extends Component {
+  componentDidMount = () => {
+    this.resizeCarousel()
+    window.addEventListener('resize', this.throttleResizeCarousel, true)
   }
-  const items = mapPortraitToCarouselItems(portrait)
-  return (
-    <StyledSlider {...settings}>
-      {items.map(item => (
-        <div key={`${item.heading} ${item.image.url}`} className="row">
-          <img className="col-md-3 img-fluid h-100" src={item.image.url} alt={item.image.title} />
-          <CarouselTextContainer className="col-md-9">
-            <H3 className="row">{item.heading}</H3>
-            <PaddedMarkdown className="row" source={item.text} />
-          </CarouselTextContainer>
-        </div>
-      ))}
-    </StyledSlider>
-  )
+
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.throttleResizeCarousel, true)
+  }
+
+  setSlideContainerHeight = () => {
+    const sliderList = this.carouselComponent.querySelector('ul.slider-list')
+    const firstSlide = sliderList.firstChild
+    requestAnimationFrame(() => {
+      sliderList.style.height = `${firstSlide.offsetHeight}px`
+    })
+  }
+
+  adjustSlideHeightsToDisplayImage = () => {
+    const slides = this.carouselComponent.querySelectorAll('li.slider-slide')
+    requestAnimationFrame(() => {
+      slides.forEach((slide) => {
+        const mobileImage = slide.querySelector('img')
+        if (mobileImageHidden(mobileImage)) {
+          slide.style.height = '100%'
+        } else {
+          slide.style.height = 'auto'
+        }
+      })
+    })
+  }
+
+  resizeCarousel = () => {
+    /*
+    The nuka-carousel component doesn't properly size items.
+    It tries to calculate the height too early.
+    Hence we need to go programatically adjust the height.
+    The timeouts make sure the render has indeed happened before calculating the height.
+    */
+    this.setSlideContainerHeight()
+    this.adjustSlideHeightsToDisplayImage()
+  }
+
+  throttleResizeCarousel = _throttle(this.resizeCarousel, 1000)
+  render() {
+    const { portrait } = this.props
+    const settings = {
+      wrapAround: true,
+    }
+    const items = mapPortraitToCarouselItems(portrait)
+    return (
+      <div ref={(carousel) => { this.carouselComponent = carousel }}>
+        <StyledCarousel {...settings}>
+          {items.map(item => (
+            <SlideRow key={`${item.heading} ${item.image.url}`} className="row">
+              <Image className="d-none d-md-block col-md-3" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
+              <MobileImage className="d-md-none p-0 col-md-3 w-100 h-100" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
+              <CarouselTextContainer className="col-md-9">
+                <H3 className="row">{item.heading}</H3>
+                <PaddedMarkdown className="row" source={item.text} />
+              </CarouselTextContainer>
+            </SlideRow>
+          ))}
+        </StyledCarousel>
+      </div>
+    )
+  }
 }
 
 MasifundeCarousel.propTypes = {

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { jpgCompression } from '../utils/constants'
 
 const Title = styled.div`
   font-weight: bold;
@@ -14,12 +15,10 @@ const TeamMember = ({
   imageUrl, title, subtitle, email, className,
 }) => (
   <div className={className}>
-    <div>
-      <Image className="img-fluid" src={imageUrl} alt={`${title} - ${subtitle}`} />
-      <Title>{title}</Title>
-      <div>{subtitle}</div>
-      <a href={`mailto:${email}`}>{email}</a>
-    </div>
+    <Image className="img-fluid" src={`${imageUrl}?q=${jpgCompression}`} alt={`${title} - ${subtitle}`} />
+    <Title>{title}</Title>
+    <div>{subtitle}</div>
+    <a href={`mailto:${email}`}>{email}</a>
   </div>
 )
 
