@@ -19,6 +19,11 @@ import Source from '../../components/Source'
 
 const CenteredMarkdown = styled(Markdown)`
   text-align: center;
+  font-size: 1.3rem;
+`
+
+const H1 = styled.h1`
+  color: ${props => props.theme.orange};
 `
 
 const StatsSection = ({ title, stats }) => (
@@ -60,7 +65,7 @@ const Impact = ({
     <Head title={metaTitle} description={metaDescription} />
     <Hero imageUrl="//via.placeholder.com/350x150/555" />
     <Container>
-      <h1>{title}<Source text={1} sourceText={titleSource} id="impact-title-source" /></h1>
+      <H1>{title}<Source text={1} sourceText={titleSource} id="impact-title-source" /></H1>
       <HorizontalRuler />
       <StatsSection title={stats1Title} stats={stats1} />
       <StatsSection title={stats2Title} stats={stats2} />
