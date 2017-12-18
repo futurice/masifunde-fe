@@ -25,7 +25,6 @@ const BoldHeading = styled.h2`
 `
 
 const ProjectImage = styled.img`
-  border-radius: 50%;
   height: 61px;
   width: 61px;
   display: flex;
@@ -43,6 +42,7 @@ const ProjectDescription = styled.p`
 
 const ProjectDescriptionContainer = styled.div`
   flex-grow: 1;
+  width: 100%;
 `
 
 const ProjectTitle = styled.h3`
@@ -63,6 +63,17 @@ const Paragraph = styled.p`
   font-weight: bold;
   text-align: center;
   margin: 5rem 0;
+`
+
+const ProgramsContainer = styled.div`
+  width: 65%;
+  flex-grow: 1;
+`
+
+const ProgramContainer = styled.div`
+  flex-grow: 1;
+  max-width: 100%;
+  flex-basis: 34%;
 `
 
 const WhatWeDo = ({
@@ -89,7 +100,7 @@ const WhatWeDo = ({
       <BoldHeading>{introHeading}</BoldHeading>
       <div className="row">
         {programmes.map(program => (
-          <ProjectContainer className="col-md d-flex flex-column" key={program.title}>
+          <ProjectContainer className="col-md d-flex flex-column align-items-center" key={program.title}>
             <ProjectTitle>{program.title}</ProjectTitle>
 
             <ProjectDescriptionContainer className="row justify-content-md-center">
@@ -97,17 +108,17 @@ const WhatWeDo = ({
                 <ProjectDescription>{program.description}</ProjectDescription>
               </div>
             </ProjectDescriptionContainer>
-            <div className="row">
+            <ProgramsContainer className="row">
               {program.projects.map(project => (
-                <div
-                  className="col-sm d-flex flex-column align-items-center"
+                <ProgramContainer
+                  className="col-sm-6 d-flex flex-column align-items-center"
                   key={`${project.image.url} ${project.name}`}
                 >
                   <ProjectImage src={project.image.url} alt={project.image.title} />
                   <ProjectText>{project.name}</ProjectText>
-                </div>
+                </ProgramContainer>
                 ))}
-            </div>
+            </ProgramsContainer>
             <div className="row justify-content-center">
               <Link route={program.buttonLink} passHref>
                 <Button type="secondary">{program.button}</Button>
