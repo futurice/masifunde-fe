@@ -15,6 +15,7 @@ import Carousel from '../../components/Carousel'
 import Stat from '../../components/Stat'
 import { RouteNames } from '../../routes'
 import portraitPropTypes from '../../propTypes/portrait'
+import Source from '../../components/Source'
 
 const CenteredMarkdown = styled(Markdown)`
   text-align: center;
@@ -43,6 +44,7 @@ const Impact = ({
   metaTitle,
   metaDescription,
   title,
+  titleSource,
   stats1Title,
   stats1,
   stats2Title,
@@ -58,7 +60,7 @@ const Impact = ({
     <Head title={metaTitle} description={metaDescription} />
     <Hero imageUrl="//via.placeholder.com/350x150/555" />
     <Container>
-      <h1>{title}</h1>
+      <h1>{title}<Source text={1} sourceText={titleSource} id="impact-title-source" /></h1>
       <HorizontalRuler />
       <StatsSection title={stats1Title} stats={stats1} />
       <StatsSection title={stats2Title} stats={stats2} />
@@ -81,6 +83,7 @@ Impact.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   title: PropTypes.string.isRequired,
+  titleSource: PropTypes.string.isRequired,
   stats1Title: PropTypes.string.isRequired,
   stats1: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
   stats2Title: PropTypes.string.isRequired,
