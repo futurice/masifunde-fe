@@ -104,10 +104,10 @@ class FundRaisingForm extends Component {
                 <div className="col-sm-2 d-flex">
                   <Field name={fieldName.salutation}>
                     {({ input, meta }) => (
-                      <div className="d-flex align-items-center">
+                      <div className="d-flex align-items-center w-100">
                         <select
                           {...input}
-                          className={this.formInputClassFactory(meta)}
+                          className={`${this.formInputClassFactory(meta)}  w-100`}
                           aria-labelledby="titleInputs"
                         >
                           <option value={null} />
@@ -200,7 +200,7 @@ class FundRaisingForm extends Component {
                         <option value={null} />
                         {/* <option value="no_receipt">no receipt</option> */}
                         <option value="receipt_now">Ja, so schnell wie möglich</option>
-                        <option value="receipt_end_of_year">Ja, konsolidiert am Ende des Jahresr</option>
+                        <option value="receipt_end_of_year">Ja, konsolidiert am Ende des Jahres</option>
                       </select>
                       {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                     </div>

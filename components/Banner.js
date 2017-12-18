@@ -32,7 +32,7 @@ const Headline = styled.span`
 
 function Banner({ headline, buttonText, buttonLink }) {
   return (
-    <BannerWrapper>
+    <BannerWrapper className="d-flex">
       <BannerContainer className="container d-flex flex-column align-items-center justify-content-center">
         <Headline>{headline}</Headline>
         <Link route={buttonLink} passHref>

@@ -47,6 +47,14 @@ const SocialLink = styled.a`
   }
 `
 
+const Anchor = styled.a`
+  color: ${props => props.theme.pineCone};
+    
+  &:visited {
+    color: ${props => props.theme.pineCone};  
+  }
+`
+
 function Footer({
   whatWeDoText,
   approachSaText,
@@ -64,10 +72,12 @@ function Footer({
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
+  impressumText,
+  datenschutzText,
 }) {
   return (
-    <Container>
-      <Container style={containerStyle} className="footer">
+    <Container className="footer">
+      <Container style={containerStyle}>
         <div className="row" style={LinksContainer}>
 
           <div className="col-sm">
@@ -182,7 +192,15 @@ function Footer({
           </Col>
         </Row>
         <Row>
-          <Col style={copyrightRowStyle}>Impressum und Datenschutzt</Col>
+          <Col style={copyrightRowStyle}>
+            <Link route={RouteNames.Impressum} passHref>
+              <Anchor>{impressumText} </Anchor>
+            </Link>
+            &
+            <Link route={RouteNames.Datenschutz} passHref>
+              <Anchor> {datenschutzText}</Anchor>
+            </Link>
+          </Col>
         </Row>
       </Container>
     </Container>
@@ -206,6 +224,8 @@ export const propTypes = {
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
+  impressumText: PropTypes.string.isRequired,
+  datenschutzText: PropTypes.string.isRequired,
 }
 
 Footer.propTypes = propTypes

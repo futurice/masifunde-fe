@@ -25,6 +25,8 @@ const BecomeSponsor = '/how-to-support/become-sponsor'
 const BecomeVolunteer = '/how-to-support/become-volunteer'
 const BecomePartner = '/how-to-support/become-partner'
 const Contact = '/contact'
+const Impressum = '/impressum'
+const Datenschutz = '/datenschutz'
 
 // Register the routes
 addRoute('/', Index)
@@ -41,6 +43,8 @@ addRoute('/wie-sie-helfen/aktiv-werden', BecomeVolunteer)
 addRoute('/wie-sie-helfen/partner-werden', BecomePartner)
 addRoute('/wie-sie-helfen/spenden', Donate)
 addRoute('/kontakt', Contact)
+addRoute('/impressum', Impressum)
+addRoute('/datenschutz', Datenschutz)
 
 // To use with translations
 // addRoute('/:locale(en)?/was-wir-machen', WhatWeDo)
@@ -61,6 +65,8 @@ nextRoutes.RouteNames = {
   BecomePartner,
   Donate,
   Contact,
+  Datenschutz,
+  Impressum,
 }
 
 module.exports = nextRoutes
