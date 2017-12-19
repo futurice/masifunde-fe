@@ -72,7 +72,7 @@ input#submitForm:hover {
     display: inline;
 }
 
-.paymentDetails input[type="text"], .paymentDetails select {
+.paymentDetails input[type="text"], .paymentDetails select, #payment_credit_card_number, #payment_credit_card_secure_id {
     padding: 0.375rem 0.75rem;
     line-height: 1.5;
     color: #495057;
@@ -82,7 +82,7 @@ input#submitForm:hover {
     font-size: 16px;
 }
 
-.paymentDetails div.field input[type="text"]:focus, .paymentDetails select:focus {
+.paymentDetails div.field input[type="text"]:focus, .paymentDetails select:focus, #payment_credit_card_number.focus, #payment_credit_card_secure_id.focus {
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
@@ -144,10 +144,20 @@ input#submitForm:hover {
     display: flex;
     align-items: center;
     margin-right: 20px;
+    margin-top: 10px;
 }
 
 #paymentmethods label span {
     display: none;
+}
+
+#creditCardForm .creditCardMonth {
+    margin-right: 15px;
+}
+
+#payment_credit_card_number, #payment_credit_card_secure_id {
+    background-color: white;
+    height: 24px;
 }
 
 /* Bootstrap breakpoint sm. Small devices (landscape phones, 576px and up) */
