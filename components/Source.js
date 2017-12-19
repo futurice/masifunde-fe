@@ -57,9 +57,9 @@ class Source extends Component {
     open: false,
   }
   toggle = () => {
-    this.setState({
-      open: !this.state.open,
-    })
+    this.setState(prevState => ({
+      open: !prevState.open,
+    }))
   }
   render() {
     const {
