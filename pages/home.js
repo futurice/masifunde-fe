@@ -41,11 +41,13 @@ const Home = ({
     <Container>
       <StatsContainer className="row">
         {
-          stats.map(stat => (
+          stats.map((stat, index) => (
             <Stat
               key={`${stat.icon.url} ${stat.number}`}
               className="col-md-4"
               {...stat}
+              superscriptText={index + 1}
+              sourceId={`home-stat-${index}`}
             />
           ))
         }

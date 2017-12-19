@@ -63,15 +63,15 @@ class Source extends Component {
   }
   render() {
     const {
-      text,
-      sourceText,
+      superscriptText,
+      sourceMarkdown,
       placement,
       id,
     } = this.props
     return (
       <Fragment>
         <Sup id={`Tooltip-${id}`}>
-          {text}
+          {superscriptText}
         </Sup>
         <SourceTooltip
           isOpen={this.state.open}
@@ -81,7 +81,7 @@ class Source extends Component {
           target={`Tooltip-${id}`}
         >
           <Span>Source</Span>
-          <Markdown source={sourceText} />
+          <Markdown source={sourceMarkdown} />
         </SourceTooltip>
       </Fragment>
     )
@@ -89,8 +89,8 @@ class Source extends Component {
 }
 
 Source.propTypes = {
-  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  sourceText: PropTypes.string.isRequired,
+  superscriptText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  sourceMarkdown: PropTypes.string.isRequired,
   id: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   placement: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
 }
