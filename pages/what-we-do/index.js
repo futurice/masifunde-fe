@@ -66,14 +66,11 @@ const Paragraph = styled.p`
 `
 
 const ProgramsContainer = styled.div`
-  width: 65%;
-  flex-grow: 1;
+  width: 100%;
 `
 
 const ProgramContainer = styled.div`
   flex-grow: 1;
-  max-width: 100%;
-  flex-basis: 34%;
 `
 
 const WhatWeDo = ({
@@ -108,7 +105,7 @@ const WhatWeDo = ({
                 <ProjectDescription>{program.description}</ProjectDescription>
               </div>
             </ProjectDescriptionContainer>
-            <ProgramsContainer className="row">
+            <ProgramsContainer className="row justify-content-center">
               {program.projects.map(project => (
                 <ProgramContainer
                   className="col-sm-6 d-flex flex-column align-items-center"
