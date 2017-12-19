@@ -20,11 +20,9 @@ const Number = CenteredSpan.extend`
   ${handwritten}
 `
 
-const imageSize = '6.25rem' // 100px
 const Image = styled.img`
   margin-bottom: 0.6rem;
-  width: ${imageSize};
-  height: ${imageSize};
+  height: 6.25rem; // 100px;
 `
 
 const Stat = ({
