@@ -46,6 +46,10 @@ label.verror {
     margin-left: 0.4rem;
 }
 
+input[type=text], select {
+    background-color: #FFFDFB;
+}
+
 input#submitForm{
     margin-bottom: 30px;
     cursor: pointer;
@@ -156,7 +160,7 @@ input#submitForm:hover {
 }
 
 #payment_credit_card_number, #payment_credit_card_secure_id {
-    background-color: white;
+    background-color: #FFFDFB;
     height: 24px;
 }
 

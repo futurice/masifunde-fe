@@ -95,6 +95,10 @@ injectGlobal`
       padding: 1rem 0;
     }
   }
+  
+  .form-control {
+    background-color: #FFFDFB !important;
+  }
 `
 
 const headerHeight = '4.5rem'
