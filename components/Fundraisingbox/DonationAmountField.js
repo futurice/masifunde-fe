@@ -112,6 +112,7 @@ const DonationAmountField = ({
                   </Fragment>)
                 : null
               }
+              {isInvalid(meta) ? meta.error : ''}
             </div>
           </div>
         </Fragment>
