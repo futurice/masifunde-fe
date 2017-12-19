@@ -15,7 +15,7 @@ import Markdown from '../../components/Markdown'
 import FundRaisingForm from '../../components/Fundraisingbox/FundRaisingForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
-import { isInvalid } from '../../components/Fundraisingbox/utils'
+import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/utils'
 import Divider from '../../components/Fundraisingbox/Divider'
 
 const CountryLabel = styled.label`
@@ -47,6 +47,10 @@ const SubHeader = styled.h3`
   ${props => props.isInvalid && `color: ${props.theme.error};`};
 `
 
+const CenteredMarkdown = styled(Markdown)`
+  text-align: center;
+`
+
 const DeProjectId = '3531'
 const SaProjectId = '3522'
 const fieldName = {
@@ -70,11 +74,20 @@ class Donate extends Component {
     const isRequired = (keysArray) => {
       keysArray.forEach((key) => {
         if (!fields[key]) {
-          errors[key] = '*'
+          errors[key] = 'Required'
         }
       })
     }
 
+    const isPositiveInt = (keysArray) => {
+      keysArray.forEach((key) => {
+        if (!isPositiveInteger(fields[key])) {
+          errors[key] = 'Must be a positive integer'
+        }
+      })
+    }
+
+    isPositiveInt([fieldName.amount])
     isRequired([
       fieldName.projectId,
       fieldName.amount,
@@ -121,7 +134,7 @@ class Donate extends Component {
           <h1>{introHeading}</h1>
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <Markdown source={introMarkdown} />
+              <CenteredMarkdown source={introMarkdown} />
             </div>
           </div>
 
