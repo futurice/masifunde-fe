@@ -37,7 +37,7 @@ const Home = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero headline={heroTitle} imageUrl="//via.placeholder.com/350x150/555" />
+    <Hero headline={heroTitle} imageUrl="/static/images/hero/hero-talk.jpg" />
     <Container>
       <StatsContainer className="row">
         {
