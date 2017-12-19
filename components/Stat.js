@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { handwritten } from '../styling/typography'
+import Source from './Source'
 
 const CenteredSpan = styled.span`
   text-align: center;
@@ -26,7 +27,7 @@ const Image = styled.img`
 `
 
 const Stat = ({
-  textAbove, description, icon, number, className,
+  textAbove, description, icon, number, className, sourceMarkdown, superscriptText, sourceId,
 }) => (
   <StatContainer className={`${className} d-flex flex-column align-items-center`}>
     {!!textAbove && (
@@ -36,7 +37,11 @@ const Stat = ({
     )}
     {!!icon && !!icon.url && (<Image src={icon.url} alt={icon.title} />)}
     <Number>{number}</Number>
-    <CenteredSpan>{description}</CenteredSpan>
+    <CenteredSpan>
+      {description}{sourceMarkdown && superscriptText && sourceId
+      ? <Source superscriptText={superscriptText} sourceMarkdown={sourceMarkdown} id={sourceId} />
+      : null}
+    </CenteredSpan>
   </StatContainer>
 )
 
@@ -49,12 +54,16 @@ Stat.propTypes = {
   }),
   number: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  sourceMarkdown: PropTypes.string,
+  superscriptText: PropTypes.string.isRequired,
+  sourceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 }
 
 Stat.defaultProps = {
   textAbove: undefined,
   className: '',
   icon: undefined,
+  sourceMarkdown: undefined,
 }
 
 export default Stat

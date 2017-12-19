@@ -139,11 +139,13 @@ const WhatWeDo = ({
         <div className="row justify-content-center">
           <div className="col col-md-10 col-lg-8">
             <div className="row">
-              {stats.map(stat => (
+              {stats.map((stat, index) => (
                 <Stat
                   className="col-sm"
                   key={`${stat.number} ${stat.description}`}
                   {...stat}
+                  superscriptText={index + 1}
+                  sourceId={`stat-${index}`}
                 />
                 ))}
             </div>
