@@ -34,7 +34,7 @@ const Stat = ({
         <CenteredSpan>{textAbove}</CenteredSpan>
       </FixedHeight>
     )}
-    {!!icon && (<Image src={icon.url} alt={icon.title} />)}
+    {!!icon && !!icon.url && (<Image src={icon.url} alt={icon.title} />)}
     <Number>{number}</Number>
     <CenteredSpan>{description}</CenteredSpan>
   </StatContainer>
