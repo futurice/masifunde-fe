@@ -39,10 +39,17 @@ const AmountDescription = styled.div`
   }
 `
 
+const fontSize = '1.2rem'
+
 const OtherAmountContainer = styled.div`
   display: inline-block;
   position: relative;
   bottom: 0.5rem;
+  font-size: ${fontSize};
+  
+  input {
+    font-size: ${fontSize};
+  }
 `
 
 const findAmountDescription = (searchedValue, amounts) => {
