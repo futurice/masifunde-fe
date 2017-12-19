@@ -62,7 +62,7 @@ const StyledCarousel = styled(Carousel)`
   .slider-decorator-0, .slider-decorator-1 {
     opacity: 0;
     transition: 300ms;
-    background-image: url(../static/carousel-arrow.svg);
+    background-image: url(../static/images/carousel-arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
