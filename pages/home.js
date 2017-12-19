@@ -13,6 +13,7 @@ import Stat from '../components/Stat'
 import { getLocaleFromQuery } from '../utils/locale'
 import { fetchHomePage } from '../api/home'
 import { RouteNames } from '../routes'
+import YouTubeVideo from '../components/YouTubeVideo'
 
 const CarouselContainer = styled.div`
   margin-top: 8rem;
@@ -34,6 +35,8 @@ const Home = ({
   banner2Title,
   banner2ButtonText,
   portrait,
+  youTubeVideoTitle,
+  youTubeVideoUrl,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -57,6 +60,8 @@ const Home = ({
       buttonLink={RouteNames.WhatWeDo}
     />
     <Container>
+      <h2>{youTubeVideoTitle}</h2>
+      <YouTubeVideo youtubeVideo={youTubeVideoUrl} />
       <CarouselContainer>
         <Carousel portrait={portrait} />
       </CarouselContainer>
@@ -79,6 +84,8 @@ Home.propTypes = {
   banner2Title: PropTypes.string.isRequired,
   banner2ButtonText: PropTypes.string.isRequired,
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
+  youTubeVideoTitle: PropTypes.string.isRequired,
+  youTubeVideoUrl: PropTypes.string.isRequired,
 }
 
 Home.defaultProps = {
