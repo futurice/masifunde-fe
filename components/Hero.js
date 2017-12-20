@@ -7,9 +7,10 @@ const HeroContainer = styled.div`
   height: 70vh;
   max-height: 700px;
   width: 100%;
-  background: url("${({ imageUrl }) => imageUrl}") center no-repeat;
-  background-size: cover;
   margin-bottom: 50px;
+  background: url("${({ imageUrl }) => imageUrl}") no-repeat;
+  background-position: ${({ backgroundPositionX }) => backgroundPositionX} 50%;
+  background-size: cover;
 `
 
 const Headline = styled.span`
@@ -44,9 +45,12 @@ const TextContainer = styled.div`
   }
 `
 
-function Hero({ headline, imageUrl }) {
+function Hero({
+  headline, imageUrl, backgroundPositionX,
+}) {
   return (
     <HeroContainer
+      backgroundPositionX={backgroundPositionX}
       className="d-flex flex-column justify-content-md-center justify-content-end"
       imageUrl={imageUrl}
     >
@@ -60,11 +64,13 @@ function Hero({ headline, imageUrl }) {
 }
 
 Hero.propTypes = {
+  backgroundPositionX: PropTypes.string,
   headline: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
 }
 
 Hero.defaultProps = {
+  backgroundPositionX: '50%',
   headline: undefined,
 }
 
