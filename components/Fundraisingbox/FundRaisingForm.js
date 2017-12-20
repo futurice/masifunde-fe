@@ -60,7 +60,7 @@ class FundRaisingForm extends Component {
     const isRequired = (keysArray) => {
       keysArray.forEach((key) => {
         if (!fields[key]) {
-          errors[key] = '*'
+          errors[key] = 'Required'
         }
       })
     }
@@ -105,7 +105,7 @@ class FundRaisingForm extends Component {
                 <div className="col-sm-2 d-flex">
                   <Field name={fieldName.salutation}>
                     {({ input, meta }) => (
-                      <div className="d-flex align-items-center w-100">
+                      <div className="w-100">
                         <select
                           {...input}
                           className={`${this.formInputClassFactory(meta)}  w-100`}
@@ -128,7 +128,7 @@ class FundRaisingForm extends Component {
                 </FormLabel>
                 <Field name={fieldName.title}>
                   {({ input, meta }) => (
-                    <div className="col-sm-6 d-flex align-items-center">
+                    <div className="col-sm-6">
                       <input
                         {...input}
                         type="text"
@@ -148,7 +148,7 @@ class FundRaisingForm extends Component {
                 <div className="col-sm-6">
                   <Field name={fieldName.firstName}>
                     {({ input, meta }) => (
-                      <div className="d-flex align-items-center">
+                      <div>
                         <input
                           {...input}
                           type="text"
@@ -169,7 +169,7 @@ class FundRaisingForm extends Component {
                 <div className="col-sm-6">
                   <Field name={fieldName.lastName}>
                     {({ input, meta }) => (
-                      <div className="d-flex align-items-center">
+                      <div>
                         <input
                           {...input}
                           type="text"
@@ -187,7 +187,7 @@ class FundRaisingForm extends Component {
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="inputEmail">
                     <FormLabel className="col-sm-6 col-form-label">Email</FormLabel>
-                    <div className="col-sm-6 d-flex align-items-center">
+                    <div className="col-sm-6">
                       <input
                         {...input}
                         type="email"
@@ -204,7 +204,7 @@ class FundRaisingForm extends Component {
                 <FormLabel className="col-sm-6 col-form-label">Spendequittung</FormLabel>
                 <Field name={fieldName.wantsReceipt}>
                   {({ input, meta }) => (
-                    <div className="col-sm-6 d-flex align-items-center">
+                    <div className="col-sm-6">
                       <select
                         {...input}
                         id="receipt-input"
@@ -224,8 +224,8 @@ class FundRaisingForm extends Component {
               <Field name={fieldName.companyName}>
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="company-input">
-                    <FormLabel className="col-sm-6 col-form-label">Firma</FormLabel>
-                    <div className="col-sm-6 d-flex align-items-center">
+                    <FormLabel className="col-sm-6 col-form-label">Firma (optional)</FormLabel>
+                    <div className="col-sm-6">
                       <input
                         {...input}
                         type="text"
@@ -242,7 +242,7 @@ class FundRaisingForm extends Component {
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="address-input">
                     <FormLabel className="col-sm-6 col-form-label">Adresse</FormLabel>
-                    <div className="col-sm-6 d-flex align-items-center">
+                    <div className="col-sm-6">
                       <input
                         {...input}
                         type="text"
@@ -261,7 +261,7 @@ class FundRaisingForm extends Component {
                 </FormLabel>
                 <Field name={fieldName.postCode}>
                   {({ input, meta }) => (
-                    <div className="col-sm-2 d-flex align-items-center">
+                    <div className="col-sm-2">
                       <input
                         {...input}
                         className={this.formInputClassFactory(meta)}
@@ -273,7 +273,7 @@ class FundRaisingForm extends Component {
                 </Field>
                 <Field name={fieldName.city}>
                   {({ input, meta }) => (
-                    <div className="col-sm-4 d-flex align-items-center pl-sm-0 mt-1 mt-sm-0">
+                    <div className="col-sm-4 pl-sm-0 mt-1 mt-sm-0">
                       <input
                         {...input}
                         className={this.formInputClassFactory(meta)}
@@ -289,7 +289,7 @@ class FundRaisingForm extends Component {
                 <FormLabel className="col-sm-6 col-form-label">Country</FormLabel>
                 <Field name={fieldName.country}>
                   {({ input, meta }) => (
-                    <div className="col-sm-6 d-flex align-items-center">
+                    <div className="col-sm-6">
                       <select
                         {...input}
                         id="country-input"
