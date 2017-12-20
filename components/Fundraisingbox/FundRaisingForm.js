@@ -6,15 +6,10 @@ import _debounce from 'lodash/debounce'
 
 import countries from '../../utils/countries'
 import FundRaisingIframe from './FundRaisingIframe'
+import ErrorMessage from './ErrorMessage'
 
 const FundRaisingIfameContainer = styled.div`
   padding: 0;
-`
-
-const ErrorMessage = styled.span`
-  display: inline-block;
-  margin-left: 0.4rem;
-  color: ${props => props.theme.error};
 `
 
 const FormLabel = styled.span`
@@ -111,7 +106,7 @@ class FundRaisingForm extends Component {
                           className={`${this.formInputClassFactory(meta)}  w-100`}
                           aria-labelledby="titleInputs"
                         >
-                          <option value={null} selected disabled hidden />
+                          <option value={null} disabled hidden />
                           <option value="Mrs.">Frau</option>
                           <option value="Mr.">Herr</option>
                         </select>
@@ -210,7 +205,7 @@ class FundRaisingForm extends Component {
                         id="receipt-input"
                         className={this.formInputClassFactory(meta)}
                       >
-                        <option value={null} selected disabled hidden />
+                        <option value={null} disabled hidden />
                         {/* <option value="no_receipt">no receipt</option> */}
                         <option value="receipt_now">Ja, so schnell wie möglich</option>
                         <option value="receipt_end_of_year">Ja, konsolidiert am Ende des Jahres</option>
@@ -295,7 +290,7 @@ class FundRaisingForm extends Component {
                         id="country-input"
                         className={this.formInputClassFactory(meta)}
                       >
-                        <option value={null} selected disabled hidden />
+                        <option value={null} disabled hidden />
                         {Object.entries(countries).map(([countryKey, country]) => (
                           <option value={countryKey} key={countryKey}>{country}</option>
                         ))}

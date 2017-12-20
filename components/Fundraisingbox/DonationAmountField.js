@@ -5,9 +5,9 @@ import styled from 'styled-components'
 
 import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
+import ErrorMessage from './ErrorMessage'
 
 const SubHeader = styled.h3`
-  ${props => props.isInvalid && `color: ${props.theme.error};`};
   margin-bottom: 1.4rem;
   margin-top: 2rem;
 `
@@ -70,7 +70,7 @@ const DonationAmountField = ({
       const otherAmountDescription = findAmountDescription(input.value, amounts)
       return (
         <Fragment>
-          <SubHeader isInvalid={isInvalid(meta)}>{title} *</SubHeader>
+          <SubHeader>{title}</SubHeader>
           <div className="row">
             <div className="offset-md-3 col-md-7">
               {amounts.map(({ text, value }) => (
@@ -113,7 +113,7 @@ const DonationAmountField = ({
                   </Fragment>)
                 : null
               }
-              {isInvalid(meta) ? meta.error : ''}
+              {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
             </div>
           </div>
         </Fragment>

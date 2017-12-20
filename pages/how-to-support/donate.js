@@ -17,6 +17,7 @@ import DonationIntervalField from '../../components/Fundraisingbox/DonationInter
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/utils'
 import Divider from '../../components/Fundraisingbox/Divider'
+import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 
 const CountryLabel = styled.label`
   border-radius: 8px;
@@ -41,10 +42,6 @@ const CountryLabel = styled.label`
     clip: rect(0, 0, 0, 0);
     pointer-events: none;
   }
-`
-
-const SubHeader = styled.h3`
-  ${props => props.isInvalid && `color: ${props.theme.error};`};
 `
 
 const CenteredMarkdown = styled(Markdown)`
@@ -72,9 +69,9 @@ class Donate extends Component {
   validateForm = (fields) => {
     const errors = {}
     const isRequired = (keysArray) => {
-      keysArray.forEach((key) => {
-        if (!fields[key]) {
-          errors[key] = 'Pflichtfeld'
+      keysArray.forEach((obj) => {
+        if (!fields[obj.fieldName]) {
+          errors[obj.fieldName] = obj.errorMessage
         }
       })
     }
@@ -82,16 +79,16 @@ class Donate extends Component {
     const isPositiveInt = (keysArray) => {
       keysArray.forEach((key) => {
         if (!isPositiveInteger(fields[key])) {
-          errors[key] = 'Must be a positive integer'
+          errors[key] = 'Bitte wählen Sie eine Betrag größer als Null.'
         }
       })
     }
 
     isPositiveInt([fieldName.amount])
     isRequired([
-      fieldName.projectId,
-      fieldName.amount,
-      fieldName.paymentInterval,
+      { fieldName: fieldName.projectId, errorMessage: 'Bitte wählen Sie, an wen Ihre Spende gehen soll.' },
+      { fieldName: fieldName.amount, errorMessage: 'Bitte wählen Sie eine Betrag größer als Null.' },
+      { fieldName: fieldName.paymentInterval, errorMessage: 'Bitte wählen Sie ein Intervall für Ihre Spende.' },
     ])
 
     if (!Object.keys(errors).length) {
@@ -146,7 +143,7 @@ class Donate extends Component {
                 <Field name={fieldName.projectId}>
                   {({ input, meta }) => (
                     <Fragment>
-                      <SubHeader isInvalid={isInvalid(meta)}>{section1title} *</SubHeader>
+                      <h3>{section1title}</h3>
                       <div className="row">
                         <div className="offset-md-3 col-md-7">
                           <div className="row">
@@ -181,6 +178,7 @@ class Donate extends Component {
                               </CountryLabel>
                             </div>
                           </div>
+                          {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
                         </div>
                       </div>
                     </Fragment>
@@ -207,7 +205,7 @@ class Donate extends Component {
           />
 
           <Divider />
-          <SubHeader>{section4Title}</SubHeader>
+          <h3>{section4Title}</h3>
           <FundRaisingForm hiddenFields={{ ...this.state.fields }} onSubmit={this.submitForm} />
         </div>
         <Banner
