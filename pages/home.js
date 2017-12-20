@@ -25,6 +25,10 @@ const StatsContainer = styled.div`
   margin-bottom: 4rem;
 `
 
+const YouTubeVideoTitle = styled.h2`
+  margin-top: 7rem;
+`
+
 const Home = ({
   metaTitle,
   metaDescription,
@@ -62,7 +66,7 @@ const Home = ({
       buttonLink={RouteNames.WhatWeDo}
     />
     <Container>
-      <h2>{youTubeVideoTitle}</h2>
+      <YouTubeVideoTitle>{youTubeVideoTitle}</YouTubeVideoTitle>
       <YouTubeVideo youtubeVideo={youTubeVideoUrl} />
       <CarouselContainer>
         <Carousel portrait={portrait} />
