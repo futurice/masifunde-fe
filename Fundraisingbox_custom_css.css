@@ -50,6 +50,10 @@ input[type=text], select {
     background-color: #FFFDFB;
 }
 
+#creditCardForm > div:nth-of-type(2) > div.label, #creditCardForm > div:nth-of-type(4) > div.label {
+    transform: translateY(-6px);
+}
+
 input#submitForm{
     margin-bottom: 30px;
     cursor: pointer;
