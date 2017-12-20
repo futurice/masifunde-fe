@@ -19,6 +19,7 @@ const ErrorMessage = styled.span`
 
 const FormLabel = styled.span`
   text-align: left;
+  padding-right: 0;
   
   @media screen and (min-width: 576px){
     text-align: right;
@@ -95,11 +96,11 @@ class FundRaisingForm extends Component {
           onSubmit={() => {}}
           validate={this.validateForm}
           render={({ handleSubmit }) => (
-            <form onSubmit={(e) => { handleSubmit(e); this.props.onSubmit() }}>
-              {/* Anrede und Titel */}
+            <form className="col-sm-7" onSubmit={(e) => { handleSubmit(e); this.props.onSubmit() }}>
+              {/* Anrede */}
               <div className="form-group row">
-                <FormLabel className="col-sm-3 col-form-label" id="titleInputs">
-                  Anrede * / Titel
+                <FormLabel className="col-sm-6 col-form-label" id="titleInputs">
+                  Anrede
                 </FormLabel>
                 <div className="col-sm-2 d-flex">
                   <Field name={fieldName.salutation}>
@@ -110,7 +111,7 @@ class FundRaisingForm extends Component {
                           className={`${this.formInputClassFactory(meta)}  w-100`}
                           aria-labelledby="titleInputs"
                         >
-                          <option value={null} />
+                          <option value={null} selected disabled hidden />
                           <option value="Mrs.">Frau</option>
                           <option value="Mr.">Herr</option>
                         </select>
@@ -119,9 +120,15 @@ class FundRaisingForm extends Component {
                     )}
                   </Field>
                 </div>
+              </div>
+              {/* Titel */}
+              <div className="form-group row">
+                <FormLabel className="col-sm-6 col-form-label" id="titleInputs">
+                  Titel (optional)
+                </FormLabel>
                 <Field name={fieldName.title}>
                   {({ input, meta }) => (
-                    <div className="col-sm-4 d-flex align-items-center">
+                    <div className="col-sm-6 d-flex align-items-center">
                       <input
                         {...input}
                         type="text"
@@ -133,12 +140,12 @@ class FundRaisingForm extends Component {
                   )}
                 </Field>
               </div>
-              {/* Name */}
+              {/* Firstname */}
               <div className="form-group row">
-                <FormLabel className="col-sm-3 col-form-label" id="name-inputs">
-                  Name *
+                <FormLabel className="col-sm-6 col-form-label" id="firstname-input">
+                  Firstname
                 </FormLabel>
-                <div className="col-sm-3">
+                <div className="col-sm-6">
                   <Field name={fieldName.firstName}>
                     {({ input, meta }) => (
                       <div className="d-flex align-items-center">
@@ -146,14 +153,20 @@ class FundRaisingForm extends Component {
                           {...input}
                           type="text"
                           className={this.formInputClassFactory(meta)}
-                          aria-labelledby="name-inputs"
+                          aria-labelledby="firstname-input"
                         />
                         {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                       </div>
                     )}
                   </Field>
                 </div>
-                <div className="col-sm-3">
+              </div>
+              {/* Lastname */}
+              <div className="form-group row">
+                <FormLabel className="col-sm-6 col-form-label" id="lastname-input">
+                  Lastname
+                </FormLabel>
+                <div className="col-sm-6">
                   <Field name={fieldName.lastName}>
                     {({ input, meta }) => (
                       <div className="d-flex align-items-center">
@@ -161,7 +174,7 @@ class FundRaisingForm extends Component {
                           {...input}
                           type="text"
                           className={this.formInputClassFactory(meta)}
-                          aria-labelledby="name-inputs"
+                          aria-labelledby="firstname-input"
                         />
                         {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                       </div>
@@ -173,7 +186,7 @@ class FundRaisingForm extends Component {
               <Field name={fieldName.email}>
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="inputEmail">
-                    <FormLabel className="col-sm-3 col-form-label">Email *</FormLabel>
+                    <FormLabel className="col-sm-6 col-form-label">Email</FormLabel>
                     <div className="col-sm-6 d-flex align-items-center">
                       <input
                         {...input}
@@ -188,7 +201,7 @@ class FundRaisingForm extends Component {
               </Field>
               {/* receipt ? */}
               <label className="form-group row" htmlFor="receipt-input">
-                <FormLabel className="col-sm-3 col-form-label">Spendequittung *</FormLabel>
+                <FormLabel className="col-sm-6 col-form-label">Spendequittung</FormLabel>
                 <Field name={fieldName.wantsReceipt}>
                   {({ input, meta }) => (
                     <div className="col-sm-6 d-flex align-items-center">
@@ -197,7 +210,7 @@ class FundRaisingForm extends Component {
                         id="receipt-input"
                         className={this.formInputClassFactory(meta)}
                       >
-                        <option value={null} />
+                        <option value={null} selected disabled hidden />
                         {/* <option value="no_receipt">no receipt</option> */}
                         <option value="receipt_now">Ja, so schnell wie möglich</option>
                         <option value="receipt_end_of_year">Ja, konsolidiert am Ende des Jahres</option>
@@ -211,7 +224,7 @@ class FundRaisingForm extends Component {
               <Field name={fieldName.companyName}>
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="company-input">
-                    <FormLabel className="col-sm-3 col-form-label">Firma</FormLabel>
+                    <FormLabel className="col-sm-6 col-form-label">Firma</FormLabel>
                     <div className="col-sm-6 d-flex align-items-center">
                       <input
                         {...input}
@@ -228,7 +241,7 @@ class FundRaisingForm extends Component {
               <Field name={fieldName.address}>
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="address-input">
-                    <FormLabel className="col-sm-3 col-form-label">Adresse *</FormLabel>
+                    <FormLabel className="col-sm-6 col-form-label">Adresse</FormLabel>
                     <div className="col-sm-6 d-flex align-items-center">
                       <input
                         {...input}
@@ -243,12 +256,12 @@ class FundRaisingForm extends Component {
               </Field>
               {/* PLZ und Ort */}
               <div className="form-group row">
-                <FormLabel className="col-sm-3 col-form-label" id="zip-code-city-inputs">
-                  PLZ * / Ort *
+                <FormLabel className="col-sm-6 col-form-label" id="zip-code-city-inputs">
+                  PLZ / Ort
                 </FormLabel>
                 <Field name={fieldName.postCode}>
                   {({ input, meta }) => (
-                    <div className="col-sm-3 d-flex align-items-center">
+                    <div className="col-sm-2 d-flex align-items-center">
                       <input
                         {...input}
                         className={this.formInputClassFactory(meta)}
@@ -260,7 +273,7 @@ class FundRaisingForm extends Component {
                 </Field>
                 <Field name={fieldName.city}>
                   {({ input, meta }) => (
-                    <div className="col-sm-3 d-flex align-items-center">
+                    <div className="col-sm-4 d-flex align-items-center pl-sm-0 mt-1 mt-sm-0">
                       <input
                         {...input}
                         className={this.formInputClassFactory(meta)}
@@ -273,7 +286,7 @@ class FundRaisingForm extends Component {
               </div>
               {/* Land */}
               <label className="form-group row" htmlFor="country-input">
-                <FormLabel className="col-sm-3 col-form-label">Country *</FormLabel>
+                <FormLabel className="col-sm-6 col-form-label">Country</FormLabel>
                 <Field name={fieldName.country}>
                   {({ input, meta }) => (
                     <div className="col-sm-6 d-flex align-items-center">
@@ -282,7 +295,7 @@ class FundRaisingForm extends Component {
                         id="country-input"
                         className={this.formInputClassFactory(meta)}
                       >
-                        <option value={null} />
+                        <option value={null} selected disabled hidden />
                         {Object.entries(countries).map(([countryKey, country]) => (
                           <option value={countryKey} key={countryKey}>{country}</option>
                         ))}

@@ -46,6 +46,7 @@ const OtherAmountContainer = styled.div`
   position: relative;
   bottom: 0.5rem;
   font-size: ${fontSize};
+  margin-top: 0.6rem;
   
   input {
     font-size: ${fontSize};
