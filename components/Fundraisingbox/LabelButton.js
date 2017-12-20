@@ -1,8 +1,8 @@
 import Button from '../../components/Button'
 
 const LabelButton = Button.withComponent('label').extend`
-  margin-right: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-right: 0.8rem;
+  margin-bottom: 0.8rem;
   font-size: 1.2rem;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
