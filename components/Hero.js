@@ -4,13 +4,20 @@ import styled from 'styled-components'
 import { rem } from 'polished'
 
 const HeroContainer = styled.div`
-  height: 70vh;
-  max-height: 700px;
+  height: 400px;
   width: 100%;
   margin-bottom: 50px;
   background: url("${({ imageUrl }) => imageUrl}") no-repeat;
   background-position: ${({ backgroundPositionX }) => backgroundPositionX} 50%;
   background-size: cover;
+
+  @media screen and (min-width: 767px) {
+    height: 550px;
+  }
+
+  @media screen and (min-width: 991px) {
+    height: 700px;
+  }
 `
 
 const Headline = styled.span`
