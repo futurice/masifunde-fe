@@ -41,6 +41,7 @@ const CountryContainer = styled.div`
 
 const ImageContainer = styled.div`
   flex-grow: 1;
+  height: 400px;
 `
 
 const About = ({
