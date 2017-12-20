@@ -105,7 +105,7 @@ const HowToSupport = ({
         markdown={section2Markdown}
         image={section2Image}
         buttonType="secondary"
-        buttonLink={RouteNames.Donate}
+        buttonLink={RouteNames.BecomeSponsor}
       />
       <HorizontalRuler />
       <Section

@@ -54,16 +54,16 @@ class BecomeSponsor extends Component {
   validateForm = (fields) => {
     const errors = {}
     const isRequired = (keysArray) => {
-      keysArray.forEach((key) => {
-        if (!fields[key]) {
-          errors[key] = '*'
+      keysArray.forEach((obj) => {
+        if (!fields[obj.fieldName]) {
+          errors[obj.fieldName] = obj.errorMessage
         }
       })
     }
 
     isRequired([
-      fieldName.amount,
-      fieldName.paymentInterval,
+      { fieldName: fieldName.amount, errorMessage: 'Bitte wählen Sie eine Betrag.' },
+      { fieldName: fieldName.paymentInterval, errorMessage: 'Bitte wählen Sie ein Intervall für Ihre Spende.' },
     ])
 
     if (!Object.keys(errors).length) {
