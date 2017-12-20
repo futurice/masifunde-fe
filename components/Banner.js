@@ -27,7 +27,13 @@ const Headline = styled.span`
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  
+  @media (min-width: 768px) {
+    font-size: 2.1rem;
+    width: 80%;
+  }
 `
 
 function Banner({ headline, buttonText, buttonLink }) {
