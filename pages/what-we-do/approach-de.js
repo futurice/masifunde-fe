@@ -46,7 +46,11 @@ const ApproachDe = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero imageUrl="//via.placeholder.com/350x150/555" />
+    <Hero
+      imageUrl="/static/images/hero/hero-small-library.jpg"
+      heroSize="small"
+      // backgroundPositionX="80%"
+    />
     <Container>
       <Tagline>{title}</Tagline>
       <HorizontalRuler />
