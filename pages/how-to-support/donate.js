@@ -74,7 +74,7 @@ class Donate extends Component {
     const isRequired = (keysArray) => {
       keysArray.forEach((key) => {
         if (!fields[key]) {
-          errors[key] = 'Required'
+          errors[key] = 'Pflichtfeld'
         }
       })
     }
