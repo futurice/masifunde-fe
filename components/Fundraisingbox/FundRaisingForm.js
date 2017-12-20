@@ -60,7 +60,7 @@ class FundRaisingForm extends Component {
     const isRequired = (keysArray) => {
       keysArray.forEach((key) => {
         if (!fields[key]) {
-          errors[key] = 'Required'
+          errors[key] = 'Pflichtfeld'
         }
       })
     }
@@ -143,7 +143,7 @@ class FundRaisingForm extends Component {
               {/* Firstname */}
               <div className="form-group row">
                 <FormLabel className="col-sm-6 col-form-label" id="firstname-input">
-                  Firstname
+                  Vorname
                 </FormLabel>
                 <div className="col-sm-6">
                   <Field name={fieldName.firstName}>
@@ -164,7 +164,7 @@ class FundRaisingForm extends Component {
               {/* Lastname */}
               <div className="form-group row">
                 <FormLabel className="col-sm-6 col-form-label" id="lastname-input">
-                  Lastname
+                  Nachname
                 </FormLabel>
                 <div className="col-sm-6">
                   <Field name={fieldName.lastName}>
@@ -186,7 +186,7 @@ class FundRaisingForm extends Component {
               <Field name={fieldName.email}>
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="inputEmail">
-                    <FormLabel className="col-sm-6 col-form-label">Email</FormLabel>
+                    <FormLabel className="col-sm-6 col-form-label">E-mail</FormLabel>
                     <div className="col-sm-6">
                       <input
                         {...input}
@@ -286,7 +286,7 @@ class FundRaisingForm extends Component {
               </div>
               {/* Land */}
               <label className="form-group row" htmlFor="country-input">
-                <FormLabel className="col-sm-6 col-form-label">Country</FormLabel>
+                <FormLabel className="col-sm-6 col-form-label">Land</FormLabel>
                 <Field name={fieldName.country}>
                   {({ input, meta }) => (
                     <div className="col-sm-6">
