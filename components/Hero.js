@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { rem } from 'polished'
 
-const MIDDLE = 'middle'
-const BOTTOM = 'bottom'
+const HEADLINE_MIDDLE = 'middle'
+const HEADLINE_BOTTOM = 'bottom'
+const HERO_LARGE = 'large'
+const HERO_SMALL = 'small'
 
-const HeroContainer = styled.div`
-  height: 400px;
+const HeroImage = styled.div`
+  height: 400px; // 300px
   width: 100%;
   margin-bottom: 50px;
   background: url("${({ imageUrl }) => imageUrl}") no-repeat;
@@ -21,6 +23,18 @@ const HeroContainer = styled.div`
   @media screen and (min-width: 991px) {
     height: 700px;
   }
+  
+  ${({ size }) => size === HERO_SMALL && css`
+    height: 300px;
+    
+    @media screen and (min-width: 767px) {
+      height: 400px;
+    }
+
+    @media screen and (min-width: 991px) {
+      height: 500px;
+    }
+  `}
 `
 
 const Headline = styled.span`
@@ -38,7 +52,7 @@ const Headline = styled.span`
     line-height: 1.11;
     padding-left: 25px;
     ${({ shadow }) => shadow && 'text-shadow: 0 2px 34px rgba(0, 0, 0, 0.5);'};
-    margin-bottom: ${({ placement }) => (placement === MIDDLE ? '0' : '120px')};
+    margin-bottom: ${({ placement }) => (placement === HEADLINE_MIDDLE ? '0' : '120px')};
   }
 
   @media screen and (min-width: 991px) {
@@ -58,7 +72,7 @@ const TextContainer = styled.div`
 `
 
 const calculateJustifyContent = headlinePlacement =>
-  (headlinePlacement === MIDDLE ? 'justify-content-md-center' : '')
+  (headlinePlacement === HEADLINE_MIDDLE ? 'justify-content-md-center' : '')
 
 function Hero({
   headline,
@@ -66,38 +80,44 @@ function Hero({
   backgroundPositionX,
   headlineShadow,
   headlinePlacement,
+  heroSize,
 }) {
   return (
-    <HeroContainer
+    <HeroImage
       backgroundPositionX={backgroundPositionX}
       className={`d-flex flex-column justify-content-end
       ${calculateJustifyContent(headlinePlacement)}`}
       imageUrl={imageUrl}
+      size={heroSize}
     >
-      <TextContainer className="d-flex flex-column justify-content-end">
-        <div className="container">
-          <Headline shadow={headlineShadow} placement={headlinePlacement}>
-            {headline}
-          </Headline>
-        </div>
-      </TextContainer>
-    </HeroContainer>
+      {headline && (
+        <TextContainer className="d-flex flex-column justify-content-end">
+          <div className="container">
+            <Headline shadow={headlineShadow} placement={headlinePlacement}>
+              {headline}
+            </Headline>
+          </div>
+        </TextContainer>
+      )}
+    </HeroImage>
   )
 }
 
 Hero.propTypes = {
+  heroSize: PropTypes.oneOf([HERO_LARGE, HERO_SMALL]),
   headlineShadow: PropTypes.bool,
   backgroundPositionX: PropTypes.string,
-  headlinePlacement: PropTypes.oneOf([MIDDLE, BOTTOM]),
+  headlinePlacement: PropTypes.oneOf([HEADLINE_MIDDLE, HEADLINE_BOTTOM]),
   headline: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
 }
 
 Hero.defaultProps = {
+  heroSize: 'large',
   headlineShadow: false,
   backgroundPositionX: '50%',
   headline: undefined,
-  headlinePlacement: MIDDLE,
+  headlinePlacement: HEADLINE_MIDDLE,
 }
 
 export default Hero
