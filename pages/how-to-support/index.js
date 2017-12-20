@@ -87,7 +87,12 @@ const HowToSupport = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero backgroundPositionX="80%" headline={heroTitle} imageUrl="/static/images/hero/hero-pool.jpg" />
+    <Hero
+      backgroundPositionX="80%"
+      headline={heroTitle}
+      imageUrl="/static/images/hero/hero-pool.jpg"
+      headlineShadow
+    />
     <Container>
       <h1>{introHeading}</h1>
       <Paragraph source={introMarkdown} />

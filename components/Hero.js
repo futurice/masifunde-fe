@@ -34,6 +34,7 @@ const Headline = styled.span`
     font-size: ${rem('36px')};
     line-height: 1.11;
     padding-left: 25px;
+    ${({ shadow }) => shadow && 'text-shadow: 0 2px 34px rgba(0, 0, 0, 0.5);'}
   }
 
   @media screen and (min-width: 991px) {
@@ -53,7 +54,7 @@ const TextContainer = styled.div`
 `
 
 function Hero({
-  headline, imageUrl, backgroundPositionX,
+  headline, imageUrl, backgroundPositionX, headlineShadow,
 }) {
   return (
     <HeroContainer
@@ -61,9 +62,9 @@ function Hero({
       className="d-flex flex-column justify-content-md-center justify-content-end"
       imageUrl={imageUrl}
     >
-      <TextContainer className="d-flex flex-column justify-content-md-center justify-content-end">
+      <TextContainer className="d-flex flex-column justify-content-end">
         <div className="container">
-          <Headline>{headline}</Headline>
+          <Headline shadow={headlineShadow}>{headline}</Headline>
         </div>
       </TextContainer>
     </HeroContainer>
@@ -71,12 +72,14 @@ function Hero({
 }
 
 Hero.propTypes = {
+  headlineShadow: PropTypes.bool,
   backgroundPositionX: PropTypes.string,
   headline: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
 }
 
 Hero.defaultProps = {
+  headlineShadow: false,
   backgroundPositionX: '50%',
   headline: undefined,
 }
