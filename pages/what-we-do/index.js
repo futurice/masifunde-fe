@@ -91,7 +91,12 @@ const WhatWeDo = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero imageUrl="/static/images/hero/hero-student.jpg" headline={heroTitle} />
+    <Hero
+      imageUrl="/static/images/hero/hero-student.jpg"
+      headline={heroTitle}
+      headlineShadow
+      headlinePlacement="bottom"
+    />
     <Container>
       <StyledYouTubeVideo youtubeVideo={youtubeVideo} />
       <BoldHeading>{introHeading}</BoldHeading>

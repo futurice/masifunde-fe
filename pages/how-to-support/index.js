@@ -91,6 +91,7 @@ const HowToSupport = ({
       backgroundPositionX="80%"
       headline={heroTitle}
       imageUrl="/static/images/hero/hero-pool.jpg"
+      headlinePlacement="bottom"
       headlineShadow
     />
     <Container>

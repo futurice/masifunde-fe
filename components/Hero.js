@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { rem } from 'polished'
 
+const MIDDLE = 'middle'
+const BOTTOM = 'bottom'
+
 const HeroContainer = styled.div`
   height: 400px;
   width: 100%;
@@ -34,7 +37,8 @@ const Headline = styled.span`
     font-size: ${rem('36px')};
     line-height: 1.11;
     padding-left: 25px;
-    ${({ shadow }) => shadow && 'text-shadow: 0 2px 34px rgba(0, 0, 0, 0.5);'}
+    ${({ shadow }) => shadow && 'text-shadow: 0 2px 34px rgba(0, 0, 0, 0.5);'};
+    margin-bottom: ${({ placement }) => (placement === MIDDLE ? '0' : '120px')};
   }
 
   @media screen and (min-width: 991px) {
@@ -53,18 +57,28 @@ const TextContainer = styled.div`
   }
 `
 
+const calculateJustifyContent = headlinePlacement =>
+  (headlinePlacement === MIDDLE ? 'justify-content-md-center' : '')
+
 function Hero({
-  headline, imageUrl, backgroundPositionX, headlineShadow,
+  headline,
+  imageUrl,
+  backgroundPositionX,
+  headlineShadow,
+  headlinePlacement,
 }) {
   return (
     <HeroContainer
       backgroundPositionX={backgroundPositionX}
-      className="d-flex flex-column justify-content-md-center justify-content-end"
+      className={`d-flex flex-column justify-content-end
+      ${calculateJustifyContent(headlinePlacement)}`}
       imageUrl={imageUrl}
     >
       <TextContainer className="d-flex flex-column justify-content-end">
         <div className="container">
-          <Headline shadow={headlineShadow}>{headline}</Headline>
+          <Headline shadow={headlineShadow} placement={headlinePlacement}>
+            {headline}
+          </Headline>
         </div>
       </TextContainer>
     </HeroContainer>
@@ -74,6 +88,7 @@ function Hero({
 Hero.propTypes = {
   headlineShadow: PropTypes.bool,
   backgroundPositionX: PropTypes.string,
+  headlinePlacement: PropTypes.oneOf([MIDDLE, BOTTOM]),
   headline: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
 }
@@ -82,6 +97,7 @@ Hero.defaultProps = {
   headlineShadow: false,
   backgroundPositionX: '50%',
   headline: undefined,
+  headlinePlacement: MIDDLE,
 }
 
 export default Hero
