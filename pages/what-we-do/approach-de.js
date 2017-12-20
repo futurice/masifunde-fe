@@ -2,6 +2,7 @@ import React from 'react'
 import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
@@ -11,6 +12,7 @@ import Markdown from '../../components/Markdown'
 import Hero from '../../components/Hero'
 import HorizontalRuler from '../../components/HorizontalRuler'
 import Project from '../../components/Project'
+import { RouteNames } from '../../routes'
 
 const H1 = styled.h1`
   text-align: center;
@@ -62,7 +64,11 @@ const ApproachDe = ({
         ))}
       </ProjectsContainer>
     </Container>
-    <Banner buttonLink="a" buttonText={bannerButtonText} headline={bannerTitle} />
+    <Banner
+      buttonLink={RouteNames.Contact}
+      buttonText={bannerButtonText}
+      headline={bannerTitle}
+    />
   </div>
 )
 
