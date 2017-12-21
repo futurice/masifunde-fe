@@ -2,26 +2,14 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import styled, { injectGlobal, ThemeProvider } from 'styled-components'
+import _flow from 'lodash/flow'
 
 import withAnalytics from './withAnalytics'
+import withLoadingIndicator from './withLoadingIndicator'
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
 import { pageTitle, sectionTitle, subtitle } from '../styling/typography'
-
-const theme = {
-  orange: '#FE9933',
-  orangeRed: '#FF621D',
-  green: '#17DD73',
-  darkGreen: '#00C078',
-  blue: '#4176F9',
-  linkBlue: '#225DBC',
-  pineCone: '#77695C',
-  roundedImageBorderRadius: '6px',
-  error: '#DC3545',
-  headerHeight: '4.5rem',
-  pagePadding: '4rem',
-  pagePaddingMobile: '2.5rem',
-}
+import theme from '../styling/theme'
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -143,4 +131,4 @@ Layout.propTypes = {
   footerData: PropTypes.shape(footerPropTypes).isRequired,
 }
 
-export default withAnalytics(Layout)
+export default _flow(withLoadingIndicator, withAnalytics)(Layout)
