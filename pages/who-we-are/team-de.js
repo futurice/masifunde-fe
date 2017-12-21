@@ -81,7 +81,11 @@ TeamDe.propTypes = {
   regionalGroups: PropTypes.shape({
     name: PropTypes.string.isRequired,
     image: imagePropTypes.isRequired,
-    regions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    regions: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      contactPerson: PropTypes.string,
+      email: PropTypes.string,
+    }).isRequired).isRequired,
   }).isRequired,
   teamMembers: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
