@@ -38,7 +38,7 @@ const bootstrapColumnPadding = '15px'
 
 const StyledCarousel = styled(Carousel)`
   background: ${props => props.theme.blue};
-  margin-bottom: 90px;
+  margin-bottom: 8rem;
   margin-left: -${bootstrapColumnPadding};
   margin-right: -${bootstrapColumnPadding};
   width: calc(100% + ${bootstrapColumnPadding} + ${bootstrapColumnPadding}) !important;

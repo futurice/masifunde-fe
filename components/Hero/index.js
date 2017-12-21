@@ -14,11 +14,12 @@ const HERO_SMALL = 'small'
 const HeroImage = styled.div`
   height: 400px;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 4rem;
   background: url("${({ imageUrl }) => imageUrl}") no-repeat;
   background-position: ${({ backgroundPositionX }) => backgroundPositionX} 50%;
   background-size: cover;
   max-height: calc(100vh - ${props => props.theme.headerHeight});
+  margin-top: -${props => props.theme.pagePadding};
 
   @media screen and (min-width: 767px) {
     height: 550px;

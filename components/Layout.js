@@ -19,6 +19,7 @@ const theme = {
   roundedImageBorderRadius: '6px',
   error: '#DC3545',
   headerHeight: '4.5rem',
+  pagePadding: '4rem',
 }
 
 // eslint-disable-next-line no-unused-expressions
@@ -103,7 +104,7 @@ injectGlobal`
 `
 
 const LayoutChildrenContainer = styled.div`
-  padding-top: ${props => props.theme.headerHeight};
+  padding-top: calc(${props => props.theme.headerHeight} + ${props => props.theme.pagePadding});
 `
 
 const Layout = ({ headerData, children, footerData }) => (

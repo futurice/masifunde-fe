@@ -10,7 +10,6 @@ import { Link, RouteNames } from '../routes'
 
 const containerStyle = {
   marginBottom: 20,
-  paddingTop: 60,
   paddingBottom: 0,
 }
 

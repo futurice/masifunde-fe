@@ -39,6 +39,7 @@ const YouTubeVideo = styled(VideoContainer)`
   padding-bottom: 54%; /* 16:9 */
   padding-top: 25px;
   height: 0;
+  margin-bottom: 8rem;
 `
 
 export default YouTubeVideo
