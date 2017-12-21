@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import { handwritten } from '../styling/typography'
 import Source from './Source'
@@ -19,7 +19,8 @@ const StatContainer = styled.div`
 `
 
 const Number = CenteredSpan.extend`
-  ${handwritten}
+  ${handwritten};
+  ${props => props.highlight && css`color: ${props.theme.blue};`}
 `
 
 const Image = styled.img`
@@ -29,22 +30,25 @@ const Image = styled.img`
 
 const Stat = ({
   textAbove, description, icon, number, className, sourceMarkdown, superscriptText, sourceId,
-}) => (
-  <StatContainer className={`${className} d-flex flex-column align-items-center`}>
-    {!!textAbove && (
-      <FixedHeight className="d-flex align-items-center">
-        <CenteredSpan>{textAbove}</CenteredSpan>
-      </FixedHeight>
-    )}
-    {!!icon && !!icon.url && (<Image src={icon.url} alt={icon.title} />)}
-    <Number>{number}</Number>
-    <CenteredSpan>
-      {description}{sourceMarkdown && superscriptText && sourceId
-      ? <Source superscriptText={superscriptText} sourceMarkdown={sourceMarkdown} id={sourceId} />
-      : null}
-    </CenteredSpan>
-  </StatContainer>
-)
+}) => {
+  const hasImage = !!icon && !!icon.url
+  return (
+    <StatContainer className={`${className} d-flex flex-column align-items-center`}>
+      {!!textAbove && (
+        <FixedHeight className="d-flex align-items-center">
+          <CenteredSpan>{textAbove}</CenteredSpan>
+        </FixedHeight>
+      )}
+      {hasImage && (<Image src={icon.url} alt={icon.title} />)}
+      <Number highlight={!hasImage}>{number}</Number>
+      <CenteredSpan>
+        {description}{sourceMarkdown && superscriptText && sourceId
+        ? <Source superscriptText={superscriptText} sourceMarkdown={sourceMarkdown} id={sourceId} />
+        : null}
+      </CenteredSpan>
+    </StatContainer>
+  )
+}
 
 Stat.propTypes = {
   className: PropTypes.string,
