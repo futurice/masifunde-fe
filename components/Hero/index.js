@@ -18,6 +18,7 @@ const HeroImage = styled.div`
   background: url("${({ imageUrl }) => imageUrl}") no-repeat;
   background-position: ${({ backgroundPositionX }) => backgroundPositionX} 50%;
   background-size: cover;
+  max-height: calc(100vh - ${props => props.theme.headerHeight});
 
   @media screen and (min-width: 767px) {
     height: 550px;

@@ -18,6 +18,7 @@ const theme = {
   pineCone: '#77695C',
   roundedImageBorderRadius: '6px',
   error: '#DC3545',
+  headerHeight: '4.5rem',
 }
 
 // eslint-disable-next-line no-unused-expressions
@@ -101,10 +102,8 @@ injectGlobal`
   }
 `
 
-const headerHeight = '4.5rem'
-
 const LayoutChildrenContainer = styled.div`
-  padding-top: ${headerHeight};
+  padding-top: ${props => props.theme.headerHeight};
 `
 
 const Layout = ({ headerData, children, footerData }) => (
@@ -123,7 +122,7 @@ const Layout = ({ headerData, children, footerData }) => (
         <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/core-js@2/client/shim.min.js" />
       </Head>
-      <Header height={headerHeight} {...headerData} />
+      <Header height={theme.headerHeight} {...headerData} />
       <LayoutChildrenContainer>
         {children}
       </LayoutChildrenContainer>
