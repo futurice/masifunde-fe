@@ -9,7 +9,10 @@ import { Link } from '../routes'
 const BannerWrapper = styled.div`
   background-color: #FE9933;
   background: url(/static/images/banner-pattern.svg) repeat;
-  margin-bottom: 60px;
+  margin-bottom: 4rem;
+  @media (min-width: 576px) {
+    margin-bottom: 6.25rem;
+  }
 `
 
 const BannerContainer = styled.div`
