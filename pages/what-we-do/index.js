@@ -4,7 +4,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
-import ReactMarkdown from 'react-markdown'
 
 import LayoutWrapper from '../../components/LayoutWrapper'
 import { fetchWhatWeDoPage } from '../../api/whatWeDo'
@@ -18,9 +17,14 @@ import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import HorizontalRuler from '../../components/HorizontalRuler'
 import { sectionTitle } from '../../styling/typography'
+import Markdown from '../../components/Markdown'
 
 const BoldHeading = styled.h2`
-  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.625rem;
+`
+
+const H2 = styled.h2`
   text-align: center;
 `
 
@@ -36,10 +40,6 @@ const ProjectText = styled.p`
   text-align: center;
 `
 
-const ProjectDescription = styled.p`
-  text-align: center;
-`
-
 const ProjectDescriptionContainer = styled.div`
   flex-grow: 1;
   width: 100%;
@@ -47,14 +47,11 @@ const ProjectDescriptionContainer = styled.div`
 
 const ProjectTitle = styled.h3`
   text-align: center;
+  margin-bottom: 1.5rem;
 `
 
 const ProjectContainer = styled.div`
-  margin-bottom: 80px;
-`
-
-const StyledYouTubeVideo = YouTubeVideo.extend`
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 `
 
 const Paragraph = styled.p`
@@ -66,11 +63,28 @@ const Paragraph = styled.p`
 `
 
 const ProgramsContainer = styled.div`
+  margin-top: 1.5rem;
+  margin-bottom: 1.2rem;
   width: 100%;
 `
 
 const ProgramContainer = styled.div`
   flex-grow: 1;
+`
+
+const LowerHorizontalRuler = HorizontalRuler.extend`
+  margin-bottom: 7rem;
+  @media (min-width: 576px) {
+    margin-bottom: 7rem;
+  }
+`
+
+const ImpactButton = styled.div`
+  margin-top: 1.2rem;
+`
+
+const StyledMarkdown = styled(Markdown)`
+  margin-bottom: 7rem;
 `
 
 const WhatWeDo = ({
@@ -98,16 +112,15 @@ const WhatWeDo = ({
       headlinePlacement="bottom"
     />
     <Container>
-      <StyledYouTubeVideo youtubeVideo={youtubeVideo} />
+      <YouTubeVideo youtubeVideo={youtubeVideo} />
       <BoldHeading>{introHeading}</BoldHeading>
       <div className="row">
         {programmes.map(program => (
           <ProjectContainer className="col-md d-flex flex-column align-items-center" key={program.title}>
             <ProjectTitle>{program.title}</ProjectTitle>
-
             <ProjectDescriptionContainer className="row justify-content-md-center">
               <div className="col-lg-10">
-                <ProjectDescription>{program.description}</ProjectDescription>
+                <p>{program.description}</p>
               </div>
             </ProjectDescriptionContainer>
             <ProgramsContainer className="row justify-content-center">
@@ -132,10 +145,10 @@ const WhatWeDo = ({
 
       <HorizontalRuler />
       <Paragraph>{centerHeading}</Paragraph>
-      <HorizontalRuler />
+      <LowerHorizontalRuler />
 
       <ProjectContainer>
-        <BoldHeading>{statsHeading}</BoldHeading>
+        <H2>{statsHeading}</H2>
         <div className="row justify-content-center">
           <div className="col col-md-10 col-lg-8">
             <div className="row">
@@ -151,17 +164,17 @@ const WhatWeDo = ({
             </div>
           </div>
         </div>
-        <div className="row justify-content-center">
+        <ImpactButton className="row justify-content-center">
           <Link route={RouteNames.Impact} passHref>
             <Button type="secondary">{statsButton}</Button>
           </Link>
-        </div>
+        </ImpactButton>
       </ProjectContainer>
 
       <div className="row justify-content-center">
         <div className="col col-md-8 col-lg-6">
           <BoldHeading>{outroHeading}</BoldHeading>
-          <ReactMarkdown source={outroText} />
+          <StyledMarkdown source={outroText} />
         </div>
       </div>
     </Container>
