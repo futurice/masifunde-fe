@@ -49,7 +49,6 @@ const ApproachDe = ({
     <Hero
       imageUrl="/static/images/hero/hero-small-library.jpg"
       heroSize="small"
-      // backgroundPositionX="80%"
     />
     <Container>
       <Tagline>{title}</Tagline>

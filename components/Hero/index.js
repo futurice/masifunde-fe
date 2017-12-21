@@ -12,7 +12,7 @@ const HERO_LARGE = 'large'
 const HERO_SMALL = 'small'
 
 const HeroImage = styled.div`
-  height: 400px; // 300px
+  height: 400px;
   width: 100%;
   margin-bottom: 50px;
   background: url("${({ imageUrl }) => imageUrl}") no-repeat;
