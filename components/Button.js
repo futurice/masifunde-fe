@@ -31,6 +31,7 @@ const StyledButton = styled(CustomButton)`
   border-radius: 47px;
   border-width: 3px;
   cursor: pointer;
+  white-space: normal;
 
   &:hover {
     color: white;
