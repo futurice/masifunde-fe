@@ -8,10 +8,10 @@ export const handwritten = css`
 export const pageTitle = css`
     overflow-wrap: break-word;
     line-height: 1.2;
-    margin: 4rem 0;
     color: #FF621D;
     letter-spacing: 0.5px;
     font-size: 2.5rem;
+    margin: 0 0 4rem;
 
     @media (min-width: 768px) {
       font-size: 3rem;
@@ -21,10 +21,10 @@ export const pageTitle = css`
 export const sectionTitle = css`
     overflow-wrap: break-word;
     line-height: 1.4;
-    margin: 3rem 0;
     color: #FF621D;
     font-size: 2rem;
     letter-spacing: -0.5px;
+    margin: 0 0 3rem;
 
     @media (min-width: 768px) {
       font-size: 2.5rem;
