@@ -66,7 +66,13 @@ const About = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero headline={title} imageUrl="//via.placeholder.com/350x150/555" />
+    <Hero
+      backgroundPositionX="70%"
+      headline={title}
+      imageUrl="/static/images/hero/hero-arts.jpg"
+      headlinePlacement="bottom"
+      headlineShadow
+    />
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-lg-8 d-flex flex-column align-items-center">

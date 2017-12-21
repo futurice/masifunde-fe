@@ -91,7 +91,12 @@ const WhatWeDo = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero imageUrl="//via.placeholder.com/350x150/555" headline={heroTitle} />
+    <Hero
+      imageUrl="/static/images/hero/hero-student.jpg"
+      headline={heroTitle}
+      headlineShadow
+      headlinePlacement="bottom"
+    />
     <Container>
       <StyledYouTubeVideo youtubeVideo={youtubeVideo} />
       <BoldHeading>{introHeading}</BoldHeading>
@@ -134,11 +139,13 @@ const WhatWeDo = ({
         <div className="row justify-content-center">
           <div className="col col-md-10 col-lg-8">
             <div className="row">
-              {stats.map(stat => (
+              {stats.map((stat, index) => (
                 <Stat
                   className="col-sm"
                   key={`${stat.number} ${stat.description}`}
                   {...stat}
+                  superscriptText={index + 1}
+                  sourceId={`stat-${index}`}
                 />
                 ))}
             </div>

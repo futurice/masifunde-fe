@@ -1,7 +1,7 @@
+/* eslint-disable no-useless-escape */
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import queryString from 'query-string'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -15,9 +15,9 @@ const VideoContainer = ({
   youtubeVideo,
   className,
 }) => {
-  const paramsString = youtubeVideo.substring(youtubeVideo.indexOf('?'))
-  const parsedParams = queryString.parse(paramsString)
-  const videoId = parsedParams.v
+  const youtubeVideoIdRegex = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/
+  const match = youtubeVideoIdRegex.exec(youtubeVideo)
+  const videoId = (!!match && match.length > 2) ? match[2] : ''
   return (
     <div className={className}>
       <VideoIframe

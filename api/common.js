@@ -29,10 +29,14 @@ export const unwrapStat = stat => ({
 
 export const unwrapStats = stats => stats.map(unwrapStat)
 
+const unwrapRegionWithContactDetails = ({ fields }) => ({
+  ...fields,
+})
+
 export const unwrapRegionalGroups = regionalGroups => ({
   name: regionalGroups.fields.name,
   image: unwrapImage(regionalGroups.fields.image),
-  regions: regionalGroups.fields.regions.map(unwrapRegion),
+  regions: regionalGroups.fields.regions.map(unwrapRegionWithContactDetails),
 })
 
 export const unwrapTeamMember = (teamMember) => {

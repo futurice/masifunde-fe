@@ -13,6 +13,7 @@ import Stat from '../components/Stat'
 import { getLocaleFromQuery } from '../utils/locale'
 import { fetchHomePage } from '../api/home'
 import { RouteNames } from '../routes'
+import YouTubeVideo from '../components/YouTubeVideo'
 
 const CarouselContainer = styled.div`
   margin-top: 8rem;
@@ -22,6 +23,10 @@ const CarouselContainer = styled.div`
 const StatsContainer = styled.div`
   margin-top: 4rem;
   margin-bottom: 4rem;
+`
+
+const YouTubeVideoTitle = styled.h2`
+  margin-top: 7rem;
 `
 
 const Home = ({
@@ -34,18 +39,22 @@ const Home = ({
   banner2Title,
   banner2ButtonText,
   portrait,
+  youTubeVideoTitle,
+  youTubeVideoUrl,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero headline={heroTitle} imageUrl="//via.placeholder.com/350x150/555" />
+    <Hero headline={heroTitle} imageUrl="/static/images/hero/hero-talk.jpg" />
     <Container>
       <StatsContainer className="row">
         {
-          stats.map(stat => (
+          stats.map((stat, index) => (
             <Stat
               key={`${stat.icon.url} ${stat.number}`}
               className="col-md-4"
               {...stat}
+              superscriptText={index + 1}
+              sourceId={`home-stat-${index}`}
             />
           ))
         }
@@ -57,6 +66,8 @@ const Home = ({
       buttonLink={RouteNames.WhatWeDo}
     />
     <Container>
+      <YouTubeVideoTitle>{youTubeVideoTitle}</YouTubeVideoTitle>
+      <YouTubeVideo youtubeVideo={youTubeVideoUrl} />
       <CarouselContainer>
         <Carousel portrait={portrait} />
       </CarouselContainer>
@@ -79,6 +90,8 @@ Home.propTypes = {
   banner2Title: PropTypes.string.isRequired,
   banner2ButtonText: PropTypes.string.isRequired,
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
+  youTubeVideoTitle: PropTypes.string.isRequired,
+  youTubeVideoUrl: PropTypes.string.isRequired,
 }
 
 Home.defaultProps = {

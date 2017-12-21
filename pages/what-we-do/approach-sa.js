@@ -17,6 +17,7 @@ import { RouteNames } from '../../routes'
 
 const H1 = styled.h1`
   text-align: center;
+  color: ${props => props.theme.orange};
 `
 
 const CenteredMarkdown = styled(Markdown)`
@@ -24,11 +25,12 @@ const CenteredMarkdown = styled(Markdown)`
 `
 
 const StyledYouTubeVideo = YouTubeVideo.extend`
-  margin-bottom: 200px;
+  margin-top: 9rem;
+  margin-bottom: 4.5rem;
 `
 
 const ProjectsContainer = styled.div`
-  margin-bottom: 6rem;
+  margin-bottom: 4.5rem;
 `
 
 const ApproachSa = ({
@@ -44,7 +46,11 @@ const ApproachSa = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero imageUrl="//via.placeholder.com/350x150/555" />
+    <Hero
+      imageUrl="/static/images/hero/hero-small-classroom.jpg"
+      heroSize="small"
+      backgroundPositionX="80%"
+    />
     <Container>
       <H1>{title}</H1>
       <HorizontalRuler />

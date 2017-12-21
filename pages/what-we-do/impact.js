@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react'
+/* eslint-disable no-return-assign */
+import React, { Component, Fragment } from 'react'
 import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -26,6 +27,8 @@ const H1 = styled.h1`
   color: ${props => props.theme.orange};
 `
 
+let superscript = 0
+
 const StatsSection = ({ title, stats }) => (
   <Fragment>
     <h2>{title}</h2>
@@ -34,6 +37,8 @@ const StatsSection = ({ title, stats }) => (
         <Stat
           key={stat.description}
           {...stat}
+          superscriptText={stat.sourceMarkdown ? superscript += 1 : null}
+          sourceId={`impact-source-${superscript}`}
         />
       ))}
     </div>
@@ -45,44 +50,59 @@ StatsSection.propTypes = {
   stats: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
 }
 
-const Impact = ({
-  metaTitle,
-  metaDescription,
-  title,
-  titleSource,
-  stats1Title,
-  stats1,
-  stats2Title,
-  stats2,
-  portrait1,
-  portrait2,
-  outroTitle,
-  outroMarkdown,
-  bannerText,
-  bannerButtonText,
-}) => (
-  <div>
-    <Head title={metaTitle} description={metaDescription} />
-    <Hero imageUrl="//via.placeholder.com/350x150/555" />
-    <Container>
-      <H1>{title}<Source text={1} sourceText={titleSource} id="impact-title-source" /></H1>
-      <HorizontalRuler />
-      <StatsSection title={stats1Title} stats={stats1} />
-      <StatsSection title={stats2Title} stats={stats2} />
-      <Carousel portrait={portrait1} />
-      <Carousel portrait={portrait2} />
-    </Container>
-    <Container>
-      <h2>{outroTitle}</h2>
-      <CenteredMarkdown source={outroMarkdown} />
-    </Container>
-    <Banner
-      headline={bannerText}
-      buttonText={bannerButtonText}
-      buttonLink={RouteNames.HowToSupport}
-    />
-  </div>
-)
+class Impact extends Component {
+  componentWillUnmount() {
+    superscript = 0
+  }
+  render() {
+    const {
+      metaTitle,
+      metaDescription,
+      title,
+      titleSource,
+      stats1Title,
+      stats1,
+      stats2Title,
+      stats2,
+      portrait1,
+      portrait2,
+      outroTitle,
+      outroMarkdown,
+      bannerText,
+      bannerButtonText,
+    } = this.props
+    return (
+      <div>
+        <Head title={metaTitle} description={metaDescription} />
+        <Hero
+          imageUrl="/static/images/hero/hero-small-arts.jpg"
+          heroSize="small"
+          backgroundPositionX="35%"
+        />
+        <Container>
+          <H1>
+            {title}
+            <Source superscriptText={superscript += 1} sourceMarkdown={titleSource} id="impact-title-source" />
+          </H1>
+          <HorizontalRuler />
+          <StatsSection title={stats1Title} stats={stats1} />
+          <StatsSection title={stats2Title} stats={stats2} />
+          <Carousel portrait={portrait1} />
+          <Carousel portrait={portrait2} />
+        </Container>
+        <Container>
+          <h2>{outroTitle}</h2>
+          <CenteredMarkdown source={outroMarkdown} />
+        </Container>
+        <Banner
+          headline={bannerText}
+          buttonText={bannerButtonText}
+          buttonLink={RouteNames.HowToSupport}
+        />
+      </div>
+    )
+  }
+}
 
 Impact.propTypes = {
   metaTitle: PropTypes.string.isRequired,
