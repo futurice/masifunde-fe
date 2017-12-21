@@ -12,6 +12,7 @@ import TeamMember from '../../components/TeamMember'
 import Head from '../../components/Head'
 import RegionalGroups from '../../components/RegionalGroups'
 import imagePropTypes from '../../propTypes/image'
+import { RouteNames } from '../../routes'
 
 const TeamMemberList = styled.div`
   margin: 2rem 0 2.5rem 0;
@@ -59,7 +60,11 @@ const TeamDe = ({
         </TeamMemberList>
       </section>
     </Container>
-    <Banner buttonLink="a" buttonText={bannerButtonText} headline={bannerTitle} />
+    <Banner
+      buttonLink={RouteNames.BecomeVolunteer}
+      buttonText={bannerButtonText}
+      headline={bannerTitle}
+    />
   </div>
 )
 

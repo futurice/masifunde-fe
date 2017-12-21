@@ -11,6 +11,7 @@ import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchTeamSaPage } from '../../api/whoWeAre'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import imagePropTypes from '../../propTypes/image'
+import { RouteNames } from '../../routes'
 
 const Image = styled.img`
   width: 100%;
@@ -56,7 +57,11 @@ const TeamSa = ({
         ))}
       </div>
     </Container>
-    <Banner buttonLink="a" buttonText={bannerButtonText} headline={bannerTitle} />
+    <Banner
+      buttonLink={RouteNames.BecomeVolunteer}
+      buttonText={bannerButtonText}
+      headline={bannerTitle}
+    />
   </div>
 )
 
