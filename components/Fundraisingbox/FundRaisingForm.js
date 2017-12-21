@@ -16,7 +16,7 @@ const FormLabel = styled.span`
   text-align: left;
   padding-right: 0;
   
-  @media screen and (min-width: 576px){
+  @media screen and (min-width: 768px){
     text-align: right;
   }
 `
@@ -91,13 +91,13 @@ class FundRaisingForm extends Component {
           onSubmit={() => {}}
           validate={this.validateForm}
           render={({ handleSubmit }) => (
-            <form className="col-sm-7" onSubmit={(e) => { handleSubmit(e); this.props.onSubmit() }}>
+            <form className="col-md-9 col-lg-7" onSubmit={(e) => { handleSubmit(e); this.props.onSubmit() }}>
               {/* Anrede */}
               <div className="form-group row">
-                <FormLabel className="col-sm-6 col-form-label" id="titleInputs">
+                <FormLabel className="col-md-5 col-lg-6 col-form-label" id="titleInputs">
                   Anrede
                 </FormLabel>
-                <div className="col-sm-2 d-flex">
+                <div className="col-md-3 col-lg-2 d-flex">
                   <Field name={fieldName.salutation}>
                     {({ input, meta }) => (
                       <div className="w-100">
@@ -118,12 +118,12 @@ class FundRaisingForm extends Component {
               </div>
               {/* Titel */}
               <div className="form-group row">
-                <FormLabel className="col-sm-6 col-form-label" id="titleInputs">
+                <FormLabel className="col-md-5 col-lg-6 col-form-label" id="titleInputs">
                   Titel (optional)
                 </FormLabel>
                 <Field name={fieldName.title}>
                   {({ input, meta }) => (
-                    <div className="col-sm-6">
+                    <div className="col-md-7 col-lg-6">
                       <input
                         {...input}
                         type="text"
@@ -137,10 +137,10 @@ class FundRaisingForm extends Component {
               </div>
               {/* Firstname */}
               <div className="form-group row">
-                <FormLabel className="col-sm-6 col-form-label" id="firstname-input">
+                <FormLabel className="col-md-5 col-lg-6 col-form-label" id="firstname-input">
                   Vorname
                 </FormLabel>
-                <div className="col-sm-6">
+                <div className="col-md-7 col-lg-6">
                   <Field name={fieldName.firstName}>
                     {({ input, meta }) => (
                       <div>
@@ -158,10 +158,10 @@ class FundRaisingForm extends Component {
               </div>
               {/* Lastname */}
               <div className="form-group row">
-                <FormLabel className="col-sm-6 col-form-label" id="lastname-input">
+                <FormLabel className="col-md-5 col-lg-6 col-form-label" id="lastname-input">
                   Nachname
                 </FormLabel>
-                <div className="col-sm-6">
+                <div className="col-md-7 col-lg-6">
                   <Field name={fieldName.lastName}>
                     {({ input, meta }) => (
                       <div>
@@ -181,8 +181,8 @@ class FundRaisingForm extends Component {
               <Field name={fieldName.email}>
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="inputEmail">
-                    <FormLabel className="col-sm-6 col-form-label">E-mail</FormLabel>
-                    <div className="col-sm-6">
+                    <FormLabel className="col-md-5 col-lg-6 col-form-label">E-mail</FormLabel>
+                    <div className="col-md-7 col-lg-6">
                       <input
                         {...input}
                         type="email"
@@ -196,10 +196,10 @@ class FundRaisingForm extends Component {
               </Field>
               {/* receipt ? */}
               <label className="form-group row" htmlFor="receipt-input">
-                <FormLabel className="col-sm-6 col-form-label">Spendequittung</FormLabel>
+                <FormLabel className="col-md-5 col-lg-6 col-form-label">Spendequittung</FormLabel>
                 <Field name={fieldName.wantsReceipt}>
                   {({ input, meta }) => (
-                    <div className="col-sm-6">
+                    <div className="col-md-7 col-lg-6">
                       <select
                         {...input}
                         id="receipt-input"
@@ -219,8 +219,8 @@ class FundRaisingForm extends Component {
               <Field name={fieldName.companyName}>
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="company-input">
-                    <FormLabel className="col-sm-6 col-form-label">Firma (optional)</FormLabel>
-                    <div className="col-sm-6">
+                    <FormLabel className="col-md-5 col-lg-6 col-form-label">Firma (optional)</FormLabel>
+                    <div className="col-md-7 col-lg-6">
                       <input
                         {...input}
                         type="text"
@@ -236,8 +236,8 @@ class FundRaisingForm extends Component {
               <Field name={fieldName.address}>
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="address-input">
-                    <FormLabel className="col-sm-6 col-form-label">Adresse</FormLabel>
-                    <div className="col-sm-6">
+                    <FormLabel className="col-md-5 col-lg-6 col-form-label">Adresse</FormLabel>
+                    <div className="col-md-7 col-lg-6">
                       <input
                         {...input}
                         type="text"
@@ -251,12 +251,12 @@ class FundRaisingForm extends Component {
               </Field>
               {/* PLZ und Ort */}
               <div className="form-group row">
-                <FormLabel className="col-sm-6 col-form-label" id="zip-code-city-inputs">
+                <FormLabel className="col-md-5 col-lg-6 col-form-label" id="zip-code-city-inputs">
                   PLZ / Ort
                 </FormLabel>
                 <Field name={fieldName.postCode}>
                   {({ input, meta }) => (
-                    <div className="col-sm-2">
+                    <div className="col-md-3 col-lg-2">
                       <input
                         {...input}
                         className={this.formInputClassFactory(meta)}
@@ -268,7 +268,7 @@ class FundRaisingForm extends Component {
                 </Field>
                 <Field name={fieldName.city}>
                   {({ input, meta }) => (
-                    <div className="col-sm-4 pl-sm-0 mt-1 mt-sm-0">
+                    <div className="col-md-4 pl-md-0 mt-1 mt-md-0">
                       <input
                         {...input}
                         className={this.formInputClassFactory(meta)}
@@ -281,10 +281,10 @@ class FundRaisingForm extends Component {
               </div>
               {/* Land */}
               <label className="form-group row" htmlFor="country-input">
-                <FormLabel className="col-sm-6 col-form-label">Land</FormLabel>
+                <FormLabel className="col-md-5 col-lg-6 col-form-label">Land</FormLabel>
                 <Field name={fieldName.country}>
                   {({ input, meta }) => (
-                    <div className="col-sm-6">
+                    <div className="col-md-7 col-lg-6">
                       <select
                         {...input}
                         id="country-input"
@@ -305,7 +305,7 @@ class FundRaisingForm extends Component {
             </form>
           )}
         />
-        <FundRaisingIfameContainer className="col-sm-9">
+        <FundRaisingIfameContainer className="col-md-9 col-lg-7">
           <FundRaisingIframe
             onMouseHover={this.submitForm}
             hash="j3ip42zwp3mlewb9"
