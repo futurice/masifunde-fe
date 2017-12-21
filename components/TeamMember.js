@@ -12,6 +12,7 @@ const Image = styled.img`
 `
 
 const Email = styled.a`
+  display: block;
   word-break: break-all;
 `
 
