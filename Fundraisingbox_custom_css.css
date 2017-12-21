@@ -7,6 +7,7 @@ html {
 
 body {
     margin: 0;
+    padding-right: 15px;
 }
 
 h1, h2 {
@@ -34,6 +35,10 @@ h1, h2 {
 
 .paymentDetails .row {
     margin-bottom: 1rem;
+}
+
+.paymentDetails .row .label {
+    margin-bottom: 7px;
 }
 
 .paymentDetails div.field {
@@ -169,30 +174,7 @@ input#submitForm:hover {
 }
 
 /* Bootstrap breakpoint sm. Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-    .paymentDetails div.label {
-        text-align: right;
-        padding-right: 15px;
-        padding-left: 15px;
-        width: calc(33% - 30px);
-        display: inline-block;
-    }
-
-    .paymentDetails .row {
-        margin-left: -15px;
-        margin-right: -15px;
-    }
-
-    .paymentDetails div.field {
-        padding-right: 15px;
-        padding-left: 15px;
-        width: calc(66% - 30px);
-    }
-
-    .paymentDetails div.field > input {
-        width: 100%;
-    }
-
+@media (min-width: 600px) {
     #paymentmethods {
         flex-direction: row;
     }
