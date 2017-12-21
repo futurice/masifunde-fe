@@ -17,7 +17,7 @@ const VideoContainer = ({
 }) => {
   const youtubeVideoIdRegex = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/
   const match = youtubeVideoIdRegex.exec(youtubeVideo)
-  const videoId = match[2]
+  const videoId = (!!match && match.length > 2) ? match[2] : ''
   return (
     <div className={className}>
       <VideoIframe
