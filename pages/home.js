@@ -15,18 +15,8 @@ import { fetchHomePage } from '../api/home'
 import { RouteNames } from '../routes'
 import YouTubeVideo from '../components/YouTubeVideo'
 
-const CarouselContainer = styled.div`
-  margin-top: 8rem;
-  margin-bottom: 8rem;
-`
-
 const StatsContainer = styled.div`
-  margin-top: 4rem;
   margin-bottom: 4rem;
-`
-
-const YouTubeVideoTitle = styled.h2`
-  margin-top: 7rem;
 `
 
 const Home = ({
@@ -66,11 +56,11 @@ const Home = ({
       buttonLink={RouteNames.WhatWeDo}
     />
     <Container>
-      <YouTubeVideoTitle>{youTubeVideoTitle}</YouTubeVideoTitle>
+      <h2>{youTubeVideoTitle}</h2>
       <YouTubeVideo youtubeVideo={youTubeVideoUrl} />
-      <CarouselContainer>
+      <div>
         <Carousel portrait={portrait} />
-      </CarouselContainer>
+      </div>
     </Container>
     <Banner
       headline={banner2Title}
