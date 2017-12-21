@@ -63,7 +63,11 @@ const Impact = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero imageUrl="//via.placeholder.com/350x150/555" />
+    <Hero
+      imageUrl="/static/images/hero/hero-small-arts.jpg"
+      heroSize="small"
+      backgroundPositionX="35%"
+    />
     <Container>
       <H1>{title}<Source text={1} sourceText={titleSource} id="impact-title-source" /></H1>
       <HorizontalRuler />

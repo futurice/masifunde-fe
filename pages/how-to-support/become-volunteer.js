@@ -35,7 +35,11 @@ const BecomeVolunteer = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero imageUrl="//via.placeholder.com/350x150/555" />
+    <Hero
+      imageUrl="/static/images/hero/hero-small-choir.jpg"
+      heroSize="small"
+      backgroundPositionX="55%"
+    />
     <Container>
       <h2>{introTitle}</h2>
       <div className="row">

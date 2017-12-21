@@ -44,7 +44,11 @@ const ApproachSa = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Hero imageUrl="//via.placeholder.com/350x150/555" />
+    <Hero
+      imageUrl="/static/images/hero/hero-small-classroom.jpg"
+      heroSize="small"
+      backgroundPositionX="80%"
+    />
     <Container>
       <H1>{title}</H1>
       <HorizontalRuler />

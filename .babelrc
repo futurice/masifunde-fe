@@ -2,6 +2,7 @@
   "presets": [
     "next/babel"
   ],
+  "plugins": ["polished"],
   "env": {
     "development": {
       "plugins": [
