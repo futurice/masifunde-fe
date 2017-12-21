@@ -15,6 +15,7 @@ const FixedHeight = styled.div`
 
 const StatContainer = styled.div`
   margin-bottom: 30px;
+  font-weight: bold;
 `
 
 const Number = CenteredSpan.extend`
