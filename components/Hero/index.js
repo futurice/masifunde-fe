@@ -40,7 +40,7 @@ const HeroImage = styled.div`
   `}
 `
 
-const calculateJustifyContent = headlinePlacement =>
+const getPlacementClass = headlinePlacement =>
   (headlinePlacement === HEADLINE_MIDDLE ? 'justify-content-md-center' : '')
 
 function Hero({
@@ -55,7 +55,7 @@ function Hero({
     <HeroImage
       backgroundPositionX={backgroundPositionX}
       className={`d-flex flex-column justify-content-end
-      ${calculateJustifyContent(headlinePlacement)}`}
+      ${getPlacementClass(headlinePlacement)}`}
       imageUrl={imageUrl}
       size={heroSize}
     >
