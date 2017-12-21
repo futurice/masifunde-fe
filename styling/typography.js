@@ -6,6 +6,7 @@ export const handwritten = css`
 `
 
 export const pageTitle = css`
+    word-break: break-all;
     line-height: 1.2;
     margin: 4rem 0;
     color: #FF621D;
@@ -13,6 +14,7 @@ export const pageTitle = css`
 `
 
 export const sectionTitle = css`
+    word-break: break-all;
     line-height: 1.4;
     margin: 3rem 0;
     color: #FF621D;
@@ -21,6 +23,7 @@ export const sectionTitle = css`
 `
 
 export const subtitle = css`
+    word-break: break-all;
     line-height: 1.4;
     color: #77695C;
     font-weight: normal;
