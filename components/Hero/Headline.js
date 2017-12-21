@@ -33,7 +33,7 @@ const Headline = styled.span`
   }
 `
 
-const TextContainer = styled.div`
+const GradientShadow = styled.div`
   @media screen and (max-width: 767px) {
     min-height: 40%;
     background-image: linear-gradient(to bottom, rgba(48, 42, 31, 0), rgba(48, 42, 31, 0.7));
@@ -43,13 +43,13 @@ const TextContainer = styled.div`
 const HeroHeadline = ({ headline, headlineShadow, headlinePlacement }) => {
   if (headline) {
     return (
-      <TextContainer className="d-flex flex-column justify-content-end">
+      <GradientShadow className="d-flex flex-column justify-content-end">
         <div className="container">
           <Headline shadow={headlineShadow} placement={headlinePlacement}>
             {headline}
           </Headline>
         </div>
-      </TextContainer>
+      </GradientShadow>
     )
   }
   return null
