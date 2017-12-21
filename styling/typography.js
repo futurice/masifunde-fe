@@ -9,6 +9,7 @@ export const pageTitle = css`
     line-height: 1.2;
     margin: 4rem 0;
     color: #FF621D;
+    letter-spacing: 0.5px;
 `
 
 export const sectionTitle = css`
@@ -16,6 +17,7 @@ export const sectionTitle = css`
     margin: 3rem 0;
     color: #FF621D;
     font-size: 2.5rem;
+    letter-spacing: -0.5px;
 `
 
 export const subtitle = css`
