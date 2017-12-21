@@ -21,7 +21,7 @@ const BannerContainer = styled.div`
 const Headline = styled.span`
   font-weight: bold;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   color: white;
   overflow-wrap: break-word;
