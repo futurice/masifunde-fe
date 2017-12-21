@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import React, { Component, Fragment } from 'react'
 import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
