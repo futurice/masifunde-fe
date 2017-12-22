@@ -26,6 +26,7 @@ const CountryLabel = styled.label`
   padding: 20px;
   display: block !important;
   cursor: pointer;
+  height: 100%;
 
   &:hover {
     color: #fff;
@@ -46,6 +47,10 @@ const CountryLabel = styled.label`
 
 const CenteredMarkdown = styled(Markdown)`
   text-align: center;
+`
+
+const CountryLabelContainer = styled.div`
+  margin-top: 0.5rem;
 `
 
 const DeProjectId = '3531'
@@ -145,42 +150,40 @@ class Donate extends Component {
                   {({ input, meta }) => (
                     <Fragment>
                       <h3>{section1title}</h3>
-                      <div className="row">
-                        <div className="offset-md-3 offset-lg-3">
-                          <div className="row">
-                            <div className="col">
-                              <CountryLabel
-                                htmlFor="countryInputDe"
-                                isActive={input.value === DeProjectId}
-                              >
-                                <input
-                                  {...input}
-                                  type="radio"
-                                  value={DeProjectId}
-                                  id="countryInputDe"
-                                  autoComplete="off"
-                                />
-                                <Markdown source={section1MarkdownDe} />
-                              </CountryLabel>
-                            </div>
-                            <div className="col" data-toggle="buttons">
-                              <CountryLabel
-                                htmlFor="countryInputSa"
-                                isActive={input.value === SaProjectId}
-                              >
-                                <input
-                                  {...input}
-                                  type="radio"
-                                  value={SaProjectId}
-                                  id="countryInputSa"
-                                  autoComplete="off"
-                                />
-                                <Markdown source={section1MarkdownSa} />
-                              </CountryLabel>
-                            </div>
-                          </div>
-                          {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
+                      <div className="offset-md-3 col-md-8">
+                        <div className="row">
+                          <CountryLabelContainer className="col-sm-6">
+                            <CountryLabel
+                              htmlFor="countryInputDe"
+                              isActive={input.value === DeProjectId}
+                            >
+                              <input
+                                {...input}
+                                type="radio"
+                                value={DeProjectId}
+                                id="countryInputDe"
+                                autoComplete="off"
+                              />
+                              <Markdown source={section1MarkdownDe} />
+                            </CountryLabel>
+                          </CountryLabelContainer>
+                          <CountryLabelContainer className="col-sm-6" data-toggle="buttons">
+                            <CountryLabel
+                              htmlFor="countryInputSa"
+                              isActive={input.value === SaProjectId}
+                            >
+                              <input
+                                {...input}
+                                type="radio"
+                                value={SaProjectId}
+                                id="countryInputSa"
+                                autoComplete="off"
+                              />
+                              <Markdown source={section1MarkdownSa} />
+                            </CountryLabel>
+                          </CountryLabelContainer>
                         </div>
+                        {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
                       </div>
                     </Fragment>
                   )}
