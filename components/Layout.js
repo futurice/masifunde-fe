@@ -20,7 +20,7 @@ injectGlobal`
       font-size: 91%; //11pt
     }
   }
-  
+
   body {
     font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
@@ -59,11 +59,11 @@ injectGlobal`
     font-weight: 800;
     text-align: center;
   }
-  
+
   h1 {
     ${pageTitle}
   }
-  
+
   h2 {
     ${sectionTitle}
   }
@@ -76,6 +76,10 @@ injectGlobal`
     margin-top: 1.5rem;
   }
 
+  .is-invalid {
+    border-color: ${theme.error} !important
+  }
+
   //Bootstrap overrides
   button.navbar-toggler {
     border: 0;
@@ -86,7 +90,7 @@ injectGlobal`
       padding: 1rem 0;
     }
   }
-  
+
   .form-control {
     background-color: #FFFDFB !important;
   }
@@ -94,7 +98,7 @@ injectGlobal`
 
 const LayoutChildrenContainer = styled.div`
   padding-top: calc(${props => props.theme.headerHeight} + ${props => props.theme.pagePaddingMobile});
-    
+
   @media (min-width: 576px) {
     padding-top: calc(${props => props.theme.headerHeight} + ${props => props.theme.pagePadding});
   }
