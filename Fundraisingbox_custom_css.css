@@ -69,7 +69,8 @@ input#submitForm{
     box-shadow: none !important;
     outline: none;
     background-color: transparent;
-    padding: 5px 20px;
+    font-size: 15px;
+    padding: 9px 23px;
     font-family: 'Lato', sans-serif;
 }
 
