@@ -98,3 +98,9 @@ For each section of the page, we prefix the fields with "section<number>":
 The project uses [Contentful](https://www.contentful.com/) javascript package. To understand better
 the API structure you should login into Contentful and have a look into `Content models` to see how
 they are structured. The credentials can be found at https://password.futurice.com/.
+
+## Testing Fundraisingbox locally
+
+Fundraisingbox only displays the form in the iframe if you load the iframe from a specified domain, e.g. masifunde.netlify.com. In order to test it locally you need to expose your localhost. You can use ngrok (https://ngrok.com/) for this. Install ngrok and run the command ```ngrok http 3000 --region eu```. You will then see the address to which ngrok exposes your localhost. 
+
+Log into Masifunde's Fundraisingbox (https://secure.fundraisingbox.com). In the top right hover "Einstellung" and click "Spendenformular". In the "Welches Formular wollen Sie bearbeiten" dropdown select the correct Fundraising form (as of writing this, that's "Development"). Paste your ngrok address into the field "Einbettungsadresse". Save. If you go to your ngrok address you should now be able to see the Fundraising form.
