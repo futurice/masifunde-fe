@@ -7,7 +7,7 @@ export default {
   linkBlue: '#225DBC',
   pineCone: '#77695C',
   roundedImageBorderRadius: '6px',
-  error: '#DC3545',
+  error: '#FF621D',
   headerHeight: '4.5rem',
   pagePadding: '4rem',
   pagePaddingMobile: '2.5rem',
