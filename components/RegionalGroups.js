@@ -3,7 +3,14 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const LocationsList = styled.ul`
-  column-count: 2;
+  @media (min-width: 576px) {
+    column-count: 2;
+  }
+  
+  @media (min-width: 992px) {
+    margin-top: 0;
+  }
+  margin-top: 1rem;
   list-style-type: none;  
   margin-bottom: 0;
 `
@@ -36,8 +43,8 @@ const Image = styled.img`
 
 const RegionalGroups = ({ regionalGroups }) => (
   <ImageContainer className="d-flex justify-content-center justify-content-lg-start flex-wrap flex-lg-nowrap align-items-center">
-    <Image className="col-md-9 offset-lg-1 col-lg-5" src={regionalGroups.image.url} alt={regionalGroups.image.title} />
-    <LocationsList className="list-unstyled col-lg-4">
+    <Image className="col-md-5" src={regionalGroups.image.url} alt={regionalGroups.image.title} />
+    <LocationsList className="list-unstyled col-xl-6">
       {regionalGroups.regions.map(place => (
         <LocationListItem key={place.name}>
           <GroupName>{place.name}</GroupName>
