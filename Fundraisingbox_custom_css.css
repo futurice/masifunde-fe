@@ -118,6 +118,10 @@ input#submitForm:hover {
     flex-direction: column;
 }
 
+#paymentMethodBox > h1 {
+    display: none;
+}
+
 #paymentmethods label {
     cursor: pointer;
     padding-left: 60px;

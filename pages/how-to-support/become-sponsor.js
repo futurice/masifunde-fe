@@ -95,6 +95,7 @@ class BecomeSponsor extends Component {
       section3Title,
       section3ReferenceList,
       section4Title,
+      section5Title,
       bannerTitle,
       bannerButtonText,
     } = this.props
@@ -147,7 +148,11 @@ class BecomeSponsor extends Component {
 
           <H2>{section4Title}</H2>
 
-          <FundRaisingForm hiddenFields={{ ...this.state.fields }} onSubmit={this.submitForm} />
+          <FundRaisingForm
+            hiddenFields={{ ...this.state.fields }}
+            onSubmit={this.submitForm}
+            fundraisingboxIframeTitle={section5Title}
+          />
         </Container>
         <Banner
           headline={bannerTitle}
@@ -179,6 +184,7 @@ BecomeSponsor.propTypes = {
     text: PropTypes.string.isRequired,
   }).isRequired).isRequired,
   section4Title: PropTypes.string.isRequired,
+  section5Title: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
 }

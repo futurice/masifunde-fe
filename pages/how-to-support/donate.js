@@ -120,6 +120,7 @@ class Donate extends Component {
       section3ReferenceList,
       section3Text,
       section4Title,
+      section5Title,
       bannerTitle,
       bannerButtonText,
     } = this.props
@@ -145,7 +146,7 @@ class Donate extends Component {
                     <Fragment>
                       <h3>{section1title}</h3>
                       <div className="row">
-                        <div className="offset-md-3 col-md-9 col-lg-7">
+                        <div className="offset-md-3 offset-lg-3">
                           <div className="row">
                             <div className="col">
                               <CountryLabel
@@ -206,7 +207,11 @@ class Donate extends Component {
 
           <Divider />
           <h3>{section4Title}</h3>
-          <FundRaisingForm hiddenFields={{ ...this.state.fields }} onSubmit={this.submitForm} />
+          <FundRaisingForm
+            hiddenFields={{ ...this.state.fields }}
+            onSubmit={this.submitForm}
+            fundraisingboxIframeTitle={section5Title}
+          />
         </div>
         <Banner
           headline={bannerTitle}
@@ -243,6 +248,7 @@ Donate.propTypes = {
     }).isRequired,
   ).isRequired,
   section4Title: PropTypes.string.isRequired,
+  section5Title: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
 }
