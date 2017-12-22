@@ -5,7 +5,7 @@ Frontend for the Masifunde website. https://masifunde.netlify.com
 ## Installing / Getting started
 
 ```shell
-npm isntall
+npm install
 npm run dev
 ```
 
@@ -27,7 +27,7 @@ Node 8 is required with NPM.
 
 ### Building
 
-The generate:
+To generate:
 
 ```shell
 npm run build-static
@@ -38,9 +38,7 @@ It will run next.js `next build && next export` commands which will generate sta
 
 ### Deploying / Publishing
 
-[Netlify](https://www.netlify.com/) will automatically runs `npm run build-static
-` command whenever anything is pushed to `master` branch since it is
-connected to this github repository. After that the changes should be reachable on https://masifunde.netlify.com.
+[Netlify](https://www.netlify.com/) will automatically run `npm run build-static` whenever anything is pushed to the `master` branch since it is connected to this GitHub repository. After that the changes should be reachable on https://masifunde.netlify.com.
 
 ## Configuration
 
@@ -53,13 +51,13 @@ connected to this github repository. After that the changes should be reachable 
 
 ## Tests
 
-No test for now.
+No tests for now.
 
 ## Style guide
 
-Project uses EsLint Airbnb style guide without semi columns. The `precommit` git hook will
-automatically runs EsLint to check if the code complies with the rules if it fails then it will not
-push to git branch.
+Project uses ESLint AirBnb style guide without semicolons. The `precommit` git hook will
+automatically run ESLint to check if the code complies with the rules. If it fails then it will not
+push to the repo.
 
 ### Contentful model naming convention
 Meta data:
@@ -95,12 +93,12 @@ For each section of the page, we prefix the fields with "section<number>":
 
 ## Api Reference
 
-The project uses [Contentful](https://www.contentful.com/) javascript package. To understand better
+The project uses [Contentful](https://www.contentful.com/) JavaScript package. To understand better
 the API structure you should login into Contentful and have a look into `Content models` to see how
-they are structured. The credentials can be found at https://password.futurice.com/.
+they are structured. The credentials can be found in the password safe.
 
 ## Testing Fundraisingbox locally
 
-Fundraisingbox only displays the form in the iframe if you load the iframe from a specified domain, e.g. masifunde.netlify.com. In order to test it locally you need to expose your localhost. You can use ngrok (https://ngrok.com/) for this. Install ngrok and run the command ```ngrok http 3000 --region eu```. You will then see the address to which ngrok exposes your localhost. 
+Fundraisingbox only displays the form in the iframe if you load the iframe from a specified domain, e.g. masifunde.netlify.com. In order to test it locally you need to expose your localhost. You can use ngrok (https://ngrok.com/) for this. Install ngrok and run the command ```ngrok http 3000 --region eu```. You will then see the address to which ngrok exposes your localhost.
 
 Log into Masifunde's Fundraisingbox (https://secure.fundraisingbox.com). In the top right hover "Einstellung" and click "Spendenformular". In the "Welches Formular wollen Sie bearbeiten" dropdown select the correct Fundraising form (as of writing this, that's "Development"). Paste your ngrok address into the field "Einbettungsadresse". Save. If you go to your ngrok address you should now be able to see the Fundraising form.
