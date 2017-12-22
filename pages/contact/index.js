@@ -3,19 +3,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import _chunk from 'lodash/chunk'
-import ReactMarkdown from 'react-markdown'
 import { Container } from 'reactstrap'
 import { rem } from 'polished'
 
 import TeamMember from '../../components/TeamMember'
 import { fetchContactPage } from '../../api/contact'
-
 import Head from '../../components/Head'
 import LayoutWrapper from '../../components/LayoutWrapper'
+import Markdown from '../../components/Markdown'
 
 const MainHeading = styled.h1`
   text-align: center;
   margin-bottom: ${rem('70px')};
+`
+
+const StyledMarkdown = styled(Markdown)`
+  text-align: left;
+`
+
+const ContactText = styled.span`
+  display: block;
+  text-align: left;
 `
 
 const SecondaryHeading = styled.h2`
@@ -72,14 +80,14 @@ const Contact = ({
       </PictureContainer>
 
       <AdressContainer className="row">
-        <div className="col-sm-4">
-          <p>{telephone}</p>
-        </div>
-        <div className="col-sm-4">
-          <ReactMarkdown source={address} softBreak="br" />
-        </div>
-        <div className="col-sm-4">
-          <p>{email}</p>
+        <div className="col-sm d-flex flex-column align-items-center">
+          <div>
+            <StyledMarkdown source={address} />
+            <ContactText>{telephone}</ContactText>
+            <a href={`mailto:${email}`}>
+              <ContactText>{email}</ContactText>
+            </a>
+          </div>
         </div>
       </AdressContainer>
     </Container>
