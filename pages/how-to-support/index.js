@@ -27,16 +27,17 @@ const H3 = styled.h3`
 
 const Image = styled.img`
   border-radius: ${props => props.theme.roundedImageBorderRadius};
+  max-height: 240px
 `
 
 const Section = ({
   image, title, markdown, buttonText, buttonType, buttonLink,
 }) => (
   <SectionContainer className="row">
-    <div className="col-md-3 ">
+    <div className="d-none d-sm-block col-sm-3">
       <Image className="img-fluid" src={image.url} alt={image.title} />
     </div>
-    <div className="col-md-9">
+    <div className="col-sm-9">
       <H3>{title}</H3>
       <Markdown source={markdown} />
       <Link route={buttonLink} passHref>
@@ -47,7 +48,21 @@ const Section = ({
 )
 
 const SectionContainer = styled.div`
-  padding: 3rem 0;
+  padding: 1.4rem 0;
+
+  @media (min-width: 576px) {
+    padding: 3rem 0;
+  }
+`
+
+const StyledRuler = styled(HorizontalRuler)`
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  @media (min-width: 576px) {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
 `
 
 Section.propTypes = {
@@ -113,7 +128,7 @@ const HowToSupport = ({
         buttonType="secondary"
         buttonLink={RouteNames.BecomeSponsor}
       />
-      <HorizontalRuler />
+      <StyledRuler />
       <Section
         buttonText={section3ButtonText}
         title={section3Title}

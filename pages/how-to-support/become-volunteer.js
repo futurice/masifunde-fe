@@ -50,8 +50,8 @@ const BecomeVolunteer = ({
         <TeamMember
           className="col-md-3"
           imageUrl={section1TeamMember.image.url}
-          title={section1TeamMember.region}
-          subtitle={section1TeamMember.name}
+          title={section1TeamMember.name}
+          subtitle={section1TeamMember.responsibilityArea}
           email={section1TeamMember.email}
         />
       </div>

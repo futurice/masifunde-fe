@@ -18,13 +18,12 @@ import { RouteNames } from '../../routes'
 import portraitPropTypes from '../../propTypes/portrait'
 import Source from '../../components/Source'
 
-const CenteredMarkdown = styled(Markdown)`
-  text-align: center;
-  font-size: 1.3rem;
-`
-
 const H1 = styled.h1`
   color: ${props => props.theme.orange};
+`
+
+const MarkdownContainer = styled.div`
+  margin-bottom: 4rem;
 `
 
 let superscript = 0
@@ -92,7 +91,9 @@ class Impact extends Component {
         </Container>
         <Container>
           <h2>{outroTitle}</h2>
-          <CenteredMarkdown source={outroMarkdown} />
+          <MarkdownContainer className="d-flex justify-content-center">
+            <Markdown className="col-md-8 col-lg-6" source={outroMarkdown} />
+          </MarkdownContainer>
         </Container>
         <Banner
           headline={bannerText}

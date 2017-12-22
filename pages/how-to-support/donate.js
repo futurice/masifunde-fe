@@ -145,7 +145,7 @@ class Donate extends Component {
                     <Fragment>
                       <h3>{section1title}</h3>
                       <div className="row">
-                        <div className="offset-md-3 col-md-7">
+                        <div className="offset-md-3 col-md-9 col-lg-7">
                           <div className="row">
                             <div className="col">
                               <CountryLabel

@@ -18,10 +18,6 @@ const CarouselTextContainer = styled.div`
   color: white;
 `
 
-const PaddedMarkdown = styled(Markdown)`
-  padding: 0 1rem;
-`
-
 const Image = styled.div`
   background: url(${props => props.src});
   padding-right: 0;
@@ -165,7 +161,7 @@ class MasifundeCarousel extends Component {
               <MobileImage className="d-md-none p-0 col-md-3 w-100 h-100" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
               <CarouselTextContainer className="col-md-9">
                 <H3 className="row">{item.heading}</H3>
-                <PaddedMarkdown className="row" source={item.text} />
+                <Markdown className="row" source={item.text} />
               </CarouselTextContainer>
             </SlideRow>
           ))}

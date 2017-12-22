@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const StyledLink = styled.a`
   font-weight: bold;
   text-align: right;
+  white-space: nowrap;
   padding: 0.31rem 0;
   margin-right: 2rem;
   color: inherit !important;

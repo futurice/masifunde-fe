@@ -134,7 +134,7 @@ const WhatWeDo = ({
                 </ProgramContainer>
                 ))}
             </ProgramsContainer>
-            <div className="row justify-content-center">
+            <div className="justify-content-center">
               <Link route={program.buttonLink} passHref>
                 <Button type="secondary">{program.button}</Button>
               </Link>
@@ -164,7 +164,7 @@ const WhatWeDo = ({
             </div>
           </div>
         </div>
-        <ImpactButton className="row justify-content-center">
+        <ImpactButton className="d-flex justify-content-center">
           <Link route={RouteNames.Impact} passHref>
             <Button type="secondary">{statsButton}</Button>
           </Link>

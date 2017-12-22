@@ -72,7 +72,7 @@ const DonationAmountField = ({
         <Fragment>
           <SubHeader>{title}</SubHeader>
           <div className="row">
-            <div className="offset-md-3 col-md-7">
+            <div className="offset-md-3 col-md-9 col-lg-7">
               {amounts.map(({ text, value }) => (
                 <LabelButton
                   className="btn"
