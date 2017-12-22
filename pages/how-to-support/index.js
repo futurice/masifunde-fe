@@ -19,7 +19,7 @@ const Paragraph = styled(Markdown)`
   text-align: center;
 `
 
-const H2 = styled.h2`
+const H3 = styled.h3`
   ${h3};
   text-align: left;
   margin: 0 0 8px;
@@ -37,7 +37,7 @@ const Section = ({
       <Image className="img-fluid" src={image.url} alt={image.title} />
     </div>
     <div className="col-md-9">
-      <H2>{title}</H2>
+      <H3>{title}</H3>
       <Markdown source={markdown} />
       <Link route={buttonLink} passHref>
         <Button type={buttonType}>{buttonText}</Button>
