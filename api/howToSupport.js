@@ -7,8 +7,8 @@ export async function fetchDonatePage(locale) {
 
   return {
     ...content,
-    section2ReferenceList: content.section2ReferenceList.map(unwrapFields),
-    section3ReferenceList: content.section3ReferenceList.map(unwrapFields),
+    section2ReferenceList: content && content.section2ReferenceList.map(unwrapFields),
+    section3ReferenceList: content && content.section3ReferenceList.map(unwrapFields),
   }
 }
 
@@ -16,10 +16,10 @@ export async function fetchHowToSupportPage(locale) {
   const content = await fetchMemoizedSingleEntry('pageWieSieHelfen', locale)
   return {
     ...content,
-    section1Image: unwrapImage(content.section1Image),
-    section2Image: unwrapImage(content.section2Image),
-    section3Image: unwrapImage(content.section3Image),
-    section4Image: unwrapImage(content.section4Image),
+    section1Image: unwrapImage(content && content.section1Image),
+    section2Image: unwrapImage(content && content.section2Image),
+    section3Image: unwrapImage(content && content.section3Image),
+    section4Image: unwrapImage(content && content.section4Image),
   }
 }
 
@@ -31,9 +31,9 @@ export async function fetchBecomeAVolunteerPage(locale) {
   const content = await fetchMemoizedSingleEntry('pageAktivWerden', locale)
   return {
     ...content,
-    regionalGroups: unwrapRegionalGroups(content.regionalGroups),
-    section1TeamMember: unwrapTeamMember(content.section1TeamMember),
-    volunteerOpenings: content.volunteerOpenings.map(unwrapVolunteerOpening),
+    regionalGroups: unwrapRegionalGroups(content && content.regionalGroups),
+    section1TeamMember: unwrapTeamMember(content && content.section1TeamMember),
+    volunteerOpenings: content && content.volunteerOpenings.map(unwrapVolunteerOpening),
   }
 }
 
@@ -50,8 +50,8 @@ export async function fetchBecomeASponsorPage(locale) {
   const content = await fetchMemoizedSingleEntry('pagePateWerden', locale)
   return {
     ...content,
-    image: unwrapImage(content.image),
-    section2ReferenceList: content.section2ReferenceList.map(unwrapFields),
-    section3ReferenceList: content.section3ReferenceList.map(unwrapFields),
+    image: unwrapImage(content && content.image),
+    section2ReferenceList: content && content.section2ReferenceList.map(unwrapFields),
+    section3ReferenceList: content && content.section3ReferenceList.map(unwrapFields),
   }
 }

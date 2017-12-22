@@ -6,10 +6,10 @@ export async function fetchWhoWeArePage(locale) {
 
   return {
     ...response,
-    teamDeImage: unwrapImage(response.teamDeImage),
-    teamSaImage: unwrapImage(response.teamSaImage),
-    partnersListOne: response.partnersListOne.map(unwrapPartner),
-    partnersListTwo: response.partnersListTwo.map(unwrapPartner),
+    teamDeImage: unwrapImage(response && response.teamDeImage),
+    teamSaImage: unwrapImage(response && response.teamSaImage),
+    partnersListOne: response && response.partnersListOne.map(unwrapPartner),
+    partnersListTwo: response && response.partnersListTwo.map(unwrapPartner),
   }
 }
 
@@ -18,8 +18,8 @@ export async function fetchTeamDePage(locale) {
 
   return {
     ...content,
-    teamMembers: unwrapTeamMembers(content.teamMembers),
-    regionalGroups: unwrapRegionalGroups(content.regionalGroups),
+    teamMembers: unwrapTeamMembers(content && content.teamMembers),
+    regionalGroups: unwrapRegionalGroups(content && content.regionalGroups),
   }
 }
 
@@ -28,7 +28,7 @@ export async function fetchTeamSaPage(locale) {
 
   return {
     ...content,
-    introImage: unwrapImage(content.introImage),
-    teamMembers: unwrapTeamMembers(content.teamMembers),
+    introImage: unwrapImage(content && content.introImage),
+    teamMembers: unwrapTeamMembers(content && content.teamMembers),
   }
 }

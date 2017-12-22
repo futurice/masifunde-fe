@@ -6,12 +6,13 @@ export async function fetchContactPage(locale) {
   const content = await fetchSingleEntry('pageKontakt', locale)
   const mapContact = contact => ({
     ...contact.fields,
-    region: unwrapRegion(contact.fields.region),
-    image: unwrapImage(contact.fields.profileImage),
+    region: unwrapRegion(contact && contact.fields && contact.fields.region),
+    image: unwrapImage(contact && contact.fields && contact.fields.profileImage),
   })
   return {
     ...content,
-    contacts: content.contacts.map(mapContact),
-    regionalContacts: content.regionalContacts.map(mapContact),
+    contacts: content && content.contacts && content.contacts.map(mapContact),
+    regionalContacts:
+      content && content.regionalContacts && content.regionalContacts.map(mapContact),
   }
 }
