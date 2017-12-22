@@ -25,7 +25,7 @@ const DonationIntervalField = ({
     {({ input, meta }) => (
       <Fragment>
         <SubHeader>{title}</SubHeader>
-        <div className="row">
+        <div>
           <div className="offset-md-3 col-md-9 col-lg-7 pl-0">
             {intervals.map(({ value, name }) => (
               <LabelButton
