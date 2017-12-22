@@ -35,6 +35,7 @@ VideoContainer.propTypes = {
 }
 
 const YouTubeVideo = styled(VideoContainer)`
+  background-color: black;
   position: relative;
   padding-bottom: 54%; /* 16:9 */
   padding-top: 25px;
