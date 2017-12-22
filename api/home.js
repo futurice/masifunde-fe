@@ -6,7 +6,7 @@ export async function fetchHomePage(locale) {
   const content = await fetchSingleEntry('pageHome', locale)
   return {
     ...content,
-    portrait: unwrapPortrait(content.portrait),
-    stats: unwrapStats(content.stats),
+    portrait: unwrapPortrait(content && content.portrait),
+    stats: unwrapStats(content && content.stats),
   }
 }

@@ -9,22 +9,29 @@ export async function fetchFooterData(locale) {
 }
 
 export const unwrapImage = image => ({
-  url: image.fields.file.url,
-  title: image.fields.title,
+  url:
+    image &&
+    image.fields &&
+    image.fields.file &&
+    image.fields.file.url,
+  title:
+    image &&
+    image.fields &&
+    image.fields.title,
 })
 
-export const unwrapRegion = region => region.fields.name
+export const unwrapRegion = region => region && region.fields && region.fields.name
 
 export const unwrapPortrait = portrait => ({
   ...portrait.fields,
-  page1Image: unwrapImage(portrait.fields.page1Image),
-  page2Image: unwrapImage(portrait.fields.page2Image),
-  page3Image: unwrapImage(portrait.fields.page3Image),
+  page1Image: unwrapImage(portrait && portrait.fields && portrait.fields.page1Image),
+  page2Image: unwrapImage(portrait && portrait.fields && portrait.fields.page2Image),
+  page3Image: unwrapImage(portrait && portrait.fields && portrait.fields.page3Image),
 })
 
 export const unwrapStat = stat => ({
   ...stat.fields,
-  icon: unwrapImage(stat.fields.icon),
+  icon: unwrapImage(stat && stat.fields && stat.fields.icon),
 })
 
 export const unwrapStats = stats => stats.map(unwrapStat)
@@ -34,18 +41,28 @@ const unwrapRegionWithContactDetails = ({ fields }) => ({
 })
 
 export const unwrapRegionalGroups = regionalGroups => ({
-  name: regionalGroups.fields.name,
-  image: unwrapImage(regionalGroups.fields.image),
-  regions: regionalGroups.fields.regions.map(unwrapRegionWithContactDetails),
+  name:
+    regionalGroups &&
+    regionalGroups.fields &&
+    regionalGroups.fields.name,
+  image: unwrapImage(regionalGroups && regionalGroups.fields && regionalGroups.fields.image),
+  regions:
+    regionalGroups &&
+    regionalGroups.fields &&
+    regionalGroups.fields.regions &&
+    regionalGroups.fields.regions.map(unwrapRegionWithContactDetails),
 })
 
 export const unwrapTeamMember = (teamMember) => {
   const { fields } = teamMember
   return {
-    id: teamMember.sys.id,
+    id:
+      teamMember &&
+      teamMember.sys &&
+      teamMember.sys.id,
     ...fields,
-    image: unwrapImage(fields.profileImage),
-    region: unwrapRegion(fields.region),
+    image: unwrapImage(fields && fields.profileImage),
+    region: unwrapRegion(fields && fields.region),
   }
 }
 
@@ -53,11 +70,11 @@ export const unwrapTeamMembers = (teamMembers = []) => teamMembers.map(unwrapTea
 
 export const unwrapPartner = partner => ({
   ...partner.fields,
-  image: unwrapImage(partner.fields.logo),
+  image: unwrapImage(partner && partner.fields && partner.fields.logo),
 })
 
 export const unwrapPartners = partners => partners.map(unwrapPartner)
 
 export function unwrapFields(response) {
-  return response.fields
+  return response && response.fields
 }
