@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { rem } from 'polished'
+
 import { jpgCompression } from '../utils/constants'
 
 const Title = styled.div`
@@ -16,15 +18,33 @@ const Email = styled.a`
   word-break: break-all;
 `
 
+const ContentContainer = styled.div`
+  max-width: 160px;
+`
+
+const TeamContainer = styled.div`
+  margin-bottom: ${rem('30px')};
+`
+
 const TeamMember = ({
-  imageUrl, title, subtitle, email, className,
+  imageUrl,
+  title,
+  subtitle,
+  email,
+  className,
 }) => (
-  <div className={className}>
-    <Image className="img-fluid" src={`${imageUrl}?q=${jpgCompression}`} alt={`${title} - ${subtitle}`} />
-    <Title>{title}</Title>
-    <div>{subtitle}</div>
-    <Email href={`mailto:${email}`}>{email}</Email>
-  </div>
+  <TeamContainer className={`${className} d-flex justify-content-center`}>
+    <ContentContainer>
+      <Image
+        className="img-fluid"
+        src={`${imageUrl}?q=${jpgCompression}`}
+        alt={`${title} - ${subtitle}`}
+      />
+      <Title>{title}</Title>
+      <div>{subtitle}</div>
+      <Email href={`mailto:${email}`}>{email}</Email>
+    </ContentContainer>
+  </TeamContainer>
 )
 
 TeamMember.propTypes = {
