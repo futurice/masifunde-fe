@@ -16,6 +16,7 @@ import { RouteNames } from '../../routes'
 
 const H1 = styled.h1`
   text-align: center;
+  margin-bottom: 2rem;
 `
 
 const H2 = styled.h2`
@@ -25,10 +26,15 @@ const H2 = styled.h2`
 
 const CenteredMarkdown = styled(Markdown)`
   text-align: center;
+  margin-bottom: 3rem;
 `
 
-const ProjectsContainer = styled.div`
-  margin-top: 3rem;
+const StyledRuler = styled(HorizontalRuler)`
+  margin-bottom: 5rem;
+  
+  @media (min-width: 992px) {
+    margin-bottom: 7rem;
+  }
 `
 
 const ApproachDe = ({
@@ -49,10 +55,10 @@ const ApproachDe = ({
     />
     <Container>
       <H2>{title}</H2>
-      <HorizontalRuler />
+      <StyledRuler />
       <H1>{introHeading}</H1>
       <CenteredMarkdown source={introText} />
-      <ProjectsContainer className="row">
+      <div className="row">
         {projects.map(project => (
           <Project
             key={`${project.name}${project.image}`}
@@ -62,7 +68,7 @@ const ApproachDe = ({
             description={project.description}
           />
         ))}
-      </ProjectsContainer>
+      </div>
     </Container>
     <Banner
       buttonLink={RouteNames.Contact}

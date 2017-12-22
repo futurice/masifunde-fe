@@ -17,7 +17,7 @@ const H2 = styled.h2`
 `
 
 const ProjectContainer = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 `
 
 const Project = ({
