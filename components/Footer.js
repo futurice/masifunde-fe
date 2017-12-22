@@ -21,7 +21,7 @@ const LinksContainer = {
 const copyrightStyle = {
   textAlign: 'center',
   marginTop: 50,
-  marginBottom: 70,
+  marginBottom: 40,
 }
 
 const copyrightRowStyle = {
@@ -56,6 +56,15 @@ const Anchor = styled.a`
   &:visited {
     color: ${props => props.theme.pineCone};  
   }
+`
+
+const FooterImpressumContainer = styled(Row)`
+  margin-bottom: 1rem;
+`
+
+const ContentfulImage = styled.img`
+  max-width: 100px; 
+  width: 100%;
 `
 
 function Footer({
@@ -194,7 +203,7 @@ function Footer({
             {copyrightText}
           </Col>
         </Row>
-        <Row>
+        <FooterImpressumContainer>
           <Col style={copyrightRowStyle}>
             <Link route={RouteNames.Impressum} passHref>
               <Anchor>{impressumText} </Anchor>
@@ -203,6 +212,16 @@ function Footer({
             <Link route={RouteNames.Datenschutz} passHref>
               <Anchor> {datenschutzText}</Anchor>
             </Link>
+          </Col>
+        </FooterImpressumContainer>
+        <Row>
+          <Col>
+            <a href="https://www.contentful.com/" rel="noopener noreferrer nofollow" target="_blank">
+              <ContentfulImage
+                src="/static/images/PoweredByContentful_LightBackground.svg"
+                alt="Powered by Contentful"
+              />
+            </a>
           </Col>
         </Row>
       </Container>
