@@ -70,6 +70,7 @@ input#submitForm{
     outline: none;
     background-color: transparent;
     padding: 5px 20px;
+    font-family: 'Lato', sans-serif;
 }
 
 input#submitForm:hover {
