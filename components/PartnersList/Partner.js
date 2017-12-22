@@ -22,6 +22,7 @@ const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   padding-bottom: 100%;
+  margin-bottom: 5px;
 `
 
 const PartnerContainer = styled.div`
