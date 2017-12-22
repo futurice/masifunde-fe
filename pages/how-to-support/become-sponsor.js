@@ -31,6 +31,7 @@ const H2NoTopMargin = H2.extend`
 
 const Image = styled.img`
   border-radius: ${props => props.theme.roundedImageBorderRadius};
+  width: 100%;
 `
 
 const Learn4LifeId = '3520'
