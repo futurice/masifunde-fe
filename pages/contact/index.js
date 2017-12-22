@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import _chunk from 'lodash/chunk'
 import ReactMarkdown from 'react-markdown'
 import { Container } from 'reactstrap'
+import { rem } from 'polished'
 
 import TeamMember from '../../components/TeamMember'
 import { fetchContactPage } from '../../api/contact'
@@ -14,7 +15,7 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 
 const MainHeading = styled.h1`
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: ${rem('70px')};
 `
 
 const SecondaryHeading = styled.h2`
@@ -22,16 +23,17 @@ const SecondaryHeading = styled.h2`
 `
 
 const PictureContainer = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: ${rem('100px')};
 `
 
 const AdressContainer = styled.div`
   text-align: center;
+  margin-bottom: ${rem('80px')};
 `
 
 const mapContact = contact => (
   <TeamMember
-    className="col-12 col-md-3 col-lg-2"
+    className="col-6 col-sm-4 col-md-3 col-lg-2"
     key={`${contact.image.url} ${contact.region} ${contact.name}`}
     imageUrl={contact.image.url}
     title={contact.region}
