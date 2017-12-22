@@ -5,9 +5,9 @@ import _chunk from 'lodash/chunk'
 
 import Partner, { propTypes as partnerPropTypes } from './Partner'
 
-const PartnersList = ({ partnersList }) =>
+const PartnersList = ({ partnersList, className }) =>
   _chunk(partnersList, 5).map((partnersListChunk, idx) => (
-    <div className="row justify-content-sm-center align-items-center" key={idx}>
+    <div className={`row justify-content-sm-center align-items-center ${className}`} key={idx}>
       {partnersListChunk.map(({ image, name, link }) => (
         <Partner
           link={link}
@@ -23,8 +23,13 @@ export const propTypes = {
   partnersList: PropTypes.arrayOf(
     PropTypes.shape(partnerPropTypes),
   ).isRequired,
+  className: PropTypes.string,
 }
 
 PartnersList.propTypes = propTypes
+
+PartnersList.defaultProps = {
+  className: '',
+}
 
 export default PartnersList

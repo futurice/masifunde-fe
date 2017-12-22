@@ -7,6 +7,8 @@ export const HEADLINE_MIDDLE = 'middle'
 export const HEADLINE_BOTTOM = 'bottom'
 
 const Headline = styled.span`
+  word-wrap: break-word;
+  width: 100%;
   display: block;
   color: white;
   font-size: ${rem('30px')};

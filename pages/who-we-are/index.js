@@ -16,7 +16,7 @@ import { imagePropTypes } from '../../propTypes/image'
 
 const H1 = styled.h1`
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 `
 
 const StyledMarkdown = styled(Markdown)`
@@ -30,7 +30,6 @@ const StyledMarkdownNoMarginBottom = StyledMarkdown.extend`
 `
 
 const Image = styled.img`
-  margin-bottom: 2rem;
   width: 100%;
   height: 100%;
 `
@@ -41,7 +40,31 @@ const CountryContainer = styled.div`
 
 const ImageContainer = styled.div`
   flex-grow: 1;
-  height: 400px;
+  height: 270px;
+
+  @media screen and (min-width: 992px) { 
+    height: 400px;
+  }
+`
+
+const ButtonLink = styled(Button)`
+  margin-top: 3rem;
+`
+
+const StyledPartnerList = styled(PartnersList)`
+  margin-bottom: 2rem;
+`
+
+const SectionContainer = styled.div`
+  margin-bottom: 5rem;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 5rem;
+    
+    &:not(:last-of-type) {
+      margin-bottom: 7rem;
+    }
+  }
 `
 
 const About = ({
@@ -74,54 +97,60 @@ const About = ({
       headlineShadow
     />
     <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-lg-8 d-flex flex-column align-items-center">
-          <H1>{paragraphOneTitle}</H1>
-          <StyledMarkdownNoMarginBottom className="w-100" source={paragraphOneText} />
+      <SectionContainer>
+        <div className="row justify-content-center">
+          <div className="col-lg-8 d-flex flex-column align-items-center">
+            <H1>{paragraphOneTitle}</H1>
+            <StyledMarkdownNoMarginBottom className="w-100" source={paragraphOneText} />
+          </div>
         </div>
-      </div>
-      <div className="row justify-content-md-center">
-        <CountryContainer className="col-md-6 d-flex flex-column align-items-center">
-          <ImageContainer className="d-flex justify-content-center w-100 align-items-center">
-            <Image className="col-xs-8 col-sm-10 col-md-11 col-lg-10" src={teamDeImage.url} alt={teamDeImage.title} />
-          </ImageContainer>
-          <Link route={RouteNames.TeamDE} passHref>
-            <Button>{teamDeButtonText}</Button>
-          </Link>
-        </CountryContainer>
-        <CountryContainer className="col-md-6 d-flex flex-column align-items-center">
-          <ImageContainer className="d-flex justify-content-center w-100 align-items-center">
-            <Image className="col-xs-8 col-sm-10 col-md-11 col-lg-10" src={teamSaImage.url} alt={teamSaImage.title} />
-          </ImageContainer>
-          <Link route={RouteNames.TeamSA} passHref>
-            <Button>{teamSaButtonText}</Button>
-          </Link>
-        </CountryContainer>
-      </div>
-      <div className="row justify-content-md-center">
-        <div className="col-lg-8">
-          <H1>{paragraphTwoTitle}</H1>
-          <StyledMarkdown source={paragraphTwoText} />
+        <div className="row justify-content-md-center">
+          <CountryContainer className="col-md-6 d-flex flex-column align-items-center">
+            <ImageContainer className="d-flex justify-content-center w-100 align-items-center">
+              <Image className="col-xs-8 col-sm-10 col-md-11 col-lg-10" src={teamDeImage.url} alt={teamDeImage.title} />
+            </ImageContainer>
+            <Link route={RouteNames.TeamDE} passHref>
+              <ButtonLink>{teamDeButtonText}</ButtonLink>
+            </Link>
+          </CountryContainer>
+          <CountryContainer className="col-md-6 d-flex flex-column align-items-center">
+            <ImageContainer className="d-flex justify-content-center w-100 align-items-center">
+              <Image className="col-xs-8 col-sm-10 col-md-11 col-lg-10" src={teamSaImage.url} alt={teamSaImage.title} />
+            </ImageContainer>
+            <Link route={RouteNames.TeamSA} passHref>
+              <ButtonLink>{teamSaButtonText}</ButtonLink>
+            </Link>
+          </CountryContainer>
         </div>
-      </div>
+      </SectionContainer>
+      <SectionContainer>
+        <div className="row justify-content-md-center">
+          <div className="col-lg-8">
+            <H1>{paragraphTwoTitle}</H1>
+            <StyledMarkdown source={paragraphTwoText} />
+          </div>
+        </div>
 
-      <PartnersList partnersList={partnersListOne} />
+        <StyledPartnerList partnersList={partnersListOne} />
 
-      <div className="row">
-        <div className="col d-flex flex-column align-items-center">
-          <Link route={RouteNames.BecomePartner} passHref>
-            <Button>{partnersButtonText}</Button>
-          </Link>
+        <div className="row">
+          <div className="col d-flex flex-column align-items-center">
+            <Link route={RouteNames.BecomePartner} passHref>
+              <Button>{partnersButtonText}</Button>
+            </Link>
+          </div>
         </div>
-      </div>
-      <div className="row justify-content-md-center">
-        <div className="col-lg-8">
-          <H1>{paragraphThreeTitle}</H1>
-          <StyledMarkdown source={paragraphThreeText} />
+      </SectionContainer>
+      <SectionContainer>
+        <div className="row justify-content-md-center">
+          <div className="col-lg-8">
+            <H1>{paragraphThreeTitle}</H1>
+            <StyledMarkdown source={paragraphThreeText} />
+          </div>
         </div>
-      </div>
 
-      <PartnersList partnersList={partnersListTwo} />
+        <StyledPartnerList partnersList={partnersListTwo} />
+      </SectionContainer>
     </div>
 
     <Banner
