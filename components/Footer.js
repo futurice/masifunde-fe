@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
 import styled from 'styled-components'
+import { rem } from 'polished'
 
 import { Link, RouteNames } from '../routes'
 
@@ -34,6 +35,10 @@ const socialStyle = {
   marginRight: 10,
   cursor: 'pointer',
 }
+
+const FooterContainer = styled.div`
+  margin-top: ${rem('61px')};
+`
 
 const SocialLink = styled.a`
   color: #444444;
@@ -74,7 +79,7 @@ function Footer({
   datenschutzText,
 }) {
   return (
-    <Container className="footer">
+    <FooterContainer className="footer">
       <Container style={containerStyle}>
         <div className="row" style={LinksContainer}>
 
@@ -201,7 +206,7 @@ function Footer({
           </Col>
         </Row>
       </Container>
-    </Container>
+    </FooterContainer>
   )
 }
 
