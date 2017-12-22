@@ -14,7 +14,7 @@ import Markdown from '../../components/Markdown'
 import PartnersList, { propTypes as partnersListPropTypes } from '../../components/PartnersList'
 import { imagePropTypes } from '../../propTypes/image'
 
-const Heading2 = styled.h2`
+const H1 = styled.h1`
   text-align: center;
   margin-bottom: 3rem;
 `
@@ -76,7 +76,7 @@ const About = ({
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-lg-8 d-flex flex-column align-items-center">
-          <Heading2>{paragraphOneTitle}</Heading2>
+          <H1>{paragraphOneTitle}</H1>
           <StyledMarkdownNoMarginBottom className="w-100" source={paragraphOneText} />
         </div>
       </div>
@@ -100,7 +100,7 @@ const About = ({
       </div>
       <div className="row justify-content-md-center">
         <div className="col-lg-8">
-          <Heading2>{paragraphTwoTitle}</Heading2>
+          <H1>{paragraphTwoTitle}</H1>
           <StyledMarkdown source={paragraphTwoText} />
         </div>
       </div>
@@ -116,7 +116,7 @@ const About = ({
       </div>
       <div className="row justify-content-md-center">
         <div className="col-lg-8">
-          <Heading2>{paragraphThreeTitle}</Heading2>
+          <H1>{paragraphThreeTitle}</H1>
           <StyledMarkdown source={paragraphThreeText} />
         </div>
       </div>
