@@ -15,22 +15,28 @@ import Project from '../../components/Project'
 import HorizontalRuler from '../../components/HorizontalRuler'
 import { RouteNames } from '../../routes'
 
-const H1 = styled.h1`
+const H2 = styled.h2`
   text-align: center;
   color: ${props => props.theme.orange};
 `
 
-const CenteredMarkdown = styled(Markdown)`
-  text-align: center;
+const H1 = styled.h1`
+  margin-bottom: 1.5rem;
 `
 
-const StyledYouTubeVideo = YouTubeVideo.extend`
-  margin-top: 9rem;
-  margin-bottom: 4.5rem;
+const CenteredMarkdown = styled(Markdown)`
+  text-align: center;
+  margin-bottom: 5rem;
 `
 
 const ProjectsContainer = styled.div`
-  margin-bottom: 4.5rem;
+  margin-bottom: 2.5rem;
+  
+  @media (min-width: 768px) {
+    margin-bottom: 6rem;
+    margin-left: 8%;
+    margin-right: 8%;
+  }
 `
 
 const ApproachSa = ({
@@ -52,9 +58,9 @@ const ApproachSa = ({
       backgroundPositionX="80%"
     />
     <Container>
-      <H1>{title}</H1>
+      <H2>{title}</H2>
       <HorizontalRuler />
-      <h2>{introTitle}</h2>
+      <H1>{introTitle}</H1>
       <CenteredMarkdown source={introMarkdown} />
       <ProjectsContainer className="row">
         {projects.map(project => (
@@ -67,7 +73,7 @@ const ApproachSa = ({
           />
         ))}
       </ProjectsContainer>
-      <StyledYouTubeVideo youtubeVideo={youTubeVideo} />
+      <YouTubeVideo youtubeVideo={youTubeVideo} />
     </Container>
     <Banner
       headline={bannerTitle}

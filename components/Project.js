@@ -13,17 +13,21 @@ const H2 = styled.h2`
   font-size: 1rem;
   font-weight: bold;
   margin-top: 1.1rem;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.1rem;
+`
+
+const ProjectContainer = styled.div`
+  margin-bottom: 1.5rem;
 `
 
 const Project = ({
   className, image, name, description,
 }) => (
-  <div className={className}>
+  <ProjectContainer className={className}>
     <ProjectImage className="mx-auto d-block" src={image.url} alt={image.tile} />
     <H2>{name}</H2>
     <Markdown source={description} />
-  </div>)
+  </ProjectContainer>)
 
 Project.propTypes = {
   className: PropTypes.string.isRequired,

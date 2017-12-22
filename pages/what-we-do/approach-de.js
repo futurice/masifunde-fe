@@ -18,12 +18,9 @@ const H1 = styled.h1`
   text-align: center;
 `
 
-const Tagline = styled.p`
+const H2 = styled.h2`
+  margin-bottom: 1.5rem;
   color: ${props => props.theme.orange};
-  margin-top: 4.5rem;
-  text-align: center;
-  font-size: 38px;
-  font-weight: bold;
 `
 
 const CenteredMarkdown = styled(Markdown)`
@@ -51,7 +48,7 @@ const ApproachDe = ({
       heroSize="small"
     />
     <Container>
-      <Tagline>{title}</Tagline>
+      <H2>{title}</H2>
       <HorizontalRuler />
       <H1>{introHeading}</H1>
       <CenteredMarkdown source={introText} />

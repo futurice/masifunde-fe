@@ -60,7 +60,7 @@ Stat.propTypes = {
   number: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   sourceMarkdown: PropTypes.string,
-  superscriptText: PropTypes.string.isRequired,
+  superscriptText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   sourceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 }
 
