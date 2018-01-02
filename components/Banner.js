@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import Button from './Button'
 import { Link } from '../routes'
-import { headerText, rem } from '../styling/typography'
+import { titleText, rem } from '../styling/typography'
 import { mdBreakpoint, lgBreakpoint, smBreakpoint } from '../styling/breakpoints'
 
 const BannerWrapper = styled.div`
@@ -25,7 +25,7 @@ const BannerContainer = styled.div`
 `
 
 const Headline = styled.span`
-  ${headerText}
+  ${titleText}
   color: white;
   font-size: ${rem('24px')};
   font-weight: bold;
