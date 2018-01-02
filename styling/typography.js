@@ -32,7 +32,7 @@ export const headerText = css`
   word-wrap: break-word;
 `
 
-export const pageHeaderText = css`
+export const pageTitleText = css`
   ${headerText}
   color: ${theme.orangeRed};
   font-size: ${rem('30px')};
@@ -50,7 +50,7 @@ export const pageHeaderText = css`
   }
 `
 
-export const sectionHeaderText = css`
+export const sectionTitleText = css`
   ${headerText}
   color: ${theme.orangeRed};
   font-size: ${rem('24px')};
@@ -69,7 +69,7 @@ export const sectionHeaderText = css`
   }
 `
 
-export const subsectionHeaderText = css`
+export const subsectionTitleText = css`
   ${headerText}
   color: ${theme.pineCone};
   font-size: ${rem('26px')};
