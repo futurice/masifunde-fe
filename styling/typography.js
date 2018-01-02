@@ -24,7 +24,7 @@ export const bodyText = css`
   line-height: 1.39;
 `
 
-export const headerText = css`
+export const titleText = css`
   font-family: ${headerFont};
   font-weight: 800;
   text-align: center;
@@ -33,7 +33,7 @@ export const headerText = css`
 `
 
 export const pageTitleText = css`
-  ${headerText}
+  ${titleText}
   color: ${theme.orangeRed};
   font-size: ${rem('30px')};
   font-weight: 800;
@@ -51,7 +51,7 @@ export const pageTitleText = css`
 `
 
 export const sectionTitleText = css`
-  ${headerText}
+  ${titleText}
   color: ${theme.orangeRed};
   font-size: ${rem('24px')};
   font-weight: 800;
@@ -70,7 +70,7 @@ export const sectionTitleText = css`
 `
 
 export const subsectionTitleText = css`
-  ${headerText}
+  ${titleText}
   color: ${theme.pineCone};
   font-size: ${rem('26px')};
   font-weight: 500;
