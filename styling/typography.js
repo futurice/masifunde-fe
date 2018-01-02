@@ -71,6 +71,7 @@ export const sectionTitleText = css`
 
 export const subsectionTitleText = css`
   ${titleText}
+  text-align: left;
   color: ${theme.pineCone};
   font-size: ${rem('26px')};
   font-weight: 500;
