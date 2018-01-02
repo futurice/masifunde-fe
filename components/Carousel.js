@@ -7,6 +7,7 @@ import _throttle from 'lodash/throttle'
 import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
 import { jpgCompression } from '../utils/constants'
+import CustomContainer from './CustomContainer'
 
 const H3 = styled.h3`
   font-weight: bold;
@@ -14,7 +15,7 @@ const H3 = styled.h3`
 `
 
 const CarouselTextContainer = styled.div`
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 6rem 1.5rem 4rem;
   color: white;
 `
 
@@ -104,7 +105,7 @@ const mobileImageHidden = mobileImage => mobileImage.offsetHeight === 0
 
 class MasifundeCarousel extends Component {
   componentDidMount = () => {
-    this.resizeCarousel()
+    window.requestAnimationFrame(() => this.resizeCarousel())
     window.addEventListener('resize', this.throttleResizeCarousel, true)
   }
 
@@ -175,4 +176,10 @@ MasifundeCarousel.propTypes = {
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
 }
 
-export default MasifundeCarousel
+const ContainedCarousel = props => (
+  <CustomContainer>
+    <MasifundeCarousel {...props} />
+  </CustomContainer>
+)
+
+export default ContainedCarousel

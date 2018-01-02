@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import CustomContainer from './CustomContainer'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -37,16 +38,17 @@ VideoContainer.propTypes = {
 const YouTubeVideo = styled(VideoContainer)`
   position: relative;
   padding-bottom: 54%; /* 16:9 */
-  padding-top: 25px;
   height: 0;
   margin-bottom: 4.5rem;
-  margin-left: -15px;
-  margin-right: -15px;
   @media (min-width: 576px) {
     margin-bottom: 8rem;
-    margin-left: 0;
-    margin-right: 0;
   }
 `
 
-export default YouTubeVideo
+const ContainedYouTubeVideo = props => (
+  <CustomContainer>
+    <YouTubeVideo {...props} />
+  </CustomContainer>
+)
+
+export default ContainedYouTubeVideo
