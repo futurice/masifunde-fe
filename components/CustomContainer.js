@@ -2,7 +2,20 @@ import styled from 'styled-components'
 import { Container } from 'reactstrap'
 
 const CustomContainer = styled(Container)`
-  @media (max-width: 991.99px) {
+  @media (max-width: ${(props) => {
+    switch (props.containAfter) {
+      case 'xs':
+        return '575.99px'
+      case 'sm':
+        return '767.99px'
+      case 'md':
+        return '991.99px'
+      case 'lg':
+        return '1199.99px'
+      default:
+        return '767.99px'
+    }
+  }}) {
     padding-left: 0;
     padding-right: 0;
     margin-left: 0;

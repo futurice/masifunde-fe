@@ -46,7 +46,7 @@ const YouTubeVideo = styled(VideoContainer)`
 `
 
 const ContainedYouTubeVideo = props => (
-  <CustomContainer>
+  <CustomContainer containAfter="md" >
     <YouTubeVideo {...props} />
   </CustomContainer>
 )
