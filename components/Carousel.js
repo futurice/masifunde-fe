@@ -7,7 +7,7 @@ import _throttle from 'lodash/throttle'
 import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
 import { jpgCompression } from '../utils/constants'
-import CustomContainer from './CustomContainer'
+import ConditionalContainer from './ConditionalContainer'
 
 const H3 = styled.h3`
   font-weight: bold;
@@ -171,9 +171,9 @@ MasifundeCarousel.propTypes = {
 }
 
 const ContainedCarousel = props => (
-  <CustomContainer containAfter="md" >
+  <ConditionalContainer containAfter="md" >
     <MasifundeCarousel {...props} />
-  </CustomContainer>
+  </ConditionalContainer>
 )
 
 export default ContainedCarousel

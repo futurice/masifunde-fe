@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import CustomContainer from './CustomContainer'
+import ConditionalContainer from './ConditionalContainer'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -46,9 +46,9 @@ const YouTubeVideo = styled(VideoContainer)`
 `
 
 const ContainedYouTubeVideo = props => (
-  <CustomContainer containAfter="md" >
+  <ConditionalContainer containAfter="md" >
     <YouTubeVideo {...props} />
-  </CustomContainer>
+  </ConditionalContainer>
 )
 
 export default ContainedYouTubeVideo
