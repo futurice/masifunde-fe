@@ -2,7 +2,7 @@
 import { css } from 'styled-components'
 
 export const handwritten = css`
-    font: normal 44px banaueregular;
+    font: normal 44px banaueregular, sans-serif;
 `
 
 export const pageTitle = css`
