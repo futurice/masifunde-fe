@@ -7,9 +7,10 @@ import _throttle from 'lodash/throttle'
 
 import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
-import { rem } from '../styling/typography'
+import { bodyText, rem } from '../styling/typography'
 import { jpgCompression } from '../utils/constants'
 import ConditionalContainer from './ConditionalContainer'
+import { mdBreakpoint } from '../styling/breakpoints'
 
 const H3 = styled.h3`
   font-weight: bold;
@@ -17,8 +18,24 @@ const H3 = styled.h3`
 `
 
 const CarouselTextContainer = styled.div`
-  padding: 1.5rem 6rem 1.5rem 4rem;
+  padding: 3rem;
   color: white;
+
+  h3 {
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    ${bodyText}
+    color: white;
+    margin: 0 0 2rem 0;
+  }
+
+  @media (min-width: ${mdBreakpoint}) {
+    // Don't let the text run into the next-slide button
+    padding-right: calc(70px + 1rem);
+  }
 `
 
 const Image = styled.div`
@@ -157,8 +174,8 @@ class MasifundeCarousel extends Component {
               <Image className="d-none d-md-block col-md-4 col-lg-3" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
               <MobileImage className="d-md-none p-0 w-100 h-100" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
               <CarouselTextContainer className="col-md-8 col-lg-9">
-                <H3 className="row">{item.heading}</H3>
-                <Markdown className="row" source={item.text} />
+                <H3>{item.heading}</H3>
+                <Markdown source={item.text} />
               </CarouselTextContainer>
             </SlideRow>
           ))}
