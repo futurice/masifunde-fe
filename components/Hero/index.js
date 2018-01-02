@@ -2,6 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
+import {
+  largeBreakpoint,
+  mediumBreakpoint,
+  smallBreakpoint,
+} from '../../styling/breakpoints'
 import Headline, {
   HEADLINE_MIDDLE,
   propTypes as headlinePropTypes,
@@ -20,27 +25,27 @@ const HeroImage = styled.div`
   max-height: calc(100vh - ${props => props.theme.headerHeight});
   margin-top: -${props => props.theme.pagePaddingMobile};
   margin-bottom: 3.5rem;
-  @media (min-width: 576px) {
+  @media (min-width: ${smallBreakpoint}) {
     margin-bottom: 6.25rem;
     margin-top: -${props => props.theme.pagePadding};
   }
 
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: ${mediumBreakpoint}) {
     height: 550px;
   }
 
-  @media screen and (min-width: 991px) {
+  @media screen and (min-width: ${largeBreakpoint}) {
     height: 700px;
   }
-  
+
   ${({ size }) => size === HERO_SMALL && css`
     height: 300px;
-    
-    @media screen and (min-width: 767px) {
+
+    @media screen and (min-width: ${mediumBreakpoint}) {
       height: 400px;
     }
 
-    @media screen and (min-width: 991px) {
+    @media screen and (min-width: ${largeBreakpoint}) {
       height: 500px;
     }
   `}

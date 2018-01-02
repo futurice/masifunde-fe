@@ -2,22 +2,24 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+import { smallBreakpoint } from '../styling/breakpoints'
+
 const LocationsList = styled.ul`
-  @media (min-width: 576px) {
+  @media (min-width: ${smallBreakpoint}) {
     column-count: 2;
   }
-  
+
   @media (min-width: 992px) {
     margin-top: 0;
   }
   margin-top: 1rem;
-  list-style-type: none;  
+  list-style-type: none;
   margin-bottom: 0;
 `
 
 const LocationListItem = styled.li`
   padding: 0.6rem 1rem;
-  padding-left: 0;  
+  padding-left: 0;
 `
 
 const ImageContainer = styled.div`
@@ -34,7 +36,7 @@ const GroupName = Span.extend`
 
 const Email = Span.withComponent('a').extend`
   display: block;
-  word-break: break-all; 
+  word-break: break-all;
 `
 
 const Image = styled.img`

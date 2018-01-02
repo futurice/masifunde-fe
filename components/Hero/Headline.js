@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import { largeBreakpoint, mediumBreakpoint } from '../../styling/breakpoints'
 import { headerFont, rem } from '../../styling/typography'
 
 export const HEADLINE_MIDDLE = 'middle'
@@ -19,7 +20,7 @@ const Headline = styled.span`
   line-height: 1.1;
   max-width: 400px;
 
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: ${mediumBreakpoint}) {
     font-size: ${rem('36px')};
     line-height: 1.11;
     padding-left: 25px;
@@ -27,7 +28,7 @@ const Headline = styled.span`
     margin-bottom: ${({ placement }) => (placement === HEADLINE_MIDDLE ? '0' : '120px')};
   }
 
-  @media screen and (min-width: 991px) {
+  @media screen and (min-width: ${largeBreakpoint}) {
     font-size: ${rem('48px')};
     line-height: 1.08;
     letter-spacing: ${rem('0.5px')};
@@ -37,9 +38,12 @@ const Headline = styled.span`
 `
 
 const GradientShadow = styled.div`
-  @media screen and (max-width: 767px) {
-    min-height: 40%;
-    background-image: linear-gradient(to bottom, rgba(48, 42, 31, 0), rgba(48, 42, 31, 0.7));
+  min-height: 40%;
+  background-image: linear-gradient(to bottom, rgba(48, 42, 31, 0), rgba(48, 42, 31, 0.7));
+
+  @media screen and (min-width: ${mediumBreakpoint}) {
+    min-height: none;
+    background-image: none;
   }
 `
 

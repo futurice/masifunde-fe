@@ -13,6 +13,7 @@ import Hero from '../../components/Hero'
 import Markdown from '../../components/Markdown'
 import Button from '../../components/Button'
 import HorizontalRuler from '../../components/HorizontalRuler'
+import { smallBreakpoint } from '../../styling/breakpoints'
 import { h3 } from '../../styling/typography'
 
 const Paragraph = styled(Markdown)`
@@ -50,7 +51,7 @@ const Section = ({
 const SectionContainer = styled.div`
   padding: 1.4rem 0;
 
-  @media (min-width: 576px) {
+  @media (min-width: ${smallBreakpoint}) {
     padding: 3rem 0;
   }
 `
@@ -59,7 +60,7 @@ const StyledRuler = styled(HorizontalRuler)`
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 
-  @media (min-width: 576px) {
+  @media (min-width: ${smallBreakpoint}) {
     margin-top: 3rem;
     margin-bottom: 3rem;
   }
