@@ -2,7 +2,7 @@
 import { css } from 'styled-components'
 import { rem as polishedRem } from 'polished'
 
-import { largeBreakpoint, mediumBreakpoint } from './breakpoints'
+import { lgBreakpoint, mdBreakpoint } from './breakpoints'
 import theme from './theme'
 
 export const defaultFont = 'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
@@ -39,11 +39,11 @@ export const pageHeaderText = css`
   font-weight: 800;
   line-height: 1;
 
-  @media (min-width: ${mediumBreakpoint}) {
+  @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('40px')};
   }
 
-  @media (min-width: ${largeBreakpoint}) {
+  @media (min-width: ${lgBreakpoint}) {
     font-size: ${rem('48px')};
     letter-spacing: ${rem('0.5px')};
     line-height: 1.08;
@@ -58,13 +58,13 @@ export const sectionHeaderText = css`
   line-height: 1.25;
   letter-spacing: ${rem('-0.3px')};
 
-  @media (min-width: ${mediumBreakpoint}) {
+  @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('34px')};
     line-height: 1.47;
     letter-spacing: ${rem('-0.4px')};
   }
 
-  @media (min-width: ${largeBreakpoint}) {
+  @media (min-width: ${lgBreakpoint}) {
     font-size: ${rem('48px')};
   }
 `
@@ -77,11 +77,11 @@ export const subsectionHeaderText = css`
   line-height: 1.39;
   letter-spacing: ${rem('-0.3px')};
 
-  @media (min-width: ${mediumBreakpoint}) {
+  @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('26px')};
   }
 
-  @media (min-width: ${largeBreakpoint}) {
+  @media (min-width: ${lgBreakpoint}) {
     font-size: ${rem('32px')};
   }
 `

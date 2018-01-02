@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { smallBreakpoint } from '../styling/breakpoints'
+import { smBreakpoint } from '../styling/breakpoints'
 
 const LocationsList = styled.ul`
-  @media (min-width: ${smallBreakpoint}) {
+  @media (min-width: ${smBreakpoint}) {
     column-count: 2;
   }
 

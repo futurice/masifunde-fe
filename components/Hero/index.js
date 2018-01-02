@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 import {
-  largeBreakpoint,
-  mediumBreakpoint,
-  smallBreakpoint,
+  lgBreakpoint,
+  mdBreakpoint,
+  smBreakpoint,
 } from '../../styling/breakpoints'
 import Headline, {
   HEADLINE_MIDDLE,
@@ -25,27 +25,27 @@ const HeroImage = styled.div`
   max-height: calc(100vh - ${props => props.theme.headerHeight});
   margin-top: -${props => props.theme.pagePaddingMobile};
   margin-bottom: 3.5rem;
-  @media (min-width: ${smallBreakpoint}) {
+  @media (min-width: ${smBreakpoint}) {
     margin-bottom: 6.25rem;
     margin-top: -${props => props.theme.pagePadding};
   }
 
-  @media screen and (min-width: ${mediumBreakpoint}) {
+  @media screen and (min-width: ${mdBreakpoint}) {
     height: 550px;
   }
 
-  @media screen and (min-width: ${largeBreakpoint}) {
+  @media screen and (min-width: ${lgBreakpoint}) {
     height: 700px;
   }
 
   ${({ size }) => size === HERO_SMALL && css`
     height: 300px;
 
-    @media screen and (min-width: ${mediumBreakpoint}) {
+    @media screen and (min-width: ${mdBreakpoint}) {
       height: 400px;
     }
 
-    @media screen and (min-width: ${largeBreakpoint}) {
+    @media screen and (min-width: ${lgBreakpoint}) {
       height: 500px;
     }
   `}

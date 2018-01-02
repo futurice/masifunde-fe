@@ -8,7 +8,7 @@ import withAnalytics from './withAnalytics'
 import withLoadingIndicator from './withLoadingIndicator'
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
-import { smallBreakpoint } from '../styling/breakpoints'
+import { smBreakpoint } from '../styling/breakpoints'
 import { bodyText, pageHeaderText, sectionHeaderText, subsectionHeaderText, rootFontSize } from '../styling/typography'
 import theme from '../styling/theme'
 
@@ -87,7 +87,7 @@ injectGlobal`
 const LayoutChildrenContainer = styled.div`
   padding-top: calc(${props => props.theme.headerHeight} + ${props => props.theme.pagePaddingMobile});
 
-  @media (min-width: ${smallBreakpoint}) {
+  @media (min-width: ${smBreakpoint}) {
     padding-top: calc(${props => props.theme.headerHeight} + ${props => props.theme.pagePadding});
   }
 `
