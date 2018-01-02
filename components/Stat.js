@@ -1,25 +1,26 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
-import { handwritten } from '../styling/typography'
+import { handwrittenText, rem } from '../styling/typography'
 import Source from './Source'
 
-const CenteredSpan = styled.span`
-  text-align: center;
-  max-width: 200px;
+const StatContainer = styled.div`
+  margin-bottom: 30px;
+  font-size: ${rem('18px')};
+  font-weight: bold;
 `
 
 const FixedHeight = styled.div`
   height: 65px;
 `
 
-const StatContainer = styled.div`
-  margin-bottom: 30px;
-  font-weight: bold;
+const CenteredSpan = styled.span`
+  text-align: center;
+  max-width: 200px;
 `
 
 const Number = CenteredSpan.extend`
-  ${handwritten};
+  ${handwrittenText};
   ${props => props.highlight && css`color: ${props.theme.blue};`}
 `
 

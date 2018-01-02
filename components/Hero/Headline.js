@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { rem } from 'polished/lib/index'
+
+import { rem } from '../../styling/typography'
 
 export const HEADLINE_MIDDLE = 'middle'
 export const HEADLINE_BOTTOM = 'bottom'

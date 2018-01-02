@@ -16,7 +16,7 @@ import { Link, RouteNames } from '../../routes'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import HorizontalRuler from '../../components/HorizontalRuler'
-import { sectionTitle } from '../../styling/typography'
+import { h2Text } from '../../styling/typography'
 import Markdown from '../../components/Markdown'
 
 const BoldHeading = styled.h2`
@@ -55,7 +55,7 @@ const ProjectContainer = styled.div`
 `
 
 const Paragraph = styled.p`
-  ${sectionTitle};
+  ${h2Text};
   color: ${props => props.theme.orange};
   font-weight: bold;
   text-align: center;

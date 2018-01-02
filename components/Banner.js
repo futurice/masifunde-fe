@@ -5,6 +5,8 @@ import styled from 'styled-components'
 
 import Button from './Button'
 import { Link } from '../routes'
+import { headerText, rem } from '../styling/typography'
+import { mediumBreakpoint, largeBreakpoint } from '../styling/breakpoints'
 
 const BannerWrapper = styled.div`
   background-color: #FE9933;
@@ -17,26 +19,36 @@ const BannerWrapper = styled.div`
 
 const BannerContainer = styled.div`
   height: auto;
-  min-height: 350px;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  min-height: ${rem('412px')};
+  padding-top: ${rem('24px')};
+  padding-bottom: ${rem('24px')}
 `
 
 const Headline = styled.span`
-  font-weight: bold;
-  width: 100%;
-  margin-bottom: 20px;
-  text-align: center;
+  ${headerText}
   color: white;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  font-size: ${rem('24px')};
+  font-weight: bold;
   hyphens: auto;
-  font-size: 1.5rem;
-  line-height: 1.3;
-  
-  @media (min-width: 768px) {
-    font-size: 2.1rem;
+  letter-spacing: ${rem('0.2px')};
+  line-height: 1.25;
+  margin-bottom: ${rem('20px')};
+  overflow-wrap: break-word;
+  text-align: left;
+
+
+  @media (min-width: ${mediumBreakpoint}) {
+    font-size: ${rem('34px')};
+    letter-spacing: ${rem('0.3px')};
+    line-height: 1.12;
+    text-align: center;
     width: 80%;
+  }
+
+  @media (min-width: ${largeBreakpoint}) {
+    font-size: ${rem('40px')};
+    letter-spacing: ${rem('0.4px')};
+    line-height: 1.1;
   }
 `
 

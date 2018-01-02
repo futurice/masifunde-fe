@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
 import styled from 'styled-components'
-import { rem } from 'polished'
 
 import { Link, RouteNames } from '../routes'
+import { rem } from '../styling/typography'
 
 const containerStyle = {
   marginBottom: 20,
@@ -43,7 +43,7 @@ const FooterContainer = styled.div`
 const SocialLink = styled.a`
   color: #444444;
   opacity: 0.6;
-  
+
   &:hover {
     color: #444444 !important;
     opacity: 1;
@@ -52,9 +52,9 @@ const SocialLink = styled.a`
 
 const Anchor = styled.a`
   color: ${props => props.theme.pineCone};
-    
+
   &:visited {
-    color: ${props => props.theme.pineCone};  
+    color: ${props => props.theme.pineCone};
   }
 `
 
@@ -63,7 +63,7 @@ const FooterImpressumContainer = styled(Row)`
 `
 
 const ContentfulImage = styled.img`
-  max-width: 100px; 
+  max-width: 100px;
   width: 100%;
 `
 

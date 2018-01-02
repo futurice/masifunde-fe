@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
+import { rem } from '../styling/typography'
+
 function CustomButton({ children, className, href }) {
   return (
     <a href={href} className={`btn ${className}`}>
@@ -21,7 +23,7 @@ CustomButton.defaultProps = {
 }
 
 const StyledButton = styled(CustomButton)`
-  font-size: 1.125rem;
+  font-size: ${rem('18px')};
   font-family: 'Lato', 'sans-serif';
   font-weight: bold;
   background-color: transparent;
@@ -36,14 +38,14 @@ const StyledButton = styled(CustomButton)`
   &:hover {
     color: white;
   }
-  
+
   ${props => props.type === 'primary' && css`
     font-weight: 900;
     color: ${props.theme.darkGreen};
     border-color: ${props.theme.green};
     padding-top: 0.35rem;
     padding-bottom: 0.35rem;
-    
+
     &:hover {
       background-color: ${props.theme.green};
     }
@@ -53,11 +55,11 @@ const StyledButton = styled(CustomButton)`
       color: white;
     `}
   `}
-  
+
   ${props => props.type === 'secondary' && css`
     color: ${props.theme.orangeRed};
     border-color: ${props.theme.orangeRed};
-    
+
     &:hover {
       background-color: ${props.theme.orangeRed};
     }
@@ -65,9 +67,9 @@ const StyledButton = styled(CustomButton)`
     ${props.isActive && `
       background-color: ${props.theme.orangeRed};
       color: white;
-    `}  
+    `}
   `}
-  
+
   ${props => props.type === 'banner' && css`
     color: white;
     border-color: white;
