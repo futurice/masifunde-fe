@@ -159,7 +159,7 @@ class MasifundeCarousel extends Component {
           {items.map(item => (
             <SlideRow key={`${item.heading} ${item.image.url}`} className="row">
               <Image className="d-none d-md-block col-md-4 col-lg-3" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
-              <MobileImage className="d-md-none p-0 col-md-4 col-lg-3 w-100 h-100" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
+              <MobileImage className="d-md-none p-0 w-100 h-100" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
               <CarouselTextContainer className="col-md-8 col-lg-9">
                 <H3 className="row">{item.heading}</H3>
                 <Markdown className="row" source={item.text} />
