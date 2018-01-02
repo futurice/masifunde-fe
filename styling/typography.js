@@ -5,6 +5,10 @@ import { rem as polishedRem } from 'polished'
 import { largeBreakpoint, mediumBreakpoint } from './breakpoints'
 import theme from './theme'
 
+export const defaultFont = 'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+export const headerFont = 'Raleway, sans-serif'
+export const handwrittenFont = 'banaueregular, sans-serif'
+
 export const rootFontSize = '16px'
 
 // Use this function to convert pixel font sizes from the designs to rem.
@@ -15,13 +19,13 @@ export function rem(px) {
 
 export const bodyText = css`
   color: #4F463F;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: ${defaultFont};
   font-weight: 400;
   line-height: 1.39;
 `
 
 export const headerText = css`
-  font-family: Raleway, sans-serif;
+  font-family: ${headerFont};
   font-weight: 800;
   text-align: center;
   width: 100%;
@@ -83,7 +87,7 @@ export const h3Text = css`
 `
 
 export const handwrittenText = css`
-  font-family: banaueregular, sans-serif;
+  font-family: ${handwrittenFont};
   font-size: ${rem('37px')};
   font-weight: normal;
 `

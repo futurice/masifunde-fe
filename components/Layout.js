@@ -47,12 +47,6 @@ injectGlobal`
     font-weight: 700;
   }
 
-  h1, h2, h3 {
-    font-family: 'Raleway';
-    font-weight: 800;
-    text-align: center;
-  }
-
   h1 {
     ${h1Text}
   }
