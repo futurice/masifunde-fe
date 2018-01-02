@@ -42,7 +42,7 @@ const GradientShadow = styled.div`
   background-image: linear-gradient(to bottom, rgba(48, 42, 31, 0), rgba(48, 42, 31, 0.7));
 
   @media screen and (min-width: ${mediumBreakpoint}) {
-    min-height: none;
+    min-height: 0;
     background-image: none;
   }
 `
