@@ -177,7 +177,7 @@ MasifundeCarousel.propTypes = {
 }
 
 const ContainedCarousel = props => (
-  <CustomContainer>
+  <CustomContainer containAfter="md" >
     <MasifundeCarousel {...props} />
   </CustomContainer>
 )
