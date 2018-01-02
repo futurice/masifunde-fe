@@ -55,13 +55,9 @@ const Home = ({
       buttonText={banner1ButtonText}
       buttonLink={RouteNames.WhatWeDo}
     />
-    <Container>
-      <h2>{youTubeVideoTitle}</h2>
-      <YouTubeVideo youtubeVideo={youTubeVideoUrl} />
-      <div>
-        <Carousel portrait={portrait} />
-      </div>
-    </Container>
+    <h2>{youTubeVideoTitle}</h2>
+    <YouTubeVideo youtubeVideo={youTubeVideoUrl} />
+    <Carousel portrait={portrait} />
     <Banner
       headline={banner2Title}
       buttonText={banner2ButtonText}

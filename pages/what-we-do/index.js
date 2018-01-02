@@ -111,8 +111,8 @@ const WhatWeDo = ({
       headlineShadow
       headlinePlacement="bottom"
     />
+    <YouTubeVideo youtubeVideo={youtubeVideo} />
     <Container>
-      <YouTubeVideo youtubeVideo={youtubeVideo} />
       <BoldHeading>{introHeading}</BoldHeading>
       <div className="row">
         {programmes.map(program => (

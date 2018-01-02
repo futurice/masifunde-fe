@@ -73,8 +73,8 @@ const ApproachSa = ({
           />
         ))}
       </ProjectsContainer>
-      <YouTubeVideo youtubeVideo={youTubeVideo} />
     </Container>
+    <YouTubeVideo youtubeVideo={youTubeVideo} />
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}
