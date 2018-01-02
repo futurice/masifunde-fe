@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { rem } from '../../styling/typography'
+import { headerFont, rem } from '../../styling/typography'
 
 export const HEADLINE_MIDDLE = 'middle'
 export const HEADLINE_BOTTOM = 'bottom'
@@ -14,7 +14,7 @@ const Headline = styled.span`
   color: white;
   font-size: ${rem('30px')};
   font-weight: 700;
-  font-family: Raleway, sans-serif;
+  font-family: ${headerFont};
   margin-bottom: ${rem('32px')};
   line-height: 1.1;
   max-width: 400px;

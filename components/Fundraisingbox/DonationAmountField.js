@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
+import { defaultFont } from '../../styling/typography'
 
 const SubHeader = styled.h3`
   margin-bottom: 1.4rem;
@@ -23,7 +24,7 @@ const EuroPostfix = styled.span`
   text-align: center;
   font-style: normal;
 
-  font-family: Lato, sans-serif;
+  font-family: ${defaultFont};
   color: ${props => props.theme.pineCone};
 `
 
@@ -47,7 +48,7 @@ const OtherAmountContainer = styled.div`
   bottom: 0.5rem;
   font-size: ${fontSize};
   margin-top: 0.6rem;
-  
+
   input {
     font-size: ${fontSize};
   }

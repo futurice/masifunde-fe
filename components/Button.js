@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-import { rem } from '../styling/typography'
+import { defaultFont, rem } from '../styling/typography'
 
 function CustomButton({ children, className, href }) {
   return (
@@ -24,7 +24,7 @@ CustomButton.defaultProps = {
 
 const StyledButton = styled(CustomButton)`
   font-size: ${rem('18px')};
-  font-family: 'Lato', 'sans-serif';
+  font-family: ${defaultFont};
   font-weight: bold;
   background-color: transparent;
   outline: none;
