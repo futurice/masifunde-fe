@@ -4,8 +4,10 @@ import Carousel from 'nuka-carousel'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import _throttle from 'lodash/throttle'
+
 import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
+import { rem } from '../styling/typography'
 import { jpgCompression } from '../utils/constants'
 import ConditionalContainer from './ConditionalContainer'
 
@@ -33,23 +35,23 @@ const StyledCarousel = styled(Carousel)`
   background: ${props => props.theme.blue};
   margin-bottom: 8rem;
   width: 100% !important;
-  
+
   &:hover {
     .slider-decorator-0, .slider-decorator-1 {
       opacity: 1;
     }
   }
-  
+
   .slider-decorator-2 {
-    bottom: -80px !important;
+    bottom: ${rem('-90px')} !important;
     z-index: 10;
-    
+
     li button {
       color: ${props => props.theme.pineCone} !important;
-      font-size: 2.4rem !important;
+      font-size: ${rem('48px')} !important;
     }
   }
-  
+
   .slider-decorator-0, .slider-decorator-1 {
     opacity: 0;
     transition: 300ms;
@@ -59,12 +61,12 @@ const StyledCarousel = styled(Carousel)`
     background-size: cover;
     width: 70px;
     height: 70px;
-    
+
     button {
       opacity: 0 !important;
     }
   }
-  
+
   .slider-decorator-0 {
     transform: rotateY(180deg) translateY(-50%) !important;
   }

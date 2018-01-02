@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import _chunk from 'lodash/chunk'
 import { Container } from 'reactstrap'
-import { rem } from 'polished'
 
 import TeamMember from '../../components/TeamMember'
 import { fetchContactPage } from '../../api/contact'
 import Head from '../../components/Head'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Markdown from '../../components/Markdown'
+import { rem } from '../../styling/typography'
 
 const MainHeading = styled.h1`
   text-align: center;

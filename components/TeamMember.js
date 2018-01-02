@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { rem } from 'polished'
 
+import { rem } from '../styling/typography'
 import { jpgCompression } from '../utils/constants'
 
 const Title = styled.div`

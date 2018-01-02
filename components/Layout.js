@@ -8,25 +8,18 @@ import withAnalytics from './withAnalytics'
 import withLoadingIndicator from './withLoadingIndicator'
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
-import { pageTitle, sectionTitle, subtitle } from '../styling/typography'
+import { bodyText, h1Text, h2Text, h3Text, rootFontSize } from '../styling/typography'
 import theme from '../styling/theme'
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
   html {
-    //font-size: 75%; //9pt
-
-    @media screen and (min-width: 768px) {
-      font-size: 91%; //11pt
-    }
-  }
+    font-size: ${rootFontSize};
+ }
 
   body {
-    font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight: 400;
-    color: #4F463F;
     background-color: #faf2e6;
-    line-height: 1.6;
+    ${bodyText}
   }
 
   @font-face {
@@ -61,15 +54,15 @@ injectGlobal`
   }
 
   h1 {
-    ${pageTitle}
+    ${h1Text}
   }
 
   h2 {
-    ${sectionTitle}
+    ${h2Text}
   }
 
   h3 {
-    ${subtitle}
+    ${h3Text}
   }
 
   p + p {
