@@ -27,18 +27,12 @@ const Image = styled.div`
   background-size: cover;
 `
 
-const MobileImage = styled.img`
-
-`
-
-const bootstrapColumnPadding = '15px'
+const MobileImage = styled.img``
 
 const StyledCarousel = styled(Carousel)`
   background: ${props => props.theme.blue};
   margin-bottom: 8rem;
-  margin-left: -${bootstrapColumnPadding};
-  margin-right: -${bootstrapColumnPadding};
-  width: calc(100% + ${bootstrapColumnPadding} + ${bootstrapColumnPadding}) !important;
+  width: 100% !important;
   
   &:hover {
     .slider-decorator-0, .slider-decorator-1 {
