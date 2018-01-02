@@ -6,13 +6,13 @@ import styled from 'styled-components'
 import Button from './Button'
 import { Link } from '../routes'
 import { headerText, rem } from '../styling/typography'
-import { mediumBreakpoint, largeBreakpoint } from '../styling/breakpoints'
+import { mediumBreakpoint, largeBreakpoint, smallBreakpoint } from '../styling/breakpoints'
 
 const BannerWrapper = styled.div`
   background-color: #FE9933;
   background: url(/static/images/banner-pattern.svg) repeat;
   margin-bottom: 4rem;
-  @media (min-width: 576px) {
+  @media (min-width: ${smallBreakpoint}) {
     margin-bottom: 6.25rem;
   }
 `

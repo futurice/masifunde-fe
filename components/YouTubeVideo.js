@@ -2,7 +2,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
 import ConditionalContainer from './ConditionalContainer'
+import { smallBreakpoint } from '../styling/breakpoints'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -40,7 +42,7 @@ const YouTubeVideo = styled(VideoContainer)`
   padding-bottom: 54%; /* 16:9 */
   height: 0;
   margin-bottom: 4.5rem;
-  @media (min-width: 576px) {
+  @media (min-width: ${smallBreakpoint}) {
     margin-bottom: 8rem;
   }
 `
