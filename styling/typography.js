@@ -82,7 +82,7 @@ export const h3Text = css`
   }
 
   @media (min-width: ${largeBreakpoint}) {
-    font-size: ${rem('48px')};
+    font-size: ${rem('32px')};
   }
 `
 
