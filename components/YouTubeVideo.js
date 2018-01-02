@@ -40,8 +40,12 @@ const YouTubeVideo = styled(VideoContainer)`
   padding-top: 25px;
   height: 0;
   margin-bottom: 4.5rem;
+  margin-left: -15px;
+  margin-right: -15px;
   @media (min-width: 576px) {
     margin-bottom: 8rem;
+    margin-left: 0;
+    margin-right: 0;
   }
 `
 
