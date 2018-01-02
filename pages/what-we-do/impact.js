@@ -50,7 +50,7 @@ StatsSection.propTypes = {
 }
 
 class Impact extends Component {
-  componentWillUnmount() {
+  componentWillMount() {
     superscript = 0
   }
   render() {
