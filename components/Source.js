@@ -68,9 +68,10 @@ class Source extends Component {
       placement,
       id,
     } = this.props
+    const sourceId = `Tooltip-${id}`
     return (
       <Fragment>
-        <Sup id={`Tooltip-${id}`}>
+        <Sup id={sourceId}>
           {superscriptText}
         </Sup>
         <SourceTooltip
@@ -78,7 +79,7 @@ class Source extends Component {
           placement={placement}
           toggle={this.toggle}
           autohide={false}
-          target={`Tooltip-${id}`}
+          target={sourceId}
         >
           <Span>Source</Span>
           <Markdown source={sourceMarkdown} />
