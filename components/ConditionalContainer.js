@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Container } from 'reactstrap'
 
-const CustomContainer = styled(Container)`
+const ConditionalContainer = styled(Container)`
   @media (max-width: ${(props) => {
     switch (props.containAfter) {
       case 'xs':
@@ -24,4 +24,4 @@ const CustomContainer = styled(Container)`
   }
 `
 
-export default CustomContainer
+export default ConditionalContainer
