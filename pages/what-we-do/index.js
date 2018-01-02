@@ -16,7 +16,7 @@ import { Link, RouteNames } from '../../routes'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import HorizontalRuler from '../../components/HorizontalRuler'
-import { smallBreakpoint } from '../../styling/breakpoints'
+import { smBreakpoint } from '../../styling/breakpoints'
 import { sectionHeaderText } from '../../styling/typography'
 import Markdown from '../../components/Markdown'
 
@@ -75,7 +75,7 @@ const ProgramContainer = styled.div`
 
 const LowerHorizontalRuler = HorizontalRuler.extend`
   margin-bottom: 7rem;
-  @media (min-width: ${smallBreakpoint}) {
+  @media (min-width: ${smBreakpoint}) {
     margin-bottom: 7rem;
   }
 `

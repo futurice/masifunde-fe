@@ -6,13 +6,13 @@ import styled from 'styled-components'
 import Button from './Button'
 import { Link } from '../routes'
 import { headerText, rem } from '../styling/typography'
-import { mediumBreakpoint, largeBreakpoint, smallBreakpoint } from '../styling/breakpoints'
+import { mdBreakpoint, lgBreakpoint, smBreakpoint } from '../styling/breakpoints'
 
 const BannerWrapper = styled.div`
   background-color: #FE9933;
   background: url(/static/images/banner-pattern.svg) repeat;
   margin-bottom: 4rem;
-  @media (min-width: ${smallBreakpoint}) {
+  @media (min-width: ${smBreakpoint}) {
     margin-bottom: 6.25rem;
   }
 `
@@ -37,7 +37,7 @@ const Headline = styled.span`
   text-align: left;
 
 
-  @media (min-width: ${mediumBreakpoint}) {
+  @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('34px')};
     letter-spacing: ${rem('0.3px')};
     line-height: 1.12;
@@ -45,7 +45,7 @@ const Headline = styled.span`
     width: 80%;
   }
 
-  @media (min-width: ${largeBreakpoint}) {
+  @media (min-width: ${lgBreakpoint}) {
     font-size: ${rem('40px')};
     letter-spacing: ${rem('0.4px')};
     line-height: 1.1;
