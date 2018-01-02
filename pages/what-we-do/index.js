@@ -17,7 +17,7 @@ import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import HorizontalRuler from '../../components/HorizontalRuler'
 import { smBreakpoint } from '../../styling/breakpoints'
-import { sectionHeaderText } from '../../styling/typography'
+import { sectionTitleText } from '../../styling/typography'
 import Markdown from '../../components/Markdown'
 
 const BoldHeading = styled.h2`
@@ -56,7 +56,7 @@ const ProjectContainer = styled.div`
 `
 
 const Paragraph = styled.p`
-  ${sectionHeaderText};
+  ${sectionTitleText};
   color: ${props => props.theme.orange};
   font-weight: bold;
   text-align: center;

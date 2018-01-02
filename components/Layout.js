@@ -9,7 +9,7 @@ import withLoadingIndicator from './withLoadingIndicator'
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
 import { smBreakpoint } from '../styling/breakpoints'
-import { bodyText, pageHeaderText, sectionHeaderText, subsectionHeaderText, rootFontSize } from '../styling/typography'
+import { bodyText, pageTitleText, sectionTitleText, subsectionTitleText, rootFontSize } from '../styling/typography'
 import theme from '../styling/theme'
 
 // eslint-disable-next-line no-unused-expressions
@@ -49,15 +49,15 @@ injectGlobal`
   }
 
   h1 {
-    ${pageHeaderText}
+    ${pageTitleText}
   }
 
   h2 {
-    ${sectionHeaderText}
+    ${sectionTitleText}
   }
 
   h3 {
-    ${subsectionHeaderText}
+    ${subsectionTitleText}
   }
 
   p + p {
