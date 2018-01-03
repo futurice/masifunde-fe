@@ -65,7 +65,7 @@ export const sectionTitleText = css`
   }
 
   @media (min-width: ${lgBreakpoint}) {
-    font-size: ${rem('48px')};
+    font-size: ${rem('40px')};
   }
 `
 
