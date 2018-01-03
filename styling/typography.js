@@ -91,4 +91,5 @@ export const handwrittenText = css`
   font-family: ${handwrittenFont};
   font-size: ${rem('37px')};
   font-weight: normal;
+  color: ${theme.pineCone};
 `
