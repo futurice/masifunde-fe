@@ -3,12 +3,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NavItem } from 'reactstrap'
 import { withRouter } from 'next/router'
+import styled from 'styled-components'
 
 import { Link } from '../../routes'
 import StyledLink from './Link'
 import Button from '../Button'
 
 const activeLinkBorderThickness = '3px'
+
+const StyledButton = styled(Button)`
+  font-size: 18px;
+`
 
 function NavigationLink({
   children,
@@ -30,11 +35,11 @@ function NavigationLink({
             </StyledLink>
           )
           : (
-            <Button
+            <StyledButton
               type="primary"
             >
               {children}
-            </Button>
+            </StyledButton>
           )
         }
       </Link>

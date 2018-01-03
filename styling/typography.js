@@ -9,7 +9,7 @@ export const defaultFont = 'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI",
 export const headerFont = 'Raleway, sans-serif'
 export const handwrittenFont = 'banaueregular, sans-serif'
 
-export const rootFontSize = '16px'
+export const rootFontSize = '18px'
 
 // Use this function to convert pixel font sizes from the designs to rem.
 // Example: rem('24px')
@@ -65,7 +65,7 @@ export const sectionTitleText = css`
   }
 
   @media (min-width: ${lgBreakpoint}) {
-    font-size: ${rem('48px')};
+    font-size: ${rem('40px')};
   }
 `
 
@@ -91,4 +91,5 @@ export const handwrittenText = css`
   font-family: ${handwrittenFont};
   font-size: ${rem('37px')};
   font-weight: normal;
+  color: ${theme.pineCone};
 `

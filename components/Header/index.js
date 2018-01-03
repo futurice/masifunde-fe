@@ -6,14 +6,16 @@ import styled from 'styled-components'
 
 import { Link, RouteNames } from '../../routes'
 import NavigationLink from './NavigationLink'
+import { rem } from '../../styling/typography'
 
 const HeaderWrapper = styled.div`
   background-color: #f4e3d6;
   box-shadow: -1px 1px 1px 1px rgba(250, 242, 230, 0.25);
+  font-size: ${rem('16px')}; 
 `
 
 const Logo = styled.img`
-  width: 11rem;
+  width: 9.5rem;
 `
 
 const StyledNavbar = styled(Navbar)`
