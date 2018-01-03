@@ -24,6 +24,7 @@ const ContentContainer = styled.div`
 
 const TeamContainer = styled.div`
   margin-bottom: ${rem('30px')};
+  font-size: 16px;
 `
 
 const TeamMember = ({

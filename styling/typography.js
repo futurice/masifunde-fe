@@ -9,7 +9,7 @@ export const defaultFont = 'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI",
 export const headerFont = 'Raleway, sans-serif'
 export const handwrittenFont = 'banaueregular, sans-serif'
 
-export const rootFontSize = '16px'
+export const rootFontSize = '18px'
 
 // Use this function to convert pixel font sizes from the designs to rem.
 // Example: rem('24px')

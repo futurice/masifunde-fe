@@ -1,11 +1,16 @@
 import styled from 'styled-components'
+import { lgBreakpoint } from '../../styling/breakpoints'
 
 const StyledLink = styled.a`
   font-weight: bold;
   text-align: right;
   white-space: nowrap;
   padding: 0.31rem 0;
-  margin-right: 2rem;
+  margin-right: 1rem;
+  
+  @media (min-width: ${lgBreakpoint}) {
+    margin-right: 1.5rem;
+  }
   color: inherit !important;
   margin-top: ${props => props.activeBorderThickness};
   margin-bottom: ${props => (props.isActive
