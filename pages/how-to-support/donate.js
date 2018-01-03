@@ -18,6 +18,9 @@ import DonationAmountField from '../../components/Fundraisingbox/DonationAmountF
 import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/utils'
 import Divider from '../../components/Fundraisingbox/Divider'
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
+import { rem } from '../../styling/typography'
+import { lgBreakpoint } from '../../styling/breakpoints'
+import DonateSectionTitle from '../../components/Fundraisingbox/DonateSectionTitle'
 
 const CountryLabel = styled.label`
   border-radius: 8px;
@@ -49,8 +52,24 @@ const CenteredMarkdown = styled(Markdown)`
   text-align: center;
 `
 
+const IntroMarkdown = styled(CenteredMarkdown)`
+  margin-bottom: 3.5rem;
+`
+
 const CountryLabelContainer = styled.div`
-  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+`
+
+const H1 = styled.h1`
+  margin-bottom: ${rem('15px')};
+`
+
+const DonateContainer = styled.div`
+  margin-bottom: 3rem;
+  
+  @media (min-width: ${lgBreakpoint}) {
+    margin-bottom: ${rem('116px')};
+  }
 `
 
 const DeProjectId = '3531'
@@ -133,11 +152,11 @@ class Donate extends Component {
     return (
       <Fragment>
         <Head title={metaTitle} description={metaDescription} />
-        <div className="container">
-          <h1>{introHeading}</h1>
+        <DonateContainer className="container">
+          <H1>{introHeading}</H1>
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <CenteredMarkdown source={introMarkdown} />
+              <IntroMarkdown source={introMarkdown} />
             </div>
           </div>
 
@@ -149,7 +168,7 @@ class Donate extends Component {
                 <Field name={fieldName.projectId}>
                   {({ input, meta }) => (
                     <Fragment>
-                      <h3>{section1title}</h3>
+                      <DonateSectionTitle>{section1title}</DonateSectionTitle>
                       <div className="offset-md-3 col-md-8">
                         <div className="row">
                           <CountryLabelContainer className="col-sm-6">
@@ -209,13 +228,13 @@ class Donate extends Component {
           />
 
           <Divider />
-          <h3>{section4Title}</h3>
+          <DonateSectionTitle>{section4Title}</DonateSectionTitle>
           <FundRaisingForm
             hiddenFields={{ ...this.state.fields }}
             onSubmit={this.submitForm}
             fundraisingboxIframeTitle={section5Title}
           />
-        </div>
+        </DonateContainer>
         <Banner
           headline={bannerTitle}
           buttonText={bannerButtonText}

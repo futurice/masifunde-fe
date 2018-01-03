@@ -6,9 +6,9 @@ import styled from 'styled-components'
 import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
+import DonateSectionTitle from './DonateSectionTitle'
 
-const SubHeader = styled.h3`
-  margin-bottom: 1.4rem;
+const SubHeader = styled(DonateSectionTitle)`
   margin-top: 1rem;
 `
 

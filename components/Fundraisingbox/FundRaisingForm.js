@@ -7,6 +7,7 @@ import _debounce from 'lodash/debounce'
 import countries from '../../utils/countries'
 import FundRaisingIframe from './FundRaisingIframe'
 import ErrorMessage from './ErrorMessage'
+import DonateSectionTitle from './DonateSectionTitle'
 
 const FundRaisingIfameContainer = styled.div`
   padding: 0;
@@ -21,7 +22,7 @@ const FormLabel = styled.span`
   }
 `
 
-const IframeTitle = styled.h3`
+const IframeTitle = styled(DonateSectionTitle)`
   margin-top: 1.5rem;
 `
 
