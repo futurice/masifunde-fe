@@ -10,24 +10,11 @@ import Button from '../../components/Button'
 import { Link, RouteNames } from '../../routes'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
-import Markdown from '../../components/Markdown'
 import PartnersList, { propTypes as partnersListPropTypes } from '../../components/PartnersList'
 import { imagePropTypes } from '../../propTypes/image'
-
-const H1 = styled.h1`
-  text-align: center;
-  margin-bottom: 1rem;
-`
-
-const StyledMarkdown = styled(Markdown)`
-  text-align: center;
-`
-
-const StyledMarkdownNoMarginBottom = StyledMarkdown.extend`
-  p {
-    margin-bottom: 0;
-  }
-`
+import IntroText from '../../components/IntroText'
+import PageIntro from '../../components/PageIntro'
+import PageSection from '../../components/PageSection'
 
 const Image = styled.img`
   width: 100%;
@@ -35,39 +22,44 @@ const Image = styled.img`
 `
 
 const CountryContainer = styled.div`
-  margin-top: 2rem;
+  margin-top: 1rem;
 `
 
 const ImageContainer = styled.div`
   flex-grow: 1;
   height: 270px;
 
-  @media screen and (min-width: 992px) { 
+  @media screen and (min-width: 992px) {
     height: 400px;
   }
 `
 
-const ButtonLink = styled(Button)`
+const TeamButton = Button.extend`
   margin-top: 3rem;
 `
+
+const CountryMap = ({ buttonText, image, route }) => (
+  <CountryContainer className="col-md-6 d-flex flex-column align-items-center">
+    <ImageContainer className="d-flex justify-content-center w-100 align-items-center">
+      <Image className="col-xs-8 col-sm-10 col-md-11 col-lg-10" src={image.url} alt={image.title} />
+    </ImageContainer>
+    <Link route={route} passHref>
+      <TeamButton>{buttonText}</TeamButton>
+    </Link>
+  </CountryContainer>
+)
+
+CountryMap.propTypes = {
+  buttonText: PropTypes.string.isRequired,
+  image: PropTypes.shape(imagePropTypes).isRequired,
+  route: PropTypes.string.isRequired,
+}
 
 const StyledPartnerList = styled(PartnersList)`
   margin-bottom: 2rem;
 `
 
-const SectionContainer = styled.div`
-  margin-bottom: 5rem;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 5rem;
-    
-    &:not(:last-of-type) {
-      margin-bottom: 7rem;
-    }
-  }
-`
-
-const About = ({
+const WhoWeAre = ({
   title,
   paragraphOneTitle,
   paragraphOneText,
@@ -89,6 +81,7 @@ const About = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
+
     <Hero
       backgroundPositionX="70%"
       headline={title}
@@ -96,62 +89,31 @@ const About = ({
       headlinePlacement="bottom"
       headlineShadow
     />
-    <div className="container">
-      <SectionContainer>
-        <div className="row justify-content-center">
-          <div className="col-lg-8 d-flex flex-column align-items-center">
-            <H1>{paragraphOneTitle}</H1>
-            <StyledMarkdownNoMarginBottom className="w-100" source={paragraphOneText} />
-          </div>
-        </div>
-        <div className="row justify-content-md-center">
-          <CountryContainer className="col-md-6 d-flex flex-column align-items-center">
-            <ImageContainer className="d-flex justify-content-center w-100 align-items-center">
-              <Image className="col-xs-8 col-sm-10 col-md-11 col-lg-10" src={teamDeImage.url} alt={teamDeImage.title} />
-            </ImageContainer>
-            <Link route={RouteNames.TeamDE} passHref>
-              <ButtonLink>{teamDeButtonText}</ButtonLink>
-            </Link>
-          </CountryContainer>
-          <CountryContainer className="col-md-6 d-flex flex-column align-items-center">
-            <ImageContainer className="d-flex justify-content-center w-100 align-items-center">
-              <Image className="col-xs-8 col-sm-10 col-md-11 col-lg-10" src={teamSaImage.url} alt={teamSaImage.title} />
-            </ImageContainer>
-            <Link route={RouteNames.TeamSA} passHref>
-              <ButtonLink>{teamSaButtonText}</ButtonLink>
-            </Link>
-          </CountryContainer>
-        </div>
-      </SectionContainer>
-      <SectionContainer>
-        <div className="row justify-content-md-center">
-          <div className="col-lg-8">
-            <H1>{paragraphTwoTitle}</H1>
-            <StyledMarkdown source={paragraphTwoText} />
-          </div>
-        </div>
 
-        <StyledPartnerList partnersList={partnersListOne} />
+    <PageIntro
+      title={paragraphOneTitle}
+      text={paragraphOneText}
+    >
+      <div className="row justify-content-md-center">
+        <CountryMap route={RouteNames.TeamDE} buttonText={teamDeButtonText} image={teamDeImage} />
+        <CountryMap route={RouteNames.TeamSA} buttonText={teamSaButtonText} image={teamSaImage} />
+      </div>
+    </PageIntro>
 
-        <div className="row">
-          <div className="col d-flex flex-column align-items-center">
-            <Link route={RouteNames.BecomePartner} passHref>
-              <Button>{partnersButtonText}</Button>
-            </Link>
-          </div>
-        </div>
-      </SectionContainer>
-      <SectionContainer>
-        <div className="row justify-content-md-center">
-          <div className="col-lg-8">
-            <H1>{paragraphThreeTitle}</H1>
-            <StyledMarkdown source={paragraphThreeText} />
-          </div>
-        </div>
+    <PageSection>
+      <h1>{paragraphTwoTitle}</h1>
+      <IntroText source={paragraphTwoText} />
+      <StyledPartnerList partnersList={partnersListOne} />
+      <Link route={RouteNames.BecomePartner} passHref>
+        <Button center>{partnersButtonText}</Button>
+      </Link>
+    </PageSection>
 
-        <StyledPartnerList partnersList={partnersListTwo} />
-      </SectionContainer>
-    </div>
+    <PageSection>
+      <h1>{paragraphThreeTitle}</h1>
+      <IntroText source={paragraphThreeText} />
+      <StyledPartnerList partnersList={partnersListTwo} />
+    </PageSection>
 
     <Banner
       headline={bannerHeadline}
@@ -161,7 +123,7 @@ const About = ({
   </div>
 )
 
-About.propTypes = {
+WhoWeAre.propTypes = {
   title: PropTypes.string.isRequired,
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
@@ -184,14 +146,14 @@ About.propTypes = {
   bannerText: PropTypes.string.isRequired,
 }
 
-About.defaultProps = {
+WhoWeAre.defaultProps = {
   partnersListOne: [],
   partnersListTwo: [],
   metaDescription: undefined,
 }
 
-About.getInitialProps = async function initialProps() {
+WhoWeAre.getInitialProps = async function initialProps() {
   return fetchWhoWeArePage()
 }
 
-export default LayoutWrapper(About)
+export default LayoutWrapper(WhoWeAre)

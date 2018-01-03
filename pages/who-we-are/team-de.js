@@ -1,26 +1,17 @@
 import React from 'react'
-import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
-import Markdown from '../../components/Markdown'
 import { fetchTeamDePage } from '../../api/whoWeAre'
 import { getLocaleFromQuery } from '../../utils/locale'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Banner from '../../components/Banner'
-import TeamMember from '../../components/TeamMember'
+import TeamMemberList from '../../components/TeamMemberList'
 import Head from '../../components/Head'
 import RegionalGroups from '../../components/RegionalGroups'
 import imagePropTypes from '../../propTypes/image'
 import { RouteNames } from '../../routes'
-
-const TeamMemberList = styled.div`
-  margin: 2rem 0 2.5rem 0;
-`
-
-const Paragraph = styled(Markdown)`
-  text-align: center;
-`
+import PageSection from '../../components/PageSection'
+import IntroText from '../../components/IntroText'
 
 const TeamDe = ({
   title,
@@ -37,29 +28,28 @@ const TeamDe = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Container>
+
+    <PageSection>
       <h1>{title}</h1>
-      <Paragraph source={pageDescription} />
-      <section>
-        <h2>{sectionOneTitle}</h2>
-        <Paragraph source={sectionOneText} />
-        <RegionalGroups regionalGroups={regionalGroups} />
-      </section>
-      <section>
-        <h2>{sectionTwoTitle}</h2>
-        <TeamMemberList className="d-flex flex-wrap">
-          {teamMembers.map(teamMember => (
-            <TeamMember
-              className="col-12 col-md-3 col-lg-2"
-              key={teamMember.name}
-              imageUrl={teamMember.image.url}
-              title={teamMember.name}
-              subtitle={teamMember.responsibilityArea}
-            />))
-          }
-        </TeamMemberList>
-      </section>
-    </Container>
+      <IntroText source={pageDescription} />
+    </PageSection>
+
+    <PageSection>
+      <h2>{sectionOneTitle}</h2>
+      <IntroText source={sectionOneText} />
+      <RegionalGroups regionalGroups={regionalGroups} />
+    </PageSection>
+
+    <PageSection>
+      <h2>{sectionTwoTitle}</h2>
+      <TeamMemberList
+        members={teamMembers}
+        title={member => member.name}
+        subtitle={member => member.responsibilityArea}
+        imageUrl={member => member.image.url}
+      />
+    </PageSection>
+
     <Banner
       buttonLink={RouteNames.BecomeVolunteer}
       buttonText={bannerButtonText}

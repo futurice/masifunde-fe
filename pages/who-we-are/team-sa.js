@@ -1,27 +1,27 @@
 import React from 'react'
-import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Head from '../../components/Head'
 import Banner from '../../components/Banner'
-import Markdown from '../../components/Markdown'
-import TeamMember from '../../components/TeamMember'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchTeamSaPage } from '../../api/whoWeAre'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import imagePropTypes from '../../propTypes/image'
 import { RouteNames } from '../../routes'
+import PageSection from '../../components/PageSection'
+import IntroText from '../../components/IntroText'
+import TeamMemberList from '../../components/TeamMemberList'
 
 const Image = styled.img`
   width: 100%;
 `
 
-const CenteredMarkdown = styled(Markdown)`
-  text-align: center;
-`
-
 const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   text-align: center;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -39,24 +39,24 @@ const TeamSa = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Container>
+
+    <PageSection>
       <h1>{introTitle}</h1>
-      <CenteredMarkdown source={introMarkdown} />
-      <ImageContainer className="d-flex justify-content-center align-items-center">
+      <IntroText source={introMarkdown} />
+      <ImageContainer>
         <Image className="col-md-6" src={introImage.url} alt={introImage.title} />
       </ImageContainer>
-      <div className="d-flex flex-wrap">
-        {teamMembers.map(teamMember => (
-          <TeamMember
-            className="col-12 col-md-3 col-lg-2"
-            key={`${teamMember.name} ${teamMember.image.title}`}
-            imageUrl={teamMember.image.url}
-            title={teamMember.name}
-            subtitle={teamMember.responsibilityArea}
-          />
-        ))}
-      </div>
-    </Container>
+    </PageSection>
+
+    <PageSection>
+      <TeamMemberList
+        members={teamMembers}
+        title={member => member.name}
+        subtitle={member => member.responsibilityArea}
+        imageUrl={member => member.image.url}
+      />
+    </PageSection>
+
     <Banner
       buttonLink={RouteNames.BecomeVolunteer}
       buttonText={bannerButtonText}

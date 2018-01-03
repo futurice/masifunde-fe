@@ -1,23 +1,27 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
+import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Button from './Button'
+import PageSection from './PageSection'
 import { Link } from '../routes'
 import { titleText, rem } from '../styling/typography'
-import { mdBreakpoint, lgBreakpoint, smBreakpoint } from '../styling/breakpoints'
+import { mdBreakpoint, lgBreakpoint } from '../styling/breakpoints'
 
-const BannerWrapper = styled.div`
+const BannerWrapper = styled(PageSection).attrs({ contained: false })`
   background-color: #FE9933;
   background: url(/static/images/banner-pattern.svg) repeat;
-  margin-bottom: 4rem;
-  @media (min-width: ${smBreakpoint}) {
-    margin-bottom: 6.25rem;
-  }
+  display: flex;
 `
 
-const BannerContainer = styled.div`
+const BannerContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   height: auto;
   min-height: ${rem('412px')};
   padding-top: ${rem('24px')};
@@ -54,8 +58,8 @@ const Headline = styled.span`
 
 function Banner({ headline, buttonText, buttonLink }) {
   return (
-    <BannerWrapper className="d-flex">
-      <BannerContainer className="container d-flex flex-column align-items-center justify-content-center">
+    <BannerWrapper>
+      <BannerContainer>
         <Headline>{headline}</Headline>
         <Link route={buttonLink} passHref>
           <Button type="banner">

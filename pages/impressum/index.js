@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 
 import { fetchImpressumPage } from '../../api/impressum'
@@ -8,6 +7,7 @@ import { getLocaleFromQuery } from '../../utils/locale'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Head from '../../components/Head'
 import Markdown from '../../components/Markdown'
+import PageSection from '../../components/PageSection'
 
 const Impressum = ({
   metaTitle,
@@ -17,10 +17,10 @@ const Impressum = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Container>
+    <PageSection>
       <h1>{impressumTitle}</h1>
       <Markdown source={impressumMarkdown} />
-    </Container>
+    </PageSection>
   </div>
 )
 

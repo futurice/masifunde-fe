@@ -4,10 +4,10 @@ import { smBreakpoint } from '../styling/breakpoints'
 
 const HorizontalRuler = styled.hr`
   border-color: ${props => props.theme.orange};
-  margin: 3.5rem 12%;
+  margin: 0 12%;
 
   @media (min-width: ${smBreakpoint}) {
-    margin: 4rem 22%;
+    margin: 0 22%;
   }
 `
 

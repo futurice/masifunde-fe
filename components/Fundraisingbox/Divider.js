@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 
-const Divider = styled.div`
-  border: 0.5px solid #bbb;
+const Divider = styled.hr`
+  border-color: #bbb;
   margin: 50px 0;
+  opacity: 0.3;
+  border-width: 2px;
 `
 
 export default Divider

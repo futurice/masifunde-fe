@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import ConditionalContainer from './ConditionalContainer'
-import { smBreakpoint } from '../styling/breakpoints'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -41,10 +40,6 @@ const YouTubeVideo = styled(VideoContainer)`
   position: relative;
   padding-bottom: 54%; /* 16:9 */
   height: 0;
-  margin-bottom: 4.5rem;
-  @media (min-width: ${smBreakpoint}) {
-    margin-bottom: 8rem;
-  }
 `
 
 const ContainedYouTubeVideo = props => (

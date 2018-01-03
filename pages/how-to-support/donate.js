@@ -18,6 +18,8 @@ import DonationAmountField from '../../components/Fundraisingbox/DonationAmountF
 import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/utils'
 import Divider from '../../components/Fundraisingbox/Divider'
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
+import PageSection from '../../components/PageSection'
+import IntroText from '../../components/IntroText'
 
 const CountryLabel = styled.label`
   border-radius: 8px;
@@ -36,17 +38,13 @@ const CountryLabel = styled.label`
   ${({ isActive }) => isActive && css`
     color: #fff;
     background-color: ${props => props.theme.orange};
-  `} 
-  
+  `}
+
   input {
     position: absolute;
     clip: rect(0, 0, 0, 0);
     pointer-events: none;
   }
-`
-
-const CenteredMarkdown = styled(Markdown)`
-  text-align: center;
 `
 
 const CountryLabelContainer = styled.div`
@@ -133,14 +131,13 @@ class Donate extends Component {
     return (
       <Fragment>
         <Head title={metaTitle} description={metaDescription} />
-        <div className="container">
-          <h1>{introHeading}</h1>
-          <div className="row justify-content-center">
-            <div className="col-lg-8">
-              <CenteredMarkdown source={introMarkdown} />
-            </div>
-          </div>
 
+        <PageSection>
+          <h1>{introHeading}</h1>
+          <IntroText source={introMarkdown} />
+        </PageSection>
+
+        <div className="container">
           <Form
             onSubmit={() => {}}
             validate={this.validateForm}

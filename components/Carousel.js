@@ -47,11 +47,14 @@ const Image = styled.div`
   background-size: cover;
 `
 
+const CarouselContainer = styled.div`
+  padding-bottom: 3.5rem;
+`
+
 const MobileImage = styled.img``
 
 const StyledCarousel = styled(Carousel)`
   background: ${props => props.theme.blue};
-  margin-bottom: 8rem;
   width: 100% !important;
 
   &:hover {
@@ -168,7 +171,7 @@ class MasifundeCarousel extends Component {
     }
     const items = mapPortraitToCarouselItems(portrait)
     return (
-      <div ref={(carousel) => { this.carouselComponent = carousel }}>
+      <CarouselContainer innerRef={(carousel) => { this.carouselComponent = carousel }}>
         <StyledCarousel {...settings}>
           {items.map(item => (
             <SlideRow key={`${item.heading} ${item.image.url}`} className="row">
@@ -181,7 +184,7 @@ class MasifundeCarousel extends Component {
             </SlideRow>
           ))}
         </StyledCarousel>
-      </div>
+      </CarouselContainer>
     )
   }
 }

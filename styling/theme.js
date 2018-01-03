@@ -9,6 +9,4 @@ export default {
   roundedImageBorderRadius: '6px',
   error: '#FF621D',
   headerHeight: '3.9rem',
-  pagePadding: '3.6rem',
-  pagePaddingMobile: '2.4rem',
 }
