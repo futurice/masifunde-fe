@@ -15,7 +15,6 @@
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint --ignore-path .gitignore --ext .js,.js .",
     "lint-fix": "npm run lint -- --fix",
-    "prettier": "prettier --write 'src/**/*.{js,jsx,css,json}'",
     "precommit": "lint-staged"
   },
   "repository": {
@@ -66,7 +65,6 @@
     "eslint-plugin-react": "^7.5.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
-    "nodemon": "^1.14.1",
-    "prettier": "^1.9.2"
+    "nodemon": "^1.14.1"
   }
 }
