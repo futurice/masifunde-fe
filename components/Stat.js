@@ -21,7 +21,11 @@ const CenteredSpan = styled.span`
 
 const Number = CenteredSpan.extend`
   ${handwrittenText};
-  ${props => props.highlight && css`color: ${props.theme.blue};`}
+  ${props =>
+    props.highlight &&
+    css`
+      color: ${props.theme.blue};
+    `};
 `
 
 const Image = styled.img`
@@ -30,7 +34,14 @@ const Image = styled.img`
 `
 
 const Stat = ({
-  textAbove, description, icon, number, className, sourceMarkdown, superscriptText, sourceId,
+  textAbove,
+  description,
+  icon,
+  number,
+  className,
+  sourceMarkdown,
+  superscriptText,
+  sourceId,
 }) => {
   const hasImage = !!icon && !!icon.url
   return (
@@ -40,12 +51,13 @@ const Stat = ({
           <CenteredSpan>{textAbove}</CenteredSpan>
         </FixedHeight>
       )}
-      {hasImage && (<Image src={icon.url} alt={icon.title} />)}
+      {hasImage && <Image src={icon.url} alt={icon.title} />}
       <Number highlight={!hasImage}>{number}</Number>
       <CenteredSpan>
-        {description}{sourceMarkdown && superscriptText && sourceId
-        ? <Source superscriptText={superscriptText} sourceMarkdown={sourceMarkdown} id={sourceId} />
-        : null}
+        {description}
+        {sourceMarkdown && superscriptText && sourceId ? (
+          <Source superscriptText={superscriptText} sourceMarkdown={sourceMarkdown} id={sourceId} />
+        ) : null}
       </CenteredSpan>
     </StatContainer>
   )
