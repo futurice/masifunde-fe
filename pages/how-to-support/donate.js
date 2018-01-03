@@ -19,7 +19,7 @@ import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/ut
 import Divider from '../../components/Fundraisingbox/Divider'
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 import { rem } from '../../styling/typography'
-import { lgBreakpoint } from '../../styling/breakpoints'
+import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 import DonateSectionTitle from '../../components/Fundraisingbox/DonateSectionTitle'
 
 const CountryLabel = styled.label`
@@ -53,7 +53,11 @@ const CenteredMarkdown = styled(Markdown)`
 `
 
 const IntroMarkdown = styled(CenteredMarkdown)`
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.5rem;
+  
+  @media (min-width: ${mdBreakpoint}) {
+    margin-bottom: 3.5rem;
+  }
 `
 
 const CountryLabelContainer = styled.div`
