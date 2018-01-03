@@ -5,7 +5,6 @@ import styled, { css } from 'styled-components'
 import {
   lgBreakpoint,
   mdBreakpoint,
-  smBreakpoint,
 } from '../../styling/breakpoints'
 import Headline, {
   HEADLINE_MIDDLE,
@@ -25,8 +24,8 @@ const HeroImage = styled.div`
   max-height: calc(100vh - ${props => props.theme.headerHeight});
   margin-top: -${props => props.theme.pagePaddingMobile};
   margin-bottom: 3.5rem;
-  @media (min-width: ${smBreakpoint}) {
-    margin-bottom: 6.25rem;
+  @media (min-width: ${mdBreakpoint}) {
+    margin-bottom: 5rem;
     margin-top: -${props => props.theme.pagePadding};
   }
 
