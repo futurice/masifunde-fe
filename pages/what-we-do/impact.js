@@ -28,15 +28,23 @@ const MarkdownContainer = styled.div`
 
 let superscript = 0
 
+const StatsContainer = styled(Container)`
+  margin-bottom: 3.5rem;
+`
+
+const StatsSectionTitle = styled.h2`
+  margin-bottom: 2rem;
+`
+
 const StatsSection = ({ title, stats }) => (
   <Fragment>
-    <h2>{title}</h2>
+    <StatsSectionTitle>{title}</StatsSectionTitle>
     <div className="row justify-content-center">
       {stats.map(stat => (
         <Stat
           key={stat.description}
           {...stat}
-          superscriptText={stat.sourceMarkdown ? superscript += 1 : null}
+          superscriptText={stat.sourceMarkdown ? (superscript += 1) : null}
           sourceId={`impact-source-${superscript}`}
         />
       ))}
@@ -78,15 +86,19 @@ class Impact extends Component {
           heroSize="small"
           backgroundPositionX="35%"
         />
-        <Container>
+        <StatsContainer>
           <H1>
             {title}
-            <Source superscriptText={superscript += 1} sourceMarkdown={titleSource} id="impact-title-source" />
+            <Source
+              superscriptText={(superscript += 1)}
+              sourceMarkdown={titleSource}
+              id="impact-title-source"
+            />
           </H1>
           <HorizontalRuler />
           <StatsSection title={stats1Title} stats={stats1} />
           <StatsSection title={stats2Title} stats={stats2} />
-        </Container>
+        </StatsContainer>
         <Carousel portrait={portrait1} />
         <Carousel portrait={portrait2} />
         <Container>
