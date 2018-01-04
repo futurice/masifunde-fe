@@ -16,6 +16,7 @@ const List = styled.div`
 
   @media (min-width: ${smBreakpoint}) {
     flex-direction: row;
+    justify-content: space-around;
 
     > * {
       margin-bottom: 0;
