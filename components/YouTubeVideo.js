@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import ConditionalContainer from './ConditionalContainer'
+import { mdBreakpoint } from '../styling/breakpoints'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -13,7 +14,7 @@ const VideoIframe = styled.iframe`
   height: 100%;
 `
 
-const VideoContainer = ({
+const VideoIframeContainer = ({
   youtubeVideo,
   className,
 }) => {
@@ -31,20 +32,31 @@ const VideoContainer = ({
   )
 }
 
-VideoContainer.propTypes = {
+VideoIframeContainer.propTypes = {
   youtubeVideo: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
 }
 
-const YouTubeVideo = styled(VideoContainer)`
+const YouTubeVideo = styled(VideoIframeContainer)`
   position: relative;
   padding-bottom: 54%; /* 16:9 */
   height: 0;
 `
 
+const YouTubeVideoContainer = styled.div`
+  max-height: calc(90vh - ${({ theme }) => theme.headerHeight});
+  margin: 0 auto;
+  
+  @media (min-width: ${mdBreakpoint}) {
+    width: 80%;
+  }
+`
+
 const ContainedYouTubeVideo = props => (
   <ConditionalContainer containAfter="md" >
-    <YouTubeVideo {...props} />
+    <YouTubeVideoContainer>
+      <YouTubeVideo {...props} />
+    </YouTubeVideoContainer>
   </ConditionalContainer>
 )
 
