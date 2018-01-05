@@ -140,53 +140,54 @@ class Donate extends Component {
         <div className="container">
           <Form
             onSubmit={() => {}}
+            initialValues={{
+              [fieldName.projectId]: SaProjectId,
+            }}
             validate={this.validateForm}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
                 <Field name={fieldName.projectId}>
-                  {({ input, meta }) => {
-                    const inputValue = input.value || SaProjectId
-                    return (
-                      <Fragment>
-                        <h3>{section1title}</h3>
-                        <div className="offset-md-3 col-md-8">
-                          <div className="row">
-                            <CountryLabelContainer className="col-sm-6" data-toggle="buttons">
-                              <CountryLabel
-                                htmlFor="countryInputSa"
-                                isActive={inputValue === SaProjectId}
-                              >
-                                <input
-                                  {...input}
-                                  type="radio"
-                                  value={SaProjectId}
-                                  id="countryInputSa"
-                                  autoComplete="off"
-                                />
-                                <Markdown source={section1MarkdownSa} />
-                              </CountryLabel>
-                            </CountryLabelContainer>
-                            <CountryLabelContainer className="col-sm-6">
-                              <CountryLabel
-                                htmlFor="countryInputDe"
-                                isActive={inputValue === DeProjectId}
-                              >
-                                <input
-                                  {...input}
-                                  type="radio"
-                                  value={DeProjectId}
-                                  id="countryInputDe"
-                                  autoComplete="off"
-                                />
-                                <Markdown source={section1MarkdownDe} />
-                              </CountryLabel>
-                            </CountryLabelContainer>
-                          </div>
-                          {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
+                  {({ input, meta }) => (
+                    <Fragment>
+                      <h3>{section1title}</h3>
+                      <div className="offset-md-3 col-md-8">
+                        <div className="row">
+                          <CountryLabelContainer className="col-sm-6" data-toggle="buttons">
+                            <CountryLabel
+                              htmlFor="countryInputSa"
+                              isActive={input.value === SaProjectId}
+                            >
+                              <input
+                                {...input}
+                                type="radio"
+                                value={SaProjectId}
+                                id="countryInputSa"
+                                autoComplete="off"
+                              />
+                              <Markdown source={section1MarkdownSa} />
+                            </CountryLabel>
+                          </CountryLabelContainer>
+                          <CountryLabelContainer className="col-sm-6">
+                            <CountryLabel
+                              htmlFor="countryInputDe"
+                              isActive={input.value === DeProjectId}
+                            >
+                              <input
+                                {...input}
+                                type="radio"
+                                value={DeProjectId}
+                                id="countryInputDe"
+                                autoComplete="off"
+                              />
+                              <Markdown source={section1MarkdownDe} />
+                            </CountryLabel>
+                          </CountryLabelContainer>
                         </div>
-                      </Fragment>
+                        {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
+                      </div>
+                    </Fragment>
                     )
-                  }}
+                  }
                 </Field>
 
                 <Divider />
