@@ -10,6 +10,7 @@ export const headerFont = 'Raleway, sans-serif'
 export const handwrittenFont = 'banaueregular, sans-serif'
 
 export const rootFontSize = '18px'
+export const smallFontSize = '16px'
 
 // Use this function to convert pixel font sizes from the designs to rem.
 // Example: rem('24px')
