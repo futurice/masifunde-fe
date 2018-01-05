@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import Markdown from 'react-markdown'
 import styled from 'styled-components'
 import imageShape from '../propTypes/image'
+import { smallFontSize } from '../styling/typography'
 
 const ProjectImage = styled.img`
   max-width: 100%;
   height: 6.25rem;
 `
 
-const H2 = styled.h2`
+const H3 = styled.h3`
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
@@ -18,6 +19,7 @@ const H2 = styled.h2`
 `
 
 const ProjectContainer = styled.div`
+  font-size: ${smallFontSize};
   margin-bottom: 2rem;
 `
 
@@ -26,7 +28,7 @@ const Project = ({
 }) => (
   <ProjectContainer className={className}>
     <ProjectImage className="mx-auto d-block" src={image.url} alt={image.tile} />
-    <H2>{name}</H2>
+    <H3>{name}</H3>
     <Markdown source={description} />
   </ProjectContainer>)
 

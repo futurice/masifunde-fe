@@ -24,6 +24,7 @@ const Number = CenteredSpan.extend`
     props.highlight &&
     css`
       color: ${props.theme.blue};
+      font-size: ${rem('45px')};
     `};
 `
 

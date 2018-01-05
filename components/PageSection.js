@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
 
-const sectionSpacing = '4rem'
+const sectionSpacing = '5rem'
 
 const ContainedPageSection = styled(Container)`
   margin-top: ${sectionSpacing};

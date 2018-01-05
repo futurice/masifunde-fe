@@ -10,6 +10,7 @@ export const headerFont = 'Raleway, sans-serif'
 export const handwrittenFont = 'banaueregular, sans-serif'
 
 export const rootFontSize = '18px'
+export const smallFontSize = '16px'
 
 // Use this function to convert pixel font sizes from the designs to rem.
 // Example: rem('24px')
@@ -30,6 +31,7 @@ export const titleText = css`
   text-align: center;
   width: 100%;
   word-wrap: break-word;
+  hyphens: auto;
 `
 
 export const pageTitleText = css`
@@ -40,7 +42,7 @@ export const pageTitleText = css`
   line-height: 1;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: ${rem('15px')};
+  margin-bottom: ${rem('36px')};
 
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('40px')};

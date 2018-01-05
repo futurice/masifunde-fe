@@ -15,6 +15,7 @@ import HorizontalRuler from '../../components/HorizontalRuler'
 import { smBreakpoint } from '../../styling/breakpoints'
 import IntroText from '../../components/IntroText'
 import PageSection from '../../components/PageSection'
+import Divider from '../../components/Fundraisingbox/Divider'
 
 const SectionContainer = styled(PageSection)`
   display: flex;
@@ -141,6 +142,10 @@ const HowToSupport = ({
       buttonType="secondary"
       buttonLink={RouteNames.BecomePartner}
     />
+
+    <PageSection contained={false}>
+      <Divider />
+    </PageSection>
   </div>
 )
 

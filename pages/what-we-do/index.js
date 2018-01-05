@@ -22,8 +22,8 @@ import Tagline from '../../components/Tagline'
 import StatList from '../../components/StatList'
 
 const ProjectImage = styled.img`
-  height: 61px;
-  width: 61px;
+  height: 100px;
+  width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,11 +44,9 @@ const CountryDescription = styled.div`
 
 const CountryTitle = styled.h3`
   text-align: center;
-  margin-bottom: 1.5rem;
 `
 
 const CountryContainer = styled.div`
-  margin-bottom: 50px;
 
   display: flex;
   flex-direction: column;
@@ -73,7 +71,7 @@ const Project = styled.div`
 `
 
 const ImpactButton = styled(Button)`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 `
 
 const CountryProjects = ({ country }) => (
