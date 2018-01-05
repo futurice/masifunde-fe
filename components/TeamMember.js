@@ -16,6 +16,7 @@ const Title = styled.div`
 
 const Image = styled.img`
   border-radius: ${props => props.theme.roundedImageBorderRadius};
+  width: 100%;
 `
 
 const Email = styled.a`
