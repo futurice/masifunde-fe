@@ -122,6 +122,8 @@ CountryProjects.propTypes = {
 
 const WhatWeDo = ({
   centerHeading,
+  introHeading0,
+  introText,
   introHeading,
   metaDescription,
   metaTitle,
@@ -145,6 +147,11 @@ const WhatWeDo = ({
       headlineShadow
       headlinePlacement="bottom"
     />
+
+    <PageSection>
+      <h1>{introHeading0}</h1>
+      <IntroText source={introText} />
+    </PageSection>
 
     <PageSection contained={false}>
       <YouTubeVideo youtubeVideo={youtubeVideo} />
@@ -195,6 +202,8 @@ const WhatWeDo = ({
 WhatWeDo.propTypes = {
   centerHeading: PropTypes.string.isRequired,
   heroTitle: PropTypes.string.isRequired,
+  introHeading0: PropTypes.string.isRequired,
+  introText: PropTypes.string.isRequired,
   introHeading: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   metaTitle: PropTypes.string.isRequired,
