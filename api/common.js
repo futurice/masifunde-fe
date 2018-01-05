@@ -75,6 +75,11 @@ export const unwrapPartner = partner => ({
 
 export const unwrapPartners = partners => partners.map(unwrapPartner)
 
+export const unwrapAward = award => ({
+  ...award.fields,
+  image: unwrapImage(award && award.fields && award.fields.logo),
+})
+
 export function unwrapFields(response) {
   return response && response.fields
 }
