@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBecomeAVolunteerPage } from '../../api/howToSupport'
@@ -13,6 +14,11 @@ import { RouteNames } from '../../routes'
 import IntroText from '../../components/IntroText'
 import PageSection from '../../components/PageSection'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
+import { smallFontSize } from '../../styling/typography'
+
+const VolunteerOpeningsContainer = styled.div`
+  font-size: ${smallFontSize};
+`
 
 const BecomeVolunteer = ({
   metaTitle,
@@ -52,14 +58,14 @@ const BecomeVolunteer = ({
 
     <PageSection>
       <h2>{section2Title}</h2>
-      <div className="row">
+      <VolunteerOpeningsContainer className="row">
         {volunteerOpenings.map(opening => (
           <div className="col-md-4" key={opening.description}>
             <h3>{opening.title}</h3>
             <Markdown source={opening.description} />
           </div>
         ))}
-      </div>
+      </VolunteerOpeningsContainer>
     </PageSection>
 
     <PageSection>
