@@ -15,7 +15,7 @@ const FundRaisingIfameContainer = styled.div`
 const FormLabel = styled.span`
   text-align: left;
   padding-right: 0;
-  
+
   @media screen and (min-width: 768px){
     text-align: right;
   }
@@ -213,9 +213,9 @@ class FundRaisingForm extends Component {
                         className={this.formInputClassFactory(meta)}
                       >
                         <option value={null} disabled hidden />
-                        {/* <option value="no_receipt">no receipt</option> */}
                         <option value="receipt_now">Ja, so schnell wie möglich</option>
                         <option value="receipt_end_of_year">Ja, konsolidiert am Ende des Jahres</option>
+                        <option value="no_receipt">Nein, ich brauche keine Quittung</option>
                       </select>
                       {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                     </div>
