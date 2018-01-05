@@ -16,6 +16,7 @@ import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import IntroText from '../../components/IntroText'
+import Markdown from '../../components/Markdown'
 import PageSection from '../../components/PageSection'
 import Tagline from '../../components/Tagline'
 import StatList from '../../components/StatList'
@@ -129,6 +130,7 @@ const WhatWeDo = ({
   metaTitle,
   outroHeading,
   outroText,
+  outroTextColumn2,
   countries,
   stats,
   statsButton,
@@ -187,7 +189,10 @@ const WhatWeDo = ({
 
     <PageSection>
       <h1>{outroHeading}</h1>
-      <IntroText source={outroText} />
+      <div className="row">
+        <Markdown className="col-md-6" source={outroText} />
+        <Markdown className="col-md-6" source={outroTextColumn2} />
+      </div>
     </PageSection>
 
     <Banner
@@ -209,6 +214,7 @@ WhatWeDo.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   outroHeading: PropTypes.string.isRequired,
   outroText: PropTypes.string.isRequired,
+  outroTextColumn2: PropTypes.string.isRequired,
   countries: PropTypes.arrayOf(PropTypes.shape(countryShape)).isRequired,
   stats: PropTypes.arrayOf(
     PropTypes.shape({
