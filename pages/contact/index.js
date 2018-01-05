@@ -2,20 +2,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import _chunk from 'lodash/chunk'
-import { Container } from 'reactstrap'
 
-import TeamMember from '../../components/TeamMember'
 import { fetchContactPage } from '../../api/contact'
 import Head from '../../components/Head'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Markdown from '../../components/Markdown'
-import { rem } from '../../styling/typography'
-
-const MainHeading = styled.h1`
-  text-align: center;
-  margin-bottom: ${rem('70px')};
-`
+import PageSection from '../../components/PageSection'
+import TeamMemberList from '../../components/TeamMemberList'
 
 const StyledMarkdown = styled(Markdown)`
   text-align: left;
@@ -26,29 +19,13 @@ const ContactText = styled.span`
   text-align: left;
 `
 
-const SecondaryHeading = styled.h2`
+const AddressContainer = styled.div`
   text-align: center;
-`
 
-const PictureContainer = styled.div`
-  margin-bottom: ${rem('100px')};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
-
-const AdressContainer = styled.div`
-  text-align: center;
-  margin-bottom: ${rem('80px')};
-`
-
-const mapContact = contact => (
-  <TeamMember
-    className="col-6 col-sm-4 col-md-3 col-lg-2"
-    key={`${contact.image.url} ${contact.region} ${contact.name}`}
-    imageUrl={contact.image.url}
-    title={contact.region}
-    subtitle={contact.name}
-    email={contact.email}
-  />
-)
 
 const Contact = ({
   metaTitle,
@@ -64,23 +41,36 @@ const Contact = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Container>
-      <MainHeading>{mainHeading}</MainHeading>
 
-      <SecondaryHeading>{contactsHeading}</SecondaryHeading>
-      <PictureContainer className="row justify-content-center">
-        {contacts.map(mapContact)}
-      </PictureContainer>
+    <PageSection>
+      <h1>{mainHeading}</h1>
+    </PageSection>
 
-      <SecondaryHeading>{regionalContactsHeading}</SecondaryHeading>
-      <PictureContainer className="row justify-content-sm-center">
-        {_chunk(regionalContacts, 4).map(contactsChunk =>
-            contactsChunk.map(mapContact),
-        )}
-      </PictureContainer>
+    <PageSection>
+      <h2>{contactsHeading}</h2>
+      <TeamMemberList
+        members={contacts}
+        title={member => member.region}
+        subtitle={member => member.name}
+        imageUrl={member => member.image.url}
+        email={member => member.email}
+      />
+    </PageSection>
 
-      <AdressContainer className="row">
-        <div className="col-sm d-flex flex-column align-items-center">
+    <PageSection>
+      <h2>{regionalContactsHeading}</h2>
+      <TeamMemberList
+        members={regionalContacts}
+        title={member => member.region}
+        subtitle={member => member.name}
+        imageUrl={member => member.image.url}
+        email={member => member.email}
+      />
+    </PageSection>
+
+    <PageSection>
+      <div className="row">
+        <AddressContainer className="col-sm ">
           <div>
             <StyledMarkdown source={address} />
             <ContactText>{telephone}</ContactText>
@@ -88,9 +78,9 @@ const Contact = ({
               <ContactText>{email}</ContactText>
             </a>
           </div>
-        </div>
-      </AdressContainer>
-    </Container>
+        </AddressContainer>
+      </div>
+    </PageSection>
   </div>
 )
 

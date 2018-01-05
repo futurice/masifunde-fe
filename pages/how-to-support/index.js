@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -14,32 +13,36 @@ import Markdown from '../../components/Markdown'
 import Button from '../../components/Button'
 import HorizontalRuler from '../../components/HorizontalRuler'
 import { smBreakpoint } from '../../styling/breakpoints'
-import { h3 } from '../../styling/typography'
+import IntroText from '../../components/IntroText'
+import PageSection from '../../components/PageSection'
 
-const Paragraph = styled(Markdown)`
-  text-align: center;
+const SectionContainer = styled(PageSection)`
+  display: flex;
 `
 
-const H3 = styled.h3`
-  ${h3};
-  text-align: left;
-  margin: 0 0 8px;
+const SectionImageContainer = styled.div`
+  display: none;
+
+  @media (min-width: ${smBreakpoint}) {
+    display: block;
+  }
 `
 
-const Image = styled.img`
+const SectionImage = styled.img`
   border-radius: ${props => props.theme.roundedImageBorderRadius};
-  max-height: 240px
+  max-width: 100%;
+  max-height: 240px;
 `
 
 const Section = ({
   image, title, markdown, buttonText, buttonType, buttonLink,
 }) => (
-  <SectionContainer className="row">
-    <div className="d-none d-sm-block col-sm-3">
-      <Image className="img-fluid" src={image.url} alt={image.title} />
-    </div>
+  <SectionContainer>
+    <SectionImageContainer className="col-sm-3">
+      <SectionImage src={image.url} alt={image.title} />
+    </SectionImageContainer>
     <div className="col-sm-9">
-      <H3>{title}</H3>
+      <h3>{title}</h3>
       <Markdown source={markdown} />
       <Link route={buttonLink} passHref>
         <Button type={buttonType}>{buttonText}</Button>
@@ -47,24 +50,6 @@ const Section = ({
     </div>
   </SectionContainer>
 )
-
-const SectionContainer = styled.div`
-  padding: 1.4rem 0;
-
-  @media (min-width: ${smBreakpoint}) {
-    padding: 3rem 0;
-  }
-`
-
-const StyledRuler = styled(HorizontalRuler)`
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-
-  @media (min-width: ${smBreakpoint}) {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-  }
-`
 
 Section.propTypes = {
   image: PropTypes.shape({
@@ -103,6 +88,7 @@ const HowToSupport = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
+
     <Hero
       backgroundPositionX="80%"
       headline={heroTitle}
@@ -110,43 +96,51 @@ const HowToSupport = ({
       headlinePlacement="bottom"
       headlineShadow
     />
-    <Container>
+
+    <PageSection>
       <h1>{introHeading}</h1>
-      <Paragraph source={introMarkdown} />
-      <Section
-        buttonText={section1ButtonText}
-        title={section1Title}
-        markdown={section1Markdown}
-        image={section1Image}
-        buttonType="primary"
-        buttonLink={RouteNames.Donate}
-      />
-      <Section
-        buttonText={section2ButtonText}
-        title={section2Title}
-        markdown={section2Markdown}
-        image={section2Image}
-        buttonType="secondary"
-        buttonLink={RouteNames.BecomeSponsor}
-      />
-      <StyledRuler />
-      <Section
-        buttonText={section3ButtonText}
-        title={section3Title}
-        markdown={section3Markdown}
-        image={section3Image}
-        buttonType="secondary"
-        buttonLink={RouteNames.BecomeVolunteer}
-      />
-      <Section
-        buttonText={section4ButtonText}
-        title={section4Title}
-        markdown={section4Markdown}
-        image={section4Image}
-        buttonType="secondary"
-        buttonLink={RouteNames.BecomePartner}
-      />
-    </Container>
+      <IntroText source={introMarkdown} />
+    </PageSection>
+
+    <Section
+      buttonText={section1ButtonText}
+      title={section1Title}
+      markdown={section1Markdown}
+      image={section1Image}
+      buttonType="primary"
+      buttonLink={RouteNames.Donate}
+    />
+
+    <Section
+      buttonText={section2ButtonText}
+      title={section2Title}
+      markdown={section2Markdown}
+      image={section2Image}
+      buttonType="secondary"
+      buttonLink={RouteNames.BecomeSponsor}
+    />
+
+    <PageSection>
+      <HorizontalRuler />
+    </PageSection>
+
+    <Section
+      buttonText={section3ButtonText}
+      title={section3Title}
+      markdown={section3Markdown}
+      image={section3Image}
+      buttonType="secondary"
+      buttonLink={RouteNames.BecomeVolunteer}
+    />
+
+    <Section
+      buttonText={section4ButtonText}
+      title={section4Title}
+      markdown={section4Markdown}
+      image={section4Image}
+      buttonType="secondary"
+      buttonLink={RouteNames.BecomePartner}
+    />
   </div>
 )
 

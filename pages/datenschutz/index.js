@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container } from 'reactstrap'
 
 import LayoutWrapper from '../../components/LayoutWrapper'
 import { getLocaleFromQuery } from '../../utils/locale'
 import Head from '../../components/Head'
 import { fetchDatenschutzPage } from '../../api/datenschutz'
 import Markdown from '../../components/Markdown'
+import PageSection from '../../components/PageSection'
 
 const Datenschutz = ({
   metaTitle,
@@ -16,10 +16,10 @@ const Datenschutz = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Container>
+    <PageSection>
       <h1>{datenschutzTitle}</h1>
       <Markdown source={datenschutzMarkdown} />
-    </Container>
+    </PageSection>
   </div>
 )
 

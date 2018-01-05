@@ -1,8 +1,5 @@
 import React from 'react'
-import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import Markdown from 'react-markdown'
 
 import { fetchApproachSaPage } from '../../api/whatWeDo'
 import { getLocaleFromQuery } from '../../utils/locale'
@@ -11,33 +8,11 @@ import Hero from '../../components/Hero'
 import Head from '../../components/Head'
 import Banner from '../../components/Banner'
 import YouTubeVideo from '../../components/YouTubeVideo'
-import Project from '../../components/Project'
-import HorizontalRuler from '../../components/HorizontalRuler'
+import PageSection from '../../components/PageSection'
+import IntroText from '../../components/IntroText'
+import Tagline from '../../components/Tagline'
 import { RouteNames } from '../../routes'
-
-const H2 = styled.h2`
-  text-align: center;
-  color: ${props => props.theme.orange};
-`
-
-const H1 = styled.h1`
-  margin-bottom: 1.5rem;
-`
-
-const CenteredMarkdown = styled(Markdown)`
-  text-align: center;
-  margin-bottom: 5rem;
-`
-
-const ProjectsContainer = styled.div`
-  margin-bottom: 2.5rem;
-  
-  @media (min-width: 768px) {
-    margin-bottom: 6rem;
-    margin-left: 8%;
-    margin-right: 8%;
-  }
-`
+import ProjectList from '../../components/ProjectList'
 
 const ApproachSa = ({
   metaTitle,
@@ -52,29 +27,25 @@ const ApproachSa = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
+
     <Hero
       imageUrl="/static/images/hero/hero-small-classroom.jpg"
       heroSize="small"
       backgroundPositionX="80%"
     />
-    <Container>
-      <H2>{title}</H2>
-      <HorizontalRuler />
-      <H1>{introTitle}</H1>
-      <CenteredMarkdown source={introMarkdown} />
-      <ProjectsContainer className="row">
-        {projects.map(project => (
-          <Project
-            key={`${project.name}${project.image}`}
-            className="col-12 col-md-6"
-            image={project.image}
-            name={project.name}
-            description={project.description}
-          />
-        ))}
-      </ProjectsContainer>
-    </Container>
-    <YouTubeVideo youtubeVideo={youTubeVideo} />
+
+    <Tagline text={title} hideTopRuler />
+
+    <PageSection>
+      <h1>{introTitle}</h1>
+      <IntroText source={introMarkdown} />
+      <ProjectList projects={projects} />
+    </PageSection>
+
+    <PageSection contained={false}>
+      <YouTubeVideo youtubeVideo={youTubeVideo} />
+    </PageSection>
+
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}

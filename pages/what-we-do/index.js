@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container } from 'reactstrap'
 import styled from 'styled-components'
 
 import LayoutWrapper from '../../components/LayoutWrapper'
@@ -15,19 +14,11 @@ import Stat from '../../components/Stat'
 import { Link, RouteNames } from '../../routes'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
-import HorizontalRuler from '../../components/HorizontalRuler'
-import { smBreakpoint } from '../../styling/breakpoints'
-import { sectionTitleText } from '../../styling/typography'
-import Markdown from '../../components/Markdown'
-
-const BoldHeading = styled.h2`
-  text-align: center;
-  margin-bottom: 1.625rem;
-`
-
-const H2 = styled.h2`
-  text-align: center;
-`
+import { mdBreakpoint } from '../../styling/breakpoints'
+import IntroText from '../../components/IntroText'
+import PageSection from '../../components/PageSection'
+import Tagline from '../../components/Tagline'
+import StatList from '../../components/StatList'
 
 const ProjectImage = styled.img`
   height: 61px;
@@ -41,52 +32,93 @@ const ProjectText = styled.p`
   text-align: center;
 `
 
-const ProjectDescriptionContainer = styled.div`
+const CountryDescription = styled.div`
   flex-grow: 1;
   width: 100%;
+
+  @media (min-width: ${mdBreakpoint}) {
+    justify-content: center;
+  }
 `
 
-const ProjectTitle = styled.h3`
+const CountryTitle = styled.h3`
   text-align: center;
   margin-bottom: 1.5rem;
 `
 
-const ProjectContainer = styled.div`
+const CountryContainer = styled.div`
   margin-bottom: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
-const Paragraph = styled.p`
-  ${sectionTitleText};
-  color: ${props => props.theme.orange};
-  font-weight: bold;
-  text-align: center;
-  margin: 5rem 0;
-`
-
-const ProgramsContainer = styled.div`
+const ProjectList = styled.div`
   margin-top: 1.5rem;
   margin-bottom: 1.2rem;
   width: 100%;
+
+  display: flex;
+  justify-content: center;
 `
 
-const ProgramContainer = styled.div`
+const Project = styled.div`
   flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
-const LowerHorizontalRuler = HorizontalRuler.extend`
-  margin-bottom: 7rem;
-  @media (min-width: ${smBreakpoint}) {
-    margin-bottom: 7rem;
-  }
+const ImpactButton = styled(Button)`
+  margin-top: 1rem;
 `
 
-const ImpactButton = styled.div`
-  margin-top: 1.2rem;
-`
+const CountryProjects = ({ country }) => (
+  <CountryContainer className="col-md" key={country.title}>
+    <CountryTitle>{country.title}</CountryTitle>
+    <CountryDescription className="row">
+      <div className="col-lg-10">
+        <p>{country.description}</p>
+      </div>
+    </CountryDescription>
+    <ProjectList className="row">
+      {country.projects.map(project => (
+        <Project
+          className="col-sm-6"
+          key={`${project.image.url} ${project.name}`}
+        >
+          <ProjectImage src={project.image.url} alt={project.image.title} />
+          <ProjectText>{project.name}</ProjectText>
+        </Project>
+        ))}
+    </ProjectList>
+    <Link route={country.buttonLink} passHref>
+      <Button type="secondary">{country.button}</Button>
+    </Link>
+  </CountryContainer>
+)
 
-const StyledMarkdown = styled(Markdown)`
-  margin-bottom: 7rem;
-`
+const countryShape = {
+  buttonLink: PropTypes.any.isRequired,
+  button: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  projects: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      image: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  ).isRequired,
+  title: PropTypes.string.isRequired,
+}
+
+CountryProjects.propTypes = {
+  country: PropTypes.shape(countryShape).isRequired,
+}
 
 const WhatWeDo = ({
   centerHeading,
@@ -95,7 +127,7 @@ const WhatWeDo = ({
   metaTitle,
   outroHeading,
   outroText,
-  programmes,
+  countries,
   stats,
   statsButton,
   statsHeading,
@@ -106,79 +138,51 @@ const WhatWeDo = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
+
     <Hero
       imageUrl="/static/images/hero/hero-student.jpg"
       headline={heroTitle}
       headlineShadow
       headlinePlacement="bottom"
     />
-    <YouTubeVideo youtubeVideo={youtubeVideo} />
-    <Container>
-      <BoldHeading>{introHeading}</BoldHeading>
+
+    <PageSection contained={false}>
+      <YouTubeVideo youtubeVideo={youtubeVideo} />
+    </PageSection>
+
+    <PageSection>
+      <h1>{introHeading}</h1>
       <div className="row">
-        {programmes.map(program => (
-          <ProjectContainer className="col-md d-flex flex-column align-items-center" key={program.title}>
-            <ProjectTitle>{program.title}</ProjectTitle>
-            <ProjectDescriptionContainer className="row justify-content-md-center">
-              <div className="col-lg-10">
-                <p>{program.description}</p>
-              </div>
-            </ProjectDescriptionContainer>
-            <ProgramsContainer className="row justify-content-center">
-              {program.projects.map(project => (
-                <ProgramContainer
-                  className="col-sm-6 d-flex flex-column align-items-center"
-                  key={`${project.image.url} ${project.name}`}
-                >
-                  <ProjectImage src={project.image.url} alt={project.image.title} />
-                  <ProjectText>{project.name}</ProjectText>
-                </ProgramContainer>
-                ))}
-            </ProgramsContainer>
-            <div className="justify-content-center">
-              <Link route={program.buttonLink} passHref>
-                <Button type="secondary">{program.button}</Button>
-              </Link>
-            </div>
-          </ProjectContainer>
+        {countries.map(country => (
+          <CountryProjects key={country.title} country={country} />
+        ))}
+      </div>
+    </PageSection>
+
+    <Tagline text={centerHeading} />
+
+    <PageSection>
+      <h1>{statsHeading}</h1>
+      <StatList>
+        {stats.map((stat, index) => (
+          <Stat
+            key={`${stat.number} ${stat.description}`}
+            {...stat}
+            superscriptText={index + 1}
+            sourceId={`stat-${index}`}
+          />
           ))}
-      </div>
+      </StatList>
+      <Link route={RouteNames.Impact} passHref>
+        <ImpactButton center type="secondary">{statsButton}</ImpactButton>
+      </Link>
+    </PageSection>
 
-      <HorizontalRuler />
-      <Paragraph>{centerHeading}</Paragraph>
-      <LowerHorizontalRuler />
+    <PageSection>
+      <h1>{outroHeading}</h1>
+      <IntroText source={outroText} />
+    </PageSection>
 
-      <ProjectContainer>
-        <H2>{statsHeading}</H2>
-        <div className="row justify-content-center">
-          <div className="col col-md-10 col-lg-8">
-            <div className="row">
-              {stats.map((stat, index) => (
-                <Stat
-                  className="col-sm"
-                  key={`${stat.number} ${stat.description}`}
-                  {...stat}
-                  superscriptText={index + 1}
-                  sourceId={`stat-${index}`}
-                />
-                ))}
-            </div>
-          </div>
-        </div>
-        <ImpactButton className="d-flex justify-content-center">
-          <Link route={RouteNames.Impact} passHref>
-            <Button type="secondary">{statsButton}</Button>
-          </Link>
-        </ImpactButton>
-      </ProjectContainer>
-
-      <div className="row justify-content-center">
-        <div className="col col-md-8 col-lg-6">
-          <BoldHeading>{outroHeading}</BoldHeading>
-          <StyledMarkdown source={outroText} />
-        </div>
-      </div>
-    </Container>
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}
@@ -196,23 +200,7 @@ WhatWeDo.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   outroHeading: PropTypes.string.isRequired,
   outroText: PropTypes.string.isRequired,
-  programmes: PropTypes.arrayOf(
-    PropTypes.shape({
-      buttonLink: PropTypes.any.isRequired,
-      button: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      projects: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          image: PropTypes.shape({
-            title: PropTypes.string.isRequired,
-            url: PropTypes.string.isRequired,
-          }).isRequired,
-        }).isRequired,
-      ).isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
+  countries: PropTypes.arrayOf(PropTypes.shape(countryShape)).isRequired,
   stats: PropTypes.arrayOf(
     PropTypes.shape({
       number: PropTypes.string.isRequired,

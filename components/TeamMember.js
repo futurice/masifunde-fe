@@ -5,12 +5,18 @@ import styled from 'styled-components'
 import { rem } from '../styling/typography'
 import { jpgCompression } from '../utils/constants'
 
+const TeamContainer = styled.div`
+  margin-bottom: ${rem('30px')};
+  font-size: 16px;
+`
+
 const Title = styled.div`
   font-weight: bold;
 `
 
 const Image = styled.img`
   border-radius: ${props => props.theme.roundedImageBorderRadius};
+  width: 100%;
 `
 
 const Email = styled.a`
@@ -20,11 +26,6 @@ const Email = styled.a`
 
 const ContentContainer = styled.div`
   max-width: 160px;
-`
-
-const TeamContainer = styled.div`
-  margin-bottom: ${rem('30px')};
-  font-size: 16px;
 `
 
 const TeamMember = ({

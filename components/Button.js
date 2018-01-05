@@ -4,25 +4,38 @@ import styled, { css } from 'styled-components'
 
 import { defaultFont, rem } from '../styling/typography'
 
-function CustomButton({ children, className, href }) {
-  return (
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: ${({ center }) => (center ? 'center' : 'flex-start')};
+`
+
+const Button = ({
+  center,
+  children,
+  className,
+  href,
+}) => (
+  <ButtonContainer center={center}>
     <a href={href} className={`btn ${className}`}>
       {children}
     </a>
-  )
-}
+  </ButtonContainer>
+)
 
-CustomButton.propTypes = {
+Button.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  center: PropTypes.bool,
   href: PropTypes.string,
 }
 
-CustomButton.defaultProps = {
+Button.defaultProps = {
+  center: false,
+  className: '',
   href: undefined,
 }
 
-const StyledButton = styled(CustomButton)`
+const StyledButton = styled(Button)`
   font-size: ${rem('18px')};
   font-family: ${defaultFont};
   font-weight: bold;
@@ -82,10 +95,12 @@ const StyledButton = styled(CustomButton)`
 `
 
 StyledButton.propTypes = {
+  ...Button.propTypes,
   type: PropTypes.oneOf(['primary', 'secondary', 'banner']),
 }
 
 StyledButton.defaultProps = {
+  ...Button.defaultProps,
   type: 'secondary',
 }
 

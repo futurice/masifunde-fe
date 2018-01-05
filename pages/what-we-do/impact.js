@@ -1,121 +1,113 @@
 /* eslint-disable no-return-assign */
-import React, { Component, Fragment } from 'react'
-import { Container } from 'reactstrap'
+import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchImpactPage } from '../../api/whatWeDo'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Head from '../../components/Head'
 import Hero from '../../components/Hero'
-import HorizontalRuler from '../../components/HorizontalRuler'
 import Banner from '../../components/Banner'
-import Markdown from '../../components/Markdown'
 import Carousel from '../../components/Carousel'
 import Stat from '../../components/Stat'
 import { RouteNames } from '../../routes'
 import portraitPropTypes from '../../propTypes/portrait'
 import Source from '../../components/Source'
+import Tagline from '../../components/Tagline'
+import PageSection from '../../components/PageSection'
+import StatList from '../../components/StatList'
+import IntroText from '../../components/IntroText'
 
-const H1 = styled.h1`
-  color: ${props => props.theme.orange};
-`
+const Impact = ({
+  metaTitle,
+  metaDescription,
+  title,
+  titleSource,
+  stats1Title,
+  stats1,
+  stats2Title,
+  stats2,
+  portrait1,
+  portrait2,
+  outroTitle,
+  outroMarkdown,
+  bannerText,
+  bannerButtonText,
+}) => {
+  let superscript = 0
 
-const MarkdownContainer = styled.div`
-  margin-bottom: 4rem;
-`
+  return (
+    <div>
+      <Head title={metaTitle} description={metaDescription} />
 
-let superscript = 0
+      <Hero
+        imageUrl="/static/images/hero/hero-small-arts.jpg"
+        heroSize="small"
+        backgroundPositionX="35%"
+      />
 
-const StatsContainer = styled(Container)`
-  margin-bottom: 3.5rem;
-`
+      <Tagline
+        text={title}
+        hideTopRuler
+        source={
+          <Source
+            superscriptText={(superscript += 1)}
+            sourceMarkdown={titleSource}
+            id="impact-title-source"
+          />
+        }
+      />
 
-const StatsSectionTitle = styled.h2`
-  margin-bottom: 2rem;
-`
-
-const StatsSection = ({ title, stats }) => (
-  <Fragment>
-    <StatsSectionTitle>{title}</StatsSectionTitle>
-    <div className="row justify-content-center">
-      {stats.map(stat => (
-        <Stat
-          key={stat.description}
-          {...stat}
-          superscriptText={stat.sourceMarkdown ? (superscript += 1) : null}
-          sourceId={`impact-source-${superscript}`}
-        />
-      ))}
-    </div>
-  </Fragment>
-)
-
-StatsSection.propTypes = {
-  title: PropTypes.string.isRequired,
-  stats: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
-}
-
-class Impact extends Component {
-  componentWillMount() {
-    superscript = 0
-  }
-  render() {
-    const {
-      metaTitle,
-      metaDescription,
-      title,
-      titleSource,
-      stats1Title,
-      stats1,
-      stats2Title,
-      stats2,
-      portrait1,
-      portrait2,
-      outroTitle,
-      outroMarkdown,
-      bannerText,
-      bannerButtonText,
-    } = this.props
-    return (
-      <div>
-        <Head title={metaTitle} description={metaDescription} />
-        <Hero
-          imageUrl="/static/images/hero/hero-small-arts.jpg"
-          heroSize="small"
-          backgroundPositionX="35%"
-        />
-        <StatsContainer>
-          <H1>
-            {title}
-            <Source
-              superscriptText={(superscript += 1)}
-              sourceMarkdown={titleSource}
-              id="impact-title-source"
+      <PageSection>
+        <h2>{stats1Title}</h2>
+        <StatList>
+          {stats1.map(stat => (
+            <Stat
+              key={`${stat.number} ${stat.description}`}
+              {...stat}
+              superscriptText={stat.sourceMarkdown ? (superscript += 1) : null}
+              sourceId={`impact-source-${superscript}`}
             />
-          </H1>
-          <HorizontalRuler />
-          <StatsSection title={stats1Title} stats={stats1} />
-          <StatsSection title={stats2Title} stats={stats2} />
-        </StatsContainer>
+          ))}
+        </StatList>
+      </PageSection>
+
+      <PageSection>
+        <h2>{stats2Title}</h2>
+        <StatList>
+          {stats2.map(stat => (
+            <Stat
+              key={`${stat.number} ${stat.description}`}
+              {...stat}
+              superscriptText={stat.sourceMarkdown ? (superscript += 1) : null}
+              sourceId={`impact-source-${superscript}`}
+            />
+          ))}
+        </StatList>
+      </PageSection>
+
+      <PageSection contained={false} >
         <Carousel portrait={portrait1} />
+      </PageSection>
+
+      <PageSection contained={false} >
         <Carousel portrait={portrait2} />
-        <Container>
-          <h2>{outroTitle}</h2>
-          <MarkdownContainer className="d-flex justify-content-center">
-            <Markdown className="col-md-8 col-lg-6" source={outroMarkdown} />
-          </MarkdownContainer>
-        </Container>
-        <Banner
-          headline={bannerText}
-          buttonText={bannerButtonText}
-          buttonLink={RouteNames.HowToSupport}
-        />
-      </div>
-    )
-  }
+      </PageSection>
+
+      <PageSection>
+        <h2>{outroTitle}</h2>
+        <IntroText source={outroMarkdown} />
+      </PageSection>
+
+      <Banner
+        headline={bannerText}
+        buttonText={bannerButtonText}
+        buttonLink={RouteNames.HowToSupport}
+      />
+    </div>
+  )
 }
+
 
 Impact.propTypes = {
   metaTitle: PropTypes.string.isRequired,

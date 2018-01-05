@@ -38,6 +38,9 @@ export const pageTitleText = css`
   font-size: ${rem('30px')};
   font-weight: 800;
   line-height: 1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: ${rem('15px')};
 
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('40px')};
@@ -47,6 +50,7 @@ export const pageTitleText = css`
     font-size: ${rem('48px')};
     letter-spacing: ${rem('0.5px')};
     line-height: 1.08;
+    width: 70%;
   }
 `
 

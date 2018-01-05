@@ -1,40 +1,18 @@
 import React from 'react'
-import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Banner from '../../components/Banner'
 import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBecomeAPartnerPage } from '../../api/howToSupport'
-import Markdown from '../../components/Markdown'
-import TeamMember from '../../components/TeamMember'
-import Partner, { propTypes as partnerPropTypes } from '../../components/PartnersList/Partner'
+import { propTypes as partnerPropTypes } from '../../components/PartnersList/Partner'
 import { RouteNames } from '../../routes'
 import imagePropTypes from '../../propTypes/image'
-
-const CenteredMarkdown = styled(Markdown)`
-  text-align: center;
-`
-
-const Section1Title = styled.h2`
-  margin-top: 7rem;
-  margin-bottom: 7rem;
-`
-
-const Section1Container = styled.div`
-  margin-bottom: 5rem;
-`
-
-const H3 = styled.h3`
-  margin-bottom: 2rem;
-`
-
-const StyledPartner = styled(Partner)`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-`
+import PageSection from '../../components/PageSection'
+import PartnersList from '../../components/PartnersList'
+import IntroText from '../../components/IntroText'
+import TextWithTeamMember from '../../components/TextWithTeamMember'
 
 const BecomePartner = ({
   metaTitle,
@@ -51,34 +29,22 @@ const BecomePartner = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
-    <Container>
+
+    <PageSection>
       <h1>{introTitle}</h1>
-      <CenteredMarkdown className="col-md-8 offset-md-2" source={introMarkdown} />
-      <div className="row">
-        {partners.map(partner => (
-          <StyledPartner
-            key={partner.name}
-            image={partner.image}
-            name={partner.name}
-            link={partner.link}
-          />
-        ))}
-      </div>
-      <Section1Title>{section1Title}</Section1Title>
-      <Section1Container className="row">
-        <div className="col-lg-5 offset-lg-2 col-md-7">
-          <H3>{section1Subtitle}</H3>
-          <Markdown source={section1Markdown} />
-        </div>
-        <TeamMember
-          className="col-lg-2 offset-lg-1 p-lg-0 offset-md-1 col-md-4"
-          imageUrl={teamMember.image.url}
-          title={teamMember.region}
-          subtitle={teamMember.name}
-          email={teamMember.email}
-        />
-      </Section1Container>
-    </Container>
+      <IntroText source={introMarkdown} />
+      <PartnersList partnersList={partners} />
+    </PageSection>
+
+    <PageSection>
+      <h2>{section1Title}</h2>
+      <TextWithTeamMember
+        title={section1Subtitle}
+        text={section1Markdown}
+        teamMember={teamMember}
+      />
+    </PageSection>
+
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}
@@ -115,4 +81,3 @@ BecomePartner.getInitialProps = async function getInitialProps({ query }) {
 }
 
 export default LayoutWrapper(BecomePartner)
-

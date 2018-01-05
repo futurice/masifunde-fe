@@ -23,9 +23,7 @@ const HeroImage = styled.div`
   background-size: cover;
   max-height: calc(100vh - ${props => props.theme.headerHeight});
   margin-top: -${props => props.theme.pagePaddingMobile};
-  margin-bottom: 3.5rem;
   @media (min-width: ${mdBreakpoint}) {
-    margin-bottom: 5rem;
     margin-top: -${props => props.theme.pagePadding};
   }
 

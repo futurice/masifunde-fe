@@ -7,7 +7,7 @@ import FaFacebook from 'react-icons/lib/fa/facebook'
 import styled from 'styled-components'
 
 import { Link, RouteNames } from '../routes'
-import { rem } from '../styling/typography'
+import PageSection from './PageSection'
 
 const containerStyle = {
   marginBottom: 20,
@@ -36,10 +36,6 @@ const socialStyle = {
   cursor: 'pointer',
 }
 
-const FooterContainer = styled.div`
-  margin-top: ${rem('61px')};
-`
-
 const SocialLink = styled.a`
   color: #444444;
   opacity: 0.6;
@@ -67,6 +63,21 @@ const ContentfulImage = styled.img`
   width: 100%;
 `
 
+const FooterContainer = styled(PageSection)`
+  a, a:visited {
+    color: ${({ theme }) => theme.pineCone};
+  }
+
+  li {
+    padding: 0.3rem 0;
+    color: #77695c;
+  }
+
+  ul li:first-of-type {
+    font-weight: 700;
+  }
+`
+
 function Footer({
   whatWeDoText,
   approachSaText,
@@ -88,10 +99,9 @@ function Footer({
   datenschutzText,
 }) {
   return (
-    <FooterContainer className="footer">
+    <FooterContainer>
       <Container style={containerStyle}>
         <div className="row" style={LinksContainer}>
-
           <div className="col-sm">
             <div className="row">
               <div className="col">

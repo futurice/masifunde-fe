@@ -5,7 +5,6 @@ import { handwrittenText, rem } from '../styling/typography'
 import Source from './Source'
 
 const StatContainer = styled.div`
-  margin-bottom: 30px;
   font-size: ${rem('18px')};
   font-weight: bold;
 `

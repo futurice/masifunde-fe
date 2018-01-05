@@ -27,7 +27,7 @@ export async function fetchWhatWeDoPage(locale) {
     }
   }
 
-  const programmes = [
+  const countries = [
     {
       buttonLink: RouteNames.ApproachSA,
       title: content && content.projectsTitleSa,
@@ -46,7 +46,7 @@ export async function fetchWhatWeDoPage(locale) {
 
   return {
     ...content,
-    programmes,
+    countries,
     stats: content && content.stats.map(unwrapFields),
   }
 }

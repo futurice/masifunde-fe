@@ -1,7 +1,6 @@
 import React from 'react'
 import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import LayoutWrapper from '../components/LayoutWrapper'
 import Head from '../components/Head'
@@ -14,10 +13,8 @@ import { getLocaleFromQuery } from '../utils/locale'
 import { fetchHomePage } from '../api/home'
 import { RouteNames } from '../routes'
 import YouTubeVideo from '../components/YouTubeVideo'
-
-const StatsContainer = styled.div`
-  margin-bottom: 4rem;
-`
+import PageSection from '../components/PageSection'
+import StatList from '../components/StatList'
 
 const Home = ({
   metaTitle,
@@ -34,30 +31,42 @@ const Home = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
+
     <Hero headline={heroTitle} imageUrl="/static/images/hero/hero-talk.jpg" />
-    <Container>
-      <StatsContainer className="row">
+
+    <PageSection>
+      <StatList className="row">
         {
           stats.map((stat, index) => (
             <Stat
               key={`${stat.icon.url} ${stat.number}`}
-              className="col-md-4"
               {...stat}
               superscriptText={index + 1}
               sourceId={`home-stat-${index}`}
             />
           ))
         }
-      </StatsContainer>
-    </Container>
+      </StatList>
+    </PageSection>
+
     <Banner
       headline={banner1Title}
       buttonText={banner1ButtonText}
       buttonLink={RouteNames.WhatWeDo}
     />
-    <h2>{youTubeVideoTitle}</h2>
-    <YouTubeVideo youtubeVideo={youTubeVideoUrl} />
-    <Carousel portrait={portrait} />
+
+    <PageSection contained={false}>
+      <Container>
+        <h2>{youTubeVideoTitle}</h2>
+      </Container>
+
+      <YouTubeVideo youtubeVideo={youTubeVideoUrl} />
+    </PageSection>
+
+    <PageSection contained={false}>
+      <Carousel portrait={portrait} />
+    </PageSection>
+
     <Banner
       headline={banner2Title}
       buttonText={banner2ButtonText}

@@ -13,21 +13,11 @@ import Markdown from '../../components/Markdown'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBecomeASponsorPage } from '../../api/howToSupport'
 import imagePropTypes from '../../propTypes/image'
-import { subtitle } from '../../styling/typography'
 import FundRaisingForm from '../../components/Fundraisingbox/FundRaisingForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import Divider from '../../components/Fundraisingbox/Divider'
-
-const H2 = styled.h2`
-  ${subtitle};
-  margin-bottom: 2rem;
-  margin-top: 1.6rem;
-`
-
-const H2NoTopMargin = H2.extend`
-  margin-top: 0;
-`
+import PageSection from '../../components/PageSection'
 
 const Image = styled.img`
   border-radius: ${props => props.theme.roundedImageBorderRadius};
@@ -103,22 +93,26 @@ class BecomeSponsor extends Component {
     return (
       <div>
         <Head title={metaTitle} description={metaDescription} />
-        <Container>
-          <div>
-            <h1>{title}</h1>
-            <div className="row">
-              <div className="col-12 col-md-7">
-                <H2NoTopMargin>{introSubtitle1}</H2NoTopMargin>
-                <Markdown source={introMarkdown1} />
-                <H2>{introSubtitle2}</H2>
-                <Markdown source={introMarkdown2} />
-              </div>
-              <div className="col-12 col-md-5">
-                <Image src={image.url} alt={image.title} />
-              </div>
+
+        <PageSection>
+          <h1>{title}</h1>
+        </PageSection>
+
+        <PageSection>
+          <div className="row">
+            <div className="col-12 col-md-7">
+              <h3>{introSubtitle1}</h3>
+              <Markdown source={introMarkdown1} />
+              <h3>{introSubtitle2}</h3>
+              <Markdown source={introMarkdown2} />
+            </div>
+            <div className="col-12 col-md-5">
+              <Image src={image.url} alt={image.title} />
             </div>
           </div>
+        </PageSection>
 
+        <Container>
           <Divider />
 
           <Form
@@ -147,7 +141,7 @@ class BecomeSponsor extends Component {
 
           <Divider />
 
-          <H2>{section4Title}</H2>
+          <h3>{section4Title}</h3>
 
           <FundRaisingForm
             hiddenFields={{ ...this.state.fields }}
@@ -155,6 +149,7 @@ class BecomeSponsor extends Component {
             fundraisingboxIframeTitle={section5Title}
           />
         </Container>
+
         <Banner
           headline={bannerTitle}
           buttonText={bannerButtonText}

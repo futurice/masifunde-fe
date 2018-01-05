@@ -1,7 +1,5 @@
 import React from 'react'
-import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBecomeAVolunteerPage } from '../../api/howToSupport'
@@ -9,14 +7,12 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 import Head from '../../components/Head'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
-import TeamMember from '../../components/TeamMember'
 import Markdown from '../../components/Markdown'
 import RegionalGroups from '../../components/RegionalGroups'
 import { RouteNames } from '../../routes'
-
-const CenteredMarkdown = styled(Markdown)`
-  text-align: center;
-`
+import IntroText from '../../components/IntroText'
+import PageSection from '../../components/PageSection'
+import TextWithTeamMember from '../../components/TextWithTeamMember'
 
 const BecomeVolunteer = ({
   metaTitle,
@@ -35,26 +31,26 @@ const BecomeVolunteer = ({
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
+
     <Hero
       imageUrl="/static/images/hero/hero-small-choir.jpg"
       heroSize="small"
       backgroundPositionX="55%"
     />
-    <Container>
-      <h2>{introTitle}</h2>
-      <div className="row">
-        <div className="col-md-9">
-          <h3>{section1Title}</h3>
-          <Markdown source={section1Markdown} />
-        </div>
-        <TeamMember
-          className="col-md-3"
-          imageUrl={section1TeamMember.image.url}
-          title={section1TeamMember.name}
-          subtitle={section1TeamMember.responsibilityArea}
-          email={section1TeamMember.email}
-        />
-      </div>
+
+    <PageSection>
+      <h1>{introTitle}</h1>
+    </PageSection>
+
+    <PageSection>
+      <TextWithTeamMember
+        title={section1Title}
+        text={section1Markdown}
+        teamMember={section1TeamMember}
+      />
+    </PageSection>
+
+    <PageSection>
       <h2>{section2Title}</h2>
       <div className="row">
         {volunteerOpenings.map(opening => (
@@ -64,10 +60,14 @@ const BecomeVolunteer = ({
           </div>
         ))}
       </div>
+    </PageSection>
+
+    <PageSection>
       <h2>{section3Title}</h2>
-      <CenteredMarkdown source={section3Markdown} />
+      <IntroText source={section3Markdown} />
       <RegionalGroups regionalGroups={regionalGroups} />
-    </Container>
+    </PageSection>
+
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Markdown from 'react-markdown'
 import styled from 'styled-components'
+import imageShape from '../propTypes/image'
 
 const ProjectImage = styled.img`
   max-width: 100%;
@@ -31,10 +32,7 @@ const Project = ({
 
 Project.propTypes = {
   className: PropTypes.string.isRequired,
-  image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
+  image: PropTypes.shape(imageShape).isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 }

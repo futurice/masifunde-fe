@@ -8,7 +8,6 @@ import withAnalytics from './withAnalytics'
 import withLoadingIndicator from './withLoadingIndicator'
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
-import { smBreakpoint } from '../styling/breakpoints'
 import { bodyText, pageTitleText, sectionTitleText, subsectionTitleText, rootFontSize } from '../styling/typography'
 import theme from '../styling/theme'
 
@@ -33,19 +32,6 @@ injectGlobal`
 
   a {
     color: ${theme.linkBlue};;
-  }
-
-  .footer a, .footer a:visited {
-    color: ${theme.pineCone};
-  }
-
-  .footer li {
-    padding: 0.3rem 0;
-    color: #77695c;
-  }
-
-  .footer ul li:first-of-type {
-    font-weight: 700;
   }
 
   h1 {
@@ -84,12 +70,8 @@ injectGlobal`
   }
 `
 
-const LayoutChildrenContainer = styled.div`
-  padding-top: calc(${props => props.theme.headerHeight} + ${props => props.theme.pagePaddingMobile});
-
-  @media (min-width: ${smBreakpoint}) {
-    padding-top: calc(${props => props.theme.headerHeight} + ${props => props.theme.pagePadding});
-  }
+const Content = styled.div`
+  padding-top: ${props => props.theme.headerHeight};
 `
 
 const Layout = ({ headerData, children, footerData }) => (
@@ -109,9 +91,9 @@ const Layout = ({ headerData, children, footerData }) => (
         <script src="https://cdn.jsdelivr.net/npm/core-js@2/client/shim.min.js" />
       </Head>
       <Header height={theme.headerHeight} {...headerData} />
-      <LayoutChildrenContainer>
+      <Content>
         {children}
-      </LayoutChildrenContainer>
+      </Content>
       <Footer {...footerData} />
     </Fragment>
   </ThemeProvider>
