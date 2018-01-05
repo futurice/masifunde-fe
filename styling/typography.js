@@ -30,6 +30,7 @@ export const titleText = css`
   text-align: center;
   width: 100%;
   word-wrap: break-word;
+  hyphens: auto;
 `
 
 export const pageTitleText = css`
@@ -40,7 +41,7 @@ export const pageTitleText = css`
   line-height: 1;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: ${rem('15px')};
+  margin-bottom: ${rem('36px')};
 
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('40px')};
