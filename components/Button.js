@@ -9,7 +9,7 @@ const ButtonContainer = styled.div`
   justify-content: ${({ center }) => (center ? 'center' : 'flex-start')};
 `
 
-const CustomButton = ({
+const Button = ({
   center,
   children,
   className,
@@ -22,20 +22,20 @@ const CustomButton = ({
   </ButtonContainer>
 )
 
-CustomButton.propTypes = {
+Button.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   center: PropTypes.bool,
   href: PropTypes.string,
 }
 
-CustomButton.defaultProps = {
+Button.defaultProps = {
   center: false,
   className: '',
   href: undefined,
 }
 
-const StyledButton = styled(CustomButton)`
+const StyledButton = styled(Button)`
   font-size: ${rem('18px')};
   font-family: ${defaultFont};
   font-weight: bold;
@@ -95,12 +95,12 @@ const StyledButton = styled(CustomButton)`
 `
 
 StyledButton.propTypes = {
-  ...CustomButton.propTypes,
+  ...Button.propTypes,
   type: PropTypes.oneOf(['primary', 'secondary', 'banner']),
 }
 
 StyledButton.defaultProps = {
-  ...CustomButton.defaultProps,
+  ...Button.defaultProps,
   type: 'secondary',
 }
 
