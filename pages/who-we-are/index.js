@@ -15,6 +15,7 @@ import { imagePropTypes } from '../../propTypes/image'
 import IntroText from '../../components/IntroText'
 import PageIntro from '../../components/PageIntro'
 import PageSection from '../../components/PageSection'
+import Award from '../../components/Award'
 
 const Image = styled.img`
   width: 100%;
@@ -59,6 +60,10 @@ const StyledPartnerList = styled(PartnersList)`
   margin-bottom: 2rem;
 `
 
+const AwardsContainer = styled.div`
+  margin-top: 2rem;
+`
+
 const WhoWeAre = ({
   title,
   paragraphOneTitle,
@@ -77,7 +82,7 @@ const WhoWeAre = ({
   teamDeImage,
   teamDeButtonText,
   partnersListOne,
-  partnersListTwo,
+  awards,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -112,7 +117,11 @@ const WhoWeAre = ({
     <PageSection>
       <h1>{paragraphThreeTitle}</h1>
       <IntroText source={paragraphThreeText} />
-      <StyledPartnerList partnersList={partnersListTwo} />
+      <AwardsContainer>
+        {awards.map(award => (
+          <Award key={award.name} {...award} />
+        ))}
+      </AwardsContainer>
     </PageSection>
 
     <Banner
@@ -142,7 +151,7 @@ WhoWeAre.propTypes = {
   // eslint-disable-next-line react/no-typos
   partnersListOne: partnersListPropTypes.partnersList,
   // eslint-disable-next-line react/no-typos
-  partnersListTwo: partnersListPropTypes.partnersList,
+  awards: PropTypes.arrayOf(PropTypes.shape(Award.propTypes)).isRequired,
   bannerText: PropTypes.string.isRequired,
 }
 
