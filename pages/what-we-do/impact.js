@@ -16,7 +16,7 @@ import Source from '../../components/Source'
 import Tagline from '../../components/Tagline'
 import PageSection from '../../components/PageSection'
 import StatList from '../../components/StatList'
-import IntroText from '../../components/IntroText'
+import Markdown from '../../components/Markdown'
 
 const Impact = ({
   metaTitle,
@@ -31,6 +31,7 @@ const Impact = ({
   portrait2,
   outroTitle,
   outroMarkdown,
+  outroTextColumn2,
   bannerText,
   bannerButtonText,
 }) => {
@@ -96,7 +97,10 @@ const Impact = ({
 
       <PageSection>
         <h2>{outroTitle}</h2>
-        <IntroText source={outroMarkdown} />
+        <div className="row">
+          <Markdown className="col-md-6" source={outroMarkdown} />
+          <Markdown className="col-md-6" source={outroTextColumn2} />
+        </div>
       </PageSection>
 
       <Banner
@@ -122,6 +126,7 @@ Impact.propTypes = {
   portrait2: PropTypes.shape(portraitPropTypes).isRequired,
   outroTitle: PropTypes.string.isRequired,
   outroMarkdown: PropTypes.string.isRequired,
+  outroTextColumn2: PropTypes.string.isRequired,
   bannerText: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
 }
