@@ -9,9 +9,10 @@ import PageSection from './PageSection'
 import { Link } from '../routes'
 import { titleText, rem } from '../styling/typography'
 import { mdBreakpoint, lgBreakpoint } from '../styling/breakpoints'
+import theme from '../styling/theme'
 
 const BannerWrapper = styled(PageSection).attrs({ contained: false })`
-  background-color: #FE9933;
+  background-color: ${theme.orange};
   background: url(/static/images/banner-pattern.svg) repeat;
   display: flex;
 `
