@@ -11,13 +11,13 @@ import { titleText, rem } from '../styling/typography'
 import { mdBreakpoint, lgBreakpoint } from '../styling/breakpoints'
 import theme from '../styling/theme'
 
-const BannerWrapper = styled(PageSection).attrs({ contained: false })`
+const OuterContainer = styled(PageSection).attrs({ contained: false })`
   background-color: ${theme.orange};
   background: url(/static/images/banner-pattern.svg) repeat;
   display: flex;
 `
 
-const BannerContainer = styled(Container)`
+const InnerContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,16 +59,16 @@ const Headline = styled.span`
 
 function Banner({ headline, buttonText, buttonLink }) {
   return (
-    <BannerWrapper>
-      <BannerContainer>
+    <OuterContainer>
+      <InnerContainer>
         <Headline>{headline}</Headline>
         <Link route={buttonLink} passHref>
           <Button type="banner">
             {buttonText}
           </Button>
         </Link>
-      </BannerContainer>
-    </BannerWrapper>
+      </InnerContainer>
+    </OuterContainer>
   )
 }
 
