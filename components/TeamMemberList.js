@@ -1,27 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import TeamMember from './TeamMember'
 import { smBreakpoint, mdBreakpoint, lgBreakpoint } from '../styling/breakpoints'
 
-const ListContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`
+const centerIfSingleLine = (breakpoint, maxMembersPerLine, numberOfMembers) => {
+  if (numberOfMembers < maxMembersPerLine) {
+    return css`
+      @media (min-width: ${breakpoint}) {
+        justify-content: center;
+      }
+    `
+  }
+  return ''
+}
 
 const List = styled.div`
   flex-grow: 0;
 
   display: flex;
   flex-wrap: wrap;
+  
+  ${({ members }) => centerIfSingleLine(smBreakpoint, 2, members.length)}
+  ${({ members }) => centerIfSingleLine(mdBreakpoint, 3, members.length)}
+  ${({ members }) => centerIfSingleLine(lgBreakpoint, 6, members.length)}
 
   > * {
     min-width: 150px;
     width: 100%;
     padding: 0 0.5rem;
-    flex-shrink: 0;
-    flex-grow: 1;
 
     @media (min-width: ${smBreakpoint}) {
       width: 50%;
@@ -44,26 +52,24 @@ const TeamMemberList = ({
   imageUrl,
   email,
 }) => (
-  <ListContainer>
-    <List>
-      {members.map((member) => {
-        const memberTitle = title(member)
-        const memberSubtitle = subtitle(member)
-        const memberImageUrl = imageUrl(member)
-        const memberEmail = email && email(member)
+  <List members={members}>
+    {members.map((member) => {
+      const memberTitle = title(member)
+      const memberSubtitle = subtitle(member)
+      const memberImageUrl = imageUrl(member)
+      const memberEmail = email && email(member)
 
-        return (
-          <TeamMember
-            key={`${memberTitle} ${memberSubtitle}`}
-            title={memberTitle}
-            subtitle={memberSubtitle}
-            imageUrl={memberImageUrl}
-            email={memberEmail}
-          />
-        )
-      })}
-    </List>
-  </ListContainer>
+      return (
+        <TeamMember
+          key={`${memberTitle} ${memberSubtitle}`}
+          title={memberTitle}
+          subtitle={memberSubtitle}
+          imageUrl={memberImageUrl}
+          email={memberEmail}
+        />
+      )
+    })}
+  </List>
 )
 
 TeamMemberList.propTypes = {
