@@ -24,9 +24,9 @@ const InnerContainer = styled(Container)`
   justify-content: center;
 
   height: auto;
-  min-height: ${rem('412px')};
-  padding-top: ${rem('24px')};
-  padding-bottom: ${rem('24px')}
+  min-height: ${rem('350px')};
+  padding-top: ${rem('45px')};
+  padding-bottom: ${rem('45px')}
 `
 
 const Headline = styled.span`
@@ -36,24 +36,23 @@ const Headline = styled.span`
   font-weight: bold;
   hyphens: auto;
   letter-spacing: ${rem('0.2px')};
-  line-height: 1.25;
-  margin-bottom: ${rem('20px')};
+  line-height: 1.39;
+  margin-bottom: ${rem('30px')};
   overflow-wrap: break-word;
-  text-align: left;
+  text-align: center;
 
 
   @media (min-width: ${mdBreakpoint}) {
-    font-size: ${rem('34px')};
+    font-size: ${rem('26px')};
     letter-spacing: ${rem('0.3px')};
-    line-height: 1.12;
-    text-align: center;
+    line-height: 1.39;
     width: 80%;
   }
 
   @media (min-width: ${lgBreakpoint}) {
-    font-size: ${rem('40px')};
+    font-size: ${rem('32px')};
     letter-spacing: ${rem('0.4px')};
-    line-height: 1.1;
+    line-height: 1.39;
   }
 `
 
