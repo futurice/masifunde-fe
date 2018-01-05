@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Markdown from 'react-markdown'
 import styled from 'styled-components'
 import imageShape from '../propTypes/image'
+import { smallFontSize } from '../styling/typography'
 
 const ProjectImage = styled.img`
   max-width: 100%;
@@ -18,7 +19,7 @@ const H3 = styled.h3`
 `
 
 const ProjectContainer = styled.div`
-  font-size: 16px;
+  font-size: ${smallFontSize};
   margin-bottom: 2rem;
 `
 
