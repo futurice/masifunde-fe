@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import Button from './Button'
 import PageSection from './PageSection'
 import { Link } from '../routes'
-import { titleText, rem } from '../styling/typography'
+import { subsectionTitleText, rem } from '../styling/typography'
 import { mdBreakpoint, lgBreakpoint } from '../styling/breakpoints'
 import theme from '../styling/theme'
 
@@ -30,17 +30,13 @@ const InnerContainer = styled(Container)`
 `
 
 const Headline = styled.span`
-  ${titleText}
+  ${subsectionTitleText}
   color: white;
   font-size: ${rem('24px')};
   font-weight: bold;
-  hyphens: auto;
   letter-spacing: ${rem('0.2px')};
-  line-height: 1.39;
   margin-bottom: ${rem('30px')};
-  overflow-wrap: break-word;
   text-align: center;
-
 
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('26px')};

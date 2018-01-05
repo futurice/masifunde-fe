@@ -46,7 +46,6 @@ const CountryTitle = styled.h3`
   text-align: center;
 `
 
-
 const CountryContainer = styled.div`
 
   display: flex;
