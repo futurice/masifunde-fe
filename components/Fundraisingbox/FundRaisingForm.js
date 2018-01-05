@@ -203,7 +203,7 @@ class FundRaisingForm extends Component {
               </Field>
               {/* receipt ? */}
               <label className="form-group row" htmlFor="receipt-input">
-                <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Spendequittung</FormLabel>
+                <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Spendenquittung</FormLabel>
                 <Field name={fieldName.wantsReceipt}>
                   {({ input, meta }) => (
                     <div className="col-md-7 col-lg-6">
