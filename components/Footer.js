@@ -64,6 +64,8 @@ const ContentfulImage = styled.img`
 `
 
 const FooterContainer = styled(PageSection)`
+  margin-top: 3rem;
+
   a, a:visited {
     color: ${({ theme }) => theme.pineCone};
   }
