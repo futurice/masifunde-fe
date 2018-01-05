@@ -25,6 +25,7 @@ const Home = ({
   banner1ButtonText,
   banner2Title,
   banner2ButtonText,
+  section1Title,
   portrait,
   youTubeVideoTitle,
   youTubeVideoUrl,
@@ -64,6 +65,10 @@ const Home = ({
     </PageSection>
 
     <PageSection contained={false}>
+      <Container>
+        <h2>{section1Title}</h2>
+      </Container>
+
       <Carousel portrait={portrait} />
     </PageSection>
 
@@ -84,6 +89,7 @@ Home.propTypes = {
   banner1ButtonText: PropTypes.string.isRequired,
   banner2Title: PropTypes.string.isRequired,
   banner2ButtonText: PropTypes.string.isRequired,
+  section1Title: PropTypes.string.isRequired,
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
   youTubeVideoTitle: PropTypes.string.isRequired,
   youTubeVideoUrl: PropTypes.string.isRequired,
