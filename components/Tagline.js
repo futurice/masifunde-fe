@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { sectionTitleText } from '../styling/typography'
+import { subsectionTitleText } from '../styling/typography'
 import HorizontalRuler from './HorizontalRuler'
 import PageSection from './PageSection'
 
-const taglineTextMargin = '2rem'
+const taglineTextMargin = '2.3rem'
 
 const TaglineText = styled.p`
-  ${sectionTitleText};
+  ${subsectionTitleText};
   color: ${props => props.theme.orange};
   font-weight: bold;
   text-align: center;
