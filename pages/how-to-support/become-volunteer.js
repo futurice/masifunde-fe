@@ -24,7 +24,6 @@ const BecomeVolunteer = ({
   metaTitle,
   metaDescription,
   introTitle,
-  section1Title,
   section1Markdown,
   section1TeamMember,
   section2Title,
@@ -47,7 +46,6 @@ const BecomeVolunteer = ({
     <PageSection>
       <h1>{introTitle}</h1>
       <TextWithTeamMember
-        title={section1Title}
         text={section1Markdown}
         teamMember={section1TeamMember}
       />
@@ -87,7 +85,6 @@ BecomeVolunteer.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   introTitle: PropTypes.string.isRequired,
-  section1Title: PropTypes.string.isRequired,
   section1Markdown: PropTypes.string.isRequired,
   section1TeamMember: PropTypes.shape().isRequired,
   section2Title: PropTypes.string.isRequired,

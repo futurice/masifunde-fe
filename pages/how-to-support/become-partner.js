@@ -21,7 +21,6 @@ const BecomePartner = ({
   introMarkdown,
   partners,
   section1Title,
-  section1Subtitle,
   section1Markdown,
   teamMember,
   bannerTitle,
@@ -39,7 +38,6 @@ const BecomePartner = ({
     <PageSection>
       <h2>{section1Title}</h2>
       <TextWithTeamMember
-        title={section1Subtitle}
         text={section1Markdown}
         teamMember={teamMember}
       />
@@ -59,7 +57,6 @@ BecomePartner.propTypes = {
   introTitle: PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
   section1Title: PropTypes.string.isRequired,
-  section1Subtitle: PropTypes.string.isRequired,
   section1Markdown: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
