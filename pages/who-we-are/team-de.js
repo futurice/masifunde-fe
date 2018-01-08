@@ -94,4 +94,3 @@ TeamDe.getInitialProps = async function initialProps({ query }) {
 }
 
 export default LayoutWrapper(TeamDe)
-

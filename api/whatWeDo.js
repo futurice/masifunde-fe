@@ -9,21 +9,7 @@ export async function fetchWhatWeDoPage(locale) {
   function createProject(project) {
     return {
       ...project.fields,
-      image: {
-        title:
-          project &&
-          project.fields &&
-          project.fields.image &&
-          project.fields.image.fields &&
-          project.fields.image.fields.title,
-        url:
-          project &&
-          project.fields &&
-          project.fields.image &&
-          project.fields.image.fields &&
-          project.fields.image.fields.file &&
-          project.fields.image.fields.file.url,
-      },
+      image: unwrapImage(project && project.fields && project.fields.image),
     }
   }
 

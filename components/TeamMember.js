@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { jpgCompression } from '../utils/constants'
 import RoundedImage from './RoundedImage'
 
 const TeamContainer = styled.div`
@@ -37,7 +36,7 @@ const TeamMember = ({
     <ContentContainer>
       <Image
         className="img-fluid"
-        src={`${imageUrl}?q=${jpgCompression}`}
+        src={imageUrl}
         alt={`${title} - ${subtitle}`}
       />
       <Title>{title}</Title>

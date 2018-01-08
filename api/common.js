@@ -1,4 +1,7 @@
+import qs from 'qs'
+
 import { fetchMemoizedSingleEntry } from './contentfulService'
+import { jpgCompression } from '../utils/constants'
 
 export async function fetchHeaderData(locale) {
   return fetchMemoizedSingleEntry('header', locale)
@@ -8,17 +11,27 @@ export async function fetchFooterData(locale) {
   return fetchMemoizedSingleEntry('footer', locale)
 }
 
-export const unwrapImage = image => ({
-  url:
-    image &&
-    image.fields &&
-    image.fields.file &&
-    image.fields.file.url,
-  title:
-    image &&
-    image.fields &&
-    image.fields.title,
-})
+// For a list of valid image URL parameters, see the Contentful API docs:
+// https://www.contentful.com/developers/docs/references/images-api
+export const unwrapImage = (image, urlParams) => {
+  const imageFile = image && image.fields && image.fields.file
+
+  if (!imageFile) {
+    return {
+      url: undefined,
+      title: undefined,
+    }
+  }
+
+  const urlQuery = urlParams
+    ? `?${qs.stringify(urlParams)}`
+    : ''
+
+  return {
+    url: imageFile.url + urlQuery,
+    title: imageFile.title || '',
+  }
+}
 
 export const unwrapRegion = region => region && region.fields && region.fields.name
 
@@ -56,12 +69,15 @@ export const unwrapRegionalGroups = regionalGroups => ({
 export const unwrapTeamMember = (teamMember) => {
   const { fields } = teamMember
   return {
-    id:
-      teamMember &&
-      teamMember.sys &&
-      teamMember.sys.id,
+    id: teamMember && teamMember.sys && teamMember.sys.id,
     ...fields,
-    image: unwrapImage(fields && fields.profileImage),
+    image: unwrapImage(fields && fields.profileImage, {
+      w: 320,
+      h: 320,
+      q: jpgCompression,
+      fit: 'thumb',
+      f: 'face',
+    }),
     region: unwrapRegion(fields && fields.region),
   }
 }
