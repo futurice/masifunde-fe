@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Head from '../../components/Head'
@@ -12,6 +13,15 @@ import PageSection from '../../components/PageSection'
 import Tagline from '../../components/Tagline'
 import ProjectList from '../../components/ProjectList'
 import CenteredText from '../../components/CenteredText'
+
+const Image = styled.img`
+  border-radius: ${props => props.theme.roundedImageBorderRadius};
+`
+
+const ImageContainer = styled.div`
+  margin: 0 auto;
+  max-width: 900px;
+`
 
 const ApproachDe = ({
   metaTitle,
@@ -37,6 +47,9 @@ const ApproachDe = ({
       <h1>{introHeading}</h1>
       <CenteredText source={introText} />
       <ProjectList projects={projects} />
+      <ImageContainer>
+        <Image className="img-fluid" src="http://via.placeholder.com/2126x1194" alt="img" />
+      </ImageContainer>
     </PageSection>
 
     <Banner
