@@ -36,7 +36,6 @@ const CarouselTextTitle = styled.p`
   ${subsectionTitleText}
   color: white;
   font-weight: bold;
-  text-align: left;
 `
 
 const Image = styled.div`
@@ -45,13 +44,27 @@ const Image = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  
+  display: none;
+  @media (min-width: ${mdBreakpoint}) {
+    display: block;
+  }
 `
 
 const CarouselContainer = styled.div`
   padding-bottom: 3.5rem;
 `
 
-const MobileImage = styled.img``
+const MobileImage = styled.img`
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  
+  display: block;
+  @media (min-width: ${mdBreakpoint}) {
+    display: none;
+  }
+`
 
 const StyledCarousel = styled(Carousel)`
   background: ${props => props.theme.blue};
@@ -174,10 +187,10 @@ class MasifundeCarousel extends Component {
       <CarouselContainer innerRef={(carousel) => { this.carouselComponent = carousel }}>
         <StyledCarousel {...settings}>
           {items.map(item => (
-            <SlideRow key={`${item.heading} ${item.image.url}`} className="row">
-              <Image className="d-none d-md-block col-md-4 col-lg-3" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
-              <MobileImage className="d-md-none p-0 w-100 h-100" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
-              <CarouselTextContainer className="col-md-8 col-lg-9">
+            <SlideRow className="row" key={`${item.heading} ${item.image.url}`}>
+              <Image className="col-md-4" src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
+              <MobileImage src={`${item.image.url}?q=${jpgCompression}`} alt={item.image.title} />
+              <CarouselTextContainer className="col-md-8">
                 <CarouselTextTitle>{item.heading}</CarouselTextTitle>
                 <Markdown source={item.text} />
               </CarouselTextContainer>
