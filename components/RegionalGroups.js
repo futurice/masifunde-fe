@@ -12,7 +12,7 @@ const LocationsList = styled.ul`
   @media (min-width: 992px) {
     margin-top: 0;
   }
-  margin-top: 1rem;
+  margin-top: 2rem;
   list-style-type: none;
   margin-bottom: 0;
 `
