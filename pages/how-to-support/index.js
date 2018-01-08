@@ -39,10 +39,10 @@ const Section = ({
   image, title, markdown, buttonText, buttonType, buttonLink,
 }) => (
   <SectionContainer>
-    <SectionImageContainer className="col-sm-3">
+    <SectionImageContainer className="col-md-4 offset-lg-1 col-lg-3">
       <SectionImage src={image.url} alt={image.title} />
     </SectionImageContainer>
-    <div className="col-sm-9">
+    <div className="col-md-8 col-lg-7">
       <h3>{title}</h3>
       <Markdown source={markdown} />
       <Link route={buttonLink} passHref>
