@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 import { smBreakpoint } from '../styling/breakpoints'
 
 const sectionSpacing = '5rem'
-const sectionSpacingMobile = '3rem'
+const sectionSpacingMobile = '4rem'
 
 const pageSectionStyle = css`
   margin-top: ${sectionSpacingMobile};
