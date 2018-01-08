@@ -12,7 +12,7 @@ import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import PartnersList, { propTypes as partnersListPropTypes } from '../../components/PartnersList'
 import { imagePropTypes } from '../../propTypes/image'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import Award from '../../components/Award'
 
@@ -96,7 +96,7 @@ const WhoWeAre = ({
 
     <PageSection>
       <h1>{paragraphOneTitle}</h1>
-      <IntroText source={paragraphOneText} />
+      <CenteredText source={paragraphOneText} />
       <div className="row justify-content-md-center">
         <CountryMap route={RouteNames.TeamDE} buttonText={teamDeButtonText} image={teamDeImage} />
         <CountryMap route={RouteNames.TeamSA} buttonText={teamSaButtonText} image={teamSaImage} />
@@ -105,7 +105,7 @@ const WhoWeAre = ({
 
     <PageSection>
       <h1>{paragraphTwoTitle}</h1>
-      <IntroText source={paragraphTwoText} />
+      <CenteredText source={paragraphTwoText} />
       <StyledPartnerList partnersList={partnersListOne} />
       <Link route={RouteNames.BecomePartner} passHref>
         <Button center>{partnersButtonText}</Button>
@@ -114,7 +114,7 @@ const WhoWeAre = ({
 
     <PageSection>
       <h1>{paragraphThreeTitle}</h1>
-      <IntroText source={paragraphThreeText} />
+      <CenteredText source={paragraphThreeText} />
       <AwardsContainer>
         {awards.map(award => (
           <Award key={award.name} {...award} />

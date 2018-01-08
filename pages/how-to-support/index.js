@@ -13,7 +13,7 @@ import Markdown from '../../components/Markdown'
 import Button from '../../components/Button'
 import HorizontalRuler from '../../components/HorizontalRuler'
 import { smBreakpoint } from '../../styling/breakpoints'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import Divider from '../../components/Fundraisingbox/Divider'
 
@@ -100,7 +100,7 @@ const HowToSupport = ({
 
     <PageSection>
       <h1>{introHeading}</h1>
-      <IntroText source={introMarkdown} />
+      <CenteredText source={introMarkdown} />
     </PageSection>
 
     <Section

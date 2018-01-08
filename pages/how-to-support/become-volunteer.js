@@ -11,7 +11,7 @@ import Banner from '../../components/Banner'
 import Markdown from '../../components/Markdown'
 import RegionalGroups from '../../components/RegionalGroups'
 import { RouteNames } from '../../routes'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 import { smallFontSize } from '../../styling/typography'
@@ -65,7 +65,7 @@ const BecomeVolunteer = ({
 
     <PageSection>
       <h2>{section3Title}</h2>
-      <IntroText source={section3Markdown} />
+      <CenteredText source={section3Markdown} />
       <RegionalGroups regionalGroups={regionalGroups} />
     </PageSection>
 

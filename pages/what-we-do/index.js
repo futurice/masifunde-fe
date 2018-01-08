@@ -15,7 +15,7 @@ import { Link, RouteNames } from '../../routes'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import { mdBreakpoint } from '../../styling/breakpoints'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 import Markdown from '../../components/Markdown'
 import PageSection from '../../components/PageSection'
 import Tagline from '../../components/Tagline'
@@ -149,7 +149,7 @@ const WhatWeDo = ({
 
     <PageSection>
       <h1>{introHeading0}</h1>
-      <IntroText source={introText} />
+      <CenteredText source={introText} />
     </PageSection>
 
     <PageSection contained={false}>

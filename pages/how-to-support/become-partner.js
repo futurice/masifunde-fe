@@ -11,7 +11,7 @@ import { RouteNames } from '../../routes'
 import imagePropTypes from '../../propTypes/image'
 import PageSection from '../../components/PageSection'
 import PartnersList from '../../components/PartnersList'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 
 const BecomePartner = ({
@@ -31,7 +31,7 @@ const BecomePartner = ({
 
     <PageSection>
       <h1>{introTitle}</h1>
-      <IntroText source={introMarkdown} />
+      <CenteredText source={introMarkdown} />
       <PartnersList partnersList={partners} />
     </PageSection>
 

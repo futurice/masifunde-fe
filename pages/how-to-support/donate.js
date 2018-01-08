@@ -19,7 +19,7 @@ import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/ut
 import Divider from '../../components/Fundraisingbox/Divider'
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 import PageSection from '../../components/PageSection'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 
 const CountryLabel = styled.label`
   border-radius: 8px;
@@ -134,7 +134,7 @@ class Donate extends Component {
 
         <PageSection>
           <h1>{introHeading}</h1>
-          <IntroText source={introMarkdown} />
+          <CenteredText source={introMarkdown} />
         </PageSection>
 
         <div className="container">
