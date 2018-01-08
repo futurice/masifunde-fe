@@ -40,6 +40,10 @@ const fieldName = {
 }
 
 const formLabelBootstrapClasses = 'col-md-3 col-lg-2'
+const formInputBootstrapClasses = 'col-md-7 col-lg-6'
+
+const noReceiptOptionValue = 'no_receipt'
+const receiptNowOptionValue = 'receipt_now'
 
 class FundRaisingForm extends Component {
   state = {
@@ -67,19 +71,27 @@ class FundRaisingForm extends Component {
     }
 
     isRequired([
-      fieldName.address,
-      fieldName.city,
       fieldName.country,
       fieldName.email,
       fieldName.firstName,
       fieldName.lastName,
-      fieldName.postCode,
       fieldName.salutation,
       fieldName.wantsReceipt,
     ])
 
+    if (fields[fieldName.wantsReceipt] !== noReceiptOptionValue) {
+      isRequired([
+        fieldName.address,
+        fieldName.city,
+        fieldName.postCode,
+      ])
+    }
+
     if (!Object.keys(errors).length) {
-      this.debounceSetState({ ...this.state, fields })
+      this.debounceSetState({
+        ...this.state,
+        fields,
+      })
     }
     return errors
   }
@@ -96,12 +108,19 @@ class FundRaisingForm extends Component {
       <Fragment>
         <Form
           onSubmit={() => {}}
-          validate={this.validateForm}
           initialValues={{
+            [fieldName.wantsReceipt]: receiptNowOptionValue,
             [fieldName.country]: 'DE',
           }}
-          render={({ handleSubmit }) => (
-            <form className="offset-md-1 offset-lg-1" onSubmit={(e) => { handleSubmit(e); this.props.onSubmit() }}>
+          validate={this.validateForm}
+          render={({ handleSubmit, values }) => (
+            <form
+              className="offset-md-1 offset-lg-1"
+              onSubmit={(e) => {
+              handleSubmit(e)
+              this.props.onSubmit()
+            }}
+            >
               {/* Anrede */}
               <div className="form-group row">
                 <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="titleInputs">
@@ -133,7 +152,7 @@ class FundRaisingForm extends Component {
                 </FormLabel>
                 <Field name={fieldName.title}>
                   {({ input, meta }) => (
-                    <div className="col-md-7 col-lg-6">
+                    <div className={formInputBootstrapClasses}>
                       <input
                         {...input}
                         type="text"
@@ -150,7 +169,7 @@ class FundRaisingForm extends Component {
                 <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="firstname-input">
                   Vorname
                 </FormLabel>
-                <div className="col-md-7 col-lg-6">
+                <div className={formInputBootstrapClasses}>
                   <Field name={fieldName.firstName}>
                     {({ input, meta }) => (
                       <div>
@@ -171,7 +190,7 @@ class FundRaisingForm extends Component {
                 <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="lastname-input">
                   Nachname
                 </FormLabel>
-                <div className="col-md-7 col-lg-6">
+                <div className={formInputBootstrapClasses}>
                   <Field name={fieldName.lastName}>
                     {({ input, meta }) => (
                       <div>
@@ -192,7 +211,7 @@ class FundRaisingForm extends Component {
                 {({ input, meta }) => (
                   <label className="form-group row" htmlFor="inputEmail">
                     <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>E-mail</FormLabel>
-                    <div className="col-md-7 col-lg-6">
+                    <div className={formInputBootstrapClasses}>
                       <input
                         {...input}
                         type="email"
@@ -209,92 +228,113 @@ class FundRaisingForm extends Component {
                 <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Spendenquittung</FormLabel>
                 <Field name={fieldName.wantsReceipt}>
                   {({ input, meta }) => (
-                    <div className="col-md-7 col-lg-6">
+                    <div className={formInputBootstrapClasses}>
                       <select
                         {...input}
                         id="receipt-input"
                         className={this.formInputClassFactory(meta)}
                       >
-                        <option value={null} disabled hidden />
-                        <option value="receipt_now">Ja, so schnell wie möglich</option>
+                        <option value={receiptNowOptionValue}>Ja, so schnell wie möglich</option>
                         <option value="receipt_end_of_year">Ja, konsolidiert am Ende des Jahres</option>
-                        <option value="no_receipt">Nein, ich brauche keine Quittung</option>
+                        <option value={noReceiptOptionValue}>
+                          Nein, ich brauche keine Quittung
+                        </option>
                       </select>
                       {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
                     </div>
                   )}
                 </Field>
               </label>
-              {/* Firma */}
-              <Field name={fieldName.companyName}>
-                {({ input, meta }) => (
-                  <label className="form-group row" htmlFor="company-input">
-                    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Firma (optional)</FormLabel>
-                    <div className="col-md-7 col-lg-6">
-                      <input
-                        {...input}
-                        type="text"
-                        className={this.formInputClassFactory(meta)}
-                        id="company-input"
-                      />
-                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
-                    </div>
-                  </label>
-                )}
-              </Field>
-              {/* Address */}
-              <Field name={fieldName.address}>
-                {({ input, meta }) => (
-                  <label className="form-group row" htmlFor="address-input">
-                    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Adresse</FormLabel>
-                    <div className="col-md-7 col-lg-6">
-                      <input
-                        {...input}
-                        type="text"
-                        className={this.formInputClassFactory(meta)}
-                        id="address-input"
-                      />
-                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
-                    </div>
-                  </label>
-                )}
-              </Field>
-              {/* PLZ und Ort */}
-              <div className="form-group row">
-                <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="zip-code-city-inputs">
-                  PLZ / Ort
-                </FormLabel>
-                <Field name={fieldName.postCode}>
-                  {({ input, meta }) => (
-                    <div className="col-md-3 col-lg-2">
-                      <input
-                        {...input}
-                        className={this.formInputClassFactory(meta)}
-                        aria-labelledby="zip-code-city-inputs"
-                      />
-                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
-                    </div>
-                  )}
-                </Field>
-                <Field name={fieldName.city}>
-                  {({ input, meta }) => (
-                    <div className="col-md-4 pl-md-0 mt-1 mt-md-0">
-                      <input
-                        {...input}
-                        className={this.formInputClassFactory(meta)}
-                        aria-labelledby="zip-code-city-inputs"
-                      />
-                      {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
-                    </div>
-                  )}
-                </Field>
-              </div>
+              {
+                values[fieldName.wantsReceipt] !== noReceiptOptionValue
+                  ? (
+                    <Fragment>
+                      {/* Firma */}
+                      <Field name={fieldName.companyName}>
+                        {({ input, meta }) => (
+                          <label className="form-group row" htmlFor="company-input">
+                            <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Firma (optional)</FormLabel>
+                            <div className={formInputBootstrapClasses}>
+                              <input
+                                {...input}
+                                type="text"
+                                className={this.formInputClassFactory(meta)}
+                                id="company-input"
+                              />
+                              {
+                                meta.error && meta.touched &&
+                                <ErrorMessage>{meta.error}</ErrorMessage>
+                              }
+                            </div>
+                          </label>
+                        )}
+                      </Field>
+                      {/* Address */}
+                      <Field name={fieldName.address}>
+                        {({ input, meta }) => (
+                          <label className="form-group row" htmlFor="address-input">
+                            <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Adresse</FormLabel>
+                            <div className={formInputBootstrapClasses}>
+                              <input
+                                {...input}
+                                type="text"
+                                className={this.formInputClassFactory(meta)}
+                                id="address-input"
+                              />
+                              {
+                                meta.error && meta.touched &&
+                                <ErrorMessage>{meta.error}</ErrorMessage>
+                              }
+                            </div>
+                          </label>
+                        )}
+                      </Field>
+                      {/* PLZ und Ort */}
+                      <div className="form-group row">
+                        <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="zip-code-city-inputs">
+                          PLZ / Ort
+                        </FormLabel>
+                        <Field name={fieldName.postCode}>
+                          {({ input, meta }) => (
+                            <div className="col-md-3 col-lg-2">
+                              <input
+                                {...input}
+                                className={this.formInputClassFactory(meta)}
+                                aria-labelledby="zip-code-city-inputs"
+                              />
+                              {
+                                meta.error && meta.touched &&
+                                <ErrorMessage>{meta.error}</ErrorMessage>
+                              }
+                            </div>
+                          )}
+                        </Field>
+                        <Field name={fieldName.city}>
+                          {({ input, meta }) => (
+                            <div className="col-md-4 pl-md-0 mt-1 mt-md-0">
+                              <input
+                                {...input}
+                                className={this.formInputClassFactory(meta)}
+                                aria-labelledby="zip-code-city-inputs"
+                              />
+                              {
+                                meta.error && meta.touched &&
+                                <ErrorMessage>{meta.error}</ErrorMessage>
+                              }
+                            </div>
+                          )}
+                        </Field>
+                      </div>
+                    </Fragment>
+                  )
+                  : null
+              }
               {/* Land */}
               <label className="form-group row" htmlFor="country-input">
                 <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Land</FormLabel>
                 <Field name={fieldName.country}>
                   {({ input, meta }) => (
-                    <div className="col-md-7 col-lg-6">
+                    <div className={formInputBootstrapClasses}>
                       <select
                         {...input}
                         id="country-input"
@@ -310,7 +350,14 @@ class FundRaisingForm extends Component {
                 </Field>
               </label>
 
-              <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
+              <button
+                className="d-none"
+                ref={(form) => {
+                this.formRef = form
+              }}
+              >
+                Submit
+              </button>
             </form>
           )}
         />
@@ -340,7 +387,8 @@ FundRaisingForm.propTypes = {
 
 FundRaisingForm.defaultProps = {
   hiddenFields: undefined,
-  onSubmit: () => {},
+  onSubmit: () => {
+  },
 }
 
 export default FundRaisingForm
