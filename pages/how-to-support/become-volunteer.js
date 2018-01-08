@@ -46,9 +46,6 @@ const BecomeVolunteer = ({
 
     <PageSection>
       <h1>{introTitle}</h1>
-    </PageSection>
-
-    <PageSection>
       <TextWithTeamMember
         title={section1Title}
         text={section1Markdown}
