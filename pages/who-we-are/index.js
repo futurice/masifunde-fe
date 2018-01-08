@@ -13,7 +13,6 @@ import Banner from '../../components/Banner'
 import PartnersList, { propTypes as partnersListPropTypes } from '../../components/PartnersList'
 import { imagePropTypes } from '../../propTypes/image'
 import IntroText from '../../components/IntroText'
-import PageIntro from '../../components/PageIntro'
 import PageSection from '../../components/PageSection'
 import Award from '../../components/Award'
 
@@ -95,15 +94,14 @@ const WhoWeAre = ({
       headlineShadow
     />
 
-    <PageIntro
-      title={paragraphOneTitle}
-      text={paragraphOneText}
-    >
+    <PageSection>
+      <h1>{paragraphOneTitle}</h1>
+      <IntroText source={paragraphOneText} />
       <div className="row justify-content-md-center">
         <CountryMap route={RouteNames.TeamDE} buttonText={teamDeButtonText} image={teamDeImage} />
         <CountryMap route={RouteNames.TeamSA} buttonText={teamSaButtonText} image={teamSaImage} />
       </div>
-    </PageIntro>
+    </PageSection>
 
     <PageSection>
       <h1>{paragraphTwoTitle}</h1>
