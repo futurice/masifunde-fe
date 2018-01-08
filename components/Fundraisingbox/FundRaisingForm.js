@@ -298,7 +298,6 @@ class FundRaisingForm extends Component {
                         value={input.value ? input.value : 'DE'}
                         className={this.formInputClassFactory(meta)}
                       >
-                        <option value={null} disabled hidden />
                         {Object.entries(countries).map(([countryKey, country]) => (
                           <option value={countryKey} key={countryKey}>{country}</option>
                         ))}
