@@ -27,22 +27,22 @@ export async function fetchWhatWeDoPage(locale) {
     }
   }
 
-  const countries = [
-    {
+  const countries = {
+    southAfrica: {
       buttonLink: RouteNames.ApproachSA,
       title: content && content.projectsTitleSa,
       description: content && content.projectsDescriptionSa,
       projects: content && content.projectsSa.map(createProject),
       button: content && content.projectsButtonSa,
     },
-    {
+    germany: {
       buttonLink: RouteNames.ApproachDE,
       title: content && content.projectsTitleDe,
       description: content && content.projectsDescriptionDe,
       projects: content && content.projectsDe.map(createProject),
       button: content && content.projectsButtonDe,
     },
-  ]
+  }
 
   return {
     ...content,

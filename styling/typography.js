@@ -12,6 +12,8 @@ export const handwrittenFont = 'banaueregular, sans-serif'
 export const rootFontSize = '18px'
 export const smallFontSize = '16px'
 
+export const bodyTextLineHeight = 1.39
+
 // Use this function to convert pixel font sizes from the designs to rem.
 // Example: rem('24px')
 export function rem(px) {
@@ -22,7 +24,7 @@ export const bodyText = css`
   color: #4F463F;
   font-family: ${defaultFont};
   font-weight: 400;
-  line-height: 1.39;
+  line-height: ${bodyTextLineHeight};
 `
 
 export const titleText = css`

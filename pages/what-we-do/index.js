@@ -1,8 +1,8 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import LayoutWrapper from '../../components/LayoutWrapper'
 import { fetchWhatWeDoPage } from '../../api/whatWeDo'
@@ -20,39 +20,25 @@ import Markdown from '../../components/Markdown'
 import PageSection from '../../components/PageSection'
 import Tagline from '../../components/Tagline'
 import StatList from '../../components/StatList'
+import imageShape from '../../propTypes/image'
+import { bodyTextLineHeight } from '../../styling/typography'
 
-const ProjectImage = styled.img`
-  height: 7rem;
-  width: 7rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
+const ImagePropType = PropTypes.shape(imageShape)
 
-const ProjectText = styled.p`
-  text-align: center;
-`
+const ProjectPropType = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  image: ImagePropType.isRequired,
+})
 
-const CountryDescription = styled.div`
-  flex-grow: 1;
-  width: 100%;
+const CountryPropType = PropTypes.shape({
+  buttonLink: PropTypes.any.isRequired,
+  button: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  projects: PropTypes.arrayOf(ProjectPropType).isRequired,
+  title: PropTypes.string.isRequired,
+})
 
-  @media (min-width: ${mdBreakpoint}) {
-    justify-content: center;
-  }
-`
-
-const CountryTitle = styled.h3`
-  text-align: center;
-`
-
-const CountryContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const ProjectList = styled.div`
+const ProjectListContainer = styled.div`
   margin-top: 1.5rem;
   margin-bottom: 1.2rem;
   width: 100%;
@@ -69,54 +55,152 @@ const Project = styled.div`
   align-items: center;
 `
 
+const ProjectImage = styled.img`
+  height: 7rem;
+  width: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const ProjectText = styled.p`
+  text-align: center;
+
+  /*
+   * Let text wrap correctly in Internet Explorer:
+   * https://stackoverflow.com/questions/35111090/text-in-a-flex-container-doesnt-wrap-in-ie11
+   */
+  width: 100%;
+
+  /*
+   * The South Africa and Germany projects are in two different containers,
+   * so when they are shown next to each other (i.e., at medium viewport size
+   * and up), they may not exactly line up vertically because the row heights
+   * might vary with the number of lines needed for the project names.
+   *
+   * To mitigate this issue, we demand all ProjectText elements to be at least
+   * two lines high, irrespective of content. This ensures that the alignment
+   * problem only happens if project names grow beyond two lines, which is
+   * hopefully unlikely -- though not impossible, of course...
+   */
+  min-height: calc(2em * ${bodyTextLineHeight});
+
+`
+
+const ProjectList = ({ projects }) => (
+  <ProjectListContainer className="row">
+    {projects.map(project => (
+      <Project
+        className="col-sm-6"
+        key={`${project.image.url} ${project.name}`}
+      >
+        <ProjectImage src={project.image.url} alt={project.image.title} />
+        <ProjectText>{project.name}</ProjectText>
+      </Project>
+      ))}
+  </ProjectListContainer>
+)
+
+ProjectList.propTypes = {
+  projects: PropTypes.arrayOf(ProjectPropType).isRequired,
+}
+
+const ProjectsGridContainer = styled.div`
+  @media (min-width: ${mdBreakpoint}) {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    -ms-grid-columns: 1fr 1fr;
+    -ms-grid-rows: auto auto auto;
+  }
+`
+
+const projectsGridColumnGap = 2 // rem
+
+const ProjectsGridCell = styled.div`
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: ${mdBreakpoint}) {
+    grid-row: ${props => props.row};
+    grid-column: ${props => props.column};
+    -ms-grid-row: ${props => props.row};
+    -ms-grid-column: ${props => props.column};
+
+    margin-right: ${projectsGridColumnGap / 2}rem;
+
+    ${props => props.column > 1 && css`
+      margin-left: ${projectsGridColumnGap / 2}rem;
+    `}
+  }
+`
+
+const ProjectsGridTitleCell = ProjectsGridCell.extend`
+  margin-top: 2rem;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  @media (min-width: ${mdBreakpoint}) {
+    margin-top: 0;
+
+  }
+`
+
+const CountryTitle = styled.h3`
+  text-align: center;
+`
+
+const CountryDescription = styled.div`
+  flex-grow: 1;
+  width: 87.5%;
+
+  @media (min-width: ${mdBreakpoint}) {
+    justify-content: center;
+  }
+`
+
+const ProjectsGridColumn = ({ column, country }) => (
+  <Fragment>
+    <ProjectsGridTitleCell column={column} row={1}>
+      <CountryTitle>{country.title}</CountryTitle>
+    </ProjectsGridTitleCell>
+    <ProjectsGridCell column={column} row={2}>
+      <CountryDescription>{country.description}</CountryDescription>
+    </ProjectsGridCell>
+    <ProjectsGridCell column={column} row={3}>
+      <ProjectList projects={country.projects} />
+    </ProjectsGridCell>
+    <ProjectsGridCell column={column} row={4}>
+      <Link route={country.buttonLink} passHref>
+        <Button type="secondary">{country.button}</Button>
+      </Link>
+    </ProjectsGridCell>
+  </Fragment>
+)
+
+ProjectsGridColumn.propTypes = {
+  column: PropTypes.number.isRequired,
+  country: CountryPropType.isRequired,
+}
+
+const ProjectsGrid = ({ leftCountry, rightCountry }) => (
+  <ProjectsGridContainer>
+    <ProjectsGridColumn column={1} country={leftCountry} />
+    <ProjectsGridColumn column={2} country={rightCountry} />
+  </ProjectsGridContainer>
+)
+
+ProjectsGrid.propTypes = {
+  leftCountry: CountryPropType.isRequired,
+  rightCountry: CountryPropType.isRequired,
+}
+
 const ImpactButton = styled(Button)`
   margin-top: 1.5rem;
 `
-
-const CountryProjects = ({ country }) => (
-  <CountryContainer className="col-md" key={country.title}>
-    <CountryTitle>{country.title}</CountryTitle>
-    <CountryDescription className="row">
-      <div className="col-lg-10">
-        <p>{country.description}</p>
-      </div>
-    </CountryDescription>
-    <ProjectList className="row">
-      {country.projects.map(project => (
-        <Project
-          className="col-sm-6"
-          key={`${project.image.url} ${project.name}`}
-        >
-          <ProjectImage src={project.image.url} alt={project.image.title} />
-          <ProjectText>{project.name}</ProjectText>
-        </Project>
-        ))}
-    </ProjectList>
-    <Link route={country.buttonLink} passHref>
-      <Button type="secondary">{country.button}</Button>
-    </Link>
-  </CountryContainer>
-)
-
-const countryShape = {
-  buttonLink: PropTypes.any.isRequired,
-  button: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  projects: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      image: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
-  ).isRequired,
-  title: PropTypes.string.isRequired,
-}
-
-CountryProjects.propTypes = {
-  country: PropTypes.shape(countryShape).isRequired,
-}
 
 const WhatWeDo = ({
   centerHeading,
@@ -158,11 +242,10 @@ const WhatWeDo = ({
 
     <PageSection>
       <h1>{introHeading}</h1>
-      <div className="row">
-        {countries.map(country => (
-          <CountryProjects key={country.title} country={country} />
-        ))}
-      </div>
+      <ProjectsGrid
+        leftCountry={countries.southAfrica}
+        rightCountry={countries.germany}
+      />
     </PageSection>
 
     <Tagline text={centerHeading} />
@@ -212,7 +295,10 @@ WhatWeDo.propTypes = {
   outroHeading: PropTypes.string.isRequired,
   outroText: PropTypes.string.isRequired,
   outroTextColumn2: PropTypes.string.isRequired,
-  countries: PropTypes.arrayOf(PropTypes.shape(countryShape)).isRequired,
+  countries: PropTypes.shape({
+    southAfrica: CountryPropType.isRequired,
+    germany: CountryPropType.isRequired,
+  }).isRequired,
   stats: PropTypes.arrayOf(
     PropTypes.shape({
       number: PropTypes.string.isRequired,
