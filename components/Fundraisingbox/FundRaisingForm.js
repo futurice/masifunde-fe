@@ -295,6 +295,7 @@ class FundRaisingForm extends Component {
                       <select
                         {...input}
                         id="country-input"
+                        value={input.value ? input.value : 'DE'}
                         className={this.formInputClassFactory(meta)}
                       >
                         <option value={null} disabled hidden />
