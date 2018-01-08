@@ -27,12 +27,13 @@ const ImageContainer = styled.div`
 
 const PartnerContainer = styled.div`
   width: 160px;
+  margin-bottom: 1rem;
 `
 
 const Partner = ({
   image, name, link, className,
 }) => (
-  <div className={`col-sm-4 col-md-2 d-flex justify-content-center ${className}`}>
+  <div className={`col-6 col-sm-4 col-md-2 d-flex justify-content-center ${className}`}>
     <PartnerContainer>
       <Link href={link}>
         <ImageContainer>
