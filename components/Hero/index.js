@@ -55,6 +55,7 @@ function Hero({
   headline,
   imageUrl,
   backgroundPositionX,
+  headlineMaxWidth,
   headlineShadow,
   headlinePlacement,
   heroSize,
@@ -68,6 +69,7 @@ function Hero({
       size={heroSize}
     >
       <Headline
+        maxWidth={headlineMaxWidth}
         headlineShadow={headlineShadow}
         headlinePlacement={headlinePlacement}
         headline={headline}
@@ -80,12 +82,14 @@ Hero.propTypes = {
   heroSize: PropTypes.oneOf([HERO_LARGE, HERO_SMALL]),
   backgroundPositionX: PropTypes.string,
   imageUrl: PropTypes.string.isRequired,
+  headlineMaxWidth: PropTypes.string,
   ...headlinePropTypes,
 }
 
 Hero.defaultProps = {
   heroSize: HERO_LARGE,
   backgroundPositionX: '50%',
+  headlineMaxWidth: undefined,
   ...headlineDefaultProps,
 }
 
