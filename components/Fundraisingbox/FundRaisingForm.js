@@ -97,6 +97,9 @@ class FundRaisingForm extends Component {
         <Form
           onSubmit={() => {}}
           validate={this.validateForm}
+          initialValues={{
+            [fieldName.country]: 'DE',
+          }}
           render={({ handleSubmit }) => (
             <form className="offset-md-1 offset-lg-1" onSubmit={(e) => { handleSubmit(e); this.props.onSubmit() }}>
               {/* Anrede */}
@@ -295,7 +298,6 @@ class FundRaisingForm extends Component {
                       <select
                         {...input}
                         id="country-input"
-                        value={input.value ? input.value : 'DE'}
                         className={this.formInputClassFactory(meta)}
                       >
                         {Object.entries(countries).map(([countryKey, country]) => (
