@@ -24,7 +24,7 @@ const VideoIframeContainer = ({
   return (
     <div className={className}>
       <VideoIframe
-        src={`https://www.youtube.com/embed/${videoId}?rel=0&amp;showinfo=0`}
+        src={`https://www.youtube.com/embed/${videoId}?rel=0&amp;showinfo=1`}
         frameBorder="0"
         allowFullScreen
       />
