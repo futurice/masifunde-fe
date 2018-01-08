@@ -7,7 +7,7 @@ import { smallFontSize } from '../styling/typography'
 
 const ProjectImage = styled.img`
   max-width: 100%;
-  height: 6.25rem;
+  height: 7rem;
 `
 
 const H3 = styled.h3`

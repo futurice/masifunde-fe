@@ -22,8 +22,8 @@ import Tagline from '../../components/Tagline'
 import StatList from '../../components/StatList'
 
 const ProjectImage = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 7rem;
+  width: 7rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +47,6 @@ const CountryTitle = styled.h3`
 `
 
 const CountryContainer = styled.div`
-
   display: flex;
   flex-direction: column;
   align-items: center;

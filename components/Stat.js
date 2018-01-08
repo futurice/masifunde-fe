@@ -30,7 +30,7 @@ const Number = CenteredSpan.extend`
 
 const Image = styled.img`
   margin-bottom: 0.6rem;
-  height: 6.25rem; // 100px;
+  height: 8rem;
 `
 
 const Stat = ({
