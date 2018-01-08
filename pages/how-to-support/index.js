@@ -16,6 +16,7 @@ import { smBreakpoint } from '../../styling/breakpoints'
 import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import Divider from '../../components/Fundraisingbox/Divider'
+import RoundedImage from '../../components/RoundedImage'
 
 const SectionContainer = styled(PageSection)`
   display: flex;
@@ -29,8 +30,7 @@ const SectionImageContainer = styled.div`
   }
 `
 
-const SectionImage = styled.img`
-  border-radius: ${props => props.theme.roundedImageBorderRadius};
+const SectionImage = RoundedImage.extend`
   max-width: 100%;
   max-height: 240px;
 `
