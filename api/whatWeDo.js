@@ -60,6 +60,7 @@ export async function fetchApproachDePage(locale) {
   const content = await fetchSingleEntry('pageApproachDE', locale)
   return {
     ...content,
+    image1: unwrapImage(content && content.image1),
     projects: content && content.projects.map(unwrapProjects),
   }
 }

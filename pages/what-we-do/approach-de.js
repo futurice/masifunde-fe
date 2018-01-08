@@ -13,6 +13,7 @@ import PageSection from '../../components/PageSection'
 import Tagline from '../../components/Tagline'
 import ProjectList from '../../components/ProjectList'
 import CenteredText from '../../components/CenteredText'
+import imagePropTypes from '../../propTypes/image'
 
 const Image = styled.img`
   border-radius: ${props => props.theme.roundedImageBorderRadius};
@@ -30,6 +31,7 @@ const ApproachDe = ({
   introHeading,
   introText,
   projects,
+  image1,
   bannerTitle,
   bannerButtonText,
 }) => (
@@ -47,8 +49,11 @@ const ApproachDe = ({
       <h1>{introHeading}</h1>
       <CenteredText source={introText} />
       <ProjectList projects={projects} />
+    </PageSection>
+
+    <PageSection>
       <ImageContainer>
-        <Image className="img-fluid" src="http://via.placeholder.com/2126x1194" alt="img" />
+        <Image className="img-fluid" src={image1.url} alt={image1.title} />
       </ImageContainer>
     </PageSection>
 
@@ -67,6 +72,7 @@ ApproachDe.propTypes = {
   introHeading: PropTypes.string.isRequired,
   introText: PropTypes.string.isRequired,
   projects: ProjectList.propTypes.projects.isRequired,
+  image1: PropTypes.shape(imagePropTypes).isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
 }
