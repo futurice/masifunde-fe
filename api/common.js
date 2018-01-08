@@ -1,7 +1,7 @@
 import qs from 'qs'
 
 import { fetchMemoizedSingleEntry } from './contentfulService'
-import { jpgCompression } from '../utils/constants'
+import { jpegQuality } from '../utils/constants'
 
 export async function fetchHeaderData(locale) {
   return fetchMemoizedSingleEntry('header', locale)
@@ -74,7 +74,7 @@ export const unwrapTeamMember = (teamMember) => {
     image: unwrapImage(fields && fields.profileImage, {
       w: 320,
       h: 320,
-      q: jpgCompression,
+      q: jpegQuality,
       fit: 'thumb',
       f: 'face',
     }),
