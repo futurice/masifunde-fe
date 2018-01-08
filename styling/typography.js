@@ -59,10 +59,11 @@ export const pageTitleText = css`
 export const sectionTitleText = css`
   ${titleText}
   color: ${theme.orangeRed};
-  font-size: ${rem('24px')};
+  font-size: ${rem('26px')};
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: ${rem('-0.3px')};
+  margin-bottom: 1rem;
 
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('34px')};
@@ -79,7 +80,7 @@ export const subsectionTitleText = css`
   ${titleText}
   text-align: left;
   color: ${theme.pineCone};
-  font-size: ${rem('26px')};
+  font-size: ${rem('22px')};
   font-weight: 500;
   line-height: 1.39;
   letter-spacing: ${rem('-0.3px')};
