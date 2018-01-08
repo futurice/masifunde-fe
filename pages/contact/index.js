@@ -9,6 +9,7 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 import Markdown from '../../components/Markdown'
 import PageSection from '../../components/PageSection'
 import TeamMemberList from '../../components/TeamMemberList'
+import Divider from '../../components/Fundraisingbox/Divider'
 
 const StyledMarkdown = styled(Markdown)`
   text-align: left;
@@ -25,6 +26,10 @@ const AddressContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+const TeamMemberListTitle = styled.h3`
+  text-align: center;
 `
 
 const Contact = ({
@@ -47,7 +52,7 @@ const Contact = ({
     </PageSection>
 
     <PageSection>
-      <h2>{contactsHeading}</h2>
+      <TeamMemberListTitle>{contactsHeading}</TeamMemberListTitle>
       <TeamMemberList
         members={contacts}
         title={member => member.region}
@@ -55,10 +60,7 @@ const Contact = ({
         imageUrl={member => member.image.url}
         email={member => member.email}
       />
-    </PageSection>
-
-    <PageSection>
-      <h2>{regionalContactsHeading}</h2>
+      <TeamMemberListTitle>{regionalContactsHeading}</TeamMemberListTitle>
       <TeamMemberList
         members={regionalContacts}
         title={member => member.region}
@@ -80,6 +82,11 @@ const Contact = ({
           </div>
         </AddressContainer>
       </div>
+    </PageSection>
+
+
+    <PageSection contained={false}>
+      <Divider />
     </PageSection>
   </div>
 )

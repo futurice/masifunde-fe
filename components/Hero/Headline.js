@@ -18,7 +18,7 @@ const Headline = styled.span`
   font-family: ${headerFont};
   margin-bottom: ${rem('32px')};
   line-height: 1.1;
-  max-width: 400px;
+  max-width: ${({ maxWidth }) => `${maxWidth}`};
 
   @media screen and (min-width: ${mdBreakpoint}) {
     font-size: ${rem('36px')};
@@ -33,7 +33,7 @@ const Headline = styled.span`
     line-height: 1.08;
     letter-spacing: ${rem('0.5px')};
     padding-left: ${rem('25px')};
-    max-width: 450px;
+    max-width: ${({ maxWidth }) => `${maxWidth}`};
   }
 `
 
@@ -47,12 +47,17 @@ const GradientShadow = styled.div`
   }
 `
 
-const HeroHeadline = ({ headline, headlineShadow, headlinePlacement }) => {
+const HeroHeadline = ({
+  headline,
+  headlineShadow,
+  headlinePlacement,
+  maxWidth,
+}) => {
   if (headline) {
     return (
       <GradientShadow className="d-flex flex-column justify-content-end">
         <div className="container">
-          <Headline shadow={headlineShadow} placement={headlinePlacement}>
+          <Headline maxWidth={maxWidth} shadow={headlineShadow} placement={headlinePlacement}>
             {headline}
           </Headline>
         </div>
@@ -67,12 +72,14 @@ export const propTypes = {
   headlineShadow: PropTypes.bool,
   headlinePlacement: PropTypes.oneOf([HEADLINE_MIDDLE, HEADLINE_BOTTOM]),
   headline: PropTypes.string,
+  maxWidth: PropTypes.string,
 }
 
 export const defaultProps = {
   headlineShadow: false,
   headline: undefined,
   headlinePlacement: HEADLINE_MIDDLE,
+  maxWidth: '660px',
 }
 
 HeroHeadline.propTypes = propTypes

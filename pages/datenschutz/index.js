@@ -18,7 +18,9 @@ const Datenschutz = ({
     <Head title={metaTitle} description={metaDescription} />
     <PageSection>
       <h1>{datenschutzTitle}</h1>
-      <Markdown source={datenschutzMarkdown} />
+      <div className="row">
+        <Markdown className="offset-lg-1 col-lg-10" source={datenschutzMarkdown} />
+      </div>
     </PageSection>
   </div>
 )

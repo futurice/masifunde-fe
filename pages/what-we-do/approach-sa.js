@@ -9,7 +9,7 @@ import Head from '../../components/Head'
 import Banner from '../../components/Banner'
 import YouTubeVideo from '../../components/YouTubeVideo'
 import PageSection from '../../components/PageSection'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 import Tagline from '../../components/Tagline'
 import { RouteNames } from '../../routes'
 import ProjectList from '../../components/ProjectList'
@@ -38,7 +38,7 @@ const ApproachSa = ({
 
     <PageSection>
       <h1>{introTitle}</h1>
-      <IntroText source={introMarkdown} />
+      <CenteredText source={introMarkdown} />
       <ProjectList projects={projects} />
     </PageSection>
 

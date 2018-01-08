@@ -11,7 +11,7 @@ import RegionalGroups from '../../components/RegionalGroups'
 import imagePropTypes from '../../propTypes/image'
 import { RouteNames } from '../../routes'
 import PageSection from '../../components/PageSection'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 
 const TeamDe = ({
   title,
@@ -31,12 +31,12 @@ const TeamDe = ({
 
     <PageSection>
       <h1>{title}</h1>
-      <IntroText source={pageDescription} />
+      <CenteredText source={pageDescription} />
     </PageSection>
 
     <PageSection>
       <h2>{sectionOneTitle}</h2>
-      <IntroText source={sectionOneText} />
+      <CenteredText source={sectionOneText} />
       <RegionalGroups regionalGroups={regionalGroups} />
     </PageSection>
 

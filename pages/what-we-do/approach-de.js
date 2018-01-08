@@ -11,7 +11,7 @@ import { RouteNames } from '../../routes'
 import PageSection from '../../components/PageSection'
 import Tagline from '../../components/Tagline'
 import ProjectList from '../../components/ProjectList'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 
 const ApproachDe = ({
   metaTitle,
@@ -35,7 +35,7 @@ const ApproachDe = ({
 
     <PageSection>
       <h1>{introHeading}</h1>
-      <IntroText source={introText} />
+      <CenteredText source={introText} />
       <ProjectList projects={projects} />
     </PageSection>
 

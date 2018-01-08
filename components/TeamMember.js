@@ -6,7 +6,9 @@ import { rem } from '../styling/typography'
 import { jpgCompression } from '../utils/constants'
 
 const TeamContainer = styled.div`
-  margin-bottom: ${rem('30px')};
+  &:not(:first-of-type):not(:last-of-type) {
+    margin-bottom: ${rem('30px')};
+  }
   font-size: 16px;
 `
 

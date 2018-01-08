@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Markdown from './Markdown'
 import { lgBreakpoint } from '../styling/breakpoints'
 
-const IntroText = styled(Markdown)`
+const CenteredText = styled(Markdown)`
   margin: 0 auto;
   text-align: center;
 
@@ -12,4 +12,4 @@ const IntroText = styled(Markdown)`
   }
 `
 
-export default IntroText
+export default CenteredText

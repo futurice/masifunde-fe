@@ -6,10 +6,9 @@ import TeamMember from './TeamMember'
 import teamMemberShape from '../propTypes/teamMember'
 
 
-const TextWithTeamMember = ({ title, text, teamMember }) => (
+const TextWithTeamMember = ({ text, teamMember }) => (
   <div className="row">
     <div className="col-md-9">
-      <h3>{title}</h3>
       <Markdown source={text} />
     </div>
     <TeamMember
@@ -23,7 +22,6 @@ const TextWithTeamMember = ({ title, text, teamMember }) => (
 )
 
 TextWithTeamMember.propTypes = {
-  title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   teamMember: PropTypes.shape(teamMemberShape).isRequired,
 }

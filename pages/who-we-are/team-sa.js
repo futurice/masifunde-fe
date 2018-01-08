@@ -10,7 +10,7 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 import imagePropTypes from '../../propTypes/image'
 import { RouteNames } from '../../routes'
 import PageSection from '../../components/PageSection'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 import TeamMemberList from '../../components/TeamMemberList'
 
 const Image = styled.img`
@@ -42,9 +42,9 @@ const TeamSa = ({
 
     <PageSection>
       <h1>{introTitle}</h1>
-      <IntroText source={introMarkdown} />
+      <CenteredText source={introMarkdown} />
       <ImageContainer>
-        <Image className="col-md-6" src={introImage.url} alt={introImage.title} />
+        <Image className="col-sm-7 col-md-6 col-lg-5" src={introImage.url} alt={introImage.title} />
       </ImageContainer>
     </PageSection>
 

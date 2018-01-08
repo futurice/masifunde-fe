@@ -33,7 +33,7 @@ const Home = ({
   <div>
     <Head title={metaTitle} description={metaDescription} />
 
-    <Hero headline={heroTitle} imageUrl="/static/images/hero/hero-talk.jpg" />
+    <Hero headline={heroTitle} imageUrl="/static/images/hero/hero-talk.jpg" headlineMaxWidth="450px" />
 
     <PageSection>
       <StatList className="row">

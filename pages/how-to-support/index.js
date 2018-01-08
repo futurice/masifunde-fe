@@ -13,7 +13,7 @@ import Markdown from '../../components/Markdown'
 import Button from '../../components/Button'
 import HorizontalRuler from '../../components/HorizontalRuler'
 import { smBreakpoint } from '../../styling/breakpoints'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import Divider from '../../components/Fundraisingbox/Divider'
 
@@ -39,10 +39,10 @@ const Section = ({
   image, title, markdown, buttonText, buttonType, buttonLink,
 }) => (
   <SectionContainer>
-    <SectionImageContainer className="col-sm-3">
+    <SectionImageContainer className="col-md-4 offset-lg-1 col-lg-3">
       <SectionImage src={image.url} alt={image.title} />
     </SectionImageContainer>
-    <div className="col-sm-9">
+    <div className="col-md-8 col-lg-7">
       <h3>{title}</h3>
       <Markdown source={markdown} />
       <Link route={buttonLink} passHref>
@@ -100,7 +100,7 @@ const HowToSupport = ({
 
     <PageSection>
       <h1>{introHeading}</h1>
-      <IntroText source={introMarkdown} />
+      <CenteredText source={introMarkdown} />
     </PageSection>
 
     <Section

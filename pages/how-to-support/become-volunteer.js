@@ -11,7 +11,7 @@ import Banner from '../../components/Banner'
 import Markdown from '../../components/Markdown'
 import RegionalGroups from '../../components/RegionalGroups'
 import { RouteNames } from '../../routes'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 import { smallFontSize } from '../../styling/typography'
@@ -24,7 +24,6 @@ const BecomeVolunteer = ({
   metaTitle,
   metaDescription,
   introTitle,
-  section1Title,
   section1Markdown,
   section1TeamMember,
   section2Title,
@@ -46,11 +45,7 @@ const BecomeVolunteer = ({
 
     <PageSection>
       <h1>{introTitle}</h1>
-    </PageSection>
-
-    <PageSection>
       <TextWithTeamMember
-        title={section1Title}
         text={section1Markdown}
         teamMember={section1TeamMember}
       />
@@ -70,7 +65,7 @@ const BecomeVolunteer = ({
 
     <PageSection>
       <h2>{section3Title}</h2>
-      <IntroText source={section3Markdown} />
+      <CenteredText source={section3Markdown} />
       <RegionalGroups regionalGroups={regionalGroups} />
     </PageSection>
 
@@ -90,7 +85,6 @@ BecomeVolunteer.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   introTitle: PropTypes.string.isRequired,
-  section1Title: PropTypes.string.isRequired,
   section1Markdown: PropTypes.string.isRequired,
   section1TeamMember: PropTypes.shape().isRequired,
   section2Title: PropTypes.string.isRequired,

@@ -11,7 +11,7 @@ import { RouteNames } from '../../routes'
 import imagePropTypes from '../../propTypes/image'
 import PageSection from '../../components/PageSection'
 import PartnersList from '../../components/PartnersList'
-import IntroText from '../../components/IntroText'
+import CenteredText from '../../components/CenteredText'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 
 const BecomePartner = ({
@@ -21,7 +21,6 @@ const BecomePartner = ({
   introMarkdown,
   partners,
   section1Title,
-  section1Subtitle,
   section1Markdown,
   teamMember,
   bannerTitle,
@@ -32,14 +31,13 @@ const BecomePartner = ({
 
     <PageSection>
       <h1>{introTitle}</h1>
-      <IntroText source={introMarkdown} />
+      <CenteredText source={introMarkdown} />
       <PartnersList partnersList={partners} />
     </PageSection>
 
     <PageSection>
       <h2>{section1Title}</h2>
       <TextWithTeamMember
-        title={section1Subtitle}
         text={section1Markdown}
         teamMember={teamMember}
       />
@@ -59,7 +57,6 @@ BecomePartner.propTypes = {
   introTitle: PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
   section1Title: PropTypes.string.isRequired,
-  section1Subtitle: PropTypes.string.isRequired,
   section1Markdown: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
