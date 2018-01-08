@@ -76,7 +76,8 @@ ApproachDe.propTypes = {
   title: PropTypes.string.isRequired,
   introHeading: PropTypes.string.isRequired,
   introText: PropTypes.string.isRequired,
-  projects: ProjectList.propTypes.projects.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  projects: ProjectList.propTypes.projects,
   image1: PropTypes.shape(imagePropTypes).isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,

@@ -33,10 +33,14 @@ const Project = ({
   </ProjectContainer>)
 
 Project.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   image: PropTypes.shape(imageShape).isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+}
+
+Project.defaultProps = {
+  className: undefined,
 }
 
 export default Project
