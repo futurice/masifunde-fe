@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { jpgCompression } from '../../utils/constants'
+import { jpegQuality } from '../../utils/constants'
 
 const Link = styled.a`
   height: 100%;
@@ -36,7 +36,7 @@ const Partner = ({
     <PartnerContainer>
       <Link href={link}>
         <ImageContainer>
-          <Image src={`${image.url}?q=${jpgCompression}`} alt={image.title} />
+          <Image src={`${image.url}?q=${jpegQuality}`} alt={image.title} />
         </ImageContainer>
         <div>{name}</div>
       </Link>
