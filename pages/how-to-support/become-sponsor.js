@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { Form } from 'react-final-form'
 import _debounce from 'lodash/debounce'
 
@@ -18,9 +17,9 @@ import DonationIntervalField from '../../components/Fundraisingbox/DonationInter
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import Divider from '../../components/Fundraisingbox/Divider'
 import PageSection from '../../components/PageSection'
+import RoundedImage from '../../components/RoundedImage'
 
-const Image = styled.img`
-  border-radius: ${props => props.theme.roundedImageBorderRadius};
+const Image = RoundedImage.extend`
   width: 100%;
 `
 

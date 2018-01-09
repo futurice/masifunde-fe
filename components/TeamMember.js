@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { rem } from '../styling/typography'
 import { jpgCompression } from '../utils/constants'
+import RoundedImage from './RoundedImage'
 
 const TeamContainer = styled.div`
   &:not(:first-of-type):not(:last-of-type) {
@@ -16,8 +17,7 @@ const Title = styled.div`
   font-weight: bold;
 `
 
-const Image = styled.img`
-  border-radius: ${props => props.theme.roundedImageBorderRadius};
+const Image = RoundedImage.extend`
   width: 100%;
 `
 
