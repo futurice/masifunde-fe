@@ -5,7 +5,6 @@ import styled from 'styled-components'
 
 import imageShape from '../propTypes/image'
 import { smallFontSize } from '../styling/typography'
-import { jpgCompression } from '../utils/constants'
 
 const ProjectImage = styled.img`
   max-width: 100%;
@@ -29,7 +28,7 @@ const Project = ({
   className, image, name, description,
 }) => (
   <ProjectContainer className={className}>
-    <ProjectImage className="mx-auto d-block" src={`${image.url}?q=${jpgCompression}`} alt={image.title} />
+    <ProjectImage className="mx-auto d-block" src={image.url} alt={image.title} />
     <H3>{name}</H3>
     <Markdown source={description} />
   </ProjectContainer>)
