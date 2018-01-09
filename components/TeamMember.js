@@ -2,14 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { rem } from '../styling/typography'
 import { jpgCompression } from '../utils/constants'
 import RoundedImage from './RoundedImage'
 
 const TeamContainer = styled.div`
-  &:not(:first-of-type):not(:last-of-type) {
-    margin-bottom: ${rem('30px')};
-  }
   font-size: 16px;
 `
 

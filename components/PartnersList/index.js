@@ -1,11 +1,15 @@
-/* eslint-disable function-paren-newline, react/no-array-index-key */
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import Partner, { propTypes as partnerPropTypes } from './Partner'
+import List from '../List'
+
+const StyledList = List.extend`
+  margin-top: 2rem;
+`
 
 const PartnersList = ({ partnersList, className }) => (
-  <div className={`row ${className}`}>
+  <StyledList entries={partnersList} className={`row ${className}`}>
     {partnersList.map(({ image, name, link }) => (
       <Partner
         link={link}
@@ -14,13 +18,11 @@ const PartnersList = ({ partnersList, className }) => (
         key={`${image.url} ${name}`}
       />
     ))}
-  </div>
+  </StyledList>
 )
 
 export const propTypes = {
-  partnersList: PropTypes.arrayOf(
-    PropTypes.shape(partnerPropTypes),
-  ).isRequired,
+  partnersList: PropTypes.arrayOf(PropTypes.shape(partnerPropTypes)).isRequired,
   className: PropTypes.string,
 }
 
