@@ -95,7 +95,10 @@ export const unwrapPartners = partners => partners.map(unwrapPartner)
 
 export const unwrapAward = award => ({
   ...award.fields,
-  image: unwrapImage(award && award.fields && award.fields.logo),
+  image: unwrapImage(award && award.fields && award.fields.logo, {
+    w: 320,
+    q: jpegQuality,
+  }),
 })
 
 export function unwrapFields(response) {
