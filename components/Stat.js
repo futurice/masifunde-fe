@@ -73,8 +73,8 @@ Stat.propTypes = {
   number: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   sourceMarkdown: PropTypes.string,
-  superscriptText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  sourceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  superscriptText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  sourceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 
 Stat.defaultProps = {
@@ -82,6 +82,8 @@ Stat.defaultProps = {
   className: '',
   icon: undefined,
   sourceMarkdown: undefined,
+  superscriptText: undefined,
+  sourceId: undefined,
 }
 
 export default Stat
