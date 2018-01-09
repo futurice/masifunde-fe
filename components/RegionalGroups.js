@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { smBreakpoint } from '../styling/breakpoints'
+import { lgBreakpoint, smBreakpoint } from '../styling/breakpoints'
 
 const LocationsList = styled.ul`
   @media (min-width: ${smBreakpoint}) {
@@ -22,8 +22,19 @@ const LocationListItem = styled.li`
   padding-left: 0;
 `
 
-const ImageContainer = styled.div`
-  margin: 3rem 0 4.5rem 0;
+const GroupsContainer = styled.div`
+  margin-top: 3rem;
+  margin-bottom: 4.5rem;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  @media (min-width: ${lgBreakpoint}) {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
 `
 
 const Span = styled.span`
@@ -44,7 +55,7 @@ const Image = styled.img`
 `
 
 const RegionalGroups = ({ regionalGroups }) => (
-  <ImageContainer className="d-flex justify-content-center justify-content-lg-start flex-wrap flex-lg-nowrap align-items-center">
+  <GroupsContainer className="row">
     <Image className="col-md-5" src={regionalGroups.image.url} alt={regionalGroups.image.title} />
     <LocationsList className="list-unstyled col-xl-6">
       {regionalGroups.regions.map(place => (
@@ -55,7 +66,7 @@ const RegionalGroups = ({ regionalGroups }) => (
         </LocationListItem>
       ))}
     </LocationsList>
-  </ImageContainer>
+  </GroupsContainer>
 )
 
 RegionalGroups.propTypes = {
