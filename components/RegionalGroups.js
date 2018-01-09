@@ -32,7 +32,7 @@ const GroupsContainer = styled.div`
   flex-wrap: wrap;
   
   @media (min-width: ${lgBreakpoint}) {
-    justify-content: start;
+    justify-content: flex-start;
     flex-wrap: nowrap;
   }
 `
