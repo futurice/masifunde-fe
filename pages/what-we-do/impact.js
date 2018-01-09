@@ -12,7 +12,6 @@ import Carousel from '../../components/Carousel'
 import Stat from '../../components/Stat'
 import { RouteNames } from '../../routes'
 import portraitPropTypes from '../../propTypes/portrait'
-import Source from '../../components/Source'
 import Tagline from '../../components/Tagline'
 import PageSection from '../../components/PageSection'
 import StatList from '../../components/StatList'
@@ -22,7 +21,6 @@ const Impact = ({
   metaTitle,
   metaDescription,
   title,
-  titleSource,
   stats1Title,
   stats1,
   stats2Title,
@@ -50,13 +48,6 @@ const Impact = ({
       <Tagline
         text={title}
         hideTopRuler
-        source={
-          <Source
-            superscriptText={(superscript += 1)}
-            sourceMarkdown={titleSource}
-            id="impact-title-source"
-          />
-        }
       />
 
       <PageSection>
@@ -117,7 +108,6 @@ Impact.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   title: PropTypes.string.isRequired,
-  titleSource: PropTypes.string.isRequired,
   stats1Title: PropTypes.string.isRequired,
   stats1: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
   stats2Title: PropTypes.string.isRequired,
