@@ -1,7 +1,6 @@
-import qs from 'qs'
-
 import { fetchMemoizedSingleEntry } from './contentfulService'
 import { jpegQuality } from '../utils/constants'
+import makeQueryString from '../utils/makeQueryString'
 
 export async function fetchHeaderData(locale) {
   return fetchMemoizedSingleEntry('header', locale)
@@ -23,9 +22,7 @@ export const unwrapImage = (image, urlParams) => {
     }
   }
 
-  const urlQuery = urlParams
-    ? `?${qs.stringify(urlParams)}`
-    : ''
+  const urlQuery = urlParams ? `?${makeQueryString(urlParams)}` : ''
 
   return {
     url: imageFile.url + urlQuery,
