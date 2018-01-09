@@ -15,10 +15,7 @@ import ProjectList from '../../components/ProjectList'
 import CenteredText from '../../components/CenteredText'
 import imagePropTypes from '../../propTypes/image'
 import { jpgCompression } from '../../utils/constants'
-
-const Image = styled.img`
-  border-radius: ${props => props.theme.roundedImageBorderRadius};
-`
+import RoundedImage from '../../components/RoundedImage'
 
 const ImageContainer = styled.div`
   margin: 0 auto;
@@ -54,7 +51,7 @@ const ApproachDe = ({
 
     <PageSection>
       <ImageContainer>
-        <Image
+        <RoundedImage
           className="img-fluid"
           src={`${image1.url}?q=${jpgCompression}`}
           alt={image1.title}
