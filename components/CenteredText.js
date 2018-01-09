@@ -10,6 +10,10 @@ const CenteredText = styled(Markdown)`
   @media (min-width: ${lgBreakpoint}) {
     width: 70%;
   }
+  
+  h1 + & {
+    margin-top: -1rem;
+  }
 `
 
 export default CenteredText
