@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
@@ -9,25 +8,22 @@ import styled from 'styled-components'
 import { Link, RouteNames } from '../routes'
 import PageSection from './PageSection'
 
-const LinksContainer = {
-  fontSize: 14,
-}
+const Sitemap = styled.div`
+  font-size: 14px;
+`
 
-const copyrightRowStyle = {
-  textAlign: 'center',
-  fontSize: 14,
-  color: '#77695C',
-}
-
-const socialStyle = {
-  marginLeft: 10,
-  marginRight: 10,
-  cursor: 'pointer',
-}
+const CopyrightColumn = styled.div`
+  text-align: center;
+  font-size: 14px;
+  color: ${({ theme }) => theme.pineCone};
+`
 
 const SocialLink = styled.a`
   color: #444444;
   opacity: 0.6;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
 
   &:hover {
     color: #444444 !important;
@@ -52,7 +48,7 @@ const ContentfulImage = styled.img`
   width: 100%;
 `
 
-const FooterContainer = styled(PageSection)`
+const FooterSection = styled(PageSection)`
   margin-top: 3rem;
 
   a, a:visited {
@@ -109,8 +105,8 @@ function Footer({
   datenschutzText,
 }) {
   return (
-    <FooterContainer>
-      <div className="row" style={LinksContainer}>
+    <FooterSection>
+      <Sitemap className="row">
         <div className="col-sm">
           <div className="row">
             <div className="col">
@@ -149,28 +145,27 @@ function Footer({
             </div>
           </div>
         </div>
-
-      </div>
+      </Sitemap>
       <CopyrightSocialSection>
         <div className="row">
-          <Col>
+          <div className="col">
             <h4>
               <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
-                <FaYoutubePlay style={socialStyle} />
+                <FaYoutubePlay />
               </SocialLink>
               <SocialLink href={masifundeFacebookUrl} target="_blank" rel="noopener noreferrer">
-                <FaFacebook style={socialStyle} />
+                <FaFacebook />
               </SocialLink>
             </h4>
-          </Col>
+          </div>
         </div>
         <div className="row">
-          <Col style={copyrightRowStyle}>
+          <CopyrightColumn className="col">
             {copyrightText}
-          </Col>
+          </CopyrightColumn>
         </div>
         <FooterImpressumContainer className="row">
-          <Col style={copyrightRowStyle}>
+          <CopyrightColumn className="col">
             <Link route={RouteNames.Impressum} passHref>
               <Anchor>{impressumText} </Anchor>
             </Link>
@@ -178,20 +173,20 @@ function Footer({
             <Link route={RouteNames.Datenschutz} passHref>
               <Anchor> {datenschutzText}</Anchor>
             </Link>
-          </Col>
+          </CopyrightColumn>
         </FooterImpressumContainer>
         <div className="row">
-          <Col>
+          <div className="col">
             <a href="https://www.contentful.com/" rel="noopener noreferrer nofollow" target="_blank">
               <ContentfulImage
                 src="/static/images/PoweredByContentful_LightBackground.svg"
                 alt="Powered by Contentful"
               />
             </a>
-          </Col>
+          </div>
         </div>
       </CopyrightSocialSection>
-    </FooterContainer>
+    </FooterSection>
   )
 }
 
