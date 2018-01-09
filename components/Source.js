@@ -8,14 +8,14 @@ const SourceTooltip = styled(Tooltip)`
   &.tooltip.show {
     opacity: 1 !important;
   }
-  .tooltip-inner {    
-    color: black; 
+  .tooltip-inner {
+    color: black;
     text-align: left;
     background-color: white !important;
     padding: 1.2rem 1.2rem 0.2rem 1.2rem !important;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.12);
     max-width: 90vw !important;
-    
+
     @media screen and (min-width: 576px) {
       max-width: 450px !important;
     }
@@ -27,15 +27,15 @@ injectGlobal`
   .tooltip.bs-tooltip-top .arrow::before {
     border-top-color: white !important;
   }
-  
+
   .tooltip.bs-tooltip-bottom .arrow::before {
     border-bottom-color: white !important;
   }
-  
+
   .tooltip.bs-tooltip-left .arrow::before {
     border-left-color: white !important;
   }
-  
+
   .tooltip.bs-tooltip-right .arrow::before {
     border-right-color: white !important;
   }
@@ -81,7 +81,7 @@ class Source extends Component {
           autohide={false}
           target={sourceId}
         >
-          <Span>Source</Span>
+          <Span>Quelle</Span>
           <Markdown source={sourceMarkdown} />
         </SourceTooltip>
       </Fragment>
