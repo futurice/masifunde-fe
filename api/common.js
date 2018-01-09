@@ -83,7 +83,12 @@ export const unwrapTeamMembers = (teamMembers = []) => teamMembers.map(unwrapTea
 
 export const unwrapPartner = partner => ({
   ...partner.fields,
-  image: unwrapImage(partner && partner.fields && partner.fields.logo),
+  image: unwrapImage(partner && partner.fields && partner.fields.logo, {
+    w: 320,
+    h: 320,
+    q: jpegQuality,
+    fit: 'pad',
+  }),
 })
 
 export const unwrapPartners = partners => partners.map(unwrapPartner)
