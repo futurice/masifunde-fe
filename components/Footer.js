@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { Row, Col } from 'reactstrap'
+import { Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
@@ -43,7 +43,7 @@ const Anchor = styled.a`
   }
 `
 
-const FooterImpressumContainer = styled(Row)`
+const FooterImpressumContainer = styled.div`
   margin-bottom: 1rem;
 `
 
@@ -152,7 +152,7 @@ function Footer({
 
       </div>
       <CopyrightSocialSection>
-        <Row>
+        <div className="row">
           <Col>
             <h4>
               <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
@@ -163,13 +163,13 @@ function Footer({
               </SocialLink>
             </h4>
           </Col>
-        </Row>
-        <Row>
+        </div>
+        <div className="row">
           <Col style={copyrightRowStyle}>
             {copyrightText}
           </Col>
-        </Row>
-        <FooterImpressumContainer>
+        </div>
+        <FooterImpressumContainer className="row">
           <Col style={copyrightRowStyle}>
             <Link route={RouteNames.Impressum} passHref>
               <Anchor>{impressumText} </Anchor>
@@ -180,7 +180,7 @@ function Footer({
             </Link>
           </Col>
         </FooterImpressumContainer>
-        <Row>
+        <div className="row">
           <Col>
             <a href="https://www.contentful.com/" rel="noopener noreferrer nofollow" target="_blank">
               <ContentfulImage
@@ -189,7 +189,7 @@ function Footer({
               />
             </a>
           </Col>
-        </Row>
+        </div>
       </CopyrightSocialSection>
     </FooterContainer>
   )
