@@ -12,9 +12,11 @@ import { jpegQuality } from '../utils/constants'
 import ConditionalContainer from './ConditionalContainer'
 import { mdBreakpoint } from '../styling/breakpoints'
 
+const sliderArrowSize = '70px'
+
 const CarouselTextContainer = styled.div`
   ${bodyText}
-  padding: 3.5rem 3rem;
+  padding: 1.5rem 1rem;
   color: white;
 
   p {
@@ -28,7 +30,8 @@ const CarouselTextContainer = styled.div`
 
   @media (min-width: ${mdBreakpoint}) {
     // Don't let the text run into the next-slide button
-    padding-right: calc(70px + 1rem);
+    padding: 3.5rem 3rem;
+    padding-right: calc(${sliderArrowSize} + 1rem);
   }
 `
 
@@ -93,8 +96,8 @@ const StyledCarousel = styled(Carousel)`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    width: 70px;
-    height: 70px;
+    width: ${sliderArrowSize};
+    height: ${sliderArrowSize};
 
     button {
       opacity: 0 !important;
