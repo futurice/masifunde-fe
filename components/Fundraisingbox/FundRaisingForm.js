@@ -7,8 +7,8 @@ import _debounce from 'lodash/debounce'
 import countries from '../../utils/countries'
 import FundRaisingIframe from './FundRaisingIframe'
 import ErrorMessage from './ErrorMessage'
+import SubHeader from './SubHeader'
 import { mdBreakpoint } from '../../styling/breakpoints'
-import { smallSpacing } from '../../styling/sizes'
 
 const FundRaisingIfameContainer = styled.div`
   padding: 0;
@@ -21,10 +21,6 @@ const FormLabel = styled.span`
   @media screen and (min-width: ${mdBreakpoint}){
     text-align: right;
   }
-`
-
-const IframeTitle = styled.h3`
-  margin-top: ${smallSpacing};
 `
 
 const fieldName = {
@@ -363,7 +359,7 @@ class FundRaisingForm extends Component {
             </form>
           )}
         />
-        <IframeTitle>{fundraisingboxIframeTitle}</IframeTitle>
+        <SubHeader>{fundraisingboxIframeTitle}</SubHeader>
         <FundRaisingIfameContainer className="offset-md-4 offset-lg-3 col-md-9 col-lg-7">
           <FundRaisingIframe
             onMouseHover={this.submitForm}

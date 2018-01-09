@@ -1,17 +1,11 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
-import styled from 'styled-components'
 
 import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
-import { extraSmallSpacing } from '../../styling/sizes'
-
-const SubHeader = styled.h3`
-  margin-bottom: 1.4rem;
-  margin-top: ${extraSmallSpacing};
-`
+import SubHeader from './SubHeader'
 
 const StyledErrorMessage = ErrorMessage.extend`
   margin-top: -0.4rem;

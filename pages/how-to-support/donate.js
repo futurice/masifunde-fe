@@ -20,6 +20,7 @@ import Divider from '../../components/Fundraisingbox/Divider'
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
+import SubHeader from '../../components/Fundraisingbox/SubHeader'
 
 const CountryLabel = styled.label`
   border-radius: 8px;
@@ -149,7 +150,7 @@ class Donate extends Component {
                 <Field name={fieldName.projectId}>
                   {({ input, meta }) => (
                     <Fragment>
-                      <h3>{section1title}</h3>
+                      <SubHeader>{section1title}</SubHeader>
                       <div className="offset-md-3 col-md-8">
                         <div className="row">
                           <CountryLabelContainer className="col-sm-6" data-toggle="buttons">
@@ -210,7 +211,7 @@ class Donate extends Component {
           />
 
           <Divider />
-          <h3>{section4Title}</h3>
+          <SubHeader>{section4Title}</SubHeader>
           <FundRaisingForm
             hiddenFields={{ ...this.state.fields }}
             onSubmit={this.submitForm}
