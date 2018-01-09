@@ -28,7 +28,7 @@ const StyledLink = styled.a`
   }
 
   :hover {
-    border-bottom: 3px solid #77695c; 
+    border-bottom: 3px solid ${({ theme }) => theme.pineCone}; 
     margin-bottom: 0;
   }
 `
