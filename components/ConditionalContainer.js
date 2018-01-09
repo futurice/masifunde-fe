@@ -1,7 +1,8 @@
+import React from 'react'
 import styled from 'styled-components'
-import { Container } from 'reactstrap'
+import PropTypes from 'prop-types'
 
-const ConditionalContainer = styled(Container)`
+const Div = styled.div`
   @media (max-width: ${(props) => {
     switch (props.containAfter) {
       case 'xs':
@@ -23,5 +24,16 @@ const ConditionalContainer = styled(Container)`
     max-width: 100%;
   }
 `
+
+const ConditionalContainer = ({ children, containAfter }) => (
+  <Div className="container" containAfter={containAfter}>
+    {children}
+  </Div>
+)
+
+ConditionalContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  containAfter: PropTypes.string.isRequired,
+}
 
 export default ConditionalContainer
