@@ -7,12 +7,7 @@ import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import { defaultFont } from '../../styling/typography'
-import { mediumSpacing } from '../../styling/sizes'
-
-const SubHeader = styled.h3`
-  margin-bottom: 1.4rem;
-  margin-top: ${mediumSpacing};
-`
+import SubHeader from './SubHeader'
 
 const EuroPostfix = styled.span`
   position: absolute;
