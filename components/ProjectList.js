@@ -30,7 +30,7 @@ const ProjectList = ({ projects }) => (
 )
 
 ProjectList.propTypes = {
-  projects: PropTypes.arrayOf(Project.propTypes).isRequired,
+  projects: PropTypes.arrayOf(PropTypes.shape(Project.propTypes)).isRequired,
 }
 
 export default ProjectList

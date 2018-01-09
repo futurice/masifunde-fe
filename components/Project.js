@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Markdown from 'react-markdown'
 import styled from 'styled-components'
+
 import imageShape from '../propTypes/image'
 import { smallFontSize } from '../styling/typography'
+import { jpgCompression } from '../utils/constants'
 
 const ProjectImage = styled.img`
   max-width: 100%;
@@ -27,16 +29,20 @@ const Project = ({
   className, image, name, description,
 }) => (
   <ProjectContainer className={className}>
-    <ProjectImage className="mx-auto d-block" src={image.url} alt={image.tile} />
+    <ProjectImage className="mx-auto d-block" src={`${image.url}?q=${jpgCompression}`} alt={image.title} />
     <H3>{name}</H3>
     <Markdown source={description} />
   </ProjectContainer>)
 
 Project.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   image: PropTypes.shape(imageShape).isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+}
+
+Project.defaultProps = {
+  className: undefined,
 }
 
 export default Project
