@@ -1,25 +1,30 @@
 /* eslint-disable import/prefer-default-export */
 import { fetchMemoizedSingleEntry, fetchSingleEntry } from './contentfulService'
 import { unwrapImage, unwrapPartners, unwrapRegionalGroups, unwrapTeamMember, unwrapFields } from './common'
+import { jpegQuality } from '../utils/constants'
 
 export async function fetchDonatePage(locale) {
   const content = await fetchMemoizedSingleEntry('pageDonate', locale)
-
   return {
     ...content,
-    section2ReferenceList: content && content.section2ReferenceList.map(unwrapFields),
-    section3ReferenceList: content && content.section3ReferenceList.map(unwrapFields),
+    section2ReferenceList: content.section2ReferenceList.map(unwrapFields),
+    section3ReferenceList: content.section3ReferenceList.map(unwrapFields),
   }
 }
+
+const unwrapSectionImage = image => unwrapImage(image, {
+  w: 495,
+  q: jpegQuality,
+})
 
 export async function fetchHowToSupportPage(locale) {
   const content = await fetchMemoizedSingleEntry('pageWieSieHelfen', locale)
   return {
     ...content,
-    section1Image: unwrapImage(content && content.section1Image),
-    section2Image: unwrapImage(content && content.section2Image),
-    section3Image: unwrapImage(content && content.section3Image),
-    section4Image: unwrapImage(content && content.section4Image),
+    section1Image: unwrapSectionImage(content.section1Image),
+    section2Image: unwrapSectionImage(content.section2Image),
+    section3Image: unwrapSectionImage(content.section3Image),
+    section4Image: unwrapSectionImage(content.section4Image),
   }
 }
 
