@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
@@ -9,19 +9,8 @@ import styled from 'styled-components'
 import { Link, RouteNames } from '../routes'
 import PageSection from './PageSection'
 
-const containerStyle = {
-  marginBottom: 20,
-  paddingBottom: 0,
-}
-
 const LinksContainer = {
   fontSize: 14,
-}
-
-const copyrightStyle = {
-  textAlign: 'center',
-  marginTop: 50,
-  marginBottom: 40,
 }
 
 const copyrightRowStyle = {
@@ -80,6 +69,12 @@ const FooterContainer = styled(PageSection)`
   }
 `
 
+const CopyrightSocialSection = styled.div`
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`
+
 function Footer({
   whatWeDoText,
   approachSaText,
@@ -102,102 +97,100 @@ function Footer({
 }) {
   return (
     <FooterContainer>
-      <Container style={containerStyle}>
-        <div className="row" style={LinksContainer}>
-          <div className="col-sm">
-            <div className="row">
-              <div className="col">
-                <ul className="list-unstyled">
-                  <li>
-                    <Link route={RouteNames.WhatWeDo} passHref>
-                      <a>{whatWeDoText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.ApproachSA} passHref>
-                      <a>{approachSaText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.ApproachDE} passHref>
-                      <a>{approachDeText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.Impact} passHref>
-                      <a>{impactText}</a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div className="col">
-                <ul className="list-unstyled">
-                  <li>
-                    <Link route={RouteNames.WhoWeAre} passHref>
-                      <a>{whoWeAreText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.TeamSA} passHref>
-                      <a>{teamSaText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.TeamDE} passHref>
-                      <a>{teamDeText}</a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+      <div className="row" style={LinksContainer}>
+        <div className="col-sm">
+          <div className="row">
+            <div className="col">
+              <ul className="list-unstyled">
+                <li>
+                  <Link route={RouteNames.WhatWeDo} passHref>
+                    <a>{whatWeDoText}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link route={RouteNames.ApproachSA} passHref>
+                    <a>{approachSaText}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link route={RouteNames.ApproachDE} passHref>
+                    <a>{approachDeText}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link route={RouteNames.Impact} passHref>
+                    <a>{impactText}</a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="col">
+              <ul className="list-unstyled">
+                <li>
+                  <Link route={RouteNames.WhoWeAre} passHref>
+                    <a>{whoWeAreText}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link route={RouteNames.TeamSA} passHref>
+                    <a>{teamSaText}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link route={RouteNames.TeamDE} passHref>
+                    <a>{teamDeText}</a>
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
-
-          <div className="col-sm">
-            <div className="row">
-              <div className="col">
-                <ul className="list-unstyled">
-                  <li>
-                    <Link route={RouteNames.HowToSupport} passHref>
-                      <a>{howToSupportText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.Donate} passHref>
-                      <a>{donateText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.BecomeSponsor} passHref>
-                      <a>{becomeSponsorText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.BecomeVolunteer} passHref>
-                      <a>{becomeVolunteerText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.BecomePartner} passHref>
-                      <a>{becomePartnerText}</a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div className="col">
-                <ul className="list-unstyled">
-                  <li>
-                    <Link route={RouteNames.Contact} passHref>
-                      <a>{contactText}</a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
         </div>
-      </Container>
-      <Container style={copyrightStyle}>
+
+        <div className="col-sm">
+          <div className="row">
+            <div className="col">
+              <ul className="list-unstyled">
+                <li>
+                  <Link route={RouteNames.HowToSupport} passHref>
+                    <a>{howToSupportText}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link route={RouteNames.Donate} passHref>
+                    <a>{donateText}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link route={RouteNames.BecomeSponsor} passHref>
+                    <a>{becomeSponsorText}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link route={RouteNames.BecomeVolunteer} passHref>
+                    <a>{becomeVolunteerText}</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link route={RouteNames.BecomePartner} passHref>
+                    <a>{becomePartnerText}</a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="col">
+              <ul className="list-unstyled">
+                <li>
+                  <Link route={RouteNames.Contact} passHref>
+                    <a>{contactText}</a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <CopyrightSocialSection>
         <Row>
           <Col>
             <h4>
@@ -236,7 +229,7 @@ function Footer({
             </a>
           </Col>
         </Row>
-      </Container>
+      </CopyrightSocialSection>
     </FooterContainer>
   )
 }
