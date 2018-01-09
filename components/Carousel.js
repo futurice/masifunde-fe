@@ -8,7 +8,6 @@ import _throttle from 'lodash/throttle'
 import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
 import { bodyText, rem, subsectionTitleText } from '../styling/typography'
-import { jpegQuality } from '../utils/constants'
 import ConditionalContainer from './ConditionalContainer'
 import { mdBreakpoint } from '../styling/breakpoints'
 
@@ -44,7 +43,7 @@ const Image = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  
+
   display: none;
   @media (min-width: ${mdBreakpoint}) {
     display: block;
@@ -59,7 +58,7 @@ const MobileImage = styled.img`
   height: 100%;
   width: 100%;
   padding: 0;
-  
+
   display: block;
   @media (min-width: ${mdBreakpoint}) {
     display: none;
@@ -188,8 +187,8 @@ class MasifundeCarousel extends Component {
         <StyledCarousel {...settings}>
           {items.map(item => (
             <SlideRow className="row" key={`${item.heading} ${item.image.url}`}>
-              <Image className="col-md-4" src={`${item.image.url}?q=${jpegQuality}`} alt={item.image.title} />
-              <MobileImage src={`${item.image.url}?q=${jpegQuality}`} alt={item.image.title} />
+              <Image className="col-md-4" src={item.image.url} alt={item.image.title} />
+              <MobileImage src={item.image.url} alt={item.image.title} />
               <CarouselTextContainer className="col-md-8">
                 <CarouselTextTitle>{item.heading}</CarouselTextTitle>
                 <Markdown source={item.text} />

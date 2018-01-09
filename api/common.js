@@ -32,12 +32,19 @@ export const unwrapImage = (image, urlParams) => {
 
 export const unwrapRegion = region => region && region.fields && region.fields.name
 
-export const unwrapPortrait = portrait => ({
-  ...portrait.fields,
-  page1Image: unwrapImage(portrait && portrait.fields && portrait.fields.page1Image),
-  page2Image: unwrapImage(portrait && portrait.fields && portrait.fields.page2Image),
-  page3Image: unwrapImage(portrait && portrait.fields && portrait.fields.page3Image),
-})
+export const unwrapPortrait = (portrait) => {
+  const imageParams = {
+    w: 800,
+    q: jpegQuality,
+  }
+
+  return {
+    ...portrait.fields,
+    page1Image: unwrapImage(portrait && portrait.fields.page1Image, imageParams),
+    page2Image: unwrapImage(portrait && portrait.fields.page2Image, imageParams),
+    page3Image: unwrapImage(portrait && portrait.fields.page3Image, imageParams),
+  }
+}
 
 export const unwrapStat = stat => ({
   ...stat.fields,
