@@ -15,6 +15,8 @@ import { imagePropTypes } from '../../propTypes/image'
 import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import Award from '../../components/Award'
+import { largeSpacing, mediumSpacing, smallSpacing } from '../../styling/sizes'
+import { lgBreakpoint } from '../../styling/breakpoints'
 
 const Image = styled.img`
   width: 100%;
@@ -22,20 +24,20 @@ const Image = styled.img`
 `
 
 const CountryContainer = styled.div`
-  margin-top: 1rem;
+  margin-top: ${smallSpacing};
 `
 
 const ImageContainer = styled.div`
   flex-grow: 1;
   height: 270px;
 
-  @media screen and (min-width: 992px) {
+  @media screen and (min-width: ${lgBreakpoint}) {
     height: 400px;
   }
 `
 
 const TeamButton = Button.extend`
-  margin-top: 3rem;
+  margin-top: ${largeSpacing};
 `
 
 const CountryMap = ({ buttonText, image, route }) => (
@@ -56,11 +58,11 @@ CountryMap.propTypes = {
 }
 
 const StyledPartnerList = styled(PartnersList)`
-  margin-bottom: 2rem;
+  margin-bottom: ${mediumSpacing};
 `
 
 const AwardsContainer = styled.div`
-  margin-top: 2rem;
+  margin-top: ${mediumSpacing};
 `
 
 const WhoWeAre = ({

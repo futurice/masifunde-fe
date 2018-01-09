@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 
 import Partner, { propTypes as partnerPropTypes } from './Partner'
 import List from '../List'
+import { mediumSpacing } from '../../styling/sizes'
 
 const StyledList = List.extend`
-  margin-top: 2rem;
+  margin-top: ${mediumSpacing};
 `
 
 const PartnersList = ({ partnersList, className }) => (

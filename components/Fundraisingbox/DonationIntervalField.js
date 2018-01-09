@@ -6,10 +6,11 @@ import styled from 'styled-components'
 import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
+import { smallSpacing } from '../../styling/sizes'
 
 const SubHeader = styled.h3`
   margin-bottom: 1.4rem;
-  margin-top: 1rem;
+  margin-top: ${smallSpacing};
 `
 
 const StyledErrorMessage = ErrorMessage.extend`

@@ -8,6 +8,7 @@ import styled from 'styled-components'
 
 import { Link, RouteNames } from '../routes'
 import PageSection from './PageSection'
+import { largeSpacing, smallSpacing } from '../styling/sizes'
 
 const containerStyle = {
   marginBottom: 20,
@@ -55,7 +56,7 @@ const Anchor = styled.a`
 `
 
 const FooterImpressumContainer = styled(Row)`
-  margin-bottom: 1rem;
+  margin-bottom: ${smallSpacing};
 `
 
 const ContentfulImage = styled.img`
@@ -64,7 +65,7 @@ const ContentfulImage = styled.img`
 `
 
 const FooterContainer = styled(PageSection)`
-  margin-top: 3rem;
+  margin-top: ${largeSpacing};
 
   a, a:visited {
     color: ${({ theme }) => theme.pineCone};

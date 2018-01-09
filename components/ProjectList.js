@@ -4,10 +4,11 @@ import styled from 'styled-components'
 
 import Project from './Project'
 import { mdBreakpoint } from '../styling/breakpoints'
+import { mediumSpacing } from '../styling/sizes'
 
 const ListContainer = styled.div`
-  margin-top: 2rem;
-  margin-bottom: -2rem;
+  margin-top: ${mediumSpacing};
+  margin-bottom: -${mediumSpacing};
 
   @media (min-width: ${mdBreakpoint}) {
     margin-left: 8%;

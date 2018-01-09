@@ -22,6 +22,7 @@ import Tagline from '../../components/Tagline'
 import StatList from '../../components/StatList'
 import imageShape from '../../propTypes/image'
 import { bodyTextLineHeight } from '../../styling/typography'
+import { mediumSpacing } from '../../styling/sizes'
 
 const ImagePropType = PropTypes.shape(imageShape)
 
@@ -137,7 +138,7 @@ const ProjectsGridCell = styled.div`
 `
 
 const ProjectsGridTitleCell = ProjectsGridCell.extend`
-  margin-top: 2rem;
+  margin-top: ${mediumSpacing};
 
   &:first-of-type {
     margin-top: 0;
