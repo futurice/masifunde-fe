@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import Markdown from './Markdown'
 import { lgBreakpoint } from '../styling/breakpoints'
-import { smallSpacing } from '../styling/sizes'
+import { extraSmallSpacing } from '../styling/sizes'
 
 const CenteredText = styled(Markdown)`
   margin: 0 auto;
@@ -13,7 +13,7 @@ const CenteredText = styled(Markdown)`
   }
   
   h1 + & {
-    margin-top: -${smallSpacing};
+    margin-top: -${extraSmallSpacing};
   }
 `
 

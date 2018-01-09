@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import { lgBreakpoint, smBreakpoint } from '../styling/breakpoints'
-import { largeSpacing, mediumSpacing, smallSpacing } from '../styling/sizes'
+import { largeSpacing, mediumSpacing, extraSmallSpacing } from '../styling/sizes'
 
 const LocationsList = styled.ul`
   @media (min-width: ${smBreakpoint}) {
@@ -19,7 +19,7 @@ const LocationsList = styled.ul`
 `
 
 const LocationListItem = styled.li`
-  padding: 0.6rem ${smallSpacing};
+  padding: 0.6rem ${extraSmallSpacing};
   padding-left: 0;
 `
 

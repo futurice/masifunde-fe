@@ -15,7 +15,7 @@ import { imagePropTypes } from '../../propTypes/image'
 import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import Award from '../../components/Award'
-import { largeSpacing, mediumSpacing, smallSpacing } from '../../styling/sizes'
+import { largeSpacing, mediumSpacing, extraSmallSpacing } from '../../styling/sizes'
 import { lgBreakpoint } from '../../styling/breakpoints'
 
 const Image = styled.img`
@@ -24,7 +24,7 @@ const Image = styled.img`
 `
 
 const CountryContainer = styled.div`
-  margin-top: ${smallSpacing};
+  margin-top: ${extraSmallSpacing};
 `
 
 const ImageContainer = styled.div`

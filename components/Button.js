@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 import { defaultFont, rem } from '../styling/typography'
+import { smallSpacing } from '../styling/sizes'
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ const StyledButton = styled(Button)`
   background-color: transparent;
   outline: none;
   box-shadow: none !important;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem ${smallSpacing};
   border-radius: 47px;
   border-width: 3px;
   cursor: pointer;

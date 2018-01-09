@@ -8,7 +8,7 @@ import styled from 'styled-components'
 
 import { Link, RouteNames } from '../routes'
 import PageSection from './PageSection'
-import { largeSpacing, smallSpacing } from '../styling/sizes'
+import { largeSpacing, extraSmallSpacing } from '../styling/sizes'
 
 const containerStyle = {
   marginBottom: 20,
@@ -56,7 +56,7 @@ const Anchor = styled.a`
 `
 
 const FooterImpressumContainer = styled(Row)`
-  margin-bottom: ${smallSpacing};
+  margin-bottom: ${extraSmallSpacing};
 `
 
 const ContentfulImage = styled.img`

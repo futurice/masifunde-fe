@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
-import { smallSpacing } from '../../styling/sizes'
+import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
 
 const StyledLink = styled.a`
   font-weight: bold;
   text-align: right;
   white-space: nowrap;
   padding: 0.31rem 0;
-  margin-right: ${smallSpacing};
+  margin-right: ${extraSmallSpacing};
   
   @media (min-width: ${lgBreakpoint}) {
-    margin-right: 1.5rem;
+    margin-right: ${smallSpacing};
   }
   color: inherit !important;
   margin-top: ${props => props.activeBorderThickness};

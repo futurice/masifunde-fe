@@ -12,6 +12,7 @@ import { RouteNames } from '../../routes'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
 import TeamMemberList from '../../components/TeamMemberList'
+import { smallSpacing } from '../../styling/sizes'
 
 const Image = styled.img`
   width: 100%;
@@ -23,8 +24,8 @@ const ImageContainer = styled.div`
   justify-content: center;
 
   text-align: center;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: ${smallSpacing};
+  margin-bottom: ${smallSpacing};
 `
 
 const TeamSa = ({

@@ -22,7 +22,7 @@ import Tagline from '../../components/Tagline'
 import StatList from '../../components/StatList'
 import imageShape from '../../propTypes/image'
 import { bodyTextLineHeight } from '../../styling/typography'
-import { mediumSpacing } from '../../styling/sizes'
+import { mediumSpacing, smallSpacing } from '../../styling/sizes'
 
 const ImagePropType = PropTypes.shape(imageShape)
 
@@ -40,7 +40,7 @@ const CountryPropType = PropTypes.shape({
 })
 
 const ProjectListContainer = styled.div`
-  margin-top: 1.5rem;
+  margin-top: ${smallSpacing};
   margin-bottom: 1.2rem;
   width: 100%;
 
@@ -200,7 +200,7 @@ ProjectsGrid.propTypes = {
 }
 
 const ImpactButton = styled(Button)`
-  margin-top: 1.5rem;
+  margin-top: ${smallSpacing};
 `
 
 const WhatWeDo = ({

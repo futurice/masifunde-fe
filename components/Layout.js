@@ -10,7 +10,7 @@ import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
 import { bodyText, pageTitleText, sectionTitleText, subsectionTitleText, rootFontSize } from '../styling/typography'
 import theme from '../styling/theme'
-import { smallSpacing } from '../styling/sizes'
+import { extraSmallSpacing, smallSpacing } from '../styling/sizes'
 import { mdBreakpoint } from '../styling/breakpoints'
 
 // eslint-disable-next-line no-unused-expressions
@@ -49,7 +49,7 @@ injectGlobal`
   }
 
   p + p {
-    margin-top: 1.5rem;
+    margin-top: ${smallSpacing};
   }
 
   .is-invalid {
@@ -63,7 +63,7 @@ injectGlobal`
 
   .nav-item {
     @media screen and (max-width: ${mdBreakpoint}) {
-      padding: ${smallSpacing} 0;
+      padding: ${extraSmallSpacing} 0;
     }
   }
 
