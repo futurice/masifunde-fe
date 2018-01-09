@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Partner, { propTypes as partnerPropTypes } from './Partner'
 
 const PartnersList = ({ partnersList, className }) => (
-  <div className={`row align-items-center ${className}`}>
+  <div className={`row ${className}`}>
     {partnersList.map(({ image, name, link }) => (
       <Partner
         link={link}
