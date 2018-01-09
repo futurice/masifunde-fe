@@ -75,6 +75,19 @@ const CopyrightSocialSection = styled.div`
   margin-bottom: 1rem;
 `
 
+const FooterLink = ({ route, text }) => (
+  <li>
+    <Link route={route} passHref>
+      <a>{text}</a>
+    </Link>
+  </li>
+)
+
+FooterLink.propTypes = {
+  route: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+}
+
 function Footer({
   whatWeDoText,
   approachSaText,
@@ -102,45 +115,17 @@ function Footer({
           <div className="row">
             <div className="col">
               <ul className="list-unstyled">
-                <li>
-                  <Link route={RouteNames.WhatWeDo} passHref>
-                    <a>{whatWeDoText}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link route={RouteNames.ApproachSA} passHref>
-                    <a>{approachSaText}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link route={RouteNames.ApproachDE} passHref>
-                    <a>{approachDeText}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link route={RouteNames.Impact} passHref>
-                    <a>{impactText}</a>
-                  </Link>
-                </li>
+                <FooterLink route={RouteNames.WhatWeDo} text={whatWeDoText} />
+                <FooterLink route={RouteNames.ApproachSA} text={approachSaText} />
+                <FooterLink route={RouteNames.ApproachDE} text={approachDeText} />
+                <FooterLink route={RouteNames.Impact} text={impactText} />
               </ul>
             </div>
             <div className="col">
               <ul className="list-unstyled">
-                <li>
-                  <Link route={RouteNames.WhoWeAre} passHref>
-                    <a>{whoWeAreText}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link route={RouteNames.TeamSA} passHref>
-                    <a>{teamSaText}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link route={RouteNames.TeamDE} passHref>
-                    <a>{teamDeText}</a>
-                  </Link>
-                </li>
+                <FooterLink route={RouteNames.WhoWeAre} text={whoWeAreText} />
+                <FooterLink route={RouteNames.TeamSA} text={teamSaText} />
+                <FooterLink route={RouteNames.TeamDE} text={teamDeText} />
               </ul>
             </div>
           </div>
@@ -150,40 +135,16 @@ function Footer({
           <div className="row">
             <div className="col">
               <ul className="list-unstyled">
-                <li>
-                  <Link route={RouteNames.HowToSupport} passHref>
-                    <a>{howToSupportText}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link route={RouteNames.Donate} passHref>
-                    <a>{donateText}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link route={RouteNames.BecomeSponsor} passHref>
-                    <a>{becomeSponsorText}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link route={RouteNames.BecomeVolunteer} passHref>
-                    <a>{becomeVolunteerText}</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link route={RouteNames.BecomePartner} passHref>
-                    <a>{becomePartnerText}</a>
-                  </Link>
-                </li>
+                <FooterLink route={RouteNames.HowToSupport} text={howToSupportText} />
+                <FooterLink route={RouteNames.Donate} text={donateText} />
+                <FooterLink route={RouteNames.BecomeSponsor} text={becomeSponsorText} />
+                <FooterLink route={RouteNames.BecomeVolunteer} text={becomeVolunteerText} />
+                <FooterLink route={RouteNames.BecomePartner} text={becomePartnerText} />
               </ul>
             </div>
             <div className="col">
               <ul className="list-unstyled">
-                <li>
-                  <Link route={RouteNames.Contact} passHref>
-                    <a>{contactText}</a>
-                  </Link>
-                </li>
+                <FooterLink route={RouteNames.Contact} text={contactText} />
               </ul>
             </div>
           </div>
