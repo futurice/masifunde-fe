@@ -8,6 +8,7 @@ import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import { defaultFont } from '../../styling/typography'
 import SubHeader from './SubHeader'
+import PageSection from '../PageSection'
 
 const EuroPostfix = styled.span`
   position: absolute;
@@ -66,7 +67,7 @@ const DonationAmountField = ({
     {({ input, meta }) => {
       const otherAmountDescription = findAmountDescription(input.value, amounts)
       return (
-        <Fragment>
+        <PageSection>
           <SubHeader>{title}</SubHeader>
           <div>
             <div className="offset-md-3 col-md-9 col-lg-7 pl-0">
@@ -113,7 +114,7 @@ const DonationAmountField = ({
               {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
             </div>
           </div>
-        </Fragment>
+        </PageSection>
       )
     }}
   </Field>

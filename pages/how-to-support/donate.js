@@ -122,7 +122,7 @@ class Donate extends Component {
               <form onSubmit={handleSubmit}>
                 <Field name={fieldName.projectId}>
                   {({ input, meta }) => (
-                    <Fragment>
+                    <PageSection>
                       <SubHeader>{section1title}</SubHeader>
                       <div className="offset-md-3 col-md-8">
                         <div className="row">
@@ -161,7 +161,7 @@ class Donate extends Component {
                         </div>
                         {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
                       </div>
-                    </Fragment>
+                    </PageSection>
                     )
                   }
                 </Field>
@@ -183,12 +183,14 @@ class Donate extends Component {
             )}
           />
 
-          <SubHeader>{section4Title}</SubHeader>
-          <FundRaisingForm
-            hiddenFields={{ ...this.state.fields }}
-            onSubmit={this.submitForm}
-            fundraisingboxIframeTitle={section5Title}
-          />
+          <PageSection>
+            <SubHeader>{section4Title}</SubHeader>
+            <FundRaisingForm
+              hiddenFields={{ ...this.state.fields }}
+              onSubmit={this.submitForm}
+              fundraisingboxIframeTitle={section5Title}
+            />
+          </PageSection>
         </div>
         <Banner
           headline={bannerTitle}

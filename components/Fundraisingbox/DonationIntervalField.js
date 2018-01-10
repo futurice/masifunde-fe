@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 
@@ -6,6 +6,7 @@ import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
+import PageSection from '../PageSection'
 
 const StyledErrorMessage = ErrorMessage.extend`
   margin-top: -0.4rem;
@@ -18,7 +19,7 @@ const DonationIntervalField = ({
 }) => (
   <Field name={fieldName}>
     {({ input, meta }) => (
-      <Fragment>
+      <PageSection>
         <SubHeader>{title}</SubHeader>
         <div>
           <div className="offset-md-3 col-md-9 col-lg-7 pl-0">
@@ -42,7 +43,7 @@ const DonationIntervalField = ({
             {isInvalid(meta) ? <StyledErrorMessage>{meta.error}</StyledErrorMessage> : ''}
           </div>
         </div>
-      </Fragment>
+      </PageSection>
     )}
   </Field>
 )
