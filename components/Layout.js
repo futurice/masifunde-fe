@@ -34,7 +34,7 @@ injectGlobal`
   }
 
   a {
-    color: ${theme.linkBlue};;
+    color: ${theme.linkBlue};
   }
 
   h1 {
