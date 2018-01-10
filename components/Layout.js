@@ -6,6 +6,7 @@ import _flow from 'lodash/flow'
 
 import withAnalytics from './withAnalytics'
 import withLoadingIndicator from './withLoadingIndicator'
+import withReloadOnUpdate from './withReloadOnUpdate'
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
 import { bodyText, pageTitleText, sectionTitleText, subsectionTitleText, rootFontSize } from '../styling/typography'
@@ -105,4 +106,8 @@ Layout.propTypes = {
   footerData: PropTypes.shape(footerPropTypes).isRequired,
 }
 
-export default _flow(withLoadingIndicator, withAnalytics)(Layout)
+export default _flow(
+  withLoadingIndicator,
+  withAnalytics,
+  withReloadOnUpdate,
+)(Layout)
