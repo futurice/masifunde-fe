@@ -33,10 +33,10 @@ const fontSize = '1.2rem'
 const OtherAmountContainer = styled.div`
   display: inline-block;
   position: relative;
-  bottom: 0.5rem;
   font-size: ${fontSize};
   width: 100%;
   margin-right: ${fundraisingFormSpacing};
+  margin-bottom: ${fundraisingFormSpacing};
   
   @media (min-width: ${smBreakpoint}) {
     width: calc(50% - ${fundraisingFormSpacing});
@@ -44,10 +44,6 @@ const OtherAmountContainer = styled.div`
   
   @media (min-width: ${mdBreakpoint}) {
     width: calc(${otherAmountInputWidth} - ${fundraisingFormSpacing});
-  }
-
-  input {
-    font-size: ${fontSize};
   }
 `
 
