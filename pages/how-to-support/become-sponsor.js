@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container } from 'reactstrap'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Form } from 'react-final-form'
 import _debounce from 'lodash/debounce'
@@ -15,12 +15,18 @@ import imagePropTypes from '../../propTypes/image'
 import FundRaisingForm from '../../components/Fundraisingbox/FundRaisingForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
-import Divider from '../../components/Fundraisingbox/Divider'
 import PageSection from '../../components/PageSection'
+import FRBPageSection from '../../components/Fundraisingbox/FundraisingboxPageSection'
 import RoundedImage from '../../components/RoundedImage'
+import SubHeader from '../../components/Fundraisingbox/SubHeader'
+import FundraisingFormContainer from '../../components/Fundraisingbox/FundraisingFormContainer'
 
 const Image = RoundedImage.extend`
   width: 100%;
+`
+
+const FRFContainer = styled(FundraisingFormContainer).attrs({ pullLeft: true })`
+  margin-left: 0;
 `
 
 const Learn4LifeId = '3520'
@@ -111,43 +117,42 @@ class BecomeSponsor extends Component {
           </div>
         </PageSection>
 
-        <Container>
-          <Divider />
+        <PageSection>
+          <FRFContainer>
+            <Form
+              onSubmit={() => {}}
+              validate={this.validateForm}
+              render={({ handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
 
-          <Form
-            onSubmit={() => {}}
-            validate={this.validateForm}
-            render={({ handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
+                  <DonationIntervalField
+                    fieldName={fieldName.paymentInterval}
+                    title={section2Title}
+                    intervals={section2ReferenceList}
+                  />
 
-                <DonationIntervalField
-                  fieldName={fieldName.paymentInterval}
-                  title={section2Title}
-                  intervals={section2ReferenceList}
-                />
+                  <DonationAmountField
+                    fieldName={fieldName.amount}
+                    title={section3Title}
+                    amounts={section3ReferenceList}
+                  />
+                  <button className="d-none" ref={(form) => { this.formRef = form }}>
+                    Submit
+                  </button>
+                </form>
+              )}
+            />
+            <FRBPageSection>
+              <SubHeader>{section4Title}</SubHeader>
 
-                <DonationAmountField
-                  fieldName={fieldName.amount}
-                  title={section3Title}
-                  amounts={section3ReferenceList}
-                />
-                <button className="d-none" ref={(form) => { this.formRef = form }}>
-                  Submit
-                </button>
-              </form>
-            )}
-          />
-
-          <Divider />
-
-          <h3>{section4Title}</h3>
-
-          <FundRaisingForm
-            hiddenFields={{ ...this.state.fields }}
-            onSubmit={this.submitForm}
-            fundraisingboxIframeTitle={section5Title}
-          />
-        </Container>
+              <FundRaisingForm
+                hiddenFields={{ ...this.state.fields }}
+                onSubmit={this.submitForm}
+                fundraisingboxIframeTitle={section5Title}
+              />
+            </FRBPageSection>
+          </FRFContainer>
+        </PageSection>
 
         <Banner
           headline={bannerTitle}

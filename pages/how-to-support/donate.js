@@ -18,10 +18,11 @@ import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/ut
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 import PageSection from '../../components/Fundraisingbox/FundraisingboxPageSection'
 import CenteredText from '../../components/CenteredText'
-import { lgBreakpoint, smBreakpoint } from '../../styling/breakpoints'
+import { smBreakpoint } from '../../styling/breakpoints'
 import SubHeader from '../../components/Fundraisingbox/SubHeader'
 import LabelButton from '../../components/Fundraisingbox/LabelButton'
 import { fundraisingFormSpacing } from '../../utils/constants'
+import FundraisingFormContainer from '../../components/Fundraisingbox/FundraisingFormContainer'
 
 const CountryLabelContainer = styled.div`
   width: 100%;
@@ -42,14 +43,6 @@ const fieldName = {
 
 const MainHeading = styled.h1`
   width: 100%;
-`
-
-const Container = styled.div`
-  margin: 0 auto;
-
-  @media (min-width: ${lgBreakpoint}) {
-    width: 60%;
-  }
 `
 
 class Donate extends Component {
@@ -130,88 +123,86 @@ class Donate extends Component {
           <CenteredText source={introMarkdown} />
         </PageSection>
 
-        <div className="container">
-          <Container>
-            <Form
-              onSubmit={() => {}}
-              initialValues={{
-                [fieldName.projectId]: SaProjectId,
-              }}
-              validate={this.validateForm}
-              render={({ handleSubmit }) => (
-                <form onSubmit={handleSubmit}>
-                  <Field name={fieldName.projectId}>
-                    {({ input, meta }) => (
-                      <PageSection>
-                        <SubHeader>{section1title}</SubHeader>
-                        <div className="row">
-                          <CountryLabelContainer data-toggle="buttons">
-                            <LabelButton
-                              className="btn"
-                              isActive={input.value === SaProjectId}
-                              htmlFor="countryInputSa"
-                            >
-                              <input
-                                {...input}
-                                type="radio"
-                                value={SaProjectId}
-                                id="countryInputSa"
-                                autoComplete="off"
-                              />
-                              {section1MarkdownSa}
-                            </LabelButton>
-                          </CountryLabelContainer>
-                          <CountryLabelContainer>
-                            <LabelButton
-                              className="btn"
-                              isActive={input.value === DeProjectId}
-                              htmlFor="countryInputDe"
-                            >
-                              <input
-                                {...input}
-                                type="radio"
-                                value={DeProjectId}
-                                id="countryInputDe"
-                                autoComplete="off"
-                              />
-                              {section1MarkdownDe}
-                            </LabelButton>
-                          </CountryLabelContainer>
-                        </div>
-                        {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
-                      </PageSection>
-                    )
-                    }
-                  </Field>
+        <FundraisingFormContainer>
+          <Form
+            onSubmit={() => {}}
+            initialValues={{
+              [fieldName.projectId]: SaProjectId,
+            }}
+            validate={this.validateForm}
+            render={({ handleSubmit }) => (
+              <form onSubmit={handleSubmit}>
+                <Field name={fieldName.projectId}>
+                  {({ input, meta }) => (
+                    <PageSection>
+                      <SubHeader>{section1title}</SubHeader>
+                      <div className="row">
+                        <CountryLabelContainer data-toggle="buttons">
+                          <LabelButton
+                            className="btn"
+                            isActive={input.value === SaProjectId}
+                            htmlFor="countryInputSa"
+                          >
+                            <input
+                              {...input}
+                              type="radio"
+                              value={SaProjectId}
+                              id="countryInputSa"
+                              autoComplete="off"
+                            />
+                            {section1MarkdownSa}
+                          </LabelButton>
+                        </CountryLabelContainer>
+                        <CountryLabelContainer>
+                          <LabelButton
+                            className="btn"
+                            isActive={input.value === DeProjectId}
+                            htmlFor="countryInputDe"
+                          >
+                            <input
+                              {...input}
+                              type="radio"
+                              value={DeProjectId}
+                              id="countryInputDe"
+                              autoComplete="off"
+                            />
+                            {section1MarkdownDe}
+                          </LabelButton>
+                        </CountryLabelContainer>
+                      </div>
+                      {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
+                    </PageSection>
+                  )
+                  }
+                </Field>
 
-                  <DonationIntervalField
-                    fieldName={fieldName.paymentInterval}
-                    title={section2title}
-                    intervals={section2ReferenceList}
-                  />
-                  <DonationAmountField
-                    fieldName={fieldName.amount}
-                    title={section3Title}
-                    amounts={section3ReferenceList}
-                    enableOtherAmount
-                    otherAmountPlaceholder={section3Text}
-                  />
-                  <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
-                </form>
-              )}
+                <DonationIntervalField
+                  fieldName={fieldName.paymentInterval}
+                  title={section2title}
+                  intervals={section2ReferenceList}
+                />
+                <DonationAmountField
+                  fieldName={fieldName.amount}
+                  title={section3Title}
+                  amounts={section3ReferenceList}
+                  enableOtherAmount
+                  otherAmountPlaceholder={section3Text}
+                />
+                <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
+              </form>
+            )}
+          />
+
+          <PageSection>
+            <SubHeader>{section4Title}</SubHeader>
+            <FundRaisingForm
+              hiddenFields={{ ...this.state.fields }}
+              onSubmit={this.submitForm}
+              fundraisingboxIframeTitle={section5Title}
             />
+          </PageSection>
+        </FundraisingFormContainer>
 
-            <PageSection>
-              <SubHeader>{section4Title}</SubHeader>
-              <FundRaisingForm
-                hiddenFields={{ ...this.state.fields }}
-                onSubmit={this.submitForm}
-                fundraisingboxIframeTitle={section5Title}
-              />
-            </PageSection>
-          </Container>
-
-        </div>
         <Banner
           headline={bannerTitle}
           buttonText={bannerButtonText}
