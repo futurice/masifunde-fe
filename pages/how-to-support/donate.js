@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import _debounce from 'lodash/debounce'
 
 import { RouteNames } from '../../routes'
@@ -11,7 +11,6 @@ import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchDonatePage } from '../../api/howToSupport'
 import LayoutWrapper from '../../components/LayoutWrapper'
-import Markdown from '../../components/Markdown'
 import FundRaisingForm from '../../components/Fundraisingbox/FundRaisingForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
@@ -21,32 +20,7 @@ import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
 import SubHeader from '../../components/Fundraisingbox/SubHeader'
-
-const CountryLabel = styled.label`
-  border-radius: 8px;
-  border: solid 3px ${props => props.theme.orange};
-  color: #4f463f;
-  padding: 20px;
-  display: block !important;
-  cursor: pointer;
-  height: 100%;
-
-  &:hover {
-    color: #fff;
-    background-color: ${props => props.theme.orange};
-  }
-
-  ${({ isActive }) => isActive && css`
-    color: #fff;
-    background-color: ${props => props.theme.orange};
-  `}
-
-  input {
-    position: absolute;
-    clip: rect(0, 0, 0, 0);
-    pointer-events: none;
-  }
-`
+import LabelButton from '../../components/Fundraisingbox/LabelButton'
 
 const CountryLabelContainer = styled.div`
   margin-top: 0.5rem;
@@ -154,9 +128,10 @@ class Donate extends Component {
                       <div className="offset-md-3 col-md-8">
                         <div className="row">
                           <CountryLabelContainer className="col-sm-6" data-toggle="buttons">
-                            <CountryLabel
-                              htmlFor="countryInputSa"
+                            <LabelButton
+                              className="btn"
                               isActive={input.value === SaProjectId}
+                              htmlFor="countryInputSa"
                             >
                               <input
                                 {...input}
@@ -165,13 +140,14 @@ class Donate extends Component {
                                 id="countryInputSa"
                                 autoComplete="off"
                               />
-                              <Markdown source={section1MarkdownSa} />
-                            </CountryLabel>
+                              {section1MarkdownSa}
+                            </LabelButton>
                           </CountryLabelContainer>
                           <CountryLabelContainer className="col-sm-6">
-                            <CountryLabel
-                              htmlFor="countryInputDe"
+                            <LabelButton
+                              className="btn"
                               isActive={input.value === DeProjectId}
+                              htmlFor="countryInputDe"
                             >
                               <input
                                 {...input}
@@ -180,8 +156,8 @@ class Donate extends Component {
                                 id="countryInputDe"
                                 autoComplete="off"
                               />
-                              <Markdown source={section1MarkdownDe} />
-                            </CountryLabel>
+                              {section1MarkdownDe}
+                            </LabelButton>
                           </CountryLabelContainer>
                         </div>
                         {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
