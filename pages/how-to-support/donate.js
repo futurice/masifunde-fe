@@ -48,7 +48,7 @@ const Container = styled.div`
   margin: 0 auto;
 
   @media (min-width: ${lgBreakpoint}) {
-    width: 70%;
+    width: 60%;
   }
 `
 
