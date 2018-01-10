@@ -318,7 +318,7 @@ class FundRaisingForm extends Component {
                         </Field>
                         <Field name={fieldName.city}>
                           {({ input, meta }) => (
-                            <div className="col-md-4 pl-md-0 mt-1 mt-md-0">
+                            <div className="col-md-5 pl-md-0 mt-1 mt-md-0">
                               <input
                                 {...input}
                                 className={this.formInputClassFactory(meta)}
