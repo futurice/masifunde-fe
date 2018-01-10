@@ -69,9 +69,9 @@ const DonationAmountField = ({
       return (
         <PageSection>
           <SubHeader>{title}</SubHeader>
-          <div>
-            <div className="offset-md-3 col-md-9 col-lg-7 pl-0">
-              {amounts.map(({ text, value }) => (
+          <div className="row">
+            {amounts.map(({ text, value }) => (
+              <div className="col">
                 <LabelButton
                   className="btn"
                   isActive={Number(input.value) === value}
@@ -87,10 +87,12 @@ const DonationAmountField = ({
                   />
                   {text}
                 </LabelButton>
-              ))}
-              {enableOtherAmount
-                ? (
-                  <Fragment>
+              </div>
+            ))}
+            {enableOtherAmount
+              ? (
+                <Fragment>
+                  <div className="col">
                     <OtherAmountContainer>
                       <EuroPostfix>€</EuroPostfix>
                       <input
@@ -100,19 +102,19 @@ const DonationAmountField = ({
                         placeholder={otherAmountPlaceholder}
                       />
                     </OtherAmountContainer>
-                    {
-                      otherAmountDescription
-                        ? (
-                          <AmountDescription>
-                            <span>{otherAmountDescription}</span>
-                          </AmountDescription>)
-                        : null
-                    }
-                  </Fragment>)
-                : null
-              }
-              {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
-            </div>
+                  </div>
+                  {
+                    otherAmountDescription
+                      ? (
+                        <AmountDescription>
+                          <span>{otherAmountDescription}</span>
+                        </AmountDescription>)
+                      : null
+                  }
+                </Fragment>)
+              : null
+            }
+            {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
           </div>
         </PageSection>
       )

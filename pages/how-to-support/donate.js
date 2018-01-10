@@ -18,6 +18,7 @@ import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/ut
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
+import { lgBreakpoint } from '../../styling/breakpoints'
 import SubHeader from '../../components/Fundraisingbox/SubHeader'
 import LabelButton from '../../components/Fundraisingbox/LabelButton'
 
@@ -32,6 +33,18 @@ const fieldName = {
   amount: 'amount',
   paymentInterval: 'interval',
 }
+
+const MainHeading = styled.h1`
+  width: 100%;
+`
+
+const Container = styled.div`
+  margin: 0 auto;
+
+  @media (min-width: ${lgBreakpoint}) {
+    width: 70%;
+  }
+`
 
 class Donate extends Component {
   state = {
@@ -107,24 +120,24 @@ class Donate extends Component {
         <Head title={metaTitle} description={metaDescription} />
 
         <PageSection>
-          <h1>{introHeading}</h1>
+          <MainHeading>{introHeading}</MainHeading>
           <CenteredText source={introMarkdown} />
         </PageSection>
 
         <div className="container">
-          <Form
-            onSubmit={() => {}}
-            initialValues={{
-              [fieldName.projectId]: SaProjectId,
-            }}
-            validate={this.validateForm}
-            render={({ handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
-                <Field name={fieldName.projectId}>
-                  {({ input, meta }) => (
-                    <PageSection>
-                      <SubHeader>{section1title}</SubHeader>
-                      <div className="offset-md-3 col-md-8">
+          <Container>
+            <Form
+              onSubmit={() => {}}
+              initialValues={{
+                [fieldName.projectId]: SaProjectId,
+              }}
+              validate={this.validateForm}
+              render={({ handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
+                  <Field name={fieldName.projectId}>
+                    {({ input, meta }) => (
+                      <PageSection>
+                        <SubHeader>{section1title}</SubHeader>
                         <div className="row">
                           <CountryLabelContainer className="col-sm-6" data-toggle="buttons">
                             <LabelButton
@@ -160,37 +173,38 @@ class Donate extends Component {
                           </CountryLabelContainer>
                         </div>
                         {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
-                      </div>
-                    </PageSection>
+                      </PageSection>
                     )
-                  }
-                </Field>
+                    }
+                  </Field>
 
-                <DonationIntervalField
-                  fieldName={fieldName.paymentInterval}
-                  title={section2title}
-                  intervals={section2ReferenceList}
-                />
-                <DonationAmountField
-                  fieldName={fieldName.amount}
-                  title={section3Title}
-                  amounts={section3ReferenceList}
-                  enableOtherAmount
-                  otherAmountPlaceholder={section3Text}
-                />
-                <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
-              </form>
-            )}
-          />
-
-          <PageSection>
-            <SubHeader>{section4Title}</SubHeader>
-            <FundRaisingForm
-              hiddenFields={{ ...this.state.fields }}
-              onSubmit={this.submitForm}
-              fundraisingboxIframeTitle={section5Title}
+                  <DonationIntervalField
+                    fieldName={fieldName.paymentInterval}
+                    title={section2title}
+                    intervals={section2ReferenceList}
+                  />
+                  <DonationAmountField
+                    fieldName={fieldName.amount}
+                    title={section3Title}
+                    amounts={section3ReferenceList}
+                    enableOtherAmount
+                    otherAmountPlaceholder={section3Text}
+                  />
+                  <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
+                </form>
+              )}
             />
-          </PageSection>
+
+            <PageSection>
+              <SubHeader>{section4Title}</SubHeader>
+              <FundRaisingForm
+                hiddenFields={{ ...this.state.fields }}
+                onSubmit={this.submitForm}
+                fundraisingboxIframeTitle={section5Title}
+              />
+            </PageSection>
+          </Container>
+
         </div>
         <Banner
           headline={bannerTitle}
