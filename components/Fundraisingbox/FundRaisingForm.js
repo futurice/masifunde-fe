@@ -133,7 +133,7 @@ class FundRaisingForm extends Component {
                 <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="titleInputs">
                   Anrede
                 </FormLabel>
-                <div className="col-md-3 col-lg-2 d-flex">
+                <div className="col-md-4 col-lg-3 d-flex">
                   <Field name={fieldName.salutation}>
                     {({ input, meta }) => (
                       <div className="w-100">
