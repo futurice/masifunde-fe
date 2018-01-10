@@ -21,9 +21,9 @@ const DonationIntervalField = ({
     {({ input, meta }) => (
       <PageSection>
         <SubHeader>{title}</SubHeader>
-        <div>
-          <div className="offset-md-3 col-md-9 col-lg-7 pl-0">
-            {intervals.map(({ value, name }) => (
+        <div className="row">
+          {intervals.map(({ value, name }) => (
+            <div className="col">
               <LabelButton
                 className="btn"
                 isActive={input.value === value}
@@ -39,9 +39,9 @@ const DonationIntervalField = ({
                 />
                 {name}
               </LabelButton>
-            ))}
-            {isInvalid(meta) ? <StyledErrorMessage>{meta.error}</StyledErrorMessage> : ''}
-          </div>
+            </div>
+          ))}
+          {isInvalid(meta) ? <StyledErrorMessage>{meta.error}</StyledErrorMessage> : ''}
         </div>
       </PageSection>
     )}
