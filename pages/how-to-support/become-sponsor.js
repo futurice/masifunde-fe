@@ -124,41 +124,41 @@ class BecomeSponsor extends Component {
 
         <PageSection>
           <DonationFormTitle>{donationFormTitle}</DonationFormTitle>
-          <FRFContainer>
-            <Form
-              onSubmit={() => {}}
-              validate={this.validateForm}
-              render={({ handleSubmit }) => (
-                <form onSubmit={handleSubmit}>
-
-                  <DonationIntervalField
-                    fieldName={fieldName.paymentInterval}
-                    title={section2Title}
-                    intervals={section2ReferenceList}
-                  />
-
-                  <DonationAmountField
-                    fieldName={fieldName.amount}
-                    title={section3Title}
-                    amounts={section3ReferenceList}
-                  />
-                  <button className="d-none" ref={(form) => { this.formRef = form }}>
-                    Submit
-                  </button>
-                </form>
-              )}
-            />
-            <FRBPageSection>
-              <SubHeader>{section4Title}</SubHeader>
-
-              <FundRaisingForm
-                hiddenFields={{ ...this.state.fields }}
-                onSubmit={this.submitForm}
-                fundraisingboxIframeTitle={section5Title}
-              />
-            </FRBPageSection>
-          </FRFContainer>
         </PageSection>
+        <FRFContainer>
+          <Form
+            onSubmit={() => {}}
+            validate={this.validateForm}
+            render={({ handleSubmit }) => (
+              <form onSubmit={handleSubmit}>
+
+                <DonationIntervalField
+                  fieldName={fieldName.paymentInterval}
+                  title={section2Title}
+                  intervals={section2ReferenceList}
+                />
+
+                <DonationAmountField
+                  fieldName={fieldName.amount}
+                  title={section3Title}
+                  amounts={section3ReferenceList}
+                />
+                <button className="d-none" ref={(form) => { this.formRef = form }}>
+                  Submit
+                </button>
+              </form>
+            )}
+          />
+          <FRBPageSection>
+            <SubHeader>{section4Title}</SubHeader>
+
+            <FundRaisingForm
+              hiddenFields={{ ...this.state.fields }}
+              onSubmit={this.submitForm}
+              fundraisingboxIframeTitle={section5Title}
+            />
+          </FRBPageSection>
+        </FRFContainer>
 
         <Banner
           headline={bannerTitle}
