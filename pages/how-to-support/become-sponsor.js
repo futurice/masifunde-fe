@@ -29,6 +29,10 @@ const FRFContainer = styled(FundraisingFormContainer).attrs({ pullLeft: true })`
   margin-left: 0;
 `
 
+const DonationFormTitle = styled.h2`
+  text-align: left;
+`
+
 const Learn4LifeId = '3520'
 const fieldName = {
   projectId: 'projectId',
@@ -86,6 +90,7 @@ class BecomeSponsor extends Component {
       introSubtitle2,
       introMarkdown2,
       image,
+      donationFormTitle,
       section2Title,
       section2ReferenceList,
       section3Title,
@@ -118,6 +123,7 @@ class BecomeSponsor extends Component {
         </PageSection>
 
         <PageSection>
+          <DonationFormTitle>{donationFormTitle}</DonationFormTitle>
           <FRFContainer>
             <Form
               onSubmit={() => {}}
@@ -173,6 +179,7 @@ BecomeSponsor.propTypes = {
   introSubtitle2: PropTypes.string.isRequired,
   introMarkdown2: PropTypes.string.isRequired,
   image: PropTypes.shape(imagePropTypes).isRequired,
+  donationFormTitle: PropTypes.string.isRequired,
   section2Title: PropTypes.string.isRequired,
   section2ReferenceList: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.string.isRequired,
