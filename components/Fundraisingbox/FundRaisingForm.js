@@ -28,6 +28,8 @@ const FormLabel = styled.span`
 `
 
 const FormContainer = styled.div`
+  margin-left: -15px;
+  
   .form-group {
     margin-bottom: ${fundraisingFormSpacing};
   }
