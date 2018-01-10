@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const SubHeader = styled.h3`
+const SubHeader = styled.h3.attrs({ className: 'row' })`
   margin-bottom: 1.4rem;
   font-size: 1.33rem;
   line-height: 1.04;
