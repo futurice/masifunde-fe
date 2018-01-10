@@ -15,7 +15,6 @@ import FundRaisingForm from '../../components/Fundraisingbox/FundRaisingForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/utils'
-import Divider from '../../components/Fundraisingbox/Divider'
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
@@ -167,8 +166,6 @@ class Donate extends Component {
                   }
                 </Field>
 
-                <Divider />
-
                 <DonationIntervalField
                   fieldName={fieldName.paymentInterval}
                   title={section2title}
@@ -186,7 +183,6 @@ class Donate extends Component {
             )}
           />
 
-          <Divider />
           <SubHeader>{section4Title}</SubHeader>
           <FundRaisingForm
             hiddenFields={{ ...this.state.fields }}
