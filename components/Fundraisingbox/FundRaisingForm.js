@@ -9,6 +9,7 @@ import FundRaisingIframe from './FundRaisingIframe'
 import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
 import { mdBreakpoint } from '../../styling/breakpoints'
+import PageSection from './FundraisingboxPageSection'
 
 const FundRaisingIfameContainer = styled.div`
   padding: 0;
@@ -358,15 +359,17 @@ class FundRaisingForm extends Component {
             </form>
           )}
         />
-        <SubHeader>{fundraisingboxIframeTitle}</SubHeader>
-        <FundRaisingIfameContainer className="offset-md-4 offset-lg-3 col-md-9 col-lg-7">
-          <FundRaisingIframe
-            onMouseHover={this.submitForm}
-            hash="j3ip42zwp3mlewb9"
-            {...this.state.fields}
-            {...hiddenFields}
-          />
-        </FundRaisingIfameContainer>
+        <PageSection>
+          <SubHeader>{fundraisingboxIframeTitle}</SubHeader>
+          <FundRaisingIfameContainer className="offset-md-4 offset-lg-3 col-md-9 col-lg-7">
+            <FundRaisingIframe
+              onMouseHover={this.submitForm}
+              hash="j3ip42zwp3mlewb9"
+              {...this.state.fields}
+              {...hiddenFields}
+            />
+          </FundRaisingIfameContainer>
+        </PageSection>
       </Fragment>
     )
   }
