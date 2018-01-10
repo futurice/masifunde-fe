@@ -112,12 +112,14 @@ const DonationAmountField = ({
                   {
                     amountDescription
                       ? (
-                        <AmountDescription>
-                          <span>{input.value}€ </span>
-                          <span>
-                            = {amountDescription}
-                          </span>
-                        </AmountDescription>)
+                        <div className="col-12">
+                          <AmountDescription>
+                            <span>{input.value}€ </span>
+                            <span>
+                              = {amountDescription}
+                            </span>
+                          </AmountDescription>
+                        </div>)
                       : null
                   }
                 </Fragment>)
