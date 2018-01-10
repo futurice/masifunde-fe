@@ -10,6 +10,7 @@ import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import PageSection from './FundraisingboxPageSection'
+import { fundraisingFormSpacing } from '../../utils/constants'
 
 const FundRaisingIfameContainer = styled.div`
   padding: 0;
@@ -18,9 +19,17 @@ const FundRaisingIfameContainer = styled.div`
 const FormLabel = styled.span`
   text-align: left;
   padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 
   @media screen and (min-width: ${mdBreakpoint}){
     text-align: right;
+  }
+`
+
+const FormContainer = styled.div`
+  .form-group {
+    margin-bottom: ${fundraisingFormSpacing};
   }
 `
 
@@ -39,7 +48,7 @@ const fieldName = {
 }
 
 const formLabelBootstrapClasses = 'col-md-3 col-lg-3'
-const formInputBootstrapClasses = 'col-md-7 col-lg-6'
+const formInputBootstrapClasses = 'col-md-8 col-lg-7'
 
 const noReceiptOptionValue = 'no_receipt'
 const receiptNowOptionValue = 'receipt_now'
@@ -104,7 +113,7 @@ class FundRaisingForm extends Component {
     } = this.props
 
     return (
-      <Fragment>
+      <FormContainer>
         <Form
           onSubmit={() => {}}
           initialValues={{
@@ -370,7 +379,7 @@ class FundRaisingForm extends Component {
             />
           </FundRaisingIfameContainer>
         </PageSection>
-      </Fragment>
+      </FormContainer>
     )
   }
 }
