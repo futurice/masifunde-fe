@@ -27,13 +27,19 @@ const EuroPostfix = styled.span`
 
 const AmountDescription = styled.div`
   border-radius: 8px;
-  padding: 15px 40px;
   background-color: #e9e0d3;
+  padding: 15px 40px;
+  text-align: center;
+  width: 100%;
 
   span {
-    font-weight: bold;
-    text-align: left;
     color: #333333;
+    text-align: left;
+    
+    &:first-of-type{
+      color: ${({ theme }) => theme.orange};
+      font-weight: bold;
+    }
   }
 `
 
@@ -65,7 +71,7 @@ const DonationAmountField = ({
 }) => (
   <Field name={fieldName}>
     {({ input, meta }) => {
-      const otherAmountDescription = findAmountDescription(input.value, amounts)
+      const amountDescription = findAmountDescription(input.value, amounts)
       return (
         <PageSection>
           <SubHeader>{title}</SubHeader>
@@ -104,10 +110,13 @@ const DonationAmountField = ({
                     </OtherAmountContainer>
                   </div>
                   {
-                    otherAmountDescription
+                    amountDescription
                       ? (
                         <AmountDescription>
-                          <span>{otherAmountDescription}</span>
+                          <span>{input.value}€ </span>
+                          <span>
+                            = {amountDescription}
+                          </span>
                         </AmountDescription>)
                       : null
                   }
