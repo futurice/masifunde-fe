@@ -8,7 +8,48 @@ import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import { defaultFont } from '../../styling/typography'
 import SubHeader from './SubHeader'
-import PageSection from '../PageSection'
+import PageSection from '../../components/PageSection'
+import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
+import { fundraisingFormSpacing } from '../../utils/constants'
+
+const otherAmountInputWidth = '30%'
+
+const AmountLabelButton = LabelButton.extend`
+  margin-right: ${fundraisingFormSpacing};
+  padding-left: 0;
+  padding-right: 0;
+  
+  @media (min-width: ${smBreakpoint}) {
+    width: calc(50% - ${fundraisingFormSpacing});
+  }
+  
+  @media (min-width: ${mdBreakpoint}) {
+    width: calc(14% - ${fundraisingFormSpacing});
+  }
+`
+
+const fontSize = '1.2rem'
+
+const OtherAmountContainer = styled.div`
+  display: inline-block;
+  position: relative;
+  bottom: 0.5rem;
+  font-size: ${fontSize};
+  width: 100%;
+  margin-right: ${fundraisingFormSpacing};
+  
+  @media (min-width: ${smBreakpoint}) {
+    width: calc(50% - ${fundraisingFormSpacing});
+  }
+  
+  @media (min-width: ${mdBreakpoint}) {
+    width: calc(${otherAmountInputWidth} - ${fundraisingFormSpacing});
+  }
+
+  input {
+    font-size: ${fontSize};
+  }
+`
 
 const EuroPostfix = styled.span`
   position: absolute;
@@ -43,18 +84,8 @@ const AmountDescription = styled.div`
   }
 `
 
-const fontSize = '1.2rem'
-
-const OtherAmountContainer = styled.div`
-  display: inline-block;
-  position: relative;
-  bottom: 0.5rem;
-  font-size: ${fontSize};
-  margin-top: 0.6rem;
-
-  input {
-    font-size: ${fontSize};
-  }
+const AmountLabelsContainer = styled.div`
+  align-items: center;
 `
 
 const findAmountDescription = (searchedValue, amounts) => {
@@ -75,40 +106,36 @@ const DonationAmountField = ({
       return (
         <PageSection>
           <SubHeader>{title}</SubHeader>
-          <div className="row">
+          <AmountLabelsContainer className="row">
             {amounts.map(({ text, value }) => (
-              <div className="col">
-                <LabelButton
-                  className="btn"
-                  isActive={Number(input.value) === value}
-                  key={value}
-                  htmlFor={`amountInputOption${value}`}
-                >
-                  <input
-                    {...input}
-                    type="radio"
-                    value={value}
-                    id={`amountInputOption${value}`}
-                    autoComplete="off"
-                  />
-                  {text}
-                </LabelButton>
-              </div>
+              <AmountLabelButton
+                className="btn"
+                isActive={Number(input.value) === value}
+                key={value}
+                htmlFor={`amountInputOption${value}`}
+              >
+                <input
+                  {...input}
+                  type="radio"
+                  value={value}
+                  id={`amountInputOption${value}`}
+                  autoComplete="off"
+                />
+                {text}
+              </AmountLabelButton>
             ))}
             {enableOtherAmount
               ? (
                 <Fragment>
-                  <div className="col">
-                    <OtherAmountContainer>
-                      <EuroPostfix>€</EuroPostfix>
-                      <input
-                        {...input}
-                        className="form-control"
-                        type="text"
-                        placeholder={otherAmountPlaceholder}
-                      />
-                    </OtherAmountContainer>
-                  </div>
+                  <OtherAmountContainer>
+                    <EuroPostfix>€</EuroPostfix>
+                    <input
+                      {...input}
+                      className="form-control"
+                      type="text"
+                      placeholder={otherAmountPlaceholder}
+                    />
+                  </OtherAmountContainer>
                   {
                     amountDescription
                       ? (
@@ -126,7 +153,7 @@ const DonationAmountField = ({
               : null
             }
             {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
-          </div>
+          </AmountLabelsContainer>
         </PageSection>
       )
     }}

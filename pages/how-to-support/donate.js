@@ -18,12 +18,18 @@ import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/ut
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
-import { lgBreakpoint } from '../../styling/breakpoints'
+import { lgBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import SubHeader from '../../components/Fundraisingbox/SubHeader'
 import LabelButton from '../../components/Fundraisingbox/LabelButton'
+import { fundraisingFormSpacing } from '../../utils/constants'
 
 const CountryLabelContainer = styled.div`
-  margin-top: 0.5rem;
+  width: 100%;
+  margin-right: ${fundraisingFormSpacing};
+  
+  @media (min-width: ${smBreakpoint}) {
+    width: calc(50% - ${fundraisingFormSpacing});
+  }
 `
 
 const DeProjectId = '3531'
@@ -139,7 +145,7 @@ class Donate extends Component {
                       <PageSection>
                         <SubHeader>{section1title}</SubHeader>
                         <div className="row">
-                          <CountryLabelContainer className="col-sm-6" data-toggle="buttons">
+                          <CountryLabelContainer data-toggle="buttons">
                             <LabelButton
                               className="btn"
                               isActive={input.value === SaProjectId}
@@ -155,7 +161,7 @@ class Donate extends Component {
                               {section1MarkdownSa}
                             </LabelButton>
                           </CountryLabelContainer>
-                          <CountryLabelContainer className="col-sm-6">
+                          <CountryLabelContainer>
                             <LabelButton
                               className="btn"
                               isActive={input.value === DeProjectId}

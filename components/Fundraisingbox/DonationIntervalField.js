@@ -6,10 +6,26 @@ import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
-import PageSection from '../PageSection'
+import PageSection from '../../components/PageSection'
+import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
+import { fundraisingFormSpacing } from '../../utils/constants'
 
 const StyledErrorMessage = ErrorMessage.extend`
   margin-top: -0.4rem;
+`
+
+const IntervalLabelButton = LabelButton.extend`
+  margin-right: ${fundraisingFormSpacing};
+  padding-left: 0;
+  padding-right: 0;
+  
+  @media (min-width: ${smBreakpoint}) {
+    width: calc(50% - ${fundraisingFormSpacing});
+  }
+  
+  @media (min-width: ${mdBreakpoint}) {
+    width: calc(25% - ${fundraisingFormSpacing});
+  }
 `
 
 const DonationIntervalField = ({
@@ -23,23 +39,21 @@ const DonationIntervalField = ({
         <SubHeader>{title}</SubHeader>
         <div className="row">
           {intervals.map(({ value, name }) => (
-            <div className="col">
-              <LabelButton
-                className="btn"
-                isActive={input.value === value}
-                key={value}
-                htmlFor={`frequencyInputOption${value}`}
-              >
-                <input
-                  {...input}
-                  type="radio"
-                  value={value}
-                  id={`frequencyInputOption${value}`}
-                  autoComplete="off"
-                />
-                {name}
-              </LabelButton>
-            </div>
+            <IntervalLabelButton
+              className="btn"
+              isActive={input.value === value}
+              key={value}
+              htmlFor={`frequencyInputOption${value}`}
+            >
+              <input
+                {...input}
+                type="radio"
+                value={value}
+                id={`frequencyInputOption${value}`}
+                autoComplete="off"
+              />
+              {name}
+            </IntervalLabelButton>
           ))}
           {isInvalid(meta) ? <StyledErrorMessage>{meta.error}</StyledErrorMessage> : ''}
         </div>

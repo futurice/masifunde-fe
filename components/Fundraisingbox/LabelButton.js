@@ -1,9 +1,10 @@
 import { css } from 'styled-components'
 import Button from '../../components/Button'
 import { rem } from '../../styling/typography'
+import { fundraisingFormSpacing } from '../../utils/constants'
 
 const LabelButton = Button.withComponent('label').extend`
-  margin-bottom: 0.8rem;
+  margin-bottom: ${fundraisingFormSpacing};
   font-size: ${rem('18px')};
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
