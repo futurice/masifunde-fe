@@ -37,7 +37,7 @@ const fieldName = {
   wantsReceipt: 'wantsReceipt',
 }
 
-const formLabelBootstrapClasses = 'col-md-3 col-lg-2'
+const formLabelBootstrapClasses = 'col-md-3 col-lg-3'
 const formInputBootstrapClasses = 'col-md-7 col-lg-6'
 
 const noReceiptOptionValue = 'no_receipt'
@@ -113,7 +113,6 @@ class FundRaisingForm extends Component {
           validate={this.validateForm}
           render={({ handleSubmit, values }) => (
             <form
-              className="offset-md-1 offset-lg-1"
               onSubmit={(e) => {
               handleSubmit(e)
               this.props.onSubmit()
