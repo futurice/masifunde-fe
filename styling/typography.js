@@ -22,7 +22,7 @@ export function rem(px) {
 }
 
 export const bodyText = css`
-  color: #4F463F;
+  color: ${theme.black};
   font-family: ${defaultFont};
   font-weight: 400;
   line-height: ${bodyTextLineHeight};
