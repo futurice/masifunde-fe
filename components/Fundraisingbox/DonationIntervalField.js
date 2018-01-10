@@ -6,7 +6,7 @@ import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
-import PageSection from '../../components/PageSection'
+import PageSection from '../../components/Fundraisingbox/FundraisingboxPageSection'
 import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import { fundraisingFormSpacing } from '../../utils/constants'
 

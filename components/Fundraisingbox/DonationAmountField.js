@@ -8,7 +8,7 @@ import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import { defaultFont } from '../../styling/typography'
 import SubHeader from './SubHeader'
-import PageSection from '../../components/PageSection'
+import PageSection from '../../components/Fundraisingbox/FundraisingboxPageSection'
 import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import { fundraisingFormSpacing } from '../../utils/constants'
 
