@@ -1,15 +1,16 @@
 import styled from 'styled-components'
-import { lgBreakpoint } from '../../styling/breakpoints'
+import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
+import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
 
 const StyledLink = styled.a`
   font-weight: bold;
   text-align: right;
   white-space: nowrap;
   padding: 0.31rem 0;
-  margin-right: 1rem;
+  margin-right: ${extraSmallSpacing};
   
   @media (min-width: ${lgBreakpoint}) {
-    margin-right: 1.5rem;
+    margin-right: ${smallSpacing};
   }
   color: inherit !important;
   margin-top: ${props => props.activeBorderThickness};
@@ -21,13 +22,13 @@ const StyledLink = styled.a`
     ? `${props.activeBorderThickness} solid #FE9933 !important`
     : 0)
 };
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: ${mdBreakpoint}){
     text-align: center;
     margin-right: 0;
   }
 
   :hover {
-    border-bottom: 3px solid #77695c; 
+    border-bottom: 3px solid ${({ theme }) => theme.pineCone}; 
     margin-bottom: 0;
   }
 `

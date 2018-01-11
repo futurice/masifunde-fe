@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { smBreakpoint, mdBreakpoint, lgBreakpoint } from '../styling/breakpoints'
+import { extraSmallSpacing } from '../styling/sizes'
 
 const centerIfSingleLine = (breakpoint, maxEntiresPerLine, numberOfEntries) => {
   if (numberOfEntries < maxEntiresPerLine) {
@@ -28,7 +29,7 @@ const List = styled.div`
 
   > * {
     width: 50%;
-    padding: 0 1rem;
+    padding: 0 ${extraSmallSpacing};
     margin-bottom: ${listBottomMargin};
 
     @media (min-width: ${smBreakpoint}) {

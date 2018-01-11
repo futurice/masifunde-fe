@@ -7,6 +7,8 @@ import _debounce from 'lodash/debounce'
 import countries from '../../utils/countries'
 import FundRaisingIframe from './FundRaisingIframe'
 import ErrorMessage from './ErrorMessage'
+import { mdBreakpoint } from '../../styling/breakpoints'
+import { smallSpacing } from '../../styling/sizes'
 
 const FundRaisingIfameContainer = styled.div`
   padding: 0;
@@ -16,13 +18,13 @@ const FormLabel = styled.span`
   text-align: left;
   padding-right: 0;
 
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: ${mdBreakpoint}){
     text-align: right;
   }
 `
 
 const IframeTitle = styled.h3`
-  margin-top: 1.5rem;
+  margin-top: ${smallSpacing};
 `
 
 const fieldName = {

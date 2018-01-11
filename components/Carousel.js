@@ -10,17 +10,18 @@ import portraitPropTypes from '../propTypes/portrait'
 import { bodyText, rem, subsectionTitleText } from '../styling/typography'
 import ConditionalContainer from './ConditionalContainer'
 import { mdBreakpoint } from '../styling/breakpoints'
+import { largeSpacing, extraSmallSpacing, smallSpacing } from '../styling/sizes'
 
 const sliderArrowSize = '70px'
 
 const CarouselTextContainer = styled.div`
   ${bodyText}
-  padding: 1.5rem 1rem;
+  padding: ${smallSpacing} ${extraSmallSpacing};
   color: white;
 
   p {
     color: white;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 ${smallSpacing} 0;
   }
 
   p:last-child {
@@ -29,8 +30,8 @@ const CarouselTextContainer = styled.div`
 
   @media (min-width: ${mdBreakpoint}) {
     // Don't let the text run into the next-slide button
-    padding: 3.5rem 3rem;
-    padding-right: calc(${sliderArrowSize} + 1rem);
+    padding: 3.5rem ${largeSpacing};
+    padding-right: calc(${sliderArrowSize} + ${extraSmallSpacing});
   }
 `
 

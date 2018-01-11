@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import imageShape from '../propTypes/image'
 import { smallFontSize } from '../styling/typography'
+import { mediumSpacing } from '../styling/sizes'
 
 const ProjectImage = styled.img`
   max-width: 100%;
@@ -21,7 +22,7 @@ const H3 = styled.h3`
 
 const ProjectContainer = styled.div`
   font-size: ${smallFontSize};
-  margin-bottom: 2rem;
+  margin-bottom: ${mediumSpacing};
 `
 
 const Project = ({

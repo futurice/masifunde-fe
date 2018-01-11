@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 import { Link, RouteNames } from '../routes'
 import PageSection from './PageSection'
+import { largeSpacing, extraSmallSpacing } from '../styling/sizes'
 
 const Sitemap = styled.div`
   font-size: 14px;
@@ -38,9 +39,8 @@ const Anchor = styled.a`
     color: ${props => props.theme.pineCone};
   }
 `
-
 const FooterImpressumContainer = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: ${extraSmallSpacing};
 `
 
 const ContentfulImage = styled.img`
@@ -49,7 +49,7 @@ const ContentfulImage = styled.img`
 `
 
 const FooterSection = styled(PageSection)`
-  margin-top: 3rem;
+  margin-top: ${largeSpacing};
 
   a, a:visited {
     color: ${({ theme }) => theme.pineCone};

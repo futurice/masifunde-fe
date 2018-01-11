@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { smBreakpoint } from '../styling/breakpoints'
+import { extraSmallSpacing } from '../styling/sizes'
 
 const List = styled.div`
-  margin-top: 1rem;
+  margin-top: ${extraSmallSpacing};
   display: flex;
   justify-content: center;
   flex-direction: column;
 
   > * {
-    margin-bottom: 1rem;
+    margin-bottom: ${extraSmallSpacing};
   }
 
   @media (min-width: ${smBreakpoint}) {

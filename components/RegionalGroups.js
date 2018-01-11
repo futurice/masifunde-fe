@@ -3,27 +3,28 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import { lgBreakpoint, smBreakpoint } from '../styling/breakpoints'
+import { largeSpacing, mediumSpacing, extraSmallSpacing } from '../styling/sizes'
 
 const LocationsList = styled.ul`
   @media (min-width: ${smBreakpoint}) {
     column-count: 2;
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: ${lgBreakpoint}) {
     margin-top: 0;
   }
-  margin-top: 2rem;
+  margin-top: ${mediumSpacing};
   list-style-type: none;
   margin-bottom: 0;
 `
 
 const LocationListItem = styled.li`
-  padding: 0.6rem 1rem;
+  padding: 0.6rem ${extraSmallSpacing};
   padding-left: 0;
 `
 
 const GroupsContainer = styled.div`
-  margin-top: 3rem;
+  margin-top: ${largeSpacing};
   margin-bottom: 4.5rem;
   
   display: flex;

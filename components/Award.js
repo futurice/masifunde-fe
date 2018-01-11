@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Markdown from './Markdown'
 import imageShape from '../propTypes/image'
 import { smBreakpoint } from '../styling/breakpoints'
+import { mediumSpacing, extraSmallSpacing } from '../styling/sizes'
 
 const ImageContainer = styled.div`
   display: flex;
@@ -19,7 +20,7 @@ const Image = styled.img`
   height: auto;
   width: 100%;
   max-width: 160px;
-  margin-bottom: 1rem;
+  margin-bottom: ${extraSmallSpacing};
   
   @media (min-width: ${smBreakpoint}) {
     margin-bottom: 0;
@@ -36,7 +37,7 @@ const Title = styled.h3`
 
 const AwardContainer = styled.div`
   &:not(:first-of-type) {
-    margin-top: 2rem;
+    margin-top: ${mediumSpacing};
   }
 `
 

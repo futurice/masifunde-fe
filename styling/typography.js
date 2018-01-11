@@ -4,6 +4,7 @@ import { rem as polishedRem } from 'polished'
 
 import { lgBreakpoint, mdBreakpoint } from './breakpoints'
 import theme from './theme'
+import { extraSmallSpacing } from './sizes'
 
 export const defaultFont = 'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
 export const headerFont = 'Raleway, sans-serif'
@@ -65,7 +66,7 @@ export const sectionTitleText = css`
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: ${rem('-0.3px')};
-  margin-bottom: 1rem;
+  margin-bottom: ${extraSmallSpacing};
 
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('34px')};
