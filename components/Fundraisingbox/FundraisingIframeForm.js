@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import FundraisingboxLink from './FundraisingboxLink'
 import PageSection from '../PageSection'
 import SubHeader from './SubHeader'
-import FundraisingIframe from './FundRaisingIframe'
+import FundraisingIframe from './FundraisingIframe'
 import FundraisingFormContainer from './FundraisingFormContainer'
 
 const FundraisingIframeForm = ({

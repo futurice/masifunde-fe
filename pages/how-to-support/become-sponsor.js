@@ -12,7 +12,7 @@ import Markdown from '../../components/Markdown'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBecomeASponsorPage } from '../../api/howToSupport'
 import imagePropTypes from '../../propTypes/image'
-import FundRaisingForm from '../../components/Fundraisingbox/FundRaisingForm'
+import FundraisingForm from '../../components/Fundraisingbox/FundraisingForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import PageSection from '../../components/PageSection'
@@ -144,7 +144,7 @@ class BecomeSponsor extends Component {
             )}
           />
         </FundraisingFormContainer>
-        <FundRaisingForm
+        <FundraisingForm
           pullLeft
           formTitle={section4Title}
           hiddenFields={{ ...this.state.fields }}
