@@ -145,8 +145,8 @@ class BecomeSponsor extends Component {
           />
         </FundraisingFormContainer>
         <FundRaisingForm
-          formTitle={section4Title}
           pullLeft
+          formTitle={section4Title}
           hiddenFields={{ ...this.state.fields }}
           onSubmit={this.submitForm}
           fundraisingboxIframeTitle={section5Title}
