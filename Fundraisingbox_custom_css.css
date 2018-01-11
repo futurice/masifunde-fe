@@ -309,3 +309,9 @@ input#submitForm .row {
     align-items: center;
   }
 }
+
+#bankConfirmation,
+#additionalSettings,
+#securityBox {
+  font-size: 14px;
+}
