@@ -12,10 +12,6 @@ import { mdBreakpoint } from '../../styling/breakpoints'
 import PageSection from './FundraisingboxPageSection'
 import { fundraisingFormSpacing } from '../../utils/constants'
 
-const FundRaisingIfameContainer = styled.div`
-  padding: 0;
-`
-
 const FormLabel = styled.span`
   text-align: left;
   padding-right: 0;
@@ -53,7 +49,7 @@ const fieldName = {
 }
 
 const formLabelBootstrapClasses = 'col-md-3 col-lg-3'
-const formInputBootstrapClasses = 'col-md-8 col-lg-7'
+const formInputBootstrapClasses = 'col-md-8 col-lg-8'
 
 const noReceiptOptionValue = 'no_receipt'
 const receiptNowOptionValue = 'receipt_now'
@@ -323,7 +319,7 @@ class FundRaisingForm extends Component {
                         </Field>
                         <Field name={fieldName.city}>
                           {({ input, meta }) => (
-                            <div className="col-md-5 col-lg-4 pl-md-0 mt-1 mt-md-0">
+                            <div className="col-md-5 col-lg-5 pl-md-0 mt-1 mt-md-0">
                               <input
                                 {...input}
                                 className={this.formInputClassFactory(meta)}
@@ -375,14 +371,12 @@ class FundRaisingForm extends Component {
         />
         <PageSection contained={false}>
           <SubHeader>{fundraisingboxIframeTitle}</SubHeader>
-          <FundRaisingIfameContainer className="offset-md-4 offset-lg-3 col-md-9 col-lg-7">
-            <FundRaisingIframe
-              onMouseHover={this.submitForm}
-              hash="j3ip42zwp3mlewb9"
-              {...this.state.fields}
-              {...hiddenFields}
-            />
-          </FundRaisingIfameContainer>
+          <FundRaisingIframe
+            onMouseHover={this.submitForm}
+            hash="j3ip42zwp3mlewb9"
+            {...this.state.fields}
+            {...hiddenFields}
+          />
         </PageSection>
       </FormContainer>
     )
