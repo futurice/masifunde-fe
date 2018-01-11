@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
@@ -10,36 +9,22 @@ import { Link, RouteNames } from '../routes'
 import PageSection from './PageSection'
 import { largeSpacing, extraSmallSpacing } from '../styling/sizes'
 
-const containerStyle = {
-  marginBottom: 20,
-  paddingBottom: 0,
-}
+const Sitemap = styled.div`
+  font-size: 14px;
+`
 
-const LinksContainer = {
-  fontSize: 14,
-}
-
-const copyrightStyle = {
-  textAlign: 'center',
-  marginTop: 50,
-  marginBottom: 40,
-}
-
-const copyrightRowStyle = {
-  textAlign: 'center',
-  fontSize: 14,
-  color: '#77695C',
-}
-
-const socialStyle = {
-  marginLeft: 10,
-  marginRight: 10,
-  cursor: 'pointer',
-}
+const CopyrightColumn = styled.div`
+  text-align: center;
+  font-size: 14px;
+  color: ${({ theme }) => theme.pineCone};
+`
 
 const SocialLink = styled.a`
   color: #444444;
   opacity: 0.6;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
 
   &:hover {
     color: #444444 !important;
@@ -54,8 +39,7 @@ const Anchor = styled.a`
     color: ${props => props.theme.pineCone};
   }
 `
-
-const FooterImpressumContainer = styled(Row)`
+const FooterImpressumContainer = styled.div`
   margin-bottom: ${extraSmallSpacing};
 `
 
@@ -64,7 +48,7 @@ const ContentfulImage = styled.img`
   width: 100%;
 `
 
-const FooterContainer = styled(PageSection)`
+const FooterSection = styled(PageSection)`
   margin-top: ${largeSpacing};
 
   a, a:visited {
@@ -80,6 +64,25 @@ const FooterContainer = styled(PageSection)`
     font-weight: 700;
   }
 `
+
+const CopyrightSocialSection = styled.div`
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`
+
+const FooterLink = ({ route, text }) => (
+  <li>
+    <Link route={route} passHref>
+      <a>{text}</a>
+    </Link>
+  </li>
+)
+
+FooterLink.propTypes = {
+  route: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+}
 
 function Footer({
   whatWeDoText,
@@ -102,122 +105,67 @@ function Footer({
   datenschutzText,
 }) {
   return (
-    <FooterContainer>
-      <Container style={containerStyle}>
-        <div className="row" style={LinksContainer}>
-          <div className="col-sm">
-            <div className="row">
-              <div className="col">
-                <ul className="list-unstyled">
-                  <li>
-                    <Link route={RouteNames.WhatWeDo} passHref>
-                      <a>{whatWeDoText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.ApproachSA} passHref>
-                      <a>{approachSaText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.ApproachDE} passHref>
-                      <a>{approachDeText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.Impact} passHref>
-                      <a>{impactText}</a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div className="col">
-                <ul className="list-unstyled">
-                  <li>
-                    <Link route={RouteNames.WhoWeAre} passHref>
-                      <a>{whoWeAreText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.TeamSA} passHref>
-                      <a>{teamSaText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.TeamDE} passHref>
-                      <a>{teamDeText}</a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+    <FooterSection>
+      <Sitemap className="row">
+        <div className="col-sm">
+          <div className="row">
+            <div className="col">
+              <ul className="list-unstyled">
+                <FooterLink route={RouteNames.WhatWeDo} text={whatWeDoText} />
+                <FooterLink route={RouteNames.ApproachSA} text={approachSaText} />
+                <FooterLink route={RouteNames.ApproachDE} text={approachDeText} />
+                <FooterLink route={RouteNames.Impact} text={impactText} />
+              </ul>
+            </div>
+            <div className="col">
+              <ul className="list-unstyled">
+                <FooterLink route={RouteNames.WhoWeAre} text={whoWeAreText} />
+                <FooterLink route={RouteNames.TeamSA} text={teamSaText} />
+                <FooterLink route={RouteNames.TeamDE} text={teamDeText} />
+              </ul>
             </div>
           </div>
-
-          <div className="col-sm">
-            <div className="row">
-              <div className="col">
-                <ul className="list-unstyled">
-                  <li>
-                    <Link route={RouteNames.HowToSupport} passHref>
-                      <a>{howToSupportText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.Donate} passHref>
-                      <a>{donateText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.BecomeSponsor} passHref>
-                      <a>{becomeSponsorText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.BecomeVolunteer} passHref>
-                      <a>{becomeVolunteerText}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link route={RouteNames.BecomePartner} passHref>
-                      <a>{becomePartnerText}</a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div className="col">
-                <ul className="list-unstyled">
-                  <li>
-                    <Link route={RouteNames.Contact} passHref>
-                      <a>{contactText}</a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
         </div>
-      </Container>
-      <Container style={copyrightStyle}>
-        <Row>
-          <Col>
+
+        <div className="col-sm">
+          <div className="row">
+            <div className="col">
+              <ul className="list-unstyled">
+                <FooterLink route={RouteNames.HowToSupport} text={howToSupportText} />
+                <FooterLink route={RouteNames.Donate} text={donateText} />
+                <FooterLink route={RouteNames.BecomeSponsor} text={becomeSponsorText} />
+                <FooterLink route={RouteNames.BecomeVolunteer} text={becomeVolunteerText} />
+                <FooterLink route={RouteNames.BecomePartner} text={becomePartnerText} />
+              </ul>
+            </div>
+            <div className="col">
+              <ul className="list-unstyled">
+                <FooterLink route={RouteNames.Contact} text={contactText} />
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Sitemap>
+      <CopyrightSocialSection>
+        <div className="row">
+          <div className="col">
             <h4>
               <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
-                <FaYoutubePlay style={socialStyle} />
+                <FaYoutubePlay />
               </SocialLink>
               <SocialLink href={masifundeFacebookUrl} target="_blank" rel="noopener noreferrer">
-                <FaFacebook style={socialStyle} />
+                <FaFacebook />
               </SocialLink>
             </h4>
-          </Col>
-        </Row>
-        <Row>
-          <Col style={copyrightRowStyle}>
+          </div>
+        </div>
+        <div className="row">
+          <CopyrightColumn className="col">
             {copyrightText}
-          </Col>
-        </Row>
-        <FooterImpressumContainer>
-          <Col style={copyrightRowStyle}>
+          </CopyrightColumn>
+        </div>
+        <FooterImpressumContainer className="row">
+          <CopyrightColumn className="col">
             <Link route={RouteNames.Impressum} passHref>
               <Anchor>{impressumText} </Anchor>
             </Link>
@@ -225,20 +173,20 @@ function Footer({
             <Link route={RouteNames.Datenschutz} passHref>
               <Anchor> {datenschutzText}</Anchor>
             </Link>
-          </Col>
+          </CopyrightColumn>
         </FooterImpressumContainer>
-        <Row>
-          <Col>
+        <div className="row">
+          <div className="col">
             <a href="https://www.contentful.com/" rel="noopener noreferrer nofollow" target="_blank">
               <ContentfulImage
                 src="/static/images/PoweredByContentful_LightBackground.svg"
                 alt="Powered by Contentful"
               />
             </a>
-          </Col>
-        </Row>
-      </Container>
-    </FooterContainer>
+          </div>
+        </div>
+      </CopyrightSocialSection>
+    </FooterSection>
   )
 }
 
