@@ -48,8 +48,8 @@ const fieldName = {
   wantsReceipt: 'wantsReceipt',
 }
 
-const formLabelBootstrapClasses = 'col-md-3 col-lg-3'
-const formInputBootstrapClasses = 'col-md-8 col-lg-8'
+const formLabelBootstrapClasses = 'col-md-3'
+const formInputBootstrapClasses = 'col-md-8'
 
 const noReceiptOptionValue = 'no_receipt'
 const receiptNowOptionValue = 'receipt_now'
@@ -304,7 +304,7 @@ class FundRaisingForm extends Component {
                         </FormLabel>
                         <Field name={fieldName.postCode}>
                           {({ input, meta }) => (
-                            <div className="col-md-3 col-lg-3">
+                            <div className="col-md-3">
                               <input
                                 {...input}
                                 className={this.formInputClassFactory(meta)}
@@ -319,7 +319,7 @@ class FundRaisingForm extends Component {
                         </Field>
                         <Field name={fieldName.city}>
                           {({ input, meta }) => (
-                            <div className="col-md-5 col-lg-5 pl-md-0 mt-1 mt-md-0">
+                            <div className="col-md-5 pl-md-0 mt-1 mt-md-0">
                               <input
                                 {...input}
                                 className={this.formInputClassFactory(meta)}
