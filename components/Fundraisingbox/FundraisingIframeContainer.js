@@ -6,7 +6,7 @@ import SubHeader from './SubHeader'
 import FundraisingIframe from './FundraisingIframe'
 import FundraisingFormContainer from './FundraisingFormContainer'
 
-const FundraisingIframeForm = ({
+const FundraisingIframeContainer = ({
   fields,
   formTitle,
   hash,
@@ -30,7 +30,7 @@ const FundraisingIframeForm = ({
   </PageSection>
 )
 
-FundraisingIframeForm.propTypes = {
+FundraisingIframeContainer.propTypes = {
   fields: PropTypes.shape(),
   formTitle: PropTypes.string.isRequired,
   hash: PropTypes.string.isRequired,
@@ -39,9 +39,9 @@ FundraisingIframeForm.propTypes = {
   pullLeft: PropTypes.bool,
 }
 
-FundraisingIframeForm.defaultProps = {
+FundraisingIframeContainer.defaultProps = {
   fields: undefined,
   pullLeft: false,
 }
 
-export default FundraisingIframeForm
+export default FundraisingIframeContainer
