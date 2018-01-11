@@ -265,10 +265,6 @@ input#submitForm {
   margin-left: calc(25% + 8px);
 }
 
-input#submitForm .row {
-  margin-left: calc(25% + 50px);
-}
-
 @media (max-width: 768px) {
   div#bankConfirmation,
   div#additionalSettings,
