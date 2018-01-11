@@ -135,7 +135,7 @@ class Donate extends Component {
                 <Field name={fieldName.projectId}>
                   {({ input, meta }) => (
                     <PageSection>
-                      <SubHeader>{section1title}</SubHeader>
+                      <SubHeader className="row">{section1title}</SubHeader>
                       <div className="row">
                         <CountryLabelContainer data-toggle="buttons">
                           <LabelButton
@@ -193,15 +193,13 @@ class Donate extends Component {
             )}
           />
 
-          <PageSection>
-            <SubHeader>{section4Title}</SubHeader>
-            <FundRaisingForm
-              hiddenFields={{ ...this.state.fields }}
-              onSubmit={this.submitForm}
-              fundraisingboxIframeTitle={section5Title}
-            />
-          </PageSection>
         </FundraisingFormContainer>
+        <FundRaisingForm
+          formTitle={section4Title}
+          hiddenFields={{ ...this.state.fields }}
+          onSubmit={this.submitForm}
+          fundraisingboxIframeTitle={section5Title}
+        />
 
         <Banner
           headline={bannerTitle}

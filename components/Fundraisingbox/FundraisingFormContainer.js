@@ -1,17 +1,18 @@
 import React from 'react'
 import { Container } from 'reactstrap'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import { lgBreakpoint } from '../../styling/breakpoints'
 
 const SubContainer = styled.div`
   margin: 0 auto;
-
-  @media (min-width: ${lgBreakpoint}) {
-    width: 60%;
-  }
   
-  ${({ pullLeft }) => pullLeft && 'margin-left: 0;'}
+  @media (min-width: ${lgBreakpoint}) {
+      width: 60%;
+  }
+  ${({ pullLeft }) => pullLeft && css`
+    margin-left: 0;
+    `}
 `
 
 const FundraisingFormContainer = ({ children, pullLeft }) => (
