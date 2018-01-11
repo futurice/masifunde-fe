@@ -3,15 +3,14 @@ import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
 import styled from 'styled-components'
 import _debounce from 'lodash/debounce'
-import { Container } from 'reactstrap'
 
 import countries from '../../utils/countries'
-import FundRaisingIframe from './FundRaisingIframe'
 import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import PageSection from './FundraisingboxPageSection'
 import FundraisingFormContainer from './FundraisingFormContainer'
+import FundraisingIframeForm from './FundraisingIframeForm'
 
 const FormLabel = styled.span`
   text-align: left;
@@ -380,17 +379,14 @@ class FundRaisingForm extends Component {
             />
           </PageSection>
         </FundraisingFormContainer>
-        <PageSection contained={false}>
-          <Container>
-            <SubHeader>{fundraisingboxIframeTitle}</SubHeader>
-          </Container>
-          <FundRaisingIframe
-            onMouseHover={this.submitForm}
-            hash="j3ip42zwp3mlewb9"
-            {...this.state.fields}
-            {...hiddenFields}
-          />
-        </PageSection>
+        <FundraisingIframeForm
+          pullLeft={pullLeft}
+          formTitle={fundraisingboxIframeTitle}
+          onMouseHover={this.submitForm}
+          hash="j3ip42zwp3mlewb9"
+          fields={this.state.fields}
+          hiddenFields={hiddenFields}
+        />
       </Fragment>
     )
   }
