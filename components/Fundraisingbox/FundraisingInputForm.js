@@ -10,7 +10,7 @@ import SubHeader from './SubHeader'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import PageSection from './FundraisingboxPageSection'
 import FundraisingFormContainer from './FundraisingFormContainer'
-import FundraisingIframeForm from './FundraisingIframeForm'
+import FundraisingIframeContainer from './FundraisingIframeContainer'
 
 const FormLabel = styled.span`
   text-align: left;
@@ -46,7 +46,7 @@ const formInputBootstrapClasses = 'col-md-8'
 const noReceiptOptionValue = 'no_receipt'
 const receiptNowOptionValue = 'receipt_now'
 
-class FundraisingForm extends Component {
+class FundraisingInputForm extends Component {
   state = {
     fields: undefined,
   }
@@ -379,7 +379,7 @@ class FundraisingForm extends Component {
             />
           </PageSection>
         </FundraisingFormContainer>
-        <FundraisingIframeForm
+        <FundraisingIframeContainer
           pullLeft={pullLeft}
           formTitle={fundraisingboxIframeTitle}
           onMouseHover={this.submitForm}
@@ -392,7 +392,7 @@ class FundraisingForm extends Component {
   }
 }
 
-FundraisingForm.propTypes = {
+FundraisingInputForm.propTypes = {
   hiddenFields: PropTypes.shape({
     projectId: PropTypes.number,
     amount: PropTypes.number,
@@ -404,11 +404,11 @@ FundraisingForm.propTypes = {
   pullLeft: PropTypes.bool,
 }
 
-FundraisingForm.defaultProps = {
+FundraisingInputForm.defaultProps = {
   hiddenFields: undefined,
   pullLeft: false,
   onSubmit: () => {
   },
 }
 
-export default FundraisingForm
+export default FundraisingInputForm
