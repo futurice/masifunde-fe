@@ -16,17 +16,11 @@ import FundRaisingForm from '../../components/Fundraisingbox/FundRaisingForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import PageSection from '../../components/PageSection'
-import FRBPageSection from '../../components/Fundraisingbox/FundraisingboxPageSection'
 import RoundedImage from '../../components/RoundedImage'
-import SubHeader from '../../components/Fundraisingbox/SubHeader'
 import FundraisingFormContainer from '../../components/Fundraisingbox/FundraisingFormContainer'
 
 const Image = RoundedImage.extend`
   width: 100%;
-`
-
-const FRFContainer = styled(FundraisingFormContainer).attrs({ pullLeft: true })`
-  margin-left: 0;
 `
 
 const DonationFormTitle = styled.h2`
@@ -125,7 +119,7 @@ class BecomeSponsor extends Component {
         <PageSection>
           <DonationFormTitle>{donationFormTitle}</DonationFormTitle>
         </PageSection>
-        <FRFContainer>
+        <FundraisingFormContainer pullLeft>
           <Form
             onSubmit={() => {}}
             validate={this.validateForm}
@@ -149,16 +143,14 @@ class BecomeSponsor extends Component {
               </form>
             )}
           />
-          <FRBPageSection>
-            <SubHeader>{section4Title}</SubHeader>
-
-            <FundRaisingForm
-              hiddenFields={{ ...this.state.fields }}
-              onSubmit={this.submitForm}
-              fundraisingboxIframeTitle={section5Title}
-            />
-          </FRBPageSection>
-        </FRFContainer>
+        </FundraisingFormContainer>
+        <FundRaisingForm
+          formTitle={section4Title}
+          pullLeft
+          hiddenFields={{ ...this.state.fields }}
+          onSubmit={this.submitForm}
+          fundraisingboxIframeTitle={section5Title}
+        />
 
         <Banner
           headline={bannerTitle}

@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import ReactAsyncScript from 'react-async-script'
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { stringify } from 'query-string'
 import PropTypes from 'prop-types'
+import { Container } from 'reactstrap'
 
 let intervalRef = null
 let iframe = null
@@ -33,14 +35,16 @@ class FundRaisingIframe extends Component {
     return (
       <Fragment>
         <div id="fbIframeDiv" style={{ position: 'relative' }} />
-        <a target="_blank" rel="noopener noreferrer" href="http://www.fundraisingbox.com">
-          <img
-            border="0"
-            style={{ border: '0 !important' }}
-            src="https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png"
-            alt="FundraisingBox Logo"
-          />
-        </a>
+        <Container>
+          <a target="_blank" rel="noopener noreferrer" href="http://www.fundraisingbox.com">
+            <img
+              border="0"
+              style={{ border: '0 !important' }}
+              src="https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png"
+              alt="FundraisingBox Logo"
+            />
+          </a>
+        </Container>
       </Fragment>
     )
   }

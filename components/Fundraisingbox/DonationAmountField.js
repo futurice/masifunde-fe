@@ -101,7 +101,7 @@ const DonationAmountField = ({
       const amountDescription = findAmountDescription(input.value, amounts)
       return (
         <PageSection>
-          <SubHeader>{title}</SubHeader>
+          <SubHeader className="row">{title}</SubHeader>
           <AmountLabelsContainer className="row">
             {amounts.map(({ text, value }) => (
               <AmountLabelButton
