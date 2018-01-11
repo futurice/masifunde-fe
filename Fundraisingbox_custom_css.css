@@ -262,7 +262,8 @@ input#submitForm:hover {
 div#bankConfirmation,
 div#additionalSettings,
 div#securityBox,
-input#submitForm {
+input#submitForm,
+#creditCardForm .small.info {
   margin-left: calc(25% + 8px);
 }
 
@@ -270,7 +271,8 @@ input#submitForm {
   div#bankConfirmation,
   div#additionalSettings,
   div#securityBox,
-  input#submitForm {
+  input#submitForm,
+  #creditCardForm .small.info {
     margin-left: 0;
   }
 }
@@ -309,6 +311,7 @@ input#submitForm {
 
 #bankConfirmation,
 #additionalSettings,
-#securityBox {
+#securityBox,
+#creditCardForm .small.info {
   font-size: 14px;
 }
