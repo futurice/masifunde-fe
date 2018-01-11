@@ -373,7 +373,7 @@ class FundRaisingForm extends Component {
             </form>
           )}
         />
-        <PageSection>
+        <PageSection contained={false}>
           <SubHeader>{fundraisingboxIframeTitle}</SubHeader>
           <FundRaisingIfameContainer className="offset-md-4 offset-lg-3 col-md-9 col-lg-7">
             <FundRaisingIframe
