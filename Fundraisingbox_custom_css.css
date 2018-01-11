@@ -3,6 +3,7 @@
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -29,7 +30,7 @@ body {
   background-color: #faf2e6;
   font-size: 18px;
   font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 /* Imitate bootstrap container */
@@ -98,7 +99,11 @@ h2 {
 }
 
 .paymentDetails div.field {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -114,6 +119,8 @@ select {
 
 #creditCardForm > div:nth-of-type(2) > div.label,
 #creditCardForm > div:nth-of-type(4) > div.label {
+  -webkit-transform: translateY(-6px);
+  -ms-transform: translateY(-6px);
   transform: translateY(-6px);
 }
 
@@ -124,6 +131,7 @@ input#submitForm {
   border: 3px solid #17dd73;
   font-weight: 900;
   color: #00c078;
+  -webkit-box-shadow: none !important;
   box-shadow: none !important;
   outline: none;
   background-color: transparent;
@@ -163,6 +171,7 @@ input#submitForm:hover {
 #payment_credit_card_number.focus,
 #payment_credit_card_secure_id.focus {
   border-color: #80bdff;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
@@ -179,7 +188,12 @@ input#submitForm:hover {
 }
 
 #paymentmethods {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -199,7 +213,11 @@ input#submitForm:hover {
 #paymentmethods input#sepa_direct_debit + label {
   background-position: 5px -160px;
   padding-left: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -223,7 +241,11 @@ input#submitForm:hover {
 }
 
 #paymentmethods .paymentmethod {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin-right: 20px;
   margin-top: 10px;
@@ -253,6 +275,9 @@ input#submitForm:hover {
 /* Bootstrap breakpoint sm. Small devices (landscape phones, 576px and up) */
 @media (min-width: 768px) {
   #paymentmethods {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
   }
 }
@@ -277,6 +302,8 @@ input#submitForm,
 
 @media (min-width: 768px) {
   .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 
@@ -301,8 +328,14 @@ input#submitForm,
 
   .paymentDetails .row .label {
     margin-bottom: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
 }
