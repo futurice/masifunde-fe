@@ -1,3 +1,7 @@
-/redirecttest /wer-wir-sind/team-sa
-/anotherredirect /wie-sie-helfen/spenden
-/andthelast /
+/ueber-uns /wer-wir-sind
+/transparenz /was-wir-machen
+/projekte/*  /was-wir-machen
+/du-bei-masifunde/*  /wie-sie-helfen
+/ihre-unterstuetzung/*  /wie-sie-helfen
+/jetzt-spenden/* /wie-sie-helfen/spenden
+/unterwegs-in-de/* /was-wir-machen/ansatz-de/
