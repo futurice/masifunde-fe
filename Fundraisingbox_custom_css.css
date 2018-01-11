@@ -238,10 +238,17 @@ input#submitForm:hover {
   margin-right: 15px;
 }
 
+#payment_credit_card_expire_date_month,
+#payment_credit_card_expire_date_year,
+#payment_credit_card_number,
+#payment_credit_card_secure_id {
+  height: 38px;
+}
+
+
 #payment_credit_card_number,
 #payment_credit_card_secure_id {
   background-color: #fffdfb;
-  height: 24px;
 }
 
 /* Bootstrap breakpoint sm. Small devices (landscape phones, 576px and up) */
