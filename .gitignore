@@ -63,5 +63,3 @@ typings/
 # Mac files
 .DS_Store
 
-# Ignore statically generated files
-/out/
