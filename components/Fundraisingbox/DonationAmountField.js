@@ -17,11 +17,11 @@ const AmountLabelButton = LabelButton.extend`
   margin-right: ${fundraisingFormSpacing};
   padding-left: 0;
   padding-right: 0;
-  
+
   @media (min-width: ${smBreakpoint}) {
     width: calc(50% - ${fundraisingFormSpacing});
   }
-  
+
   @media (min-width: ${mdBreakpoint}) {
     width: calc(14% - ${fundraisingFormSpacing});
   }
@@ -36,11 +36,11 @@ const OtherAmountContainer = styled.div`
   width: 100%;
   margin-right: ${fundraisingFormSpacing};
   margin-bottom: ${fundraisingFormSpacing};
-  
+
   @media (min-width: ${smBreakpoint}) {
     width: calc(50% - ${fundraisingFormSpacing});
   }
-  
+
   @media (min-width: ${mdBreakpoint}) {
     width: calc(${otherAmountInputWidth} - ${fundraisingFormSpacing});
   }
@@ -65,6 +65,7 @@ const AmountDescription = styled.div`
   border-radius: 8px;
   background-color: #e9e0d3;
   padding: 15px 40px;
+  margin-right: 15px;
   text-align: center;
   width: 100%;
 
@@ -134,14 +135,13 @@ const DonationAmountField = ({
                   {
                     amountDescription
                       ? (
-                        <div className="col-12">
-                          <AmountDescription>
-                            <span>{input.value}€ </span>
-                            <span>
-                              = {amountDescription}
-                            </span>
-                          </AmountDescription>
-                        </div>)
+                        <AmountDescription>
+                          <span>{input.value}€ </span>
+                          <span>
+                            = {amountDescription}
+                          </span>
+                        </AmountDescription>
+                        )
                       : null
                   }
                 </Fragment>)
