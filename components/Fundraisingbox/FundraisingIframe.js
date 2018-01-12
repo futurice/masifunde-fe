@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactAsyncScript from 'react-async-script'
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { stringify } from 'query-string'
+import qs from 'qs'
 import PropTypes from 'prop-types'
 
 let intervalRef = null
@@ -64,7 +63,7 @@ function ScriptParametersWrapper({
   isTermsAccepted,
   isPrivacyAccepted,
 }) {
-  const BaseUrl = 'https://secure.fundraisingbox.com/app/paymentJS'
+  const baseUrl = 'https://secure.fundraisingbox.com/app/paymentJS'
 
   // Info about parameters
   // https://developer.fundraisingbox.com/docs/form-prepopulation-api
@@ -90,7 +89,7 @@ function ScriptParametersWrapper({
     wants_newsletter: wantsNewsletter,
     wants_receipt: wantsReceipt,
   }
-  const FullUrl = `${BaseUrl}?${stringify(parameters)}`
+  const FullUrl = `${baseUrl}?${qs.stringify(parameters)}`
 
   const Form = ReactAsyncScript(FundraisingIframe, FullUrl, {
     globalName: 'FundRaisingBox',
