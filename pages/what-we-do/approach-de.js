@@ -14,7 +14,6 @@ import Tagline from '../../components/Tagline'
 import ProjectList from '../../components/ProjectList'
 import CenteredText from '../../components/CenteredText'
 import imagePropTypes from '../../propTypes/image'
-import { jpgCompression } from '../../utils/constants'
 import RoundedImage from '../../components/RoundedImage'
 
 const ImageContainer = styled.div`
@@ -53,7 +52,7 @@ const ApproachDe = ({
       <ImageContainer>
         <RoundedImage
           className="img-fluid"
-          src={`${image1.url}?q=${jpgCompression}`}
+          src={image1.url}
           alt={image1.title}
         />
       </ImageContainer>
