@@ -119,7 +119,7 @@ class BecomeSponsor extends Component {
         <PageSection>
           <DonationFormTitle>{donationFormTitle}</DonationFormTitle>
         </PageSection>
-        <FundraisingFormContainer pullLeft>
+        <FundraisingFormContainer>
           <Form
             onSubmit={() => {}}
             validate={this.validateForm}
@@ -145,7 +145,6 @@ class BecomeSponsor extends Component {
           />
         </FundraisingFormContainer>
         <FundraisingInputForm
-          pullLeft
           formTitle={section4Title}
           hiddenFields={{ ...this.state.fields }}
           onSubmit={this.submitForm}
