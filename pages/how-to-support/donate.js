@@ -14,7 +14,7 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 import FundraisingInputForm from '../../components/Fundraisingbox/FundraisingInputForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
-import { isInvalid, isPositiveInteger } from '../../components/Fundraisingbox/utils'
+import { isPositiveInteger } from '../../components/Fundraisingbox/utils'
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 import PageSection from '../../components/Fundraisingbox/FundraisingboxPageSection'
 import CenteredText from '../../components/CenteredText'
@@ -170,7 +170,7 @@ class Donate extends Component {
                           </LabelButton>
                         </CountryLabelContainer>
                       </div>
-                      {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
+                      <ErrorMessage meta={meta} />
                     </PageSection>
                   )
                   }

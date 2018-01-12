@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
+import styled from 'styled-components'
 
-import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
@@ -10,7 +10,7 @@ import PageSection from '../../components/Fundraisingbox/FundraisingboxPageSecti
 import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import { fundraisingFormSpacing } from '../../utils/constants'
 
-const StyledErrorMessage = ErrorMessage.extend`
+const StyledErrorMessage = styled(ErrorMessage)`
   margin-top: -0.4rem;
 `
 
@@ -55,7 +55,7 @@ const DonationIntervalField = ({
               {name}
             </IntervalLabelButton>
           ))}
-          {isInvalid(meta) ? <StyledErrorMessage>{meta.error}</StyledErrorMessage> : ''}
+          <StyledErrorMessage meta={meta} />
         </div>
       </PageSection>
     )}
