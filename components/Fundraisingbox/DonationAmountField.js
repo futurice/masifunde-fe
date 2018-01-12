@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 import styled from 'styled-components'
 
-import { isInvalid } from './utils'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import { defaultFont } from '../../styling/typography'
@@ -148,7 +147,7 @@ const DonationAmountField = ({
                 </Fragment>)
               : null
             }
-            {isInvalid(meta) ? <ErrorMessage>{meta.error}</ErrorMessage> : ''}
+            <ErrorMessage meta={meta} />
           </AmountLabelsContainer>
         </PageSection>
       )

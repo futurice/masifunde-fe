@@ -144,10 +144,7 @@ class FundraisingInputForm extends Component {
                               <option value="Mrs.">Frau</option>
                               <option value="Mr.">Herr</option>
                             </select>
-                            {
-                              meta.error && meta.touched &&
-                              <ErrorMessage>{meta.error}</ErrorMessage>
-                            }
+                            <ErrorMessage meta={meta} />
                           </div>
                         )}
                       </Field>
@@ -167,7 +164,7 @@ class FundraisingInputForm extends Component {
                             className={this.formInputClassFactory(meta)}
                             aria-labelledby="titleInputs"
                           />
-                          {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                          <ErrorMessage meta={meta} />
                         </div>
                       )}
                     </Field>
@@ -187,10 +184,7 @@ class FundraisingInputForm extends Component {
                               className={this.formInputClassFactory(meta)}
                               aria-labelledby="firstname-input"
                             />
-                            {
-                              meta.error && meta.touched &&
-                              <ErrorMessage>{meta.error}</ErrorMessage>
-                            }
+                            <ErrorMessage meta={meta} />
                           </div>
                         )}
                       </Field>
@@ -211,10 +205,7 @@ class FundraisingInputForm extends Component {
                               className={this.formInputClassFactory(meta)}
                               aria-labelledby="firstname-input"
                             />
-                            {
-                              meta.error && meta.touched &&
-                              <ErrorMessage>{meta.error}</ErrorMessage>
-                            }
+                            <ErrorMessage meta={meta} />
                           </div>
                         )}
                       </Field>
@@ -232,7 +223,7 @@ class FundraisingInputForm extends Component {
                             className={this.formInputClassFactory(meta)}
                             id="inputEmail"
                           />
-                          {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                          <ErrorMessage meta={meta} />
                         </div>
                       </label>
                     )}
@@ -256,7 +247,7 @@ class FundraisingInputForm extends Component {
                               Nein, ich brauche keine Quittung
                             </option>
                           </select>
-                          {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                          <ErrorMessage meta={meta} />
                         </div>
                       )}
                     </Field>
@@ -277,10 +268,7 @@ class FundraisingInputForm extends Component {
                                     className={this.formInputClassFactory(meta)}
                                     id="company-input"
                                   />
-                                  {
-                                    meta.error && meta.touched &&
-                                    <ErrorMessage>{meta.error}</ErrorMessage>
-                                  }
+                                  <ErrorMessage meta={meta} />
                                 </div>
                               </label>
                             )}
@@ -297,10 +285,7 @@ class FundraisingInputForm extends Component {
                                     className={this.formInputClassFactory(meta)}
                                     id="address-input"
                                   />
-                                  {
-                                    meta.error && meta.touched &&
-                                    <ErrorMessage>{meta.error}</ErrorMessage>
-                                  }
+                                  <ErrorMessage meta={meta} />
                                 </div>
                               </label>
                             )}
@@ -318,10 +303,7 @@ class FundraisingInputForm extends Component {
                                     className={this.formInputClassFactory(meta)}
                                     aria-labelledby="zip-code-city-inputs"
                                   />
-                                  {
-                                    meta.error && meta.touched &&
-                                    <ErrorMessage>{meta.error}</ErrorMessage>
-                                  }
+                                  <ErrorMessage meta={meta} />
                                 </div>
                               )}
                             </Field>
@@ -333,10 +315,7 @@ class FundraisingInputForm extends Component {
                                     className={this.formInputClassFactory(meta)}
                                     aria-labelledby="zip-code-city-inputs"
                                   />
-                                  {
-                                    meta.error && meta.touched &&
-                                    <ErrorMessage>{meta.error}</ErrorMessage>
-                                  }
+                                  <ErrorMessage meta={meta} />
                                 </div>
                               )}
                             </Field>
@@ -360,7 +339,7 @@ class FundraisingInputForm extends Component {
                               <option value={countryKey} key={countryKey}>{country}</option>
                             ))}
                           </select>
-                          {meta.error && meta.touched && <ErrorMessage>{meta.error}</ErrorMessage>}
+                          <ErrorMessage meta={meta} />
                         </div>
                       )}
                     </Field>
