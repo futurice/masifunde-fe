@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import ReactAsyncScript from 'react-async-script'
-import { stringify } from 'query-string'
+import qs from 'qs'
 import PropTypes from 'prop-types'
 
 let intervalRef = null
@@ -99,7 +99,7 @@ function ScriptParametersWrapper({
     wants_newsletter: wantsNewsletter,
     wants_receipt: wantsReceipt,
   }
-  const FullUrl = `${BaseUrl}?${stringify(parameters)}`
+  const FullUrl = `${BaseUrl}?${qs.stringify(parameters)}`
 
   const Form = ReactAsyncScript(FundRaisingIframe, FullUrl, {
     globalName: 'FundRaisingBox',
