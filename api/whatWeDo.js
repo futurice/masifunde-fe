@@ -2,6 +2,7 @@
 import { RouteNames } from '../routes'
 import { fetchSingleEntry } from './contentfulService'
 import { unwrapImage, unwrapFields, unwrapPortrait, unwrapStat } from './common'
+import { jpegQuality } from '../utils/constants'
 
 export async function fetchWhatWeDoPage(locale) {
   const content = await fetchSingleEntry('pageWasWirMachen', locale)
@@ -46,7 +47,7 @@ export async function fetchApproachDePage(locale) {
   const content = await fetchSingleEntry('pageApproachDE', locale)
   return {
     ...content,
-    image1: unwrapImage(content && content.image1),
+    image1: unwrapImage(content && content.image1, { q: jpegQuality }),
     projects: content && content.projects.map(unwrapProjects),
   }
 }
