@@ -64,5 +64,6 @@ export async function fetchBecomeASponsorPage(locale) {
     image: unwrapImage(content && content.image),
     section2ReferenceList: content && content.section2ReferenceList.map(unwrapFields),
     section3ReferenceList: content && content.section3ReferenceList.map(unwrapFields),
+    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }
