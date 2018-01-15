@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Form } from 'react-final-form'
 import _debounce from 'lodash/debounce'
@@ -21,10 +20,6 @@ import FundraisingFormContainer from '../../components/Fundraisingbox/Fundraisin
 
 const Image = RoundedImage.extend`
   width: 100%;
-`
-
-const DonationFormTitle = styled.h2`
-  text-align: center;
 `
 
 const Learn4LifeId = '3520'
@@ -117,7 +112,7 @@ class BecomeSponsor extends Component {
         </PageSection>
 
         <PageSection>
-          <DonationFormTitle>{donationFormTitle}</DonationFormTitle>
+          <h2>{donationFormTitle}</h2>
         </PageSection>
         <FundraisingFormContainer>
           <Form
