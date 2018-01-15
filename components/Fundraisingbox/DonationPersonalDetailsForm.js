@@ -46,7 +46,7 @@ const formInputBootstrapClasses = 'col-md-8'
 const noReceiptOptionValue = 'no_receipt'
 const receiptNowOptionValue = 'receipt_now'
 
-class FundraisingInputForm extends Component {
+class DonationPersonalDetailsForm extends Component {
   state = {
     fields: undefined,
   }
@@ -371,7 +371,7 @@ class FundraisingInputForm extends Component {
   }
 }
 
-FundraisingInputForm.propTypes = {
+DonationPersonalDetailsForm.propTypes = {
   hiddenFields: PropTypes.shape({
     projectId: PropTypes.number,
     amount: PropTypes.number,
@@ -383,11 +383,11 @@ FundraisingInputForm.propTypes = {
   pullLeft: PropTypes.bool,
 }
 
-FundraisingInputForm.defaultProps = {
+DonationPersonalDetailsForm.defaultProps = {
   hiddenFields: undefined,
   pullLeft: false,
   onSubmit: () => {
   },
 }
 
-export default FundraisingInputForm
+export default DonationPersonalDetailsForm
