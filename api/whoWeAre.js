@@ -24,6 +24,7 @@ export async function fetchTeamDePage(locale) {
     ...content,
     teamMembers: unwrapTeamMembers(content && content.teamMembers),
     regionalGroups: unwrapRegionalGroups(content && content.regionalGroups),
+    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }
 
