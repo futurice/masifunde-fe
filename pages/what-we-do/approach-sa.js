@@ -11,7 +11,6 @@ import YouTubeVideo from '../../components/YouTubeVideo'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
 import Tagline from '../../components/Tagline'
-import { RouteNames } from '../../routes'
 import ProjectList from '../../components/ProjectList'
 
 const ApproachSa = ({
@@ -24,6 +23,7 @@ const ApproachSa = ({
   youTubeVideo,
   bannerTitle,
   bannerButtonText,
+  bannerButtonUrl,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -49,7 +49,7 @@ const ApproachSa = ({
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}
-      buttonLink={RouteNames.HowToSupport}
+      buttonLink={bannerButtonUrl}
     />
   </div>
 )
@@ -71,6 +71,7 @@ ApproachSa.propTypes = {
   youTubeVideo: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
 }
 
 ApproachSa.defaultProps = {
