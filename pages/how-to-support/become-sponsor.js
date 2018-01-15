@@ -24,7 +24,7 @@ const Image = RoundedImage.extend`
 `
 
 const DonationFormTitle = styled.h2`
-  text-align: left;
+  text-align: center;
 `
 
 const Learn4LifeId = '3520'
