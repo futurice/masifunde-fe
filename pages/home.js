@@ -11,7 +11,6 @@ import portraitPropTypes from '../propTypes/portrait'
 import Stat from '../components/Stat'
 import { getLocaleFromQuery } from '../utils/locale'
 import { fetchHomePage } from '../api/home'
-import { RouteNames } from '../routes'
 import YouTubeVideo from '../components/YouTubeVideo'
 import PageSection from '../components/PageSection'
 import StatList from '../components/StatList'
@@ -23,8 +22,10 @@ const Home = ({
   stats,
   banner1Title,
   banner1ButtonText,
+  banner1ButtonUrl,
   banner2Title,
   banner2ButtonText,
+  banner2ButtonUrl,
   section1Title,
   portrait,
   youTubeVideoTitle,
@@ -53,7 +54,7 @@ const Home = ({
     <Banner
       headline={banner1Title}
       buttonText={banner1ButtonText}
-      buttonLink={RouteNames.WhatWeDo}
+      buttonLink={banner1ButtonUrl}
     />
 
     <PageSection contained={false}>
@@ -75,7 +76,7 @@ const Home = ({
     <Banner
       headline={banner2Title}
       buttonText={banner2ButtonText}
-      buttonLink={RouteNames.Impact}
+      buttonLink={banner2ButtonUrl}
     />
   </div>
 )
@@ -87,8 +88,10 @@ Home.propTypes = {
   stats: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
   banner1Title: PropTypes.string.isRequired,
   banner1ButtonText: PropTypes.string.isRequired,
+  banner1ButtonUrl: PropTypes.string.isRequired,
   banner2Title: PropTypes.string.isRequired,
   banner2ButtonText: PropTypes.string.isRequired,
+  banner2ButtonUrl: PropTypes.string.isRequired,
   section1Title: PropTypes.string.isRequired,
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
   youTubeVideoTitle: PropTypes.string.isRequired,
