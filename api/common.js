@@ -54,6 +54,8 @@ export const unwrapStat = stat => ({
 
 export const unwrapStats = stats => stats.map(unwrapStat)
 
+export const unwrapPageUrl = pageUrl => pageUrl && pageUrl.fields && pageUrl.fields.url
+
 const unwrapRegionWithContactDetails = ({ fields }) => ({
   ...fields,
 })
