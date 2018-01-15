@@ -15,6 +15,7 @@ import ProjectList from '../../components/ProjectList'
 import CenteredText from '../../components/CenteredText'
 import imagePropTypes from '../../propTypes/image'
 import RoundedImage from '../../components/RoundedImage'
+import Markdown from '../../components/Markdown'
 
 const ImageContainer = styled.div`
   margin: 0 auto;
@@ -29,6 +30,9 @@ const ApproachDe = ({
   introText,
   projects,
   image1,
+  outroTitle,
+  outroText1,
+  outroText2,
   bannerTitle,
   bannerButtonText,
 }) => (
@@ -58,6 +62,14 @@ const ApproachDe = ({
       </ImageContainer>
     </PageSection>
 
+    <PageSection>
+      <h2>{outroTitle}</h2>
+      <div className="row">
+        <Markdown className="col-md-6" source={outroText1} />
+        <Markdown className="col-md-6" source={outroText2} />
+      </div>
+    </PageSection>
+
     <Banner
       buttonLink={RouteNames.Contact}
       buttonText={bannerButtonText}
@@ -75,6 +87,9 @@ ApproachDe.propTypes = {
   // eslint-disable-next-line react/require-default-props
   projects: ProjectList.propTypes.projects,
   image1: PropTypes.shape(imagePropTypes).isRequired,
+  outroTitle: PropTypes.string.isRequired,
+  outroText1: PropTypes.string.isRequired,
+  outroText2: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
 }
