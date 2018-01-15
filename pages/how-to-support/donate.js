@@ -10,7 +10,7 @@ import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchDonatePage } from '../../api/howToSupport'
 import LayoutWrapper from '../../components/LayoutWrapper'
-import FundraisingInputForm from '../../components/Fundraisingbox/FundraisingInputForm'
+import DonationPersonalDetailsForm from '../../components/Fundraisingbox/DonationPersonalDetailsForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import { isPositiveInteger } from '../../components/Fundraisingbox/utils'
@@ -194,7 +194,7 @@ class Donate extends Component {
           />
 
         </FundraisingFormContainer>
-        <FundraisingInputForm
+        <DonationPersonalDetailsForm
           formTitle={section4Title}
           hiddenFields={{ ...this.state.fields }}
           onSubmit={this.submitForm}
