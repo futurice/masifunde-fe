@@ -1,5 +1,8 @@
 import { fetchSingleEntry } from './contentfulService'
-import { unwrapAward, unwrapImage, unwrapPartner, unwrapRegionalGroups, unwrapTeamMembers } from './common'
+import {
+  unwrapAward, unwrapImage, unwrapPageUrl, unwrapPartner, unwrapRegionalGroups,
+  unwrapTeamMembers,
+} from './common'
 
 export async function fetchWhoWeArePage(locale) {
   const response = await fetchSingleEntry('about', locale)
@@ -10,6 +13,7 @@ export async function fetchWhoWeArePage(locale) {
     teamSaImage: unwrapImage(response && response.teamSaImage),
     partnersListOne: response && response.partnersListOne.map(unwrapPartner),
     awards: response && response.awards.map(unwrapAward),
+    bannerButtonUrl: unwrapPageUrl(response.bannerButtonUrl),
   }
 }
 

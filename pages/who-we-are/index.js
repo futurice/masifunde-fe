@@ -75,6 +75,7 @@ const WhoWeAre = ({
   paragraphThreeText,
   bannerHeadline,
   bannerText,
+  bannerButtonUrl,
   metaDescription,
   metaTitle,
   partnersButtonText,
@@ -127,7 +128,7 @@ const WhoWeAre = ({
     <Banner
       headline={bannerHeadline}
       buttonText={bannerText}
-      buttonLink={RouteNames.BecomeVolunteer}
+      buttonLink={bannerButtonUrl}
     />
   </div>
 )
@@ -153,6 +154,7 @@ WhoWeAre.propTypes = {
   // eslint-disable-next-line react/no-typos
   awards: PropTypes.arrayOf(PropTypes.shape(Award.propTypes)).isRequired,
   bannerText: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
 }
 
 WhoWeAre.defaultProps = {
