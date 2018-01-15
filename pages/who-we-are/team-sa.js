@@ -8,7 +8,6 @@ import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchTeamSaPage } from '../../api/whoWeAre'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import imagePropTypes from '../../propTypes/image'
-import { RouteNames } from '../../routes'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
 import TeamMemberList from '../../components/TeamMemberList'
@@ -37,6 +36,7 @@ const TeamSa = ({
   teamMembers,
   bannerButtonText,
   bannerTitle,
+  bannerButtonUrl,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -59,7 +59,7 @@ const TeamSa = ({
     </PageSection>
 
     <Banner
-      buttonLink={RouteNames.BecomeVolunteer}
+      buttonLink={bannerButtonUrl}
       buttonText={bannerButtonText}
       headline={bannerTitle}
     />
@@ -79,6 +79,7 @@ TeamSa.propTypes = {
   })).isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
 }
 
 TeamSa.defaultProps = {
