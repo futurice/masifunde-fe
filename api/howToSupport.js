@@ -12,6 +12,7 @@ export async function fetchDonatePage(locale) {
     ...content,
     section2ReferenceList: content.section2ReferenceList.map(unwrapFields),
     section3ReferenceList: content.section3ReferenceList.map(unwrapFields),
+    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }
 
