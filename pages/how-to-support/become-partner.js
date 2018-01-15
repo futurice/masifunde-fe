@@ -7,7 +7,6 @@ import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBecomeAPartnerPage } from '../../api/howToSupport'
 import { propTypes as partnerPropTypes } from '../../components/PartnersList/Partner'
-import { RouteNames } from '../../routes'
 import imagePropTypes from '../../propTypes/image'
 import PageSection from '../../components/PageSection'
 import PartnersList from '../../components/PartnersList'
@@ -25,6 +24,7 @@ const BecomePartner = ({
   teamMember,
   bannerTitle,
   bannerButtonText,
+  bannerButtonUrl,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -46,7 +46,7 @@ const BecomePartner = ({
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}
-      buttonLink={RouteNames.Contact}
+      buttonLink={bannerButtonUrl}
     />
   </div>
 )
@@ -60,6 +60,7 @@ BecomePartner.propTypes = {
   section1Markdown: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
   partners: PropTypes.arrayOf(PropTypes.shape(partnerPropTypes)).isRequired,
   teamMember: PropTypes.shape({
     id: PropTypes.string.isRequired,
