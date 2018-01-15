@@ -1,7 +1,7 @@
 /* eslint-disable function-paren-newline */
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Form, Field } from 'react-final-form'
+import { Form } from 'react-final-form'
 import styled from 'styled-components'
 import _debounce from 'lodash/debounce'
 
@@ -14,26 +14,13 @@ import DonationPersonalDetailsForm from '../../components/Fundraisingbox/Donatio
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import { isPositiveInteger } from '../../components/Fundraisingbox/utils'
-import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
 import PageSection from '../../components/Fundraisingbox/FundraisingPageSection'
 import CenteredText from '../../components/CenteredText'
-import { smBreakpoint } from '../../styling/breakpoints'
-import SubHeader from '../../components/Fundraisingbox/SubHeader'
-import LabelButton from '../../components/Fundraisingbox/LabelButton'
-import { fundraisingFormSpacing } from '../../utils/constants'
 import FundraisingFormContainer from '../../components/Fundraisingbox/FundraisingFormContainer'
+import DonationProjectField from '../../components/Fundraisingbox/DonationProjectField'
 
-const CountryLabelContainer = styled.div`
-  width: 100%;
-  margin-right: ${fundraisingFormSpacing};
-  
-  @media (min-width: ${smBreakpoint}) {
-    width: calc(50% - ${fundraisingFormSpacing});
-  }
-`
-
-const DeProjectId = '3531'
-const SaProjectId = '3522'
+const deProjectId = '3531'
+const saProjectId = '3522'
 const fieldName = {
   projectId: 'projectId',
   amount: 'amount',
@@ -127,60 +114,26 @@ class Donate extends Component {
           <Form
             onSubmit={() => {}}
             initialValues={{
-              [fieldName.projectId]: SaProjectId,
+              [fieldName.projectId]: saProjectId,
             }}
             validate={this.validateForm}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-                <Field name={fieldName.projectId}>
-                  {({ input, meta }) => (
-                    <PageSection>
-                      <SubHeader className="row">{section1title}</SubHeader>
-                      <div className="row">
-                        <CountryLabelContainer data-toggle="buttons">
-                          <LabelButton
-                            className="btn"
-                            isActive={input.value === SaProjectId}
-                            htmlFor="countryInputSa"
-                          >
-                            <input
-                              {...input}
-                              type="radio"
-                              value={SaProjectId}
-                              id="countryInputSa"
-                              autoComplete="off"
-                            />
-                            {section1MarkdownSa}
-                          </LabelButton>
-                        </CountryLabelContainer>
-                        <CountryLabelContainer>
-                          <LabelButton
-                            className="btn"
-                            isActive={input.value === DeProjectId}
-                            htmlFor="countryInputDe"
-                          >
-                            <input
-                              {...input}
-                              type="radio"
-                              value={DeProjectId}
-                              id="countryInputDe"
-                              autoComplete="off"
-                            />
-                            {section1MarkdownDe}
-                          </LabelButton>
-                        </CountryLabelContainer>
-                      </div>
-                      <ErrorMessage meta={meta} />
-                    </PageSection>
-                  )
-                  }
-                </Field>
+                <DonationProjectField
+                  deProjectId={deProjectId}
+                  fieldName={fieldName.projectId}
+                  markdownDe={section1MarkdownDe}
+                  markdownSa={section1MarkdownSa}
+                  saProjectId={saProjectId}
+                  title={section1title}
+                />
 
                 <DonationIntervalField
                   fieldName={fieldName.paymentInterval}
                   title={section2title}
                   intervals={section2ReferenceList}
                 />
+
                 <DonationAmountField
                   fieldName={fieldName.amount}
                   title={section3Title}
@@ -188,7 +141,10 @@ class Donate extends Component {
                   enableOtherAmount
                   otherAmountPlaceholder={section3Text}
                 />
-                <button className="d-none" ref={(form) => { this.formRef = form }}>Submit</button>
+
+                <button className="d-none" ref={(form) => { this.formRef = form }}>
+                  Submit
+                </button>
               </form>
             )}
           />
