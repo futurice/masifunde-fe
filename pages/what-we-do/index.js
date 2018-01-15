@@ -221,6 +221,7 @@ const WhatWeDo = ({
   youtubeVideo,
   bannerButtonText,
   bannerTitle,
+  bannerButtonUrl,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -279,7 +280,7 @@ const WhatWeDo = ({
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}
-      buttonLink={RouteNames.HowToSupport}
+      buttonLink={bannerButtonUrl}
     />
   </div>
 )
@@ -311,6 +312,7 @@ WhatWeDo.propTypes = {
   youtubeVideo: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
 }
 
 WhatWeDo.defaultProps = {
