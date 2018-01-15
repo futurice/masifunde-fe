@@ -11,7 +11,7 @@ import FundraisingIframeContainer from './FundraisingIframeContainer'
 import DonationInputField from './DonationInputField'
 import DonationSelectField from './DonationSelectField'
 import DonationMultipleInputField from './DonationMultipleInputField'
-import { checkRequiredValues } from './utils'
+import { checkRequiredValues } from './utils/formValidation'
 
 const fieldName = {
   address: 'address',

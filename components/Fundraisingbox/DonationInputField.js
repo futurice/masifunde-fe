@@ -4,7 +4,8 @@ import { Field } from 'react-final-form'
 
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './DonationFormLabel'
-import { formInputBootstrapClasses, formInputClassFactory, formLabelBootstrapClasses } from './utils'
+import { formInputBootstrapClasses, formLabelBootstrapClasses } from './constants'
+import { formInputClassFactory } from './utils/formInputClassFactory'
 
 const DonationInputField = ({
   fieldName,

@@ -5,8 +5,9 @@ import { Field } from 'react-final-form'
 
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './DonationFormLabel'
-import { formInputClassFactory, formLabelBootstrapClasses } from './utils'
+import { formLabelBootstrapClasses } from './constants'
 import { mdBreakpoint } from '../../styling/breakpoints'
+import { formInputClassFactory } from './utils/formInputClassFactory'
 
 const SecondInputContainer = styled.div`
   margin-top: 0.5rem;
