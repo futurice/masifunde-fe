@@ -9,7 +9,6 @@ import TeamMemberList from '../../components/TeamMemberList'
 import Head from '../../components/Head'
 import RegionalGroups from '../../components/RegionalGroups'
 import imagePropTypes from '../../propTypes/image'
-import { RouteNames } from '../../routes'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
 
@@ -18,6 +17,7 @@ const TeamDe = ({
   pageDescription,
   bannerTitle,
   bannerButtonText,
+  bannerButtonUrl,
   sectionOneTitle,
   sectionOneText,
   sectionTwoTitle,
@@ -51,7 +51,7 @@ const TeamDe = ({
     </PageSection>
 
     <Banner
-      buttonLink={RouteNames.BecomeVolunteer}
+      buttonLink={bannerButtonUrl}
       buttonText={bannerButtonText}
       headline={bannerTitle}
     />
@@ -65,6 +65,7 @@ TeamDe.propTypes = {
   pageDescription: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
   sectionOneTitle: PropTypes.string.isRequired,
   sectionOneText: PropTypes.string.isRequired,
   sectionTwoTitle: PropTypes.string.isRequired,
