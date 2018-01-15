@@ -10,7 +10,6 @@ import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import Carousel from '../../components/Carousel'
 import Stat from '../../components/Stat'
-import { RouteNames } from '../../routes'
 import portraitPropTypes from '../../propTypes/portrait'
 import Tagline from '../../components/Tagline'
 import PageSection from '../../components/PageSection'
@@ -32,6 +31,7 @@ const Impact = ({
   outroTextColumn2,
   bannerText,
   bannerButtonText,
+  bannerButtonUrl,
 }) => {
   let superscript = 0
 
@@ -97,7 +97,7 @@ const Impact = ({
       <Banner
         headline={bannerText}
         buttonText={bannerButtonText}
-        buttonLink={RouteNames.HowToSupport}
+        buttonLink={bannerButtonUrl}
       />
     </div>
   )
@@ -119,6 +119,7 @@ Impact.propTypes = {
   outroTextColumn2: PropTypes.string.isRequired,
   bannerText: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
 }
 
 Impact.defaultProps = {
