@@ -1,30 +1,16 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Form, Field } from 'react-final-form'
-import styled from 'styled-components'
+import { Form } from 'react-final-form'
 import _debounce from 'lodash/debounce'
 
 import countries from '../../utils/countries'
-import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
-import { mdBreakpoint } from '../../styling/breakpoints'
 import PageSection from './FundraisingPageSection'
 import FundraisingFormContainer from './FundraisingFormContainer'
 import FundraisingIframeContainer from './FundraisingIframeContainer'
-
-const FormLabel = styled.span`
-  text-align: left;
-  padding-right: 0;
-
-  @media screen and (min-width: ${mdBreakpoint}){
-    text-align: right;
-  }
-
-  @media (max-width: 767.99px){
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-`
+import DonationInputField from './DonationInputField'
+import DonationSelectField from './DonationSelectField'
+import DonationMultipleInputField from './DonationMultipleInputField'
 
 const fieldName = {
   address: 'address',
@@ -39,9 +25,6 @@ const fieldName = {
   title: 'title',
   wantsReceipt: 'wantsReceipt',
 }
-
-const formLabelBootstrapClasses = 'col-md-3'
-const formInputBootstrapClasses = 'col-md-8'
 
 const noReceiptOptionValue = 'no_receipt'
 const receiptNowOptionValue = 'receipt_now'
@@ -97,8 +80,6 @@ class DonationPersonalDetailsForm extends Component {
     return errors
   }
 
-  formInputClassFactory = meta => `form-control ${meta.error && meta.touched ? 'is-invalid' : ''}`
-
   render() {
     const {
       formTitle,
@@ -106,6 +87,20 @@ class DonationPersonalDetailsForm extends Component {
       hiddenFields,
       fundraisingboxIframeTitle,
     } = this.props
+
+    const countriesOptions = Object.entries(countries).map(([countryKey, country]) => ({
+      value: countryKey,
+      text: country,
+    }))
+    const receiptOptions = [
+      { value: receiptNowOptionValue, text: 'Ja, so schnell wie möglich' },
+      { value: 'receipt_end_of_year', text: 'Ja, konsolidiert am Ende des Jahres' },
+      { value: noReceiptOptionValue, text: 'Nein, ich brauche keine Quittung' },
+    ]
+    const salutationOptions = [
+      { value: 'Mrs.', text: 'Frau' },
+      { value: 'Mr.', text: 'Herr' },
+    ]
 
     return (
       <Fragment>
@@ -126,224 +121,67 @@ class DonationPersonalDetailsForm extends Component {
                   this.props.onSubmit()
                 }}
                 >
-                  {/* Anrede */}
-                  <div className="form-group row">
-                    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="titleInputs">
-                      Anrede
-                    </FormLabel>
-                    <div className="col-md-4 col-lg-3 d-flex">
-                      <Field name={fieldName.salutation}>
-                        {({ input, meta }) => (
-                          <div className="w-100">
-                            <select
-                              {...input}
-                              className={`${this.formInputClassFactory(meta)}  w-100`}
-                              aria-labelledby="titleInputs"
-                            >
-                              <option value={null} disabled hidden />
-                              <option value="Mrs.">Frau</option>
-                              <option value="Mr.">Herr</option>
-                            </select>
-                            <ErrorMessage meta={meta} />
-                          </div>
-                        )}
-                      </Field>
-                    </div>
-                  </div>
-                  {/* Titel */}
-                  <div className="form-group row">
-                    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="titleInputs">
-                      Titel (optional)
-                    </FormLabel>
-                    <Field name={fieldName.title}>
-                      {({ input, meta }) => (
-                        <div className={formInputBootstrapClasses}>
-                          <input
-                            {...input}
-                            type="text"
-                            className={this.formInputClassFactory(meta)}
-                            aria-labelledby="titleInputs"
-                          />
-                          <ErrorMessage meta={meta} />
-                        </div>
-                      )}
-                    </Field>
-                  </div>
-                  {/* Firstname */}
-                  <div className="form-group row">
-                    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="firstname-input">
-                      Vorname
-                    </FormLabel>
-                    <div className={formInputBootstrapClasses}>
-                      <Field name={fieldName.firstName}>
-                        {({ input, meta }) => (
-                          <div>
-                            <input
-                              {...input}
-                              type="text"
-                              className={this.formInputClassFactory(meta)}
-                              aria-labelledby="firstname-input"
-                            />
-                            <ErrorMessage meta={meta} />
-                          </div>
-                        )}
-                      </Field>
-                    </div>
-                  </div>
-                  {/* Lastname */}
-                  <div className="form-group row">
-                    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="lastname-input">
-                      Nachname
-                    </FormLabel>
-                    <div className={formInputBootstrapClasses}>
-                      <Field name={fieldName.lastName}>
-                        {({ input, meta }) => (
-                          <div>
-                            <input
-                              {...input}
-                              type="text"
-                              className={this.formInputClassFactory(meta)}
-                              aria-labelledby="firstname-input"
-                            />
-                            <ErrorMessage meta={meta} />
-                          </div>
-                        )}
-                      </Field>
-                    </div>
-                  </div>
-                  {/* Email */}
-                  <Field name={fieldName.email}>
-                    {({ input, meta }) => (
-                      <label className="form-group row" htmlFor="inputEmail">
-                        <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>E-mail</FormLabel>
-                        <div className={formInputBootstrapClasses}>
-                          <input
-                            {...input}
-                            type="email"
-                            className={this.formInputClassFactory(meta)}
-                            id="inputEmail"
-                          />
-                          <ErrorMessage meta={meta} />
-                        </div>
-                      </label>
-                    )}
-                  </Field>
-                  {/* receipt ? */}
-                  <label className="form-group row" htmlFor="receipt-input">
-                    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Spendenquittung</FormLabel>
-                    <Field name={fieldName.wantsReceipt}>
-                      {({ input, meta }) => (
-                        <div className={formInputBootstrapClasses}>
-                          <select
-                            {...input}
-                            id="receipt-input"
-                            className={this.formInputClassFactory(meta)}
-                          >
-                            <option value={receiptNowOptionValue}>
-                              Ja, so schnell wie möglich
-                            </option>
-                            <option value="receipt_end_of_year">Ja, konsolidiert am Ende des Jahres</option>
-                            <option value={noReceiptOptionValue}>
-                              Nein, ich brauche keine Quittung
-                            </option>
-                          </select>
-                          <ErrorMessage meta={meta} />
-                        </div>
-                      )}
-                    </Field>
-                  </label>
+                  <DonationSelectField
+                    fieldName={fieldName.salutation}
+                    label="Anrede"
+                    options={salutationOptions}
+                    inputClassName="col-md-4 col-lg-3"
+                  />
+
+                  <DonationInputField
+                    fieldName={fieldName.title}
+                    label="Titel (optional)"
+                  />
+
+                  <DonationInputField
+                    fieldName={fieldName.firstName}
+                    label="Vorname"
+                  />
+
+                  <DonationInputField
+                    fieldName={fieldName.lastName}
+                    label="Nachname"
+                  />
+
+                  <DonationInputField
+                    fieldName={fieldName.email}
+                    label="Email"
+                    type="email"
+                  />
+
+                  <DonationSelectField
+                    fieldName={fieldName.wantsReceipt}
+                    label="Spendenquittung"
+                    options={receiptOptions}
+                  />
                   {
-                    values[fieldName.wantsReceipt] !== noReceiptOptionValue
-                      ? (
+                    (values[fieldName.wantsReceipt] !== noReceiptOptionValue)
+                      && (
                         <Fragment>
-                          {/* Firma */}
-                          <Field name={fieldName.companyName}>
-                            {({ input, meta }) => (
-                              <label className="form-group row" htmlFor="company-input">
-                                <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Firma (optional)</FormLabel>
-                                <div className={formInputBootstrapClasses}>
-                                  <input
-                                    {...input}
-                                    type="text"
-                                    className={this.formInputClassFactory(meta)}
-                                    id="company-input"
-                                  />
-                                  <ErrorMessage meta={meta} />
-                                </div>
-                              </label>
-                            )}
-                          </Field>
-                          {/* Address */}
-                          <Field name={fieldName.address}>
-                            {({ input, meta }) => (
-                              <label className="form-group row" htmlFor="address-input">
-                                <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Adresse</FormLabel>
-                                <div className={formInputBootstrapClasses}>
-                                  <input
-                                    {...input}
-                                    type="text"
-                                    className={this.formInputClassFactory(meta)}
-                                    id="address-input"
-                                  />
-                                  <ErrorMessage meta={meta} />
-                                </div>
-                              </label>
-                            )}
-                          </Field>
-                          {/* PLZ und Ort */}
-                          <div className="form-group row">
-                            <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} id="zip-code-city-inputs">
-                              PLZ / Ort
-                            </FormLabel>
-                            <Field name={fieldName.postCode}>
-                              {({ input, meta }) => (
-                                <div className="col-md-3">
-                                  <input
-                                    {...input}
-                                    className={this.formInputClassFactory(meta)}
-                                    aria-labelledby="zip-code-city-inputs"
-                                  />
-                                  <ErrorMessage meta={meta} />
-                                </div>
-                              )}
-                            </Field>
-                            <Field name={fieldName.city}>
-                              {({ input, meta }) => (
-                                <div className="col-md-5 pl-md-0 mt-1 mt-md-0">
-                                  <input
-                                    {...input}
-                                    className={this.formInputClassFactory(meta)}
-                                    aria-labelledby="zip-code-city-inputs"
-                                  />
-                                  <ErrorMessage meta={meta} />
-                                </div>
-                              )}
-                            </Field>
-                          </div>
+                          <DonationInputField
+                            fieldName={fieldName.companyName}
+                            label="Firma (optional)"
+                          />
+
+                          <DonationInputField
+                            fieldName={fieldName.address}
+                            label="Adresse"
+                          />
+
+                          <DonationMultipleInputField
+                            fieldName1={fieldName.postCode}
+                            fieldName2={fieldName.address}
+                            label="PLZ / Ort"
+                          />
                         </Fragment>
                       )
-                      : null
                   }
-                  {/* Land */}
-                  <label className="form-group row" htmlFor="country-input">
-                    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`}>Land</FormLabel>
-                    <Field name={fieldName.country}>
-                      {({ input, meta }) => (
-                        <div className={formInputBootstrapClasses}>
-                          <select
-                            {...input}
-                            id="country-input"
-                            className={this.formInputClassFactory(meta)}
-                          >
-                            {Object.entries(countries).map(([countryKey, country]) => (
-                              <option value={countryKey} key={countryKey}>{country}</option>
-                            ))}
-                          </select>
-                          <ErrorMessage meta={meta} />
-                        </div>
-                      )}
-                    </Field>
-                  </label>
+
+                  <DonationSelectField
+                    fieldName={fieldName.country}
+                    label="Land"
+                    options={countriesOptions}
+                  />
 
                   <button
                     className="d-none"
