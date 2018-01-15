@@ -13,7 +13,7 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 import DonationPersonalDetailsForm from '../../components/Fundraisingbox/DonationPersonalDetailsForm'
 import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
-import { isPositiveInteger } from '../../components/Fundraisingbox/utils'
+import { checkPositiveIntValues, checkRequiredValues } from '../../components/Fundraisingbox/utils'
 import PageSection from '../../components/Fundraisingbox/FundraisingPageSection'
 import CenteredText from '../../components/CenteredText'
 import FundraisingFormContainer from '../../components/Fundraisingbox/FundraisingFormContainer'
@@ -31,6 +31,10 @@ const MainHeading = styled.h1`
   width: 100%;
 `
 
+const HiddenButton = styled.button`
+  display: none;
+`
+
 class Donate extends Component {
   state = {
     fields: {},
@@ -42,33 +46,31 @@ class Donate extends Component {
   }
 
   validateForm = (fields) => {
-    const errors = {}
-    const isRequired = (keysArray) => {
-      keysArray.forEach((obj) => {
-        if (!fields[obj.fieldName]) {
-          errors[obj.fieldName] = obj.errorMessage
-        }
-      })
-    }
+    const errorsPositiveInt = checkPositiveIntValues([fieldName.amount], fields)
+    const errorsRequired = checkRequiredValues(
+      [
+        {
+          fieldName: fieldName.projectId,
+          errorMessage: 'Bitte wählen Sie, an wen Ihre Spende gehen soll.',
+        },
+        {
+          fieldName: fieldName.amount,
+          errorMessage: 'Bitte wählen Sie eine Betrag größer als Null.',
+        },
+        {
+          fieldName: fieldName.paymentInterval,
+          errorMessage: 'Bitte wählen Sie ein Intervall für Ihre Spende.',
+        },
+      ],
+      fields,
+    )
 
-    const isPositiveInt = (keysArray) => {
-      keysArray.forEach((key) => {
-        if (!isPositiveInteger(fields[key])) {
-          errors[key] = 'Bitte wählen Sie eine Betrag größer als Null.'
-        }
-      })
-    }
+    const errors = { ...errorsPositiveInt, ...errorsRequired }
 
-    isPositiveInt([fieldName.amount])
-    isRequired([
-      { fieldName: fieldName.projectId, errorMessage: 'Bitte wählen Sie, an wen Ihre Spende gehen soll.' },
-      { fieldName: fieldName.amount, errorMessage: 'Bitte wählen Sie eine Betrag größer als Null.' },
-      { fieldName: fieldName.paymentInterval, errorMessage: 'Bitte wählen Sie ein Intervall für Ihre Spende.' },
-    ])
+    const noErrors = !Object.keys(errors).length
 
-    if (!Object.keys(errors).length) {
+    if (noErrors) {
       this.debounceSetState({
-        ...this.state,
         fields: {
           ...fields,
           // Cast to integer
@@ -142,9 +144,9 @@ class Donate extends Component {
                   otherAmountPlaceholder={section3Text}
                 />
 
-                <button className="d-none" ref={(form) => { this.formRef = form }}>
+                <HiddenButton ref={(form) => { this.formRef = form }}>
                   Submit
-                </button>
+                </HiddenButton>
               </form>
             )}
           />

@@ -1,10 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { Field } from 'react-final-form'
 
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './DonationFormLabel'
 import { formInputClassFactory, formLabelBootstrapClasses } from './utils'
+import { mdBreakpoint } from '../../styling/breakpoints'
+
+const SecondInputContainer = styled.div`
+  margin-top: 0.5rem;
+  
+  @media (min-width: ${mdBreakpoint}) {
+    padding-left: 0;
+    margin-top: 0;
+  }
+`
 
 const DonationMultipleInputField = ({
   fieldName1,
@@ -32,16 +43,16 @@ const DonationMultipleInputField = ({
     </Field>
     <Field name={fieldName2}>
       {({ input, meta }) => (
-        <div className="col-md-5 pl-md-0 mt-1 mt-md-0">
+        <SecondInputContainer className="col-md-5">
           <input
             {...input}
             id={fieldName2}
             type={type}
             className={formInputClassFactory(meta)}
-            aria-labelledby={fieldName2}
+            aria-labelledby={fieldName1}
           />
           <ErrorMessage meta={meta} />
-        </div>
+        </SecondInputContainer>
       )}
     </Field>
   </div>

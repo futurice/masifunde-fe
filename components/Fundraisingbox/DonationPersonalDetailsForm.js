@@ -11,6 +11,7 @@ import FundraisingIframeContainer from './FundraisingIframeContainer'
 import DonationInputField from './DonationInputField'
 import DonationSelectField from './DonationSelectField'
 import DonationMultipleInputField from './DonationMultipleInputField'
+import { checkRequiredValues } from './utils'
 
 const fieldName = {
   address: 'address',
@@ -46,29 +47,30 @@ class DonationPersonalDetailsForm extends Component {
 
   validateForm = (fields) => {
     const errors = {}
-    const isRequired = (keysArray) => {
-      keysArray.forEach((key) => {
-        if (!fields[key]) {
-          errors[key] = 'Pflichtfeld'
-        }
-      })
-    }
 
-    isRequired([
-      fieldName.country,
-      fieldName.email,
-      fieldName.firstName,
-      fieldName.lastName,
-      fieldName.salutation,
-      fieldName.wantsReceipt,
-    ])
+    checkRequiredValues(
+      [
+        { fieldName: fieldName.country },
+        { fieldName: fieldName.email },
+        { fieldName: fieldName.firstName },
+        { fieldName: fieldName.lastName },
+        { fieldName: fieldName.salutation },
+        { fieldName: fieldName.wantsReceipt },
+      ],
+      fields,
+      errors,
+    )
 
     if (fields[fieldName.wantsReceipt] !== noReceiptOptionValue) {
-      isRequired([
-        fieldName.address,
-        fieldName.city,
-        fieldName.postCode,
-      ])
+      checkRequiredValues(
+        [
+          { fieldName: fieldName.address },
+          { fieldName: fieldName.city },
+          { fieldName: fieldName.postCode },
+        ],
+        fields,
+        errors,
+      )
     }
 
     if (!Object.keys(errors).length) {
@@ -196,6 +198,7 @@ class DonationPersonalDetailsForm extends Component {
             />
           </PageSection>
         </FundraisingFormContainer>
+
         <FundraisingIframeContainer
           pullLeft={pullLeft}
           formTitle={fundraisingboxIframeTitle}
