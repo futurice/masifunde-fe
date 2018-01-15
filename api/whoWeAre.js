@@ -34,5 +34,6 @@ export async function fetchTeamSaPage(locale) {
     ...content,
     introImage: unwrapImage(content && content.introImage),
     teamMembers: unwrapTeamMembers(content && content.teamMembers),
+    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }
