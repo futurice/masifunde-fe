@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { mdBreakpoint } from '../../styling/breakpoints'
 
-const DonationFormLabel = styled.span`
+const DonationFormLabel = styled.label`
   text-align: left;
   padding-right: 0;
 
