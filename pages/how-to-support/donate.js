@@ -15,7 +15,7 @@ import DonationIntervalField from '../../components/Fundraisingbox/DonationInter
 import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import { isPositiveInteger } from '../../components/Fundraisingbox/utils'
 import ErrorMessage from '../../components/Fundraisingbox/ErrorMessage'
-import PageSection from '../../components/Fundraisingbox/FundraisingboxPageSection'
+import PageSection from '../../components/Fundraisingbox/FundraisingPageSection'
 import CenteredText from '../../components/CenteredText'
 import { smBreakpoint } from '../../styling/breakpoints'
 import SubHeader from '../../components/Fundraisingbox/SubHeader'

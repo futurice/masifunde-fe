@@ -8,7 +8,7 @@ import countries from '../../utils/countries'
 import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
 import { mdBreakpoint } from '../../styling/breakpoints'
-import PageSection from './FundraisingboxPageSection'
+import PageSection from './FundraisingPageSection'
 import FundraisingFormContainer from './FundraisingFormContainer'
 import FundraisingIframeContainer from './FundraisingIframeContainer'
 
