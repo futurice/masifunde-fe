@@ -69,5 +69,6 @@ export async function fetchApproachSaPage(locale) {
   return {
     ...content,
     projects: content && content.projects.map(unwrapProjects),
+    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }
