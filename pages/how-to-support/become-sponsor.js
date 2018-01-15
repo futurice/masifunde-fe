@@ -6,7 +6,6 @@ import _debounce from 'lodash/debounce'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Banner from '../../components/Banner'
 import Head from '../../components/Head'
-import { RouteNames } from '../../routes'
 import Markdown from '../../components/Markdown'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBecomeASponsorPage } from '../../api/howToSupport'
@@ -88,6 +87,7 @@ class BecomeSponsor extends Component {
       section5Title,
       bannerTitle,
       bannerButtonText,
+      bannerButtonUrl,
     } = this.props
     return (
       <div>
@@ -149,7 +149,7 @@ class BecomeSponsor extends Component {
         <Banner
           headline={bannerTitle}
           buttonText={bannerButtonText}
-          buttonLink={RouteNames.Contact}
+          buttonLink={bannerButtonUrl}
         />
       </div>
     )
@@ -180,6 +180,7 @@ BecomeSponsor.propTypes = {
   section5Title: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
 }
 
 BecomeSponsor.defaultProps = {
