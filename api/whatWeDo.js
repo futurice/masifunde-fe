@@ -62,6 +62,7 @@ export async function fetchImpactPage(locale) {
     stats2: content && content.stats2.map(unwrapStat),
     portrait1: unwrapPortrait(content && content.portrait1),
     portrait2: unwrapPortrait(content && content.portrait2),
+    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }
 
