@@ -10,7 +10,6 @@ import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import Markdown from '../../components/Markdown'
 import RegionalGroups from '../../components/RegionalGroups'
-import { RouteNames } from '../../routes'
 import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
@@ -33,6 +32,7 @@ const BecomeVolunteer = ({
   regionalGroups,
   bannerTitle,
   bannerButtonText,
+  bannerButtonUrl,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -72,7 +72,7 @@ const BecomeVolunteer = ({
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}
-      buttonLink={RouteNames.Contact}
+      buttonLink={bannerButtonUrl}
     />
   </div>
 )
@@ -94,6 +94,7 @@ BecomeVolunteer.propTypes = {
   regionalGroups: PropTypes.shape().isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
 }
 
 BecomeVolunteer.defaultProps = {

@@ -1,6 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import { fetchMemoizedSingleEntry, fetchSingleEntry } from './contentfulService'
-import { unwrapImage, unwrapPartners, unwrapRegionalGroups, unwrapTeamMember, unwrapFields } from './common'
+import {
+  unwrapImage, unwrapPartners, unwrapRegionalGroups, unwrapTeamMember, unwrapFields,
+  unwrapPageUrl,
+} from './common'
 import { jpegQuality } from '../utils/constants'
 
 export async function fetchDonatePage(locale) {
@@ -39,6 +42,7 @@ export async function fetchBecomeAVolunteerPage(locale) {
     regionalGroups: unwrapRegionalGroups(content && content.regionalGroups),
     section1TeamMember: unwrapTeamMember(content && content.section1TeamMember),
     volunteerOpenings: content && content.volunteerOpenings.map(unwrapVolunteerOpening),
+    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }
 
