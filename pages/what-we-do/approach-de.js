@@ -8,7 +8,6 @@ import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchApproachDePage } from '../../api/whatWeDo'
 import Banner from '../../components/Banner'
 import Hero from '../../components/Hero'
-import { RouteNames } from '../../routes'
 import PageSection from '../../components/PageSection'
 import Tagline from '../../components/Tagline'
 import ProjectList from '../../components/ProjectList'
@@ -31,6 +30,7 @@ const ApproachDe = ({
   image1,
   bannerTitle,
   bannerButtonText,
+  bannerButtonUrl,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -59,7 +59,7 @@ const ApproachDe = ({
     </PageSection>
 
     <Banner
-      buttonLink={RouteNames.Contact}
+      buttonLink={bannerButtonUrl}
       buttonText={bannerButtonText}
       headline={bannerTitle}
     />
@@ -77,6 +77,7 @@ ApproachDe.propTypes = {
   image1: PropTypes.shape(imagePropTypes).isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
 }
 
 ApproachDe.defaultProps = {
