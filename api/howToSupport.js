@@ -52,6 +52,7 @@ export async function fetchBecomeAPartnerPage(locale) {
     ...content,
     partners: unwrapPartners(content.partners),
     teamMember: unwrapTeamMember(content.teamMember),
+    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }
 
