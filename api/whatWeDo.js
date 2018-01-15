@@ -50,6 +50,7 @@ export async function fetchApproachDePage(locale) {
     ...content,
     image1: unwrapImage(content && content.image1, { q: jpegQuality }),
     projects: content && content.projects.map(unwrapProjects),
+    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }
 
