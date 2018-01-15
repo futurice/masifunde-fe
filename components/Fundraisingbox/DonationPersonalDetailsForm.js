@@ -170,7 +170,7 @@ class DonationPersonalDetailsForm extends Component {
 
                           <DonationMultipleInputField
                             fieldName1={fieldName.postCode}
-                            fieldName2={fieldName.address}
+                            fieldName2={fieldName.city}
                             label="PLZ / Ort"
                           />
                         </Fragment>
