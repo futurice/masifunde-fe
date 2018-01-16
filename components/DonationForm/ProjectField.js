@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 
-import PageSection from '../../components/Fundraisingbox/FundraisingPageSection'
+import PageSection from './PageSection'
 import SubHeader from './SubHeader'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'

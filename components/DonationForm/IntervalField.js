@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
-import PageSection from './FundraisingPageSection'
+import PageSection from './PageSection'
 import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import { fundraisingFormSpacing } from '../../utils/constants'
 

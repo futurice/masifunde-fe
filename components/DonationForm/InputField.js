@@ -1,40 +1,32 @@
-/* eslint-disable function-paren-newline */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 
 import ErrorMessage from './ErrorMessage'
-import FormLabel from './DonationFormLabel'
+import FormLabel from './FormLabel'
 import { formInputBootstrapClasses, formLabelBootstrapClasses } from './constants'
 import { formInputClassFactory } from './utils/formInputClassFactory'
 
-const DonationSelectField = ({
+const DonationInputField = ({
   fieldName,
-  inputClassName,
   label,
-  options,
+  type,
 }) => (
   <div className="form-group row">
     <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} htmlFor={fieldName}>
       {label}
     </FormLabel>
-    <div className={inputClassName}>
+    <div className={formInputBootstrapClasses}>
       <Field name={fieldName}>
         {({ input, meta }) => (
-          <div className="w-100">
-            <select
+          <div>
+            <input
               {...input}
               id={fieldName}
+              type={type}
               className={formInputClassFactory(meta)}
               aria-labelledby={fieldName}
-            >
-              <option value={null} disabled hidden />
-              {options.map(option => (
-                <option value={option.value} key={option.value}>
-                  {option.text}
-                </option>
-              ))}
-            </select>
+            />
             <ErrorMessage meta={meta} />
           </div>
         )}
@@ -43,20 +35,14 @@ const DonationSelectField = ({
   </div>
 )
 
-DonationSelectField.propTypes = {
+DonationInputField.propTypes = {
   fieldName: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  inputClassName: PropTypes.string,
+  type: PropTypes.oneOf(['text', 'email']),
 }
 
-DonationSelectField.defaultProps = {
-  inputClassName: formInputBootstrapClasses,
+DonationInputField.defaultProps = {
+  type: 'text',
 }
 
-export default DonationSelectField
+export default DonationInputField

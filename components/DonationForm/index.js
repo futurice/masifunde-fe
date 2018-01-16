@@ -5,15 +5,15 @@ import { Form } from 'react-final-form'
 
 import countries from '../../utils/countries'
 import SubHeader from './SubHeader'
-import PageSection from './FundraisingPageSection'
-import FundraisingFormContainer from './FundraisingFormContainer'
+import PageSection from './PageSection'
+import FormContainer from './FormContainer'
 import FundraisingIframeContainer from './FundraisingIframeContainer'
-import DonationInputField from './DonationInputField'
-import DonationSelectField from './DonationSelectField'
-import DonationMultipleInputField from './DonationMultipleInputField'
-import DonationProjectField from './DonationProjectField'
-import DonationIntervalField from './DonationIntervalField'
-import DonationAmountField from './DonationAmountField'
+import InputField from './InputField'
+import SelectField from './SelectField'
+import MultipleInputField from './MultipleInputField'
+import ProjectField from './ProjectField'
+import IntervalField from './IntervalField'
+import AmountField from './AmountField'
 import withFormState from './withFormState'
 import {
   deProjectId,
@@ -73,10 +73,9 @@ const DonationForm = ({
         validate={validateForm}
         render={({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit}>
-            <FundraisingFormContainer pullLeft={pullLeft}>
-
+            <FormContainer pullLeft={pullLeft}>
               {showProjects && (
-                <DonationProjectField
+                <ProjectField
                   deProjectId={deProjectId}
                   fieldName={fieldName.projectId}
                   markdownDe={buttonProjectDeText}
@@ -86,53 +85,52 @@ const DonationForm = ({
                 />
               )}
 
-              <DonationIntervalField
+              <IntervalField
                 fieldName={fieldName.paymentInterval}
                 title={intervalTitle}
                 intervals={intervals}
               />
 
-              <DonationAmountField
+              <AmountField
                 fieldName={fieldName.amount}
                 title={amountTitle}
                 amounts={amounts}
                 enableOtherAmount
                 otherAmountPlaceholder={otherAmountPlaceholder}
               />
-            </FundraisingFormContainer>
-            <FundraisingFormContainer pullLeft={pullLeft}>
+
               <PageSection contained={false}>
                 <SubHeader>{formTitle}</SubHeader>
 
-                <DonationSelectField
+                <SelectField
                   fieldName={fieldName.salutation}
                   label="Anrede"
                   options={salutationOptions}
                   inputClassName="col-md-4 col-lg-3"
                 />
 
-                <DonationInputField
+                <InputField
                   fieldName={fieldName.title}
                   label="Titel (optional)"
                 />
 
-                <DonationInputField
+                <InputField
                   fieldName={fieldName.firstName}
                   label="Vorname"
                 />
 
-                <DonationInputField
+                <InputField
                   fieldName={fieldName.lastName}
                   label="Nachname"
                 />
 
-                <DonationInputField
+                <InputField
                   fieldName={fieldName.email}
                   label="Email"
                   type="email"
                 />
 
-                <DonationSelectField
+                <SelectField
                   fieldName={fieldName.wantsReceipt}
                   label="Spendenquittung"
                   options={receiptOptions}
@@ -140,17 +138,17 @@ const DonationForm = ({
 
                 {values[fieldName.wantsReceipt] !== noReceiptOptionValue && (
                   <Fragment>
-                    <DonationInputField
+                    <InputField
                       fieldName={fieldName.companyName}
                       label="Firma (optional)"
                     />
 
-                    <DonationInputField
+                    <InputField
                       fieldName={fieldName.address}
                       label="Adresse"
                     />
 
-                    <DonationMultipleInputField
+                    <MultipleInputField
                       fieldName1={fieldName.postCode}
                       fieldName2={fieldName.city}
                       label="PLZ / Ort"
@@ -158,7 +156,7 @@ const DonationForm = ({
                   </Fragment>
                 )}
 
-                <DonationSelectField
+                <SelectField
                   fieldName={fieldName.country}
                   label="Land"
                   options={countriesOptions}
@@ -172,7 +170,7 @@ const DonationForm = ({
                   Submit
                 </HiddenButton>
               </PageSection>
-            </FundraisingFormContainer>
+            </FormContainer>
           </form>
         )}
       />
@@ -198,9 +196,9 @@ DonationForm.propTypes = {
   buttonProjectSaText: PropTypes.string,
   amountTitle: PropTypes.string.isRequired,
   // eslint-disable-next-line react/require-default-props
-  amounts: DonationAmountField.propTypes.amounts,
+  amounts: AmountField.propTypes.amounts,
   // eslint-disable-next-line react/require-default-props
-  intervals: DonationIntervalField.propTypes.intervals,
+  intervals: IntervalField.propTypes.intervals,
   intervalTitle: PropTypes.string.isRequired,
   otherAmountPlaceholder: PropTypes.string,
   validateForm: PropTypes.func.isRequired,
