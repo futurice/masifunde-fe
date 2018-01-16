@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Form } from 'react-final-form'
-import _debounce from 'lodash/debounce'
 
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Banner from '../../components/Banner'
@@ -10,151 +8,80 @@ import Markdown from '../../components/Markdown'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBecomeASponsorPage } from '../../api/howToSupport'
 import imagePropTypes from '../../propTypes/image'
-import DonationPersonalDetailsForm from '../../components/Fundraisingbox/DonationPersonalDetailsForm'
-import DonationIntervalField from '../../components/Fundraisingbox/DonationIntervalField'
-import DonationAmountField from '../../components/Fundraisingbox/DonationAmountField'
 import PageSection from '../../components/PageSection'
 import RoundedImage from '../../components/RoundedImage'
-import FundraisingFormContainer from '../../components/Fundraisingbox/FundraisingFormContainer'
+import DonationForm from '../../components/Fundraisingbox/DonationForm'
+import { fieldName } from '../../components/Fundraisingbox/constants'
 
 const Image = RoundedImage.extend`
   width: 100%;
 `
 
 const Learn4LifeId = '3520'
-const fieldName = {
-  projectId: 'projectId',
-  amount: 'amount',
-  paymentInterval: 'interval',
-}
 
-class BecomeSponsor extends Component {
-  state = {
-    fields: {},
-  }
+const BecomeSponsor = ({
+  metaTitle,
+  metaDescription,
+  title,
+  introSubtitle1,
+  introMarkdown1,
+  introSubtitle2,
+  introMarkdown2,
+  image,
+  donationFormTitle,
+  section2Title,
+  section2ReferenceList,
+  section3Title,
+  section3ReferenceList,
+  section4Title,
+  section5Title,
+  bannerTitle,
+  bannerButtonText,
+  bannerButtonUrl,
+}) => (
+  <Fragment>
+    <Head title={metaTitle} description={metaDescription} />
 
-  debounceSetState = _debounce(this.setState, 500)
+    <PageSection>
+      <h1>{title}</h1>
+    </PageSection>
 
-  submitForm = () => {
-    this.formRef.click()
-  }
-
-  validateForm = (fields) => {
-    const errors = {}
-    const isRequired = (keysArray) => {
-      keysArray.forEach((obj) => {
-        if (!fields[obj.fieldName]) {
-          errors[obj.fieldName] = obj.errorMessage
-        }
-      })
-    }
-
-    isRequired([
-      { fieldName: fieldName.amount, errorMessage: 'Bitte wählen Sie eine Betrag.' },
-      { fieldName: fieldName.paymentInterval, errorMessage: 'Bitte wählen Sie ein Intervall für Ihre Spende.' },
-    ])
-
-    if (!Object.keys(errors).length) {
-      this.debounceSetState({
-        ...this.state,
-        fields: {
-          ...fields,
-          // Cast to integer
-          [fieldName.amount]: Number(fields[fieldName.amount]),
-          [fieldName.projectId]: Number(Learn4LifeId),
-        },
-      })
-    }
-    return errors
-  }
-
-  render() {
-    const {
-      metaTitle,
-      metaDescription,
-      title,
-      introSubtitle1,
-      introMarkdown1,
-      introSubtitle2,
-      introMarkdown2,
-      image,
-      donationFormTitle,
-      section2Title,
-      section2ReferenceList,
-      section3Title,
-      section3ReferenceList,
-      section4Title,
-      section5Title,
-      bannerTitle,
-      bannerButtonText,
-      bannerButtonUrl,
-    } = this.props
-    return (
-      <div>
-        <Head title={metaTitle} description={metaDescription} />
-
-        <PageSection>
-          <h1>{title}</h1>
-        </PageSection>
-
-        <PageSection>
-          <div className="row">
-            <div className="col-12 col-md-7">
-              <h3>{introSubtitle1}</h3>
-              <Markdown source={introMarkdown1} />
-              <h3>{introSubtitle2}</h3>
-              <Markdown source={introMarkdown2} />
-            </div>
-            <div className="col-12 col-md-5">
-              <Image src={image.url} alt={image.title} />
-            </div>
-          </div>
-        </PageSection>
-
-        <PageSection>
-          <h2>{donationFormTitle}</h2>
-        </PageSection>
-        <FundraisingFormContainer>
-          <Form
-            onSubmit={() => {}}
-            validate={this.validateForm}
-            render={({ handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
-
-                <DonationIntervalField
-                  fieldName={fieldName.paymentInterval}
-                  title={section2Title}
-                  intervals={section2ReferenceList}
-                />
-
-                <DonationAmountField
-                  fieldName={fieldName.amount}
-                  title={section3Title}
-                  amounts={section3ReferenceList}
-                />
-                <button className="d-none" ref={(form) => { this.formRef = form }}>
-                  Submit
-                </button>
-              </form>
-            )}
-          />
-        </FundraisingFormContainer>
-        <DonationPersonalDetailsForm
-          formTitle={section4Title}
-          hiddenFields={{ ...this.state.fields }}
-          onSubmit={this.submitForm}
-          fundraisingboxIframeTitle={section5Title}
-        />
-
-        <Banner
-          headline={bannerTitle}
-          buttonText={bannerButtonText}
-          buttonLink={bannerButtonUrl}
-        />
+    <PageSection>
+      <div className="row">
+        <div className="col-12 col-md-7">
+          <h3>{introSubtitle1}</h3>
+          <Markdown source={introMarkdown1} />
+          <h3>{introSubtitle2}</h3>
+          <Markdown source={introMarkdown2} />
+        </div>
+        <div className="col-12 col-md-5">
+          <Image src={image.url} alt={image.title} />
+        </div>
       </div>
-    )
-  }
-}
+    </PageSection>
+
+    <PageSection>
+      <h2>{donationFormTitle}</h2>
+    </PageSection>
+    <DonationForm
+      amounts={section3ReferenceList}
+      amountTitle={section3Title}
+      formTitle={section4Title}
+      fundraisingboxIframeTitle={section5Title}
+      intervals={section2ReferenceList}
+      intervalTitle={section2Title}
+      initialValues={{
+        [fieldName.projectId]: Learn4LifeId,
+      }}
+    />
+
+    <Banner
+      headline={bannerTitle}
+      buttonText={bannerButtonText}
+      buttonLink={bannerButtonUrl}
+    />
+  </Fragment>
+)
 
 BecomeSponsor.propTypes = {
   metaTitle: PropTypes.string.isRequired,
@@ -192,4 +119,3 @@ BecomeSponsor.getInitialProps = async function getInitialProps({ query }) {
 }
 
 export default LayoutWrapper(BecomeSponsor)
-
