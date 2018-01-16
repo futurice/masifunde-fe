@@ -15,7 +15,7 @@ import HorizontalRuler from '../../components/HorizontalRuler'
 import { smBreakpoint } from '../../styling/breakpoints'
 import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
-import Divider from '../../components/Fundraisingbox/Divider'
+import Divider from '../../components/Divider'
 import RoundedImage from '../../components/RoundedImage'
 
 const SectionContainer = styled(PageSection)`
