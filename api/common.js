@@ -2,6 +2,7 @@ import qs from 'qs'
 
 import { fetchMemoizedSingleEntry } from './contentfulService'
 import { jpegQuality } from '../utils/constants'
+import { RouteNames } from '../routes'
 
 export async function fetchHeaderData(locale) {
   return fetchMemoizedSingleEntry('header', locale)
@@ -54,7 +55,22 @@ export const unwrapStat = stat => ({
 
 export const unwrapStats = stats => stats.map(unwrapStat)
 
-export const unwrapPageUrl = pageUrl => pageUrl && pageUrl.fields && pageUrl.fields.url
+export const unwrapPageUrl = (pageUrl) => {
+  if (!pageUrl) {
+    return RouteNames.Index
+  }
+
+  // Contentful allows the editors to input either 'http' or 'https'.
+  // Additionally, editors can choose to include or exclude the 'www'.
+  // Splitting on 'masifunde.de' without 'http' or 'www' will cover all these scenarios.
+  // Limiting the amount of splits to 2 will avoid any potential bugs from e.g a query param.
+  const splitResult = pageUrl.split('masifunde.de', 2)
+  const url = splitResult.length > 1
+    ? splitResult[1]
+    : splitResult[0]
+
+  return url || RouteNames.Index
+}
 
 const unwrapRegionWithContactDetails = ({ fields }) => ({
   ...fields,
