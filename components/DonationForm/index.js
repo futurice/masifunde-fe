@@ -16,11 +16,27 @@ import IntervalField from './IntervalField'
 import AmountField from './AmountField'
 import withFormState from './withFormState'
 import {
-  deProjectId,
-  noReceiptOptionValue,
-  receiptNowOptionValue,
-  saProjectId,
-} from './constants'
+  DE_PROJECT_ID,
+  NO_RECEIPT_OPTION_VALUE,
+  RECEIPT_NOW_OPTION_VALUE,
+  SA_PROJECT_ID,
+} from './constants/formValues'
+import {
+  WANTS_RECEIPT,
+  COUNTRY,
+  PAYMENT_INTERVAL,
+  AMOUNT,
+  SALUTATION,
+  TITLE,
+  FIRST_NAME,
+  LAST_NAME,
+  EMAIL,
+  COMPANY_NAME,
+  ADDRESS,
+  POST_CODE,
+  CITY,
+  PROJECT_ID,
+} from './constants/fieldNames'
 
 const HiddenButton = styled.button`
   display: none;
@@ -30,7 +46,6 @@ const DonationForm = ({
   formTitle,
   pullLeft,
   fundraisingboxIframeTitle,
-  fieldName,
   validateForm,
   fields,
   projectHeadline,
@@ -55,9 +70,9 @@ const DonationForm = ({
     text: country,
   }))
   const receiptOptions = [
-    { value: receiptNowOptionValue, text: 'Ja, so schnell wie möglich' },
+    { value: RECEIPT_NOW_OPTION_VALUE, text: 'Ja, so schnell wie möglich' },
     { value: 'receipt_end_of_year', text: 'Ja, konsolidiert am Ende des Jahres' },
-    { value: noReceiptOptionValue, text: 'Nein, ich brauche keine Quittung' },
+    { value: NO_RECEIPT_OPTION_VALUE, text: 'Nein, ich brauche keine Quittung' },
   ]
   const salutationOptions = [{ value: 'Mrs.', text: 'Frau' }, { value: 'Mr.', text: 'Herr' }]
 
@@ -66,8 +81,8 @@ const DonationForm = ({
       <Form
         onSubmit={() => {}}
         initialValues={{
-          [fieldName.wantsReceipt]: receiptNowOptionValue,
-          [fieldName.country]: 'DE',
+          [WANTS_RECEIPT]: RECEIPT_NOW_OPTION_VALUE,
+          [COUNTRY]: 'DE',
           ...initialValues,
         }}
         validate={validateForm}
@@ -76,23 +91,23 @@ const DonationForm = ({
             <FormContainer pullLeft={pullLeft}>
               {showProjects && (
                 <ProjectField
-                  deProjectId={deProjectId}
-                  fieldName={fieldName.projectId}
+                  deProjectId={DE_PROJECT_ID}
+                  fieldName={PROJECT_ID}
                   markdownDe={buttonProjectDeText}
                   markdownSa={buttonProjectSaText}
-                  saProjectId={saProjectId}
+                  saProjectId={SA_PROJECT_ID}
                   title={projectHeadline}
                 />
               )}
 
               <IntervalField
-                fieldName={fieldName.paymentInterval}
+                fieldName={PAYMENT_INTERVAL}
                 title={intervalTitle}
                 intervals={intervals}
               />
 
               <AmountField
-                fieldName={fieldName.amount}
+                fieldName={AMOUNT}
                 title={amountTitle}
                 amounts={amounts}
                 enableOtherAmount
@@ -103,64 +118,41 @@ const DonationForm = ({
                 <SubHeader>{formTitle}</SubHeader>
 
                 <SelectField
-                  fieldName={fieldName.salutation}
+                  fieldName={SALUTATION}
                   label="Anrede"
                   options={salutationOptions}
                   inputClassName="col-md-4 col-lg-3"
                 />
 
-                <InputField
-                  fieldName={fieldName.title}
-                  label="Titel (optional)"
-                />
+                <InputField fieldName={TITLE} label="Titel (optional)" />
 
-                <InputField
-                  fieldName={fieldName.firstName}
-                  label="Vorname"
-                />
+                <InputField fieldName={FIRST_NAME} label="Vorname" />
 
-                <InputField
-                  fieldName={fieldName.lastName}
-                  label="Nachname"
-                />
+                <InputField fieldName={LAST_NAME} label="Nachname" />
 
-                <InputField
-                  fieldName={fieldName.email}
-                  label="Email"
-                  type="email"
-                />
+                <InputField fieldName={EMAIL} label="Email" type="email" />
 
                 <SelectField
-                  fieldName={fieldName.wantsReceipt}
+                  fieldName={WANTS_RECEIPT}
                   label="Spendenquittung"
                   options={receiptOptions}
                 />
 
-                {values[fieldName.wantsReceipt] !== noReceiptOptionValue && (
+                {values[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE && (
                   <Fragment>
-                    <InputField
-                      fieldName={fieldName.companyName}
-                      label="Firma (optional)"
-                    />
+                    <InputField fieldName={COMPANY_NAME} label="Firma (optional)" />
 
-                    <InputField
-                      fieldName={fieldName.address}
-                      label="Adresse"
-                    />
+                    <InputField fieldName={ADDRESS} label="Adresse" />
 
                     <MultipleInputField
-                      fieldName1={fieldName.postCode}
-                      fieldName2={fieldName.city}
+                      fieldName1={POST_CODE}
+                      fieldName2={CITY}
                       label="PLZ / Ort"
                     />
                   </Fragment>
                 )}
 
-                <SelectField
-                  fieldName={fieldName.country}
-                  label="Land"
-                  options={countriesOptions}
-                />
+                <SelectField fieldName={COUNTRY} label="Land" options={countriesOptions} />
 
                 <HiddenButton
                   innerRef={(form) => {
@@ -202,7 +194,6 @@ DonationForm.propTypes = {
   intervalTitle: PropTypes.string.isRequired,
   otherAmountPlaceholder: PropTypes.string,
   validateForm: PropTypes.func.isRequired,
-  fieldName: PropTypes.shape().isRequired,
   initialValues: PropTypes.shape(),
   showProjects: PropTypes.bool,
 }

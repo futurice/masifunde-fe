@@ -4,7 +4,7 @@ import { Field } from 'react-final-form'
 
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './FormLabel'
-import { formInputBootstrapClasses, formLabelBootstrapClasses } from './constants'
+import { FORM_INPUT_BOOTSTRAP_CLASSES, FORM_LABEL_BOOTSTRAP_CLASSES } from './constants/formValues'
 import { formInputClassFactory } from './utils/formInputClassFactory'
 
 const DonationInputField = ({
@@ -13,10 +13,10 @@ const DonationInputField = ({
   type,
 }) => (
   <div className="form-group row">
-    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} htmlFor={fieldName}>
+    <FormLabel className={`${FORM_LABEL_BOOTSTRAP_CLASSES} col-form-label`} htmlFor={fieldName}>
       {label}
     </FormLabel>
-    <div className={formInputBootstrapClasses}>
+    <div className={FORM_INPUT_BOOTSTRAP_CLASSES}>
       <Field name={fieldName}>
         {({ input, meta }) => (
           <div>

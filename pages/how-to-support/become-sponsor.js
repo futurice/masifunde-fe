@@ -11,13 +11,13 @@ import imagePropTypes from '../../propTypes/image'
 import PageSection from '../../components/PageSection'
 import RoundedImage from '../../components/RoundedImage'
 import DonationForm from '../../components/DonationForm'
-import { fieldName } from '../../components/DonationForm/constants'
+import { PROJECT_ID } from '../../components/DonationForm/constants/fieldNames'
 
 const Image = RoundedImage.extend`
   width: 100%;
 `
 
-const Learn4LifeId = '3520'
+const LEARN_4_LIFE_ID = '3520'
 
 const BecomeSponsor = ({
   metaTitle,
@@ -71,7 +71,7 @@ const BecomeSponsor = ({
       intervals={section2ReferenceList}
       intervalTitle={section2Title}
       initialValues={{
-        [fieldName.projectId]: Learn4LifeId,
+        [PROJECT_ID]: LEARN_4_LIFE_ID,
       }}
     />
 
