@@ -9,7 +9,7 @@ import LayoutWrapper from '../../components/LayoutWrapper'
 import Markdown from '../../components/Markdown'
 import PageSection from '../../components/PageSection'
 import TeamMemberList from '../../components/TeamMemberList'
-import Divider from '../../components/Fundraisingbox/Divider'
+import Divider from '../../components/Divider'
 
 const StyledMarkdown = styled(Markdown)`
   text-align: left;
