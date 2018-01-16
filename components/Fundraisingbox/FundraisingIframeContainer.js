@@ -10,7 +10,6 @@ const FundraisingIframeContainer = ({
   fields,
   formTitle,
   hash,
-  hiddenFields,
   onMouseHover,
   pullLeft,
 }) => (
@@ -22,7 +21,6 @@ const FundraisingIframeContainer = ({
       onMouseHover={onMouseHover}
       hash={hash}
       {...fields}
-      {...hiddenFields}
     />
     <FundraisingFormContainer pullLeft={pullLeft}>
       <FundraisingboxLink />
@@ -34,7 +32,6 @@ FundraisingIframeContainer.propTypes = {
   fields: PropTypes.shape(),
   formTitle: PropTypes.string.isRequired,
   hash: PropTypes.string.isRequired,
-  hiddenFields: PropTypes.shape().isRequired,
   onMouseHover: PropTypes.func.isRequired,
   pullLeft: PropTypes.bool,
 }

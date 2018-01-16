@@ -168,7 +168,7 @@ DonationAmountField.propTypes = {
 
 DonationAmountField.defaultProps = {
   enableOtherAmount: false,
-  otherAmountPlaceholder: 'Other amount',
+  otherAmountPlaceholder: 'Other',
 }
 
 export default DonationAmountField
