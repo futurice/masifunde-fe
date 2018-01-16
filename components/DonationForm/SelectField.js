@@ -5,7 +5,7 @@ import { Field } from 'react-final-form'
 
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './FormLabel'
-import { formInputBootstrapClasses, formLabelBootstrapClasses } from './constants'
+import { FORM_INPUT_BOOTSTRAP_CLASSES, FORM_LABEL_BOOTSTRAP_CLASSES } from './constants/formValues'
 import { formInputClassFactory } from './utils/formInputClassFactory'
 
 const DonationSelectField = ({
@@ -15,7 +15,7 @@ const DonationSelectField = ({
   options,
 }) => (
   <div className="form-group row">
-    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} htmlFor={fieldName}>
+    <FormLabel className={`${FORM_LABEL_BOOTSTRAP_CLASSES} col-form-label`} htmlFor={fieldName}>
       {label}
     </FormLabel>
     <div className={inputClassName}>
@@ -56,7 +56,7 @@ DonationSelectField.propTypes = {
 }
 
 DonationSelectField.defaultProps = {
-  inputClassName: formInputBootstrapClasses,
+  inputClassName: FORM_INPUT_BOOTSTRAP_CLASSES,
 }
 
 export default DonationSelectField

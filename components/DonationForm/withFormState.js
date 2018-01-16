@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
 import _debounce from 'lodash/debounce'
 import { checkPositiveIntValues, checkRequiredValues } from './utils/formValidation'
-import { fieldName, noReceiptOptionValue } from './constants'
+import { FIELD_NAMES, NO_RECEIPT_OPTION_VALUE } from './constants/formValues'
+import {
+  ADDRESS,
+  WANTS_RECEIPT,
+  CITY,
+  POST_CODE,
+  PROJECT_ID,
+  AMOUNT,
+  PAYMENT_INTERVAL,
+  COUNTRY,
+  EMAIL,
+  FIRST_NAME,
+  LAST_NAME,
+  SALUTATION,
+} from './constants/fieldNames'
 
 function withFormState(View) {
   return class FormDataWrapper extends Component {
@@ -11,35 +25,31 @@ function withFormState(View) {
     debounceSetState = _debounce(this.setState, 500)
 
     validateForm = (fields) => {
-      const errorsPositiveInt = checkPositiveIntValues([fieldName.amount], fields)
+      const errorsPositiveInt = checkPositiveIntValues([AMOUNT], fields)
       const wantsReceiptRequiredValues =
-        fields[fieldName.wantsReceipt] !== noReceiptOptionValue
-          ? [
-            { fieldName: fieldName.address },
-            { fieldName: fieldName.city },
-            { fieldName: fieldName.postCode },
-          ]
+        fields[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE
+          ? [{ fieldName: ADDRESS }, { fieldName: CITY }, { fieldName: POST_CODE }]
           : []
       const errorsRequired = checkRequiredValues(
         [
           {
-            fieldName: fieldName.projectId,
+            fieldName: PROJECT_ID,
             errorMessage: 'Bitte wählen Sie, an wen Ihre Spende gehen soll.',
           },
           {
-            fieldName: fieldName.amount,
+            fieldName: AMOUNT,
             errorMessage: 'Bitte wählen Sie eine Betrag größer als Null.',
           },
           {
-            fieldName: fieldName.paymentInterval,
+            fieldName: PAYMENT_INTERVAL,
             errorMessage: 'Bitte wählen Sie ein Intervall für Ihre Spende.',
           },
-          { fieldName: fieldName.country },
-          { fieldName: fieldName.email },
-          { fieldName: fieldName.firstName },
-          { fieldName: fieldName.lastName },
-          { fieldName: fieldName.salutation },
-          { fieldName: fieldName.wantsReceipt },
+          { fieldName: COUNTRY },
+          { fieldName: EMAIL },
+          { fieldName: FIRST_NAME },
+          { fieldName: LAST_NAME },
+          { fieldName: SALUTATION },
+          { fieldName: WANTS_RECEIPT },
           ...wantsReceiptRequiredValues,
         ],
         fields,
@@ -54,8 +64,8 @@ function withFormState(View) {
           fields: {
             ...fields,
             // Cast to integer
-            [fieldName.amount]: Number(fields[fieldName.amount]),
-            [fieldName.projectId]: Number(fields[fieldName.projectId]),
+            [AMOUNT]: Number(fields[AMOUNT]),
+            [PROJECT_ID]: Number(fields[PROJECT_ID]),
           },
         })
       }
@@ -68,7 +78,7 @@ function withFormState(View) {
           {...this.props}
           fields={this.state.fields}
           validateForm={this.validateForm}
-          fieldName={fieldName}
+          fieldName={FIELD_NAMES}
         />
       )
     }

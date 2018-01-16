@@ -5,7 +5,7 @@ import { Field } from 'react-final-form'
 
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './FormLabel'
-import { formLabelBootstrapClasses } from './constants'
+import { FORM_LABEL_BOOTSTRAP_CLASSES } from './constants/formValues'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import { formInputClassFactory } from './utils/formInputClassFactory'
 
@@ -25,7 +25,7 @@ const DonationMultipleInputField = ({
   type,
 }) => (
   <div className="form-group row">
-    <FormLabel className={`${formLabelBootstrapClasses} col-form-label`} htmlFor={fieldName1}>
+    <FormLabel className={`${FORM_LABEL_BOOTSTRAP_CLASSES} col-form-label`} htmlFor={fieldName1}>
       {label}
     </FormLabel>
     <Field name={fieldName1}>

@@ -12,9 +12,9 @@ import DonationForm from '../../components/DonationForm'
 import PageSection from '../../components/DonationForm/PageSection'
 import CenteredText from '../../components/CenteredText'
 import {
-  fieldName,
-  saProjectId,
-} from '../../components/DonationForm/constants'
+  SA_PROJECT_ID,
+} from '../../components/DonationForm/constants/formValues'
+import { PROJECT_ID } from '../../components/DonationForm/constants/fieldNames'
 
 const MainHeading = styled.h1`
   width: 100%;
@@ -59,7 +59,7 @@ const Donate = ({
       otherAmountPlaceholder={section3Text}
       projectHeadline={section1title}
       initialValues={{
-        [fieldName.projectId]: saProjectId,
+        [PROJECT_ID]: SA_PROJECT_ID,
       }}
       showProjects
     />
