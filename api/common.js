@@ -62,14 +62,18 @@ export const unwrapPageUrl = (pageUrl) => {
 
   // Contentful allows the editors to input either 'http' or 'https'.
   // Additionally, editors can choose to include or exclude the 'www'.
-  // Splitting on 'masifunde.de' without 'http' or 'www' will cover all these scenarios.
-  // Limiting the amount of splits to 2 will avoid any potential bugs from e.g a query param.
-  const splitResult = pageUrl.split('masifunde.de', 2)
-  const url = splitResult.length > 1
-    ? splitResult[1]
-    : splitResult[0]
+  const regex = /http(s)?:\/\/(www.)?masifunde.de/
 
-  return url || RouteNames.Index
+  const matches = pageUrl.match(regex)
+  const regexMatchesStartOfUrl = matches && matches.index === 0
+  if (regexMatchesStartOfUrl) {
+    const matchLength = matches[0].length
+    // remove the part of the url that matches the regex
+    const internalUrl = pageUrl.substring(matchLength)
+    return internalUrl || RouteNames.Index
+  }
+
+  return pageUrl
 }
 
 const unwrapRegionWithContactDetails = ({ fields }) => ({
