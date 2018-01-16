@@ -8,13 +8,13 @@ import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchDonatePage } from '../../api/howToSupport'
 import LayoutWrapper from '../../components/LayoutWrapper'
-import DonationForm from '../../components/Fundraisingbox/DonationForm'
-import PageSection from '../../components/Fundraisingbox/FundraisingPageSection'
+import DonationForm from '../../components/DonationForm'
+import PageSection from '../../components/DonationForm/PageSection'
 import CenteredText from '../../components/CenteredText'
 import {
   fieldName,
   saProjectId,
-} from '../../components/Fundraisingbox/constants'
+} from '../../components/DonationForm/constants'
 
 const MainHeading = styled.h1`
   width: 100%;

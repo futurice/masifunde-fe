@@ -4,7 +4,7 @@ import FundraisingboxLink from './FundraisingboxLink'
 import PageSection from '../PageSection'
 import SubHeader from './SubHeader'
 import FundraisingIframe from './FundraisingIframe'
-import FundraisingFormContainer from './FundraisingFormContainer'
+import FormContainer from './FormContainer'
 
 const FundraisingIframeContainer = ({
   fields,
@@ -14,17 +14,17 @@ const FundraisingIframeContainer = ({
   pullLeft,
 }) => (
   <PageSection contained={false}>
-    <FundraisingFormContainer pullLeft={pullLeft}>
+    <FormContainer pullLeft={pullLeft}>
       <SubHeader>{formTitle}</SubHeader>
-    </FundraisingFormContainer>
+    </FormContainer>
     <FundraisingIframe
       onMouseHover={onMouseHover}
       hash={hash}
       {...fields}
     />
-    <FundraisingFormContainer pullLeft={pullLeft}>
+    <FormContainer pullLeft={pullLeft}>
       <FundraisingboxLink />
-    </FundraisingFormContainer>
+    </FormContainer>
   </PageSection>
 )
 

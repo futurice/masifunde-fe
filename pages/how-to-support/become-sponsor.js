@@ -10,8 +10,8 @@ import { fetchBecomeASponsorPage } from '../../api/howToSupport'
 import imagePropTypes from '../../propTypes/image'
 import PageSection from '../../components/PageSection'
 import RoundedImage from '../../components/RoundedImage'
-import DonationForm from '../../components/Fundraisingbox/DonationForm'
-import { fieldName } from '../../components/Fundraisingbox/constants'
+import DonationForm from '../../components/DonationForm'
+import { fieldName } from '../../components/DonationForm/constants'
 
 const Image = RoundedImage.extend`
   width: 100%;

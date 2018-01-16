@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Field } from 'react-final-form'
 
 import ErrorMessage from './ErrorMessage'
-import FormLabel from './DonationFormLabel'
+import FormLabel from './FormLabel'
 import { formLabelBootstrapClasses } from './constants'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import { formInputClassFactory } from './utils/formInputClassFactory'
