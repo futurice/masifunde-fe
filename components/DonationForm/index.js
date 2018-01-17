@@ -44,7 +44,6 @@ const HiddenButton = styled.button`
 
 const DonationForm = ({
   formTitle,
-  pullLeft,
   fundraisingboxIframeTitle,
   validateForm,
   fields,
@@ -88,7 +87,7 @@ const DonationForm = ({
         validate={validateForm}
         render={({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit}>
-            <FormContainer pullLeft={pullLeft}>
+            <FormContainer>
               {showProjects && (
                 <ProjectField
                   deProjectId={DE_PROJECT_ID}
@@ -168,7 +167,6 @@ const DonationForm = ({
       />
 
       <FundraisingIframeContainer
-        pullLeft={pullLeft}
         formTitle={fundraisingboxIframeTitle}
         onMouseHover={submitForm}
         hash="j3ip42zwp3mlewb9"
@@ -181,7 +179,6 @@ const DonationForm = ({
 DonationForm.propTypes = {
   fundraisingboxIframeTitle: PropTypes.string.isRequired,
   formTitle: PropTypes.string.isRequired,
-  pullLeft: PropTypes.bool,
   fields: PropTypes.shape().isRequired,
   projectHeadline: PropTypes.string,
   buttonProjectDeText: PropTypes.string,
@@ -199,7 +196,6 @@ DonationForm.propTypes = {
 }
 
 DonationForm.defaultProps = {
-  pullLeft: false,
   projectHeadline: undefined,
   buttonProjectDeText: undefined,
   buttonProjectSaText: undefined,
