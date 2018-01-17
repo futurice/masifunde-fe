@@ -1,6 +1,10 @@
 import { fetchSingleEntry } from './contentfulService'
 import {
-  unwrapAward, unwrapImage, unwrapPageUrl, unwrapPartner, unwrapRegionalGroups,
+  unwrapAward,
+  unwrapImage,
+  unwrapPageUrl,
+  unwrapPartner,
+  unwrapRegionalGroups,
   unwrapTeamMembers,
 } from './common'
 
