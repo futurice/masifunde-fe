@@ -62,6 +62,7 @@ const Donate = ({
         [PROJECT_ID]: SA_PROJECT_ID,
       }}
       enableProjectSelection
+      enableOtherAmount
     />
 
     <Banner
