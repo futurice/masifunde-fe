@@ -11,9 +11,9 @@ import FundraisingIframeContainer from './FundraisingIframeContainer'
 import InputField from './InputField'
 import SelectField from './SelectField'
 import MultipleInputField from './MultipleInputField'
-import ProjectField from './ProjectField'
-import IntervalField from './IntervalField'
-import AmountField from './AmountField'
+import ProjectFieldSection from './ProjectFieldSection'
+import IntervalFormSection from './IntervalFormSection'
+import AmountFieldSection from './AmountFieldSection'
 import withFormState from './withFormState'
 import {
   COUNTRY_GERMANY,
@@ -91,7 +91,7 @@ const DonationForm = ({
           <form onSubmit={handleSubmit}>
             <FormContainer>
               {enableProjectSelection && (
-                <ProjectField
+                <ProjectFieldSection
                   deProjectId={DE_PROJECT_ID}
                   fieldName={PROJECT_ID}
                   markdownDe={buttonProjectDeText}
@@ -101,13 +101,13 @@ const DonationForm = ({
                 />
               )}
 
-              <IntervalField
+              <IntervalFormSection
                 fieldName={PAYMENT_INTERVAL}
                 title={intervalTitle}
                 intervals={intervals}
               />
 
-              <AmountField
+              <AmountFieldSection
                 fieldName={AMOUNT}
                 title={amountTitle}
                 amounts={amounts}
@@ -187,9 +187,9 @@ DonationForm.propTypes = {
   buttonProjectSaText: PropTypes.string,
   amountTitle: PropTypes.string.isRequired,
   // eslint-disable-next-line react/require-default-props
-  amounts: AmountField.propTypes.amounts,
+  amounts: AmountFieldSection.propTypes.amounts,
   // eslint-disable-next-line react/require-default-props
-  intervals: IntervalField.propTypes.intervals,
+  intervals: IntervalFormSection.propTypes.intervals,
   intervalTitle: PropTypes.string.isRequired,
   otherAmountPlaceholder: PropTypes.string,
   validateForm: PropTypes.func.isRequired,
