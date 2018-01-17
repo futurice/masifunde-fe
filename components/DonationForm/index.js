@@ -56,7 +56,7 @@ const DonationForm = ({
   amountTitle,
   intervalTitle,
   initialValues,
-  showProjects,
+  enableProjectSelection,
 }) => {
   let formRef
 
@@ -88,7 +88,7 @@ const DonationForm = ({
         render={({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit}>
             <FormContainer>
-              {showProjects && (
+              {enableProjectSelection && (
                 <ProjectField
                   deProjectId={DE_PROJECT_ID}
                   fieldName={PROJECT_ID}
@@ -192,7 +192,7 @@ DonationForm.propTypes = {
   otherAmountPlaceholder: PropTypes.string,
   validateForm: PropTypes.func.isRequired,
   initialValues: PropTypes.shape(),
-  showProjects: PropTypes.bool,
+  enableProjectSelection: PropTypes.bool,
 }
 
 DonationForm.defaultProps = {
@@ -200,7 +200,7 @@ DonationForm.defaultProps = {
   buttonProjectDeText: undefined,
   buttonProjectSaText: undefined,
   initialValues: {},
-  showProjects: false,
+  enableProjectSelection: false,
   otherAmountPlaceholder: 'Other',
 }
 

@@ -61,7 +61,7 @@ const Donate = ({
       initialValues={{
         [PROJECT_ID]: SA_PROJECT_ID,
       }}
-      showProjects
+      enableProjectSelection
     />
 
     <Banner
