@@ -6,3 +6,6 @@ export const RECEIPT_NOW_OPTION_VALUE = 'receipt_now'
 
 export const DE_PROJECT_ID = '3531'
 export const SA_PROJECT_ID = '3522'
+export const LEARN_4_LIFE_PROJECT_ID = '3520'
+
+export const COUNTRY_GERMANY = 'DE'

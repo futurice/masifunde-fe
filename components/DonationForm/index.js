@@ -16,6 +16,7 @@ import IntervalField from './IntervalField'
 import AmountField from './AmountField'
 import withFormState from './withFormState'
 import {
+  COUNTRY_GERMANY,
   DE_PROJECT_ID,
   NO_RECEIPT_OPTION_VALUE,
   RECEIPT_NOW_OPTION_VALUE,
@@ -81,7 +82,7 @@ const DonationForm = ({
         onSubmit={() => {}}
         initialValues={{
           [WANTS_RECEIPT]: RECEIPT_NOW_OPTION_VALUE,
-          [COUNTRY]: 'DE',
+          [COUNTRY]: COUNTRY_GERMANY,
           ...initialValues,
         }}
         validate={validateForm}
