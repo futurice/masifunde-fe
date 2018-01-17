@@ -11,10 +11,9 @@ const FundraisingIframeContainer = ({
   formTitle,
   hash,
   onMouseHover,
-  pullLeft,
 }) => (
   <PageSection contained={false}>
-    <FormContainer pullLeft={pullLeft}>
+    <FormContainer>
       <SubHeader>{formTitle}</SubHeader>
     </FormContainer>
     <FundraisingIframe
@@ -22,7 +21,7 @@ const FundraisingIframeContainer = ({
       hash={hash}
       {...fields}
     />
-    <FormContainer pullLeft={pullLeft}>
+    <FormContainer>
       <FundraisingboxLink />
     </FormContainer>
   </PageSection>
@@ -33,12 +32,10 @@ FundraisingIframeContainer.propTypes = {
   formTitle: PropTypes.string.isRequired,
   hash: PropTypes.string.isRequired,
   onMouseHover: PropTypes.func.isRequired,
-  pullLeft: PropTypes.bool,
 }
 
 FundraisingIframeContainer.defaultProps = {
   fields: undefined,
-  pullLeft: false,
 }
 
 export default FundraisingIframeContainer
