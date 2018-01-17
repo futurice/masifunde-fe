@@ -58,6 +58,7 @@ const DonationForm = ({
   intervalTitle,
   initialValues,
   enableProjectSelection,
+  enableOtherAmount,
 }) => {
   let formRef
 
@@ -110,7 +111,7 @@ const DonationForm = ({
                 fieldName={AMOUNT}
                 title={amountTitle}
                 amounts={amounts}
-                enableOtherAmount
+                enableOtherAmount={enableOtherAmount}
                 otherAmountPlaceholder={otherAmountPlaceholder}
               />
 
@@ -194,6 +195,7 @@ DonationForm.propTypes = {
   validateForm: PropTypes.func.isRequired,
   initialValues: PropTypes.shape(),
   enableProjectSelection: PropTypes.bool,
+  enableOtherAmount: PropTypes.bool,
 }
 
 DonationForm.defaultProps = {
@@ -203,6 +205,7 @@ DonationForm.defaultProps = {
   initialValues: {},
   enableProjectSelection: false,
   otherAmountPlaceholder: 'Other',
+  enableOtherAmount: false,
 }
 
 export default withFormState(DonationForm)
