@@ -89,7 +89,7 @@ const findAmountDescription = (searchedValue, amounts) => {
   return object ? object.description : null
 }
 
-const DonationAmountField = ({
+const AmountFormSection = ({
   fieldName,
   title,
   amounts,
@@ -155,7 +155,7 @@ const DonationAmountField = ({
   </Field>
 )
 
-DonationAmountField.propTypes = {
+AmountFormSection.propTypes = {
   fieldName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   enableOtherAmount: PropTypes.bool,
@@ -166,9 +166,9 @@ DonationAmountField.propTypes = {
   }).isRequired).isRequired,
 }
 
-DonationAmountField.defaultProps = {
+AmountFormSection.defaultProps = {
   enableOtherAmount: false,
   otherAmountPlaceholder: 'Other',
 }
 
-export default DonationAmountField
+export default AmountFormSection

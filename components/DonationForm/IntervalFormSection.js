@@ -28,7 +28,7 @@ const IntervalLabelButton = LabelButton.extend`
   }
 `
 
-const DonationIntervalField = ({
+const IntervalFormSection = ({
   fieldName,
   title,
   intervals,
@@ -62,7 +62,7 @@ const DonationIntervalField = ({
   </Field>
 )
 
-DonationIntervalField.propTypes = {
+IntervalFormSection.propTypes = {
   fieldName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   intervals: PropTypes.arrayOf(PropTypes.shape({
@@ -71,4 +71,4 @@ DonationIntervalField.propTypes = {
   }).isRequired).isRequired,
 }
 
-export default DonationIntervalField
+export default IntervalFormSection

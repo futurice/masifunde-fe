@@ -7,7 +7,7 @@ import FormLabel from './FormLabel'
 import { FORM_INPUT_BOOTSTRAP_CLASSES, FORM_LABEL_BOOTSTRAP_CLASSES } from './constants/formValues'
 import { formInputClassFactory } from './utils/formInputClassFactory'
 
-const DonationInputField = ({
+const InputField = ({
   fieldName,
   label,
   type,
@@ -35,14 +35,14 @@ const DonationInputField = ({
   </div>
 )
 
-DonationInputField.propTypes = {
+InputField.propTypes = {
   fieldName: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['text', 'email']),
 }
 
-DonationInputField.defaultProps = {
+InputField.defaultProps = {
   type: 'text',
 }
 
-export default DonationInputField
+export default InputField

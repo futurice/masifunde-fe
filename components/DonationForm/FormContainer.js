@@ -12,7 +12,7 @@ const SubContainer = styled.div`
   }
 `
 
-const FundraisingFormContainer = ({ children }) => (
+const FormContainer = ({ children }) => (
   <Container>
     <SubContainer>
       {children}
@@ -20,8 +20,8 @@ const FundraisingFormContainer = ({ children }) => (
   </Container>
 )
 
-FundraisingFormContainer.propTypes = {
+FormContainer.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default FundraisingFormContainer
+export default FormContainer

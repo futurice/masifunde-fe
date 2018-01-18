@@ -8,7 +8,7 @@ import FormLabel from './FormLabel'
 import { FORM_INPUT_BOOTSTRAP_CLASSES, FORM_LABEL_BOOTSTRAP_CLASSES } from './constants/formValues'
 import { formInputClassFactory } from './utils/formInputClassFactory'
 
-const DonationSelectField = ({
+const SelectField = ({
   fieldName,
   inputClassName,
   label,
@@ -43,7 +43,7 @@ const DonationSelectField = ({
   </div>
 )
 
-DonationSelectField.propTypes = {
+SelectField.propTypes = {
   fieldName: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
@@ -55,8 +55,8 @@ DonationSelectField.propTypes = {
   inputClassName: PropTypes.string,
 }
 
-DonationSelectField.defaultProps = {
+SelectField.defaultProps = {
   inputClassName: FORM_INPUT_BOOTSTRAP_CLASSES,
 }
 
-export default DonationSelectField
+export default SelectField
