@@ -12,6 +12,7 @@ function addRoute(pattern, page) {
 
 // Paths to pages
 const Index = '/home'
+const ErrorPage404 = '/404'
 const WhatWeDo = '/what-we-do'
 const ApproachDE = '/what-we-do/approach-de'
 const ApproachSA = '/what-we-do/approach-sa'
@@ -30,6 +31,7 @@ const Datenschutz = '/datenschutz'
 
 // Register the routes
 addRoute('/', Index)
+addRoute('/404', ErrorPage404)
 addRoute('/was-wir-machen', WhatWeDo)
 addRoute('/was-wir-machen/ansatz-de', ApproachDE)
 addRoute('/was-wir-machen/ansatz-sa', ApproachSA)
@@ -52,6 +54,7 @@ addRoute('/datenschutz', Datenschutz)
 // Share route names
 nextRoutes.RouteNames = {
   Index,
+  ErrorPage404,
   WhatWeDo,
   ApproachDE,
   ApproachSA,
