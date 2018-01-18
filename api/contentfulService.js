@@ -19,6 +19,7 @@ export function fetchEntriesForContentType(contentType, config) {
     })
     .then(response => response.items)
     .catch((error) => {
+      /* eslint-disable no-console */
       console.log(`Error occurred while fetching Entries for ${contentType.name}:`)
       console.error(error)
     })
