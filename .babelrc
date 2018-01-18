@@ -2,7 +2,7 @@
   "presets": [
     "next/babel"
   ],
-  "plugins": ["polished"],
+  "plugins": ["polished", "transform-inline-environment-variables"],
   "env": {
     "development": {
       "plugins": [
