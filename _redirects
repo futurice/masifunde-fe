@@ -1,7 +1,7 @@
-/ueber-uns /wer-wir-sind
+/ueber-uns/* /wer-wir-sind
 /transparenz /was-wir-machen
 /projekte/*  /was-wir-machen
-/du-bei-masifunde/*  /wie-sie-helfen
 /ihre-unterstuetzung/*  /wie-sie-helfen
-/jetzt-spenden/* /wie-sie-helfen/spenden
+/du-bei-masifunde/*  /wie-sie-helfen/aktiv-werden
 /unterwegs-in-de/* /was-wir-machen/ansatz-de/
+/jetzt-spenden/* /wie-sie-helfen/spenden
