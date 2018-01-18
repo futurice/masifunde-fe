@@ -18,7 +18,7 @@ const SecondInputContainer = styled.div`
   }
 `
 
-const DonationMultipleInputField = ({
+const MultipleInputField = ({
   fieldName1,
   fieldName2,
   label,
@@ -59,15 +59,15 @@ const DonationMultipleInputField = ({
   </div>
 )
 
-DonationMultipleInputField.propTypes = {
+MultipleInputField.propTypes = {
   fieldName1: PropTypes.string.isRequired,
   fieldName2: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['text', 'email']),
 }
 
-DonationMultipleInputField.defaultProps = {
+MultipleInputField.defaultProps = {
   type: 'text',
 }
 
-export default DonationMultipleInputField
+export default MultipleInputField

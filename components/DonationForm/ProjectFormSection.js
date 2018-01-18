@@ -19,7 +19,7 @@ const CountryLabelContainer = styled.div`
   }
 `
 
-const DonationProjectField = ({
+const ProjectFormSection = ({
   deProjectId,
   fieldName,
   markdownDe,
@@ -71,7 +71,7 @@ const DonationProjectField = ({
   </Field>
 )
 
-DonationProjectField.propTypes = {
+ProjectFormSection.propTypes = {
   deProjectId: PropTypes.string.isRequired,
   fieldName: PropTypes.string.isRequired,
   markdownDe: PropTypes.string.isRequired,
@@ -80,4 +80,4 @@ DonationProjectField.propTypes = {
   title: PropTypes.string.isRequired,
 }
 
-export default DonationProjectField
+export default ProjectFormSection
