@@ -64,7 +64,7 @@ function Hero({
     <HeroImage
       backgroundPositionX={backgroundPositionX}
       className={`d-flex flex-column justify-content-end
-      ${getPlacementClass(headlinePlacement)}`}
+        ${getPlacementClass(headlinePlacement)}`}
       imageUrl={imageUrl}
       size={heroSize}
     >
