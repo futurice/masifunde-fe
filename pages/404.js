@@ -15,16 +15,18 @@ const StyledMarkdown = styled(Markdown)`
 `
 
 const ErrorPage404 = ({
-  metaTitle,
-  bannerTitle,
   bannerButtonText,
   bannerButtonUrl,
+  bannerTitle,
+  metaTitle,
   section1Markdown,
+  section1Title,
 }) => (
   <Fragment>
     <Head title={metaTitle} />
 
     <PageSection>
+      <h1>{section1Title}</h1>
       <StyledMarkdown source={section1Markdown} />
     </PageSection>
 
@@ -38,6 +40,7 @@ const ErrorPage404 = ({
 
 ErrorPage404.propTypes = {
   metaTitle: PropTypes.string.isRequired,
+  section1Title: PropTypes.string.isRequired,
   section1Markdown: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
