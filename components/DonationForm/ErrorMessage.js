@@ -6,9 +6,9 @@ const Error = styled.div`
   color: ${props => props.theme.error};
 `
 
-const ErrorMessage = ({ meta }) => (
+const ErrorMessage = ({ meta, ...rest }) => (
   meta.error && meta.touched
-    ? <Error>{meta.error}</Error>
+    ? <Error {...rest}>{meta.error}</Error>
     : null
 )
 

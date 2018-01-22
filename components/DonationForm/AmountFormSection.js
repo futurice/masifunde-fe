@@ -143,8 +143,8 @@ const AmountFormSection = ({
                 )}
               </Fragment>
             )}
-            <ErrorMessage meta={meta} />
           </AmountLabelsContainer>
+          <ErrorMessage className="row" meta={meta} />
         </PageSection>
       )
     }}
