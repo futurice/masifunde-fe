@@ -98,8 +98,9 @@ const AmountFormSection = ({
   otherAmountPlaceholder,
   minimumYearlyAmount,
 }) => {
-  const filterAmountsForInterval = ({ value }) =>
+  const filterMinimumYearlyAmount = ({ value }) =>
     (12 / interval) * value >= minimumYearlyAmount
+  const filteredAmounts = amounts.filter(filterMinimumYearlyAmount)
 
   return (
     <Field name={fieldName}>
@@ -109,30 +110,27 @@ const AmountFormSection = ({
         <PageSection>
           <SubHeader className="row">{title}</SubHeader>
           <AmountLabelsContainer className="row">
-            {amounts
-              .filter(filterAmountsForInterval)
-              .map(({ text, value }) => {
-                const isChecked = Number(input.value) === value
-                return (
-                  <AmountLabelButton
-                    className="btn"
-                    isActive={isChecked}
-                    key={value}
-                    htmlFor={`amountInputOption${value}`}
-                  >
-                    <input
-                      {...input}
-                      type="radio"
-                      checked={isChecked}
-                      value={value}
-                      id={`amountInputOption${value}`}
-                      autoComplete="off"
-                    />
-                    {text}
-                  </AmountLabelButton>
-                )
-              })
-            }
+            {filteredAmounts.map(({ text, value }) => {
+              const isChecked = Number(input.value) === value
+              return (
+                <AmountLabelButton
+                  className="btn"
+                  isActive={isChecked}
+                  key={value}
+                  htmlFor={`amountInputOption${value}`}
+                >
+                  <input
+                    {...input}
+                    type="radio"
+                    checked={isChecked}
+                    value={value}
+                    id={`amountInputOption${value}`}
+                    autoComplete="off"
+                  />
+                  {text}
+                </AmountLabelButton>
+              )
+            })}
             {enableOtherAmount && (
               <Fragment>
                 <OtherAmountContainer>
