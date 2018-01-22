@@ -72,8 +72,8 @@ const AmountDescription = styled.div`
   span {
     color: #333333;
     text-align: left;
-    
-    &:first-of-type{
+
+    &:first-of-type {
       color: ${({ theme }) => theme.orange};
       font-weight: bold;
     }
@@ -103,50 +103,46 @@ const AmountFormSection = ({
         <PageSection>
           <SubHeader className="row">{title}</SubHeader>
           <AmountLabelsContainer className="row">
-            {amounts.map(({ text, value }) => (
-              <AmountLabelButton
-                className="btn"
-                isActive={Number(input.value) === value}
-                key={value}
-                htmlFor={`amountInputOption${value}`}
-              >
-                <input
-                  {...input}
-                  type="radio"
-                  value={value}
-                  id={`amountInputOption${value}`}
-                  autoComplete="off"
-                />
-                {text}
-              </AmountLabelButton>
-            ))}
-            {enableOtherAmount
-              ? (
-                <Fragment>
-                  <OtherAmountContainer>
-                    <EuroPostfix>€</EuroPostfix>
-                    <input
-                      {...input}
-                      className="form-control"
-                      type="text"
-                      placeholder={otherAmountPlaceholder}
-                    />
-                  </OtherAmountContainer>
-                  {
-                    amountDescription
-                      ? (
-                        <AmountDescription>
-                          <span>{input.value}€ </span>
-                          <span>
-                            = {amountDescription}
-                          </span>
-                        </AmountDescription>
-                        )
-                      : null
-                  }
-                </Fragment>)
-              : null
-            }
+            {amounts.map(({ text, value }) => {
+              const isChecked = Number(input.value) === value
+              return (
+                <AmountLabelButton
+                  className="btn"
+                  isActive={isChecked}
+                  key={value}
+                  htmlFor={`amountInputOption${value}`}
+                >
+                  <input
+                    {...input}
+                    type="radio"
+                    checked={isChecked}
+                    value={value}
+                    id={`amountInputOption${value}`}
+                    autoComplete="off"
+                  />
+                  {text}
+                </AmountLabelButton>
+              )
+            })}
+            {enableOtherAmount && (
+              <Fragment>
+                <OtherAmountContainer>
+                  <EuroPostfix>€</EuroPostfix>
+                  <input
+                    {...input}
+                    className="form-control"
+                    type="text"
+                    placeholder={otherAmountPlaceholder}
+                  />
+                </OtherAmountContainer>
+                {amountDescription && (
+                  <AmountDescription>
+                    <span>{input.value}€ </span>
+                    <span>= {amountDescription}</span>
+                  </AmountDescription>
+                )}
+              </Fragment>
+            )}
             <ErrorMessage meta={meta} />
           </AmountLabelsContainer>
         </PageSection>

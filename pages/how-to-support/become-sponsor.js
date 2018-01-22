@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
+import createDecorator from 'final-form-calculate'
 
 import LayoutWrapper from '../../components/LayoutWrapper'
 import Banner from '../../components/Banner'
@@ -11,12 +12,23 @@ import imagePropTypes from '../../propTypes/image'
 import PageSection from '../../components/PageSection'
 import RoundedImage from '../../components/RoundedImage'
 import DonationForm from '../../components/DonationForm'
-import { PROJECT_ID } from '../../components/DonationForm/constants/fieldNames'
+import {
+  AMOUNT,
+  PAYMENT_INTERVAL,
+  PROJECT_ID,
+} from '../../components/DonationForm/constants/fieldNames'
 import { LEARN_4_LIFE_PROJECT_ID } from '../../components/DonationForm/constants/formValues'
 
 const Image = RoundedImage.extend`
   width: 100%;
 `
+
+const changeAmountValueOnPaymentInterval = createDecorator({
+  field: PAYMENT_INTERVAL,
+  updates: {
+    [AMOUNT]: () => undefined,
+  },
+})
 
 const BecomeSponsor = ({
   metaTitle,
@@ -69,6 +81,7 @@ const BecomeSponsor = ({
       fundraisingboxIframeTitle={section5Title}
       intervals={section2ReferenceList}
       intervalTitle={section2Title}
+      decorators={[changeAmountValueOnPaymentInterval]}
       initialValues={{
         [PROJECT_ID]: LEARN_4_LIFE_PROJECT_ID,
       }}

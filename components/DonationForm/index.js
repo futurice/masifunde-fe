@@ -47,6 +47,7 @@ const DonationForm = ({
   formTitle,
   fundraisingboxIframeTitle,
   validateForm,
+  decorators,
   fields,
   projectHeadline,
   buttonProjectDeText,
@@ -81,6 +82,7 @@ const DonationForm = ({
     <Fragment>
       <Form
         onSubmit={() => {}}
+        decorators={decorators}
         initialValues={{
           [WANTS_RECEIPT]: RECEIPT_NOW_OPTION_VALUE,
           [COUNTRY]: COUNTRY_GERMANY,
@@ -196,6 +198,7 @@ DonationForm.propTypes = {
   initialValues: PropTypes.shape(),
   enableProjectSelection: PropTypes.bool,
   enableOtherAmount: PropTypes.bool,
+  decorators: PropTypes.arrayOf(PropTypes.func),
 }
 
 DonationForm.defaultProps = {
@@ -206,6 +209,7 @@ DonationForm.defaultProps = {
   enableProjectSelection: false,
   otherAmountPlaceholder: 'Other',
   enableOtherAmount: false,
+  decorators: [],
 }
 
 export default withFormState(DonationForm)
