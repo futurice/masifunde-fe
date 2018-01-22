@@ -23,20 +23,18 @@ const UncontainedPageSection = styled.div`
   ${pageSectionStyle}
 `
 
-const PageSection = ({ children, className, contained }) => (
+const PageSection = ({ children, contained, ...rest }) => (
   contained
-    ? <ContainedPageSection className={className}>{children}</ContainedPageSection>
-    : <UncontainedPageSection className={className}>{children}</UncontainedPageSection>
+    ? <ContainedPageSection {...rest}>{children}</ContainedPageSection>
+    : <UncontainedPageSection {...rest}>{children}</UncontainedPageSection>
 )
 
 PageSection.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
   contained: PropTypes.bool,
 }
 
 PageSection.defaultProps = {
-  className: '',
   contained: true,
 }
 
