@@ -90,40 +90,49 @@ const findAmountDescription = (searchedValue, amounts) => {
 }
 
 const AmountFormSection = ({
+  interval,
   fieldName,
   title,
   amounts,
   enableOtherAmount,
   otherAmountPlaceholder,
-}) => (
-  <Field name={fieldName}>
-    {({ input, meta }) => {
+  minimumYearlyAmount,
+}) => {
+  const filterAmountsForInterval = ({ value }) =>
+    (12 / interval) * value >= minimumYearlyAmount
+
+  return (
+    <Field name={fieldName}>
+      {({ input, meta }) => {
       const amountDescription = findAmountDescription(input.value, amounts)
       return (
         <PageSection>
           <SubHeader className="row">{title}</SubHeader>
           <AmountLabelsContainer className="row">
-            {amounts.map(({ text, value }) => {
-              const isChecked = Number(input.value) === value
-              return (
-                <AmountLabelButton
-                  className="btn"
-                  isActive={isChecked}
-                  key={value}
-                  htmlFor={`amountInputOption${value}`}
-                >
-                  <input
-                    {...input}
-                    type="radio"
-                    checked={isChecked}
-                    value={value}
-                    id={`amountInputOption${value}`}
-                    autoComplete="off"
-                  />
-                  {text}
-                </AmountLabelButton>
-              )
-            })}
+            {amounts
+              .filter(filterAmountsForInterval)
+              .map(({ text, value }) => {
+                const isChecked = Number(input.value) === value
+                return (
+                  <AmountLabelButton
+                    className="btn"
+                    isActive={isChecked}
+                    key={value}
+                    htmlFor={`amountInputOption${value}`}
+                  >
+                    <input
+                      {...input}
+                      type="radio"
+                      checked={isChecked}
+                      value={value}
+                      id={`amountInputOption${value}`}
+                      autoComplete="off"
+                    />
+                    {text}
+                  </AmountLabelButton>
+                )
+              })
+            }
             {enableOtherAmount && (
               <Fragment>
                 <OtherAmountContainer>
@@ -148,23 +157,28 @@ const AmountFormSection = ({
         </PageSection>
       )
     }}
-  </Field>
-)
+    </Field>
+  )
+}
 
 AmountFormSection.propTypes = {
   fieldName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   enableOtherAmount: PropTypes.bool,
   otherAmountPlaceholder: PropTypes.string,
+  interval: PropTypes.string,
   amounts: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
   }).isRequired).isRequired,
+  minimumYearlyAmount: PropTypes.string,
 }
 
 AmountFormSection.defaultProps = {
   enableOtherAmount: false,
   otherAmountPlaceholder: 'Other',
+  interval: '0',
+  minimumYearlyAmount: '0',
 }
 
 export default AmountFormSection

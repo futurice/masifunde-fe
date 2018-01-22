@@ -60,6 +60,7 @@ const DonationForm = ({
   initialValues,
   enableProjectSelection,
   enableOtherAmount,
+  minimumYearlyAmount,
 }) => {
   let formRef
 
@@ -115,6 +116,8 @@ const DonationForm = ({
                 amounts={amounts}
                 enableOtherAmount={enableOtherAmount}
                 otherAmountPlaceholder={otherAmountPlaceholder}
+                interval={values[PAYMENT_INTERVAL]}
+                minimumYearlyAmount={minimumYearlyAmount}
               />
 
               <PageSection contained={false}>
@@ -199,6 +202,7 @@ DonationForm.propTypes = {
   enableProjectSelection: PropTypes.bool,
   enableOtherAmount: PropTypes.bool,
   decorators: PropTypes.arrayOf(PropTypes.func),
+  minimumYearlyAmount: PropTypes.string,
 }
 
 DonationForm.defaultProps = {
@@ -210,6 +214,7 @@ DonationForm.defaultProps = {
   otherAmountPlaceholder: 'Other',
   enableOtherAmount: false,
   decorators: [],
+  minimumYearlyAmount: '0',
 }
 
 export default withFormState(DonationForm)

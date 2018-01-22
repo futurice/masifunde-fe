@@ -85,6 +85,7 @@ const BecomeSponsor = ({
       initialValues={{
         [PROJECT_ID]: LEARN_4_LIFE_PROJECT_ID,
       }}
+      minimumYearlyAmount="120"
     />
 
     <Banner
