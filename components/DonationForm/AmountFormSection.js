@@ -10,6 +10,7 @@ import SubHeader from './SubHeader'
 import PageSection from './PageSection'
 import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import { fundraisingFormSpacing } from '../../utils/constants'
+import { MONTHS_IN_YEAR } from './constants/formValues'
 
 const otherAmountInputWidth = '30%'
 
@@ -99,7 +100,7 @@ const AmountFormSection = ({
   minimumYearlyAmount,
 }) => {
   const filterMinimumYearlyAmount = ({ value }) =>
-    (12 / interval) * value >= minimumYearlyAmount
+    (MONTHS_IN_YEAR / interval) * value >= minimumYearlyAmount
   const filteredAmounts = amounts.filter(filterMinimumYearlyAmount)
 
   return (

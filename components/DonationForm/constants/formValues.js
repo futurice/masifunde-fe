@@ -9,3 +9,5 @@ export const SA_PROJECT_ID = '3522'
 export const LEARN_4_LIFE_PROJECT_ID = '3520'
 
 export const COUNTRY_GERMANY = 'DE'
+
+export const MONTHS_IN_YEAR = 12
