@@ -87,7 +87,7 @@ const Layout = ({ headerData, children, footerData }) => (
         <link rel="icon" type="image/png" href="/static/favicon/favicon-16x16.png" sizes="16x16" />
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.2/dist/css/bootstrap.min.css"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0/dist/css/bootstrap.min.css"
         />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
         <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
