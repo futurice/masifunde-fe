@@ -49,6 +49,7 @@ const BecomeSponsor = ({
   bannerTitle,
   bannerButtonText,
   bannerButtonUrl,
+  minimumYearlyAmount,
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
@@ -85,7 +86,7 @@ const BecomeSponsor = ({
       initialValues={{
         [PROJECT_ID]: LEARN_4_LIFE_PROJECT_ID,
       }}
-      minimumYearlyAmount="120"
+      minimumYearlyAmount={minimumYearlyAmount.toString()}
     />
 
     <Banner
@@ -121,6 +122,7 @@ BecomeSponsor.propTypes = {
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
+  minimumYearlyAmount: PropTypes.number.isRequired,
 }
 
 BecomeSponsor.defaultProps = {
