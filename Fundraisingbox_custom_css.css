@@ -81,6 +81,10 @@ h2 {
   display: none;
 }
 
+label.error_list > span:not(:first-of-type)::before {
+  content: '. ';
+}
+
 #amountBox,
 #donorData {
   display: none;
