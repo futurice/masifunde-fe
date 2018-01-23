@@ -39,10 +39,10 @@
     "final-form-calculate": "^1.0.2",
     "lodash": "^4.17.4",
     "memoizee": "^0.4.11",
-    "next": "^4.2.1",
+    "next": "^4.2.3",
     "next-routes": "^1.2.0",
     "nprogress": "^0.2.0",
-    "nuka-carousel": "^3.0.0",
+    "nuka-carousel": "^3.0.1",
     "polished": "^1.9.0",
     "prop-types": "^15.6.0",
     "qs": "^6.5.1",
@@ -50,24 +50,24 @@
     "react-async-script": "^0.9.1",
     "react-dom": "^16.2.0",
     "react-final-form": "^3.0.4",
-    "react-ga": "^2.3.5",
+    "react-ga": "^2.4.1",
     "react-icons": "^2.2.7",
     "react-markdown": "^2.5.1",
     "reactstrap": "^5.0.0-alpha.4",
-    "styled-components": "^2.4.0"
+    "styled-components": "^3.0.2"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.3",
+    "babel-eslint": "^8.2.1",
     "babel-plugin-polished": "^1.1.0",
-    "babel-plugin-styled-components": "^1.4.0",
+    "babel-plugin-styled-components": "^1.5.0",
     "babel-plugin-transform-inline-environment-variables": "^0.2.0",
-    "eslint": "^4.13.1",
+    "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
     "husky": "^0.14.3",
-    "lint-staged": "^6.0.0",
-    "nodemon": "^1.14.1"
+    "lint-staged": "^6.0.1",
+    "nodemon": "^1.14.11"
   }
 }
