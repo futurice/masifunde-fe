@@ -60,6 +60,9 @@ const Contact = ({
         imageUrl={member => member.image.url}
         email={member => member.email}
       />
+    </PageSection>
+
+    <PageSection>
       <TeamMemberListTitle>{regionalContactsHeading}</TeamMemberListTitle>
       <TeamMemberList
         members={regionalContacts}
