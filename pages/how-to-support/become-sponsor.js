@@ -79,6 +79,7 @@ const BecomeSponsor = ({
       amountTitle={section3Title}
       formTitle={section4Title}
       fundraisingboxIframeTitle={section5Title}
+      fundraisingboxFormHash="pr9pjwm89abksr2y"
       intervals={section2ReferenceList}
       intervalTitle={section2Title}
       decorators={[changeAmountValueOnPaymentInterval]}
