@@ -82,6 +82,18 @@ h2 {
 }
 
 label.error_list > span:not(:first-of-type)::before {
+  /*
+    Fundraisingbox can sometimes display more than one error message per input field. An example of this is if
+    you input an invalid IBAN. Then Fundraisingbox will display an error message saying it's invalid, AND an error
+    message saying it's a required field.
+
+    There's no spacing between these error messages, and the first error message (the "field invalid" one) doesn't
+    include punctuation. Hence we need a period and some space in order to properly separate these error messages.
+
+    We don't want to add the period+space at the end of every error message, as they might already end in a period
+    (like the "is required" error message already does).
+    Rather, we add it at the start of any error message that's not the first.
+  */
   content: '. ';
 }
 
