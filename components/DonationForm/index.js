@@ -46,6 +46,7 @@ const HiddenButton = styled.button`
 const DonationForm = ({
   formTitle,
   fundraisingboxIframeTitle,
+  fundraisingboxFormHash,
   validateForm,
   decorators,
   fields,
@@ -176,7 +177,7 @@ const DonationForm = ({
       <FundraisingIframeContainer
         formTitle={fundraisingboxIframeTitle}
         onMouseHover={submitForm}
-        hash="j3ip42zwp3mlewb9"
+        hash={fundraisingboxFormHash}
         fields={fields}
       />
     </Fragment>
@@ -185,6 +186,7 @@ const DonationForm = ({
 
 DonationForm.propTypes = {
   fundraisingboxIframeTitle: PropTypes.string.isRequired,
+  fundraisingboxFormHash: PropTypes.string.isRequired,
   formTitle: PropTypes.string.isRequired,
   fields: PropTypes.shape().isRequired,
   projectHeadline: PropTypes.string,

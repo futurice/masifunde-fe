@@ -54,6 +54,7 @@ const Donate = ({
       buttonProjectSaText={section1MarkdownSa}
       formTitle={section4Title}
       fundraisingboxIframeTitle={section5Title}
+      fundraisingboxFormHash="j3ip42zwp3mlewb9"
       intervals={section2ReferenceList}
       intervalTitle={section2title}
       otherAmountPlaceholder={section3Text}
