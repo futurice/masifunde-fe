@@ -11,9 +11,7 @@ import withLayout from '../../components/withLayout'
 import DonationForm from '../../components/DonationForm'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
-import {
-  SA_PROJECT_ID,
-} from '../../components/DonationForm/constants/formValues'
+import { SA_PROJECT_ID } from '../../components/DonationForm/constants/formValues'
 import { PROJECT_ID } from '../../components/DonationForm/constants/fieldNames'
 
 const MainHeading = styled.h1`
@@ -38,6 +36,7 @@ const Donate = ({
   section3Title,
   section4Title,
   section5Title,
+  iframeStatus,
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
@@ -64,6 +63,7 @@ const Donate = ({
       }}
       enableProjectSelection
       enableOtherAmount
+      iframeStatus={iframeStatus}
     />
 
     <Banner
@@ -103,14 +103,19 @@ Donate.propTypes = {
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
+  iframeStatus: PropTypes.string,
 }
 
 Donate.defaultProps = {
   metaDescription: undefined,
+  iframeStatus: undefined,
 }
 
 Donate.getInitialProps = async function initialProps({ query }) {
-  return fetchDonatePage(getLocaleFromQuery(query))
+  return {
+    iframeStatus: query && query.status,
+    ...await fetchDonatePage(getLocaleFromQuery(query)),
+  }
 }
 
 export default withLayout(Donate)
