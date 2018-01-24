@@ -11,30 +11,20 @@ import Layout from './Layout'
 
 import { propTypes as headerPropTypes } from '../components/Header/index'
 import { propTypes as footerPropTypes } from '../components/Footer'
+import { IS_PREVIEW } from '../env'
 
 export default function LayoutWrapper(Page) {
   class GetInitialPropsWrapper extends React.Component {
     state = {}
 
     componentDidMount() {
-      console.log('componentDidMount()')
       const context = window.__NEXT_DATA__
-      console.log(context)
-      if (this.isPreview(context)) {
-        console.log('Yes, is preview')
+      if (IS_PREVIEW) {
         Page.getInitialProps(context)
           .then((response) => {
-            console.log('response', response)
             this.setState({ ...response })
           })
-      } else {
-        console.log('No, is NOT preview')
       }
-    }
-
-    isPreview = ({ query }) => {
-      console.log('isPreview?')
-      return !!Object.keys(query).find(entry => entry === 'preview')
     }
 
     render() {
