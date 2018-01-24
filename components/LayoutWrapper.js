@@ -17,16 +17,25 @@ export default function LayoutWrapper(Page) {
     state = {}
 
     componentDidMount() {
+      console.log('componentDidMount()')
       const context = window.__NEXT_DATA__
+      console.log(context)
       if (this.isPreview(context)) {
+        console.log('Yes, is preview')
         Page.getInitialProps(context)
           .then((response) => {
+            console.log('response', response)
             this.setState({ ...response })
           })
+      } else {
+        console.log('No, is NOT preview')
       }
     }
 
-    isPreview = ({ query }) => !!Object.keys(query).find(entry => entry === 'preview')
+    isPreview = ({ query }) => {
+      console.log('isPreview?')
+      return !!Object.keys(query).find(entry => entry === 'preview')
+    }
 
     render() {
       const { headerData, footerData, ...rest } = this.props
