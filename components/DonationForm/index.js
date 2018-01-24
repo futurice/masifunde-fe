@@ -62,8 +62,7 @@ const DonationForm = ({
   enableProjectSelection,
   enableOtherAmount,
   minimumYearlyAmount,
-  hideForm,
-  scrollToIframe,
+  iframeStatus,
 }) => {
   let formRef
 
@@ -81,10 +80,11 @@ const DonationForm = ({
     { value: NO_RECEIPT_OPTION_VALUE, text: 'Nein, ich brauche keine Quittung' },
   ]
   const salutationOptions = [{ value: 'Mrs.', text: 'Frau' }, { value: 'Mr.', text: 'Herr' }]
+  const isIframeStatusFailureOrSuccess = iframeStatus === 'successful' || iframeStatus === 'failure'
 
   return (
     <Fragment>
-      {!hideForm && (
+      {!isIframeStatusFailureOrSuccess && (
         <Form
           onSubmit={() => {}}
           decorators={decorators}
@@ -182,7 +182,7 @@ const DonationForm = ({
         formTitle={fundraisingboxIframeTitle}
         onMouseHover={submitForm}
         hash={fundraisingboxFormHash}
-        scrollToIframe={scrollToIframe}
+        scrollToIframe={isIframeStatusFailureOrSuccess}
         fields={fields}
       />
     </Fragment>
@@ -210,8 +210,7 @@ DonationForm.propTypes = {
   enableOtherAmount: PropTypes.bool,
   decorators: PropTypes.arrayOf(PropTypes.func),
   minimumYearlyAmount: PropTypes.string,
-  hideForm: PropTypes.bool,
-  scrollToIframe: PropTypes.bool,
+  iframeStatus: PropTypes.oneOf(['successful', 'failure', undefined]),
 }
 
 DonationForm.defaultProps = {
@@ -224,8 +223,7 @@ DonationForm.defaultProps = {
   enableOtherAmount: false,
   decorators: [],
   minimumYearlyAmount: '0',
-  hideForm: false,
-  scrollToIframe: false,
+  iframeStatus: undefined,
 }
 
 export default withFormState(DonationForm)
