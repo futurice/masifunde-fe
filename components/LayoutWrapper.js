@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -12,11 +13,30 @@ import { propTypes as headerPropTypes } from '../components/Header/index'
 import { propTypes as footerPropTypes } from '../components/Footer'
 
 export default function LayoutWrapper(Page) {
-  const GetInitialPropsWrapper = ({ headerData, footerData, ...rest }) => (
-    <Layout headerData={headerData} footerData={footerData}>
-      <Page {...rest} />
-    </Layout>
-  )
+  class GetInitialPropsWrapper extends React.Component {
+    state = {}
+
+    componentDidMount() {
+      const context = window.__NEXT_DATA__
+      if (this.isPreview(context)) {
+        Page.getInitialProps(context)
+          .then((response) => {
+            this.setState({ ...response })
+          })
+      }
+    }
+
+    isPreview = ({ query }) => !!Object.keys(query).find(entry => entry === 'preview')
+
+    render() {
+      const { headerData, footerData, ...rest } = this.props
+      return (
+        <Layout headerData={headerData} footerData={footerData}>
+          <Page {...rest} {...this.state} />
+        </Layout>
+      )
+    }
+  }
 
   GetInitialPropsWrapper.propTypes = {
     headerData: PropTypes.shape(headerPropTypes).isRequired,
