@@ -62,6 +62,7 @@ const DonationForm = ({
   enableProjectSelection,
   enableOtherAmount,
   minimumYearlyAmount,
+  hideForm,
   scrollToIframe,
 }) => {
   let formRef
@@ -83,97 +84,99 @@ const DonationForm = ({
 
   return (
     <Fragment>
-      <Form
-        onSubmit={() => {}}
-        decorators={decorators}
-        initialValues={{
-          [WANTS_RECEIPT]: RECEIPT_NOW_OPTION_VALUE,
-          [COUNTRY]: COUNTRY_GERMANY,
-          ...initialValues,
-        }}
-        validate={validateForm}
-        render={({ handleSubmit, values }) => (
-          <form onSubmit={handleSubmit}>
-            <FormContainer>
-              {enableProjectSelection && (
-                <ProjectFormSection
-                  deProjectId={DE_PROJECT_ID}
-                  fieldName={PROJECT_ID}
-                  markdownDe={buttonProjectDeText}
-                  markdownSa={buttonProjectSaText}
-                  saProjectId={SA_PROJECT_ID}
-                  title={projectHeadline}
-                />
-              )}
-
-              <IntervalFormSection
-                fieldName={PAYMENT_INTERVAL}
-                title={intervalTitle}
-                intervals={intervals}
-              />
-
-              <AmountFormSection
-                fieldName={AMOUNT}
-                title={amountTitle}
-                amounts={amounts}
-                enableOtherAmount={enableOtherAmount}
-                otherAmountPlaceholder={otherAmountPlaceholder}
-                interval={values[PAYMENT_INTERVAL]}
-                minimumYearlyAmount={minimumYearlyAmount}
-              />
-
-              <PageSection contained={false}>
-                <SubHeader>{formTitle}</SubHeader>
-
-                <SelectField
-                  fieldName={SALUTATION}
-                  label="Anrede"
-                  options={salutationOptions}
-                  inputClassName="col-md-4 col-lg-3"
-                />
-
-                <InputField fieldName={TITLE} label="Titel (optional)" />
-
-                <InputField fieldName={FIRST_NAME} label="Vorname" />
-
-                <InputField fieldName={LAST_NAME} label="Nachname" />
-
-                <InputField fieldName={EMAIL} label="Email" type="email" />
-
-                <SelectField
-                  fieldName={WANTS_RECEIPT}
-                  label="Spendenquittung"
-                  options={receiptOptions}
-                />
-
-                {values[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE && (
-                  <Fragment>
-                    <InputField fieldName={COMPANY_NAME} label="Firma (optional)" />
-
-                    <InputField fieldName={ADDRESS} label="Adresse" />
-
-                    <MultipleInputField
-                      fieldName1={POST_CODE}
-                      fieldName2={CITY}
-                      label="PLZ / Ort"
-                    />
-                  </Fragment>
+      {!hideForm && (
+        <Form
+          onSubmit={() => {}}
+          decorators={decorators}
+          initialValues={{
+            [WANTS_RECEIPT]: RECEIPT_NOW_OPTION_VALUE,
+            [COUNTRY]: COUNTRY_GERMANY,
+            ...initialValues,
+          }}
+          validate={validateForm}
+          render={({ handleSubmit, values }) => (
+            <form onSubmit={handleSubmit}>
+              <FormContainer>
+                {enableProjectSelection && (
+                  <ProjectFormSection
+                    deProjectId={DE_PROJECT_ID}
+                    fieldName={PROJECT_ID}
+                    markdownDe={buttonProjectDeText}
+                    markdownSa={buttonProjectSaText}
+                    saProjectId={SA_PROJECT_ID}
+                    title={projectHeadline}
+                  />
                 )}
 
-                <SelectField fieldName={COUNTRY} label="Land" options={countriesOptions} />
+                <IntervalFormSection
+                  fieldName={PAYMENT_INTERVAL}
+                  title={intervalTitle}
+                  intervals={intervals}
+                />
 
-                <HiddenButton
-                  innerRef={(form) => {
-                    formRef = form
-                  }}
-                >
-                  Submit
-                </HiddenButton>
-              </PageSection>
-            </FormContainer>
-          </form>
-        )}
-      />
+                <AmountFormSection
+                  fieldName={AMOUNT}
+                  title={amountTitle}
+                  amounts={amounts}
+                  enableOtherAmount={enableOtherAmount}
+                  otherAmountPlaceholder={otherAmountPlaceholder}
+                  interval={values[PAYMENT_INTERVAL]}
+                  minimumYearlyAmount={minimumYearlyAmount}
+                />
+
+                <PageSection contained={false}>
+                  <SubHeader>{formTitle}</SubHeader>
+
+                  <SelectField
+                    fieldName={SALUTATION}
+                    label="Anrede"
+                    options={salutationOptions}
+                    inputClassName="col-md-4 col-lg-3"
+                  />
+
+                  <InputField fieldName={TITLE} label="Titel (optional)" />
+
+                  <InputField fieldName={FIRST_NAME} label="Vorname" />
+
+                  <InputField fieldName={LAST_NAME} label="Nachname" />
+
+                  <InputField fieldName={EMAIL} label="Email" type="email" />
+
+                  <SelectField
+                    fieldName={WANTS_RECEIPT}
+                    label="Spendenquittung"
+                    options={receiptOptions}
+                  />
+
+                  {values[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE && (
+                    <Fragment>
+                      <InputField fieldName={COMPANY_NAME} label="Firma (optional)" />
+
+                      <InputField fieldName={ADDRESS} label="Adresse" />
+
+                      <MultipleInputField
+                        fieldName1={POST_CODE}
+                        fieldName2={CITY}
+                        label="PLZ / Ort"
+                      />
+                    </Fragment>
+                  )}
+
+                  <SelectField fieldName={COUNTRY} label="Land" options={countriesOptions} />
+
+                  <HiddenButton
+                    innerRef={(form) => {
+                      formRef = form
+                    }}
+                  >
+                    Submit
+                  </HiddenButton>
+                </PageSection>
+              </FormContainer>
+            </form>
+          )}
+        />
+      )}
 
       <FundraisingIframeContainer
         formTitle={fundraisingboxIframeTitle}
@@ -207,6 +210,7 @@ DonationForm.propTypes = {
   enableOtherAmount: PropTypes.bool,
   decorators: PropTypes.arrayOf(PropTypes.func),
   minimumYearlyAmount: PropTypes.string,
+  hideForm: PropTypes.bool,
   scrollToIframe: PropTypes.bool,
 }
 
@@ -220,6 +224,7 @@ DonationForm.defaultProps = {
   enableOtherAmount: false,
   decorators: [],
   minimumYearlyAmount: '0',
+  hideForm: false,
   scrollToIframe: false,
 }
 
