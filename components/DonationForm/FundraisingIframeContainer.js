@@ -9,17 +9,15 @@ import FormContainer from './FormContainer'
 const FundraisingIframeContainer = ({
   fields,
   formTitle,
-  hash,
-  onMouseHover,
+  ...rest
 }) => (
   <PageSection contained={false}>
     <FormContainer>
       <SubHeader>{formTitle}</SubHeader>
     </FormContainer>
     <FundraisingIframe
-      onMouseHover={onMouseHover}
-      hash={hash}
       {...fields}
+      {...rest}
     />
     <FormContainer>
       <FundraisingboxLink />
@@ -30,8 +28,6 @@ const FundraisingIframeContainer = ({
 FundraisingIframeContainer.propTypes = {
   fields: PropTypes.shape(),
   formTitle: PropTypes.string.isRequired,
-  hash: PropTypes.string.isRequired,
-  onMouseHover: PropTypes.func.isRequired,
 }
 
 FundraisingIframeContainer.defaultProps = {

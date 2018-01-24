@@ -3,6 +3,8 @@ import ReactAsyncScript from 'react-async-script'
 import qs from 'qs'
 import PropTypes from 'prop-types'
 
+export const IFRAME_ID = 'fbIframeDiv'
+
 let intervalRef = null
 let iframe = null
 
@@ -11,7 +13,7 @@ let iframe = null
 class FundraisingIframe extends Component {
   componentDidMount() {
     intervalRef = setInterval(() => {
-      const iframeContainer = document.getElementById('fbIframeDiv')
+      const iframeContainer = document.getElementById(IFRAME_ID)
       const frame = iframeContainer.querySelector('iframe')
       if (frame) {
         iframe = frame
@@ -19,6 +21,10 @@ class FundraisingIframe extends Component {
         clearInterval(intervalRef)
       }
     }, 10)
+
+    if (this.props.scrollToIframe) {
+      window.location.hash = IFRAME_ID
+    }
   }
   componentWillUnmount() {
     clearInterval(intervalRef)
@@ -31,20 +37,24 @@ class FundraisingIframe extends Component {
   }
   render() {
     return (
-      <div id="fbIframeDiv" style={{ position: 'relative' }} />
+      <div id={IFRAME_ID} style={{ position: 'relative' }} />
     )
   }
 }
 
 FundraisingIframe.propTypes = {
   onMouseHover: PropTypes.func.isRequired,
+  scrollToIframe: PropTypes.bool,
+}
+
+FundraisingIframe.defaultProps = {
+  scrollToIframe: false,
 }
 
 function ScriptParametersWrapper({
   hash,
   amount,
   projectId,
-  onMouseHover,
   salutation,
   title,
   firstName,
@@ -62,6 +72,7 @@ function ScriptParametersWrapper({
   wantsNewsletter,
   isTermsAccepted,
   isPrivacyAccepted,
+  ...rest
 }) {
   const baseUrl = 'https://secure.fundraisingbox.com/app/paymentJS'
 
@@ -96,7 +107,7 @@ function ScriptParametersWrapper({
     removeOnUnmount: true,
   })
 
-  return <Form onMouseHover={onMouseHover} />
+  return <Form {...rest} />
 }
 
 ScriptParametersWrapper.propTypes = {
@@ -124,7 +135,6 @@ ScriptParametersWrapper.propTypes = {
     'cubits',
     'eps',
   ]),
-  onMouseHover: PropTypes.func.isRequired,
   postCode: PropTypes.string,
   projectId: PropTypes.number,
   salutation: PropTypes.oneOf(['Mr.', 'Mrs.']),

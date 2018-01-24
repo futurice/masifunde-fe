@@ -62,6 +62,7 @@ const DonationForm = ({
   enableProjectSelection,
   enableOtherAmount,
   minimumYearlyAmount,
+  scrollToIframe,
 }) => {
   let formRef
 
@@ -178,6 +179,7 @@ const DonationForm = ({
         formTitle={fundraisingboxIframeTitle}
         onMouseHover={submitForm}
         hash={fundraisingboxFormHash}
+        scrollToIframe={scrollToIframe}
         fields={fields}
       />
     </Fragment>
@@ -205,6 +207,7 @@ DonationForm.propTypes = {
   enableOtherAmount: PropTypes.bool,
   decorators: PropTypes.arrayOf(PropTypes.func),
   minimumYearlyAmount: PropTypes.string,
+  scrollToIframe: PropTypes.bool,
 }
 
 DonationForm.defaultProps = {
@@ -217,6 +220,7 @@ DonationForm.defaultProps = {
   enableOtherAmount: false,
   decorators: [],
   minimumYearlyAmount: '0',
+  scrollToIframe: false,
 }
 
 export default withFormState(DonationForm)
