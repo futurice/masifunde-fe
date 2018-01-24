@@ -2,6 +2,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { withRouter } from 'next/router'
 
 import Banner from '../../components/Banner'
 import Head from '../../components/Head'
@@ -36,7 +37,7 @@ const Donate = ({
   section3Title,
   section4Title,
   section5Title,
-  iframeStatus,
+  router: { query },
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
@@ -63,7 +64,7 @@ const Donate = ({
       }}
       enableProjectSelection
       enableOtherAmount
-      iframeStatus={iframeStatus}
+      iframeStatus={query && query.status}
     />
 
     <Banner
@@ -103,19 +104,19 @@ Donate.propTypes = {
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
-  iframeStatus: PropTypes.string,
+  router: PropTypes.shape({
+    query: PropTypes.shape({
+      status: PropTypes.string,
+    }),
+  }).isRequired,
 }
 
 Donate.defaultProps = {
   metaDescription: undefined,
-  iframeStatus: undefined,
 }
 
 Donate.getInitialProps = async function initialProps({ query }) {
-  return {
-    iframeStatus: query && query.status,
-    ...await fetchDonatePage(getLocaleFromQuery(query)),
-  }
+  return fetchDonatePage(getLocaleFromQuery(query))
 }
 
-export default withLayout(Donate)
+export default withRouter(withLayout(Donate))
