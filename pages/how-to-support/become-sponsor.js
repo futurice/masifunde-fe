@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import createDecorator from 'final-form-calculate'
+import { withRouter } from 'next/router'
 
 import withLayout from '../../components/withLayout'
 import Banner from '../../components/Banner'
@@ -50,7 +51,7 @@ const BecomeSponsor = ({
   bannerButtonText,
   bannerButtonUrl,
   minimumYearlyAmount,
-  iframeStatus,
+  router: { query },
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
@@ -89,7 +90,7 @@ const BecomeSponsor = ({
         [PROJECT_ID]: LEARN_4_LIFE_PROJECT_ID,
       }}
       minimumYearlyAmount={minimumYearlyAmount.toString()}
-      iframeStatus={iframeStatus}
+      iframeStatus={query && query.status}
     />
 
     <Banner
@@ -126,19 +127,19 @@ BecomeSponsor.propTypes = {
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
   minimumYearlyAmount: PropTypes.number.isRequired,
-  iframeStatus: PropTypes.string,
+  router: PropTypes.shape({
+    query: PropTypes.shape({
+      status: PropTypes.string,
+    }),
+  }).isRequired,
 }
 
 BecomeSponsor.defaultProps = {
   metaDescription: undefined,
-  iframeStatus: undefined,
 }
 
 BecomeSponsor.getInitialProps = async function getInitialProps({ query }) {
-  return {
-    iframeStatus: query && query.status,
-    ...await fetchBecomeASponsorPage(getLocaleFromQuery(query)),
-  }
+  return fetchBecomeASponsorPage(getLocaleFromQuery(query))
 }
 
-export default withLayout(BecomeSponsor)
+export default withRouter(withLayout(BecomeSponsor))
