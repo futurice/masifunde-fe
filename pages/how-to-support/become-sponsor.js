@@ -50,6 +50,7 @@ const BecomeSponsor = ({
   bannerButtonText,
   bannerButtonUrl,
   minimumYearlyAmount,
+  iframeStatus,
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
@@ -88,6 +89,7 @@ const BecomeSponsor = ({
         [PROJECT_ID]: LEARN_4_LIFE_PROJECT_ID,
       }}
       minimumYearlyAmount={minimumYearlyAmount.toString()}
+      iframeStatus={iframeStatus}
     />
 
     <Banner
@@ -124,14 +126,19 @@ BecomeSponsor.propTypes = {
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
   minimumYearlyAmount: PropTypes.number.isRequired,
+  iframeStatus: PropTypes.string,
 }
 
 BecomeSponsor.defaultProps = {
   metaDescription: undefined,
+  iframeStatus: undefined,
 }
 
 BecomeSponsor.getInitialProps = async function getInitialProps({ query }) {
-  return fetchBecomeASponsorPage(getLocaleFromQuery(query))
+  return {
+    iframeStatus: query && query.status,
+    ...await fetchBecomeASponsorPage(getLocaleFromQuery(query)),
+  }
 }
 
 export default withLayout(BecomeSponsor)
