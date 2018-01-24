@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -8,34 +7,16 @@ import {
   fetchFooterData,
 } from '../api/common'
 import Layout from './Layout'
-
 import { propTypes as headerPropTypes } from '../components/Header/index'
 import { propTypes as footerPropTypes } from '../components/Footer'
-import { IS_PREVIEW } from '../env'
+import PreviewWrapper from './PreviewWrapper'
 
-export default function LayoutWrapper(Page) {
-  class GetInitialPropsWrapper extends React.Component {
-    state = {}
-
-    componentDidMount() {
-      const context = window.__NEXT_DATA__
-      if (IS_PREVIEW) {
-        Page.getInitialProps(context)
-          .then((response) => {
-            this.setState({ ...response })
-          })
-      }
-    }
-
-    render() {
-      const { headerData, footerData, ...rest } = this.props
-      return (
-        <Layout headerData={headerData} footerData={footerData}>
-          <Page {...rest} {...this.state} />
-        </Layout>
-      )
-    }
-  }
+function LayoutWrapper(Page) {
+  const GetInitialPropsWrapper = ({ headerData, footerData, ...rest }) => (
+    <Layout headerData={headerData} footerData={footerData}>
+      <Page {...rest} />
+    </Layout>
+  )
 
   GetInitialPropsWrapper.propTypes = {
     headerData: PropTypes.shape(headerPropTypes).isRequired,
@@ -57,3 +38,5 @@ export default function LayoutWrapper(Page) {
 
   return GetInitialPropsWrapper
 }
+
+export default Page => LayoutWrapper(PreviewWrapper(Page))
