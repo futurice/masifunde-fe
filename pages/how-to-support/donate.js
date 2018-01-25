@@ -9,7 +9,7 @@ import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchDonatePage } from '../../api/howToSupport'
 import LayoutWrapper from '../../components/LayoutWrapper'
 import DonationForm from '../../components/DonationForm'
-import PageSection from '../../components/DonationForm/PageSection'
+import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
 import {
   SA_PROJECT_ID,
