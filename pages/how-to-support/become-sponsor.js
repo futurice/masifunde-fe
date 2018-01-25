@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import createDecorator from 'final-form-calculate'
-import { withRouter } from 'next/router'
 
 import withLayout from '../../components/withLayout'
 import Banner from '../../components/Banner'
@@ -19,6 +18,7 @@ import {
   PROJECT_ID,
 } from '../../components/DonationForm/constants/fieldNames'
 import { LEARN_4_LIFE_PROJECT_ID } from '../../components/DonationForm/constants/formValues'
+import withQueryParams from '../../components/withQueryParams'
 
 const Image = RoundedImage.extend`
   width: 100%;
@@ -51,7 +51,7 @@ const BecomeSponsor = ({
   bannerButtonText,
   bannerButtonUrl,
   minimumYearlyAmount,
-  router: { query },
+  query,
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
@@ -127,10 +127,8 @@ BecomeSponsor.propTypes = {
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
   minimumYearlyAmount: PropTypes.number.isRequired,
-  router: PropTypes.shape({
-    query: PropTypes.shape({
-      status: PropTypes.string,
-    }),
+  query: PropTypes.shape({
+    status: PropTypes.string,
   }).isRequired,
 }
 
@@ -142,4 +140,4 @@ BecomeSponsor.getInitialProps = async function getInitialProps({ query }) {
   return fetchBecomeASponsorPage(getLocaleFromQuery(query))
 }
 
-export default withRouter(withLayout(BecomeSponsor))
+export default withQueryParams(withLayout(BecomeSponsor))

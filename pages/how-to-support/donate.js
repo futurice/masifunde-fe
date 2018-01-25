@@ -2,7 +2,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { withRouter } from 'next/router'
 
 import Banner from '../../components/Banner'
 import Head from '../../components/Head'
@@ -14,6 +13,7 @@ import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
 import { SA_PROJECT_ID } from '../../components/DonationForm/constants/formValues'
 import { PROJECT_ID } from '../../components/DonationForm/constants/fieldNames'
+import withQueryParams from '../../components/withQueryParams'
 
 const MainHeading = styled.h1`
   width: 100%;
@@ -37,7 +37,7 @@ const Donate = ({
   section3Title,
   section4Title,
   section5Title,
-  router: { query },
+  query,
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
@@ -104,10 +104,8 @@ Donate.propTypes = {
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
-  router: PropTypes.shape({
-    query: PropTypes.shape({
-      status: PropTypes.string,
-    }),
+  query: PropTypes.shape({
+    status: PropTypes.string,
   }).isRequired,
 }
 
@@ -119,4 +117,4 @@ Donate.getInitialProps = async function initialProps({ query }) {
   return fetchDonatePage(getLocaleFromQuery(query))
 }
 
-export default withRouter(withLayout(Donate))
+export default withQueryParams(withLayout(Donate))
