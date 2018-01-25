@@ -141,6 +141,7 @@ const AmountFormSection = ({
                     className="form-control"
                     type="text"
                     placeholder={otherAmountPlaceholder}
+                    aria-label="Other amount"
                   />
                 </OtherAmountContainer>
                 {amountDescription && (
