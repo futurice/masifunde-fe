@@ -151,10 +151,20 @@ function Footer({
         <div className="row">
           <div className="col">
             <h4>
-              <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
+              <SocialLink
+                aria-label="Visit Masifunde's YouTube channel"
+                href={masifundeYouTubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaYoutubePlay />
               </SocialLink>
-              <SocialLink href={masifundeFacebookUrl} target="_blank" rel="noopener noreferrer">
+              <SocialLink
+                aria-label="Visit Masifunde's Facebook page"
+                href={masifundeFacebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaFacebook />
               </SocialLink>
             </h4>
