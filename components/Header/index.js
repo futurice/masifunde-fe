@@ -59,7 +59,7 @@ class Header extends Component {
                 <Logo src="/static/images/logo.svg" alt="Masifunde Logo" />
               </StyledNavbarBrand>
             </Link>
-            <NavbarToggler onClick={this.toggle} />
+            <NavbarToggler aria-label="Open navigation menu" onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto d-flex align-items-center" navbar>
                 <NavigationLink type="link" href={RouteNames.WhatWeDo}>{whatWeDoText}</NavigationLink>
