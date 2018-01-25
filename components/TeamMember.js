@@ -41,7 +41,7 @@ const TeamMember = ({
       />
       <Title>{title}</Title>
       <div>{subtitle}</div>
-      <Email href={`mailto:${email}`}>{email}</Email>
+      {email && (<Email href={`mailto:${email}`}>{email}</Email>)}
     </ContentContainer>
   </TeamContainer>
 )
