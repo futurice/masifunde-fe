@@ -67,7 +67,9 @@ const DonationForm = ({
   let formRef
 
   const submitForm = () => {
-    formRef.click()
+    if (formRef) {
+      formRef.click()
+    }
   }
 
   const countriesOptions = Object.entries(countries).map(([countryKey, country]) => ({
