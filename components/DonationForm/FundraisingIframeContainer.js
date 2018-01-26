@@ -8,6 +8,11 @@ import SubHeader from './SubHeader'
 import FundraisingIframe from './FundraisingIframe'
 import FormContainer from './FormContainer'
 
+/**
+ * When scrolling directly to the iframe the top part of the iframe gets
+ * hidden behind the fixed header. Scrolling to "ScrollDiv" which is placed
+ * further up on the page will display the entire iframe.
+ */
 const ScrollDiv = styled.div`
   position: relative;
   top: -${({ theme }) => theme.headerHeight};
