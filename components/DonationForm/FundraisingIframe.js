@@ -3,7 +3,7 @@ import ReactAsyncScript from 'react-async-script'
 import qs from 'qs'
 import PropTypes from 'prop-types'
 
-export const IFRAME_ID = 'fbIframeDiv'
+const IFRAME_ID = 'fbIframeDiv'
 
 let intervalRef = null
 let iframe = null
@@ -21,10 +21,6 @@ class FundraisingIframe extends Component {
         clearInterval(intervalRef)
       }
     }, 10)
-
-    if (this.props.scrollToIframe) {
-      window.location.hash = IFRAME_ID
-    }
   }
   componentWillUnmount() {
     clearInterval(intervalRef)
@@ -44,11 +40,6 @@ class FundraisingIframe extends Component {
 
 FundraisingIframe.propTypes = {
   onMouseHover: PropTypes.func.isRequired,
-  scrollToIframe: PropTypes.bool,
-}
-
-FundraisingIframe.defaultProps = {
-  scrollToIframe: false,
 }
 
 function ScriptParametersWrapper({
