@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import FundraisingboxLink from './FundraisingboxLink'
-import PageSection from '../PageSection'
+import PageSection from './PageSection'
 import SubHeader from './SubHeader'
 import FundraisingIframe from './FundraisingIframe'
 import FormContainer from './FormContainer'
