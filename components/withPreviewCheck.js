@@ -36,11 +36,7 @@ export default function withPreviewCheck(Page) {
   }
 
   GetInitialPropsWrapper.getInitialProps = async function getInitialPropsWrapper(ctx) {
-    const pageInitialProps = Page.getInitialProps ? await Page.getInitialProps(ctx) : {}
-
-    return {
-      ...pageInitialProps,
-    }
+    return Page.getInitialProps ? Page.getInitialProps(ctx) : {}
   }
 
   return GetInitialPropsWrapper
