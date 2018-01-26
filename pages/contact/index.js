@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import { fetchContactPage } from '../../api/contact'
 import Head from '../../components/Head'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import Markdown from '../../components/Markdown'
 import PageSection from '../../components/PageSection'
 import TeamMemberList from '../../components/TeamMemberList'
@@ -129,4 +129,4 @@ Contact.getInitialProps = async function initialProps() {
   return fetchContactPage()
 }
 
-export default LayoutWrapper(Contact)
+export default withLayout(Contact)

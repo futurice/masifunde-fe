@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import LayoutWrapper from '../components/LayoutWrapper'
+import withLayout from '../components/withLayout'
 import Head from '../components/Head'
 import Banner from '../components/Banner'
 import { getLocaleFromQuery } from '../utils/locale'
@@ -51,4 +51,4 @@ ErrorPage404.getInitialProps = async function initialProps({ query }) {
   return fetchErrorPage404(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(ErrorPage404)
+export default withLayout(ErrorPage404)

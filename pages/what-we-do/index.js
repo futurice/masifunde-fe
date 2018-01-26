@@ -4,7 +4,7 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import { fetchWhatWeDoPage } from '../../api/whatWeDo'
 import { getLocaleFromQuery } from '../../utils/locale'
 import Head from '../../components/Head'
@@ -323,4 +323,4 @@ WhatWeDo.getInitialProps = async function initialProps({ query }) {
   return fetchWhatWeDoPage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(WhatWeDo)
+export default withLayout(WhatWeDo)

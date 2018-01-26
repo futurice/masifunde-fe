@@ -14,7 +14,7 @@ import { IS_PREVIEW } from '../env'
 //
 // Because the page is first shown with the content from the server rendered page, the old content
 // will be displayed briefly before being overwritten by the newer content fetched from Contentful.
-export default function PreviewWrapper(Page) {
+export default function withPreviewCheck(Page) {
   class GetInitialPropsWrapper extends React.Component {
     state = {}
 

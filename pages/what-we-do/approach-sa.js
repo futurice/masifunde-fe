@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { fetchApproachSaPage } from '../../api/whatWeDo'
 import { getLocaleFromQuery } from '../../utils/locale'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import Hero from '../../components/Hero'
 import Head from '../../components/Head'
 import Banner from '../../components/Banner'
@@ -82,5 +82,5 @@ ApproachSa.getInitialProps = async function initialProps({ query }) {
   return fetchApproachSaPage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(ApproachSa)
+export default withLayout(ApproachSa)
 

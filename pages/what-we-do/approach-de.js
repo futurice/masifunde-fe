@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchApproachDePage } from '../../api/whatWeDo'
@@ -103,5 +103,5 @@ ApproachDe.getInitialProps = async function initialProps({ query }) {
   return fetchApproachDePage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(ApproachDe)
+export default withLayout(ApproachDe)
 

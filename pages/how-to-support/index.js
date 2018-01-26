@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import { fetchHowToSupportPage } from '../../api/howToSupport'
 import { getLocaleFromQuery } from '../../utils/locale'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import { Link, RouteNames } from '../../routes'
 import Head from '../../components/Head'
 import Hero from '../../components/Hero'
@@ -193,4 +193,4 @@ HowToSupport.getInitialProps = async function getInitialProps({ query }) {
   return fetchHowToSupportPage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(HowToSupport)
+export default withLayout(HowToSupport)

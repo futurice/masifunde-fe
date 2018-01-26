@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBecomeAVolunteerPage } from '../../api/howToSupport'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
@@ -101,5 +101,5 @@ BecomeVolunteer.defaultProps = {
   metaDescription: undefined,
 }
 
-export default LayoutWrapper(BecomeVolunteer)
+export default withLayout(BecomeVolunteer)
 

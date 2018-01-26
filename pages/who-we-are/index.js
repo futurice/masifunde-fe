@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { fetchWhoWeArePage } from '../../api/whoWeAre'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
 import Button from '../../components/Button'
 import { Link, RouteNames } from '../../routes'
@@ -167,4 +167,4 @@ WhoWeAre.getInitialProps = async function initialProps() {
   return fetchWhoWeArePage()
 }
 
-export default LayoutWrapper(WhoWeAre)
+export default withLayout(WhoWeAre)

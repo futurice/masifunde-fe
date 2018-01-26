@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import Banner from '../../components/Banner'
 import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
@@ -78,4 +78,4 @@ BecomePartner.getInitialProps = async function getInitialProps({ query }) {
   return fetchBecomeAPartnerPage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(BecomePartner)
+export default withLayout(BecomePartner)
