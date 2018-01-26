@@ -13,7 +13,9 @@ export default function withQueryParams(WrappedComponent) {
       return WrappedComponent.getInitialProps ? WrappedComponent.getInitialProps(ctx) : {}
     }
 
-    state = {}
+    state = {
+      query: {},
+    }
 
     componentDidMount = () => {
       const query = qs.parse(window.location.search, { ignoreQueryPrefix: true })
