@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import createDecorator from 'final-form-calculate'
 
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import Banner from '../../components/Banner'
 import Head from '../../components/Head'
 import Markdown from '../../components/Markdown'
@@ -134,4 +134,4 @@ BecomeSponsor.getInitialProps = async function getInitialProps({ query }) {
   return fetchBecomeASponsorPage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(BecomeSponsor)
+export default withLayout(BecomeSponsor)

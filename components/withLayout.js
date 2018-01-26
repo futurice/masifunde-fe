@@ -9,9 +9,9 @@ import {
 import Layout from './Layout'
 import { propTypes as headerPropTypes } from '../components/Header/index'
 import { propTypes as footerPropTypes } from '../components/Footer'
-import PreviewWrapper from './PreviewWrapper'
+import withPreviewCheck from './withPreviewCheck'
 
-function LayoutWrapper(Page) {
+function withLayout(Page) {
   const GetInitialPropsWrapper = ({ headerData, footerData, ...rest }) => (
     <Layout headerData={headerData} footerData={footerData}>
       <Page {...rest} />
@@ -39,4 +39,4 @@ function LayoutWrapper(Page) {
   return GetInitialPropsWrapper
 }
 
-export default Page => LayoutWrapper(PreviewWrapper(Page))
+export default Page => withLayout(withPreviewCheck(Page))

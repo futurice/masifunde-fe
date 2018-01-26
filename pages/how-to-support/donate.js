@@ -7,7 +7,7 @@ import Banner from '../../components/Banner'
 import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchDonatePage } from '../../api/howToSupport'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import DonationForm from '../../components/DonationForm'
 import PageSection from '../../components/DonationForm/PageSection'
 import CenteredText from '../../components/CenteredText'
@@ -113,4 +113,4 @@ Donate.getInitialProps = async function initialProps({ query }) {
   return fetchDonatePage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(Donate)
+export default withLayout(Donate)

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { fetchTeamDePage } from '../../api/whoWeAre'
 import { getLocaleFromQuery } from '../../utils/locale'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import Banner from '../../components/Banner'
 import TeamMemberList from '../../components/TeamMemberList'
 import Head from '../../components/Head'
@@ -94,4 +94,4 @@ TeamDe.getInitialProps = async function initialProps({ query }) {
   return fetchTeamDePage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(TeamDe)
+export default withLayout(TeamDe)

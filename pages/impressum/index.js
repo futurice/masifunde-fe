@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { fetchImpressumPage } from '../../api/impressum'
 import { getLocaleFromQuery } from '../../utils/locale'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
 import Markdown from '../../components/Markdown'
 import PageSection from '../../components/PageSection'
@@ -41,4 +41,4 @@ Impressum.getInitialProps = async function getInitialProps({ query }) {
   return fetchImpressumPage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(Impressum)
+export default withLayout(Impressum)

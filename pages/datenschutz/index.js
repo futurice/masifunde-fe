@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import { getLocaleFromQuery } from '../../utils/locale'
 import Head from '../../components/Head'
 import { fetchDatenschutzPage } from '../../api/datenschutz'
@@ -41,4 +41,4 @@ Datenschutz.getInitialProps = async function initialProps({ query }) {
   return fetchDatenschutzPage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(Datenschutz)
+export default withLayout(Datenschutz)

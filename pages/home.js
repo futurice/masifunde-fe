@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 
-import LayoutWrapper from '../components/LayoutWrapper'
+import withLayout from '../components/withLayout'
 import Head from '../components/Head'
 import Hero from '../components/Hero'
 import Banner from '../components/Banner'
@@ -111,4 +111,4 @@ Home.getInitialProps = async function initialProps({ query }) {
   return fetchHomePage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(Home)
+export default withLayout(Home)

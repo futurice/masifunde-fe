@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchImpactPage } from '../../api/whatWeDo'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
@@ -130,4 +130,4 @@ Impact.getInitialProps = async function initialProps({ query }) {
   return fetchImpactPage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(Impact)
+export default withLayout(Impact)

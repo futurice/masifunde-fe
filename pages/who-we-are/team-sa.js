@@ -6,7 +6,7 @@ import Head from '../../components/Head'
 import Banner from '../../components/Banner'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchTeamSaPage } from '../../api/whoWeAre'
-import LayoutWrapper from '../../components/LayoutWrapper'
+import withLayout from '../../components/withLayout'
 import imagePropTypes from '../../propTypes/image'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
@@ -90,5 +90,5 @@ TeamSa.getInitialProps = async function initialProps({ query }) {
   return fetchTeamSaPage(getLocaleFromQuery(query))
 }
 
-export default LayoutWrapper(TeamSa)
+export default withLayout(TeamSa)
 
