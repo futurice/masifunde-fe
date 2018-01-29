@@ -5,7 +5,8 @@ import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
 import styled from 'styled-components'
 
-import { Link, RouteNames } from '../routes'
+import { RouteNames } from '../routes'
+import Link from './Link'
 import PageSection from './PageSection'
 import { largeSpacing, extraSmallSpacing } from '../styling/sizes'
 
