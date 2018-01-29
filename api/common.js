@@ -1,15 +1,15 @@
 import qs from 'qs'
 
-import { fetchMemoizedSingleEntry } from './contentfulService'
+import { fetchSingleEntry } from './contentfulService'
 import { jpegQuality } from '../utils/constants'
 import { RouteNames } from '../routes'
 
 export async function fetchHeaderData(locale) {
-  return fetchMemoizedSingleEntry('header', locale)
+  return fetchSingleEntry('header', locale)
 }
 
 export async function fetchFooterData(locale) {
-  return fetchMemoizedSingleEntry('footer', locale)
+  return fetchSingleEntry('footer', locale)
 }
 
 // For a list of valid image URL parameters, see the Contentful API docs:
