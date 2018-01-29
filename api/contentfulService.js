@@ -36,4 +36,4 @@ export function fetchSingleEntry(contentType, locale = 'de') {
     })
 }
 
-export const fetchMemoizedSingleEntry = memoize(fetchSingleEntry, { promise: true })
+export const fetchMemoizedSingleEntry = memoize(fetchSingleEntry, { promise: true, max: 1 })
