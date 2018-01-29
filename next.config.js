@@ -5,12 +5,13 @@ function patternWithLocaleFactory(pattern, locale) {
   const localePrefix = locale ? `/${locale}` : ''
 
   const patternSplit = pattern.split('?')
-  const purePattern = patternSplit[1]
-  const patternWithLocaleList = [localePrefix, purePattern]
+  const path = patternSplit[1]
+  const patternWithLocaleList = [localePrefix, path]
 
   return patternWithLocaleList.join('')
 }
-// It can't handle complex patterns like: /blog/:id/
+// It can't handle all complex patterns (e.g. /blog/:id/)
+// It CAN handle locales (e.g. /:locale(en)?/wie-sie-helfen)
 function createRoutesFromNextRoutes() {
   return Routes.routes.reduce((map, { pattern, page }) => {
     const LOCALE_EN = 'en'
