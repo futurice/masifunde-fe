@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container } from 'reactstrap'
 import styled from 'styled-components'
 
-import { Link, RouteNames } from '../../routes'
+import { RouteNames } from '../../routes'
 import NavigationLink from './NavigationLink'
 import { rem } from '../../styling/typography'
+import Link from '../Link'
 
 const HeaderWrapper = styled.div`
   background-color: #f4e3d6;
