@@ -65,3 +65,6 @@ typings/
 
 # Ignore statically generated files
 /out/
+
+# this file is generated
+/static-root/sitemap.xml
