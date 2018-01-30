@@ -28,4 +28,5 @@ module.exports = {
   exportPathMap() {
     return createRoutesFromNextRoutes()
   },
+  useFileSystemPublicRoutes: false,
 }
