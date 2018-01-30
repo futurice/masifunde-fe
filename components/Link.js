@@ -10,7 +10,7 @@ const Link = ({
   params,
   ...rest
 }) => (
-  <NextLink {...rest} params={{ ...params, locale: router.query.locale }}>
+  <NextLink {...rest} params={{ locale: router.query.locale, ...params }}>
     {children}
   </NextLink>
 )
