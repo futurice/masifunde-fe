@@ -14,10 +14,10 @@ const Button = ({
   center,
   children,
   className,
-  href,
+  ...rest
 }) => (
   <ButtonContainer center={center}>
-    <a href={href} className={`btn ${className}`}>
+    <a {...rest} className={`btn ${className}`}>
       {children}
     </a>
   </ButtonContainer>
