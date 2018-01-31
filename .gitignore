@@ -67,4 +67,4 @@ typings/
 /out/
 
 # this file is generated
-/static-root/sitemap.xml
+/public/sitemap.xml

@@ -11,7 +11,7 @@
     "dev": "nodemon --watch server.js --watch routes.js server.js",
     "build": "next build",
     "build-static": "next build && next export && npm run copy",
-    "copy": "cp -r static-root/ out/",
+    "copy": "cp -r public/ out/",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint --ignore-path .gitignore --ext .js,.js .",
     "lint-fix": "npm run lint -- --fix",
