@@ -29,7 +29,7 @@ function createRoutesFromNextRoutes() {
 const routes = createRoutesFromNextRoutes()
 
 // Save created sitemap
-fs.writeFileSync('static/sitemap.xml', createSitemap(routes))
+fs.writeFileSync('public/sitemap.xml', createSitemap(routes))
 
 module.exports = {
   exportPathMap() {
