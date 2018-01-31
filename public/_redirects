@@ -1,6 +1,6 @@
 # 404 page
-/* /404
-/en/* /en/404
+/*     /404     404
+/en/*  /en/404  404
 
 # Redirects
 /ueber-uns/* /wer-wir-sind
