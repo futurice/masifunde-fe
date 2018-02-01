@@ -4,6 +4,6 @@
     "required": "Required",
     "requiredInterval": "Please choose a donation interval.",
     "requiredProject": "Please choose where you want your donation to go.",
-    "biggerThanZero": "Please choose an integer bigger than zero."
+    "greaterThanZero": "Please choose an amount greater than zero."
   }
 }

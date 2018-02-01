@@ -4,6 +4,6 @@
     "required": "Pflichtfeld",
     "requiredInterval": "Bitte wählen Sie ein Intervall für Ihre Spende.",
     "requiredProject": "Bitte wählen Sie, an wen Ihre Spende gehen soll.",
-    "biggerThanZero": "Bitte wählen Sie eine Betrag größer als Null."
+    "greaterThanZero": "Bitte wählen Sie eine Betrag größer als Null."
   }
 }
