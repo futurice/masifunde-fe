@@ -14,7 +14,10 @@ const ErrorMessage = ({ meta, ...rest }) => (
 
 ErrorMessage.propTypes = {
   meta: PropTypes.shape({
-    error: PropTypes.string,
+    error: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape(),
+    ]),
     touched: PropTypes.bool,
   }),
 }
