@@ -23,7 +23,6 @@ I18nProvider.propTypes = {
 
 I18nProvider.childContextTypes = {
   translate: PropTypes.shape(),
-  locale: PropTypes.string.isRequired,
 }
 
 export default I18nProvider
