@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
+import get from 'lodash/get'
 
 class Translate extends Component {
   render() {
@@ -10,7 +11,7 @@ class Translate extends Component {
       translate,
     } = this.context
     return (
-      translate[children]
+      get(translate, children)
     )
   }
 }
