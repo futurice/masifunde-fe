@@ -1,9 +1,8 @@
-import React from 'react'
-import T from '../../Translate'
+import T from 'i18n-react'
 
 export const checkRequiredValues = (keysArray, fields) => {
   const errors = {}
-  keysArray.forEach(({ fieldName, errorMessage = (<T>donation.required</T>) }) => {
+  keysArray.forEach(({ fieldName, errorMessage = T.translate('donation.required') }) => {
     if (!fields[fieldName]) {
       errors[fieldName] = errorMessage
     }
@@ -21,7 +20,7 @@ export const checkPositiveIntValues = (keysArray, fields) => {
   const errors = {}
   keysArray.forEach((key) => {
     if (!isPositiveInteger(fields[key])) {
-      errors[key] = (<T>donation.biggerThanZero</T>)
+      errors[key] = T.translate('donation.greaterThanZero')
     }
   })
   return errors

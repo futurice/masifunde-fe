@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import _debounce from 'lodash/debounce'
+import T from 'i18n-react'
+
 import { checkPositiveIntValues, checkRequiredValues } from './utils/formValidation'
 import { FIELD_NAMES, NO_RECEIPT_OPTION_VALUE } from './constants/formValues'
 import {
@@ -16,7 +18,6 @@ import {
   LAST_NAME,
   SALUTATION,
 } from './constants/fieldNames'
-import T from '../Translate'
 
 function withFormState(View) {
   return class FormDataWrapper extends Component {
@@ -35,15 +36,15 @@ function withFormState(View) {
         [
           {
             fieldName: PROJECT_ID,
-            errorMessage: (<T>donation.requiredProject</T>),
+            errorMessage: T.translate('donation.requiredProject'),
           },
           {
             fieldName: AMOUNT,
-            errorMessage: (<T>donation.biggerThanZero</T>),
+            errorMessage: T.translate('donation.greaterThanZero'),
           },
           {
             fieldName: PAYMENT_INTERVAL,
-            errorMessage: (<T>donation.requiredInterval</T>),
+            errorMessage: T.translate('donation.requiredInterval'),
           },
           { fieldName: COUNTRY },
           { fieldName: EMAIL },
