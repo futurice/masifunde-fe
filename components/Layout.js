@@ -14,7 +14,8 @@ import { bodyText, pageTitleText, sectionTitleText, subsectionTitleText, rootFon
 import theme from '../styling/theme'
 import { extraSmallSpacing, smallSpacing } from '../styling/sizes'
 import { mdBreakpoint } from '../styling/breakpoints'
-import { getLocaleFromQuery, setActiveLocale } from '../utils/locale'
+import { getLocaleFromQuery } from '../utils/locale'
+import I18nProvider from './I18nProvider'
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -85,30 +86,32 @@ const Layout = ({
   footerData,
   router,
 }) => {
-  setActiveLocale(getLocaleFromQuery(router.query))
+  const locale = getLocaleFromQuery(router.query)
   return (
-    <ThemeProvider theme={theme}>
-      <Fragment>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-          <link rel="shortcut icon" type="image/x-icon" href="/static/favicon/favicon.ico" />
-          <link rel="icon" type="image/png" href="/static/favicon/favicon-32x32.png" sizes="32x32" />
-          <link rel="icon" type="image/png" href="/static/favicon/favicon-16x16.png" sizes="16x16" />
-          <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@4.0/dist/css/bootstrap.min.css"
-          />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
-          <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
-          <script src="https://cdn.jsdelivr.net/npm/core-js@2/client/shim.min.js" />
-        </Head>
-        <Header height={theme.headerHeight} {...headerData} />
-        <Content>
-          {children}
-        </Content>
-        <Footer {...footerData} />
-      </Fragment>
-    </ThemeProvider>
+    <I18nProvider locale={locale}>
+      <ThemeProvider theme={theme}>
+        <Fragment>
+          <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+            <link rel="shortcut icon" type="image/x-icon" href="/static/favicon/favicon.ico" />
+            <link rel="icon" type="image/png" href="/static/favicon/favicon-32x32.png" sizes="32x32" />
+            <link rel="icon" type="image/png" href="/static/favicon/favicon-16x16.png" sizes="16x16" />
+            <link
+              rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@4.0/dist/css/bootstrap.min.css"
+            />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
+            <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
+            <script src="https://cdn.jsdelivr.net/npm/core-js@2/client/shim.min.js" />
+          </Head>
+          <Header height={theme.headerHeight} {...headerData} />
+          <Content>
+            {children}
+          </Content>
+          <Footer {...footerData} />
+        </Fragment>
+      </ThemeProvider>
+    </I18nProvider>
   )
 }
 

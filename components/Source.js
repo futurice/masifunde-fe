@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Tooltip } from 'reactstrap'
 import styled, { injectGlobal } from 'styled-components'
-import Translate from '../utils/locale'
+import T from './Translate'
 import Markdown from './Markdown'
 import { smBreakpoint } from '../styling/breakpoints'
 
@@ -83,7 +83,7 @@ class Source extends Component {
           autohide={false}
           target={sourceId}
         >
-          <Span>{Translate('source')}</Span>
+          <Span><T>source</T></Span>
           <Markdown source={sourceMarkdown} />
         </SourceTooltip>
       </Fragment>
