@@ -1,6 +1,9 @@
+import React from 'react'
+import T from '../../Translate'
+
 export const checkRequiredValues = (keysArray, fields) => {
   const errors = {}
-  keysArray.forEach(({ fieldName, errorMessage = 'Pflichtfeld' }) => {
+  keysArray.forEach(({ fieldName, errorMessage = (<T>donation.required</T>) }) => {
     if (!fields[fieldName]) {
       errors[fieldName] = errorMessage
     }
@@ -18,7 +21,7 @@ export const checkPositiveIntValues = (keysArray, fields) => {
   const errors = {}
   keysArray.forEach((key) => {
     if (!isPositiveInteger(fields[key])) {
-      errors[key] = 'Bitte wählen Sie eine Betrag größer als Null.'
+      errors[key] = (<T>donation.biggerThanZero</T>)
     }
   })
   return errors

@@ -1,3 +1,9 @@
 {
-  "source": "Source"
+  "source": "Source",
+  "donation": {
+    "required": "Required",
+    "requiredInterval": "Please choose a donation interval.",
+    "requiredProject": "Please choose where you want your donation to go.",
+    "biggerThanZero": "Please choose an integer bigger than zero."
+  }
 }

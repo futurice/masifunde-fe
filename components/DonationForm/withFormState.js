@@ -16,6 +16,7 @@ import {
   LAST_NAME,
   SALUTATION,
 } from './constants/fieldNames'
+import T from '../Translate'
 
 function withFormState(View) {
   return class FormDataWrapper extends Component {
@@ -34,15 +35,15 @@ function withFormState(View) {
         [
           {
             fieldName: PROJECT_ID,
-            errorMessage: 'Bitte wählen Sie, an wen Ihre Spende gehen soll.',
+            errorMessage: (<T>donation.requiredProject</T>),
           },
           {
             fieldName: AMOUNT,
-            errorMessage: 'Bitte wählen Sie eine Betrag größer als Null.',
+            errorMessage: (<T>donation.biggerThanZero</T>),
           },
           {
             fieldName: PAYMENT_INTERVAL,
-            errorMessage: 'Bitte wählen Sie ein Intervall für Ihre Spende.',
+            errorMessage: (<T>donation.requiredInterval</T>),
           },
           { fieldName: COUNTRY },
           { fieldName: EMAIL },
