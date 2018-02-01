@@ -7,3 +7,15 @@ export function getLocaleFromQuery(queryObject) {
 
   return 'de'
 }
+
+let localeFile = {}
+
+export const setActiveLocale = (locale) => {
+// eslint-disable-next-line import/no-dynamic-require,global-require
+  localeFile = require(`../i18n/${locale}.json`)
+}
+
+const Translate = key => localeFile[key]
+
+export default Translate
+
