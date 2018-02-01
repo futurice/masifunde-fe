@@ -99,6 +99,7 @@ function Footer({
   becomeVolunteerText,
   becomePartnerText,
   contactText,
+  blogText,
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
@@ -142,6 +143,7 @@ function Footer({
             <div className="col">
               <ul className="list-unstyled">
                 <FooterLink route={RouteNames.Contact} text={contactText} />
+                <FooterLink route={RouteNames.Blog} text={blogText} />
               </ul>
             </div>
           </div>
@@ -172,7 +174,7 @@ function Footer({
             </Link>
             &
             <Link route={RouteNames.Datenschutz} passHref>
-              <Anchor> {datenschutzText}</Anchor>
+              <Anchor>{datenschutzText}</Anchor>
             </Link>
           </CopyrightColumn>
         </FooterImpressumContainer>
@@ -205,6 +207,7 @@ export const propTypes = {
   becomeVolunteerText: PropTypes.string.isRequired,
   becomePartnerText: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
+  blogText: PropTypes.string.isRequired,
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
