@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import _debounce from 'lodash/debounce'
-import { checkPositiveIntValues, checkRequiredValues } from './utils/formValidation'
+import { checkEmails, checkPositiveIntValues, checkRequiredValues } from './utils/formValidation'
 import { FIELD_NAMES, NO_RECEIPT_OPTION_VALUE } from './constants/formValues'
 import {
   ADDRESS,
@@ -54,8 +54,9 @@ function withFormState(View) {
         ],
         fields,
       )
+      const errorEmails = checkEmails([EMAIL], fields)
 
-      const errors = { ...errorsPositiveInt, ...errorsRequired }
+      const errors = { ...errorsPositiveInt, ...errorsRequired, ...errorEmails }
 
       const noErrors = !Object.keys(errors).length
 
