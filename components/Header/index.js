@@ -56,7 +56,7 @@ class Header extends Component {
                 height={height}
                 className="d-flex align-items-center"
               >
-                <Logo src="/static/images/logo.svg" alt="Masifunde Logo" />
+                <Logo src="/static/images/logo.svg" alt="Masifunde Home" />
               </StyledNavbarBrand>
             </Link>
             <NavbarToggler aria-label="Open navigation menu" onClick={this.toggle} />
