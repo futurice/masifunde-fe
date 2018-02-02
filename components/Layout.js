@@ -89,7 +89,6 @@ const Content = styled.div`
 class Layout extends Component {
   componentDidMount() {
     const locale = getLocaleFromQuery(this.props.router.query)
-    // eslint-disable-next-line import/no-dynamic-require,global-require
     T.setTexts(locales[locale])
   }
 
