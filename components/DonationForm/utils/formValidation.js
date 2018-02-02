@@ -12,7 +12,7 @@ export const checkRequiredValues = (keysArray, fields) => {
 
 const isInteger = field => Number.isInteger(Number(field))
 
-export const checkPositiveIntValues = (keysArray, fields) => {
+export const checkIsIntegerValues = (keysArray, fields) => {
   const errors = {}
   keysArray.forEach((key) => {
     if (!isInteger(fields[key])) {

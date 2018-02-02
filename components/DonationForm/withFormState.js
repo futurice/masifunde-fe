@@ -4,7 +4,7 @@ import {
   checkEmails,
   checkMaxValues,
   checkMinValues,
-  checkPositiveIntValues,
+  checkIsIntegerValues,
   checkRequiredValues,
 } from './utils/formValidation'
 import { FIELD_NAMES, NO_RECEIPT_OPTION_VALUE } from './constants/formValues'
@@ -31,7 +31,7 @@ function withFormState(View) {
     debounceSetState = _debounce(this.setState, 500)
 
     validateForm = (fields) => {
-      const errorsPositiveInt = checkPositiveIntValues([AMOUNT], fields)
+      const errorsPositiveInt = checkIsIntegerValues([AMOUNT], fields)
       const wantsReceiptRequiredValues =
         fields[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE
           ? [{ fieldName: ADDRESS }, { fieldName: CITY }, { fieldName: POST_CODE }]
