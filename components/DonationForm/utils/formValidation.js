@@ -33,22 +33,22 @@ export const checkEmails = (keysArray, fields) => {
   return errors
 }
 
-export const checkMinValues = (keysArray, fields, value) => {
+export const checkMinValues = (keysArray, fields, minValue) => {
   const errors = {}
   keysArray.forEach((key) => {
-    if (fields[key] < Number(value)) {
-      errors[key] = `Der Betrag darf nicht kleiner als ${value} sein`
+    if (fields[key] < Number(minValue)) {
+      errors[key] = `Der Betrag darf nicht kleiner als ${minValue} sein`
     }
   })
 
   return errors
 }
 
-export const checkMaxValues = (keysArray, fields, value) => {
+export const checkMaxValues = (keysArray, fields, maxValues) => {
   const errors = {}
   keysArray.forEach((key) => {
-    if (fields[key] && fields[key] > Number(value)) {
-      errors[key] = `Der Betrag darf nicht mehr als ${value} betragen`
+    if (fields[key] && fields[key] > Number(maxValues)) {
+      errors[key] = `Der Betrag darf nicht mehr als ${maxValues} betragen`
     }
   })
 
