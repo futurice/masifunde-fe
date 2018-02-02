@@ -16,6 +16,13 @@ import theme from '../styling/theme'
 import { extraSmallSpacing, smallSpacing } from '../styling/sizes'
 import { mdBreakpoint } from '../styling/breakpoints'
 import { getLocaleFromQuery } from '../utils/locale'
+import deLocale from '../i18n/de.json'
+import enLocale from '../i18n/en.json'
+
+const locales = {
+  de: deLocale,
+  en: enLocale,
+}
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -83,7 +90,7 @@ class Layout extends Component {
   componentDidMount() {
     const locale = getLocaleFromQuery(this.props.router.query)
     // eslint-disable-next-line import/no-dynamic-require,global-require
-    T.setTexts(require(`../i18n/${locale}.json`))
+    T.setTexts(locales[locale])
   }
 
   render() {
