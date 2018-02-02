@@ -42,10 +42,7 @@ function withFormState(View) {
             fieldName: PROJECT_ID,
             errorMessage: 'Bitte wählen Sie, an wen Ihre Spende gehen soll.',
           },
-          {
-            fieldName: AMOUNT,
-            errorMessage: 'Bitte wählen Sie eine Betrag größer als Null.',
-          },
+          { fieldName: AMOUNT },
           {
             fieldName: PAYMENT_INTERVAL,
             errorMessage: 'Bitte wählen Sie ein Intervall für Ihre Spende.',

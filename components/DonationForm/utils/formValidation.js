@@ -10,17 +10,13 @@ export const checkRequiredValues = (keysArray, fields) => {
   return errors
 }
 
-const isPositiveInteger = (field) => {
-  const parsedNumber = Number(field)
-  const isInteger = Number.isInteger(parsedNumber)
-  return (isInteger && parsedNumber > 0)
-}
+const isInteger = field => Number.isInteger(Number(field))
 
 export const checkPositiveIntValues = (keysArray, fields) => {
   const errors = {}
   keysArray.forEach((key) => {
-    if (!isPositiveInteger(fields[key])) {
-      errors[key] = 'Bitte wählen Sie eine Betrag größer als Null.'
+    if (!isInteger(fields[key])) {
+      errors[key] = 'Der Wert muss eine Zahl sein'
     }
   })
   return errors
@@ -41,7 +37,7 @@ export const checkMinValues = (keysArray, fields, value) => {
   const errors = {}
   keysArray.forEach((key) => {
     if (fields[key] < Number(value)) {
-      errors[key] = `Der Betrag sollte nicht kleiner als ${value} sein`
+      errors[key] = `Der Betrag darf nicht kleiner als ${value} sein`
     }
   })
 
@@ -52,7 +48,7 @@ export const checkMaxValues = (keysArray, fields, value) => {
   const errors = {}
   keysArray.forEach((key) => {
     if (fields[key] && fields[key] > Number(value)) {
-      errors[key] = `Der Betrag sollte nicht mehr als ${value} betragen`
+      errors[key] = `Der Betrag darf nicht mehr als ${value} betragen`
     }
   })
 
