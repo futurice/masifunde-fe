@@ -10,47 +10,35 @@ export const checkRequiredValues = (keysArray, fields) => {
   return errors
 }
 
+const createValidator = (isValid, errorMessage) => (keysArray, fields, ...args) => {
+  const errors = {}
+  keysArray.forEach((key) => {
+    const value = fields[key]
+    if (value && !isValid(value, ...args)) {
+      errors[key] = errorMessage(value, ...args)
+    }
+  })
+  return errors
+}
+
 const isInteger = field => Number.isInteger(Number(field))
 
-export const checkIsIntegerValues = (keysArray, fields) => {
-  const errors = {}
-  keysArray.forEach((key) => {
-    if (!isInteger(fields[key])) {
-      errors[key] = 'Der Wert muss eine Zahl sein'
-    }
-  })
-  return errors
-}
+export const checkIsIntegerValues = createValidator(
+  value => isInteger(value),
+  () => 'Der Wert muss eine Zahl sein',
+)
 
-export const checkEmails = (keysArray, fields) => {
-  const errors = {}
-  keysArray.forEach((key) => {
-    if (fields[key] && !isEmail(fields[key])) {
-      errors[key] = 'Falsche E-Mail'
-    }
-  })
+export const checkEmails = createValidator(
+  value => isEmail(value),
+  () => 'Falsche E-Mail',
+)
 
-  return errors
-}
+export const checkMinValues = createValidator(
+  (value, minValue) => Number(minValue) <= value,
+  (value, minValue) => `Der Betrag darf nicht kleiner als ${minValue} sein`,
+)
 
-export const checkMinValues = (keysArray, fields, minValue) => {
-  const errors = {}
-  keysArray.forEach((key) => {
-    if (fields[key] < Number(minValue)) {
-      errors[key] = `Der Betrag darf nicht kleiner als ${minValue} sein`
-    }
-  })
-
-  return errors
-}
-
-export const checkMaxValues = (keysArray, fields, maxValues) => {
-  const errors = {}
-  keysArray.forEach((key) => {
-    if (fields[key] && fields[key] > Number(maxValues)) {
-      errors[key] = `Der Betrag darf nicht mehr als ${maxValues} betragen`
-    }
-  })
-
-  return errors
-}
+export const checkMaxValues = createValidator(
+  (value, maxValue) => Number(maxValue) >= value,
+  (value, maxValue) => `Der Betrag darf nicht mehr als ${maxValue} betragen`,
+)

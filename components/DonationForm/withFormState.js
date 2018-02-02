@@ -31,7 +31,7 @@ function withFormState(View) {
     debounceSetState = _debounce(this.setState, 500)
 
     validateForm = (fields) => {
-      const errorsPositiveInt = checkIsIntegerValues([AMOUNT], fields)
+      const errorsIsIntegerValues = checkIsIntegerValues([AMOUNT], fields)
       const wantsReceiptRequiredValues =
         fields[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE
           ? [{ fieldName: ADDRESS }, { fieldName: CITY }, { fieldName: POST_CODE }]
@@ -62,11 +62,11 @@ function withFormState(View) {
       const errorsMaxValues = checkMaxValues([AMOUNT], fields, 10000)
 
       const errors = {
-        ...errorsPositiveInt,
-        ...errorsRequired,
         ...errorsEmails,
         ...errorsMinValues,
         ...errorsMaxValues,
+        ...errorsIsIntegerValues,
+        ...errorsRequired,
       }
 
       const noErrors = !Object.keys(errors).length
