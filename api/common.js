@@ -100,16 +100,16 @@ export const unwrapTeamMember = (teamMember) => {
 
   const { fields } = teamMember
   return {
-    id: teamMember && teamMember.sys && teamMember.sys.id,
+    id: teamMember.sys.id,
     ...fields,
-    image: unwrapImage(fields && fields.profileImage, {
+    image: unwrapImage(fields.profileImage, {
       w: 320,
       h: 320,
       q: jpegQuality,
       fit: 'thumb',
       f: 'face',
     }),
-    region: unwrapRegion(fields && fields.region),
+    region: unwrapRegion(fields.region),
   }
 }
 
