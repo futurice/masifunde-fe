@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import _debounce from 'lodash/debounce'
+import T from 'i18n-react'
 import {
   checkEmails,
   checkMaxValues,
