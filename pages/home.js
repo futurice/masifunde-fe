@@ -28,8 +28,8 @@ const Home = ({
   banner2ButtonUrl,
   section1Title,
   portrait,
-  youTubeVideoTitle,
-  youTubeVideoUrl,
+  videoTitle,
+  videoUrl,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -64,10 +64,10 @@ const Home = ({
 
     <PageSection contained={false}>
       <Container>
-        <h2>{youTubeVideoTitle}</h2>
+        <h2>{videoTitle}</h2>
       </Container>
 
-      <EmbedVideo videoUrl={youTubeVideoUrl} />
+      <EmbedVideo videoUrl={videoUrl} />
     </PageSection>
 
     <PageSection contained={false}>
@@ -99,8 +99,8 @@ Home.propTypes = {
   banner2ButtonUrl: PropTypes.string.isRequired,
   section1Title: PropTypes.string.isRequired,
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
-  youTubeVideoTitle: PropTypes.string.isRequired,
-  youTubeVideoUrl: PropTypes.string.isRequired,
+  videoTitle: PropTypes.string.isRequired,
+  videoUrl: PropTypes.string.isRequired,
 }
 
 Home.defaultProps = {

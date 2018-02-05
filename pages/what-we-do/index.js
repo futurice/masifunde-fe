@@ -218,7 +218,7 @@ const WhatWeDo = ({
   statsButton,
   statsHeading,
   heroTitle,
-  youtubeVideo,
+  videoUrl,
   bannerButtonText,
   bannerTitle,
   bannerButtonUrl,
@@ -239,7 +239,7 @@ const WhatWeDo = ({
     </PageSection>
 
     <PageSection contained={false}>
-      <EmbedVideo videoUrl={youtubeVideo} />
+      <EmbedVideo videoUrl={videoUrl} />
     </PageSection>
 
     <PageSection>
@@ -309,7 +309,7 @@ WhatWeDo.propTypes = {
   ).isRequired,
   statsButton: PropTypes.string.isRequired,
   statsHeading: PropTypes.string.isRequired,
-  youtubeVideo: PropTypes.string.isRequired,
+  videoUrl: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
