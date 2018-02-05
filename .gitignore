@@ -68,3 +68,6 @@ typings/
 
 # VSCode config
 .vscode/
+
+# this file is generated
+/public/sitemap.xml
