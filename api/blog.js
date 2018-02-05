@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { fetchEntriesForContentType } from './contentfulService'
+import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 import { unwrapTeamMember, unwrapImage } from './common'
 
 export async function fetchBlogPost(locale, slug) {
@@ -24,4 +24,8 @@ export async function fetchBlogPost(locale, slug) {
       heroImage: fields.heroImage && unwrapImage(fields.heroImage),
       authorTeamMember: fields.authorTeamMember && unwrapTeamMember(fields.authorTeamMember),
     }))
+}
+
+export async function fetchBlogPostPage(locale) {
+  return fetchSingleEntry('pageBlogPost', locale)
 }

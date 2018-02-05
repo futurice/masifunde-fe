@@ -12,7 +12,7 @@ import FaTwitter from 'react-icons/lib/fa/twitter'
 import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
-import { fetchBlogPost } from '../../api/blog'
+import { fetchBlogPost, fetchBlogPostPage } from '../../api/blog'
 import PageSection from '../../components/PageSection'
 import TeamMember from '../../components/TeamMember'
 import teamMemberShape from '../../propTypes/teamMember'
@@ -181,11 +181,11 @@ const BlogPostContent = (props) => {
           <BlogMarkdown source={content} />
           <div className="row">
             <AuthorContainer className="col-6">
-              <h4>Author</h4>
+              <h4>{props.authorText}</h4>
               {author}
             </AuthorContainer>
             <ShareContainer className="col-6">
-              <h4>Share on</h4>
+              <h4>{props.shareText}</h4>
 
               <ShareButtonRow>
                 <FacebookShareButton
@@ -252,13 +252,13 @@ const BlogPost = props => (
 
             <ButtonContainer>
               <Link route={props.previousPostRoute} passHref>
-                <Button type="secondary">Previous</Button>
+                <Button type="secondary">{props.previousPostText}</Button>
               </Link>
               <Link route={routes.Blog} passHref>
-                <Button type="secondary">Blog</Button>
+                <Button type="secondary">{props.blogHomeText}</Button>
               </Link>
               <Link route={props.nextPostRoute} passHref>
-                <Button type="secondary">Next</Button>
+                <Button type="secondary">{props.nextPostText}</Button>
               </Link>
             </ButtonContainer>
           </div>
@@ -280,12 +280,20 @@ BlogPost.defaultProps = {
 }
 
 BlogPost.getInitialProps = async function initialProps({ query }) {
-  return fetchBlogPost(getLocaleFromQuery(query), query.slug)
-    .catch((error) => {
-      if (error.id === 'POST_NOT_FOUND') {
-        return { error: error.toString() }
-      }
-      throw error
+  return Promise.all([
+    fetchBlogPostPage(getLocaleFromQuery(query)),
+    fetchBlogPost(getLocaleFromQuery(query), query.slug)
+      .catch((error) => {
+        if (error.id === 'POST_NOT_FOUND') {
+          return { error: error.toString() }
+        }
+        throw error
+      }),
+  ])
+    .then((results) => {
+      const page = results[0]
+      const post = results[1]
+      return { ...page, ...post }
     })
 }
 
