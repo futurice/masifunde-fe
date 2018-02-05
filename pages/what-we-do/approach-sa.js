@@ -7,7 +7,7 @@ import withLayout from '../../components/withLayout'
 import Hero from '../../components/Hero'
 import Head from '../../components/Head'
 import Banner from '../../components/Banner'
-import YouTubeVideo from '../../components/YouTubeVideo'
+import EmbeddedVideo from '../../components/EmbeddedVideo'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
 import Tagline from '../../components/Tagline'
@@ -21,7 +21,7 @@ const ApproachSa = ({
   introTitle,
   introMarkdown,
   projects,
-  youTubeVideo,
+  videoUrl,
   bannerTitle,
   bannerButtonText,
   bannerButtonUrl,
@@ -47,7 +47,7 @@ const ApproachSa = ({
     </PageSection>
 
     <PageSection contained={false}>
-      <YouTubeVideo youtubeVideo={youTubeVideo} />
+      <EmbeddedVideo videoUrl={videoUrl} />
     </PageSection>
 
     <PageSection>
@@ -80,7 +80,7 @@ ApproachSa.propTypes = {
       title: PropTypes.string.isRequired,
     }).isRequired,
   })).isRequired,
-  youTubeVideo: PropTypes.string.isRequired,
+  videoUrl: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
