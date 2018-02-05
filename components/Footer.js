@@ -43,11 +43,6 @@ const FooterImpressumContainer = styled.div`
   margin-bottom: ${extraSmallSpacing};
 `
 
-const ContentfulImage = styled.img`
-  max-width: 100px;
-  width: 100%;
-`
-
 const FooterSection = styled(PageSection)`
   margin-top: ${largeSpacing};
 
@@ -68,7 +63,34 @@ const FooterSection = styled(PageSection)`
 const CopyrightSocialSection = styled.div`
   text-align: center;
   margin-top: 1rem;
+`
+
+const PoweredBySection = styled.div`
+  text-align: center;
+  margin-top: 1rem;
   margin-bottom: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const PoweredByLink = styled.a.attrs({
+  rel: 'noopener noreferrer nofollow',
+  target: '_blank',
+})`
+  flex: 1;
+  max-width: 100px;
+  margin: 0 0.5rem;
+`
+
+const PoweredByImage = styled.img`
+  width: 100%;
+  max-height: 32px;
+`
+
+const ContentfulImage = PoweredByImage.extend`
+  padding-bottom: 2px;
 `
 
 const FooterLink = ({ route, text }) => (
@@ -106,6 +128,7 @@ function Footer({
 }) {
   return (
     <FooterSection>
+
       <Sitemap className="row">
         <div className="col-sm">
           <div className="row">
@@ -146,6 +169,7 @@ function Footer({
           </div>
         </div>
       </Sitemap>
+
       <CopyrightSocialSection>
         <div className="row">
           <div className="col">
@@ -175,17 +199,32 @@ function Footer({
             </Link>
           </CopyrightColumn>
         </FooterImpressumContainer>
-        <div className="row">
-          <div className="col">
-            <a href="https://www.contentful.com/" rel="noopener noreferrer nofollow" target="_blank">
-              <ContentfulImage
-                src="/static/images/PoweredByContentful_LightBackground.svg"
-                alt="Powered by Contentful"
-              />
-            </a>
-          </div>
-        </div>
       </CopyrightSocialSection>
+
+      <PoweredBySection>
+        <PoweredByLink href="https://contentful.com/">
+          <ContentfulImage
+            src="/static/images/PoweredByContentful_LightBackground.svg"
+            alt="Powered by Contentful"
+          />
+        </PoweredByLink>
+
+        <PoweredByLink href="https://spiceprogram.org/">
+          <PoweredByImage
+            src="/static/images/chilicorn.svg"
+            alt="Supported through the Chilicorn Fund"
+          />
+        </PoweredByLink>
+
+        <PoweredByLink href="https://futurice.com/">
+          <PoweredByImage
+            src="/static/images/built-by-futurice.svg"
+            alt="Built by Futurice"
+          />
+        </PoweredByLink>
+
+      </PoweredBySection>
+
     </FooterSection>
   )
 }
