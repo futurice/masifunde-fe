@@ -2,8 +2,12 @@
   "source": "Source",
   "donation": {
     "required": "Required",
-    "requiredInterval": "Please choose a donation interval.",
-    "requiredProject": "Please choose where you want your donation to go.",
-    "greaterThanZero": "Please choose an amount greater than zero."
+    "requiredInterval": "Please choose a donation interval",
+    "requiredProject": "Please choose where you want your donation to go",
+    "greaterThanZero": "Please choose an amount greater than zero",
+    "invalidEmail": "Invalid e-mail",
+    "mustBeANumber": "The value must be a number",
+    "cantBeLessThan": "The amount can not be less than {value}",
+    "cantBeGreaterThan": "The amount can not be greater than {value}"
   }
 }
