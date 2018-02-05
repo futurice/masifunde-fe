@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -21,6 +22,9 @@ import Markdown from '../../components/Markdown'
 import { smBreakpoint, mdBreakpoint, lgBreakpoint } from '../../styling/breakpoints'
 import theme from '../../styling/theme'
 import { rem } from '../../styling/typography'
+import Button from '../../components/Button'
+import Link from '../../components/Link'
+import { RouteNames as routes } from '../../routes'
 
 const BlogPostError = props => (
   <div>
@@ -122,6 +126,18 @@ const SocialLink = styled.div`
   }
 `
 
+const HorizontalRule = styled.hr`
+  border-width: 2px;
+  border-color: ${props => props.theme.pineCone};
+  margin-top: 4rem;
+`
+
+const ButtonContainer = styled.div`
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+`
+
 const BlogPostContent = (props) => {
   const {
     title,
@@ -193,6 +209,7 @@ const BlogPostContent = (props) => {
 
             </ShareContainer>
           </div>
+
         </div>
       </PageSection>
 
@@ -223,12 +240,38 @@ BlogPostContent.defaultProps = {
 }
 
 const BlogPost = props => (
-  props.error ? BlogPostError(props) : BlogPostContent(props)
+  props.error ?
+    BlogPostError(props) :
+    (
+      <div>
+        {BlogPostContent(props)}
+
+        <PageSection>
+          <div className="offset-lg-2 col-lg-8">
+            <HorizontalRule />
+
+            <ButtonContainer>
+              <Link route={props.previousPostRoute} passHref>
+                <Button type="secondary">Previous</Button>
+              </Link>
+              <Link route={routes.Blog} passHref>
+                <Button type="secondary">Blog</Button>
+              </Link>
+              <Link route={props.nextPostRoute} passHref>
+                <Button type="secondary">Next</Button>
+              </Link>
+            </ButtonContainer>
+          </div>
+        </PageSection>
+      </div>
+    )
 )
 
 BlogPost.propTypes = {
   ...BlogPostContent.propTypes,
   ...BlogPostError.propTypes,
+  previousPostRoute: PropTypes.string,
+  nextPostRoute: PropTypes.string,
 }
 
 BlogPost.defaultProps = {
