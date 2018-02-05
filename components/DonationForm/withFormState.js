@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import _debounce from 'lodash/debounce'
+import T from 'i18n-react'
 import {
   checkEmails,
   checkMaxValues,
@@ -40,12 +41,12 @@ function withFormState(View) {
         [
           {
             fieldName: PROJECT_ID,
-            errorMessage: 'Bitte wählen Sie, an wen Ihre Spende gehen soll.',
+            errorMessage: T.translate('donation.requiredProject'),
           },
           { fieldName: AMOUNT },
           {
             fieldName: PAYMENT_INTERVAL,
-            errorMessage: 'Bitte wählen Sie ein Intervall für Ihre Spende.',
+            errorMessage: T.translate('donation.requiredInterval'),
           },
           { fieldName: COUNTRY },
           { fieldName: EMAIL },
