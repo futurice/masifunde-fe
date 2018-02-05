@@ -8,6 +8,7 @@ import {
   unwrapPortrait,
   unwrapStat,
   unwrapTeamMember,
+  unwrapProjects,
 } from './common'
 import { jpegQuality } from '../utils/constants'
 
@@ -46,18 +47,15 @@ export async function fetchWhatWeDoPage(locale) {
   }
 }
 
-const unwrapProjects = ({ fields }) => ({
-  ...fields,
-  image: unwrapImage(fields && fields.image),
-})
 
 export async function fetchApproachDePage(locale) {
-  const content = await fetchSingleEntry('pageApproachDE', locale)
+  const content = await fetchSingleEntry('pageApproachDE', locale) || {}
+
   return {
     ...content,
-    teamMember: unwrapTeamMember(content && content.teamMember),
-    image1: unwrapImage(content && content.image1, { q: jpegQuality }),
-    projects: content && content.projects.map(unwrapProjects),
+    teamMember: unwrapTeamMember({}),
+    image1: unwrapImage(content.image1, { q: jpegQuality }),
+    projects: unwrapProjects(content.projects),
     bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }
@@ -78,7 +76,7 @@ export async function fetchApproachSaPage(locale) {
   const content = await fetchSingleEntry('pageApproachSA', locale)
   return {
     ...content,
-    projects: content && content.projects.map(unwrapProjects),
+    projects: unwrapProjects(content.projects),
     bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }

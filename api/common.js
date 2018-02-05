@@ -138,3 +138,9 @@ export const unwrapAward = award => ({
 export function unwrapFields(response) {
   return response && response.fields
 }
+
+export const unwrapProjects = (projects = []) =>
+  projects.map(({ fields }) => ({
+    ...fields,
+    image: unwrapImage(fields && fields.image),
+  }))
