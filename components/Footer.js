@@ -63,6 +63,7 @@ const FooterSection = styled(PageSection)`
 const CopyrightSocialSection = styled.div`
   text-align: center;
   margin-top: 1rem;
+  font-size: 1.5rem;
 `
 
 const PoweredBySection = styled.div`
@@ -174,14 +175,12 @@ function Footer({
         <CopyrightSocialSection>
           <div className="row">
             <div className="col">
-              <h4>
-                <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
-                  <FaYoutubePlay />
-                </SocialLink>
-                <SocialLink href={masifundeFacebookUrl} target="_blank" rel="noopener noreferrer">
-                  <FaFacebook />
-                </SocialLink>
-              </h4>
+              <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
+                <FaYoutubePlay />
+              </SocialLink>
+              <SocialLink href={masifundeFacebookUrl} target="_blank" rel="noopener noreferrer">
+                <FaFacebook />
+              </SocialLink>
             </div>
           </div>
           <div className="row">

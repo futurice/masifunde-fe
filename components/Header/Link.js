@@ -8,27 +8,33 @@ const StyledLink = styled.a`
   white-space: nowrap;
   padding: 0.31rem 0;
   margin-right: ${extraSmallSpacing};
-  
-  @media (min-width: ${lgBreakpoint}) {
-    margin-right: ${smallSpacing};
-  }
+
   color: inherit !important;
   margin-top: ${props => props.activeBorderThickness};
-  margin-bottom: ${props => (props.isActive
-    ? 0
-    : `${props.activeBorderThickness}`)
-};
-  border-bottom: ${props => (props.isActive
-    ? `${props.activeBorderThickness} solid #FE9933 !important`
-    : 0)
-};
+
+  margin-bottom: ${props => (
+    props.isActive
+      ? 0
+      : `${props.activeBorderThickness}`
+  )};
+
+  border-bottom: ${props => (
+    props.isActive
+      ? `${props.activeBorderThickness} solid #FE9933 !important`
+      : 0
+  )};
+
   @media screen and (max-width: ${mdBreakpoint}){
     text-align: center;
     margin-right: 0;
   }
 
-  :hover {
-    border-bottom: 3px solid ${({ theme }) => theme.pineCone}; 
+  @media (min-width: ${lgBreakpoint}) {
+    margin-right: ${smallSpacing};
+  }
+
+  &:hover, &:focus {
+    border-bottom: 3px solid ${({ theme }) => theme.pineCone};
     margin-bottom: 0;
   }
 `
