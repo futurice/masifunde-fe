@@ -47,16 +47,21 @@ export async function fetchWhatWeDoPage(locale) {
   }
 }
 
-
 export async function fetchApproachDePage(locale) {
   const content = await fetchSingleEntry('pageApproachDE', locale) || {}
+  const {
+    teamMember,
+    image1,
+    projects,
+    bannerButtonUrl,
+  } = content
 
   return {
     ...content,
-    teamMember: unwrapTeamMember({}),
-    image1: unwrapImage(content.image1, { q: jpegQuality }),
-    projects: unwrapProjects(content.projects),
-    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
+    teamMember: unwrapTeamMember(teamMember),
+    image1: unwrapImage(image1, { q: jpegQuality }),
+    projects: unwrapProjects(projects),
+    bannerButtonUrl: unwrapPageUrl(bannerButtonUrl),
   }
 }
 
