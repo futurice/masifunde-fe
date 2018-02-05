@@ -1,6 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import {
+  TwitterShareButton,
+  FacebookShareButton,
+} from 'react-share'
+import FaFacebook from 'react-icons/lib/fa/facebook'
+import FaTwitter from 'react-icons/lib/fa/twitter'
 
 import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
@@ -85,6 +91,37 @@ const AuthorContainer = styled.div`
   margin-top: 1.5rem;
 `
 
+const ShareContainer = styled.div`
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`
+
+const ShareButtonRow = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  > * {
+    padding: 10px;
+  }
+
+  > :last-child {
+    margin-right: -10px;
+  }
+`
+
+const SocialLink = styled.div`
+  color: #444444;
+  opacity: 0.6;
+  cursor: pointer;
+
+  &:hover {
+    color: #444444 !important;
+    opacity: 1;
+  }
+`
+
 const BlogPostContent = (props) => {
   const {
     title,
@@ -94,6 +131,7 @@ const BlogPostContent = (props) => {
     content,
     authorTeamMember,
     authorExternal,
+    url,
   } = props
 
   const author = authorTeamMember ?
@@ -104,6 +142,9 @@ const BlogPostContent = (props) => {
       email={authorTeamMember.email}
     />) :
     <p>{authorExternal}</p>
+
+  const pageUrl = `https://www.masifunde.de/${url.asPath}`
+  const shareMessage = ''
 
   return (
     <div>
@@ -122,10 +163,36 @@ const BlogPostContent = (props) => {
           </DateContainer>
           <BlogTitle>{title}</BlogTitle>
           <BlogMarkdown source={content} />
-          <AuthorContainer>
-            <h4>Author</h4>
-            {author}
-          </AuthorContainer>
+          <div className="row">
+            <AuthorContainer className="col-6">
+              <h4>Author</h4>
+              {author}
+            </AuthorContainer>
+            <ShareContainer className="col-6">
+              <h4>Share on</h4>
+
+              <ShareButtonRow>
+                <FacebookShareButton
+                  url={pageUrl}
+                  quote={shareMessage}
+                >
+                  <SocialLink>
+                    <FaFacebook size={24} />
+                  </SocialLink>
+                </FacebookShareButton>
+
+                <TwitterShareButton
+                  url={pageUrl}
+                  title={shareMessage}
+                >
+                  <SocialLink>
+                    <FaTwitter size={24} />
+                  </SocialLink>
+                </TwitterShareButton>
+              </ShareButtonRow>
+
+            </ShareContainer>
+          </div>
         </div>
       </PageSection>
 
