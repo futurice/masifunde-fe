@@ -1,7 +1,14 @@
 /* eslint-disable import/prefer-default-export */
 import { RouteNames } from '../routes'
 import { fetchSingleEntry } from './contentfulService'
-import { unwrapImage, unwrapFields, unwrapPortrait, unwrapStat, unwrapPageUrl } from './common'
+import {
+  unwrapFields,
+  unwrapImage,
+  unwrapPageUrl,
+  unwrapPortrait,
+  unwrapStat,
+  unwrapTeamMember,
+} from './common'
 import { jpegQuality } from '../utils/constants'
 
 export async function fetchWhatWeDoPage(locale) {
@@ -48,6 +55,7 @@ export async function fetchApproachDePage(locale) {
   const content = await fetchSingleEntry('pageApproachDE', locale)
   return {
     ...content,
+    teamMember: unwrapTeamMember(content && content.teamMember),
     image1: unwrapImage(content && content.image1, { q: jpegQuality }),
     projects: content && content.projects.map(unwrapProjects),
     bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
