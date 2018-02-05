@@ -73,7 +73,7 @@ injectGlobal`
   }
 `
 
-const Content = styled.div`
+const Content = styled.main.attrs({ role: 'main' })`
   padding-top: ${props => props.theme.headerHeight};
 `
 

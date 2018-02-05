@@ -8,10 +8,10 @@ import { Link, RouteNames } from '../../routes'
 import NavigationLink from './NavigationLink'
 import { rem } from '../../styling/typography'
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.header`
   background-color: #f4e3d6;
   box-shadow: -1px 1px 1px 1px rgba(250, 242, 230, 0.25);
-  font-size: ${rem('16px')}; 
+  font-size: ${rem('16px')};
 `
 
 const Logo = styled.img`
@@ -20,7 +20,7 @@ const Logo = styled.img`
 
 const StyledNavbar = styled(Navbar)`
   padding: 0;
-  
+
   a {
     text-align: center;
   }

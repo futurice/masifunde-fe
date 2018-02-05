@@ -128,103 +128,105 @@ function Footer({
 }) {
   return (
     <FooterSection>
+      <footer>
 
-      <Sitemap className="row">
-        <div className="col-sm">
+        <Sitemap className="row">
+          <div className="col-sm">
+            <div className="row">
+              <div className="col">
+                <ul className="list-unstyled">
+                  <FooterLink route={RouteNames.WhatWeDo} text={whatWeDoText} />
+                  <FooterLink route={RouteNames.ApproachSA} text={approachSaText} />
+                  <FooterLink route={RouteNames.ApproachDE} text={approachDeText} />
+                  <FooterLink route={RouteNames.Impact} text={impactText} />
+                </ul>
+              </div>
+              <div className="col">
+                <ul className="list-unstyled">
+                  <FooterLink route={RouteNames.WhoWeAre} text={whoWeAreText} />
+                  <FooterLink route={RouteNames.TeamSA} text={teamSaText} />
+                  <FooterLink route={RouteNames.TeamDE} text={teamDeText} />
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-sm">
+            <div className="row">
+              <div className="col">
+                <ul className="list-unstyled">
+                  <FooterLink route={RouteNames.HowToSupport} text={howToSupportText} />
+                  <FooterLink route={RouteNames.Donate} text={donateText} />
+                  <FooterLink route={RouteNames.BecomeSponsor} text={becomeSponsorText} />
+                  <FooterLink route={RouteNames.BecomeVolunteer} text={becomeVolunteerText} />
+                  <FooterLink route={RouteNames.BecomePartner} text={becomePartnerText} />
+                </ul>
+              </div>
+              <div className="col">
+                <ul className="list-unstyled">
+                  <FooterLink route={RouteNames.Contact} text={contactText} />
+                </ul>
+              </div>
+            </div>
+          </div>
+        </Sitemap>
+
+        <CopyrightSocialSection>
           <div className="row">
             <div className="col">
-              <ul className="list-unstyled">
-                <FooterLink route={RouteNames.WhatWeDo} text={whatWeDoText} />
-                <FooterLink route={RouteNames.ApproachSA} text={approachSaText} />
-                <FooterLink route={RouteNames.ApproachDE} text={approachDeText} />
-                <FooterLink route={RouteNames.Impact} text={impactText} />
-              </ul>
-            </div>
-            <div className="col">
-              <ul className="list-unstyled">
-                <FooterLink route={RouteNames.WhoWeAre} text={whoWeAreText} />
-                <FooterLink route={RouteNames.TeamSA} text={teamSaText} />
-                <FooterLink route={RouteNames.TeamDE} text={teamDeText} />
-              </ul>
+              <h4>
+                <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
+                  <FaYoutubePlay />
+                </SocialLink>
+                <SocialLink href={masifundeFacebookUrl} target="_blank" rel="noopener noreferrer">
+                  <FaFacebook />
+                </SocialLink>
+              </h4>
             </div>
           </div>
-        </div>
-
-        <div className="col-sm">
           <div className="row">
-            <div className="col">
-              <ul className="list-unstyled">
-                <FooterLink route={RouteNames.HowToSupport} text={howToSupportText} />
-                <FooterLink route={RouteNames.Donate} text={donateText} />
-                <FooterLink route={RouteNames.BecomeSponsor} text={becomeSponsorText} />
-                <FooterLink route={RouteNames.BecomeVolunteer} text={becomeVolunteerText} />
-                <FooterLink route={RouteNames.BecomePartner} text={becomePartnerText} />
-              </ul>
-            </div>
-            <div className="col">
-              <ul className="list-unstyled">
-                <FooterLink route={RouteNames.Contact} text={contactText} />
-              </ul>
-            </div>
+            <CopyrightColumn className="col">
+              {copyrightText}
+            </CopyrightColumn>
           </div>
-        </div>
-      </Sitemap>
+          <FooterImpressumContainer className="row">
+            <CopyrightColumn className="col">
+              <Link route={RouteNames.Impressum} passHref>
+                <Anchor>{impressumText} </Anchor>
+              </Link>
+              &
+              <Link route={RouteNames.Datenschutz} passHref>
+                <Anchor> {datenschutzText}</Anchor>
+              </Link>
+            </CopyrightColumn>
+          </FooterImpressumContainer>
+        </CopyrightSocialSection>
 
-      <CopyrightSocialSection>
-        <div className="row">
-          <div className="col">
-            <h4>
-              <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
-                <FaYoutubePlay />
-              </SocialLink>
-              <SocialLink href={masifundeFacebookUrl} target="_blank" rel="noopener noreferrer">
-                <FaFacebook />
-              </SocialLink>
-            </h4>
-          </div>
-        </div>
-        <div className="row">
-          <CopyrightColumn className="col">
-            {copyrightText}
-          </CopyrightColumn>
-        </div>
-        <FooterImpressumContainer className="row">
-          <CopyrightColumn className="col">
-            <Link route={RouteNames.Impressum} passHref>
-              <Anchor>{impressumText} </Anchor>
-            </Link>
-            &
-            <Link route={RouteNames.Datenschutz} passHref>
-              <Anchor> {datenschutzText}</Anchor>
-            </Link>
-          </CopyrightColumn>
-        </FooterImpressumContainer>
-      </CopyrightSocialSection>
+        <PoweredBySection>
+          <PoweredByLink href="https://contentful.com/">
+            <ContentfulImage
+              src="/static/images/PoweredByContentful_LightBackground.svg"
+              alt="Powered by Contentful"
+            />
+          </PoweredByLink>
 
-      <PoweredBySection>
-        <PoweredByLink href="https://contentful.com/">
-          <ContentfulImage
-            src="/static/images/PoweredByContentful_LightBackground.svg"
-            alt="Powered by Contentful"
-          />
-        </PoweredByLink>
+          <PoweredByLink href="https://spiceprogram.org/">
+            <PoweredByImage
+              src="/static/images/chilicorn.svg"
+              alt="Supported through the Chilicorn Fund"
+            />
+          </PoweredByLink>
 
-        <PoweredByLink href="https://spiceprogram.org/">
-          <PoweredByImage
-            src="/static/images/chilicorn.svg"
-            alt="Supported through the Chilicorn Fund"
-          />
-        </PoweredByLink>
+          <PoweredByLink href="https://futurice.com/">
+            <PoweredByImage
+              src="/static/images/built-by-futurice.svg"
+              alt="Built by Futurice"
+            />
+          </PoweredByLink>
 
-        <PoweredByLink href="https://futurice.com/">
-          <PoweredByImage
-            src="/static/images/built-by-futurice.svg"
-            alt="Built by Futurice"
-          />
-        </PoweredByLink>
+        </PoweredBySection>
 
-      </PoweredBySection>
-
+      </footer>
     </FooterSection>
   )
 }
