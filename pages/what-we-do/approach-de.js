@@ -104,8 +104,8 @@ ApproachDe.propTypes = {
   outroText1: PropTypes.string.isRequired,
   outroText2: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
-  section1Title: PropTypes.string,
-  section1Markdown: PropTypes.string,
+  section1Title: PropTypes.string.isRequired,
+  section1Markdown: PropTypes.string.isRequired,
   teamMember: PropTypes.shape(teamMemberShape).isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
@@ -113,8 +113,6 @@ ApproachDe.propTypes = {
 
 ApproachDe.defaultProps = {
   metaDescription: undefined,
-  section1Title: '',
-  section1Markdown: '',
 }
 
 ApproachDe.getInitialProps = async function initialProps({ query }) {
