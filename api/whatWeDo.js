@@ -1,7 +1,15 @@
 /* eslint-disable import/prefer-default-export */
 import { RouteNames } from '../routes'
 import { fetchSingleEntry } from './contentfulService'
-import { unwrapImage, unwrapFields, unwrapPortrait, unwrapStat, unwrapPageUrl } from './common'
+import {
+  unwrapFields,
+  unwrapImage,
+  unwrapPageUrl,
+  unwrapPortrait,
+  unwrapStat,
+  unwrapTeamMember,
+  unwrapProjects,
+} from './common'
 import { jpegQuality } from '../utils/constants'
 
 export async function fetchWhatWeDoPage(locale) {
@@ -39,18 +47,21 @@ export async function fetchWhatWeDoPage(locale) {
   }
 }
 
-const unwrapProjects = ({ fields }) => ({
-  ...fields,
-  image: unwrapImage(fields && fields.image),
-})
-
 export async function fetchApproachDePage(locale) {
-  const content = await fetchSingleEntry('pageApproachDE', locale)
+  const content = await fetchSingleEntry('pageApproachDE', locale) || {}
+  const {
+    teamMember,
+    image1,
+    projects,
+    bannerButtonUrl,
+  } = content
+
   return {
     ...content,
-    image1: unwrapImage(content && content.image1, { q: jpegQuality }),
-    projects: content && content.projects.map(unwrapProjects),
-    bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
+    teamMember: unwrapTeamMember(teamMember),
+    image1: unwrapImage(image1, { q: jpegQuality }),
+    projects: unwrapProjects(projects),
+    bannerButtonUrl: unwrapPageUrl(bannerButtonUrl),
   }
 }
 
@@ -70,7 +81,7 @@ export async function fetchApproachSaPage(locale) {
   const content = await fetchSingleEntry('pageApproachSA', locale)
   return {
     ...content,
-    projects: content && content.projects.map(unwrapProjects),
+    projects: unwrapProjects(content.projects),
     bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
   }
 }

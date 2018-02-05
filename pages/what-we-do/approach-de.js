@@ -15,6 +15,8 @@ import CenteredText from '../../components/CenteredText'
 import imagePropTypes from '../../propTypes/image'
 import RoundedImage from '../../components/RoundedImage'
 import Markdown from '../../components/Markdown'
+import TextWithTeamMember from '../../components/TextWithTeamMember'
+import teamMemberShape from '../../propTypes/teamMember'
 
 const ImageContainer = styled.div`
   margin: 0 auto;
@@ -33,6 +35,9 @@ const ApproachDe = ({
   outroText1,
   outroText2,
   bannerTitle,
+  section1Title,
+  section1Markdown,
+  teamMember,
   bannerButtonText,
   bannerButtonUrl,
 }) => (
@@ -70,6 +75,14 @@ const ApproachDe = ({
       </div>
     </PageSection>
 
+    <PageSection>
+      <h2>{section1Title}</h2>
+      <TextWithTeamMember
+        text={section1Markdown}
+        teamMember={teamMember}
+      />
+    </PageSection>
+
     <Banner
       buttonLink={bannerButtonUrl}
       buttonText={bannerButtonText}
@@ -91,6 +104,9 @@ ApproachDe.propTypes = {
   outroText1: PropTypes.string.isRequired,
   outroText2: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
+  section1Title: PropTypes.string.isRequired,
+  section1Markdown: PropTypes.string.isRequired,
+  teamMember: PropTypes.shape(teamMemberShape).isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
 }
