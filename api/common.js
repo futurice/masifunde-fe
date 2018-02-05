@@ -94,6 +94,10 @@ export const unwrapRegionalGroups = regionalGroups => ({
 })
 
 export const unwrapTeamMember = (teamMember) => {
+  if (!teamMember) {
+    return undefined
+  }
+
   const { fields } = teamMember
   return {
     id: teamMember && teamMember.sys && teamMember.sys.id,
