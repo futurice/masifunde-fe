@@ -49,6 +49,17 @@ injectGlobal`
     ${subsectionTitleText}
   }
 
+  h4 {
+    ${bodyText}
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  h5 {
+    ${bodyText}
+    font-size: 0.8rem;
+  }
+
   p + p {
     margin-top: ${smallSpacing};
   }
