@@ -15,11 +15,13 @@ import Tagline from '../../components/Tagline'
 import PageSection from '../../components/PageSection'
 import StatList from '../../components/StatList'
 import Markdown from '../../components/Markdown'
+import EmbedVideo from '../../components/EmbedVideo'
 
 const Impact = ({
   metaTitle,
   metaDescription,
   title,
+  videoUrl,
   stats1Title,
   stats1,
   stats2Title,
@@ -49,6 +51,10 @@ const Impact = ({
         text={title}
         hideTopRuler
       />
+
+      <PageSection>
+        <EmbedVideo videoUrl={videoUrl} />
+      </PageSection>
 
       <PageSection>
         <h2>{stats1Title}</h2>
@@ -108,6 +114,7 @@ Impact.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   title: PropTypes.string.isRequired,
+  videoUrl: PropTypes.string.isRequired,
   stats1Title: PropTypes.string.isRequired,
   stats1: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
   stats2Title: PropTypes.string.isRequired,
