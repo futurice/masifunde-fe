@@ -11,7 +11,7 @@
     "dev": "nodemon --watch server.js --watch routes.js server.js",
     "build": "next build",
     "build-static": "next build && next export && npm run copy",
-    "copy": "cp robots.txt _redirects out",
+    "copy": "cpx 'public/**/*' out --verbose",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint --ignore-path .gitignore --ext .js,.js .",
     "lint-fix": "npm run lint -- --fix",
@@ -55,13 +55,16 @@
     "react-icons": "^2.2.7",
     "react-markdown": "^2.5.1",
     "reactstrap": "^5.0.0-alpha.4",
-    "styled-components": "^3.0.2"
+    "sitemap": "^1.13.0",
+    "styled-components": "^3.0.2",
+    "validator": "^9.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
     "babel-plugin-polished": "^1.1.0",
     "babel-plugin-styled-components": "^1.5.0",
     "babel-plugin-transform-inline-environment-variables": "^0.2.0",
+    "cpx": "^1.5.0",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",

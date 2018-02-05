@@ -1,4 +1,6 @@
 /* eslint-disable no-param-reassign */
+const fs = require('fs')
+const createSitemap = require('./utils/sitemap')
 const Routes = require('./routes')
 
 function patternWithLocaleFactory(pattern, locale) {
@@ -24,8 +26,14 @@ function createRoutesFromNextRoutes() {
   }, {})
 }
 
+const routes = createRoutesFromNextRoutes()
+
+// Save created sitemap
+fs.writeFileSync('public/sitemap.xml', createSitemap(routes))
+
 module.exports = {
   exportPathMap() {
-    return createRoutesFromNextRoutes()
+    return routes
   },
+  useFileSystemPublicRoutes: false,
 }

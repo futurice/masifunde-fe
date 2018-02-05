@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import _debounce from 'lodash/debounce'
-import T from 'i18n-react'
-
-import { checkPositiveIntValues, checkRequiredValues } from './utils/formValidation'
+import {
+  checkEmails,
+  checkMaxValues,
+  checkMinValues,
+  checkIsIntegerValues,
+  checkRequiredValues,
+} from './utils/formValidation'
 import { FIELD_NAMES, NO_RECEIPT_OPTION_VALUE } from './constants/formValues'
 import {
   ADDRESS,
@@ -27,7 +31,7 @@ function withFormState(View) {
     debounceSetState = _debounce(this.setState, 500)
 
     validateForm = (fields) => {
-      const errorsPositiveInt = checkPositiveIntValues([AMOUNT], fields)
+      const errorsIsIntegerValues = checkIsIntegerValues([AMOUNT], fields)
       const wantsReceiptRequiredValues =
         fields[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE
           ? [{ fieldName: ADDRESS }, { fieldName: CITY }, { fieldName: POST_CODE }]
@@ -38,10 +42,7 @@ function withFormState(View) {
             fieldName: PROJECT_ID,
             errorMessage: T.translate('donation.requiredProject'),
           },
-          {
-            fieldName: AMOUNT,
-            errorMessage: T.translate('donation.greaterThanZero'),
-          },
+          { fieldName: AMOUNT },
           {
             fieldName: PAYMENT_INTERVAL,
             errorMessage: T.translate('donation.requiredInterval'),
@@ -56,8 +57,17 @@ function withFormState(View) {
         ],
         fields,
       )
+      const errorsEmails = checkEmails([EMAIL], fields)
+      const errorsMinValues = checkMinValues([AMOUNT], fields, 1)
+      const errorsMaxValues = checkMaxValues([AMOUNT], fields, 10000)
 
-      const errors = { ...errorsPositiveInt, ...errorsRequired }
+      const errors = {
+        ...errorsEmails,
+        ...errorsMinValues,
+        ...errorsMaxValues,
+        ...errorsIsIntegerValues,
+        ...errorsRequired,
+      }
 
       const noErrors = !Object.keys(errors).length
 
