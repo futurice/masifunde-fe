@@ -54,13 +54,13 @@ VideoIframeContainer.propTypes = {
   className: PropTypes.string.isRequired,
 }
 
-const EmbedVideo = styled(VideoIframeContainer)`
+const EmbeddedVideo = styled(VideoIframeContainer)`
   position: relative;
   padding-bottom: 54%; /* 16:9 */
   height: 0;
 `
 
-const EmbedVideoContainer = styled.div`
+const EmbeddedVideoContainer = styled.div`
   max-height: calc(90vh - ${({ theme }) => theme.headerHeight});
   margin: 0 auto;
   
@@ -69,12 +69,12 @@ const EmbedVideoContainer = styled.div`
   }
 `
 
-const ContainedEmbedVideo = props => (
+const ContainedEmbeddedVideo = props => (
   <ConditionalContainer containAfter="md" >
-    <EmbedVideoContainer>
-      <EmbedVideo {...props} />
-    </EmbedVideoContainer>
+    <EmbeddedVideoContainer>
+      <EmbeddedVideo {...props} />
+    </EmbeddedVideoContainer>
   </ConditionalContainer>
 )
 
-export default ContainedEmbedVideo
+export default ContainedEmbeddedVideo

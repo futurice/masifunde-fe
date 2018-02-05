@@ -7,7 +7,7 @@ import withLayout from '../../components/withLayout'
 import Hero from '../../components/Hero'
 import Head from '../../components/Head'
 import Banner from '../../components/Banner'
-import EmbedVideo from '../../components/EmbedVideo'
+import EmbeddedVideo from '../../components/EmbeddedVideo'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
 import Tagline from '../../components/Tagline'
@@ -43,7 +43,7 @@ const ApproachSa = ({
     </PageSection>
 
     <PageSection contained={false}>
-      <EmbedVideo videoUrl={videoUrl} />
+      <EmbeddedVideo videoUrl={videoUrl} />
     </PageSection>
 
     <Banner

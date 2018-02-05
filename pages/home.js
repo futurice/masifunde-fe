@@ -11,7 +11,7 @@ import portraitPropTypes from '../propTypes/portrait'
 import Stat from '../components/Stat'
 import { getLocaleFromQuery } from '../utils/locale'
 import { fetchHomePage } from '../api/home'
-import EmbedVideo from '../components/EmbedVideo'
+import EmbeddedVideo from '../components/EmbeddedVideo'
 import PageSection from '../components/PageSection'
 import StatList from '../components/StatList'
 
@@ -67,7 +67,7 @@ const Home = ({
         <h2>{videoTitle}</h2>
       </Container>
 
-      <EmbedVideo videoUrl={videoUrl} />
+      <EmbeddedVideo videoUrl={videoUrl} />
     </PageSection>
 
     <PageSection contained={false}>

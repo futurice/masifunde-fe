@@ -15,7 +15,7 @@ import Tagline from '../../components/Tagline'
 import PageSection from '../../components/PageSection'
 import StatList from '../../components/StatList'
 import Markdown from '../../components/Markdown'
-import EmbedVideo from '../../components/EmbedVideo'
+import EmbeddedVideo from '../../components/EmbeddedVideo'
 
 const Impact = ({
   metaTitle,
@@ -53,7 +53,7 @@ const Impact = ({
       />
 
       <PageSection>
-        <EmbedVideo videoUrl={videoUrl} />
+        <EmbeddedVideo videoUrl={videoUrl} />
       </PageSection>
 
       <PageSection>

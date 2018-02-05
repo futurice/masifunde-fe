@@ -8,7 +8,7 @@ import withLayout from '../../components/withLayout'
 import { fetchWhatWeDoPage } from '../../api/whatWeDo'
 import { getLocaleFromQuery } from '../../utils/locale'
 import Head from '../../components/Head'
-import EmbedVideo from '../../components/EmbedVideo'
+import EmbeddedVideo from '../../components/EmbeddedVideo'
 import Button from '../../components/Button'
 import Stat from '../../components/Stat'
 import { Link, RouteNames } from '../../routes'
@@ -239,7 +239,7 @@ const WhatWeDo = ({
     </PageSection>
 
     <PageSection contained={false}>
-      <EmbedVideo videoUrl={videoUrl} />
+      <EmbeddedVideo videoUrl={videoUrl} />
     </PageSection>
 
     <PageSection>
