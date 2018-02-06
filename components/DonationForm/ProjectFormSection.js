@@ -5,15 +5,15 @@ import { Field } from 'react-final-form'
 
 import PageSection from './PageSection'
 import SubHeader from './SubHeader'
-import LabelButton from './LabelButton'
+import RadioButton from './RadioButton'
 import ErrorMessage from './ErrorMessage'
 import { fundraisingFormSpacing } from '../../utils/constants'
 import { smBreakpoint } from '../../styling/breakpoints'
 
 const CountryLabelContainer = styled.div`
-  width: 100%;
   margin-right: ${fundraisingFormSpacing};
-  
+  width: 100%;
+
   @media (min-width: ${smBreakpoint}) {
     width: calc(50% - ${fundraisingFormSpacing});
   }
@@ -33,36 +33,22 @@ const ProjectFormSection = ({
         <SubHeader className="row">{title}</SubHeader>
         <div className="row">
           <CountryLabelContainer data-toggle="buttons">
-            <LabelButton
-              className="btn"
+            <RadioButton
+              {...input}
+              id="countryInputSa"
+              label={markdownSa}
+              value={saProjectId}
               isActive={input.value === saProjectId}
-              htmlFor="countryInputSa"
-            >
-              <input
-                {...input}
-                type="radio"
-                value={saProjectId}
-                id="countryInputSa"
-                autoComplete="off"
-              />
-              {markdownSa}
-            </LabelButton>
+            />
           </CountryLabelContainer>
           <CountryLabelContainer>
-            <LabelButton
-              className="btn"
+            <RadioButton
+              {...input}
+              id="countryInputDe"
+              label={markdownDe}
+              value={deProjectId}
               isActive={input.value === deProjectId}
-              htmlFor="countryInputDe"
-            >
-              <input
-                {...input}
-                type="radio"
-                value={deProjectId}
-                id="countryInputDe"
-                autoComplete="off"
-              />
-              {markdownDe}
-            </LabelButton>
+            />
           </CountryLabelContainer>
         </div>
         <ErrorMessage meta={meta} />

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 import styled from 'styled-components'
 
-import LabelButton from './LabelButton'
+import RadioButton from './RadioButton'
 import ErrorMessage from './ErrorMessage'
 import { defaultFont } from '../../styling/typography'
 import SubHeader from './SubHeader'
@@ -14,10 +14,11 @@ import { MONTHS_IN_YEAR } from './constants/formValues'
 
 const otherAmountInputWidth = '30%'
 
-const AmountLabelButton = LabelButton.extend`
+const AmountRadioButton = styled(RadioButton)`
   margin-right: ${fundraisingFormSpacing};
   padding-left: 0;
   padding-right: 0;
+  width: 100%;
 
   @media (min-width: ${smBreakpoint}) {
     width: calc(50% - ${fundraisingFormSpacing});
@@ -111,27 +112,16 @@ const AmountFormSection = ({
         <PageSection>
           <SubHeader className="row">{title}</SubHeader>
           <AmountLabelsContainer className="row">
-            {filteredAmounts.map(({ text, value }) => {
-              const isChecked = Number(input.value) === value
-              return (
-                <AmountLabelButton
-                  className="btn"
-                  isActive={isChecked}
-                  key={value}
-                  htmlFor={`amountInputOption${value}`}
-                >
-                  <input
-                    {...input}
-                    type="radio"
-                    checked={isChecked}
-                    value={value}
-                    id={`amountInputOption${value}`}
-                    autoComplete="off"
-                  />
-                  {text}
-                </AmountLabelButton>
-              )
-            })}
+            {filteredAmounts.map(({ text, value }) => (
+              <AmountRadioButton
+                {...input}
+                key={value}
+                id={`amountInputOption${value}`}
+                label={text}
+                value={value}
+                isActive={Number(input.value) === value}
+              />
+            ))}
             {enableOtherAmount && (
               <Fragment>
                 <OtherAmountContainer>
