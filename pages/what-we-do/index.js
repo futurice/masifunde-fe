@@ -95,7 +95,7 @@ const ProjectList = ({ projects }) => (
         className="col-sm-6"
         key={`${project.image.url} ${project.name}`}
       >
-        <ProjectImage src={project.image.url} alt={project.image.title} />
+        <ProjectImage src={project.image.url} alt="" />
         <ProjectText>{project.name}</ProjectText>
       </Project>
       ))}
