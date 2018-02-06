@@ -9,5 +9,9 @@
     "mustBeANumber": "Der Wert muss eine Zahl sein",
     "cantBeLessThan": "Der Betrag darf nicht kleiner als {value} sein",
     "cantBeGreaterThan": "Der Betrag darf nicht mehr als {value} betragen"
+  },
+  "footer": {
+    "visitFacebook": "Besuchen Sie Masifundes Facebook-Seite",
+    "visitYouTube": "Besuchen Sie Masifundes YouTube-Seite"
   }
 }

@@ -9,5 +9,9 @@
     "mustBeANumber": "The value must be a number",
     "cantBeLessThan": "The amount can not be less than {value}",
     "cantBeGreaterThan": "The amount can not be greater than {value}"
+  },
+  "footer": {
+    "visitFacebook": "Visit Masifunde's Facebook page",
+    "visitYouTube": "Visit Masifunde's YouTube page"
   }
 }

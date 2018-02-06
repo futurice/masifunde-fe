@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
 import styled from 'styled-components'
+import T from 'i18n-react'
 
 import { RouteNames } from '../routes'
 import Link from './Link'
@@ -152,7 +153,7 @@ function Footer({
           <div className="col">
             <h4>
               <SocialLink
-                aria-label="Visit Masifunde's YouTube channel"
+                aria-label={T.translate('footer.visitYouTube')}
                 href={masifundeYouTubeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -160,7 +161,7 @@ function Footer({
                 <FaYoutubePlay />
               </SocialLink>
               <SocialLink
-                aria-label="Visit Masifunde's Facebook page"
+                aria-label={T.translate('footer.visitFacebook')}
                 href={masifundeFacebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
