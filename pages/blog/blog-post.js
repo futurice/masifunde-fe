@@ -25,6 +25,7 @@ import { rem, footerText } from '../../styling/typography'
 import Button from '../../components/Button'
 import Link from '../../components/Link'
 import { RouteNames as routes } from '../../routes'
+import SocialLink from '../../components/SocialLink'
 
 const BlogPostError = props => (
   <div>
@@ -117,6 +118,7 @@ const ShareContainer = styled.div`
 const ShareButtonRow = styled.div`
   display: flex;
   flex-direction: row;
+  margin-top: -10px;
 
   > * {
     padding: 10px;
@@ -127,15 +129,8 @@ const ShareButtonRow = styled.div`
   }
 `
 
-const SocialLink = styled.div`
-  color: #444444;
-  opacity: 0.6;
-  cursor: pointer;
-
-  &:hover {
-    color: #444444 !important;
-    opacity: 1;
-  }
+const SocialShareLink = SocialLink.withComponent('div').extend`
+  margin: 0;
 `
 
 const HorizontalRule = styled.hr`

@@ -10,6 +10,7 @@ import Link from './Link'
 import PageSection from './PageSection'
 import { largeSpacing, extraSmallSpacing } from '../styling/sizes'
 import { footerText } from '../styling/typography'
+import SocialLink from './SocialLink'
 
 const FooterSection = styled(PageSection)`
   ${footerText}
@@ -42,19 +43,6 @@ const CopyrightSocialSection = styled.div`
 const CopyrightColumn = styled.div`
   text-align: center;
   color: ${({ theme }) => theme.pineCone};
-`
-
-const SocialLink = styled.a`
-  color: #444444;
-  opacity: 0.6;
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: pointer;
-
-  &:hover {
-    color: #444444 !important;
-    opacity: 1;
-  }
 `
 
 const Anchor = styled.a`
