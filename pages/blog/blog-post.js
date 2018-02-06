@@ -21,7 +21,7 @@ import Hero from '../../components/Hero'
 import Markdown from '../../components/Markdown'
 import { smBreakpoint, mdBreakpoint, lgBreakpoint } from '../../styling/breakpoints'
 import theme from '../../styling/theme'
-import { rem } from '../../styling/typography'
+import { rem, footerText } from '../../styling/typography'
 import Button from '../../components/Button'
 import Link from '../../components/Link'
 import { RouteNames as routes } from '../../routes'
@@ -89,13 +89,25 @@ const TeamMemberAuthor = styled(TeamMember)`
 
 const DateContainer = styled.div`
   margin-bottom: 1.5rem;
+
+  p {
+    ${footerText}
+  }
 `
 
 const AuthorContainer = styled.div`
   margin-top: 1.5rem;
 `
 
+const H4 = styled.h4`
+  text-align: left;
+`
+
 const ShareContainer = styled.div`
+  > * {
+    text-align: right;
+  }
+
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -175,17 +187,17 @@ const BlogPostContent = (props) => {
       <PageSection>
         <div className="offset-lg-2 col-lg-8">
           <DateContainer>
-            <h5>{date}</h5>
+            <p>{date}</p>
           </DateContainer>
           <BlogTitle>{title}</BlogTitle>
           <BlogMarkdown source={content} />
           <div className="row">
             <AuthorContainer className="col-6">
-              <h4>{props.authorText}</h4>
+              <H4>{props.authorText}</H4>
               {author}
             </AuthorContainer>
             <ShareContainer className="col-6">
-              <h4>{props.shareText}</h4>
+              <H4>{props.shareText}</H4>
 
               <ShareButtonRow>
                 <FacebookShareButton

@@ -9,14 +9,38 @@ import { RouteNames } from '../routes'
 import Link from './Link'
 import PageSection from './PageSection'
 import { largeSpacing, extraSmallSpacing } from '../styling/sizes'
+import { footerText } from '../styling/typography'
+
+const FooterSection = styled(PageSection)`
+  ${footerText}
+  margin-top: ${largeSpacing};
+
+  a, a:visited {
+    color: ${({ theme }) => theme.pineCone};
+  }
+
+  li {
+    padding: 0.3rem 0;
+    color: #77695c;
+  }
+
+  ul li:first-of-type {
+    font-weight: 700;
+  }
+`
 
 const Sitemap = styled.div`
-  font-size: 14px;
+  ${footerText}
+`
+
+const CopyrightSocialSection = styled.div`
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `
 
 const CopyrightColumn = styled.div`
   text-align: center;
-  font-size: 14px;
   color: ${({ theme }) => theme.pineCone};
 `
 
@@ -40,6 +64,7 @@ const Anchor = styled.a`
     color: ${props => props.theme.pineCone};
   }
 `
+
 const FooterImpressumContainer = styled.div`
   margin-bottom: ${extraSmallSpacing};
 `
@@ -47,29 +72,6 @@ const FooterImpressumContainer = styled.div`
 const ContentfulImage = styled.img`
   max-width: 100px;
   width: 100%;
-`
-
-const FooterSection = styled(PageSection)`
-  margin-top: ${largeSpacing};
-
-  a, a:visited {
-    color: ${({ theme }) => theme.pineCone};
-  }
-
-  li {
-    padding: 0.3rem 0;
-    color: #77695c;
-  }
-
-  ul li:first-of-type {
-    font-weight: 700;
-  }
-`
-
-const CopyrightSocialSection = styled.div`
-  text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 `
 
 const FooterLink = ({ route, text }) => (
@@ -174,7 +176,7 @@ function Footer({
             </Link>
             &
             <Link route={RouteNames.Datenschutz} passHref>
-              <Anchor>{datenschutzText}</Anchor>
+              <Anchor> {datenschutzText}</Anchor>
             </Link>
           </CopyrightColumn>
         </FooterImpressumContainer>
