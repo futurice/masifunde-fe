@@ -76,7 +76,7 @@ RadioButton.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   isActive: PropTypes.bool.isRequired,
   className: PropTypes.string,
 }
