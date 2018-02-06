@@ -160,11 +160,11 @@ function Footer({
         <FooterImpressumContainer className="row">
           <CopyrightColumn className="col">
             <Link route={RouteNames.Impressum} passHref>
-              <Anchor>{impressumText} </Anchor>
+              <Anchor>{impressumText}</Anchor>
             </Link>
-            &
+            {' & '}
             <Link route={RouteNames.Datenschutz} passHref>
-              <Anchor> {datenschutzText}</Anchor>
+              <Anchor>{datenschutzText}</Anchor>
             </Link>
           </CopyrightColumn>
         </FooterImpressumContainer>
