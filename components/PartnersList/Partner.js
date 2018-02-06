@@ -35,7 +35,7 @@ const Partner = ({
     <PartnerContainer>
       <Link href={link}>
         <ImageContainer>
-          <Image src={image.url} alt={image.title} />
+          <Image src={image.url} alt="" />
         </ImageContainer>
         <div>{name}</div>
       </Link>

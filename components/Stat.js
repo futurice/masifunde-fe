@@ -51,7 +51,7 @@ const Stat = ({
           <CenteredSpan>{textAbove}</CenteredSpan>
         </FixedHeight>
       )}
-      {hasImage && <Image src={icon.url} alt={icon.title} />}
+      {hasImage && <Image src={icon.url} alt="" />}
       <Number highlight={!hasImage}>{number}</Number>
       <CenteredSpan>
         {description}
