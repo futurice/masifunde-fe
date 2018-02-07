@@ -13,6 +13,7 @@ const SelectField = ({
   inputClassName,
   label,
   options,
+  autoComplete,
 }) => (
   <div className="form-group row">
     <FormLabel className={`${FORM_LABEL_BOOTSTRAP_CLASSES} col-form-label`} htmlFor={fieldName}>
@@ -24,6 +25,7 @@ const SelectField = ({
           <div className="w-100">
             <select
               {...input}
+              autoComplete={autoComplete}
               id={fieldName}
               className={formInputClassFactory(meta)}
               aria-labelledby={fieldName}
@@ -52,10 +54,12 @@ SelectField.propTypes = {
       text: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  autoComplete: PropTypes.string,
   inputClassName: PropTypes.string,
 }
 
 SelectField.defaultProps = {
+  autoComplete: 'on',
   inputClassName: FORM_INPUT_BOOTSTRAP_CLASSES,
 }
 

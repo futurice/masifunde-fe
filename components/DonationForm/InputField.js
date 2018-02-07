@@ -10,6 +10,7 @@ import { formInputClassFactory } from './utils/formInputClassFactory'
 const InputField = ({
   fieldName,
   label,
+  autoComplete,
   type,
 }) => (
   <div className="form-group row">
@@ -22,6 +23,7 @@ const InputField = ({
           <div>
             <input
               {...input}
+              autoComplete={autoComplete}
               id={fieldName}
               type={type}
               className={formInputClassFactory(meta)}
@@ -38,10 +40,12 @@ const InputField = ({
 InputField.propTypes = {
   fieldName: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  autoComplete: PropTypes.string,
   type: PropTypes.oneOf(['text', 'email']),
 }
 
 InputField.defaultProps = {
+  autoComplete: 'on',
   type: 'text',
 }
 

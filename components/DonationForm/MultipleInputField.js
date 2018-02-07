@@ -21,6 +21,8 @@ const SecondInputContainer = styled.div`
 const MultipleInputField = ({
   fieldName1,
   fieldName2,
+  autoComplete1,
+  autoComplete2,
   label,
   type,
 }) => (
@@ -33,6 +35,7 @@ const MultipleInputField = ({
         <div className="col-md-3">
           <input
             {...input}
+            autoComplete={autoComplete1}
             id={fieldName1}
             type={type}
             className={formInputClassFactory(meta)}
@@ -47,6 +50,7 @@ const MultipleInputField = ({
         <SecondInputContainer className="col-md-5">
           <input
             {...input}
+            autoComplete={autoComplete2}
             id={fieldName2}
             type={type}
             className={formInputClassFactory(meta)}
@@ -63,10 +67,14 @@ MultipleInputField.propTypes = {
   fieldName1: PropTypes.string.isRequired,
   fieldName2: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  autoComplete1: PropTypes.string,
+  autoComplete2: PropTypes.string,
   type: PropTypes.oneOf(['text', 'email']),
 }
 
 MultipleInputField.defaultProps = {
+  autoComplete1: 'on',
+  autoComplete2: 'on',
   type: 'text',
 }
 

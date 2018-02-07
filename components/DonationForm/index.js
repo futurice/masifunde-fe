@@ -97,7 +97,7 @@ const DonationForm = ({
           }}
           validate={validateForm}
           render={({ handleSubmit, values }) => (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete="on">
               <FormContainer>
                 {enableProjectSelection && (
                   <ProjectFormSection
@@ -134,15 +134,32 @@ const DonationForm = ({
                     label="Anrede"
                     options={salutationOptions}
                     inputClassName="col-md-4 col-lg-3"
+                    autoComplete="honorific-prefix"
                   />
 
-                  <InputField fieldName={TITLE} label="Titel (optional)" />
+                  <InputField
+                    fieldName={TITLE}
+                    label="Titel (optional)"
+                  />
 
-                  <InputField fieldName={FIRST_NAME} label="Vorname" />
+                  <InputField
+                    fieldName={FIRST_NAME}
+                    label="Vorname"
+                    autoComplete="given-name"
+                  />
 
-                  <InputField fieldName={LAST_NAME} label="Nachname" />
+                  <InputField
+                    fieldName={LAST_NAME}
+                    label="Nachname"
+                    autoComplete="family-name"
+                  />
 
-                  <InputField fieldName={EMAIL} label="Email" type="email" />
+                  <InputField
+                    fieldName={EMAIL}
+                    label="Email"
+                    type="email"
+                    autoComplete="email"
+                  />
 
                   <SelectField
                     fieldName={WANTS_RECEIPT}
@@ -152,19 +169,34 @@ const DonationForm = ({
 
                   {values[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE && (
                     <Fragment>
-                      <InputField fieldName={COMPANY_NAME} label="Firma (optional)" />
+                      <InputField
+                        fieldName={COMPANY_NAME}
+                        label="Firma (optional)"
+                        autoComplete="organization"
+                      />
 
-                      <InputField fieldName={ADDRESS} label="Adresse" />
+                      <InputField
+                        fieldName={ADDRESS}
+                        label="Adresse"
+                        autoComplete="street-address"
+                      />
 
                       <MultipleInputField
                         fieldName1={POST_CODE}
                         fieldName2={CITY}
+                        autoComplete1="postal-code"
+                        autoComplete2="address-level2"
                         label="PLZ / Ort"
                       />
                     </Fragment>
                   )}
 
-                  <SelectField fieldName={COUNTRY} label="Land" options={countriesOptions} />
+                  <SelectField
+                    fieldName={COUNTRY}
+                    label="Land"
+                    options={countriesOptions}
+                    autoComplete="country"
+                  />
 
                   <HiddenButton
                     innerRef={(form) => {
