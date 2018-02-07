@@ -16,7 +16,11 @@ const Blog = () => (
 
       <Link
         route={RouteNames.BlogPost}
-        params={{ slug: 'weltwaerts-in-suedafrika-jeden-tag-habe-ich-etwas-neues-gelernt' }}
+        params={{
+          slug: 'weltwaerts-in-suedafrika-jeden-tag-habe-ich-etwas-neues-gelernt',
+          previousPostRoute: 'FIXME: slug',
+          nextPostRoute: 'FIXME: slug',
+        }}
       >
         <a>FIXME: A blog post</a>
       </Link>

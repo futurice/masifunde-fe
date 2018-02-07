@@ -163,6 +163,10 @@ const NavContainer = styled.nav`
   }
 `
 
+const NavButton = styled(Button)`
+  visibility: ${props => (props.href ? 'visible' : 'hidden')};
+`
+
 const BlogPostContent = ({
   title,
   metaDescription,
@@ -294,19 +298,19 @@ const BlogPost = (props) => {
 
               <NavContainer>
                 <Link route={previousPostRoute} passHref>
-                  <Button type="secondary">
+                  <NavButton type="secondary">
                     <span className="longNavText">{previousPostText}</span>
                     <span className="shortNavText">{'<'}</span>
-                  </Button>
+                  </NavButton>
                 </Link>
                 <Link route={routes.Blog} passHref>
-                  <Button type="secondary">{blogHomeText}</Button>
+                  <NavButton type="secondary">{blogHomeText}</NavButton>
                 </Link>
                 <Link route={nextPostRoute} passHref>
-                  <Button type="secondary">
+                  <NavButton type="secondary">
                     <span className="longNavText">{nextPostText}</span>
                     <span className="shortNavText">{'>'}</span>
-                  </Button>
+                  </NavButton>
                 </Link>
               </NavContainer>
             </div>
@@ -329,6 +333,11 @@ BlogPost.defaultProps = {
 }
 
 BlogPost.getInitialProps = async function initialProps({ query }) {
+  const {
+    previousPostRoute,
+    nextPostRoute,
+  } = query
+
   return Promise.all([
     fetchBlogPostPage(getLocaleFromQuery(query)),
     fetchBlogPost(getLocaleFromQuery(query), query.slug)
@@ -342,7 +351,12 @@ BlogPost.getInitialProps = async function initialProps({ query }) {
     .then((results) => {
       const page = results[0]
       const post = results[1]
-      return { ...page, ...post }
+      return {
+        previousPostRoute,
+        nextPostRoute,
+        ...page,
+        ...post,
+      }
     })
 }
 
