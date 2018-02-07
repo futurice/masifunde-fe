@@ -10,10 +10,12 @@ import { fetchDonatePage } from '../../api/howToSupport'
 import withLayout from '../../components/withLayout'
 import DonationForm from '../../components/DonationForm'
 import PageSection from '../../components/PageSection'
+import FormContainer from '../../components/DonationForm/FormContainer'
 import CenteredText from '../../components/CenteredText'
 import { SA_PROJECT_ID } from '../../components/DonationForm/constants/formValues'
 import { PROJECT_ID } from '../../components/DonationForm/constants/fieldNames'
 import withQueryParams from '../../components/withQueryParams'
+import Markdown from '../../components/Markdown'
 
 const MainHeading = styled.h1`
   width: 100%;
@@ -25,6 +27,7 @@ const Donate = ({
   bannerTitle,
   introHeading,
   introMarkdown,
+  intro2Markdown,
   metaDescription,
   metaTitle,
   section1MarkdownDe,
@@ -46,6 +49,10 @@ const Donate = ({
       <MainHeading>{introHeading}</MainHeading>
       <CenteredText source={introMarkdown} />
     </PageSection>
+
+    <FormContainer>
+      <Markdown source={intro2Markdown} />
+    </FormContainer>
 
     <DonationForm
       amounts={section3ReferenceList}
@@ -80,6 +87,7 @@ Donate.propTypes = {
   metaDescription: PropTypes.string,
   introHeading: PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
+  intro2Markdown: PropTypes.string.isRequired,
   section1title: PropTypes.string.isRequired,
   section1MarkdownDe: PropTypes.string.isRequired,
   section1MarkdownSa: PropTypes.string.isRequired,
