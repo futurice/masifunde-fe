@@ -191,8 +191,8 @@ class MasifundeCarousel extends Component {
         <StyledCarousel {...settings}>
           {items.map(item => (
             <SlideRow className="row" key={`${item.heading} ${item.image.url}`}>
-              <Image className="col-md-4" src={item.image.url} alt={item.image.title} />
-              <MobileImage src={item.image.url} alt={item.image.title} />
+              <Image className="col-md-4" src={item.image.url} alt="" />
+              <MobileImage src={item.image.url} alt="" />
               <CarouselTextContainer className="col-md-8">
                 <CarouselTextTitle>{item.heading}</CarouselTextTitle>
                 <Markdown source={item.text} />

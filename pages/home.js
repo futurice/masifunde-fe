@@ -11,7 +11,7 @@ import portraitPropTypes from '../propTypes/portrait'
 import Stat from '../components/Stat'
 import { getLocaleFromQuery } from '../utils/locale'
 import { fetchHomePage } from '../api/home'
-import YouTubeVideo from '../components/YouTubeVideo'
+import EmbeddedVideo from '../components/EmbeddedVideo'
 import PageSection from '../components/PageSection'
 import StatList from '../components/StatList'
 
@@ -28,8 +28,8 @@ const Home = ({
   banner2ButtonUrl,
   section1Title,
   portrait,
-  youTubeVideoTitle,
-  youTubeVideoUrl,
+  videoTitle,
+  videoUrl,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -64,10 +64,10 @@ const Home = ({
 
     <PageSection contained={false}>
       <Container>
-        <h2>{youTubeVideoTitle}</h2>
+        <h2>{videoTitle}</h2>
       </Container>
 
-      <YouTubeVideo youtubeVideo={youTubeVideoUrl} />
+      <EmbeddedVideo videoUrl={videoUrl} />
     </PageSection>
 
     <PageSection contained={false}>
@@ -99,8 +99,8 @@ Home.propTypes = {
   banner2ButtonUrl: PropTypes.string.isRequired,
   section1Title: PropTypes.string.isRequired,
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
-  youTubeVideoTitle: PropTypes.string.isRequired,
-  youTubeVideoUrl: PropTypes.string.isRequired,
+  videoTitle: PropTypes.string.isRequired,
+  videoUrl: PropTypes.string.isRequired,
 }
 
 Home.defaultProps = {

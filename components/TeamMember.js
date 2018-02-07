@@ -39,7 +39,7 @@ const TeamMember = ({
       <Image
         className="img-fluid"
         src={imageUrl}
-        alt={`${title} - ${subtitle}`}
+        alt=""
       />
       <Title>{title}</Title>
       <div>{subtitle}</div>

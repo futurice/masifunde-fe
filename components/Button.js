@@ -49,7 +49,7 @@ const StyledButton = styled(Button)`
   cursor: pointer;
   white-space: normal;
 
-  &:hover {
+  &:hover, &:focus {
     color: white;
   }
 
@@ -60,7 +60,7 @@ const StyledButton = styled(Button)`
     padding-top: 0.35rem;
     padding-bottom: 0.35rem;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: ${props.theme.green};
     }
 
@@ -74,7 +74,7 @@ const StyledButton = styled(Button)`
     color: ${props.theme.orangeRed};
     border-color: ${props.theme.orangeRed};
 
-    &:hover {
+    &:hover, &:focus {
       background-color: ${props.theme.orangeRed};
     }
 
@@ -88,7 +88,7 @@ const StyledButton = styled(Button)`
     color: white;
     border-color: white;
 
-    &:hover {
+    &:hover, &:focus {
       color: ${props.theme.orange};
       background-color: white;
     }
