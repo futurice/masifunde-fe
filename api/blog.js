@@ -2,7 +2,7 @@
 import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 import { unwrapTeamMember, unwrapImage } from './common'
 
-export async function fetchBlogPost(locale, slug) {
+export function fetchBlogPost(locale, slug) {
   return fetchEntriesForContentType(
     'blogPost',
     {
