@@ -9,6 +9,7 @@ import {
   unwrapStat,
   unwrapTeamMember,
   unwrapProjects,
+  unwrapStats,
 } from './common'
 import { jpegQuality } from '../utils/constants'
 
@@ -62,6 +63,7 @@ export async function fetchApproachDePage(locale) {
     image1: unwrapImage(image1, { q: jpegQuality }),
     projects: unwrapProjects(projects),
     bannerButtonUrl: unwrapPageUrl(bannerButtonUrl),
+    stats: unwrapStats(content.stats),
   }
 }
 
