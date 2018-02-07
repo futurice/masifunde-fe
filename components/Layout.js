@@ -11,7 +11,14 @@ import withLoadingIndicator from './withLoadingIndicator'
 import withReloadOnUpdate from './withReloadOnUpdate'
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
-import { bodyText, pageTitleText, sectionTitleText, subsectionTitleText, rootFontSize } from '../styling/typography'
+import {
+  bodyText,
+  pageTitleText,
+  sectionTitleText,
+  subsectionTitleText,
+  componentTitleText,
+  rootFontSize,
+} from '../styling/typography'
 import theme from '../styling/theme'
 import { extraSmallSpacing, smallSpacing } from '../styling/sizes'
 import { mdBreakpoint } from '../styling/breakpoints'
@@ -57,6 +64,10 @@ injectGlobal`
 
   h3 {
     ${subsectionTitleText}
+  }
+
+  h4 {
+    ${componentTitleText}
   }
 
   p + p {

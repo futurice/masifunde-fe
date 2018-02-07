@@ -1,13 +1,26 @@
 const nextRoutes = require('next-routes')()
 
 /**
- * Creates routes where page and name are the same
+ * Adds the locale stem to pattern.
  *
- * @param  {string} pattern
+ * @param {string} pattern
+ */
+function addLocale(pattern) {
+  return pattern ? `/:locale(en)?/${pattern}` : '/:locale(en)?'
+}
+
+/**
+ * Adds locale-enabled route where page and name are the same.
+ *
+ * @param {string} pattern
  * @param {string} page
  */
 function addRoute(pattern, page) {
-  nextRoutes.add({ name: page, pattern, page })
+  nextRoutes.add({
+    name: page,
+    pattern: addLocale(pattern),
+    page,
+  })
 }
 
 // Paths to pages
@@ -25,31 +38,32 @@ const Donate = '/how-to-support/donate'
 const BecomeSponsor = '/how-to-support/become-sponsor'
 const BecomeVolunteer = '/how-to-support/become-volunteer'
 const BecomePartner = '/how-to-support/become-partner'
+const Blog = '/blog'
+const BlogPost = '/blog/blog-post'
 const Contact = '/contact'
 const Impressum = '/impressum'
 const Datenschutz = '/datenschutz'
 
 // Register the routes
-addRoute('/:locale(en)?', Index)
-addRoute('/:locale(en)?/404', ErrorPage404)
-addRoute('/:locale(en)?/was-wir-machen', WhatWeDo)
-addRoute('/:locale(en)?/was-wir-machen/ansatz-de', ApproachDE)
-addRoute('/:locale(en)?/was-wir-machen/ansatz-sa', ApproachSA)
-addRoute('/:locale(en)?/was-wir-machen/effekte', Impact)
-addRoute('/:locale(en)?/wer-wir-sind', WhoWeAre)
-addRoute('/:locale(en)?/wer-wir-sind/team-de', TeamDE)
-addRoute('/:locale(en)?/wer-wir-sind/team-sa', TeamSA)
-addRoute('/:locale(en)?/wie-sie-helfen', HowToSupport)
-addRoute('/:locale(en)?/wie-sie-helfen/pate-werden', BecomeSponsor)
-addRoute('/:locale(en)?/wie-sie-helfen/aktiv-werden', BecomeVolunteer)
-addRoute('/:locale(en)?/wie-sie-helfen/partner-werden', BecomePartner)
-addRoute('/:locale(en)?/wie-sie-helfen/spenden', Donate)
-addRoute('/:locale(en)?/kontakt', Contact)
-addRoute('/:locale(en)?/impressum', Impressum)
-addRoute('/:locale(en)?/datenschutz', Datenschutz)
-
-// To use with translations
-// addRoute('/:locale(en)?/was-wir-machen', WhatWeDo)
+addRoute(undefined, Index)
+addRoute('404', ErrorPage404)
+addRoute('was-wir-machen', WhatWeDo)
+addRoute('was-wir-machen/ansatz-de', ApproachDE)
+addRoute('was-wir-machen/ansatz-sa', ApproachSA)
+addRoute('was-wir-machen/effekte', Impact)
+addRoute('wer-wir-sind', WhoWeAre)
+addRoute('wer-wir-sind/team-de', TeamDE)
+addRoute('wer-wir-sind/team-sa', TeamSA)
+addRoute('wie-sie-helfen', HowToSupport)
+addRoute('wie-sie-helfen/pate-werden', BecomeSponsor)
+addRoute('wie-sie-helfen/aktiv-werden', BecomeVolunteer)
+addRoute('wie-sie-helfen/partner-werden', BecomePartner)
+addRoute('wie-sie-helfen/spenden', Donate)
+addRoute('kontakt', Contact)
+addRoute('impressum', Impressum)
+addRoute('datenschutz', Datenschutz)
+addRoute('blog', Blog)
+addRoute('blog/:slug', BlogPost)
 
 // Share route names
 nextRoutes.RouteNames = {
@@ -68,6 +82,8 @@ nextRoutes.RouteNames = {
   BecomePartner,
   Donate,
   Contact,
+  Blog,
+  BlogPost,
   Datenschutz,
   Impressum,
 }

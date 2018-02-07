@@ -10,47 +10,11 @@ import { RouteNames } from '../routes'
 import Link from './Link'
 import PageSection from './PageSection'
 import { largeSpacing, extraSmallSpacing } from '../styling/sizes'
-
-const Sitemap = styled.div`
-  font-size: 14px;
-`
-
-const CopyrightColumn = styled.div`
-  text-align: center;
-  font-size: 14px;
-  color: ${({ theme }) => theme.pineCone};
-`
-
-const SocialLink = styled.a`
-  color: #444444;
-  opacity: 0.6;
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: pointer;
-
-  &:hover {
-    color: #444444 !important;
-    opacity: 1;
-  }
-`
-
-const Anchor = styled.a`
-  color: ${props => props.theme.pineCone};
-
-  &:visited {
-    color: ${props => props.theme.pineCone};
-  }
-`
-const FooterImpressumContainer = styled.div`
-  margin-bottom: ${extraSmallSpacing};
-`
-
-const ContentfulImage = styled.img`
-  max-width: 100px;
-  width: 100%;
-`
+import { footerText } from '../styling/typography'
+import SocialLink from './SocialLink'
 
 const FooterSection = styled(PageSection)`
+  ${footerText}
   margin-top: ${largeSpacing};
 
   a, a:visited {
@@ -67,10 +31,36 @@ const FooterSection = styled(PageSection)`
   }
 `
 
+const Sitemap = styled.div`
+  ${footerText}
+`
+
 const CopyrightSocialSection = styled.div`
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
+`
+
+const CopyrightColumn = styled.div`
+  text-align: center;
+  color: ${({ theme }) => theme.pineCone};
+`
+
+const Anchor = styled.a`
+  color: ${props => props.theme.pineCone};
+
+  &:visited {
+    color: ${props => props.theme.pineCone};
+  }
+`
+
+const FooterImpressumContainer = styled.div`
+  margin-bottom: ${extraSmallSpacing};
+`
+
+const ContentfulImage = styled.img`
+  max-width: 100px;
+  width: 100%;
 `
 
 const FooterLink = ({ route, text }) => (
@@ -100,6 +90,7 @@ function Footer({
   becomeVolunteerText,
   becomePartnerText,
   contactText,
+  blogText,
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
@@ -143,6 +134,7 @@ function Footer({
             <div className="col">
               <ul className="list-unstyled">
                 <FooterLink route={RouteNames.Contact} text={contactText} />
+                <FooterLink route={RouteNames.Blog} text={blogText} />
               </ul>
             </div>
           </div>
@@ -179,11 +171,11 @@ function Footer({
         <FooterImpressumContainer className="row">
           <CopyrightColumn className="col">
             <Link route={RouteNames.Impressum} passHref>
-              <Anchor>{impressumText} </Anchor>
+              <Anchor>{impressumText}</Anchor>
             </Link>
-            &
+            {' & '}
             <Link route={RouteNames.Datenschutz} passHref>
-              <Anchor> {datenschutzText}</Anchor>
+              <Anchor>{datenschutzText}</Anchor>
             </Link>
           </CopyrightColumn>
         </FooterImpressumContainer>
@@ -216,6 +208,7 @@ export const propTypes = {
   becomeVolunteerText: PropTypes.string.isRequired,
   becomePartnerText: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
+  blogText: PropTypes.string.isRequired,
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
