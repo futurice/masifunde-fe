@@ -14,9 +14,10 @@ import ProjectList from '../../components/ProjectList'
 import CenteredText from '../../components/CenteredText'
 import imagePropTypes from '../../propTypes/image'
 import RoundedImage from '../../components/RoundedImage'
-import Markdown from '../../components/Markdown'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 import teamMemberShape from '../../propTypes/teamMember'
+import StatList from '../../components/StatList'
+import Stat from '../../components/Stat'
 
 const ImageContainer = styled.div`
   margin: 0 auto;
@@ -31,9 +32,8 @@ const ApproachDe = ({
   introText,
   projects,
   image1,
-  outroTitle,
-  outroText1,
-  outroText2,
+  statsTitle,
+  stats,
   bannerTitle,
   section1Title,
   section1Markdown,
@@ -68,11 +68,17 @@ const ApproachDe = ({
     </PageSection>
 
     <PageSection>
-      <h2>{outroTitle}</h2>
-      <div className="row">
-        <Markdown className="col-md-6" source={outroText1} />
-        <Markdown className="col-md-6" source={outroText2} />
-      </div>
+      <h2>{statsTitle}</h2>
+      <StatList>
+        {stats.map((stat, index) => (
+          <Stat
+            key={`${stat.number} ${stat.description}`}
+            {...stat}
+            superscriptText={index + 1}
+            sourceId={`impact-source-${index}`}
+          />
+        ))}
+      </StatList>
     </PageSection>
 
     <PageSection>
@@ -100,9 +106,8 @@ ApproachDe.propTypes = {
   // eslint-disable-next-line react/require-default-props
   projects: ProjectList.propTypes.projects,
   image1: PropTypes.shape(imagePropTypes).isRequired,
-  outroTitle: PropTypes.string.isRequired,
-  outroText1: PropTypes.string.isRequired,
-  outroText2: PropTypes.string.isRequired,
+  statsTitle: PropTypes.string.isRequired,
+  stats: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
   bannerTitle: PropTypes.string.isRequired,
   section1Title: PropTypes.string.isRequired,
   section1Markdown: PropTypes.string.isRequired,
