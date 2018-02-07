@@ -16,9 +16,20 @@ import { SA_PROJECT_ID } from '../../components/DonationForm/constants/formValue
 import { PROJECT_ID } from '../../components/DonationForm/constants/fieldNames'
 import withQueryParams from '../../components/withQueryParams'
 import Markdown from '../../components/Markdown'
+import { extraSmallSpacing } from '../../styling/sizes'
 
 const MainHeading = styled.h1`
   width: 100%;
+`
+
+const MarkdownWithCustomList = styled(Markdown)`
+  ul {
+    list-style-image: url('/static/images/bullet-check.svg');
+  }
+
+  li {
+    margin-top: ${extraSmallSpacing};
+  }
 `
 
 const Donate = ({
@@ -51,7 +62,7 @@ const Donate = ({
     </PageSection>
 
     <FormContainer>
-      <Markdown source={intro2Markdown} />
+      <MarkdownWithCustomList source={intro2Markdown} />
     </FormContainer>
 
     <DonationForm
