@@ -6,6 +6,7 @@ import FaFacebook from 'react-icons/lib/fa/facebook'
 import styled from 'styled-components'
 import T from 'i18n-react'
 
+import featureFlags from '../featureFlags'
 import { RouteNames } from '../routes'
 import Link from './Link'
 import PageSection from './PageSection'
@@ -162,7 +163,9 @@ function Footer({
               <div className="col">
                 <ul className="list-unstyled">
                   <FooterLink route={RouteNames.Contact} text={contactText} />
-                  <FooterLink route={RouteNames.Blog} text={blogText} />
+                  {featureFlags.release10 &&
+                    <FooterLink route={RouteNames.Blog} text={blogText} />
+                  }
                 </ul>
               </div>
             </div>

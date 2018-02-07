@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign */
 const fs = require('fs')
+// eslint-disable-next-line import/no-extraneous-dependencies
+const webpack = require('webpack')
 const createSitemap = require('./utils/sitemap')
 const Routes = require('./routes')
 
@@ -32,8 +34,16 @@ const routes = createRoutesFromNextRoutes()
 fs.writeFileSync('public/sitemap.xml', createSitemap(routes))
 
 module.exports = {
+  useFileSystemPublicRoutes: false,
+
   exportPathMap() {
     return routes
   },
-  useFileSystemPublicRoutes: false,
+
+  webpack(config) {
+    config.plugins.push(new webpack.DefinePlugin({
+      ENABLED_FEATURES: null,
+    }))
+    return config
+  },
 }
