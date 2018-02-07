@@ -12,7 +12,7 @@ import FaTwitter from 'react-icons/lib/fa/twitter'
 import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
-import { fetchBlogPost, fetchBlogPostPage } from '../../api/blog'
+import { fetchBlogPostPage } from '../../api/blog'
 import PageSection from '../../components/PageSection'
 import TeamMember from '../../components/TeamMember'
 import teamMemberShape from '../../propTypes/teamMember'
@@ -360,27 +360,12 @@ BlogPost.getInitialProps = async function initialProps({ query }) {
     nextPostRoute,
   } = query
 
-  return Promise.all([
-    fetchBlogPostPage(getLocaleFromQuery(query)),
-    fetchBlogPost(getLocaleFromQuery(query), query.slug)
-      .catch((error) => {
-        if (error.id === 'POST_NOT_FOUND') {
-          return { error: error.toString() }
-        }
-        throw error
-      }),
-  ])
-    .then((results) => {
-      const page = results[0]
-      const post = results[1]
-      return {
-        previousPostRoute,
-        nextPostRoute,
-        ...page,
-        ...post,
-      }
-    })
+  return fetchBlogPostPage(getLocaleFromQuery(query), query.slug)
+    .then(result => ({
+      previousPostRoute,
+      nextPostRoute,
+      ...result,
+    }))
 }
 
 export default withLayout(BlogPost)
-

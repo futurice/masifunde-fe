@@ -26,6 +26,27 @@ export function fetchBlogPost(locale, slug) {
     }))
 }
 
-export async function fetchBlogPostPage(locale) {
+function fetchBlogPostPageTemplate(locale) {
   return fetchSingleEntry('pageBlogPost', locale)
+}
+
+export function fetchBlogPostPage(locale, slug) {
+  return Promise.all([
+    fetchBlogPostPageTemplate(locale),
+    fetchBlogPost(locale, slug)
+      .catch((error) => {
+        if (error.id === 'POST_NOT_FOUND') {
+          return { error: error.toString() }
+        }
+        throw error
+      }),
+  ])
+    .then((results) => {
+      const page = results[0]
+      const post = results[1]
+      return {
+        ...page,
+        ...post,
+      }
+    })
 }
