@@ -7,10 +7,11 @@ import withLayout from '../../components/withLayout'
 import Hero from '../../components/Hero'
 import Head from '../../components/Head'
 import Banner from '../../components/Banner'
-import YouTubeVideo from '../../components/YouTubeVideo'
+import EmbeddedVideo from '../../components/EmbeddedVideo'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
 import Tagline from '../../components/Tagline'
+import Markdown from '../../components/Markdown'
 import ProjectList from '../../components/ProjectList'
 
 const ApproachSa = ({
@@ -20,10 +21,13 @@ const ApproachSa = ({
   introTitle,
   introMarkdown,
   projects,
-  youTubeVideo,
+  videoUrl,
   bannerTitle,
   bannerButtonText,
   bannerButtonUrl,
+  outroTitle,
+  outroMarkdown1,
+  outroMarkdown2,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -43,7 +47,15 @@ const ApproachSa = ({
     </PageSection>
 
     <PageSection contained={false}>
-      <YouTubeVideo youtubeVideo={youTubeVideo} />
+      <EmbeddedVideo videoUrl={videoUrl} />
+    </PageSection>
+
+    <PageSection>
+      <h2>{outroTitle}</h2>
+      <div className="row">
+        <Markdown className="col-md-6" source={outroMarkdown1} />
+        <Markdown className="col-md-6" source={outroMarkdown2} />
+      </div>
     </PageSection>
 
     <Banner
@@ -68,14 +80,20 @@ ApproachSa.propTypes = {
       title: PropTypes.string.isRequired,
     }).isRequired,
   })).isRequired,
-  youTubeVideo: PropTypes.string.isRequired,
+  videoUrl: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
+  outroTitle: PropTypes.string,
+  outroMarkdown1: PropTypes.string,
+  outroMarkdown2: PropTypes.string,
 }
 
 ApproachSa.defaultProps = {
   metaDescription: undefined,
+  outroTitle: '',
+  outroMarkdown1: '',
+  outroMarkdown2: '',
 }
 
 ApproachSa.getInitialProps = async function initialProps({ query }) {
@@ -83,4 +101,3 @@ ApproachSa.getInitialProps = async function initialProps({ query }) {
 }
 
 export default withLayout(ApproachSa)
-

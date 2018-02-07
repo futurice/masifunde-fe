@@ -9,7 +9,7 @@ import { smallSpacing, mediumSpacing, largeSpacing } from '../../styling/sizes'
 export const HEADLINE_MIDDLE = 'middle'
 export const HEADLINE_BOTTOM = 'bottom'
 
-const Headline = styled.span`
+const Headline = styled.p`
   word-wrap: break-word;
   hyphens: auto;
   width: 100%;

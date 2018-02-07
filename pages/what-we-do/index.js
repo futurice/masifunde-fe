@@ -8,7 +8,7 @@ import withLayout from '../../components/withLayout'
 import { fetchWhatWeDoPage } from '../../api/whatWeDo'
 import { getLocaleFromQuery } from '../../utils/locale'
 import Head from '../../components/Head'
-import YouTubeVideo from '../../components/YouTubeVideo'
+import EmbeddedVideo from '../../components/EmbeddedVideo'
 import Button from '../../components/Button'
 import Stat from '../../components/Stat'
 import { RouteNames } from '../../routes'
@@ -96,7 +96,7 @@ const ProjectList = ({ projects }) => (
         className="col-sm-6"
         key={`${project.image.url} ${project.name}`}
       >
-        <ProjectImage src={project.image.url} alt={project.image.title} />
+        <ProjectImage src={project.image.url} alt="" />
         <ProjectText>{project.name}</ProjectText>
       </Project>
       ))}
@@ -219,7 +219,7 @@ const WhatWeDo = ({
   statsButton,
   statsHeading,
   heroTitle,
-  youtubeVideo,
+  videoUrl,
   bannerButtonText,
   bannerTitle,
   bannerButtonUrl,
@@ -240,7 +240,7 @@ const WhatWeDo = ({
     </PageSection>
 
     <PageSection contained={false}>
-      <YouTubeVideo youtubeVideo={youtubeVideo} />
+      <EmbeddedVideo videoUrl={videoUrl} />
     </PageSection>
 
     <PageSection>
@@ -310,7 +310,7 @@ WhatWeDo.propTypes = {
   ).isRequired,
   statsButton: PropTypes.string.isRequired,
   statsHeading: PropTypes.string.isRequired,
-  youtubeVideo: PropTypes.string.isRequired,
+  videoUrl: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,

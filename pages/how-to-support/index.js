@@ -23,7 +23,7 @@ const SectionContainer = styled(PageSection)`
   display: flex;
 `
 
-const SectionImageContainer = styled.div`
+const SectionImageContainer = styled.a`
   display: none;
 
   @media (min-width: ${smBreakpoint}) {
@@ -40,9 +40,11 @@ const Section = ({
   image, title, markdown, buttonText, buttonType, buttonLink,
 }) => (
   <SectionContainer>
-    <SectionImageContainer className="col-md-4 offset-lg-1 col-lg-3">
-      <SectionImage src={image.url} alt={image.title} />
-    </SectionImageContainer>
+    <Link route={buttonLink} passHref>
+      <SectionImageContainer className="col-md-4 offset-lg-1 col-lg-3">
+        <SectionImage src={image.url} alt={image.title} />
+      </SectionImageContainer>
+    </Link>
     <div className="col-md-8 col-lg-7">
       <h3>{title}</h3>
       <Markdown source={markdown} />

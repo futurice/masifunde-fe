@@ -94,18 +94,22 @@ export const unwrapRegionalGroups = regionalGroups => ({
 })
 
 export const unwrapTeamMember = (teamMember) => {
+  if (!teamMember) {
+    return undefined
+  }
+
   const { fields } = teamMember
   return {
-    id: teamMember && teamMember.sys && teamMember.sys.id,
+    id: teamMember.sys.id,
     ...fields,
-    image: unwrapImage(fields && fields.profileImage, {
+    image: unwrapImage(fields.profileImage, {
       w: 320,
       h: 320,
       q: jpegQuality,
       fit: 'thumb',
       f: 'face',
     }),
-    region: unwrapRegion(fields && fields.region),
+    region: unwrapRegion(fields.region),
   }
 }
 
@@ -134,3 +138,9 @@ export const unwrapAward = award => ({
 export function unwrapFields(response) {
   return response && response.fields
 }
+
+export const unwrapProjects = (projects = []) =>
+  projects.map(({ fields }) => ({
+    ...fields,
+    image: unwrapImage(fields && fields.image),
+  }))

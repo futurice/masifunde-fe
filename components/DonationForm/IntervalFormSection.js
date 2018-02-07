@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 import styled from 'styled-components'
 
-import LabelButton from './LabelButton'
 import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
 import PageSection from './PageSection'
+import RadioButton from './RadioButton'
 import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import { fundraisingFormSpacing } from '../../utils/constants'
 
@@ -14,15 +14,14 @@ const StyledErrorMessage = styled(ErrorMessage)`
   margin-top: -0.4rem;
 `
 
-const IntervalLabelButton = LabelButton.extend`
+const IntervalRadioButton = styled(RadioButton)`
   margin-right: ${fundraisingFormSpacing};
-  padding-left: 0;
-  padding-right: 0;
-  
+  width: 100%;
+
   @media (min-width: ${smBreakpoint}) {
     width: calc(50% - ${fundraisingFormSpacing});
   }
-  
+
   @media (min-width: ${mdBreakpoint}) {
     width: calc(25% - ${fundraisingFormSpacing});
   }
@@ -39,21 +38,14 @@ const IntervalFormSection = ({
         <SubHeader className="row">{title}</SubHeader>
         <div className="row">
           {intervals.map(({ value, name }) => (
-            <IntervalLabelButton
-              className="btn"
-              isActive={input.value === value}
+            <IntervalRadioButton
+              {...input}
               key={value}
-              htmlFor={`frequencyInputOption${value}`}
-            >
-              <input
-                {...input}
-                type="radio"
-                value={value}
-                id={`frequencyInputOption${value}`}
-                autoComplete="off"
-              />
-              {name}
-            </IntervalLabelButton>
+              id={`frequencyInputOption${value}`}
+              label={name}
+              value={value}
+              isActive={input.value === value}
+            />
           ))}
           <StyledErrorMessage meta={meta} />
         </div>

@@ -9,9 +9,20 @@ import T from 'i18n-react'
 import { RouteNames } from '../routes'
 import Link from './Link'
 import PageSection from './PageSection'
-import { largeSpacing, extraSmallSpacing } from '../styling/sizes'
-import { footerText } from '../styling/typography'
+import { largeSpacing, extraSmallSpacing, smallSpacing } from '../styling/sizes'
+import { footerText, rem } from '../styling/typography'
 import SocialLink from './SocialLink'
+
+const Text = styled.div`
+  text-align: center;
+`
+
+const Anchor = styled.a`
+  color: ${props => props.theme.pineCone};
+  &:visited {
+    color: ${props => props.theme.pineCone};
+  }
+`
 
 const FooterSection = styled(PageSection)`
   ${footerText}
@@ -31,36 +42,50 @@ const FooterSection = styled(PageSection)`
   }
 `
 
-const Sitemap = styled.div`
-  ${footerText}
-`
-
-const CopyrightSocialSection = styled.div`
+const InformationSection = styled.div`
   text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: ${smallSpacing} auto;
 `
 
-const CopyrightColumn = styled.div`
+const PoweredBySection = styled.div`
   text-align: center;
-  color: ${({ theme }) => theme.pineCone};
+  margin-bottom: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
-const Anchor = styled.a`
-  color: ${props => props.theme.pineCone};
-
-  &:visited {
-    color: ${props => props.theme.pineCone};
-  }
-`
-
-const FooterImpressumContainer = styled.div`
-  margin-bottom: ${extraSmallSpacing};
-`
-
-const ContentfulImage = styled.img`
+const PoweredByLink = styled.a.attrs({
+  rel: 'noopener noreferrer nofollow',
+  target: '_blank',
+})`
+  flex: 1;
   max-width: 100px;
+  margin: 0 0.5rem;
+`
+
+const PoweredByImage = styled.img`
   width: 100%;
+  max-height: 32px;
+`
+
+const ContentfulImage = PoweredByImage.extend`
+  padding-bottom: 2px;
+`
+
+const BankDetails = styled.div`
+  margin: 0.5rem auto;
+`
+
+const SocialLinksContainer = styled.div`
+  text-align: center;
+  font-size: ${rem('27px')};
+  margin-top: ${extraSmallSpacing};
+`
+
+const BankDetailDescription = styled.span`
+  font-weight: bold;
 `
 
 const FooterLink = ({ route, text }) => (
@@ -94,56 +119,59 @@ function Footer({
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
+  ibanText,
+  bicText,
   impressumText,
   datenschutzText,
 }) {
   return (
     <FooterSection>
-      <Sitemap className="row">
-        <div className="col-sm">
-          <div className="row">
-            <div className="col">
-              <ul className="list-unstyled">
-                <FooterLink route={RouteNames.WhatWeDo} text={whatWeDoText} />
-                <FooterLink route={RouteNames.ApproachSA} text={approachSaText} />
-                <FooterLink route={RouteNames.ApproachDE} text={approachDeText} />
-                <FooterLink route={RouteNames.Impact} text={impactText} />
-              </ul>
+      <footer>
+
+        <div className="row">
+          <div className="col-sm">
+            <div className="row">
+              <div className="col">
+                <ul className="list-unstyled">
+                  <FooterLink route={RouteNames.WhatWeDo} text={whatWeDoText} />
+                  <FooterLink route={RouteNames.ApproachSA} text={approachSaText} />
+                  <FooterLink route={RouteNames.ApproachDE} text={approachDeText} />
+                  <FooterLink route={RouteNames.Impact} text={impactText} />
+                </ul>
+              </div>
+              <div className="col">
+                <ul className="list-unstyled">
+                  <FooterLink route={RouteNames.WhoWeAre} text={whoWeAreText} />
+                  <FooterLink route={RouteNames.TeamSA} text={teamSaText} />
+                  <FooterLink route={RouteNames.TeamDE} text={teamDeText} />
+                </ul>
+              </div>
             </div>
-            <div className="col">
-              <ul className="list-unstyled">
-                <FooterLink route={RouteNames.WhoWeAre} text={whoWeAreText} />
-                <FooterLink route={RouteNames.TeamSA} text={teamSaText} />
-                <FooterLink route={RouteNames.TeamDE} text={teamDeText} />
-              </ul>
+          </div>
+          <div className="col-sm">
+            <div className="row">
+              <div className="col">
+                <ul className="list-unstyled">
+                  <FooterLink route={RouteNames.HowToSupport} text={howToSupportText} />
+                  <FooterLink route={RouteNames.Donate} text={donateText} />
+                  <FooterLink route={RouteNames.BecomeSponsor} text={becomeSponsorText} />
+                  <FooterLink route={RouteNames.BecomeVolunteer} text={becomeVolunteerText} />
+                  <FooterLink route={RouteNames.BecomePartner} text={becomePartnerText} />
+                </ul>
+              </div>
+              <div className="col">
+                <ul className="list-unstyled">
+                  <FooterLink route={RouteNames.Contact} text={contactText} />
+                  <FooterLink route={RouteNames.Blog} text={blogText} />
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="col-sm">
+        <SocialLinksContainer>
           <div className="row">
             <div className="col">
-              <ul className="list-unstyled">
-                <FooterLink route={RouteNames.HowToSupport} text={howToSupportText} />
-                <FooterLink route={RouteNames.Donate} text={donateText} />
-                <FooterLink route={RouteNames.BecomeSponsor} text={becomeSponsorText} />
-                <FooterLink route={RouteNames.BecomeVolunteer} text={becomeVolunteerText} />
-                <FooterLink route={RouteNames.BecomePartner} text={becomePartnerText} />
-              </ul>
-            </div>
-            <div className="col">
-              <ul className="list-unstyled">
-                <FooterLink route={RouteNames.Contact} text={contactText} />
-                <FooterLink route={RouteNames.Blog} text={blogText} />
-              </ul>
-            </div>
-          </div>
-        </div>
-      </Sitemap>
-      <CopyrightSocialSection>
-        <div className="row">
-          <div className="col">
-            <h4>
               <SocialLink
                 aria-label={T.translate('footer.visitYouTube')}
                 href={masifundeYouTubeUrl}
@@ -160,36 +188,68 @@ function Footer({
               >
                 <FaFacebook />
               </SocialLink>
-            </h4>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <CopyrightColumn className="col">
-            {copyrightText}
-          </CopyrightColumn>
-        </div>
-        <FooterImpressumContainer className="row">
-          <CopyrightColumn className="col">
-            <Link route={RouteNames.Impressum} passHref>
-              <Anchor>{impressumText}</Anchor>
-            </Link>
-            {' & '}
-            <Link route={RouteNames.Datenschutz} passHref>
-              <Anchor>{datenschutzText}</Anchor>
-            </Link>
-          </CopyrightColumn>
-        </FooterImpressumContainer>
-        <div className="row">
-          <div className="col">
-            <a href="https://www.contentful.com/" rel="noopener noreferrer nofollow" target="_blank">
-              <ContentfulImage
-                src="/static/images/PoweredByContentful_LightBackground.svg"
-                alt="Powered by Contentful"
-              />
-            </a>
+        </SocialLinksContainer>
+
+        <InformationSection>
+          <div className="row">
+            <Text className="col">
+              {copyrightText}
+            </Text>
           </div>
-        </div>
-      </CopyrightSocialSection>
+
+          <BankDetails>
+            <div className="row">
+              <Text className="col">
+                <BankDetailDescription>IBAN</BankDetailDescription>{' '}{ibanText}
+              </Text>
+            </div>
+            <div className="row">
+              <Text className="col">
+                <BankDetailDescription>BIC</BankDetailDescription>{' '}{bicText}
+              </Text>
+            </div>
+          </BankDetails>
+
+          <div className="row">
+            <Text className="col">
+              <Link route={RouteNames.Impressum} passHref>
+                <Anchor>{impressumText} </Anchor>
+              </Link>
+              &
+              <Link route={RouteNames.Datenschutz} passHref>
+                <Anchor> {datenschutzText}</Anchor>
+              </Link>
+            </Text>
+          </div>
+        </InformationSection>
+
+        <PoweredBySection>
+          <PoweredByLink href="https://contentful.com/">
+            <ContentfulImage
+              src="/static/images/PoweredByContentful_LightBackground.svg"
+              alt="Powered by Contentful"
+            />
+          </PoweredByLink>
+
+          <PoweredByLink href="https://spiceprogram.org/">
+            <PoweredByImage
+              src="/static/images/chilicorn.svg"
+              alt="Supported through the Chilicorn Fund"
+            />
+          </PoweredByLink>
+
+          <PoweredByLink href="https://futurice.com/">
+            <PoweredByImage
+              src="/static/images/built-by-futurice.svg"
+              alt="Built by Futurice"
+            />
+          </PoweredByLink>
+
+        </PoweredBySection>
+
+      </footer>
     </FooterSection>
   )
 }
@@ -212,6 +272,8 @@ export const propTypes = {
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
+  ibanText: PropTypes.string.isRequired,
+  bicText: PropTypes.string.isRequired,
   impressumText: PropTypes.string.isRequired,
   datenschutzText: PropTypes.string.isRequired,
 }
