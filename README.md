@@ -53,6 +53,36 @@ It will run next.js `next build && next export` commands which will generate sta
 
 No tests for now.
 
+## Feature Flags
+
+We have a [feature flags][feature-flags] mechanism for decoupling the release
+of features from deployment. The currently existing flags can be seen in
+`featureFlags.js`.
+
+By default, all feature flags are enabled during development and disabled for
+production. You can override this default by setting an environment variable
+called `ENABLED_FEATURES`, like this:
+
+```sh
+# Enable exactly feature1 and feature2
+ENABLED_FEATURES=feature1,feature2 npm run dev
+
+# Enable all features (the default during development)
+ENABLED_FEATURES=* npm run dev
+
+# Disable all features (the default in production)
+ENABLED_FEATURES= npm run dev
+```
+
+Remember that feature flags are always temporary. Once a feature behind a
+flag goes to production, simply remove the flag altogether.
+
+Occasionally, you might experience that the site doesn't update properly
+after restarting the development server with a different `ENABLED_FEATURES`
+setting. In that case, try removing the `.next` cache folder.
+
+[feature-flags]: https://martinfowler.com/articles/feature-toggles.html
+
 ## Style guide
 
 Project uses ESLint AirBnb style guide without semicolons. The `precommit` git hook will
