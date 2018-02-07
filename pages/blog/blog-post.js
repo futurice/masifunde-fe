@@ -28,6 +28,8 @@ import { RouteNames as routes } from '../../routes'
 import { smallSpacing, largeSpacing } from '../../styling/sizes'
 import SocialLink from '../../components/SocialLink'
 
+// BlogPostError
+
 const BlogPostError = ({ error }) => (
   <div>
     <Head title="FIXME: Oops" description="FIXME: Something went wrong" />
@@ -45,6 +47,8 @@ BlogPostError.propTypes = {
 BlogPostError.defaultProps = {
   error: null,
 }
+
+// BlogPostContent
 
 const BlogTitle = styled.h2`
   margin-left: 0;
@@ -135,38 +139,6 @@ const SocialShareLink = SocialLink.withComponent('div').extend`
   margin: 0;
 `
 
-const HorizontalRule = styled.hr`
-  border-width: 2px;
-  border-color: ${props => props.theme.pineCone};
-  margin-top: ${largeSpacing};
-`
-
-const NavContainer = styled.nav`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  .longNavText {
-    display: none;
-  }
-  .shortNavText {
-    display: inline;
-  }
-
-  @media(min-width: ${smBreakpoint}) {
-    .longNavText {
-      display: inline;
-    }
-    .shortNavText {
-      display: none;
-    }
-  }
-`
-
-const NavButton = styled(Button)`
-  visibility: ${props => (props.href ? 'visible' : 'hidden')};
-`
-
 const BlogPostContent = ({
   title,
   metaDescription,
@@ -221,7 +193,6 @@ const BlogPostContent = ({
               </AuthorContainer>
               <ShareContainer className="col-6">
                 <H4>{shareText}</H4>
-
                 <ShareButtonRow>
                   <FacebookShareButton
                     url={pageUrl}
@@ -241,10 +212,8 @@ const BlogPostContent = ({
                     </SocialShareLink>
                   </TwitterShareButton>
                 </ShareButtonRow>
-
               </ShareContainer>
             </div>
-
           </div>
         </div>
       </PageSection>
@@ -275,47 +244,100 @@ BlogPostContent.defaultProps = {
   authorExternal: '',
 }
 
-const BlogPost = (props) => {
-  const {
-    error,
-    previousPostRoute,
-    previousPostText,
-    nextPostRoute,
-    nextPostText,
-    blogHomeText,
-  } = props
+// BlogPostNav
 
+const HorizontalRule = styled.hr`
+  border-width: 2px;
+  border-color: ${props => props.theme.pineCone};
+  margin-top: ${largeSpacing};
+`
+
+const NavContainer = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .longNavText {
+    display: none;
+  }
+  .shortNavText {
+    display: inline;
+  }
+
+  @media(min-width: ${smBreakpoint}) {
+    .longNavText {
+      display: inline;
+    }
+    .shortNavText {
+      display: none;
+    }
+  }
+`
+
+const NavButton = styled(Button)`
+  visibility: ${props => (props.href ? 'visible' : 'hidden')};
+`
+
+const BlogPostNav = ({
+  previousPostRoute,
+  previousPostText,
+  blogHomeText,
+  nextPostRoute,
+  nextPostText,
+}) => (
+  <PageSection>
+    <div className="row">
+      <div className="offset-lg-2 col-lg-8">
+        <HorizontalRule />
+
+        <NavContainer>
+          <Link route={previousPostRoute} passHref>
+            <NavButton type="secondary">
+              <span className="longNavText">{previousPostText}</span>
+              <span className="shortNavText">{'<'}</span>
+            </NavButton>
+          </Link>
+          <Link route={routes.Blog} passHref>
+            <NavButton type="secondary">{blogHomeText}</NavButton>
+          </Link>
+          <Link route={nextPostRoute} passHref>
+            <NavButton type="secondary">
+              <span className="longNavText">{nextPostText}</span>
+              <span className="shortNavText">{'>'}</span>
+            </NavButton>
+          </Link>
+        </NavContainer>
+      </div>
+    </div>
+  </PageSection>
+)
+
+BlogPostNav.propTypes = {
+  previousPostRoute: PropTypes.string,
+  previousPostText: PropTypes.string,
+  nextPostRoute: PropTypes.string,
+  blogHomeText: PropTypes.string,
+  nextPostText: PropTypes.string,
+}
+
+BlogPostNav.defaultProps = {
+  previousPostRoute: null,
+  previousPostText: '',
+  blogHomeText: '',
+  nextPostRoute: null,
+  nextPostText: '',
+}
+
+// BlogPost
+
+const BlogPost = (props) => {
+  const { error } = props
   return error
     ? <BlogPostError {...props} />
     : (
       <div>
         <BlogPostContent {...props} />
-
-        <PageSection>
-          <div className="row">
-            <div className="offset-lg-2 col-lg-8">
-              <HorizontalRule />
-
-              <NavContainer>
-                <Link route={previousPostRoute} passHref>
-                  <NavButton type="secondary">
-                    <span className="longNavText">{previousPostText}</span>
-                    <span className="shortNavText">{'<'}</span>
-                  </NavButton>
-                </Link>
-                <Link route={routes.Blog} passHref>
-                  <NavButton type="secondary">{blogHomeText}</NavButton>
-                </Link>
-                <Link route={nextPostRoute} passHref>
-                  <NavButton type="secondary">
-                    <span className="longNavText">{nextPostText}</span>
-                    <span className="shortNavText">{'>'}</span>
-                  </NavButton>
-                </Link>
-              </NavContainer>
-            </div>
-          </div>
-        </PageSection>
+        <BlogPostNav {...props} />
       </div>
     )
 }
@@ -323,13 +345,13 @@ const BlogPost = (props) => {
 BlogPost.propTypes = {
   ...BlogPostContent.propTypes,
   ...BlogPostError.propTypes,
-  previousPostRoute: PropTypes.string,
-  nextPostRoute: PropTypes.string,
+  ...BlogPostNav.propTypes,
 }
 
 BlogPost.defaultProps = {
   ...BlogPostContent.defaultProps,
   ...BlogPostError.defaultProps,
+  ...BlogPostNav.defaultProps,
 }
 
 BlogPost.getInitialProps = async function initialProps({ query }) {
