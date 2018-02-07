@@ -7,16 +7,11 @@ import styled from 'styled-components'
 
 import { Link, RouteNames } from '../routes'
 import PageSection from './PageSection'
-import { largeSpacing, extraSmallSpacing } from '../styling/sizes'
+import { largeSpacing, extraSmallSpacing, smallSpacing } from '../styling/sizes'
+import { rem } from '../styling/typography'
 
-const Sitemap = styled.div`
-  font-size: 14px;
-`
-
-const CopyrightColumn = styled.div`
+const Text = styled.div`
   text-align: center;
-  font-size: 14px;
-  color: ${({ theme }) => theme.pineCone};
 `
 
 const SocialLink = styled.a`
@@ -39,11 +34,10 @@ const Anchor = styled.a`
     color: ${props => props.theme.pineCone};
   }
 `
-const FooterImpressumContainer = styled.div`
-  margin-bottom: ${extraSmallSpacing};
-`
 
 const FooterSection = styled(PageSection)`
+  font-size: 14px;
+  color: ${({ theme }) => theme.pineCone};
   margin-top: ${largeSpacing};
 
   a, a:visited {
@@ -60,15 +54,13 @@ const FooterSection = styled(PageSection)`
   }
 `
 
-const CopyrightSocialSection = styled.div`
+const InformationSection = styled.div`
   text-align: center;
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  margin: ${smallSpacing} auto;
 `
 
 const PoweredBySection = styled.div`
   text-align: center;
-  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 
   display: flex;
@@ -92,6 +84,20 @@ const PoweredByImage = styled.img`
 
 const ContentfulImage = PoweredByImage.extend`
   padding-bottom: 2px;
+`
+
+const BankDetails = styled.div`
+  margin: 0.5rem auto;
+`
+
+const SocialLinksContainer = styled.div`
+  text-align: center;
+  font-size: ${rem('27px')};
+  margin-top: ${extraSmallSpacing};
+`
+
+const BankDetailDescription = styled.span`
+  font-weight: bold;
 `
 
 const FooterLink = ({ route, text }) => (
@@ -124,6 +130,8 @@ function Footer({
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
+  ibanText,
+  bicText,
   impressumText,
   datenschutzText,
 }) {
@@ -131,7 +139,7 @@ function Footer({
     <FooterSection>
       <footer>
 
-        <Sitemap className="row">
+        <div className="row">
           <div className="col-sm">
             <div className="row">
               <div className="col">
@@ -151,7 +159,6 @@ function Footer({
               </div>
             </div>
           </div>
-
           <div className="col-sm">
             <div className="row">
               <div className="col">
@@ -170,26 +177,44 @@ function Footer({
               </div>
             </div>
           </div>
-        </Sitemap>
+        </div>
 
-        <CopyrightSocialSection>
+        <SocialLinksContainer>
           <div className="row">
             <div className="col">
               <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
                 <FaYoutubePlay />
               </SocialLink>
+
               <SocialLink href={masifundeFacebookUrl} target="_blank" rel="noopener noreferrer">
                 <FaFacebook />
               </SocialLink>
             </div>
           </div>
+        </SocialLinksContainer>
+
+        <InformationSection>
           <div className="row">
-            <CopyrightColumn className="col">
+            <Text className="col">
               {copyrightText}
-            </CopyrightColumn>
+            </Text>
           </div>
-          <FooterImpressumContainer className="row">
-            <CopyrightColumn className="col">
+
+          <BankDetails>
+            <div className="row">
+              <Text className="col">
+                <BankDetailDescription>IBAN</BankDetailDescription>{' '}{ibanText}
+              </Text>
+            </div>
+            <div className="row">
+              <Text className="col">
+                <BankDetailDescription>BIC</BankDetailDescription>{' '}{bicText}
+              </Text>
+            </div>
+          </BankDetails>
+
+          <div className="row">
+            <Text className="col">
               <Link route={RouteNames.Impressum} passHref>
                 <Anchor>{impressumText} </Anchor>
               </Link>
@@ -197,9 +222,9 @@ function Footer({
               <Link route={RouteNames.Datenschutz} passHref>
                 <Anchor> {datenschutzText}</Anchor>
               </Link>
-            </CopyrightColumn>
-          </FooterImpressumContainer>
-        </CopyrightSocialSection>
+            </Text>
+          </div>
+        </InformationSection>
 
         <PoweredBySection>
           <PoweredByLink href="https://contentful.com/">
@@ -247,6 +272,8 @@ export const propTypes = {
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
+  ibanText: PropTypes.string.isRequired,
+  bicText: PropTypes.string.isRequired,
   impressumText: PropTypes.string.isRequired,
   datenschutzText: PropTypes.string.isRequired,
 }
