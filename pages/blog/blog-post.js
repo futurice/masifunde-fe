@@ -145,6 +145,22 @@ const NavContainer = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  .longNavText {
+    display: none;
+  }
+  .shortNavText {
+    display: inline;
+  }
+
+  @media(min-width: ${smBreakpoint}) {
+    .longNavText {
+      display: inline;
+    }
+    .shortNavText {
+      display: none;
+    }
+  }
 `
 
 const BlogPostContent = ({
@@ -187,43 +203,45 @@ const BlogPostContent = ({
       }
 
       <PageSection>
-        <div className="offset-lg-2 col-lg-8">
-          <DateContainer>
-            <p>{date}</p>
-          </DateContainer>
-          <BlogTitle>{title}</BlogTitle>
-          <BlogMarkdown source={content} />
-          <div className="row">
-            <AuthorContainer className="col-6">
-              <H4>{authorText}</H4>
-              {author}
-            </AuthorContainer>
-            <ShareContainer className="col-6">
-              <H4>{shareText}</H4>
+        <div className="row">
+          <div className="offset-lg-2 col-lg-8">
+            <DateContainer>
+              <p>{date}</p>
+            </DateContainer>
+            <BlogTitle>{title}</BlogTitle>
+            <BlogMarkdown source={content} />
+            <div className="row">
+              <AuthorContainer className="col-6">
+                <H4>{authorText}</H4>
+                {author}
+              </AuthorContainer>
+              <ShareContainer className="col-6">
+                <H4>{shareText}</H4>
 
-              <ShareButtonRow>
-                <FacebookShareButton
-                  url={pageUrl}
-                  quote={shareMessage}
-                >
-                  <SocialShareLink>
-                    <FaFacebook size={shareIconSize} />
-                  </SocialShareLink>
-                </FacebookShareButton>
+                <ShareButtonRow>
+                  <FacebookShareButton
+                    url={pageUrl}
+                    quote={shareMessage}
+                  >
+                    <SocialShareLink>
+                      <FaFacebook size={shareIconSize} />
+                    </SocialShareLink>
+                  </FacebookShareButton>
 
-                <TwitterShareButton
-                  url={pageUrl}
-                  title={shareMessage}
-                >
-                  <SocialShareLink>
-                    <FaTwitter size={shareIconSize} />
-                  </SocialShareLink>
-                </TwitterShareButton>
-              </ShareButtonRow>
+                  <TwitterShareButton
+                    url={pageUrl}
+                    title={shareMessage}
+                  >
+                    <SocialShareLink>
+                      <FaTwitter size={shareIconSize} />
+                    </SocialShareLink>
+                  </TwitterShareButton>
+                </ShareButtonRow>
 
-            </ShareContainer>
+              </ShareContainer>
+            </div>
+
           </div>
-
         </div>
       </PageSection>
 
@@ -270,20 +288,28 @@ const BlogPost = (props) => {
         <BlogPostContent {...props} />
 
         <PageSection>
-          <div className="offset-lg-2 col-lg-8">
-            <HorizontalRule />
+          <div className="row">
+            <div className="offset-lg-2 col-lg-8">
+              <HorizontalRule />
 
-            <NavContainer>
-              <Link route={previousPostRoute} passHref>
-                <Button type="secondary">{previousPostText}</Button>
-              </Link>
-              <Link route={routes.Blog} passHref>
-                <Button type="secondary">{blogHomeText}</Button>
-              </Link>
-              <Link route={nextPostRoute} passHref>
-                <Button type="secondary">{nextPostText}</Button>
-              </Link>
-            </NavContainer>
+              <NavContainer>
+                <Link route={previousPostRoute} passHref>
+                  <Button type="secondary">
+                    <span className="longNavText">{previousPostText}</span>
+                    <span className="shortNavText">{'<'}</span>
+                  </Button>
+                </Link>
+                <Link route={routes.Blog} passHref>
+                  <Button type="secondary">{blogHomeText}</Button>
+                </Link>
+                <Link route={nextPostRoute} passHref>
+                  <Button type="secondary">
+                    <span className="longNavText">{nextPostText}</span>
+                    <span className="shortNavText">{'>'}</span>
+                  </Button>
+                </Link>
+              </NavContainer>
+            </div>
           </div>
         </PageSection>
       </div>
