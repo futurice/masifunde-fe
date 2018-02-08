@@ -7,7 +7,7 @@ import { fetchWhoWeArePage } from '../../api/whoWeAre'
 import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
 import Button from '../../components/Button'
-import { Link, RouteNames } from '../../routes'
+import { RouteNames } from '../../routes'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import PartnersList, { propTypes as partnersListPropTypes } from '../../components/PartnersList'
@@ -17,6 +17,7 @@ import PageSection from '../../components/PageSection'
 import Award from '../../components/Award'
 import { largeSpacing, mediumSpacing, extraSmallSpacing } from '../../styling/sizes'
 import { lgBreakpoint } from '../../styling/breakpoints'
+import Link from '../../components/Link'
 
 const Image = styled.img`
   width: 100%;

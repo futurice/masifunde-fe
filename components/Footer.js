@@ -4,40 +4,28 @@ import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
 import styled from 'styled-components'
+import T from 'i18n-react'
 
-import { Link, RouteNames } from '../routes'
+import { RouteNames } from '../routes'
+import Link from './Link'
 import PageSection from './PageSection'
 import { largeSpacing, extraSmallSpacing, smallSpacing } from '../styling/sizes'
-import { rem } from '../styling/typography'
+import { footerText, rem } from '../styling/typography'
+import SocialLink from './SocialLink'
 
 const Text = styled.div`
   text-align: center;
 `
 
-const SocialLink = styled.a`
-  color: #444444;
-  opacity: 0.6;
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: pointer;
-
-  &:hover {
-    color: #444444 !important;
-    opacity: 1;
-  }
-`
-
 const Anchor = styled.a`
   color: ${props => props.theme.pineCone};
-
   &:visited {
     color: ${props => props.theme.pineCone};
   }
 `
 
 const FooterSection = styled(PageSection)`
-  font-size: 14px;
-  color: ${({ theme }) => theme.pineCone};
+  ${footerText}
   margin-top: ${largeSpacing};
 
   a, a:visited {
@@ -127,6 +115,7 @@ function Footer({
   becomeVolunteerText,
   becomePartnerText,
   contactText,
+  blogText,
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
@@ -173,6 +162,7 @@ function Footer({
               <div className="col">
                 <ul className="list-unstyled">
                   <FooterLink route={RouteNames.Contact} text={contactText} />
+                  <FooterLink route={RouteNames.Blog} text={blogText} />
                 </ul>
               </div>
             </div>
@@ -182,11 +172,20 @@ function Footer({
         <SocialLinksContainer>
           <div className="row">
             <div className="col">
-              <SocialLink href={masifundeYouTubeUrl} target="_blank" rel="noopener noreferrer">
+              <SocialLink
+                aria-label={T.translate('footer.visitYouTube')}
+                href={masifundeYouTubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaYoutubePlay />
               </SocialLink>
-
-              <SocialLink href={masifundeFacebookUrl} target="_blank" rel="noopener noreferrer">
+              <SocialLink
+                aria-label={T.translate('footer.visitFacebook')}
+                href={masifundeFacebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaFacebook />
               </SocialLink>
             </div>
@@ -269,6 +268,7 @@ export const propTypes = {
   becomeVolunteerText: PropTypes.string.isRequired,
   becomePartnerText: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
+  blogText: PropTypes.string.isRequired,
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,

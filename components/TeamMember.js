@@ -6,6 +6,8 @@ import RoundedImage from './RoundedImage'
 
 const TeamContainer = styled.div`
   font-size: 16px;
+  display: flex;
+  justify-content: center;
 `
 
 const Title = styled.div`
@@ -32,7 +34,7 @@ const TeamMember = ({
   email,
   className,
 }) => (
-  <TeamContainer className={`${className} d-flex justify-content-center`}>
+  <TeamContainer className={className}>
     <ContentContainer>
       <Image
         className="img-fluid"
@@ -41,7 +43,7 @@ const TeamMember = ({
       />
       <Title>{title}</Title>
       <div>{subtitle}</div>
-      <Email href={`mailto:${email}`}>{email}</Email>
+      {email && (<Email href={`mailto:${email}`}>{email}</Email>)}
     </ContentContainer>
   </TeamContainer>
 )
