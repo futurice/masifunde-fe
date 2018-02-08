@@ -1,0 +1,12 @@
+# https://www.netlify.com/docs/continuous-deployment/#deploy-contexts
+
+# “publish” is the directory to publish (relative to root of your repo),
+# “command” is your build command,
+[build]
+  publish = "out"
+  command = "npm run build-static"
+
+# Deploy Preview context: All Deploy Previews
+# will inherit these settings.
+[context.deploy-preview.environment]
+  ENABLED_FEATURES = "*"
