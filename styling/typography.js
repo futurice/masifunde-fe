@@ -97,9 +97,21 @@ export const subsectionTitleText = css`
   }
 `
 
+export const componentTitleText = css`
+  ${titleText}
+  color: ${theme.pineCone};
+  font-size: ${rem('18px')};
+  font-weight: bold;
+`
+
 export const handwrittenText = css`
   font-family: ${handwrittenFont};
   font-size: ${rem('37px')};
   font-weight: normal;
   color: ${theme.pineCone};
+`
+
+export const footerText = css`
+  ${bodyText}
+  font-size: ${rem('14px')};
 `

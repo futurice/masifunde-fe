@@ -1,5 +1,5 @@
 import { createClient } from 'contentful'
-import memoize from 'memoizee'
+import memoize from 'promise-memoize'
 
 import { CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_HOST, CONTENTFUL_SPACE_ID } from '../env'
 
@@ -36,4 +36,4 @@ export function fetchSingleEntry(contentType, locale = 'de') {
     })
 }
 
-export const fetchMemoizedSingleEntry = memoize(fetchSingleEntry, { promise: true })
+export const fetchMemoizedSingleEntry = memoize(fetchSingleEntry)

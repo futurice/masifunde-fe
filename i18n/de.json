@@ -1,0 +1,20 @@
+{
+  "source": "Quelle",
+  "donation": {
+    "required": "Pflichtfeld",
+    "requiredInterval": "Bitte wählen Sie ein Intervall für Ihre Spende",
+    "requiredProject": "Bitte wählen Sie, an wen Ihre Spende gehen soll",
+    "greaterThanZero": "Bitte wählen Sie eine Betrag größer als Null",
+    "invalidEmail": "Falsche E-Mail",
+    "mustBeANumber": "Der Wert muss eine Zahl sein",
+    "cantBeLessThan": "Der Betrag darf nicht kleiner als {value} sein",
+    "cantBeGreaterThan": "Der Betrag darf nicht mehr als {value} betragen"
+  },
+  "header": {
+    "openNavigation": "Navigationsmenü öffnen"
+  },
+  "footer": {
+    "visitFacebook": "Masifundes Facebook-Seite besuchen",
+    "visitYouTube": "Masifundes YouTube-Seite besuchen"
+  }
+}

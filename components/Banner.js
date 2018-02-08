@@ -6,10 +6,10 @@ import styled from 'styled-components'
 
 import Button from './Button'
 import PageSection from './PageSection'
-import { Link } from '../routes'
 import { subsectionTitleText, rem } from '../styling/typography'
 import { mdBreakpoint, lgBreakpoint } from '../styling/breakpoints'
 import theme from '../styling/theme'
+import Link from './Link'
 
 const OuterContainer = styled(PageSection).attrs({ contained: false })`
   background-color: ${theme.orange};
