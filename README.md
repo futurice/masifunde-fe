@@ -44,7 +44,13 @@ Netlify will automatically run `npm run build-static` whenever anything is pushe
 
 When creating a Pull Request (PR), to the branches `master` or `release-1.0`, Netlify will build and publish the merge result as a preview under `deploy-preview-[preview-number]--masifunde.netlify.com`. Netlify can be configured to build deploy previews for other branches as well.
 
-### Fundraisingbox
+## Configuration
+
+* Contentful credentials are hard coded.
+* Crawler instructions are defined in `robots.txt` and are always exported to `https://masifunde.netlify.com/robots.txt`.
+* Routes are defined in `routes.js` using [next-routes](https://www.npmjs.com/package/next-routes).
+
+## Fundraisingbox
 The service used to accept user donations is called [Fundraisingbox](https://www.fundraisingbox.com), which Masifunde has previous experience with.
 
 Masifunde's Fundraisingbox plan doesn't allow for using the API, but we get access to an iframe we embed on our site. We can embed 4 different iframe forms at a time.
@@ -52,13 +58,13 @@ To configure the iframe, sign in to [Masifunde's Fundraisingbox admin interface]
 
 To fully customize the form, we hide most of the inputs in iframe, while rendering our own form fields outside of the iframe. We then [populate the iframe with these custom form field values](https://developer.fundraisingbox.com/v1.0/docs/form-prepopulation-api). This forces a reload and rerender of the iframe, which causes flickering. So we only do this when all custom form fields have values.
 
-#### Einbettungsadresse (form embed url)
+### Einbettungsadresse (form embed url)
 The `Einbettungsadresse` should specify the full url of the page this form is used (e.g `https://www.masifunde.de/wie-sie-helfen/spenden`), and not just the host `https://www.masifunde.de`. 
 On a successful (or failed) donation attempt, the user gets redirected to the exact url in `Einbettungsadresse` with a `status` query param. 
 Then a `success` or `error` message is displayed in the iframe. 
 If the page doesn't have the Fundraisingbox iframe, no `success` or `error` message will be displayed.
 
-#### iframe styling
+### iframe styling
 1. Sign in to [Masifunde's Fundraisingbox admin interface](https://secure.fundraisingbox.com).
 2. Then go to `Einstellungen > Spendenformular` and select the relevant Spendenformular in the dropdown.
 3. Scroll to the bottom of the `textarea` at the bottom of the page in the section `Design`.
@@ -69,7 +75,7 @@ Note: This has to be standard css, *no scss or less*.
 
 For version control and backup purposes we also store this css in the file `Fundraisingbox_custom_css.css` in this repo. 
 
-#### Testing Fundraisingbox locally
+### Testing Fundraisingbox locally
 
 Fundraisingbox only displays the form in the iframe if you load the iframe from a specified domain, e.g. `masifunde.netlify.com`. In order to test it locally you need to expose your localhost. You can use [ngrok](https://ngrok.com/) for this. Install ngrok and run the command ```ngrok http 3000 --region eu```. You will then see the address to which ngrok exposes your localhost.
 
@@ -80,24 +86,13 @@ Fundraisingbox only displays the form in the iframe if you load the iframe from 
 5. Save.
 6. If you go to your ngrok address you should now be able to see the Fundraising form.
 
-## Configuration
+## Contentful CMS
 
-* Contentful credentials are hard coded.
-* Crawler instructions are defined in `robots.txt` and are always exported to `https://masifunde.netlify.com/robots.txt`.
-* Routes are defined in `routes.js` using
-  [next-routes](https://www.npmjs.com/package/next-routes).
+The project uses [Contentful](https://www.contentful.com/) as a CMS, which has its own JavaScript package. To better understand
+the API structure you should sign in to Contentful and have a look at `Content models` to see how
+they are structured. The credentials can be found in the Futurice password safe.
 
-## Tests
-
-No tests for now.
-
-## Style guide
-
-Project uses [ESLint AirBnb style guide](https://github.com/airbnb/javascript) with some tweaks (like no semicolons). The `precommit` git hook will
-automatically run ESLint to check if the code complies with the rules. If it fails then it will not
-push to the repo.
-
-### Contentful model naming convention
+### Content model naming convention
 Meta data:
 * metaTitle - Title of the web page shown in the tab of the browser
 * metaDescription - SEO (150 chars)
@@ -129,8 +124,13 @@ For each section of the page, we prefix the fields with "section<number>":
 * section2List
 * section2ReferenceList
 
-## Api Reference
 
-The project uses [Contentful](https://www.contentful.com/) JavaScript package. To understand better
-the API structure you should login into Contentful and have a look into `Content models` to see how
-they are structured. The credentials can be found in the Futurice password safe.
+## Tests
+
+No tests for now.
+
+## Style guide
+
+Project uses [ESLint AirBnb style guide](https://github.com/airbnb/javascript) with some tweaks (like no semicolons). The `precommit` git hook will
+automatically run ESLint to check if the code complies with the rules. If it fails then it will not
+push to the repo.
