@@ -1,43 +1,115 @@
 /* eslint-disable no-param-reassign */
+const contentful = require('contentful')
 const fs = require('fs')
 // eslint-disable-next-line import/no-extraneous-dependencies
 const webpack = require('webpack')
-const createSitemap = require('./utils/sitemap')
+
+const env = require('./env')
+const locales = require('./i18n/locales')
 const Routes = require('./routes')
+const createSitemap = require('./utils/sitemap')
 
-function patternWithLocaleFactory(pattern, locale) {
-  const localePrefix = locale ? `/${locale}` : ''
-
-  const patternSplit = pattern.split('?')
-  const path = patternSplit[1]
-  const patternWithLocaleList = [localePrefix, path]
-
-  return patternWithLocaleList.join('')
-}
-// It can't handle all complex patterns (e.g. /blog/:id/)
-// It CAN handle locales (e.g. /:locale(en)?/wie-sie-helfen)
-function createRoutesFromNextRoutes() {
-  return Routes.routes.reduce((map, { pattern, page }) => {
-    const LOCALE_EN = 'en'
-    const germanPattern = patternWithLocaleFactory(pattern, '')
-    const englishPattern = patternWithLocaleFactory(pattern, LOCALE_EN)
-
-    map[germanPattern] = { page }
-    map[englishPattern] = { page, query: { locale: LOCALE_EN } }
-    return map
-  }, {})
+function isStaticPath(path) {
+  // Check that the path contains no param placeholders (e.g. :id)
+  return !path.includes(':')
 }
 
-const routes = createRoutesFromNextRoutes()
+function putLocale(pattern, locale) {
+  const localePrefix = locale === 'de' ? '' : `/${locale}`
+  const patternWithLocale = pattern.replace(/\/:locale[^/]*/, localePrefix)
+  return patternWithLocale || '/'
+}
 
-// Save created sitemap
-fs.writeFileSync('public/sitemap.xml', createSitemap(routes))
+/**
+ * Generates a exportPathMap for all static routes
+ * (i.e., those that don't have any path params other than the locale).
+ */
+function staticRoutesPathMap() {
+  const pathMap = {}
+
+  locales.forEach((locale) => {
+    Routes.routes.forEach(({ pattern, page }) => {
+      const path = putLocale(pattern, locale)
+
+      if (isStaticPath(path)) {
+        pathMap[path] = {
+          page,
+          query: locale === 'de' ? undefined : { locale },
+        }
+      }
+    })
+  })
+
+  return pathMap
+}
+
+async function fetchAllBlogPosts() {
+  const client = contentful.createClient({
+    space: env.CONTENTFUL_SPACE_ID,
+    accessToken: env.CONTENTFUL_ACCESS_TOKEN,
+    host: env.CONTENTFUL_HOST,
+  })
+
+  let posts = []
+  let skip = 0
+  let fetchResult
+
+  // The Contentful API only allows getting 1000 items at a time.
+  // For the case where there are more posts, we need to do multiple
+  // requests.
+  do {
+    // eslint-disable-next-line no-await-in-loop
+    fetchResult = await client.getEntries({
+      content_type: 'blogPost',
+      locale: '*',
+      skip,
+      limit: 1,
+      select: 'fields.slug',
+    })
+    posts = posts.concat(fetchResult.items)
+    skip = fetchResult.skip + fetchResult.items.length
+  } while (skip < fetchResult.total)
+
+  return posts
+}
+
+/**
+ * Generates an exportPathMap with the routes of all blog posts currently
+ * published in Contentful.
+ */
+async function blogPostsPathMap() {
+  const posts = await fetchAllBlogPosts()
+  const pathMap = {}
+
+  posts.forEach((post) => {
+    locales.forEach((locale) => {
+      const slug = post.fields.slug[locale]
+
+      pathMap[`/blog/${slug}`] = {
+        page: Routes.RouteNames.BlogPost,
+        query: {
+          slug,
+          locale: locale === 'de' ? undefined : locale,
+        },
+      }
+    })
+  })
+
+  return pathMap
+}
 
 module.exports = {
   useFileSystemPublicRoutes: false,
 
-  exportPathMap() {
-    return routes
+  async exportPathMap() {
+    const staticRoutesMap = staticRoutesPathMap()
+    const blogPostsMap = await blogPostsPathMap()
+    const pathMap = Object.assign({}, staticRoutesMap, blogPostsMap)
+
+    // Save routes as sitemap
+    fs.writeFileSync('public/sitemap.xml', createSitemap(pathMap))
+
+    return pathMap
   },
 
   webpack(config) {

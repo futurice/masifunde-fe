@@ -1,12 +1,17 @@
+// NOTE: Using CommonJS imports / exports for use in next.config.js
+
 const nextRoutes = require('next-routes')()
+const locales = require('./i18n/locales')
 
 /**
  * Adds the locale stem to pattern.
  *
  * @param {string} pattern
  */
-function addLocale(pattern) {
-  return pattern ? `/:locale(en)?/${pattern}` : '/:locale(en)?'
+function withLocale(pattern) {
+  const localeConstraint = locales.filter(l => l !== 'de').join('|')
+  const localePrefix = `/:locale(${localeConstraint})?`
+  return pattern ? `${localePrefix}/${pattern}` : localePrefix
 }
 
 /**
@@ -18,7 +23,7 @@ function addLocale(pattern) {
 function addRoute(pattern, page) {
   nextRoutes.add({
     name: page,
-    pattern: addLocale(pattern),
+    pattern: withLocale(pattern),
     page,
   })
 }
