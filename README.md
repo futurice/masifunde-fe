@@ -50,6 +50,13 @@ When creating a Pull Request (PR) to `master`, Netlify will build and publish th
 * Crawler instructions are defined in `robots.txt` and are always exported to `https://masifunde.netlify.com/robots.txt`.
 * Routes are defined in `routes.js` using [next-routes](https://www.npmjs.com/package/next-routes).
 
+## Bootstrap + styled-components
+We use Bootstrap 4 for two purposes.
+1. Responsive grid system
+2. Style consistency across browsers ([reboot.css](https://getbootstrap.com/docs/4.0/content/reboot/))
+
+Our components are given custom styling using [styled-components](https://www.styled-components.com/) - a css-in-js library.
+
 ## Fundraisingbox
 The service used to accept user donations is called [Fundraisingbox](https://www.fundraisingbox.com), which Masifunde has previous experience with.
 
