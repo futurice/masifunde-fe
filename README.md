@@ -42,7 +42,7 @@ It will run next.js `next build && next export` commands which will generate sta
 The site is hosted on [Netlify](https://www.netlify.com/), which requires static files.
 Netlify will automatically run `npm run build-static` whenever anything is pushed to the `master` branch since it is connected to this GitHub repository. After that the changes should be reachable on https://masifunde.netlify.com.
 
-When creating a Pull Request (PR), to the branches `master` or `release-1.0`, Netlify will build and publish the merge result as a preview under `deploy-preview-[preview-number]--masifunde.netlify.com`. Netlify can be configured to build deploy previews for other branches as well.
+When creating a Pull Request (PR) to `master`, Netlify will build and publish the merge result as a preview under `deploy-preview-[preview-number]--masifunde.netlify.com`.
 
 ## Configuration
 
