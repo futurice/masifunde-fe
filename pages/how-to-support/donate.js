@@ -25,10 +25,10 @@ const MainHeading = styled.h1`
 const MarkdownWithCustomList = styled(Markdown)`
   ul {
     list-style-image: url('/static/images/bullet-check.svg');
-  }
 
-  li {
-    margin-top: ${extraSmallSpacing};
+    li {
+      margin-top: ${extraSmallSpacing};
+    }
   }
 `
 
