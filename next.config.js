@@ -84,8 +84,9 @@ async function blogPostsPathMap() {
   posts.forEach((post) => {
     locales.forEach((locale) => {
       const slug = post.fields.slug[locale]
+      const path = putLocale(`/:locale?/blog/${slug}`, locale)
 
-      pathMap[`/blog/${slug}`] = {
+      pathMap[path] = {
         page: Routes.RouteNames.BlogPost,
         query: {
           slug,
