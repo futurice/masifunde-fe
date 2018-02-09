@@ -12,10 +12,7 @@ const ProjectImage = styled.img`
   height: 7rem;
 `
 
-const H3 = styled.h3`
-  text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
+const H4 = styled.h4`
   margin-top: 1.1rem;
   margin-bottom: 1.1rem;
 `
@@ -30,7 +27,7 @@ const Project = ({
 }) => (
   <ProjectContainer className={className}>
     <ProjectImage className="mx-auto d-block" src={image.url} alt={image.title} />
-    <H3>{name}</H3>
+    <H4>{name}</H4>
     <Markdown source={description} />
   </ProjectContainer>)
 

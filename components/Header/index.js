@@ -3,10 +3,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container } from 'reactstrap'
 import styled from 'styled-components'
+import T from 'i18n-react'
 
-import { Link, RouteNames } from '../../routes'
+import { RouteNames } from '../../routes'
 import NavigationLink from './NavigationLink'
 import { rem } from '../../styling/typography'
+import Link from '../Link'
 
 const HeaderWrapper = styled.header`
   background-color: #f4e3d6;
@@ -55,10 +57,10 @@ class Header extends Component {
                 height={height}
                 className="d-flex align-items-center"
               >
-                <Logo src="/static/images/logo.svg" alt="Masifunde home" />
+                <Logo src="/static/images/logo.svg" alt="Masifunde Home" />
               </StyledNavbarBrand>
             </Link>
-            <NavbarToggler onClick={this.toggle} />
+            <NavbarToggler title={T.translate('header.openNavigation')} onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto d-flex align-items-center" navbar>
                 <NavigationLink type="link" href={RouteNames.WhatWeDo}>{whatWeDoText}</NavigationLink>
