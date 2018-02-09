@@ -55,7 +55,7 @@ const Contact = ({
       <TeamMemberListTitle>{contactsHeading}</TeamMemberListTitle>
       <TeamMemberList
         members={contacts}
-        title={member => member.region}
+        title={member => member.responsibilityArea}
         subtitle={member => member.name}
         imageUrl={member => member.image.url}
         email={member => member.email}
