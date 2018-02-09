@@ -19,6 +19,7 @@ const LocationsList = styled.ul`
 `
 
 const LocationListItem = styled.li`
+  display: inline-block;
   padding: 0.6rem ${extraSmallSpacing};
   padding-left: 0;
 `
