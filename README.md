@@ -85,7 +85,7 @@ We use Bootstrap 4 for two purposes.
 1. Responsive grid system
 2. Style consistency across browsers ([reboot.css](https://getbootstrap.com/docs/4.0/content/reboot/))
 
-Our components are given custom styling using [styled-components](https://www.styled-components.com/) - a css-in-js library.
+Our components are given custom styling using [styled-components](https://www.styled-components.com/) - a CSS-in-JS library.
 
 ## Fundraisingbox
 The service used to accept user donations is called [Fundraisingbox](https://www.fundraisingbox.com), which Masifunde has previous experience with.
@@ -96,8 +96,8 @@ To configure the iframe, sign in to [Masifunde's Fundraisingbox admin interface]
 To fully customize the form, we hide most of the inputs in iframe, while rendering our own form fields outside of the iframe. We then [populate the iframe with these custom form field values](https://developer.fundraisingbox.com/v1.0/docs/form-prepopulation-api). This forces a reload and rerender of the iframe, which causes flickering. So we only do this when all custom form fields have values.
 
 ### Einbettungsadresse (form embed url)
-The `Einbettungsadresse` should specify the full url of the page this form is used (e.g `https://www.masifunde.de/wie-sie-helfen/spenden`), and not just the host `https://www.masifunde.de`. 
-On a successful (or failed) donation attempt, the user gets redirected to the exact url in `Einbettungsadresse` with a `status` query param. 
+The _Einbettungsadresse_ should specify the full url of the page this form is used (e.g `https://www.masifunde.de/wie-sie-helfen/spenden`), and not just the host `https://www.masifunde.de`. 
+On a successful (or failed) donation attempt, the user gets redirected to the exact url in _Einbettungsadresse_ with a `status` query param. 
 Then a `success` or `error` message is displayed in the iframe. 
 If the page doesn't have the Fundraisingbox iframe, no `success` or `error` message will be displayed.
 
@@ -168,6 +168,6 @@ No tests for now.
 
 ## Style guide
 
-Project uses [ESLint AirBnb style guide](https://github.com/airbnb/javascript) with some tweaks (like no semicolons). The `precommit` git hook will
+Project uses [ESLint Airbnb style guide](https://github.com/airbnb/javascript) with some tweaks (like no semicolons). The `precommit` git hook will
 automatically run ESLint to check if the code complies with the rules. If it fails then it will not
 push to the repo.
