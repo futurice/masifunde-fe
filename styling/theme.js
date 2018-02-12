@@ -2,6 +2,7 @@ export default {
   black: '#4F463F',
   orange: '#FE9933',
   orangeRed: '#FF621D',
+  orangeBackgroundLight: '#faf2e6',
   green: '#17DD73',
   darkGreen: '#00C078',
   blue: '#4176F9',
