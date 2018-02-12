@@ -3,8 +3,14 @@ import ReactGA from 'react-ga'
 
 import { GOOGLE_ANALYTICS_ID } from '../env'
 
+const gaOptions = {
+  anonymizeIp: true,
+}
+
 if (GOOGLE_ANALYTICS_ID) {
-  ReactGA.initialize(GOOGLE_ANALYTICS_ID)
+  ReactGA.initialize(GOOGLE_ANALYTICS_ID, {
+    gaOptions,
+  })
 }
 
 const withAnalytics = WrappedComponent =>
