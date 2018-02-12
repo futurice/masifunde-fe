@@ -123,7 +123,7 @@ const Layout = ({
         </Head>
         <Header height={theme.headerHeight} {...headerData} />
         <Content>
-          {children}
+          {React.cloneElement(children, { locale })}
         </Content>
         <Footer {...footerData} />
       </Fragment>
