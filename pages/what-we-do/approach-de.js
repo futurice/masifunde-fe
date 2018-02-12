@@ -86,6 +86,8 @@ const ApproachDe = ({
       <TextWithTeamMember
         text={section1Markdown}
         teamMember={teamMember}
+        title={teamMember.name}
+        subtitle={teamMember.responsibilityArea}
       />
     </PageSection>
 

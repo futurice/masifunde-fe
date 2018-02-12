@@ -48,6 +48,8 @@ const BecomeVolunteer = ({
       <TextWithTeamMember
         text={section1Markdown}
         teamMember={section1TeamMember}
+        title={section1TeamMember.name}
+        subtitle={section1TeamMember.responsibilityArea}
       />
     </PageSection>
 
