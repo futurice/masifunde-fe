@@ -3,6 +3,8 @@ export default {
   orange: '#FE9933',
   orangeRed: '#FF621D',
   orangeBackgroundLight: '#faf2e6',
+  orangeBackgroundMedium: '#f2dac9',
+  orangeBackgroundDark: '#f1ccb0',
   green: '#17DD73',
   darkGreen: '#00C078',
   blue: '#4176F9',

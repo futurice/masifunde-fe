@@ -1,7 +1,11 @@
 import React from 'react'
 import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
+import { fetchNewestBlogPosts } from '../api/blog'
+import { fetchHomePage } from '../api/home'
+import featureFlags from '../featureFlags'
 import withLayout from '../components/withLayout'
 import Head from '../components/Head'
 import Hero from '../components/Hero'
@@ -9,13 +13,38 @@ import Banner from '../components/Banner'
 import Carousel from '../components/Carousel'
 import portraitPropTypes from '../propTypes/portrait'
 import Stat from '../components/Stat'
-import { getLocaleFromQuery } from '../utils/locale'
-import { fetchHomePage } from '../api/home'
+import BlogPostCard from '../components/BlogPostCard'
 import EmbeddedVideo from '../components/EmbeddedVideo'
 import PageSection from '../components/PageSection'
 import StatList from '../components/StatList'
+import { mdBreakpoint } from '../styling/breakpoints'
+import { smallSpacing } from '../styling/sizes'
+import { getLocaleFromQuery } from '../utils/locale'
+
+const BlogPostList = styled.ul`
+  list-style: none;
+  padding: 0;
+`
+
+const BlogPostListItem = styled.li`
+  margin-bottom: ${smallSpacing};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: ${mdBreakpoint}) {
+    margin-bottom: 0;
+  }
+
+  /* Let the contained BlogPostCard stretch to full height */
+  display: flex;
+  flex-direction: column;
+  > * { flex: 1; }
+`
 
 const Home = ({
+  locale,
   metaTitle,
   metaDescription,
   heroTitle,
@@ -30,6 +59,8 @@ const Home = ({
   portrait,
   videoTitle,
   videoUrl,
+  featuredBlogPostsTitle,
+  featuredBlogPosts,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -70,6 +101,22 @@ const Home = ({
       <EmbeddedVideo videoUrl={videoUrl} />
     </PageSection>
 
+    {featureFlags.release10 && (
+      <PageSection>
+        <Container>
+          <h2>{featuredBlogPostsTitle}</h2>
+        </Container>
+
+        <BlogPostList className="row">
+          {featuredBlogPosts.map(post => (
+            <BlogPostListItem key={post.slug} className="col-md-4">
+              <BlogPostCard post={post} locale={locale} />
+            </BlogPostListItem>
+          ))}
+        </BlogPostList>
+      </PageSection>
+    )}
+
     <PageSection contained={false}>
       <Container>
         <h2>{section1Title}</h2>
@@ -87,6 +134,7 @@ const Home = ({
 )
 
 Home.propTypes = {
+  locale: PropTypes.string.isRequired,
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   heroTitle: PropTypes.string.isRequired,
@@ -101,6 +149,8 @@ Home.propTypes = {
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
   videoTitle: PropTypes.string.isRequired,
   videoUrl: PropTypes.string.isRequired,
+  featuredBlogPostsTitle: PropTypes.string.isRequired,
+  featuredBlogPosts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 }
 
 Home.defaultProps = {
@@ -108,7 +158,11 @@ Home.defaultProps = {
 }
 
 Home.getInitialProps = async function initialProps({ query }) {
-  return fetchHomePage(getLocaleFromQuery(query))
+  const locale = getLocaleFromQuery(query)
+  return {
+    ...await fetchHomePage(locale),
+    featuredBlogPosts: await fetchNewestBlogPosts(locale, 3),
+  }
 }
 
 export default withLayout(Home)

@@ -5,9 +5,19 @@ import { unwrapTeamMember, unwrapImage } from './common'
 function blogPostFromEntry(entry) {
   return {
     ...entry.fields,
+    teaserImage: unwrapImage(entry.fields.teaserImage),
     heroImage: unwrapImage(entry.fields.heroImage),
     authorTeamMember: unwrapTeamMember(entry.fields.authorTeamMember),
   }
+}
+
+export async function fetchNewestBlogPosts(locale, limit) {
+  const entries = await fetchEntriesForContentType('blogPost', {
+    locale,
+    limit,
+    order: '-fields.date',
+  })
+  return entries.map(blogPostFromEntry)
 }
 
 export async function fetchBlogPost(locale, slug) {
@@ -15,13 +25,11 @@ export async function fetchBlogPost(locale, slug) {
     locale,
     'fields.slug': slug,
   })
-
   if (entries.length === 0) {
     const e = new Error(`Could not find blog post with slug: ${slug}`)
     e.name = 'PostNotFoundError'
     throw e
   }
-
   const entry = entries[0]
   return blogPostFromEntry(entry)
 }
