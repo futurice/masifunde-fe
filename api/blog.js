@@ -30,23 +30,20 @@ function fetchBlogPostPageTemplate(locale) {
   return fetchSingleEntry('pageBlogPost', locale)
 }
 
-export function fetchBlogPostPage(locale, slug) {
-  return Promise.all([
-    fetchBlogPostPageTemplate(locale),
-    fetchBlogPost(locale, slug)
-      .catch((error) => {
-        if (error.name === 'PostNotFoundError') {
-          return { error: error.toString() }
-        }
-        throw error
-      }),
-  ])
-    .then((results) => {
-      const page = results[0]
-      const post = results[1]
-      return {
-        ...page,
-        ...post,
-      }
-    })
+export async function fetchBlogPostPage(locale, slug) {
+  try {
+    const [page, post] = await Promise.all([
+      fetchBlogPostPageTemplate(locale),
+      fetchBlogPost(locale, slug),
+    ])
+    return {
+      ...page,
+      ...post,
+    }
+  } catch (error) {
+    if (error.name === 'PostNotFoundError') {
+      return { error: error.toString() }
+    }
+    throw error
+  }
 }
