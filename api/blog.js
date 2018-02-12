@@ -16,6 +16,7 @@ export async function fetchNewestBlogPosts(locale, limit) {
     locale,
     limit,
     order: '-fields.date',
+    'fields.preventFeatured[ne]': true,
   })
   return entries.map(blogPostFromEntry)
 }
