@@ -18,10 +18,7 @@ export const unwrapImage = (image, urlParams) => {
   const imageFile = image && image.fields && image.fields.file
 
   if (!imageFile) {
-    return {
-      url: undefined,
-      title: undefined,
-    }
+    return undefined
   }
 
   const urlQuery = urlParams ? `?${qs.stringify(urlParams)}` : ''
