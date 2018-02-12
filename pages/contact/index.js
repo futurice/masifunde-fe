@@ -10,17 +10,9 @@ import Markdown from '../../components/Markdown'
 import PageSection from '../../components/PageSection'
 import TeamMemberList from '../../components/TeamMemberList'
 import Divider from '../../components/Divider'
+import { smallSpacing } from '../../styling/sizes'
 
-const StyledMarkdown = styled(Markdown)`
-  text-align: left;
-`
-
-const ContactText = styled.span`
-  display: block;
-  text-align: left;
-`
-
-const AddressContainer = styled.div`
+const ContactDetailsContainer = styled.div`
   text-align: center;
 
   display: flex;
@@ -30,6 +22,7 @@ const AddressContainer = styled.div`
 
 const TeamMemberListTitle = styled.h3`
   text-align: center;
+  margin-bottom: ${smallSpacing};
 `
 
 const Contact = ({
@@ -40,6 +33,7 @@ const Contact = ({
   contactsHeading,
   contacts,
   regionalContacts,
+  contactDetailsHeading,
   address,
   email,
   telephone,
@@ -74,17 +68,14 @@ const Contact = ({
     </PageSection>
 
     <PageSection>
-      <div className="row">
-        <AddressContainer className="col-sm ">
-          <div>
-            <StyledMarkdown source={address} />
-            <ContactText>{telephone}</ContactText>
-            <a href={`mailto:${email}`}>
-              <ContactText>{email}</ContactText>
-            </a>
-          </div>
-        </AddressContainer>
-      </div>
+      <TeamMemberListTitle>{contactDetailsHeading}</TeamMemberListTitle>
+      <ContactDetailsContainer className="col-sm ">
+        <Markdown source={address} />
+        <span>{telephone}</span>
+        <a href={`mailto:${email}`}>
+          {email}
+        </a>
+      </ContactDetailsContainer>
     </PageSection>
 
 
@@ -116,6 +107,7 @@ Contact.propTypes = {
   contacts: contactListPropType.isRequired,
   // eslint-disable-next-line react/no-typos
   regionalContacts: contactListPropType.isRequired,
+  contactDetailsHeading: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   telephone: PropTypes.string.isRequired,
