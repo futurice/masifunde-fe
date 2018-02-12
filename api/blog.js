@@ -18,7 +18,7 @@ export async function fetchBlogPost(locale, slug) {
 
   if (entries.length === 0) {
     const e = new Error(`Could not find blog post with slug: ${slug}`)
-    e.id = 'POST_NOT_FOUND'
+    e.name = 'PostNotFoundError'
     throw e
   }
 
@@ -35,7 +35,7 @@ export function fetchBlogPostPage(locale, slug) {
     fetchBlogPostPageTemplate(locale),
     fetchBlogPost(locale, slug)
       .catch((error) => {
-        if (error.id === 'POST_NOT_FOUND') {
+        if (error.name === 'PostNotFoundError') {
           return { error: error.toString() }
         }
         throw error
