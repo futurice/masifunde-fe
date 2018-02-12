@@ -38,7 +38,7 @@ injectGlobal`
  }
 
   body {
-    background-color: #faf2e6;
+    background-color: ${theme.orangeBackgroundLight};
     ${bodyText}
   }
 
