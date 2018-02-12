@@ -44,9 +44,18 @@ Netlify will automatically run `npm run build-static` whenever anything is pushe
 
 When creating a Pull Request (PR) to `master`, Netlify will build and publish the merge result as a preview under `deploy-preview-[preview-number]--masifunde.netlify.com`.
 
+__Note that most Netlify build and deploy settings are defined in `netlify.toml`
+in this repository__, which override those seen in the Netlify dashboard! See
+the [Netlify "Deploy Contexts" documentation][deploy-contexts]. (Hopefully in
+the future, Netlify will hide the settings that we define in `netlify.toml`
+to reduce confusion.)
+
+[deploy-contexts]: https://www.netlify.com/docs/continuous-deployment/#deploy-contexts
+
 ## Configuration
 
 * Contentful credentials are hard coded.
+* Netlify build and deploy settings are mostly in `netlify.toml` (see the previous section).
 * Crawler instructions are defined in `robots.txt` and are always exported to `https://masifunde.netlify.com/robots.txt`.
 * Routes are defined in `routes.js` using [next-routes](https://www.npmjs.com/package/next-routes).
 
