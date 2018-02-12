@@ -2,28 +2,28 @@
 import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 import { unwrapTeamMember, unwrapImage } from './common'
 
-export function fetchBlogPost(locale, slug) {
-  return fetchEntriesForContentType(
-    'blogPost',
-    {
-      locale,
-      'fields.slug': slug,
-    },
-  )
-    .then((entries) => {
-      if (entries.length === 0) {
-        const e = new Error(`Could not find blog post with slug: ${slug}`)
-        e.id = 'POST_NOT_FOUND'
-        throw e
-      }
-      return entries[0]
-    })
-    .then(entry => entry.fields)
-    .then(fields => ({
-      ...fields,
-      heroImage: fields.heroImage && unwrapImage(fields.heroImage),
-      authorTeamMember: fields.authorTeamMember && unwrapTeamMember(fields.authorTeamMember),
-    }))
+function blogPostFromEntry(entry) {
+  return {
+    ...entry.fields,
+    heroImage: unwrapImage(entry.fields.heroImage),
+    authorTeamMember: unwrapTeamMember(entry.fields.authorTeamMember),
+  }
+}
+
+export async function fetchBlogPost(locale, slug) {
+  const entries = await fetchEntriesForContentType('blogPost', {
+    locale,
+    'fields.slug': slug,
+  })
+
+  if (entries.length === 0) {
+    const e = new Error(`Could not find blog post with slug: ${slug}`)
+    e.id = 'POST_NOT_FOUND'
+    throw e
+  }
+
+  const entry = entries[0]
+  return blogPostFromEntry(entry)
 }
 
 function fetchBlogPostPageTemplate(locale) {
