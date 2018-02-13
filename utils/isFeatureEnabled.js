@@ -1,3 +1,5 @@
+// NOTE: Using CommonJS imports / exports for use in next.config.js
+
 let enabledFeatures
 
 if (typeof process.env.ENABLED_FEATURES === 'string') {
@@ -11,6 +13,6 @@ if (typeof process.env.ENABLED_FEATURES === 'string') {
   console.log('Feature flags: Enabling no features.')
 }
 
-export default function isFeatureEnabled(name) {
+module.exports = function isFeatureEnabled(name) {
   return enabledFeatures.includes(name) || enabledFeatures.includes('*')
 }
