@@ -12,11 +12,11 @@ const PatronContainer = styled.div`
 `
 
 const StyledPatron = Patron.extend`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   @media (max-width: ${smBreakpoint}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     margin-bottom: ${extraSmallSpacing};
     text-align: center;
   }
