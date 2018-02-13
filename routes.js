@@ -1,6 +1,7 @@
 // NOTE: Using CommonJS imports / exports for use in next.config.js
 
 const nextRoutes = require('next-routes')()
+const featureFlags = require('./featureFlags')
 const locales = require('./i18n/locales')
 
 /**
@@ -67,8 +68,11 @@ addRoute('wie-sie-helfen/spenden', Donate)
 addRoute('kontakt', Contact)
 addRoute('impressum', Impressum)
 addRoute('datenschutz', Datenschutz)
-addRoute('blog', Blog)
-addRoute('blog/:slug', BlogPost)
+
+if (featureFlags.release10) {
+  addRoute('blog', Blog)
+  addRoute('blog/:slug', BlogPost)
+}
 
 // Share route names
 nextRoutes.RouteNames = {

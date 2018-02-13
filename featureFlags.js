@@ -1,6 +1,6 @@
-/* eslint-disable import/prefer-default-export */
-import isFeatureEnabled from './utils/isFeatureEnabled'
+// NOTE: Using CommonJS imports / exports for use in next.config.js
+const isFeatureEnabled = require('./utils/isFeatureEnabled')
 
-export default {
+module.exports = {
   release10: isFeatureEnabled('release10'),
 }
