@@ -52,21 +52,24 @@ export function fetchBlogPostPage(locale, slug) {
     })
 }
 
-export function fetchBlogPostsList(locale, skip = 0) {
+const fetchBlogPostLimit = 10
+
+export function fetchBlogPostsList(locale, page) {
+  const skip = fetchBlogPostLimit * (page - 1)
   return fetchEntriesForContentType(
     'blogPost',
     {
       locale,
       skip,
-      limit: 20,
-      order: 'sys.createdAt',
+      limit: fetchBlogPostLimit,
+      order: '-fields.date',
     },
   )
     .then(entries => (
       entries.map(({ sys, fields }) => {
         const author = fields.authorTeamMember
           ? unwrapTeamMember(fields.authorTeamMember).name
-          : fields.authorExternal || ''
+          : fields.authorExternal
         const teaserImage = unwrapImage(fields.teaserImage, { q: jpegQuality, w: 1000 })
         const date = formatDate(fields.date)
         return ({
@@ -81,17 +84,20 @@ export function fetchBlogPostsList(locale, skip = 0) {
       })))
 }
 
-export function fetchBlogLandingPage(locale) {
+export function fetchBlogLandingPage(locale, page = 1) {
   return Promise.all([
     fetchSingleEntry('pageBlogHome', locale),
-    fetchBlogPostsList(locale),
+    fetchBlogPostsList(locale, page),
   ])
     .then((results) => {
-      const page = results[0]
+      const pageContent = results[0]
       const blogPosts = results[1]
+      const isLastPage = blogPosts.length < fetchBlogPostLimit
       return {
-        ...page,
+        ...pageContent,
         blogPosts,
+        page: Number(page),
+        isLastPage,
       }
     })
 }
