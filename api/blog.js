@@ -1,6 +1,7 @@
-/* eslint-disable import/prefer-default-export */
 import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 import { unwrapTeamMember, unwrapImage } from './common'
+import { jpegQuality } from '../utils/constants'
+import formatDate from '../utils/date'
 
 export function fetchBlogPost(locale, slug) {
   return fetchEntriesForContentType(
@@ -47,6 +48,50 @@ export function fetchBlogPostPage(locale, slug) {
       return {
         ...page,
         ...post,
+      }
+    })
+}
+
+export function fetchBlogPostsList(locale, skip = 0) {
+  return fetchEntriesForContentType(
+    'blogPost',
+    {
+      locale,
+      skip,
+      limit: 20,
+      order: 'sys.createdAt',
+    },
+  )
+    .then(entries => (
+      entries.map(({ sys, fields }) => {
+        const author = fields.authorTeamMember
+          ? unwrapTeamMember(fields.authorTeamMember).name
+          : fields.authorExternal || ''
+        const teaserImage = unwrapImage(fields.teaserImage, { q: jpegQuality, w: 1000 })
+        const date = formatDate(fields.date)
+        return ({
+          id: sys.id,
+          title: fields.title,
+          date,
+          author,
+          teaserText: fields.metaDescription,
+          teaserImage,
+          slug: fields.slug,
+        })
+      })))
+}
+
+export function fetchBlogLandingPage(locale) {
+  return Promise.all([
+    fetchSingleEntry('pageBlogHome', locale),
+    fetchBlogPostsList(locale),
+  ])
+    .then((results) => {
+      const page = results[0]
+      const blogPosts = results[1]
+      return {
+        ...page,
+        blogPosts,
       }
     })
 }
