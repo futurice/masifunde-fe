@@ -1,8 +1,13 @@
 /* eslint-disable import/prefer-default-export */
 import { fetchMemoizedSingleEntry, fetchSingleEntry } from './contentfulService'
 import {
-  unwrapImage, unwrapPartners, unwrapRegionalGroups, unwrapTeamMember, unwrapFields,
+  unwrapFields,
+  unwrapImage,
   unwrapPageUrl,
+  unwrapPartners,
+  unwrapRegionalGroups,
+  unwrapTeamMember,
+  unwrapTestimonials,
 } from './common'
 import { jpegQuality } from '../utils/constants'
 
@@ -37,13 +42,14 @@ const unwrapVolunteerOpening = volunteerOpening => ({
 })
 
 export async function fetchBecomeAVolunteerPage(locale) {
-  const content = await fetchMemoizedSingleEntry('pageAktivWerden', locale)
+  const content = await fetchMemoizedSingleEntry('pageAktivWerden', locale) || {}
   return {
     ...content,
     regionalGroups: unwrapRegionalGroups(content && content.regionalGroups),
     section1TeamMember: unwrapTeamMember(content && content.section1TeamMember),
     volunteerOpenings: content && content.volunteerOpenings.map(unwrapVolunteerOpening),
     bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
+    section1ReferenceList: unwrapTestimonials(content.section1ReferenceList),
   }
 }
 

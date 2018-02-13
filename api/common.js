@@ -144,3 +144,16 @@ export const unwrapProjects = (projects = []) =>
     ...fields,
     image: unwrapImage(fields && fields.image),
   }))
+
+export const unwrapTestimonials = (testimonials = []) =>
+  testimonials.map(({ fields }) => ({
+    ...fields,
+    image: unwrapImage(fields.image, {
+      w: 320,
+      h: 320,
+      q: jpegQuality,
+      fit: 'thumb',
+      f: 'face',
+    }),
+    testimonial: fields.testimonialMarkdown,
+  }))
