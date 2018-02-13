@@ -70,7 +70,7 @@ const BecomeVolunteer = ({
 
     <PageSection>
       <h2>{section4Title}</h2>
-      <TestimonialList data={section1ReferenceList} />
+      <TestimonialList testimonials={section1ReferenceList} />
     </PageSection>
 
     <PageSection>
@@ -103,7 +103,7 @@ BecomeVolunteer.propTypes = {
   section3Markdown: PropTypes.string.isRequired,
   regionalGroups: PropTypes.shape().isRequired,
   section4Title: PropTypes.string.isRequired,
-  section1ReferenceList: TestimonialList.propTypes.data.isRequired,
+  section1ReferenceList: TestimonialList.propTypes.testimonials.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
