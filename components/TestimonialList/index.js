@@ -22,7 +22,7 @@ const StyledPatron = Patron.extend`
   }
 `
 
-const PatronList = ({ data: patrons, className }) => (
+const TestimonialList = ({ data: patrons, className }) => (
   <div className={`row ${className}`}>
     {patrons.map(({
       testimonialMarkdown, title, name, image,
@@ -44,7 +44,7 @@ const PatronList = ({ data: patrons, className }) => (
   </div>
 )
 
-PatronList.propTypes = {
+TestimonialList.propTypes = {
   className: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
     ...Patron.propTypes,
@@ -52,9 +52,9 @@ PatronList.propTypes = {
   })),
 }
 
-PatronList.defaultProps = {
+TestimonialList.defaultProps = {
   data: [],
   className: '',
 }
 
-export default PatronList
+export default TestimonialList
