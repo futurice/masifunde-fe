@@ -14,6 +14,7 @@ const Button = ({
   center,
   children,
   className,
+  isActive,
   ...rest
 }) => (
   <ButtonContainer center={center}>
