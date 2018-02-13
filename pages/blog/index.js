@@ -14,8 +14,7 @@ import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchBlogLandingPage } from '../../api/blog'
 import { rem } from '../../styling/typography'
 import Button from '../../components/Button'
-import { extraSmallSpacing } from '../../styling/sizes'
-import { lgBreakpoint, smBreakpoint } from '../../styling/breakpoints'
+import { lgBreakpoint, mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import Divider from '../../components/Divider'
 
 const TeaserImageContainer = styled.div`
@@ -31,22 +30,37 @@ const TeaserImageContainer = styled.div`
 
 const TeaserText = styled.span`
   color: ${({ theme }) => theme.pineCone};
-  font-size: ${rem('20px')};
+  font-size: ${rem('16px')};
+  
+  @media (min-width: ${mdBreakpoint}) {
+    font-size: ${rem('20px')};
+  }
 `
 
 const DateAuthorText = styled.span`
   font-size: 14px;
-  margin-bottom: ${extraSmallSpacing};
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  
+  @media (min-width: ${smBreakpoint}) {
+    margin-top: 0;
+  }
 `
 
 const BlogPostTitle = styled.h2`
-  font-size: ${rem('32px')};
+  font-size: ${rem('24px')};
+  line-height: ${rem('30px')};;
   margin-left: 0;
   margin-right: 0;
+  margin-bottom: 0.5rem;
   text-align: left;
   width: 100%;
   color: ${({ theme }) => theme.black};
-  line-height: ${rem('40px')};;
+  
+  @media (min-width: ${mdBreakpoint}) {
+    font-size: ${rem('32px')};
+    line-height: ${rem('40px')};;
+  }
 `
 
 const BlogListItem = ({
@@ -137,7 +151,6 @@ const BlogListFooter = styled.div`
 `
 
 const ButtonsContainer = styled.div`
-
   &, > div {
     display: flex;
     flex-direction: column;
