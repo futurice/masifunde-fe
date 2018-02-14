@@ -14,6 +14,7 @@ import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 import { smallFontSize } from '../../styling/typography'
+import TestimonialList from '../../components/TestimonialList'
 
 const VolunteerOpeningsContainer = styled.div`
   font-size: ${smallFontSize};
@@ -31,6 +32,8 @@ const BecomeVolunteer = ({
   section3Markdown,
   regionalGroups,
   bannerTitle,
+  section4Title,
+  section1ReferenceList,
   bannerButtonText,
   bannerButtonUrl,
 }) => (
@@ -66,6 +69,11 @@ const BecomeVolunteer = ({
     </PageSection>
 
     <PageSection>
+      <h2>{section4Title}</h2>
+      <TestimonialList testimonials={section1ReferenceList} />
+    </PageSection>
+
+    <PageSection>
       <h2>{section3Title}</h2>
       <CenteredText source={section3Markdown} />
       <RegionalGroups regionalGroups={regionalGroups} />
@@ -94,6 +102,8 @@ BecomeVolunteer.propTypes = {
   section3Title: PropTypes.string.isRequired,
   section3Markdown: PropTypes.string.isRequired,
   regionalGroups: PropTypes.shape().isRequired,
+  section4Title: PropTypes.string.isRequired,
+  section1ReferenceList: TestimonialList.propTypes.testimonials.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
