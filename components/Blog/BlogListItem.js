@@ -8,6 +8,7 @@ import { mdBreakpoint } from '../../styling/breakpoints'
 import { rem } from '../../styling/typography'
 import { RouteNames } from '../../routes'
 import Link from '../../components/Link'
+import { wordBreak } from '../../styling/utils'
 
 const TeaserImageContainer = styled.div`
   display: flex;
@@ -49,17 +50,34 @@ const BlogPostTitle = styled.h2`
   width: 100%;
   color: ${({ theme }) => theme.black};
   
-  hyphens: auto;
-  word-break: break-all;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  ${wordBreak}
   
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('32px')};
     line-height: ${rem('40px')};;
   }
 `
+
+const BlogPostLink = ({ children, slug }) => (
+  <Link
+    route={RouteNames.BlogPost}
+    passHref
+    params={{
+      slug,
+      previousPostRoute: '/FIXME: slug',
+      nextPostRoute: '/FIXME: slug',
+    }}
+  >
+    <a>
+      {children}
+    </a>
+  </Link>
+)
+
+BlogPostLink.propTypes = {
+  children: PropTypes.node.isRequired,
+  slug: PropTypes.string.isRequired,
+}
 
 const BlogListItem = ({
   author,
@@ -68,52 +86,32 @@ const BlogListItem = ({
   teaserText,
   teaserImage,
   slug,
-}) => {
-  const BlogPostLink = ({ children }) => (
-    <Link
-      route={RouteNames.BlogPost}
-      passHref
-      params={{
-        slug,
-        previousPostRoute: '/FIXME: slug',
-        nextPostRoute: '/FIXME: slug',
-      }}
-    >
-      <a>
-        {children}
-      </a>
-    </Link>
-  )
-
-  BlogPostLink.propTypes = { children: PropTypes.node.isRequired }
-
-  return (
-    <li className="row">
-      <TeaserImageContainer className="col-4">
-        <BlogPostLink>
-          <img src={teaserImage.url} alt="" />
-        </BlogPostLink>
-      </TeaserImageContainer>
-      <div className="col-8">
-        <div className="row">
-          <DateAuthorText className="col">
-            {date}
-            {author ? ' - ' : null}
-            {author}
-          </DateAuthorText>
-        </div>
-        <span className="row">
-          <BlogPostLink>
-            <BlogPostTitle className="col">{title}</BlogPostTitle>
-          </BlogPostLink>
-        </span>
-        <span className="row">
-          <TeaserText className="col">{teaserText}</TeaserText>
-        </span>
+}) => (
+  <li className="row">
+    <TeaserImageContainer className="col-4">
+      <BlogPostLink slug={slug}>
+        <img src={teaserImage.url} alt="" />
+      </BlogPostLink>
+    </TeaserImageContainer>
+    <div className="col-8">
+      <div className="row">
+        <DateAuthorText className="col">
+          {date}
+          {author ? ' - ' : null}
+          {author}
+        </DateAuthorText>
       </div>
-    </li>
-  )
-}
+      <span className="row">
+        <BlogPostLink slug={slug}>
+          <BlogPostTitle className="col">{title}</BlogPostTitle>
+        </BlogPostLink>
+      </span>
+      <span className="row">
+        <TeaserText className="col">{teaserText}</TeaserText>
+      </span>
+    </div>
+  </li>
+)
 
 BlogListItem.propTypes = {
   title: PropTypes.string.isRequired,
