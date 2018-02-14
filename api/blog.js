@@ -70,6 +70,7 @@ export function fetchBlogPostsList(locale, page) {
       skip,
       limit: blogPostsPerPage,
       order: '-fields.date',
+      'fields.title[exists]': true,
     },
     false,
   )
