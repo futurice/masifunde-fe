@@ -8,7 +8,7 @@ import Link from '../../components/Link'
 import { RouteNames } from '../../routes'
 import { smBreakpoint } from '../../styling/breakpoints'
 
-const ButtonsContainer = styled.div`
+const ButtonsContainer = styled.nav`
   & {
     display: flex;
     align-items: center;
@@ -110,7 +110,7 @@ const BlogListNavigationButtons = ({
       <div>
         {
           isNotFirstPage && (
-            <BlogListNavigationLink page={page - 1} buttonText={previousPageButtonText} />
+            <BlogListNavigationLink rel="prev" page={page - 1} buttonText={previousPageButtonText} />
           )
         }
       </div>
@@ -125,7 +125,7 @@ const BlogListNavigationButtons = ({
       </PageButtonsContainer>
       <div>
         {isNotLastPage && (
-          <BlogListNavigationLink page={page + 1} buttonText={nextPageButtonText} />
+          <BlogListNavigationLink rel="next" page={page + 1} buttonText={nextPageButtonText} />
         )}
       </div>
     </ButtonsContainer>
