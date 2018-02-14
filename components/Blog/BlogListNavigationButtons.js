@@ -36,7 +36,7 @@ const ButtonsContainer = styled.div`
 `
 
 
-const BlogListNavigationLink = ({ children, page }) => (
+const BlogListNavigationLink = ({ buttonText, currentPage, page }) => (
   <Link
     route={RouteNames.Blog}
     passHref
@@ -44,14 +44,21 @@ const BlogListNavigationLink = ({ children, page }) => (
       page,
     }}
   >
-    {children}
+    <Button isActive={currentPage && (currentPage === page)}>{buttonText || page}</Button>
   </Link>
 )
 
 BlogListNavigationLink.propTypes = {
-  children: PropTypes.node.isRequired,
   page: PropTypes.number.isRequired,
+  currentPage: PropTypes.number,
+  buttonText: PropTypes.string,
 }
+
+BlogListNavigationLink.defaultProps = {
+  buttonText: undefined,
+  currentPage: undefined,
+}
+
 
 const PageButtonsContainer = styled.div`
   display: flex;
@@ -73,9 +80,14 @@ const BlogListNavigationButtons = ({
   nextPageButtonText,
   page,
   isLastPage,
+  totalNumberOfPages,
 }) => {
   const alterButtonIfLastPage = buttonPage => (isLastPage ? buttonPage - 1 : buttonPage)
-  const isNotFirstPage = page > 1
+  const isFirstPage = page === 1
+  const isNotFirstPage = !isFirstPage
+  const isNotLastPage = !isLastPage
+  const moreThanOnePage = totalNumberOfPages !== 1
+  const threeOrMorePages = totalNumberOfPages >= 3
 
   const firstPageButton = alterButtonIfLastPage(isNotFirstPage ? page - 1 : page)
   const secondPageButton = alterButtonIfLastPage(isNotFirstPage ? page : page + 1)
@@ -86,28 +98,22 @@ const BlogListNavigationButtons = ({
       <div>
         {
           isNotFirstPage && (
-            <BlogListNavigationLink page={page - 1}>
-              <Button>{previousPageButtonText}</Button>
-            </BlogListNavigationLink>
+            <BlogListNavigationLink page={page - 1} buttonText={previousPageButtonText} />
           )
         }
       </div>
       <PageButtonsContainer>
-        <BlogListNavigationLink page={firstPageButton}>
-          <Button isActive={page === firstPageButton}>{firstPageButton}</Button>
-        </BlogListNavigationLink>
-        <BlogListNavigationLink page={secondPageButton}>
-          <Button isActive={page === secondPageButton}>{secondPageButton}</Button>
-        </BlogListNavigationLink>
-        <BlogListNavigationLink page={thirdPageButton}>
-          <Button isActive={page === thirdPageButton}>{thirdPageButton}</Button>
-        </BlogListNavigationLink>
+        {moreThanOnePage && (
+          <BlogListNavigationLink currentPage={page} page={firstPageButton} />
+        )}
+        <BlogListNavigationLink currentPage={page} page={secondPageButton} />
+        {threeOrMorePages && (
+          <BlogListNavigationLink currentPage={page} page={thirdPageButton} />
+        )}
       </PageButtonsContainer>
       <div>
-        {!isLastPage && (
-          <BlogListNavigationLink page={page + 1}>
-            <Button>{nextPageButtonText}</Button>
-          </BlogListNavigationLink>
+        {isNotLastPage && (
+          <BlogListNavigationLink page={page - 1} buttonText={nextPageButtonText} />
         )}
       </div>
     </ButtonsContainer>
@@ -118,6 +124,7 @@ BlogListNavigationButtons.propTypes = {
   previousPageButtonText: PropTypes.string.isRequired,
   nextPageButtonText: PropTypes.string.isRequired,
   page: PropTypes.number.isRequired,
+  totalNumberOfPages: PropTypes.number.isRequired,
   isLastPage: PropTypes.bool.isRequired,
 }
 
