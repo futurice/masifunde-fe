@@ -61,6 +61,7 @@ class Blog extends Component {
       nextPageButtonText,
       page,
       isLastPage,
+      totalNumberOfPages,
     } = this.props
 
     return (
@@ -84,6 +85,7 @@ class Blog extends Component {
               nextPageButtonText={nextPageButtonText}
               page={page}
               isLastPage={isLastPage}
+              totalNumberOfPages={totalNumberOfPages}
             />
           </BlogListFooter>
         </Container>
@@ -99,6 +101,7 @@ Blog.propTypes = {
   ...BlogListNavigationButtons.propTypes,
   page: PropTypes.number.isRequired,
   isLastPage: PropTypes.bool.isRequired,
+  totalNumberOfPages: PropTypes.number.isRequired,
   blogPosts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     ...BlogListItem.propTypes,

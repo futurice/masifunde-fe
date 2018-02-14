@@ -59,21 +59,28 @@ export async function fetchBlogPostPage(locale, slug) {
   }
 }
 
-const fetchBlogPostLimit = 10
+const blogPostsPerPage = 10
 
 export function fetchBlogPostsList(locale, page) {
-  const skip = fetchBlogPostLimit * (page - 1)
+  const skip = blogPostsPerPage * (page - 1)
   return fetchEntriesForContentType(
     'blogPost',
     {
       locale,
       skip,
-      limit: fetchBlogPostLimit,
+      limit: blogPostsPerPage,
       order: '-fields.date',
     },
+    false,
   )
-    .then(entries => (
-      entries.map(({ sys, fields }) => {
+    .then((response) => {
+      const totalNumberOfBlogPosts = response.total
+      const totalNumberOfPages = Math.ceil(totalNumberOfBlogPosts / blogPostsPerPage)
+      const entries = response.items
+      const numberOfLastPostOnPage = skip + entries.length
+      const isLastPage = numberOfLastPostOnPage >= totalNumberOfBlogPosts
+
+      const blogPosts = entries.map(({ sys, fields }) => {
         const author = fields.authorTeamMember
           ? unwrapTeamMember(fields.authorTeamMember).name
           : fields.authorExternal
@@ -88,7 +95,14 @@ export function fetchBlogPostsList(locale, page) {
           teaserImage,
           slug: fields.slug,
         })
-      })))
+      })
+
+      return ({
+        totalNumberOfPages,
+        isLastPage,
+        blogPosts,
+      })
+    })
 }
 
 export function fetchBlogLandingPage(locale, page = 1) {
@@ -98,13 +112,11 @@ export function fetchBlogLandingPage(locale, page = 1) {
   ])
     .then((results) => {
       const pageContent = results[0]
-      const blogPosts = results[1]
-      const isLastPage = blogPosts.length < fetchBlogPostLimit
+      const fetchBlogPostsResult = results[1]
       return {
         ...pageContent,
-        blogPosts,
+        ...fetchBlogPostsResult,
         page: Number(page),
-        isLastPage,
       }
     })
 }
