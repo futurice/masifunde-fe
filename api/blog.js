@@ -107,8 +107,13 @@ export function fetchBlogPostsList(locale, page) {
 }
 
 export async function fetchBlogLandingPage(locale, page = 1) {
-  const pageContent = await fetchSingleEntry('pageBlogHome', locale)
-  const fetchBlogPostsResult = await fetchBlogPostsList(locale, page)
+  const [
+    pageContent,
+    fetchBlogPostsResult,
+  ] = await Promise.all([
+    fetchSingleEntry('pageBlogHome', locale),
+    fetchBlogPostsList(locale, page),
+  ])
 
   return {
     ...pageContent,
