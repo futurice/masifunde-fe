@@ -74,11 +74,13 @@ called `ENABLED_FEATURES`, like this:
 ENABLED_FEATURES=feature1,feature2 npm run dev
 
 # Enable all features (the default during development)
-ENABLED_FEATURES=* npm run dev
+ENABLED_FEATURES=all npm run dev
 
 # Disable all features (the default in production)
 ENABLED_FEATURES= npm run dev
 ```
+
+The special `all` value always enables all feature flags.
 
 Remember that feature flags are always temporary. Once a feature behind a
 flag goes to production, simply remove the flag altogether.
