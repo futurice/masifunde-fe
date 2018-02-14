@@ -5,14 +5,12 @@ import styled from 'styled-components'
 import ImagePropTypes from '../../propTypes/image'
 import { rem } from '../../styling/typography'
 import { wordBreak } from '../../styling/utils'
-
 import RoundedImage from '../RoundedImage'
 
+const maxImageSize = '160px'
 const ImageContainer = styled.div`
-  max-width: 160px;
-`
-
-const Image = RoundedImage.extend`
+  max-width: ${maxImageSize};
+  max-height: ${maxImageSize};
   margin-bottom: 0.7rem;
 `
 
@@ -38,7 +36,7 @@ const Patron = ({
 }) => (
   <div {...rest} >
     <ImageContainer>
-      <Image className="img-fluid" src={imageUrl} alt="" />
+      <RoundedImage className="img-fluid" src={imageUrl} alt="" />
     </ImageContainer>
     { name && <Name>{name}</Name>}
     { title && <Title>{title}</Title>}
