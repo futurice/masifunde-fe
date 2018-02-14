@@ -9,7 +9,7 @@ const client = createClient({
   host: CONTENTFUL_HOST,
 })
 
-export function fetchEntriesForContentType(contentType, config) {
+export function fetchEntriesForContentType(contentType, config, unpackItems = true) {
   return client
     .getEntries({
       include: 10,
@@ -17,7 +17,7 @@ export function fetchEntriesForContentType(contentType, config) {
       locale: 'de',
       ...config,
     })
-    .then(response => response.items)
+    .then(response => (unpackItems ? response.items : response))
     .catch((error) => {
       /* eslint-disable no-console */
       console.log(`Error occurred while fetching Entries for ${contentType.name}:`)
