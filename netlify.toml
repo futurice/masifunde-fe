@@ -9,4 +9,4 @@
 # Deploy Preview context: All Deploy Previews
 # will inherit these settings.
 [context.deploy-preview.environment]
-  ENABLED_FEATURES = "*"
+  ENABLED_FEATURES = "all"
