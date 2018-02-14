@@ -66,13 +66,13 @@ export function fetchBlogPostsList(locale, page) {
   return fetchEntriesForContentType(
     'blogPost',
     {
+      unpackItems: false,
       locale,
       skip,
       limit: blogPostsPerPage,
       order: '-fields.date',
       'fields.title[exists]': true,
     },
-    false,
   )
     .then((response) => {
       const totalNumberOfBlogPosts = response.total

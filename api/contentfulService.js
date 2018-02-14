@@ -9,7 +9,7 @@ const client = createClient({
   host: CONTENTFUL_HOST,
 })
 
-export function fetchEntriesForContentType(contentType, config, unpackItems = true) {
+export function fetchEntriesForContentType(contentType, { unpackItems = true, ...config }) {
   return client
     .getEntries({
       include: 10,
