@@ -106,18 +106,13 @@ export function fetchBlogPostsList(locale, page) {
     })
 }
 
-export function fetchBlogLandingPage(locale, page = 1) {
-  return Promise.all([
-    fetchSingleEntry('pageBlogHome', locale),
-    fetchBlogPostsList(locale, page),
-  ])
-    .then((results) => {
-      const pageContent = results[0]
-      const fetchBlogPostsResult = results[1]
-      return {
-        ...pageContent,
-        ...fetchBlogPostsResult,
-        page: Number(page),
-      }
-    })
+export async function fetchBlogLandingPage(locale, page = 1) {
+  const pageContent = await fetchSingleEntry('pageBlogHome', locale)
+  const fetchBlogPostsResult = await fetchBlogPostsList(locale, page)
+
+  return {
+    ...pageContent,
+    ...fetchBlogPostsResult,
+    page: Number(page),
+  }
 }

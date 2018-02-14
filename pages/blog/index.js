@@ -112,7 +112,7 @@ Blog.defaultProps = {
   blogPosts: [],
 }
 
-Blog.getInitialProps = async function initialProps({ query }) {
+Blog.getInitialProps = function initialProps({ query }) {
   const { page } = query
   return fetchBlogLandingPage(getLocaleFromQuery(query), page)
 }
