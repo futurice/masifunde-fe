@@ -1,8 +1,6 @@
 /* eslint-disable no-param-reassign */
 const contentful = require('contentful')
 const fs = require('fs')
-// eslint-disable-next-line import/no-extraneous-dependencies
-const webpack = require('webpack')
 
 const env = require('./env')
 const featureFlags = require('./featureFlags')
@@ -119,12 +117,5 @@ module.exports = {
     fs.writeFileSync('public/sitemap.xml', createSitemap(pathMap))
 
     return pathMap
-  },
-
-  webpack(config) {
-    config.plugins.push(new webpack.DefinePlugin({
-      ENABLED_FEATURES: null,
-    }))
-    return config
   },
 }
