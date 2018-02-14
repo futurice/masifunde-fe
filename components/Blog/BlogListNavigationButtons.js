@@ -36,7 +36,12 @@ const ButtonsContainer = styled.div`
 `
 
 
-const BlogListNavigationLink = ({ buttonText, currentPage, page }) => (
+const BlogListNavigationLink = ({
+  buttonText,
+  currentPage,
+  page,
+  rounded,
+}) => (
   <Link
     route={RouteNames.Blog}
     passHref
@@ -44,7 +49,12 @@ const BlogListNavigationLink = ({ buttonText, currentPage, page }) => (
       page,
     }}
   >
-    <Button isActive={currentPage && (currentPage === page)}>{buttonText || page}</Button>
+    <Button
+      isActive={currentPage && (currentPage === page)}
+      rounded={rounded}
+    >
+      {buttonText || page}
+    </Button>
   </Link>
 )
 
@@ -52,11 +62,13 @@ BlogListNavigationLink.propTypes = {
   page: PropTypes.number.isRequired,
   currentPage: PropTypes.number,
   buttonText: PropTypes.string,
+  rounded: PropTypes.bool,
 }
 
 BlogListNavigationLink.defaultProps = {
   buttonText: undefined,
   currentPage: undefined,
+  rounded: false,
 }
 
 
@@ -104,16 +116,16 @@ const BlogListNavigationButtons = ({
       </div>
       <PageButtonsContainer>
         {moreThanOnePage && (
-          <BlogListNavigationLink currentPage={page} page={firstPageButton} />
+          <BlogListNavigationLink currentPage={page} page={firstPageButton} rounded />
         )}
-        <BlogListNavigationLink currentPage={page} page={secondPageButton} />
+        <BlogListNavigationLink currentPage={page} page={secondPageButton} rounded />
         {threeOrMorePages && (
-          <BlogListNavigationLink currentPage={page} page={thirdPageButton} />
+          <BlogListNavigationLink currentPage={page} page={thirdPageButton} rounded />
         )}
       </PageButtonsContainer>
       <div>
         {isNotLastPage && (
-          <BlogListNavigationLink page={page - 1} buttonText={nextPageButtonText} />
+          <BlogListNavigationLink page={page + 1} buttonText={nextPageButtonText} />
         )}
       </div>
     </ButtonsContainer>
