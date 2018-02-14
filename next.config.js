@@ -85,8 +85,15 @@ async function blogPostsPathMap() {
   posts.forEach((post) => {
     locales.forEach((locale) => {
       const slug = post.fields.slug[locale]
-      const path = putLocale(`/:locale?/blog/${slug}`, locale)
 
+      // Without a slug, we cannot generate a path for the blog post.
+      if (!slug) {
+        // eslint-disable-next-line no-console
+        console.warn(`Post ${post.sys.id} has no slug for locale [${locale}], skipping`)
+        return
+      }
+
+      const path = putLocale(`/:locale?/blog/${slug}`, locale)
       pathMap[path] = {
         page: Routes.RouteNames.BlogPost,
         query: {
