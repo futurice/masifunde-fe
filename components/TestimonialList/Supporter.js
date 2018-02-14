@@ -28,7 +28,7 @@ const Title = styled.div`
   color: ${({ theme }) => theme.pineCone};
 `
 
-const Patron = ({
+const Supporter = ({
   image: { url: imageUrl },
   name,
   title,
@@ -43,22 +43,22 @@ const Patron = ({
   </div>
 )
 
-Patron.propTypes = {
+Supporter.propTypes = {
   image: PropTypes.shape(ImagePropTypes).isRequired,
   name: PropTypes.string,
   title: PropTypes.string,
 }
 
-Patron.defaultProps = {
+Supporter.defaultProps = {
   name: undefined,
   title: undefined,
 }
 
-const StyledPatron = styled(Patron)`
+const StyledPatron = styled(Supporter)`
   ${wordBreak}
 `
 
-StyledPatron.propTypes = Patron.propTypes
-StyledPatron.defaultProps = Patron.defaultProps
+StyledPatron.propTypes = Supporter.propTypes
+StyledPatron.defaultProps = Supporter.defaultProps
 
 export default StyledPatron

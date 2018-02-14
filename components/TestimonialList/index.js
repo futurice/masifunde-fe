@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import Patron from './Patron'
+import Supporter from './Supporter'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { mediumSpacing, extraSmallSpacing } from '../../styling/sizes'
 import Markdown from '../Markdown'
 
-const PatronContainer = styled.div`
+const TestimonialContainer = styled.div`
   margin-bottom: ${mediumSpacing};
 `
 
-const StyledPatron = Patron.extend`
+const StyledSupporter = Supporter.extend`
   @media (max-width: ${smBreakpoint}) {
     display: flex;
     flex-direction: column;
@@ -27,9 +27,9 @@ const TestimonialList = ({ testimonials, className }) => (
     {testimonials.map(({
       testimonialMarkdown, title, name, image,
     }) => (
-      <PatronContainer className="col-lg-6" key={name}>
+      <TestimonialContainer className="col-lg-6" key={name}>
         <div className="row">
-          <StyledPatron
+          <StyledSupporter
             className="col-sm-4 col-md-3 col-lg-4"
             image={image}
             name={name}
@@ -39,7 +39,7 @@ const TestimonialList = ({ testimonials, className }) => (
             <Markdown source={testimonialMarkdown} />
           </div>
         </div>
-      </PatronContainer>
+      </TestimonialContainer>
     ))}
   </div>
 )
@@ -47,7 +47,7 @@ const TestimonialList = ({ testimonials, className }) => (
 TestimonialList.propTypes = {
   className: PropTypes.string,
   testimonials: PropTypes.arrayOf(PropTypes.shape({
-    ...Patron.propTypes,
+    ...Supporter.propTypes,
     testimonialMarkdown: PropTypes.string,
   })),
 }
