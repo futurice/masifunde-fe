@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch server.js --watch routes.js server.js",
     "build": "next build",
-    "build-static": "next build && next export && npm run copy",
+    "build-static": "rimraf node_modules/.cache && next build && next export && npm run copy",
     "copy": "cpx 'public/**/*' out --verbose",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint --ignore-path .gitignore --ext .js,.js .",
@@ -75,6 +75,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^6.0.1",
     "nodemon": "^1.14.11",
+    "rimraf": "^2.6.2",
     "serve": "^6.4.9"
   }
 }
