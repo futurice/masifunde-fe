@@ -4,7 +4,7 @@
 # “command” is your build command,
 [build]
   publish = "out"
-  command = "npm run build-static"
+  command = "rm -rf node_modules/.cache && npm run build-static"
 
 # Deploy Preview context: All Deploy Previews
 # will inherit these settings.
