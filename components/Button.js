@@ -14,6 +14,8 @@ const Button = ({
   center,
   children,
   className,
+  isActive,
+  rounded,
   ...rest
 }) => (
   <ButtonContainer center={center}>
@@ -28,12 +30,14 @@ Button.propTypes = {
   className: PropTypes.string,
   center: PropTypes.bool,
   href: PropTypes.string,
+  rounded: PropTypes.bool,
 }
 
 Button.defaultProps = {
   center: false,
   className: '',
   href: undefined,
+  rounded: false,
 }
 
 const StyledButton = styled(Button)`
@@ -48,6 +52,16 @@ const StyledButton = styled(Button)`
   border-width: 3px;
   cursor: pointer;
   white-space: normal;
+  
+  ${({ rounded }) => rounded && css`
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  `}
 
   &:hover, &:focus {
     color: white;

@@ -1,6 +1,7 @@
-/* eslint-disable import/prefer-default-export */
 import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 import { unwrapTeamMember, unwrapImage } from './common'
+import { jpegQuality } from '../utils/constants'
+import formatDate from '../utils/date'
 
 function blogPostFromEntry(entry) {
   return {
@@ -56,4 +57,67 @@ export async function fetchBlogPostPage(locale, slug) {
     }
     throw error
   }
+}
+
+const blogPostsPerPage = 10
+
+export function fetchBlogPostsList(locale, page) {
+  const skip = blogPostsPerPage * (page - 1)
+  return fetchEntriesForContentType(
+    'blogPost',
+    {
+      locale,
+      skip,
+      limit: blogPostsPerPage,
+      order: '-fields.date',
+      'fields.title[exists]': true,
+    },
+    false,
+  )
+    .then((response) => {
+      const totalNumberOfBlogPosts = response.total
+      const totalNumberOfPages = Math.ceil(totalNumberOfBlogPosts / blogPostsPerPage)
+      const entries = response.items
+      const numberOfLastPostOnPage = skip + entries.length
+      const isLastPage = numberOfLastPostOnPage >= totalNumberOfBlogPosts
+
+      const blogPosts = entries.map(({ sys, fields }) => {
+        const author = fields.authorTeamMember
+          ? unwrapTeamMember(fields.authorTeamMember).name
+          : fields.authorExternal
+        const teaserImage = unwrapImage(fields.teaserImage, { q: jpegQuality, w: 1000 })
+        const date = formatDate(fields.date)
+        return ({
+          id: sys.id,
+          title: fields.title,
+          date,
+          author,
+          teaserText: fields.metaDescription,
+          teaserImage,
+          slug: fields.slug,
+        })
+      })
+
+      return ({
+        totalNumberOfPages,
+        isLastPage,
+        blogPosts,
+      })
+    })
+}
+
+export function fetchBlogLandingPage(locale, page = 1) {
+  return Promise.all([
+    fetchSingleEntry('pageBlogHome', locale),
+    fetchBlogPostsList(locale, page),
+  ])
+    .then((results) => {
+      const pageContent = results[0]
+      const fetchBlogPostsResult = results[1]
+      return {
+        ...pageContent,
+        ...fetchBlogPostsResult,
+        page: Number(page),
+      }
+    })
 }
