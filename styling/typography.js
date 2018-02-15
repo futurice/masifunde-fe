@@ -37,6 +37,8 @@ export const titleText = css`
   hyphens: auto;
 `
 
+export const pageTitleWidth = '70%'
+
 export const pageTitleText = css`
   ${titleText}
   color: ${theme.orangeRed};
@@ -55,7 +57,7 @@ export const pageTitleText = css`
     font-size: ${rem('48px')};
     letter-spacing: ${rem('0.5px')};
     line-height: 1.08;
-    width: 70%;
+    width: ${pageTitleWidth};
   }
 `
 

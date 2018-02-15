@@ -13,7 +13,7 @@ import Banner from '../components/Banner'
 import Carousel from '../components/Carousel'
 import portraitPropTypes from '../propTypes/portrait'
 import Stat from '../components/Stat'
-import BlogPostCard from '../components/BlogPostCard'
+import BlogPostCard from '../components/Blog/BlogPostCard'
 import EmbeddedVideo from '../components/EmbeddedVideo'
 import PageSection from '../components/PageSection'
 import StatList from '../components/StatList'
@@ -44,7 +44,6 @@ const BlogPostListItem = styled.li`
 `
 
 const Home = ({
-  locale,
   metaTitle,
   metaDescription,
   heroTitle,
@@ -110,7 +109,7 @@ const Home = ({
         <BlogPostList className="row">
           {featuredBlogPosts.map(post => (
             <BlogPostListItem key={post.slug} className="col-md-4">
-              <BlogPostCard post={post} locale={locale} />
+              <BlogPostCard post={post} />
             </BlogPostListItem>
           ))}
         </BlogPostList>
@@ -134,7 +133,6 @@ const Home = ({
 )
 
 Home.propTypes = {
-  locale: PropTypes.string.isRequired,
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
   heroTitle: PropTypes.string.isRequired,

@@ -20,7 +20,6 @@ import imageShape from '../../propTypes/image'
 import Hero from '../../components/Hero'
 import Markdown from '../../components/Markdown'
 import { smBreakpoint, mdBreakpoint, lgBreakpoint } from '../../styling/breakpoints'
-import theme from '../../styling/theme'
 import { rem, footerText } from '../../styling/typography'
 import Button from '../../components/Button'
 import Link from '../../components/Link'
@@ -55,7 +54,7 @@ const BlogTitle = styled.h2`
   margin-right: 0;
   text-align: left;
   width: 100%;
-  color: ${theme.black};
+  color: ${({ theme }) => theme.black};
 `
 
 const BlogMarkdown = styled(Markdown)`

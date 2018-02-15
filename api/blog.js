@@ -1,6 +1,6 @@
-/* eslint-disable import/prefer-default-export */
 import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 import { unwrapTeamMember, unwrapImage } from './common'
+import { jpegQuality } from '../utils/constants'
 
 function blogPostFromEntry(entry) {
   return {
@@ -55,5 +55,67 @@ export async function fetchBlogPostPage(locale, slug) {
       return { error: error.toString() }
     }
     throw error
+  }
+}
+
+const blogPostsPerPage = 10
+
+export function fetchBlogPostsList(locale, page) {
+  const skip = blogPostsPerPage * (page - 1)
+  return fetchEntriesForContentType(
+    'blogPost',
+    {
+      unpackItems: false,
+      locale,
+      skip,
+      limit: blogPostsPerPage,
+      order: '-fields.date',
+      'fields.title[exists]': true,
+    },
+  )
+    .then((response) => {
+      const totalNumberOfBlogPosts = response.total
+      const totalNumberOfPages = Math.ceil(totalNumberOfBlogPosts / blogPostsPerPage)
+      const entries = response.items
+      const numberOfLastPostOnPage = skip + entries.length
+      const isLastPage = numberOfLastPostOnPage >= totalNumberOfBlogPosts
+
+      const blogPosts = entries.map(({ sys, fields }) => {
+        const author = fields.authorTeamMember
+          ? unwrapTeamMember(fields.authorTeamMember).name
+          : fields.authorExternal
+        const teaserImage = unwrapImage(fields.teaserImage, { q: jpegQuality, w: 1000 })
+        return ({
+          id: sys.id,
+          title: fields.title,
+          date: fields.date,
+          author,
+          teaserText: fields.metaDescription,
+          teaserImage,
+          slug: fields.slug,
+        })
+      })
+
+      return ({
+        totalNumberOfPages,
+        isLastPage,
+        blogPosts,
+      })
+    })
+}
+
+export async function fetchBlogLandingPage(locale, page = 1) {
+  const [
+    pageContent,
+    fetchBlogPostsResult,
+  ] = await Promise.all([
+    fetchSingleEntry('pageBlogHome', locale),
+    fetchBlogPostsList(locale, page),
+  ])
+
+  return {
+    ...pageContent,
+    ...fetchBlogPostsResult,
+    page: Number(page),
   }
 }
