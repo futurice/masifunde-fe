@@ -10,3 +10,4 @@
 /du-bei-masifunde/*  /wie-sie-helfen/aktiv-werden
 /unterwegs-in-de/* /was-wir-machen/ansatz-de/
 /jetzt-spenden/* /wie-sie-helfen/spenden
+/ueber-uns/news-archiv/news/:slug /blog/:slug
