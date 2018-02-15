@@ -1,32 +1,47 @@
 const sm = require('sitemap')
+const locales = require('../i18n/locales')
 
-const EN_LOCALE = 'en'
-const DE_LOCALE = 'de'
+function getLocalePathPrefix(locale) {
+  return locale === 'de' ? '/' : `/${locale}/`
+}
 
-function createLinks(url) {
-  const EN_URL = `/${EN_LOCALE}`
-  const isUrlEnglish = url.includes(EN_URL)
+function getLocale(path) {
+  const localesWithoutDefault = locales.filter(l => l !== 'de')
+  const pathLocale = localesWithoutDefault.find(locale =>
+    path.startsWith(`/${locale}/`) || path === `${locale}`)
+  return pathLocale || 'de'
+}
 
-  if (isUrlEnglish) {
-    return [
-      { lang: DE_LOCALE, url: url.replace(EN_URL, '/') },
-      { lang: EN_LOCALE, url },
-    ]
+function replaceLocale(path, newLocale) {
+  const currentLocale = getLocale(path)
+  const currentPathPrefix = getLocalePathPrefix(currentLocale)
+  const newPathPrefix = getLocalePathPrefix(newLocale)
+
+  return newPathPrefix === currentPathPrefix
+    ? path
+    : `${newPathPrefix}${path.slice(currentPathPrefix.length)}`
+}
+
+function createAlternateLinks(path) {
+  // FIXME: Blog posts have different slugs depending on locale, so it's not
+  // possible to automatically generate the matching URL paths in other
+  // locales.
+  if (path.includes('/blog/')) {
+    return []
   }
 
-  // DE url
-  return [
-    { lang: DE_LOCALE, url },
-    { lang: EN_LOCALE, url: `${EN_URL}${url}` },
-  ]
+  return locales.map(locale => ({
+    lang: locale,
+    url: replaceLocale(path, locale),
+  }))
 }
 
 function createSitemap(routes) {
   const urls = Object.keys(routes)
-    .filter(key => !key.includes('404'))
-    .map(key => ({
-      url: key,
-      links: createLinks(key),
+    .filter(path => !path.includes('404'))
+    .map(path => ({
+      url: path,
+      links: createAlternateLinks(path),
     }))
 
   const sitemap = sm.createSitemap({
