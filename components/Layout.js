@@ -9,6 +9,7 @@ import T from 'i18n-react'
 import withAnalytics from './withAnalytics'
 import withLoadingIndicator from './withLoadingIndicator'
 import withReloadOnUpdate from './withReloadOnUpdate'
+import CookieNoticeContainer from './CookieNoticeContainer'
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
 import {
@@ -123,7 +124,9 @@ const Layout = ({
         </Head>
         <Header height={theme.headerHeight} {...headerData} />
         <Content>
-          {React.cloneElement(children, { locale })}
+          <CookieNoticeContainer>
+            {React.cloneElement(children, { locale })}
+          </CookieNoticeContainer>
         </Content>
         <Footer {...footerData} />
       </Fragment>

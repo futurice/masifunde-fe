@@ -16,5 +16,10 @@
   "footer": {
     "visitFacebook": "Masifundes Facebook-Seite besuchen",
     "visitYouTube": "Masifundes YouTube-Seite besuchen"
+  },
+  "cookieNotice": {
+    "text": "Wir nutzen Cookies, um unseren Webauftritt verbessern zu können.",
+    "accept": "OK",
+    "privacyPolicy": "Datenschutz"
   }
 }
