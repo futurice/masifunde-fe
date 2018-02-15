@@ -82,12 +82,12 @@ const ApproachDe = ({
     </PageSection>
 
     <PageSection>
-      <h2>{section1Title}</h2>
       <TextWithTeamMember
+        header={section1Title}
         text={section1Markdown}
         teamMember={teamMember}
-        title={teamMember.name}
-        subtitle={teamMember.responsibilityArea}
+        teamMemberTitle={teamMember.name}
+        teamMemberSubtitle={teamMember.responsibilityArea}
       />
     </PageSection>
 

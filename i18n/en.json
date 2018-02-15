@@ -16,5 +16,10 @@
   "footer": {
     "visitFacebook": "Visit Masifunde's Facebook page",
     "visitYouTube": "Visit Masifunde's YouTube page"
+  },
+  "cookieNotice": {
+    "text": "We use cookies to continuously improve our website.",
+    "accept": "OK",
+    "privacyPolicy": "Privacy Policy"
   }
 }

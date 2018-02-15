@@ -61,18 +61,13 @@ const PoweredByLink = styled.a.attrs({
   rel: 'noopener noreferrer nofollow',
   target: '_blank',
 })`
-  flex: 1;
+  width: 100%;
   max-width: 100px;
   margin: 0 0.5rem;
 `
 
 const PoweredByImage = styled.img`
-  width: 100%;
-  max-height: 32px;
-`
-
-const ContentfulImage = PoweredByImage.extend`
-  padding-bottom: 2px;
+  max-height: 40px;
 `
 
 const BankDetails = styled.div`
@@ -230,7 +225,7 @@ function Footer({
 
         <PoweredBySection>
           <PoweredByLink href="https://contentful.com/">
-            <ContentfulImage
+            <PoweredByImage
               src="/static/images/PoweredByContentful_LightBackground.svg"
               alt="Powered by Contentful"
             />
