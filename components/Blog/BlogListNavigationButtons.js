@@ -22,7 +22,7 @@ const ButtonsContainer = styled.nav`
   
   > div {
     &:first-of-type, &:nth-of-type(3) {
-      flex: 1;
+      flex-grow: 1;
       
       a {
         width: 100%;
@@ -30,7 +30,7 @@ const ButtonsContainer = styled.nav`
     }
     
     &:nth-of-type(2) {
-      flex: 3;
+      flex-grow: 3;
     }
   }
 `
