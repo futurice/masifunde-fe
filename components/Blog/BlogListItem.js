@@ -14,17 +14,7 @@ import formatDate from '../../utils/date'
 const TeaserImageContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items: flex-start;
-  
-  > a {
-    width: 100%;
-    
-    img {
-      width: 100%;
-      max-width: 100%;
-    }
-  }
-  
+  align-items: flex-start;  
 `
 
 const TeaserText = styled.span`
@@ -59,6 +49,15 @@ const BlogPostTitle = styled.h2`
   }
 `
 
+const Anchor = styled.a`
+  width: 100%;
+`
+
+const TeaserImage = styled.img`
+    width: 100%;
+    max-width: 100%;
+`
+
 const BlogPostLink = ({ children, slug }) => (
   <Link
     route={RouteNames.BlogPost}
@@ -69,9 +68,9 @@ const BlogPostLink = ({ children, slug }) => (
       nextPostRoute: '/FIXME: slug',
     }}
   >
-    <a>
+    <Anchor>
       {children}
-    </a>
+    </Anchor>
   </Link>
 )
 
@@ -91,7 +90,7 @@ const BlogListItem = ({
   <li className="row">
     <TeaserImageContainer className="col-4">
       <BlogPostLink slug={slug}>
-        <img src={teaserImage.url} alt="" />
+        <TeaserImage src={teaserImage.url} alt="" />
       </BlogPostLink>
     </TeaserImageContainer>
     <div className="col-8">
