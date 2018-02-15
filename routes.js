@@ -12,7 +12,7 @@ const locales = require('./i18n/locales')
 function withLocale(pattern) {
   const localeConstraint = locales.filter(l => l !== 'de').join('|')
   const localePrefix = `/:locale(${localeConstraint})?`
-  return pattern ? `${localePrefix}/${pattern}` : localePrefix
+  return pattern === '/' ? localePrefix : `${localePrefix}${pattern}`
 }
 
 /**
@@ -24,7 +24,7 @@ function withLocale(pattern) {
 function addRoute(pattern, page) {
   nextRoutes.add({
     name: page,
-    pattern: withLocale(pattern),
+    pattern: featureFlags.localization ? withLocale(pattern) : pattern,
     page,
   })
 }
@@ -51,27 +51,27 @@ const Impressum = '/impressum'
 const Datenschutz = '/datenschutz'
 
 // Register the routes
-addRoute(undefined, Index)
-addRoute('404', ErrorPage404)
-addRoute('was-wir-machen', WhatWeDo)
-addRoute('was-wir-machen/ansatz-de', ApproachDE)
-addRoute('was-wir-machen/ansatz-sa', ApproachSA)
-addRoute('was-wir-machen/effekte', Impact)
-addRoute('wer-wir-sind', WhoWeAre)
-addRoute('wer-wir-sind/team-de', TeamDE)
-addRoute('wer-wir-sind/team-sa', TeamSA)
-addRoute('wie-sie-helfen', HowToSupport)
-addRoute('wie-sie-helfen/pate-werden', BecomeSponsor)
-addRoute('wie-sie-helfen/aktiv-werden', BecomeVolunteer)
-addRoute('wie-sie-helfen/partner-werden', BecomePartner)
-addRoute('wie-sie-helfen/spenden', Donate)
-addRoute('kontakt', Contact)
-addRoute('impressum', Impressum)
-addRoute('datenschutz', Datenschutz)
+addRoute('/', Index)
+addRoute('/404', ErrorPage404)
+addRoute('/was-wir-machen', WhatWeDo)
+addRoute('/was-wir-machen/ansatz-de', ApproachDE)
+addRoute('/was-wir-machen/ansatz-sa', ApproachSA)
+addRoute('/was-wir-machen/effekte', Impact)
+addRoute('/wer-wir-sind', WhoWeAre)
+addRoute('/wer-wir-sind/team-de', TeamDE)
+addRoute('/wer-wir-sind/team-sa', TeamSA)
+addRoute('/wie-sie-helfen', HowToSupport)
+addRoute('/wie-sie-helfen/pate-werden', BecomeSponsor)
+addRoute('/wie-sie-helfen/aktiv-werden', BecomeVolunteer)
+addRoute('/wie-sie-helfen/partner-werden', BecomePartner)
+addRoute('/wie-sie-helfen/spenden', Donate)
+addRoute('/kontakt', Contact)
+addRoute('/impressum', Impressum)
+addRoute('/datenschutz', Datenschutz)
 
 if (featureFlags.release10) {
-  addRoute('blog', Blog)
-  addRoute('blog/:slug', BlogPost)
+  addRoute('/blog', Blog)
+  addRoute('/blog/:slug', BlogPost)
 }
 
 // Share route names
