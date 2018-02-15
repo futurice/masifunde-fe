@@ -6,7 +6,7 @@ import blogPostShape from '../propTypes/blogPost'
 import { RouteNames } from '../routes'
 import { extraSmallSpacing, smallSpacing } from '../styling/sizes'
 import { footerText } from '../styling/typography'
-import { formatDateForLocale } from '../utils/locale'
+import formatDate from '../utils/date'
 import Link from './Link'
 
 const Card = styled.a`
@@ -57,7 +57,7 @@ const TeaserText = styled.p`
   margin: ${smallSpacing} 0 0 0;
 `
 
-const BlogPostCard = ({ post, locale }) => (
+const BlogPostCard = ({ post }) => (
   // ESLint seems to think that this link misses a href. It doesn't.
   // eslint-disable-next-line jsx-a11y/anchor-is-valid
   <Link route={RouteNames.BlogPost} params={{ slug: post.slug }} passHref>
@@ -67,7 +67,7 @@ const BlogPostCard = ({ post, locale }) => (
       </ImageContainer>
       <CardContent>
         <Metadata>
-          {formatDateForLocale(locale, new Date(post.date))}
+          {formatDate(post.date)}
         </Metadata>
         <Title>
           {post.title}
@@ -82,7 +82,6 @@ const BlogPostCard = ({ post, locale }) => (
 
 BlogPostCard.propTypes = {
   post: PropTypes.shape(blogPostShape).isRequired,
-  locale: PropTypes.string.isRequired,
 }
 
 

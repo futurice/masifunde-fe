@@ -9,6 +9,7 @@ import { rem } from '../../styling/typography'
 import { RouteNames } from '../../routes'
 import Link from '../../components/Link'
 import { wordBreak } from '../../styling/utils'
+import formatDate from '../../utils/date'
 
 const TeaserImageContainer = styled.div`
   display: flex;
@@ -96,7 +97,7 @@ const BlogListItem = ({
     <div className="col-8">
       <div className="row">
         <DateAuthorText className="col">
-          {date}
+          {formatDate(date)}
           {author ? ' - ' : null}
           {author}
         </DateAuthorText>

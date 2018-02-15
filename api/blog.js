@@ -1,7 +1,6 @@
 import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 import { unwrapTeamMember, unwrapImage } from './common'
 import { jpegQuality } from '../utils/constants'
-import formatDate from '../utils/date'
 
 function blogPostFromEntry(entry) {
   return {
@@ -86,11 +85,10 @@ export function fetchBlogPostsList(locale, page) {
           ? unwrapTeamMember(fields.authorTeamMember).name
           : fields.authorExternal
         const teaserImage = unwrapImage(fields.teaserImage, { q: jpegQuality, w: 1000 })
-        const date = formatDate(fields.date)
         return ({
           id: sys.id,
           title: fields.title,
-          date,
+          date: fields.date,
           author,
           teaserText: fields.metaDescription,
           teaserImage,
