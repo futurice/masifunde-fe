@@ -3,4 +3,5 @@ const isFeatureEnabled = require('./utils/isFeatureEnabled')
 
 module.exports = {
   release10: isFeatureEnabled('release10'),
+  localization: isFeatureEnabled('localization'),
 }
