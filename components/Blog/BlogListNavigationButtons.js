@@ -94,25 +94,34 @@ const BlogListNavigationButtons = ({
   isLastPage,
   totalNumberOfPages,
 }) => {
-  const alterButtonIfLastPage = buttonPage => (isLastPage ? buttonPage - 1 : buttonPage)
   const isFirstPage = page === 1
   const isNotFirstPage = !isFirstPage
   const isNotLastPage = !isLastPage
   const moreThanOnePage = totalNumberOfPages !== 1
   const threeOrMorePages = totalNumberOfPages >= 3
 
-  const firstPageButton = alterButtonIfLastPage(isNotFirstPage ? page - 1 : page)
-  const secondPageButton = alterButtonIfLastPage(isNotFirstPage ? page : page + 1)
-  const thirdPageButton = alterButtonIfLastPage(isNotFirstPage ? page + 1 : page + 2)
+  let firstPageButton = page - 1
+  let secondPageButton = page
+  let thirdPageButton = page + 1
+
+  if (isFirstPage) {
+    firstPageButton += 1
+    secondPageButton += 1
+    thirdPageButton += 1
+  }
+
+  if (isLastPage) {
+    firstPageButton -= 1
+    secondPageButton -= 1
+    thirdPageButton -= 1
+  }
 
   return (
     <ButtonsContainer>
       <div>
-        {
-          isNotFirstPage && (
-            <BlogListNavigationLink rel="prev" page={page - 1} buttonText={previousPageButtonText} />
-          )
-        }
+        {isNotFirstPage && (
+          <BlogListNavigationLink rel="prev" page={page - 1} buttonText={previousPageButtonText} />
+        )}
       </div>
       <PageButtonsContainer>
         {moreThanOnePage && (
