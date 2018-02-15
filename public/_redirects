@@ -1,8 +1,5 @@
-# 404 page
-/en/*  /en/404  404
-/*     /404     404
-
 # Redirects
+/ueber-uns/news-archiv/news/:slug /blog/:slug
 /ueber-uns/* /wer-wir-sind
 /transparenz /was-wir-machen
 /projekte/*  /was-wir-machen
@@ -10,4 +7,7 @@
 /du-bei-masifunde/*  /wie-sie-helfen/aktiv-werden
 /unterwegs-in-de/* /was-wir-machen/ansatz-de/
 /jetzt-spenden/* /wie-sie-helfen/spenden
-/ueber-uns/news-archiv/news/:slug /blog/:slug
+
+# 404 page
+/en/*  /en/404  404
+/*     /404     404
