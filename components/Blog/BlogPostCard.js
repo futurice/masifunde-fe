@@ -2,12 +2,12 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
-import blogPostShape from '../propTypes/blogPost'
-import { RouteNames } from '../routes'
-import { extraSmallSpacing, smallSpacing } from '../styling/sizes'
-import { footerText } from '../styling/typography'
-import formatDate from '../utils/date'
-import Link from './Link'
+import blogPostShape from '../../propTypes/blogPost'
+import { RouteNames } from '../../routes'
+import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
+import { footerText } from '../../styling/typography'
+import formatDate from '../../utils/date'
+import Link from '../Link'
 
 const Card = styled.a`
   background-color: ${({ theme }) => theme.orangeBackgroundMedium};
