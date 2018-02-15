@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import T from 'i18n-react'
-import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import { RouteNames } from '../routes'
 import { smBreakpoint } from '../styling/breakpoints'
 import { extraSmallSpacing, extraExtraSmallSpacing } from '../styling/sizes'
+import { haveCookiesBeenAccepted, markCookiesAccepted } from '../utils/cookies'
 import Button from './Button'
 import Link from './Link'
 
@@ -61,27 +61,46 @@ const AcceptButton = styled(Button).attrs({ type: 'banner' })`
   white-space: nowrap;
 `
 
-const CookieNotice = ({ onAccept }) => (
-  <Banner>
-    <Text>
-      {T.translate('cookieNotice.text')}
-    </Text>
+export default class CookieNotice extends Component {
+  state = { visible: false }
 
-    <Buttons>
-      <Link route={RouteNames.Datenschutz} passHref>
-        <PrivacyPolicyButton type="banner">
-          {T.translate('cookieNotice.privacyPolicy')}
-        </PrivacyPolicyButton>
-      </Link>
-      <AcceptButton onClick={onAccept}>
-        {T.translate('cookieNotice.accept')}
-      </AcceptButton>
-    </Buttons>
-  </Banner>
-)
+  componentDidMount() {
+    // We cannot check for cookie acceptance on the server because that
+    // doesn't have access to the browser's localStorage. We thus need
+    // to do the check in componentDidMount (componentWillMount also
+    // runs on the server).
+    //
+    // eslint-disable-next-line react/no-did-mount-set-state
+    this.setState({ visible: !haveCookiesBeenAccepted() })
+  }
 
-CookieNotice.propTypes = {
-  onAccept: PropTypes.func.isRequired,
+  handleAccept = () => {
+    markCookiesAccepted()
+    this.setState({ visible: false })
+  }
+
+  render() {
+    if (!this.state.visible) {
+      return null
+    }
+
+    return (
+      <Banner>
+        <Text>
+          {T.translate('cookieNotice.text')}
+        </Text>
+
+        <Buttons>
+          <Link route={RouteNames.Datenschutz} passHref>
+            <PrivacyPolicyButton type="banner">
+              {T.translate('cookieNotice.privacyPolicy')}
+            </PrivacyPolicyButton>
+          </Link>
+          <AcceptButton onClick={this.handleAccept}>
+            {T.translate('cookieNotice.accept')}
+          </AcceptButton>
+        </Buttons>
+      </Banner>
+    )
+  }
 }
-
-export default CookieNotice
