@@ -72,7 +72,7 @@ const Home = ({
     />
 
     <PageSection>
-      <StatList className="row">
+      <StatList>
         {
           stats.map((stat, index) => (
             <Stat

@@ -3,8 +3,20 @@ import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import { handwrittenText, rem } from '../styling/typography'
 import Source from './Source'
+import { smBreakpoint } from '../styling/breakpoints'
 
 const StatContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* IE11 fix */
+  flex-shrink: 1;
+  flex-basis: auto;
+  @media(min-width: ${smBreakpoint}) {
+    flex-basis: 0;
+  }
+
   font-size: ${rem('18px')};
   font-weight: bold;
 `
@@ -45,7 +57,7 @@ const Stat = ({
 }) => {
   const hasImage = !!icon && !!icon.url
   return (
-    <StatContainer className={`${className} d-flex flex-column align-items-center`}>
+    <StatContainer className={`${className}`}>
       {!!textAbove && (
         <FixedHeight className="d-flex align-items-center">
           <CenteredSpan>{textAbove}</CenteredSpan>
