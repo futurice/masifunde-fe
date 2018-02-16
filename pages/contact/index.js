@@ -80,7 +80,7 @@ const Contact = ({
 
 
     <PageSection contained={false}>
-      <Divider />
+      <Divider color="grey" size="large" />
     </PageSection>
   </div>
 )

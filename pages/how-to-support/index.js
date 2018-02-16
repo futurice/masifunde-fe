@@ -12,11 +12,10 @@ import Head from '../../components/Head'
 import Hero from '../../components/Hero'
 import Markdown from '../../components/Markdown'
 import Button from '../../components/Button'
-import HorizontalRuler from '../../components/HorizontalRuler'
+import Divider from '../../components/Divider'
 import { smBreakpoint } from '../../styling/breakpoints'
 import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
-import Divider from '../../components/Divider'
 import RoundedImage from '../../components/RoundedImage'
 
 const SectionContainer = styled(PageSection)`
@@ -125,7 +124,7 @@ const HowToSupport = ({
     />
 
     <PageSection>
-      <HorizontalRuler />
+      <Divider color="orange" size="small" />
     </PageSection>
 
     <Section
@@ -147,7 +146,7 @@ const HowToSupport = ({
     />
 
     <PageSection contained={false}>
-      <Divider />
+      <Divider color="grey" size="large" />
     </PageSection>
   </div>
 )
