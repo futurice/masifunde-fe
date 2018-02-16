@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import RoundedImage from './RoundedImage'
+import { wordBreak } from '../styling/utils'
 
 const TeamContainer = styled.div`
   font-size: 16px;
@@ -10,9 +11,15 @@ const TeamContainer = styled.div`
   justify-content: center;
 `
 
-const Title = styled.div`
+const WordBreakDiv = styled.div`
+  ${wordBreak}
+`
+
+const Title = WordBreakDiv.extend`
   font-weight: bold;
 `
+
+const Subtitle = WordBreakDiv.extend``
 
 const Image = RoundedImage.extend`
   width: 100%;
@@ -42,7 +49,7 @@ const TeamMember = ({
         alt=""
       />
       <Title>{title}</Title>
-      <div>{subtitle}</div>
+      <Subtitle>{subtitle}</Subtitle>
       {email && (<Email href={`mailto:${email}`}>{email}</Email>)}
     </ContentContainer>
   </TeamContainer>
