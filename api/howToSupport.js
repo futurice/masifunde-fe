@@ -5,7 +5,6 @@ import {
   unwrapImage,
   unwrapPageUrl,
   unwrapPartners,
-  unwrapRegionalGroups,
   unwrapTeamMember,
   unwrapTestimonials,
 } from './common'
@@ -42,14 +41,17 @@ const unwrapVolunteerOpening = volunteerOpening => ({
 })
 
 export async function fetchBecomeAVolunteerPage(locale) {
-  const content = await fetchMemoizedSingleEntry('pageAktivWerden', locale) || {}
+  const content = (await fetchMemoizedSingleEntry('pageAktivWerden', locale)) || {}
   return {
     ...content,
-    regionalGroups: unwrapRegionalGroups(content && content.regionalGroups),
     section1TeamMember: unwrapTeamMember(content && content.section1TeamMember),
     volunteerOpenings: content && content.volunteerOpenings.map(unwrapVolunteerOpening),
     bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
     section1ReferenceList: unwrapTestimonials(content.section1ReferenceList),
+    section4VolunteerOpenings:
+      content && content.section4VolunteerOpenings.map(unwrapVolunteerOpening),
+    section5ReferenceList: unwrapTestimonials(content.section5ReferenceList),
+    section6TeamMember: unwrapTeamMember(content.section1TeamMember),
   }
 }
 
