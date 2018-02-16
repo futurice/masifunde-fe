@@ -28,7 +28,7 @@ const BecomeVolunteer = ({
   section3Title,
   volunteerOpenings,
   section4Title,
-  section4VolunteerOpenings,
+  section4Markdown,
   section5Title,
   section5ReferenceList,
   section6Title,
@@ -78,7 +78,7 @@ const BecomeVolunteer = ({
 
     <PageSection>
       <h2>{section4Title}</h2>
-      <VolunteerOpeningsList volunteerOpenings={section4VolunteerOpenings} />
+      <CenteredText source={section4Markdown} />
     </PageSection>
 
     <PageSection>
@@ -120,7 +120,7 @@ BecomeVolunteer.propTypes = {
   section3Title: PropTypes.string.isRequired,
   volunteerOpenings: VolunteerOpeningsList.propTypes.volunteerOpenings.isRequired,
   section4Title: PropTypes.string.isRequired,
-  section4VolunteerOpenings: VolunteerOpeningsList.propTypes.volunteerOpenings.isRequired,
+  section4Markdown: PropTypes.string.isRequired,
   section5Title: PropTypes.string.isRequired,
   section5ReferenceList: TestimonialList.propTypes.testimonials.isRequired,
   section6Title: PropTypes.string.isRequired,
