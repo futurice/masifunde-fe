@@ -57,4 +57,15 @@ TestimonialList.defaultProps = {
   className: '',
 }
 
-export default TestimonialList
+const StyledTestimonialList = styled(TestimonialList)`
+  // Center when there is only one element in the list
+  & > div:only-child {
+    margin-left: auto;
+    margin-right: auto;
+  }
+`
+
+StyledTestimonialList.propTypes = TestimonialList.propTypes
+StyledTestimonialList.defaultProps = TestimonialList.defaultProps
+
+export default StyledTestimonialList
