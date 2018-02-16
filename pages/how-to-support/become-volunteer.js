@@ -11,14 +11,9 @@ import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 import TestimonialList from '../../components/TestimonialList'
-import Divider from '../../components/Divider'
 import VolunteerOpeningsList from '../../components/VolunteerOpeningList'
 import teamMemberProps from '../../propTypes/teamMember'
-
-const StyledDivider = Divider.extend`
-  max-width: 600px;
-  margin: 0 auto;
-`
+import HorizontalRuler from '../../components/HorizontalRuler'
 
 const BecomeVolunteer = ({
   metaTitle,
@@ -78,7 +73,7 @@ const BecomeVolunteer = ({
     </PageSection>
 
     <PageSection>
-      <StyledDivider />
+      <HorizontalRuler />
     </PageSection>
 
     <PageSection>
