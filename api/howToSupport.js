@@ -48,8 +48,6 @@ export async function fetchBecomeAVolunteerPage(locale) {
     volunteerOpenings: content && content.volunteerOpenings.map(unwrapVolunteerOpening),
     bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
     section1ReferenceList: unwrapTestimonials(content.section1ReferenceList),
-    section4VolunteerOpenings:
-      content && content.section4VolunteerOpenings.map(unwrapVolunteerOpening),
     section5ReferenceList: unwrapTestimonials(content.section5ReferenceList),
     section6TeamMember: unwrapTeamMember(content.section1TeamMember),
   }
