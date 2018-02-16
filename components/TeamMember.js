@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import RoundedImage from './RoundedImage'
+import { teamMemberAndPartnerWidth } from '../utils/constants'
 
 const TeamContainer = styled.div`
-  font-size: 16px;
   display: flex;
   justify-content: center;
 `
 
 const Title = styled.div`
   font-weight: bold;
+  margin-top: 0.25rem;
 `
 
 const Image = RoundedImage.extend`
@@ -24,7 +25,7 @@ const Email = styled.a`
 `
 
 const ContentContainer = styled.div`
-  max-width: 160px;
+  max-width: ${teamMemberAndPartnerWidth};
 `
 
 const TeamMember = ({
@@ -51,7 +52,7 @@ const TeamMember = ({
 TeamMember.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   email: PropTypes.string,
   className: PropTypes.string,
 }
@@ -59,6 +60,7 @@ TeamMember.propTypes = {
 TeamMember.defaultProps = {
   email: '',
   className: '',
+  subtitle: '',
 }
 
 export default TeamMember

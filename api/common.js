@@ -1,7 +1,8 @@
 import qs from 'qs'
+import { stripUnit } from 'polished'
 
 import { fetchMemoizedSingleEntry } from './contentfulService'
-import { jpegQuality } from '../utils/constants'
+import { jpegQuality, teamMemberAndPartnerWidth } from '../utils/constants'
 import { RouteNames } from '../routes'
 
 export async function fetchHeaderData(locale) {
@@ -100,8 +101,8 @@ export const unwrapTeamMember = (teamMember) => {
     id: teamMember.sys.id,
     ...fields,
     image: unwrapImage(fields.profileImage, {
-      w: 320,
-      h: 320,
+      w: stripUnit(teamMemberAndPartnerWidth) * 2, // double the size for retina screens
+      h: stripUnit(teamMemberAndPartnerWidth) * 2,
       q: jpegQuality,
       fit: 'thumb',
       f: 'face',
@@ -115,8 +116,8 @@ export const unwrapTeamMembers = (teamMembers = []) => teamMembers.map(unwrapTea
 export const unwrapPartner = partner => ({
   ...partner.fields,
   image: unwrapImage(partner && partner.fields && partner.fields.logo, {
-    w: 320,
-    h: 320,
+    w: stripUnit(teamMemberAndPartnerWidth) * 2, // double the size for retina screens
+    h: stripUnit(teamMemberAndPartnerWidth) * 2,
     q: jpegQuality,
     fit: 'pad',
   }),
