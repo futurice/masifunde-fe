@@ -60,6 +60,7 @@ const RadioButton = ({
       id={id}
       name={name}
       value={value}
+      checked={isActive}
     />
     <Label
       {...inputProps}
