@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { teamMemberAndPartnerWidth } from '../../utils/constants'
 
 const Link = styled.a`
   height: 100%;
@@ -25,7 +26,11 @@ const ImageContainer = styled.div`
 `
 
 const PartnerContainer = styled.div`
-  width: 160px;
+  width: ${teamMemberAndPartnerWidth};
+`
+
+const PartnerName = styled.div`
+  margin-top: 0.25rem;
 `
 
 const Partner = ({
@@ -37,7 +42,7 @@ const Partner = ({
         <ImageContainer>
           <Image src={image.url} alt="" />
         </ImageContainer>
-        <div>{name}</div>
+        <PartnerName>{name}</PartnerName>
       </Link>
     </PartnerContainer>
   </div>
