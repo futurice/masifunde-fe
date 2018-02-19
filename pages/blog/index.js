@@ -79,7 +79,7 @@ class Blog extends Component {
 
         <Container>
           <BlogListFooter>
-            <Divider />
+            <Divider color="grey" size="large" />
             <BlogListNavigationButtons
               previousPageButtonText={previousPageButtonText}
               nextPageButtonText={nextPageButtonText}

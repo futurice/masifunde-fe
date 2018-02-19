@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { subsectionTitleText } from '../styling/typography'
-import HorizontalRuler from './HorizontalRuler'
+import Divider from './Divider'
 import PageSection from './PageSection'
 
 const taglineTextMargin = '2.3rem'
@@ -19,12 +19,12 @@ const TaglineText = styled.p`
 
 const Tagline = ({ text, hideTopRuler, source }) => (
   <PageSection>
-    {hideTopRuler ? null : <HorizontalRuler />}
+    {hideTopRuler ? null : <Divider color="orange" size="small" />}
     <TaglineText hideTopRuler={hideTopRuler}>
       {text}
       {source}
     </TaglineText>
-    <HorizontalRuler />
+    <Divider color="orange" size="large" />
   </PageSection>
 )
 
