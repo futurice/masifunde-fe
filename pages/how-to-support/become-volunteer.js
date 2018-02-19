@@ -13,7 +13,7 @@ import TextWithTeamMember from '../../components/TextWithTeamMember'
 import TestimonialList from '../../components/TestimonialList'
 import VolunteerOpeningsList from '../../components/VolunteerOpeningList'
 import teamMemberProps from '../../propTypes/teamMember'
-import HorizontalRuler from '../../components/HorizontalRuler'
+import Divider from '../../components/Divider'
 
 const BecomeVolunteer = ({
   metaTitle,
@@ -73,7 +73,7 @@ const BecomeVolunteer = ({
     </PageSection>
 
     <PageSection>
-      <HorizontalRuler />
+      <Divider size="small" color="orange" />
     </PageSection>
 
     <PageSection>
