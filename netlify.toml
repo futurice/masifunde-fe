@@ -4,9 +4,11 @@
 # “command” is your build command,
 [build]
   publish = "out"
-  command = "npm run build-static"
+  command = "npm run build"
 
 # Deploy Preview context: All Deploy Previews
 # will inherit these settings.
-[context.deploy-preview.environment]
-  ENABLED_FEATURES = "all"
+[context.deploy-preview]
+  command = "npm run build:preview"
+  [context.deploy-preview.environment]
+    ENABLED_FEATURES = "all"

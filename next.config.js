@@ -112,8 +112,11 @@ module.exports = {
     const blogPostsMap = featureFlags.release10 ? await blogPostsPathMap() : {}
     const pathMap = Object.assign({}, staticRoutesMap, blogPostsMap)
 
-    // Save routes as sitemap
-    fs.writeFileSync('public/sitemap.xml', createSitemap(pathMap))
+    // Save routes as sitemap (https://www.sitemaps.org/)
+    fs.writeFileSync(
+      `${__dirname}/public/production/sitemap.xml`,
+      createSitemap(pathMap),
+    )
 
     return pathMap
   },
