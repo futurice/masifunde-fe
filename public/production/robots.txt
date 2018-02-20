@@ -1,0 +1,2 @@
+# Point to sitemap
+Sitemap: https://masifunde.de/sitemap.xml
