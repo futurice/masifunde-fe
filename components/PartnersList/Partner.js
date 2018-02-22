@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { teamMemberAndPartnerWidth } from '../../utils/constants'
 
+const PartnerContainer = styled.div`
+  width: ${teamMemberAndPartnerWidth};
+`
+
 const Link = styled.a`
   height: 100%;
 `
@@ -25,27 +29,24 @@ const ImageContainer = styled.div`
   margin-bottom: 5px;
 `
 
-const PartnerContainer = styled.div`
-  width: ${teamMemberAndPartnerWidth};
-`
-
 const PartnerName = styled.div`
   margin-top: 0.25rem;
 `
 
 const Partner = ({
-  image, name, link, className,
+  image,
+  name,
+  link,
+  className,
 }) => (
-  <div className={`d-flex justify-content-center ${className}`}>
-    <PartnerContainer>
-      <Link href={link}>
-        <ImageContainer>
-          <Image src={image.url} alt="" />
-        </ImageContainer>
-        <PartnerName>{name}</PartnerName>
-      </Link>
-    </PartnerContainer>
-  </div>
+  <PartnerContainer className={className}>
+    <Link href={link}>
+      <ImageContainer>
+        <Image src={image.url} alt="" />
+      </ImageContainer>
+      <PartnerName>{name}</PartnerName>
+    </Link>
+  </PartnerContainer>
 )
 
 export const propTypes = {

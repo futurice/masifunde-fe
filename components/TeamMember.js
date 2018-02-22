@@ -3,29 +3,32 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import RoundedImage from './RoundedImage'
+import { rem } from '../styling/typography'
 import { teamMemberAndPartnerWidth } from '../utils/constants'
 
-const TeamContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-const Title = styled.div`
-  font-weight: bold;
-  margin-top: 0.25rem;
+const TeamMemberContainer = styled.div`
+  max-width: ${teamMemberAndPartnerWidth};
+  white-space: nowrap;
 `
 
 const Image = RoundedImage.extend`
   width: 100%;
+  margin-bottom: 0.7rem;
+`
+
+const Title = styled.div`
+  font-weight: bold;
+  margin: 0 0 0.3rem 0;
+`
+
+const Subtitle = styled.div`
+  color: ${({ theme }) => theme.pineCone};
+  font-size: ${rem('12px')};
 `
 
 const Email = styled.a`
   display: block;
-  word-break: break-all;
-`
-
-const ContentContainer = styled.div`
-  max-width: ${teamMemberAndPartnerWidth};
+  font-size: ${rem('12px')};
 `
 
 const TeamMember = ({
@@ -35,18 +38,16 @@ const TeamMember = ({
   email,
   className,
 }) => (
-  <TeamContainer className={className}>
-    <ContentContainer>
-      <Image
-        className="img-fluid"
-        src={imageUrl}
-        alt=""
-      />
-      <Title>{title}</Title>
-      <div>{subtitle}</div>
-      {email && (<Email href={`mailto:${email}`}>{email}</Email>)}
-    </ContentContainer>
-  </TeamContainer>
+  <TeamMemberContainer className={className}>
+    <Image
+      className="img-fluid"
+      src={imageUrl}
+      alt=""
+    />
+    <Title>{title}</Title>
+    <Subtitle>{subtitle}</Subtitle>
+    {email && (<Email href={`mailto:${email}`}>{email}</Email>)}
+  </TeamMemberContainer>
 )
 
 TeamMember.propTypes = {

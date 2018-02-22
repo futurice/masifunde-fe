@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { smBreakpoint, mdBreakpoint, lgBreakpoint } from '../styling/breakpoints'
-import { extraSmallSpacing, smallSpacing } from '../styling/sizes'
+import { extraSmallSpacing, mediumSpacing } from '../styling/sizes'
 
 const centerIfSingleLine = (breakpoint, maxEntiresPerLine, numberOfEntries) => {
   if (numberOfEntries < maxEntiresPerLine) {
@@ -13,10 +13,10 @@ const centerIfSingleLine = (breakpoint, maxEntiresPerLine, numberOfEntries) => {
   return ''
 }
 
-const listItemBottomMargin = smallSpacing
+const listItemBottomMargin = mediumSpacing
 
-const smEntriesPerLine = 1
-const mdEntriesPerLine = 2
+const smEntriesPerLine = 2
+const mdEntriesPerLine = 3
 const lgEntriesPerLine = 4
 
 const List = styled.div`
@@ -24,7 +24,7 @@ const List = styled.div`
 
   display: flex;
   flex-wrap: wrap;
-  
+
   ${({ entries }) => centerIfSingleLine(smBreakpoint, smEntriesPerLine, entries.length)}
   ${({ entries }) => centerIfSingleLine(mdBreakpoint, mdEntriesPerLine, entries.length)}
   ${({ entries }) => centerIfSingleLine(lgBreakpoint, lgEntriesPerLine, entries.length)}
@@ -48,6 +48,11 @@ const List = styled.div`
       width: calc(100% / ${lgEntriesPerLine});
     }
   }
+`
+
+List.Item = styled.div`
+  display: flex;
+  justify-content: center;
 `
 
 export default List

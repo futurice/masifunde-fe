@@ -19,13 +19,14 @@ const TeamMemberList = ({
       const memberEmail = email && email(member)
 
       return (
-        <TeamMember
-          key={`${memberTitle} ${memberSubtitle}`}
-          title={memberTitle}
-          subtitle={memberSubtitle}
-          imageUrl={memberImageUrl}
-          email={memberEmail}
-        />
+        <List.Item key={`${memberTitle} ${memberSubtitle}`}>
+          <TeamMember
+            title={memberTitle}
+            subtitle={memberSubtitle}
+            imageUrl={memberImageUrl}
+            email={memberEmail}
+          />
+        </List.Item>
       )
     })}
   </List>

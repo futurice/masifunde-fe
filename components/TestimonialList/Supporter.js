@@ -19,7 +19,7 @@ const Name = styled.div`
   font-weight: bold;
   line-height: 1.22;
   color: ${({ theme }) => theme.orangeRed};
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 `
 
 const Title = styled.div`
