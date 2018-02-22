@@ -1,5 +1,8 @@
 {
   "source": "Source",
+  "blog": {
+    "readMore": "Read more"
+  },
   "donation": {
     "required": "Required",
     "requiredInterval": "Please choose a donation interval",

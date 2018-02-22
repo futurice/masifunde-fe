@@ -1,5 +1,8 @@
 {
   "source": "Quelle",
+  "blog": {
+    "readMore": "Mehr lesen"
+  },
   "donation": {
     "required": "Pflichtfeld",
     "requiredInterval": "Bitte wählen Sie ein Intervall für Ihre Spende",
