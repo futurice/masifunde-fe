@@ -1,3 +1,4 @@
+import T from 'i18n-react'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -57,6 +58,12 @@ const TeaserText = styled.p`
   margin: ${smallSpacing} 0 0 0;
 `
 
+const ReadMore = styled.span`
+  font-weight: 700;
+  text-decoration: underline;
+  white-space: pre-line;
+`
+
 const BlogPostCard = ({ post }) => (
   // ESLint seems to think that this link misses a href. It doesn't.
   // eslint-disable-next-line jsx-a11y/anchor-is-valid
@@ -73,7 +80,11 @@ const BlogPostCard = ({ post }) => (
           {post.title}
         </Title>
         {post.metaDescription &&
-          <TeaserText>{post.metaDescription}</TeaserText>
+          <TeaserText>
+            {post.metaDescription}
+            <br />
+            <ReadMore>{T.translate('blog.readMore')}</ReadMore>
+          </TeaserText>
         }
       </CardContent>
     </Card>
