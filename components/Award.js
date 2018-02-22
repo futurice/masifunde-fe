@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Markdown from './Markdown'
 import imageShape from '../propTypes/image'
 import { smBreakpoint } from '../styling/breakpoints'
-import { mediumSpacing, extraSmallSpacing } from '../styling/sizes'
+import { mediumSpacing, smallSpacing } from '../styling/sizes'
 
 const ImageContainer = styled.div`
   display: flex;
@@ -20,7 +20,8 @@ const Image = styled.img`
   height: auto;
   width: 100%;
   max-width: 160px;
-  margin-bottom: ${extraSmallSpacing};
+  margin-bottom: ${smallSpacing};
+  margin-top: 2rem;
   
   @media (min-width: ${smBreakpoint}) {
     margin-bottom: 0;
