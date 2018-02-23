@@ -19,13 +19,14 @@ const TextWithTeamMember = ({
           { header && <h3>{header}</h3> }
           <Markdown source={text} />
         </div>
-        <TeamMember
-          className="col-md-3"
-          imageUrl={teamMember.image.url}
-          title={teamMemberTitle}
-          subtitle={teamMemberSubtitle}
-          email={teamMember.email}
-        />
+        <div className="col-md-3">
+          <TeamMember
+            imageUrl={teamMember.image.url}
+            title={teamMemberTitle}
+            subtitle={teamMemberSubtitle}
+            email={teamMember.email}
+          />
+        </div>
       </div>
     </div>
   </div>
