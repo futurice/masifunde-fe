@@ -19,12 +19,12 @@ const TaglineText = styled.p`
 
 const Tagline = ({ text, hideTopRuler, source }) => (
   <PageSection>
-    {hideTopRuler ? null : <Divider color="orange" size="small" />}
+    {hideTopRuler ? null : <Divider color="orange" />}
     <TaglineText hideTopRuler={hideTopRuler}>
       {text}
       {source}
     </TaglineText>
-    <Divider color="orange" size="large" />
+    <Divider color="orange" />
   </PageSection>
 )
 
