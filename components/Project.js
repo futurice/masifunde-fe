@@ -6,11 +6,7 @@ import styled from 'styled-components'
 import imageShape from '../propTypes/image'
 import { smallFontSize } from '../styling/typography'
 import { mediumSpacing } from '../styling/sizes'
-
-const ProjectImage = styled.img`
-  max-width: 100%;
-  height: 7rem;
-`
+import IconImage from './IconImage'
 
 const H4 = styled.h4`
   margin-top: 1.1rem;
@@ -22,11 +18,15 @@ const ProjectContainer = styled.div`
   margin-bottom: ${mediumSpacing};
 `
 
+const StyledIconImage = IconImage.extend`
+  margin: 0 auto;
+`
+
 const Project = ({
   className, image, name, description,
 }) => (
   <ProjectContainer className={className}>
-    <ProjectImage className="mx-auto d-block" src={image.url} alt={image.title} />
+    <StyledIconImage src={image.url} alt="" />
     <H4>{name}</H4>
     <Markdown source={description} />
   </ProjectContainer>)

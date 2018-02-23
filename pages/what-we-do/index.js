@@ -24,6 +24,7 @@ import StatList from '../../components/StatList'
 import imageShape from '../../propTypes/image'
 import { bodyTextLineHeight } from '../../styling/typography'
 import { mediumSpacing, smallSpacing } from '../../styling/sizes'
+import IconImage from '../../components/IconImage'
 
 const ImagePropType = PropTypes.shape(imageShape)
 
@@ -52,14 +53,6 @@ const ProjectListContainer = styled.div`
 const Project = styled.div`
   flex-grow: 1;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const ProjectImage = styled.img`
-  height: 7rem;
-  width: 7rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,7 +89,7 @@ const ProjectList = ({ projects }) => (
         className="col-sm-6"
         key={`${project.image.url} ${project.name}`}
       >
-        <ProjectImage src={project.image.url} alt="" />
+        <IconImage src={project.image.url} alt="" />
         <ProjectText>{project.name}</ProjectText>
       </Project>
       ))}

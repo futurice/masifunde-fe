@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { handwrittenText, rem } from '../styling/typography'
 import Source from './Source'
 import { smBreakpoint } from '../styling/breakpoints'
+import IconImage from './IconImage'
 
 const StatContainer = styled.div`
   display: flex;
@@ -40,11 +41,6 @@ const Number = CenteredSpan.extend`
     `};
 `
 
-const Image = styled.img`
-  margin-bottom: 0.6rem;
-  height: 8rem;
-`
-
 const Stat = ({
   textAbove,
   description,
@@ -63,7 +59,9 @@ const Stat = ({
           <CenteredSpan>{textAbove}</CenteredSpan>
         </FixedHeight>
       )}
-      {hasImage && <Image src={icon.url} alt="" />}
+      {hasImage && (
+        <IconImage src={icon.url} alt="" />
+      )}
       <Number highlight={!hasImage}>{number}</Number>
       <CenteredSpan>
         {description}
