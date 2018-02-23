@@ -84,8 +84,8 @@ const BankDetailDescription = styled.span`
   font-weight: bold;
 `
 
-const FooterLink = ({ route, text }) => (
-  <li>
+const FooterLink = ({ route, text, className }) => (
+  <li className={className}>
     <Link route={route} passHref>
       <a>{text}</a>
     </Link>
@@ -95,7 +95,16 @@ const FooterLink = ({ route, text }) => (
 FooterLink.propTypes = {
   route: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  className: PropTypes.string,
 }
+
+FooterLink.defaultProps = {
+  className: undefined,
+}
+
+const ContactLink = styled(FooterLink)`
+  font-weight: inherit !important;
+`
 
 function Footer({
   whatWeDoText,
@@ -157,7 +166,7 @@ function Footer({
               </div>
               <div className="col">
                 <ul className="list-unstyled">
-                  <FooterLink route={RouteNames.Contact} text={contactText} />
+                  <ContactLink route={RouteNames.Contact} text={contactText} />
                   {featureFlags.release10 &&
                     <FooterLink route={RouteNames.Blog} text={blogText} />
                   }
