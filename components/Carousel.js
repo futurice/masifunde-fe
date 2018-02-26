@@ -15,7 +15,7 @@ import { largeSpacing, extraSmallSpacing, smallSpacing } from '../styling/sizes'
 const sliderArrowSize = '70px'
 
 const CarouselTextContainer = styled.div`
-  ${bodyText}
+  ${bodyText};
   padding: ${smallSpacing} ${extraSmallSpacing};
   color: white;
 
@@ -36,7 +36,7 @@ const CarouselTextContainer = styled.div`
 `
 
 const CarouselTextTitle = styled.p`
-  ${subsectionTitleText}
+  ${subsectionTitleText};
   color: white;
   font-weight: bold;
 `
@@ -99,6 +99,10 @@ const StyledCarousel = styled(Carousel)`
     width: ${sliderArrowSize};
     height: ${sliderArrowSize};
 
+    @media (min-width: ${mdBreakpoint}) {
+      top: 50% !important;
+    }
+
     button {
       opacity: 0 !important;
     }
@@ -139,11 +143,11 @@ const mobileImageHidden = mobileImage => mobileImage.offsetHeight === 0
 class MasifundeCarousel extends Component {
   componentDidMount = () => {
     window.requestAnimationFrame(() => this.resizeCarousel())
-    window.addEventListener('resize', this.throttleResizeCarousel, true)
+    window.addEventListener('resize', this.resizeCarousel, true)
   }
 
   componentWillUnmount = () => {
-    window.removeEventListener('resize', this.throttleResizeCarousel, true)
+    window.removeEventListener('resize', this.resizeCarousel, true)
   }
 
   setSlideContainerHeight = () => {
@@ -156,9 +160,11 @@ class MasifundeCarousel extends Component {
 
   adjustSlideHeightsToDisplayImage = () => {
     const slides = Array.from(this.carouselComponent.querySelectorAll('li.slider-slide'))
+
     requestAnimationFrame(() => {
       slides.forEach((slide) => {
         const mobileImage = slide.querySelector('img')
+
         if (mobileImageHidden(mobileImage)) {
           slide.style.height = '100%'
         } else {
@@ -168,7 +174,19 @@ class MasifundeCarousel extends Component {
     })
   }
 
-  resizeCarousel = () => {
+  repositionArrowsInMobileCarousel = () => {
+    requestAnimationFrame(() => {
+      const leftArrow = this.carouselComponent.querySelector('.slider-decorator-0')
+      const rightArrow = this.carouselComponent.querySelector('.slider-decorator-1')
+
+      // This assumes all slide images have the same height, which is currently the case.
+      const firstSlideImage = this.carouselComponent.querySelector('li.slider-slide img')
+      leftArrow.style.top = `calc(${firstSlideImage.offsetHeight}px / 2)`
+      rightArrow.style.top = `calc(${firstSlideImage.offsetHeight}px / 2)`
+    })
+  }
+
+  resizeCarousel = _throttle(() => {
     /*
     The nuka-carousel component doesn't properly size items.
     It tries to calculate the height too early.
@@ -177,9 +195,9 @@ class MasifundeCarousel extends Component {
     */
     this.setSlideContainerHeight()
     this.adjustSlideHeightsToDisplayImage()
-  }
+    this.repositionArrowsInMobileCarousel()
+  }, 300)
 
-  throttleResizeCarousel = _throttle(this.resizeCarousel, 1000)
   render() {
     const { portrait } = this.props
     const settings = {
