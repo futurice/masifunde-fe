@@ -58,9 +58,7 @@ const BecomeSponsor = ({
 
     <PageSection>
       <h1>{title}</h1>
-    </PageSection>
 
-    <PageSection>
       <div className="row">
         <div className="col-12 col-md-7">
           <h3>{introSubtitle1}</h3>

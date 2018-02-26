@@ -47,7 +47,7 @@ export const pageTitleText = css`
   line-height: 1;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: ${rem('36px')};
+  margin-bottom: ${rem('52px')};
 
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('40px')};
