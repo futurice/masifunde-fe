@@ -73,7 +73,7 @@ const BecomeVolunteer = ({
     </PageSection>
 
     <PageSection>
-      <Divider size="small" color="orange" />
+      <Divider color="orange" />
     </PageSection>
 
     <PageSection>
@@ -137,4 +137,3 @@ BecomeVolunteer.defaultProps = {
 }
 
 export default withLayout(BecomeVolunteer)
-

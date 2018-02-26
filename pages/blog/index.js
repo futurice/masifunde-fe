@@ -19,10 +19,10 @@ const BlogPostsList = styled.ol`
   padding: 0;
   margin-left: auto;
   margin-right: auto;
-  
+
   > * {
     margin-bottom: ${rem('70px')};
-  }  
+  }
 
   @media (min-width: ${lgBreakpoint}) {
     width: ${pageTitleWidth};
@@ -36,7 +36,7 @@ const BlogPostsListHeading = styled.h1`
 const BlogListFooter = styled.div`
   margin-left: auto;
   margin-right: auto;
-  
+
   @media (min-width: ${lgBreakpoint}) {
     width: 60%;
   }
@@ -79,7 +79,7 @@ class Blog extends Component {
 
         <Container>
           <BlogListFooter>
-            <Divider color="grey" size="large" />
+            <Divider color="grey" />
             <BlogListNavigationButtons
               previousPageButtonText={previousPageButtonText}
               nextPageButtonText={nextPageButtonText}

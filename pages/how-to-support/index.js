@@ -124,7 +124,7 @@ const HowToSupport = ({
     />
 
     <PageSection>
-      <Divider color="orange" size="small" />
+      <Divider color="orange" />
     </PageSection>
 
     <Section
@@ -146,7 +146,7 @@ const HowToSupport = ({
     />
 
     <PageSection contained={false}>
-      <Divider color="grey" size="large" />
+      <Divider color="grey" />
     </PageSection>
   </div>
 )

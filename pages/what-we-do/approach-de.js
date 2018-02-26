@@ -127,4 +127,3 @@ ApproachDe.getInitialProps = async function initialProps({ query }) {
 }
 
 export default withLayout(ApproachDe)
-
