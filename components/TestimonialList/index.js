@@ -1,3 +1,4 @@
+import T from 'i18n-react'
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -22,6 +23,22 @@ const StyledSupporter = Supporter.extend`
   }
 `
 
+const TestimonialText = styled(Markdown)`
+  p:first-child::before {
+    display: inline;
+    /* Use arrow function to ensure translation happens dynamically
+     * (and not just once at component definition time) */
+    content: '${() => T.translate('quote.open')}';
+  }
+
+  p:last-child::after {
+    display: inline;
+    /* Use arrow function to ensure translation happens dynamically
+     * (and not just once at component definition time) */
+    content: '${() => T.translate('quote.close')}';
+  }
+`
+
 const TestimonialList = ({ testimonials, className }) => (
   <div className={`row ${className}`}>
     {testimonials.map(({
@@ -36,7 +53,7 @@ const TestimonialList = ({ testimonials, className }) => (
             title={title}
           />
           <div className="col-sm-8 col-md-9 col-lg-8">
-            <Markdown source={testimonialMarkdown} />
+            <TestimonialText source={testimonialMarkdown} />
           </div>
         </div>
       </TestimonialContainer>
