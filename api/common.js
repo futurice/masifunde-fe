@@ -51,7 +51,7 @@ export const unwrapStat = stat => ({
   icon: unwrapImage(stat && stat.fields && stat.fields.icon),
 })
 
-export const unwrapStats = stats => stats.map(unwrapStat)
+export const unwrapStats = (stats = []) => stats.map(unwrapStat)
 
 export const unwrapPageUrl = (pageUrl) => {
   if (!pageUrl) {
