@@ -51,13 +51,13 @@ const BecomeVolunteer = ({
     </PageSection>
 
     <PageSection>
-      <h2>{section2Title}</h2>
-      <VolunteerOpeningsList volunteerOpenings={volunteerOpenings} />
+      <h2>{section3Title}</h2>
+      <TestimonialList testimonials={section1ReferenceList} />
     </PageSection>
 
     <PageSection>
-      <h2>{section3Title}</h2>
-      <TestimonialList testimonials={section1ReferenceList} />
+      <h2>{section2Title}</h2>
+      <VolunteerOpeningsList volunteerOpenings={volunteerOpenings} />
     </PageSection>
 
     <PageSection>
