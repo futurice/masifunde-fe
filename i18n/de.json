@@ -1,4 +1,8 @@
 {
+  "quote": {
+    "open": "\u201e",
+    "close": "\u201c"
+  },
   "source": "Quelle",
   "blog": {
     "readMore": "Mehr lesen"
