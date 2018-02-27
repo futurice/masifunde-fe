@@ -38,7 +38,7 @@ Tagline.propTypes = {
 Tagline.defaultProps = {
   hideTopRuler: false,
   source: null,
-  text: undefined,
+  text: null,
 }
 
 export default Tagline
