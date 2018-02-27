@@ -10,10 +10,10 @@ const StatContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  /* IE11 fix */
-  flex-shrink: 1;
+
+  flex: 1;
   flex-basis: auto;
+
   @media(min-width: ${smBreakpoint}) {
     flex-basis: 0;
   }
