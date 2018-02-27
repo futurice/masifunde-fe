@@ -49,7 +49,7 @@ export async function fetchBecomeAVolunteerPage(locale) {
     bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
     section1ReferenceList: unwrapTestimonials(content.section1ReferenceList),
     section5ReferenceList: unwrapTestimonials(content.section5ReferenceList),
-    section6TeamMember: unwrapTeamMember(content.section1TeamMember),
+    section6TeamMember: unwrapTeamMember(content.section6TeamMember),
   }
 }
 
