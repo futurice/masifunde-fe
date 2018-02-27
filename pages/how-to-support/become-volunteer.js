@@ -20,23 +20,26 @@ const BecomeVolunteer = ({
   metaDescription,
   introTitle,
   introMarkdown,
-  section1Title,
-  section1Markdown,
-  section1TeamMember,
-  section1ReferenceList,
-  section2Title,
-  section3Title,
-  volunteerOpenings,
-  section4Title,
-  section4Markdown,
-  section6Title,
-  section6TeamMember,
-  section6Markdown,
+
+  deTestimonialsHeading,
+  deTestimonials,
+  deVolunteerOpeningsHeading,
+  deVolunteerOpenings,
+  deVolunteerContactHeading,
+  deVolunteerContactText,
+  deVolunteerContact,
+
+  saVolunteerOpening1Heading,
+  saVolunteerOpening1Text,
+  saVolunteerOpening1ContactHeading,
+  saVolunteerOpening1ContactText,
+  saVolunteerOpening1Contact,
   saVolunteerOpening2Heading,
   saVolunteerOpening2Text,
   saVolunteerOpening2ContactHeading,
   saVolunteerOpening2ContactText,
   saVolunteerOpening2Contact,
+
   bannerTitle,
   bannerButtonText,
   bannerButtonUrl,
@@ -56,22 +59,22 @@ const BecomeVolunteer = ({
     </PageSection>
 
     <PageSection>
-      <h2>{section3Title}</h2>
-      <TestimonialList testimonials={section1ReferenceList} />
+      <h2>{deTestimonialsHeading}</h2>
+      <TestimonialList testimonials={deTestimonials} />
     </PageSection>
 
     <PageSection>
-      <h2>{section2Title}</h2>
-      <VolunteerOpeningsList volunteerOpenings={volunteerOpenings} />
+      <h2>{deVolunteerOpeningsHeading}</h2>
+      <VolunteerOpeningsList volunteerOpenings={deVolunteerOpenings} />
     </PageSection>
 
     <PageSection>
       <TextWithTeamMember
-        header={section1Title}
-        text={section1Markdown}
-        teamMember={section1TeamMember}
-        teamMemberTitle={section1TeamMember.name}
-        teamMemberSubtitle={section1TeamMember.responsibilityArea}
+        header={deVolunteerContactHeading}
+        text={deVolunteerContactText}
+        teamMember={deVolunteerContact}
+        teamMemberTitle={deVolunteerContact.name}
+        teamMemberSubtitle={deVolunteerContact.responsibilityArea}
       />
     </PageSection>
 
@@ -80,17 +83,17 @@ const BecomeVolunteer = ({
     </PageSection>
 
     <PageSection>
-      <h2>{section4Title}</h2>
-      <CenteredText source={section4Markdown} />
+      <h2>{saVolunteerOpening1Heading}</h2>
+      <CenteredText source={saVolunteerOpening1Text} />
     </PageSection>
 
     <PageSection>
       <TextWithTeamMember
-        header={section6Title}
-        text={section6Markdown}
-        teamMember={section6TeamMember}
-        teamMemberTitle={section6TeamMember.name}
-        teamMemberSubtitle={section6TeamMember.responsibilityArea}
+        header={saVolunteerOpening1ContactHeading}
+        text={saVolunteerOpening1ContactText}
+        teamMember={saVolunteerOpening1Contact}
+        teamMemberTitle={saVolunteerOpening1Contact.name}
+        teamMemberSubtitle={saVolunteerOpening1Contact.responsibilityArea}
       />
     </PageSection>
 
@@ -126,23 +129,26 @@ BecomeVolunteer.propTypes = {
   metaDescription: PropTypes.string,
   introTitle: PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
-  section1Title: PropTypes.string.isRequired,
-  section1Markdown: PropTypes.string.isRequired,
-  section1TeamMember: PropTypes.shape(teamMemberProps).isRequired,
-  section2Title: PropTypes.string.isRequired,
-  section3Title: PropTypes.string.isRequired,
-  volunteerOpenings: VolunteerOpeningsList.propTypes.volunteerOpenings.isRequired,
-  section4Title: PropTypes.string.isRequired,
-  section4Markdown: PropTypes.string.isRequired,
-  section6Title: PropTypes.string.isRequired,
-  section6TeamMember: PropTypes.shape(teamMemberProps).isRequired,
-  section6Markdown: PropTypes.string.isRequired,
-  section1ReferenceList: TestimonialList.propTypes.testimonials.isRequired,
+
+  deVolunteerContactHeading: PropTypes.string.isRequired,
+  deVolunteerContactText: PropTypes.string.isRequired,
+  deVolunteerContact: PropTypes.shape(teamMemberProps).isRequired,
+  deVolunteerOpeningsHeading: PropTypes.string.isRequired,
+  deTestimonialsHeading: PropTypes.string.isRequired,
+  deTestimonials: TestimonialList.propTypes.testimonials.isRequired,
+  deVolunteerOpenings: VolunteerOpeningsList.propTypes.volunteerOpenings.isRequired,
+
+  saVolunteerOpening1Heading: PropTypes.string.isRequired,
+  saVolunteerOpening1Text: PropTypes.string.isRequired,
+  saVolunteerOpening1ContactHeading: PropTypes.string.isRequired,
+  saVolunteerOpening1ContactText: PropTypes.string.isRequired,
+  saVolunteerOpening1Contact: PropTypes.shape(teamMemberProps).isRequired,
   saVolunteerOpening2Heading: PropTypes.string.isRequired,
   saVolunteerOpening2Text: PropTypes.string.isRequired,
   saVolunteerOpening2ContactHeading: PropTypes.string.isRequired,
   saVolunteerOpening2ContactText: PropTypes.string.isRequired,
   saVolunteerOpening2Contact: PropTypes.shape(teamMemberProps).isRequired,
+
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,

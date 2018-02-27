@@ -44,12 +44,25 @@ export async function fetchBecomeAVolunteerPage(locale) {
   const content = (await fetchMemoizedSingleEntry('pageAktivWerden', locale)) || {}
   return {
     ...content,
-    section1TeamMember: unwrapTeamMember(content && content.section1TeamMember),
-    volunteerOpenings: content && content.volunteerOpenings.map(unwrapVolunteerOpening),
     bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
-    section1ReferenceList: unwrapTestimonials(content.section1ReferenceList),
-    section5ReferenceList: unwrapTestimonials(content.section5ReferenceList),
-    section6TeamMember: unwrapTeamMember(content.section6TeamMember),
+
+    // Temporarily support old field ID's (section1Title etc.)
+    deTestimonialsHeading: content.deTestimonialsHeading || content.section3Title,
+    deTestimonials: unwrapTestimonials(content.deTestimonials || content.section1ReferenceList),
+    deVolunteerOpeningsHeading: content.deVolunteerOpeningsHeading || content.section2Title,
+    deVolunteerOpenings: (content.deVolunteerOpenings || content.volunteerOpenings)
+      .map(unwrapVolunteerOpening),
+    deVolunteerContactHeading: content.deVolunteerContactHeading || content.section1Title,
+    deVolunteerContactText: content.deVolunteerContactText || content.section1Markdown,
+    deVolunteerContact: unwrapTeamMember(content.deVolunteerContact || content.section1TeamMember),
+    saVolunteerOpening1Heading: content.saVolunteerOpening1Heading || content.section4Title,
+    saVolunteerOpening1Text: content.saVolunteerOpening1Text || content.section4Markdown,
+    saVolunteerOpening1ContactHeading: content.saVolunteerOpening1ContactHeading ||
+      content.section6Title,
+    saVolunteerOpening1ContactText: content.saVolunteerOpening1ContactText
+      || content.section6Markdown,
+    saVolunteerOpening1Contact: unwrapTeamMember(content.saVolunteerOpening1Contact
+      || content.section6TeamMember),
     saVolunteerOpening2Contact: unwrapTeamMember(content.saVolunteerOpening2Contact),
   }
 }
