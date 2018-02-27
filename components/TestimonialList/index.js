@@ -8,6 +8,11 @@ import { smBreakpoint } from '../../styling/breakpoints'
 import { mediumSpacing, extraSmallSpacing } from '../../styling/sizes'
 import Markdown from '../Markdown'
 
+const List = styled.div`
+  /* Counter bottom margin of TestimonialList in last line */
+  margin-bottom: -${mediumSpacing};
+`
+
 const TestimonialContainer = styled.div`
   margin-bottom: ${mediumSpacing};
 `
@@ -40,7 +45,7 @@ const TestimonialText = styled(Markdown)`
 `
 
 const TestimonialList = ({ testimonials, className }) => (
-  <div className={`row ${className}`}>
+  <List className={`row ${className}`}>
     {testimonials.map(({
       testimonialMarkdown, title, name, image,
     }) => (
@@ -58,7 +63,7 @@ const TestimonialList = ({ testimonials, className }) => (
         </div>
       </TestimonialContainer>
     ))}
-  </div>
+  </List>
 )
 
 TestimonialList.propTypes = {
