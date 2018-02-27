@@ -17,19 +17,20 @@ const TaglineText = styled.p`
   margin-top: ${({ hideTopRuler }) => (hideTopRuler ? '0' : taglineTextMargin)};
 `
 
-const Tagline = ({ text, hideTopRuler, source }) => (
-  <PageSection>
-    {hideTopRuler ? null : <Divider color="orange" />}
-    <TaglineText hideTopRuler={hideTopRuler}>
-      {text}
-      {source}
-    </TaglineText>
-    <Divider color="orange" />
-  </PageSection>
-)
+const Tagline = ({ text, hideTopRuler, source }) =>
+  text && (
+    <PageSection>
+      {hideTopRuler ? null : <Divider color="orange" />}
+      <TaglineText hideTopRuler={hideTopRuler}>
+        {text}
+        {source}
+      </TaglineText>
+      <Divider color="orange" />
+    </PageSection>
+  )
 
 Tagline.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   hideTopRuler: PropTypes.bool,
   source: PropTypes.node,
 }
@@ -37,6 +38,7 @@ Tagline.propTypes = {
 Tagline.defaultProps = {
   hideTopRuler: false,
   source: null,
+  text: null,
 }
 
 export default Tagline
