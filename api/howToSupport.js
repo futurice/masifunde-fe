@@ -50,6 +50,7 @@ export async function fetchBecomeAVolunteerPage(locale) {
     section1ReferenceList: unwrapTestimonials(content.section1ReferenceList),
     section5ReferenceList: unwrapTestimonials(content.section5ReferenceList),
     section6TeamMember: unwrapTeamMember(content.section6TeamMember),
+    saVolunteerOpening2Contact: unwrapTeamMember(content.saVolunteerOpening2Contact),
   }
 }
 
