@@ -42,7 +42,7 @@ const BecomeVolunteer = ({
     <Head title={metaTitle} description={metaDescription} />
 
     <Hero
-      imageUrl="/static/images/hero/hero-small-choir.jpg"
+      imageUrl="/static/images/hero/hero-small-aktiv-werden.jpg"
       heroSize="small"
       backgroundPositionX="55%"
     />
