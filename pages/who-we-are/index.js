@@ -93,7 +93,7 @@ const WhoWeAre = ({
     <Hero
       backgroundPositionX="70%"
       headline={title}
-      imageUrl="/static/images/hero/hero-arts.jpg"
+      imageUrl="/static/images/hero/hero-wer-wir-sind.jpg"
       headlinePlacement="bottom"
       headlineShadow
     />
