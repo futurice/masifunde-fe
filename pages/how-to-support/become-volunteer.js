@@ -32,6 +32,11 @@ const BecomeVolunteer = ({
   section6Title,
   section6TeamMember,
   section6Markdown,
+  saVolunteerOpening2Heading,
+  saVolunteerOpening2Text,
+  saVolunteerOpening2ContactHeading,
+  saVolunteerOpening2ContactText,
+  saVolunteerOpening2Contact,
   bannerTitle,
   bannerButtonText,
   bannerButtonUrl,
@@ -89,6 +94,21 @@ const BecomeVolunteer = ({
       />
     </PageSection>
 
+    <PageSection>
+      <h2>{saVolunteerOpening2Heading}</h2>
+      <CenteredText source={saVolunteerOpening2Text} />
+    </PageSection>
+
+    <PageSection>
+      <TextWithTeamMember
+        header={saVolunteerOpening2ContactHeading}
+        text={saVolunteerOpening2ContactText}
+        teamMember={saVolunteerOpening2Contact}
+        teamMemberTitle={saVolunteerOpening2Contact.name}
+        teamMemberSubtitle={saVolunteerOpening2Contact.responsibilityArea}
+      />
+    </PageSection>
+
     <Banner
       headline={bannerTitle}
       buttonText={bannerButtonText}
@@ -118,6 +138,11 @@ BecomeVolunteer.propTypes = {
   section6TeamMember: PropTypes.shape(teamMemberProps).isRequired,
   section6Markdown: PropTypes.string.isRequired,
   section1ReferenceList: TestimonialList.propTypes.testimonials.isRequired,
+  saVolunteerOpening2Heading: PropTypes.string.isRequired,
+  saVolunteerOpening2Text: PropTypes.string.isRequired,
+  saVolunteerOpening2ContactHeading: PropTypes.string.isRequired,
+  saVolunteerOpening2ContactText: PropTypes.string.isRequired,
+  saVolunteerOpening2Contact: PropTypes.shape(teamMemberProps).isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
