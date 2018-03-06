@@ -95,7 +95,7 @@ const DonationForm = ({
             [WANTS_RECEIPT]: RECEIPT_NOW_OPTION_VALUE,
             [COUNTRY]: COUNTRY_GERMANY,
             // if the interval is disabled then assume the payment will be single
-            ...disableIntervalSelection && { [PAYMENT_INTERVAL]: '0' },
+            ...(disableIntervalSelection && { [PAYMENT_INTERVAL]: '0' }),
             ...initialValues,
           }}
           validate={validateForm}
