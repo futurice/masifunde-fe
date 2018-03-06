@@ -45,7 +45,7 @@ function createSitemap(routes) {
     }))
 
   const sitemap = sm.createSitemap({
-    hostname: 'https://masifunde.de',
+    hostname: 'https://www.masifunde.de',
     urls,
   })
 
