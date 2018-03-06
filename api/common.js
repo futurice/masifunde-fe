@@ -30,6 +30,9 @@ export const unwrapImage = (image, urlParams) => {
   }
 }
 
+export const unwrapImages = (images = [], urlParams) =>
+  images.map(image => unwrapImage(image, urlParams))
+
 export const unwrapRegion = region => region && region.fields && region.fields.name
 
 export const unwrapPortrait = (portrait) => {

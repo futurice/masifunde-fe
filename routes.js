@@ -49,6 +49,7 @@ const BlogPost = '/blog/blog-post'
 const Contact = '/contact'
 const Impressum = '/impressum'
 const Datenschutz = '/datenschutz'
+const Campaign = '/campaign'
 
 // Register the routes
 addRoute('/', Index)
@@ -72,6 +73,7 @@ addRoute('/datenschutz', Datenschutz)
 if (featureFlags.release10) {
   addRoute('/blog', Blog)
   addRoute('/blog/:slug', BlogPost)
+  addRoute('/kampagne', Campaign)
 }
 
 // Share route names
@@ -95,6 +97,7 @@ nextRoutes.RouteNames = {
   BlogPost,
   Datenschutz,
   Impressum,
+  Campaign,
 }
 
 module.exports = nextRoutes
