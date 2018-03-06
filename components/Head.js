@@ -13,8 +13,7 @@ function createTitle(title) {
 const Head = ({ title, description }) => (
   <NextJsHead>
     <title>{createTitle(title)}</title>
-    {/* If the content is undefined then it doesn't render the description */}
-    <meta name="description" content={description} />
+    {description && <meta name="description" content={description} />}
   </NextJsHead>)
 
 Head.propTypes = {
