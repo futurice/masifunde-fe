@@ -60,7 +60,11 @@ IntervalFormSection.propTypes = {
   intervals: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  }).isRequired),
+}
+
+IntervalFormSection.defaultProps = {
+  intervals: [],
 }
 
 export default IntervalFormSection

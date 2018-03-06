@@ -63,6 +63,7 @@ const DonationForm = ({
   enableOtherAmount,
   minimumYearlyAmount,
   iframeStatus,
+  disableIntervalSelection,
 }) => {
   let formRef
 
@@ -93,6 +94,8 @@ const DonationForm = ({
           initialValues={{
             [WANTS_RECEIPT]: RECEIPT_NOW_OPTION_VALUE,
             [COUNTRY]: COUNTRY_GERMANY,
+            // if the interval is disabled then assume the payment will be single
+            ...disableIntervalSelection && { [PAYMENT_INTERVAL]: '0' },
             ...initialValues,
           }}
           validate={validateForm}
@@ -110,11 +113,13 @@ const DonationForm = ({
                   />
                 )}
 
-                <IntervalFormSection
-                  fieldName={PAYMENT_INTERVAL}
-                  title={intervalTitle}
-                  intervals={intervals}
-                />
+                {disableIntervalSelection || (
+                  <IntervalFormSection
+                    fieldName={PAYMENT_INTERVAL}
+                    title={intervalTitle}
+                    intervals={intervals}
+                  />
+                )}
 
                 <AmountFormSection
                   fieldName={AMOUNT}
@@ -236,7 +241,7 @@ DonationForm.propTypes = {
   amounts: AmountFormSection.propTypes.amounts,
   // eslint-disable-next-line react/require-default-props
   intervals: IntervalFormSection.propTypes.intervals,
-  intervalTitle: PropTypes.string.isRequired,
+  intervalTitle: PropTypes.string,
   otherAmountPlaceholder: PropTypes.string,
   validateForm: PropTypes.func.isRequired,
   initialValues: PropTypes.shape(),
@@ -245,6 +250,7 @@ DonationForm.propTypes = {
   decorators: PropTypes.arrayOf(PropTypes.func),
   minimumYearlyAmount: PropTypes.string,
   iframeStatus: PropTypes.oneOf(['successful', 'failure', undefined]),
+  disableIntervalSelection: PropTypes.bool,
 }
 
 DonationForm.defaultProps = {
@@ -258,6 +264,9 @@ DonationForm.defaultProps = {
   decorators: [],
   minimumYearlyAmount: '0',
   iframeStatus: undefined,
+  disableIntervalSelection: false,
+  intervals: IntervalFormSection.defaultProps.intervals,
+  intervalTitle: '',
 }
 
 export default withFormState(DonationForm)
