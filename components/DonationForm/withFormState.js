@@ -8,7 +8,7 @@ import {
   checkIsIntegerValues,
   checkRequiredValues,
 } from './utils/formValidation'
-import { FIELD_NAMES, NO_RECEIPT_OPTION_VALUE } from './constants/formValues'
+import { NO_RECEIPT_OPTION_VALUE } from './constants/formValues'
 import {
   ADDRESS,
   WANTS_RECEIPT,
@@ -91,7 +91,6 @@ function withFormState(View) {
           {...this.props}
           fields={this.state.fields}
           validateForm={this.validateForm}
-          fieldName={FIELD_NAMES}
         />
       )
     }

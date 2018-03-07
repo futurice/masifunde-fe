@@ -1,5 +1,7 @@
 import styled from 'styled-components'
-import { socialLinkGrey } from '../styling/theme'
+import theme from '../styling/theme'
+
+const { socialLinkGrey } = theme
 
 const SocialLink = styled.a`
   color: ${socialLinkGrey};
