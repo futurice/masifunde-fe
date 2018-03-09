@@ -73,7 +73,7 @@ addRoute('/datenschutz', Datenschutz)
 if (featureFlags.release10) {
   addRoute('/blog', Blog)
   addRoute('/blog/:slug', BlogPost)
-  addRoute('/kampagne', Campaign)
+  addRoute('/spendenaktion', Campaign)
 }
 
 // Share route names
