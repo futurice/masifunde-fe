@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
 import FaFacebook from 'react-icons/lib/fa/facebook'
@@ -121,7 +121,6 @@ function Footer({
   becomePartnerText,
   contactText,
   blogText,
-  campaignText,
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
@@ -169,10 +168,7 @@ function Footer({
                 <ul className="list-unstyled">
                   <ContactLink route={RouteNames.Contact} text={contactText} />
                   {featureFlags.release10 && (
-                    <Fragment>
-                      <FooterLink route={RouteNames.Blog} text={blogText} />
-                      <FooterLink route={RouteNames.Campaign} text={campaignText} />
-                    </Fragment>
+                    <FooterLink route={RouteNames.Blog} text={blogText} />
                   )}
                 </ul>
               </div>
@@ -280,7 +276,6 @@ export const propTypes = {
   becomePartnerText: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
   blogText: PropTypes.string.isRequired,
-  campaignText: PropTypes.string.isRequired,
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
