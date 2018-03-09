@@ -18,6 +18,9 @@ import Award from '../../components/Award'
 import { largeSpacing, mediumSpacing, extraSmallSpacing } from '../../styling/sizes'
 import { lgBreakpoint } from '../../styling/breakpoints'
 import Link from '../../components/Link'
+import featureFlags from '../../featureFlags'
+import TestimonialList from '../../components/TestimonialList'
+import ContainedGrid from '../../components/ContainedGrid'
 
 const Image = styled.img`
   width: 100%;
@@ -66,6 +69,10 @@ const AwardsContainer = styled.div`
   margin-top: ${mediumSpacing};
 `
 
+const PatronsText = CenteredText.extend`
+  margin-bottom: ${mediumSpacing};
+`
+
 const WhoWeAre = ({
   title,
   paragraphOneTitle,
@@ -86,6 +93,9 @@ const WhoWeAre = ({
   teamDeButtonText,
   partnersListOne,
   awards,
+  patronsHeadline,
+  patronsText,
+  patronsList,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -126,6 +136,16 @@ const WhoWeAre = ({
       </AwardsContainer>
     </PageSection>
 
+    {featureFlags.release10 && (
+      <PageSection>
+        <h2>{patronsHeadline}</h2>
+        <PatronsText source={patronsText} />
+        <ContainedGrid>
+          <TestimonialList testimonials={patronsList} />
+        </ContainedGrid>
+      </PageSection>
+    )}
+
     <Banner
       headline={bannerHeadline}
       buttonText={bannerText}
@@ -156,6 +176,9 @@ WhoWeAre.propTypes = {
   awards: PropTypes.arrayOf(PropTypes.shape(Award.propTypes)).isRequired,
   bannerText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
+  patronsHeadline: PropTypes.string.isRequired,
+  patronsText: PropTypes.string.isRequired,
+  patronsList: TestimonialList.propTypes.testimonials.isRequired,
 }
 
 WhoWeAre.defaultProps = {

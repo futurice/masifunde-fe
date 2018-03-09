@@ -6,6 +6,7 @@ import {
   unwrapPartner,
   unwrapRegionalGroups,
   unwrapTeamMembers,
+  unwrapTestimonials,
 } from './common'
 
 export async function fetchWhoWeArePage(locale) {
@@ -17,6 +18,7 @@ export async function fetchWhoWeArePage(locale) {
     teamSaImage: unwrapImage(response && response.teamSaImage),
     partnersListOne: response && response.partnersListOne.map(unwrapPartner),
     awards: response && response.awards.map(unwrapAward),
+    patronsList: unwrapTestimonials(response.patronsList),
     bannerButtonUrl: unwrapPageUrl(response.bannerButtonUrl),
   }
 }

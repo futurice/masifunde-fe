@@ -12,7 +12,7 @@ const StyledList = List.extend`
 const PartnersList = ({ partnersList, className }) => (
   <StyledList entries={partnersList} className={`row ${className}`}>
     {partnersList.map(({ image, name, link }) => (
-      <List.Item>
+      <List.Item key={image.url}>
         <Partner
           link={link}
           image={image}
