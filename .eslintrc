@@ -22,6 +22,7 @@
   "rules": {
     "semi": ["error", "never"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/no-typos": 0
+    "react/no-typos": 0,
+    "import/prefer-default-export": 0
   }
 }

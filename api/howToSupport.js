@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { fetchMemoizedSingleEntry, fetchSingleEntry } from './contentfulService'
 import {
   unwrapFields,

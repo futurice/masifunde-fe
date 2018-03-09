@@ -26,7 +26,7 @@ const Anchor = styled.a`
 `
 
 const FooterSection = styled(PageSection)`
-  ${footerText}
+  ${footerText};
   margin-top: ${largeSpacing};
 
   a, a:visited {
@@ -167,9 +167,9 @@ function Footer({
               <div className="col">
                 <ul className="list-unstyled">
                   <ContactLink route={RouteNames.Contact} text={contactText} />
-                  {featureFlags.release10 &&
+                  {featureFlags.release10 && (
                     <FooterLink route={RouteNames.Blog} text={blogText} />
-                  }
+                  )}
                 </ul>
               </div>
             </div>

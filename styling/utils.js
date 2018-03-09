@@ -1,6 +1,5 @@
 import { css } from 'styled-components'
 
-// eslint-disable-next-line import/prefer-default-export
 export const wordBreak = css`
   // Add line breaks 
   // Source: https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/

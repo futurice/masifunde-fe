@@ -26,12 +26,20 @@ import {
 
 function withFormState(View) {
   return class FormDataWrapper extends Component {
+    static propTypes = {
+      enableProjectSelection: View.propTypes.enableProjectSelection,
+    }
+    static defaultProps = {
+      enableProjectSelection: View.defaultProps.enableProjectSelection,
+    }
     state = {
       fields: {},
     }
     debounceSetState = _debounce(this.setState, 500)
 
     validateForm = (fields) => {
+      const { enableProjectSelection } = this.props
+
       const errorsIsIntegerValues = checkIsIntegerValues([AMOUNT], fields)
       const wantsReceiptRequiredValues =
         fields[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE
@@ -39,10 +47,11 @@ function withFormState(View) {
           : []
       const errorsRequired = checkRequiredValues(
         [
-          {
+          // If the project selection is not enabled there is no need to validate it
+          ...(enableProjectSelection && {
             fieldName: PROJECT_ID,
             errorMessage: T.translate('donation.requiredProject'),
-          },
+          }),
           { fieldName: AMOUNT },
           {
             fieldName: PAYMENT_INTERVAL,

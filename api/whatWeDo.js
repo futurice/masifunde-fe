@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { RouteNames } from '../routes'
 import { fetchSingleEntry } from './contentfulService'
 import {
