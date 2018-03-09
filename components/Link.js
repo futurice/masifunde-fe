@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export,react/forbid-prop-types */
+/* eslint-disable react/forbid-prop-types */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'next/router'

@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { fetchSingleEntry } from './contentfulService'
 import { unwrapImage, unwrapRegion } from './common'
 
