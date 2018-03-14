@@ -54,7 +54,7 @@ const BannerWithImage = ({
     <ContentContainer className="col-md-8" key="content">
       {subHeadline && <SubHeading>{subHeadline}</SubHeading>}
       <ExtendedHeading>{headline}</ExtendedHeading>
-      <Description>{description}</Description>
+      {description && <Description>{description}</Description>}
       <Link route={buttonLink} passHref>
         <Button type="banner">{buttonText}</Button>
       </Link>

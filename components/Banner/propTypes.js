@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 export const propTypes = {
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   headline: PropTypes.string.isRequired,
   image: PropTypes.string,
   subHeadline: PropTypes.string,
@@ -14,4 +14,5 @@ export const defaultProps = {
   subHeadline: undefined,
   image: undefined,
   showImageOnRight: false,
+  description: undefined,
 }
