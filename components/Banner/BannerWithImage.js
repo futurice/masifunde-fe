@@ -6,6 +6,7 @@ import { rem, headerFont } from '../../styling/typography'
 import Link from '../Link'
 import Button from '../Button'
 import Heading from './Headline'
+import PageSection from '../PageSection'
 
 const Container = styled.div`
   margin-right: 0;
@@ -61,9 +62,11 @@ const BannerWithImage = ({
   const img = <Image className="col-md-4" alt="" image={image} key="img" />
 
   return (
-    <Container className="row">
-      {showImageOnRight ? [content, img] : [img, content]}
-    </Container>
+    <PageSection>
+      <Container className="row">
+        {showImageOnRight ? [content, img] : [img, content]}
+      </Container>
+    </PageSection>
   )
 }
 
