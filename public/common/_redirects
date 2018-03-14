@@ -1,3 +1,7 @@
+# Redirect from masifunde.netlify.com to masifunde.de
+http://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
+https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
+
 # Redirects
 /ueber-uns/news-archiv/news/:slug /blog/:slug
 /ueber-uns/* /wer-wir-sind
