@@ -65,8 +65,6 @@ const ReadMore = styled.span`
 `
 
 const BlogPostCard = ({ post }) => (
-  // ESLint seems to think that this link misses a href. It doesn't.
-  // eslint-disable-next-line jsx-a11y/anchor-is-valid
   <Link route={RouteNames.BlogPost} params={{ slug: post.slug }} passHref>
     <Card>
       <ImageContainer>

@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid, function-paren-newline, react/no-array-index-key */
+/* eslint-disable function-paren-newline, react/no-array-index-key */
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'

@@ -1,5 +1,4 @@
 /* eslint-disable function-paren-newline */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
