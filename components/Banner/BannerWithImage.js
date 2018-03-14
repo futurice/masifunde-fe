@@ -7,6 +7,7 @@ import Link from '../Link'
 import Button from '../Button'
 import Heading from './Headline'
 import PageSection from '../PageSection'
+import { background } from './styles'
 
 const Container = styled.div`
   margin-right: 0;
@@ -20,7 +21,7 @@ const Image = styled.div`
 `
 
 const ContentContainer = styled.span`
-  background: url('/static/images/banner-pattern.svg') repeat;
+  ${background};
   padding: 2rem 4rem;
   color: white;
 `

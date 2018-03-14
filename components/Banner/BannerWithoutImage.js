@@ -5,14 +5,13 @@ import styled from 'styled-components'
 import Button from '../Button'
 import PageSection from '../PageSection'
 import { rem } from '../../styling/typography'
-import theme from '../../styling/theme'
 import Link from '../Link'
 import Headline from './Headline'
 import { propTypes, defaultProps } from './propTypes'
+import { background } from './styles'
 
 const OuterContainer = styled(PageSection).attrs({ contained: false })`
-  background-color: ${theme.orange};
-  background: url(/static/images/banner-pattern.svg) repeat;
+  ${background};
   display: flex;
 `
 
