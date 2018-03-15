@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { propTypes, defaultProps } from './propTypes'
 import { rem, headerFont } from '../../styling/typography'
+import { extraExtraSmallSpacing, smallSpacing } from '../../styling/sizes'
 import Link from '../Link'
 import Button from '../Button'
 import Heading from './Headline'
@@ -33,11 +34,13 @@ const SubHeading = styled.span`
 `
 
 const ExtendedHeading = Heading.extend`
+  display: block;
   text-align: left;
+  margin-bottom: ${extraExtraSmallSpacing};
 `
 const Description = styled.span`
   display: block;
-  margin-bottom: 1.5rem;
+  margin-bottom: ${smallSpacing};
 `
 
 const BannerWithImage = ({
