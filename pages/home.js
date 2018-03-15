@@ -60,7 +60,7 @@ const Home = ({
   portrait,
   videoTitle,
   videoUrl,
-  campaignTitle,
+  bannersTitle,
   campaign,
   featuredBlogPostsTitle,
   featuredBlogPosts,
@@ -107,7 +107,7 @@ const Home = ({
     {featureFlags.release10 && (
       <Fragment>
         <PageSection>
-          <h2>{campaignTitle}</h2>
+          <h2>{bannersTitle}</h2>
 
           <Banner
             subHeadline={campaign.bannerSmallTitle}
@@ -167,7 +167,7 @@ Home.propTypes = {
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
   videoTitle: PropTypes.string.isRequired,
   videoUrl: PropTypes.string.isRequired,
-  campaignTitle: PropTypes.string.isRequired,
+  bannersTitle: PropTypes.string.isRequired,
   campaign: PropTypes.shape(campaignPropTypes).isRequired,
   featuredBlogPostsTitle: PropTypes.string.isRequired,
   featuredBlogPosts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
