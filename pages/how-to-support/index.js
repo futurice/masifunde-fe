@@ -16,6 +16,9 @@ import { smBreakpoint } from '../../styling/breakpoints'
 import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import RoundedImage from '../../components/RoundedImage'
+import Banner from '../../components/Banner'
+import * as featureFlags from '../../featureFlags'
+import campaignPropTypes from '../../propTypes/campaign'
 
 const SectionContainer = styled(PageSection)`
   display: flex;
@@ -87,6 +90,7 @@ const HowToSupport = ({
   section4Title,
   section4Markdown,
   section4ButtonText,
+  campaign,
 }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
@@ -144,9 +148,21 @@ const HowToSupport = ({
       buttonLink={RouteNames.BecomePartner}
     />
 
-    <PageSection contained={false}>
+    <PageSection contained={campaign.isActive}>
+      {campaign.isActive && featureFlags.release10 ? (
+        <Banner
+          subHeadline={campaign.bannerSmallTitle}
+          headline={campaign.introHeading}
+          description={campaign.introMarkdown}
+          image={campaign.imageList[0].url}
+          buttonLink={RouteNames.Campaign}
+          buttonText={campaign.bannerButtonText}
+        />
+    ) : (
       <Divider color="grey" />
+    )}
     </PageSection>
+
   </div>
 )
 
@@ -184,6 +200,7 @@ HowToSupport.propTypes = {
   section4Title: PropTypes.string.isRequired,
   section4Markdown: PropTypes.string.isRequired,
   section4ButtonText: PropTypes.string.isRequired,
+  campaign: PropTypes.shape(campaignPropTypes).isRequired,
 }
 
 HowToSupport.defaultProps = {

@@ -158,3 +158,12 @@ export const unwrapTestimonials = (testimonials = []) =>
     }),
     testimonial: fields.testimonialMarkdown,
   }))
+
+export const unwrapCampaignPage = (campaign) => {
+  const fields = unwrapFields(campaign)
+
+  return {
+    ...fields,
+    imageList: unwrapImages(fields.imageList),
+  }
+}
