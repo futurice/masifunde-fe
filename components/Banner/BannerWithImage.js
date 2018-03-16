@@ -3,11 +3,17 @@ import styled from 'styled-components'
 
 import { propTypes, defaultProps } from './propTypes'
 import { rem, headerFont } from '../../styling/typography'
-import { extraExtraSmallSpacing, smallSpacing } from '../../styling/sizes'
+import {
+  extraExtraSmallSpacing,
+  smallSpacing,
+  mediumSpacing,
+  extraLargeSpacing,
+} from '../../styling/sizes'
 import Link from '../Link'
 import Button from '../Button'
 import Heading from './Headline'
 import { background } from './styles'
+import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 
 const Container = styled.div`
   margin-right: 0;
@@ -22,8 +28,16 @@ const Image = styled.div`
 
 const ContentContainer = styled.span`
   ${background};
-  padding: 2rem 4rem;
+  padding: ${smallSpacing};
   color: white;
+  
+  @media(min-width: ${mdBreakpoint}) {
+    padding: ${mediumSpacing};
+  }
+  
+  @media(min-width: ${lgBreakpoint}) {
+    padding: ${mediumSpacing} ${extraLargeSpacing};
+  }
 `
 
 const SubHeading = styled.span`
