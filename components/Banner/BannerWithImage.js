@@ -11,7 +11,7 @@ import {
 } from '../../styling/sizes'
 import Link from '../Link'
 import Button from '../Button'
-import Heading from './Headline'
+import Headline from './Headline'
 import { background } from './styles'
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 
@@ -47,7 +47,7 @@ const SubHeading = styled.span`
   font-weight: 500;
 `
 
-const ExtendedHeading = Heading.extend`
+const ExtendedHeadline = Headline.extend`
   display: block;
   text-align: left;
   margin-bottom: ${extraExtraSmallSpacing};
@@ -69,7 +69,7 @@ const BannerWithImage = ({
   const content = (
     <ContentContainer className="col-md-8" key="content">
       {subHeadline && <SubHeading>{subHeadline}</SubHeading>}
-      <ExtendedHeading>{headline}</ExtendedHeading>
+      <ExtendedHeadline>{headline}</ExtendedHeadline>
       {description && <Description>{description}</Description>}
       <Link route={buttonLink} passHref>
         <Button type="banner">{buttonText}</Button>
