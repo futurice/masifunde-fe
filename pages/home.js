@@ -21,7 +21,7 @@ import { mdBreakpoint } from '../styling/breakpoints'
 import { smallSpacing } from '../styling/sizes'
 import { getLocaleFromQuery } from '../utils/locale'
 import { RouteNames } from '../routes'
-import campaignPropTypes from '../propTypes/campaign'
+import campaignPageBannerPropTypes from '../propTypes/campaignPageBanner'
 
 const BlogPostList = styled.ul`
   list-style: none;
@@ -169,7 +169,7 @@ Home.propTypes = {
   videoTitle: PropTypes.string.isRequired,
   videoUrl: PropTypes.string.isRequired,
   bannersTitle: PropTypes.string.isRequired,
-  campaign: PropTypes.shape(campaignPropTypes).isRequired,
+  campaign: PropTypes.shape(campaignPageBannerPropTypes).isRequired,
   featuredBlogPostsTitle: PropTypes.string.isRequired,
   featuredBlogPosts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 }

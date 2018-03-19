@@ -18,7 +18,7 @@ import PageSection from '../../components/PageSection'
 import RoundedImage from '../../components/RoundedImage'
 import Banner from '../../components/Banner'
 import * as featureFlags from '../../featureFlags'
-import campaignPropTypes from '../../propTypes/campaign'
+import campaignPageBannerPropTypes from '../../propTypes/campaignPageBanner'
 
 const SectionContainer = styled(PageSection)`
   display: flex;
@@ -200,7 +200,7 @@ HowToSupport.propTypes = {
   section4Title: PropTypes.string.isRequired,
   section4Markdown: PropTypes.string.isRequired,
   section4ButtonText: PropTypes.string.isRequired,
-  campaign: PropTypes.shape(campaignPropTypes).isRequired,
+  campaign: PropTypes.shape(campaignPageBannerPropTypes).isRequired,
 }
 
 HowToSupport.defaultProps = {

@@ -1,6 +1,6 @@
 import { fetchSingleEntry } from './contentfulService'
 import {
-  unwrapCampaignPage,
+  unwrapCampaignPageBanner,
   unwrapPageUrl,
   unwrapPortrait,
   unwrapStats,
@@ -14,6 +14,6 @@ export async function fetchHomePage(locale) {
     stats: unwrapStats(content && content.stats),
     banner1ButtonUrl: unwrapPageUrl(content.banner1ButtonUrl),
     banner2ButtonUrl: unwrapPageUrl(content.banner2ButtonUrl),
-    campaign: unwrapCampaignPage(content.campaign),
+    campaign: unwrapCampaignPageBanner(content.campaign),
   }
 }
