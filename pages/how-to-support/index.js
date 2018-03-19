@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -92,7 +92,7 @@ const HowToSupport = ({
   section4ButtonText,
   campaign,
 }) => (
-  <div>
+  <Fragment>
     <Head title={metaTitle} description={metaDescription} />
 
     <Hero
@@ -160,7 +160,7 @@ const HowToSupport = ({
         />
       )}
     </PageSection>
-  </div>
+  </Fragment>
 )
 
 HowToSupport.propTypes = {
