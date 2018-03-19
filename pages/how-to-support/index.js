@@ -148,8 +148,8 @@ const HowToSupport = ({
       buttonLink={RouteNames.BecomePartner}
     />
 
-    <PageSection contained={campaign.isActive}>
-      {campaign.isActive && featureFlags.release10 ? (
+    <PageSection>
+      {campaign.isActive && featureFlags.release10 && (
         <Banner
           subHeadline={campaign.bannerSmallTitle}
           headline={campaign.introHeading}
@@ -158,11 +158,8 @@ const HowToSupport = ({
           buttonLink={RouteNames.Campaign}
           buttonText={campaign.bannerButtonText}
         />
-    ) : (
-      <Divider color="grey" />
-    )}
+      )}
     </PageSection>
-
   </div>
 )
 
