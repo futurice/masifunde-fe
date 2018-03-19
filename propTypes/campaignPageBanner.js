@@ -6,5 +6,6 @@ export default {
   introMarkdown: PropTypes.string.isRequired,
   bannerSmallTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
   imageList: PropTypes.arrayOf(PropTypes.shape(imagePropTypes)).isRequired,
 }
