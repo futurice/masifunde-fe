@@ -106,19 +106,20 @@ const Home = ({
 
     {featureFlags.release10 && (
       <Fragment>
-        <PageSection>
-          <h2>{bannersTitle}</h2>
+        {campaign.isActive && (
+          <PageSection>
+            <h2>{bannersTitle}</h2>
 
-          <Banner
-            subHeadline={campaign.bannerSmallTitle}
-            headline={campaign.introHeading}
-            description={campaign.introMarkdown}
-            image={campaign.imageList[0].url}
-            buttonLink={RouteNames.Campaign}
-            buttonText={campaign.bannerButtonText}
-          />
-        </PageSection>
-
+            <Banner
+              subHeadline={campaign.bannerSmallTitle}
+              headline={campaign.introHeading}
+              description={campaign.introMarkdown}
+              image={campaign.imageList[0].url}
+              buttonLink={RouteNames.Campaign}
+              buttonText={campaign.bannerButtonText}
+            />
+          </PageSection>
+        )}
 
         <PageSection>
           <Container>
