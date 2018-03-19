@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -17,6 +16,9 @@ import { smBreakpoint } from '../../styling/breakpoints'
 import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import RoundedImage from '../../components/RoundedImage'
+import Banner from '../../components/Banner'
+import * as featureFlags from '../../featureFlags'
+import campaignPageBannerPropTypes from '../../propTypes/campaignPageBanner'
 
 const SectionContainer = styled(PageSection)`
   display: flex;
@@ -88,8 +90,9 @@ const HowToSupport = ({
   section4Title,
   section4Markdown,
   section4ButtonText,
+  campaign,
 }) => (
-  <div>
+  <Fragment>
     <Head title={metaTitle} description={metaDescription} />
 
     <Hero
@@ -145,10 +148,19 @@ const HowToSupport = ({
       buttonLink={RouteNames.BecomePartner}
     />
 
-    <PageSection contained={false}>
-      <Divider color="grey" />
+    <PageSection>
+      {campaign.isActive && featureFlags.release10 && (
+        <Banner
+          subHeadline={campaign.bannerSmallTitle}
+          headline={campaign.introHeading}
+          description={campaign.introMarkdown}
+          image={campaign.imageList[0].url}
+          buttonLink={RouteNames.Campaign}
+          buttonText={campaign.bannerButtonText}
+        />
+      )}
     </PageSection>
-  </div>
+  </Fragment>
 )
 
 HowToSupport.propTypes = {
@@ -185,6 +197,7 @@ HowToSupport.propTypes = {
   section4Title: PropTypes.string.isRequired,
   section4Markdown: PropTypes.string.isRequired,
   section4ButtonText: PropTypes.string.isRequired,
+  campaign: PropTypes.shape(campaignPageBannerPropTypes).isRequired,
 }
 
 HowToSupport.defaultProps = {

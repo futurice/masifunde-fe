@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -20,6 +20,8 @@ import StatList from '../components/StatList'
 import { mdBreakpoint } from '../styling/breakpoints'
 import { smallSpacing } from '../styling/sizes'
 import { getLocaleFromQuery } from '../utils/locale'
+import { RouteNames } from '../routes'
+import campaignPageBannerPropTypes from '../propTypes/campaignPageBanner'
 
 const BlogPostList = styled.ul`
   list-style: none;
@@ -58,6 +60,8 @@ const Home = ({
   portrait,
   videoTitle,
   videoUrl,
+  bannersTitle,
+  campaign,
   featuredBlogPostsTitle,
   featuredBlogPosts,
 }) => (
@@ -101,19 +105,36 @@ const Home = ({
     </PageSection>
 
     {featureFlags.release10 && (
-      <PageSection>
-        <Container>
-          <h2>{featuredBlogPostsTitle}</h2>
-        </Container>
+      <Fragment>
+        {campaign.isActive && (
+          <PageSection>
+            <h2>{bannersTitle}</h2>
 
-        <BlogPostList className="row">
-          {featuredBlogPosts.map(post => (
-            <BlogPostListItem key={post.slug} className="col-md-4">
-              <BlogPostCard post={post} />
-            </BlogPostListItem>
-          ))}
-        </BlogPostList>
-      </PageSection>
+            <Banner
+              subHeadline={campaign.bannerSmallTitle}
+              headline={campaign.introHeading}
+              description={campaign.introMarkdown}
+              image={campaign.imageList[0].url}
+              buttonLink={RouteNames.Campaign}
+              buttonText={campaign.bannerButtonText}
+            />
+          </PageSection>
+        )}
+
+        <PageSection>
+          <Container>
+            <h2>{featuredBlogPostsTitle}</h2>
+          </Container>
+
+          <BlogPostList className="row">
+            {featuredBlogPosts.map(post => (
+              <BlogPostListItem key={post.slug} className="col-md-4">
+                <BlogPostCard post={post} />
+              </BlogPostListItem>
+            ))}
+          </BlogPostList>
+        </PageSection>
+      </Fragment>
     )}
 
     <PageSection contained={false}>
@@ -147,6 +168,8 @@ Home.propTypes = {
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
   videoTitle: PropTypes.string.isRequired,
   videoUrl: PropTypes.string.isRequired,
+  bannersTitle: PropTypes.string.isRequired,
+  campaign: PropTypes.shape(campaignPageBannerPropTypes).isRequired,
   featuredBlogPostsTitle: PropTypes.string.isRequired,
   featuredBlogPosts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 }

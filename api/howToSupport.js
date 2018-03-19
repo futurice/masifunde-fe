@@ -1,5 +1,6 @@
 import { fetchMemoizedSingleEntry, fetchSingleEntry } from './contentfulService'
 import {
+  unwrapCampaignPageBanner,
   unwrapFields,
   unwrapImage,
   unwrapPageUrl,
@@ -32,6 +33,7 @@ export async function fetchHowToSupportPage(locale) {
     section2Image: unwrapSectionImage(content.section2Image),
     section3Image: unwrapSectionImage(content.section3Image),
     section4Image: unwrapSectionImage(content.section4Image),
+    campaign: unwrapCampaignPageBanner(content.campaign),
   }
 }
 
