@@ -314,31 +314,29 @@ const BlogPostNav = ({
   nextPostRoute,
   nextPostText,
 }) => (
-  <PageSection>
-    <div className="row">
-      <div className="offset-lg-2 col-lg-8">
-        <HorizontalRule />
+  <div className="row">
+    <div className="offset-lg-2 col-lg-8">
+      <HorizontalRule />
 
-        <NavContainer>
-          <Link route={previousPostRoute} passHref>
-            <NavButton type="secondary">
-              <span className="longNavText">{previousPostText}</span>
-              <span className="shortNavText">{'<'}</span>
-            </NavButton>
-          </Link>
-          <Link route={routes.Blog} passHref>
-            <NavButton type="secondary">{blogHomeText}</NavButton>
-          </Link>
-          <Link route={nextPostRoute} passHref>
-            <NavButton type="secondary">
-              <span className="longNavText">{nextPostText}</span>
-              <span className="shortNavText">{'>'}</span>
-            </NavButton>
-          </Link>
-        </NavContainer>
-      </div>
+      <NavContainer>
+        <Link route={previousPostRoute} passHref>
+          <NavButton type="secondary">
+            <span className="longNavText">{previousPostText}</span>
+            <span className="shortNavText">{'<'}</span>
+          </NavButton>
+        </Link>
+        <Link route={routes.Blog} passHref>
+          <NavButton type="secondary">{blogHomeText}</NavButton>
+        </Link>
+        <Link route={nextPostRoute} passHref>
+          <NavButton type="secondary">
+            <span className="longNavText">{nextPostText}</span>
+            <span className="shortNavText">{'>'}</span>
+          </NavButton>
+        </Link>
+      </NavContainer>
     </div>
-  </PageSection>
+  </div>
 )
 
 BlogPostNav.propTypes = {
