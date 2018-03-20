@@ -65,6 +65,7 @@ const BannerWithImage = ({
   buttonText,
   buttonLink,
   showImageOnRight,
+  className,
 }) => {
   const content = (
     <ContentContainer className="col-md-8" key="content">
@@ -79,7 +80,7 @@ const BannerWithImage = ({
   const img = <Image className="col-md-4" alt="" image={image} key="img" />
 
   return (
-    <Container className="row">
+    <Container className={`${className} row`}>
       {showImageOnRight ? [content, img] : [img, content]}
     </Container>
   )
