@@ -26,6 +26,7 @@ import { RouteNames as routes } from '../../routes'
 import { smallSpacing, largeSpacing } from '../../styling/sizes'
 import SocialLink from '../../components/SocialLink'
 import Divider from '../../components/Divider'
+import formatDate from '../../utils/date'
 
 // BlogPostError
 
@@ -211,7 +212,7 @@ const BlogPostContent = ({
         <div className="row">
           <div className="offset-lg-2 col-lg-8">
             <DateContainer>
-              <p>{date}</p>
+              <p>{formatDate(date)}</p>
             </DateContainer>
             <BlogTitle>{title}</BlogTitle>
             <BlogMarkdown source={content} />

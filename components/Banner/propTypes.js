@@ -8,6 +8,7 @@ export const propTypes = {
   buttonLink: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
   showImageOnRight: PropTypes.bool,
+  className: PropTypes.string,
 }
 
 export const defaultProps = {
@@ -15,4 +16,5 @@ export const defaultProps = {
   image: undefined,
   showImageOnRight: false,
   description: undefined,
+  className: '',
 }
