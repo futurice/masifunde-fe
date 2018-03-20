@@ -14,6 +14,7 @@ import Button from '../Button'
 import Headline from './Headline'
 import { background } from './styles'
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
+import Markdown from '../../components/Markdown'
 
 const Container = styled.div`
   margin-right: 0;
@@ -52,9 +53,10 @@ const ExtendedHeadline = Headline.extend`
   text-align: left;
   margin-bottom: ${extraExtraSmallSpacing};
 `
-const Description = styled.span`
-  display: block;
-  margin-bottom: ${smallSpacing};
+const Description = styled(Markdown)`
+  p {
+    margin-bottom: ${smallSpacing}; 
+  }
 `
 
 const BannerWithImage = ({
@@ -71,7 +73,7 @@ const BannerWithImage = ({
     <ContentContainer className="col-md-8" key="content">
       {subHeadline && <SubHeading>{subHeadline}</SubHeading>}
       <ExtendedHeadline>{headline}</ExtendedHeadline>
-      {description && <Description>{description}</Description>}
+      {description && <Description source={description} />}
       <Link route={buttonLink} passHref>
         <Button type="banner">{buttonText}</Button>
       </Link>
