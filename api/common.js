@@ -167,3 +167,17 @@ export const unwrapCampaignPageBanner = (campaign) => {
     imageList: unwrapImages(fields.imageList),
   }
 }
+
+export const unwrapAnnouncement = (announcement = {}) => {
+  const unwrappedContent = unwrapFields(announcement)
+
+  if (!unwrappedContent) {
+    return undefined
+  }
+
+  return {
+    ...unwrappedContent,
+    image: unwrapImage(unwrappedContent.image),
+  }
+}
+

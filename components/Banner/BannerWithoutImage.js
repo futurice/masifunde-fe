@@ -27,9 +27,14 @@ const InnerContainer = styled(Container)`
   padding-bottom: ${rem('45px')}
 `
 
-function BannerWithoutImage({ headline, buttonText, buttonLink }) {
+function BannerWithoutImage({
+  headline,
+  buttonText,
+  buttonLink,
+  className,
+}) {
   return (
-    <OuterContainer>
+    <OuterContainer className={className}>
       <InnerContainer>
         <Headline>{headline}</Headline>
         <Link route={buttonLink} passHref>
