@@ -6,34 +6,36 @@ import Button from '../Button'
 import Link from '../../components/Link'
 import { RouteNames } from '../../routes'
 import { smBreakpoint } from '../../styling/breakpoints'
+import { largeSpacing } from '../../styling/sizes'
 
 const ButtonsContainer = styled.nav`
+  margin-top: ${largeSpacing};
+
   & {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
     justify-content: space-between;
-    
+
     @media (min-width: ${smBreakpoint}) {
       align-items: flex-start;
     }
   }
-  
+
   > div {
     &:first-of-type, &:nth-of-type(3) {
       flex-grow: 1;
-      
+
       a {
         width: 100%;
       }
     }
-    
+
     &:nth-of-type(2) {
       flex-grow: 3;
     }
   }
 `
-
 
 const BlogListNavigationLink = ({
   buttonText,
@@ -74,12 +76,12 @@ BlogListNavigationLink.defaultProps = {
 const PageButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
-  
+
   > * {
     display: none;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    
+
     @media (min-width: ${smBreakpoint}) {
       display: block;
     }
