@@ -87,7 +87,7 @@ flag goes to production, simply remove the flag altogether.
 
 Occasionally, you might experience that the site doesn't update properly
 after restarting the development server with a different `ENABLED_FEATURES`
-setting. In that case, try removing the `.next` cache folder.
+setting. In that case, try removing the `node_modules/.cache` folder.
 
 [feature-flags]: https://martinfowler.com/articles/feature-toggles.html
 
