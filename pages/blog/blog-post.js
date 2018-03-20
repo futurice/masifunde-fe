@@ -25,6 +25,7 @@ import Link from '../../components/Link'
 import { RouteNames as routes } from '../../routes'
 import { smallSpacing, largeSpacing } from '../../styling/sizes'
 import SocialLink from '../../components/SocialLink'
+import Divider from '../../components/Divider'
 
 // BlogPostError
 
@@ -275,10 +276,8 @@ BlogPostContent.defaultProps = {
 
 // BlogPostNav
 
-const HorizontalRule = styled.hr`
-  border-width: 2px;
-  border-color: ${props => props.theme.pineCone};
-  margin-top: ${largeSpacing};
+const DividerWithMargin = styled(Divider)`
+  margin: ${largeSpacing} 0;
 `
 
 const NavContainer = styled.nav`
@@ -314,27 +313,29 @@ const BlogPostNav = ({
   nextPostRoute,
   nextPostText,
 }) => (
-  <div className="row">
-    <div className="offset-lg-2 col-lg-8">
-      <HorizontalRule />
+  <div className="container">
+    <div className="row">
+      <div className="offset-lg-2 col-lg-8">
+        <DividerWithMargin />
 
-      <NavContainer>
-        <Link route={previousPostRoute} passHref>
-          <NavButton type="secondary">
-            <span className="longNavText">{previousPostText}</span>
-            <span className="shortNavText">{'<'}</span>
-          </NavButton>
-        </Link>
-        <Link route={routes.Blog} passHref>
-          <NavButton type="secondary">{blogHomeText}</NavButton>
-        </Link>
-        <Link route={nextPostRoute} passHref>
-          <NavButton type="secondary">
-            <span className="longNavText">{nextPostText}</span>
-            <span className="shortNavText">{'>'}</span>
-          </NavButton>
-        </Link>
-      </NavContainer>
+        <NavContainer>
+          <Link route={previousPostRoute} passHref>
+            <NavButton type="secondary">
+              <span className="longNavText">{previousPostText}</span>
+              <span className="shortNavText">{'<'}</span>
+            </NavButton>
+          </Link>
+          <Link route={routes.Blog} passHref>
+            <NavButton type="secondary">{blogHomeText}</NavButton>
+          </Link>
+          <Link route={nextPostRoute} passHref>
+            <NavButton type="secondary">
+              <span className="longNavText">{nextPostText}</span>
+              <span className="shortNavText">{'>'}</span>
+            </NavButton>
+          </Link>
+        </NavContainer>
+      </div>
     </div>
   </div>
 )
