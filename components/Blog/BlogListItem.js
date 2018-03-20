@@ -50,11 +50,15 @@ const BlogPostTitle = styled.h2`
 
 const Anchor = styled.a`
   width: 100%;
+  :hover, :focus {
+    color: ${({ theme }) => theme.black};
+    text-decoration: underline;
+  }
 `
 
 const TeaserImage = styled.img`
-    width: 100%;
-    max-width: 100%;
+  width: 100%;
+  max-width: 100%;
 `
 
 const BlogPostLink = ({ children, slug }) => (
