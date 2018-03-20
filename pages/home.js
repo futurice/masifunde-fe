@@ -18,10 +18,11 @@ import EmbeddedVideo from '../components/EmbeddedVideo'
 import PageSection from '../components/PageSection'
 import StatList from '../components/StatList'
 import { mdBreakpoint } from '../styling/breakpoints'
-import { smallSpacing } from '../styling/sizes'
+import { mediumSpacing, smallSpacing } from '../styling/sizes'
 import { getLocaleFromQuery } from '../utils/locale'
 import { RouteNames } from '../routes'
 import campaignPageBannerPropTypes from '../propTypes/campaignPageBanner'
+import announcementPropTypes from '../propTypes/announcement'
 
 const BlogPostList = styled.ul`
   list-style: none;
@@ -45,6 +46,10 @@ const BlogPostListItem = styled.li`
   }
 `
 
+const ExtendedBanner = styled(Banner)`
+  margin-bottom: ${mediumSpacing};
+`
+
 const Home = ({
   metaTitle,
   metaDescription,
@@ -62,6 +67,7 @@ const Home = ({
   videoUrl,
   bannersTitle,
   campaign,
+  announcement,
   featuredBlogPostsTitle,
   featuredBlogPosts,
 }) => (
@@ -110,7 +116,7 @@ const Home = ({
           <PageSection>
             <h2>{bannersTitle}</h2>
 
-            <Banner
+            <ExtendedBanner
               subHeadline={campaign.bannerSmallTitle}
               headline={campaign.introHeading}
               description={campaign.introMarkdown}
@@ -118,6 +124,18 @@ const Home = ({
               buttonLink={RouteNames.Campaign}
               buttonText={campaign.bannerButtonText}
             />
+
+            {announcement && (
+              <Banner
+                subHeadline={announcement.subHeading}
+                headline={announcement.heading}
+                description={announcement.description}
+                image={announcement.image.url}
+                buttonLink={announcement.buttonLink}
+                buttonText={announcement.buttonText}
+                showImageOnRight
+              />
+            )}
           </PageSection>
         )}
 
@@ -170,12 +188,14 @@ Home.propTypes = {
   videoUrl: PropTypes.string.isRequired,
   bannersTitle: PropTypes.string.isRequired,
   campaign: PropTypes.shape(campaignPageBannerPropTypes).isRequired,
+  announcement: PropTypes.shape(announcementPropTypes),
   featuredBlogPostsTitle: PropTypes.string.isRequired,
   featuredBlogPosts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 }
 
 Home.defaultProps = {
   metaDescription: undefined,
+  announcement: undefined,
 }
 
 Home.getInitialProps = async function initialProps({ query }) {
