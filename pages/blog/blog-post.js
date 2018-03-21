@@ -25,6 +25,7 @@ import Link from '../../components/Link'
 import { RouteNames as routes } from '../../routes'
 import { smallSpacing, largeSpacing } from '../../styling/sizes'
 import SocialLink from '../../components/SocialLink'
+import Divider from '../../components/Divider'
 import formatDate from '../../utils/date'
 
 // BlogPostError
@@ -138,6 +139,47 @@ const SocialShareLink = SocialLink.withComponent('div').extend`
   margin: 0;
 `
 
+const AuthorSection = ({
+  authorTeamMember,
+  authorExternal,
+  authorText,
+}) => {
+  const heading = (authorTeamMember || authorExternal) ? <H4>{authorText}</H4> : ''
+
+  let author = null
+  if (authorTeamMember || authorExternal) {
+    author = authorTeamMember
+      ? (
+        <TeamMemberAuthor
+          imageUrl={authorTeamMember.image.url}
+          title={authorTeamMember.name}
+          subtitle={authorTeamMember.responsibilityArea}
+          email={authorTeamMember.email}
+        />
+      )
+      : <p>{authorExternal}</p>
+  }
+
+  return (
+    <AuthorContainer className="col-6">
+      {heading}
+      {author}
+    </AuthorContainer>
+  )
+}
+
+AuthorSection.propTypes = {
+  authorTeamMember: PropTypes.shape(teamMemberShape),
+  authorExternal: PropTypes.string,
+  authorText: PropTypes.string,
+}
+
+AuthorSection.defaultProps = {
+  authorTeamMember: null,
+  authorExternal: '',
+  authorText: '',
+}
+
 const BlogPostContent = ({
   title,
   metaDescription,
@@ -150,17 +192,6 @@ const BlogPostContent = ({
   shareText,
   url,
 }) => {
-  const author = authorTeamMember
-    ? (
-      <TeamMemberAuthor
-        imageUrl={authorTeamMember.image.url}
-        title={authorTeamMember.name}
-        subtitle={authorTeamMember.responsibilityArea}
-        email={authorTeamMember.email}
-      />
-    )
-    : <p>{authorExternal}</p>
-
   const pageUrl = `https://www.masifunde.de/${url.asPath}`
   const shareMessage = ''
   const shareIconSize = 24
@@ -186,10 +217,11 @@ const BlogPostContent = ({
             <BlogTitle>{title}</BlogTitle>
             <BlogMarkdown source={content} />
             <div className="row">
-              <AuthorContainer className="col-6">
-                <H4>{authorText}</H4>
-                {author}
-              </AuthorContainer>
+              <AuthorSection
+                authorTeamMember={authorTeamMember}
+                authorExternal={authorExternal}
+                authorText={authorText}
+              />
               <ShareContainer className="col-6">
                 <H4>{shareText}</H4>
                 <ShareButtonRow>
@@ -245,10 +277,8 @@ BlogPostContent.defaultProps = {
 
 // BlogPostNav
 
-const HorizontalRule = styled.hr`
-  border-width: 2px;
-  border-color: ${props => props.theme.pineCone};
-  margin-top: ${largeSpacing};
+const DividerWithMargin = styled(Divider)`
+  margin: ${largeSpacing} 0;
 `
 
 const NavContainer = styled.nav`
@@ -284,10 +314,10 @@ const BlogPostNav = ({
   nextPostRoute,
   nextPostText,
 }) => (
-  <PageSection>
+  <div className="container">
     <div className="row">
       <div className="offset-lg-2 col-lg-8">
-        <HorizontalRule />
+        <DividerWithMargin />
 
         <NavContainer>
           <Link route={previousPostRoute} passHref>
@@ -308,7 +338,7 @@ const BlogPostNav = ({
         </NavContainer>
       </div>
     </div>
-  </PageSection>
+  </div>
 )
 
 BlogPostNav.propTypes = {
