@@ -13,10 +13,23 @@ export async function fetchFooterData(locale) {
   return fetchMemoizedSingleEntry('footer', locale)
 }
 
+export const unwrapFile = (fileObject) => {
+  const file = fileObject && fileObject.fields && fileObject.fields.file
+
+  if (!file) {
+    return undefined
+  }
+
+  return {
+    url: file.url,
+    title: fileObject.fields.title || '',
+  }
+}
+
 // For a list of valid image URL parameters, see the Contentful API docs:
 // https://www.contentful.com/developers/docs/references/images-api
 export const unwrapImage = (image, urlParams) => {
-  const imageFile = image && image.fields && image.fields.file
+  const imageFile = unwrapFile(image)
 
   if (!imageFile) {
     return undefined
@@ -25,8 +38,8 @@ export const unwrapImage = (image, urlParams) => {
   const urlQuery = urlParams ? `?${qs.stringify(urlParams)}` : ''
 
   return {
+    ...imageFile,
     url: imageFile.url + urlQuery,
-    title: image.fields.title || '',
   }
 }
 
