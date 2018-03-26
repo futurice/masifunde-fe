@@ -26,7 +26,7 @@ export const unwrapImage = (image, urlParams) => {
 
   return {
     url: imageFile.url + urlQuery,
-    title: imageFile.title || '',
+    title: image.fields.title || '',
   }
 }
 
