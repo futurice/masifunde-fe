@@ -13,6 +13,10 @@ export async function fetchFooterData(locale) {
   return fetchMemoizedSingleEntry('footer', locale)
 }
 
+export function unwrapFields(response) {
+  return response && response.fields
+}
+
 export const unwrapFile = (fileObject) => {
   const file = fileObject && fileObject.fields && fileObject.fields.file
 
@@ -25,6 +29,16 @@ export const unwrapFile = (fileObject) => {
     title: fileObject.fields.title || '',
   }
 }
+
+export const unwrapFiles = (wrappedContent = []) =>
+  wrappedContent.map((content) => {
+    const unwrappedFields = unwrapFields(content)
+
+    return {
+      ...unwrappedFields,
+      file: unwrapFile(unwrappedFields.file),
+    }
+  })
 
 // For a list of valid image URL parameters, see the Contentful API docs:
 // https://www.contentful.com/developers/docs/references/images-api
@@ -148,10 +162,6 @@ export const unwrapAward = award => ({
     q: jpegQuality,
   }),
 })
-
-export function unwrapFields(response) {
-  return response && response.fields
-}
 
 export const unwrapProjects = (projects = []) =>
   projects.map(({ fields }) => ({

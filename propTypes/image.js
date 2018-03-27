@@ -1,6 +1,3 @@
-import PropTypes from 'prop-types'
+import File from './file'
 
-export default {
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-}
+export default File
