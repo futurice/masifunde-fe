@@ -43,6 +43,8 @@ const ExtendedDivider = Divider.extend`
 const Documents = ({
   metaDescription,
   metaTitle,
+  introHeading,
+  introMarkdown,
   section1heading,
   documentsList1,
   section2heading,
@@ -60,8 +62,8 @@ const Documents = ({
     <Head title={metaTitle} description={metaDescription} />
 
     <PageSection>
-      <h1>Test</h1>
-      <CenteredText source="centered Text" />
+      <h1>{introHeading}</h1>
+      <CenteredText source={introMarkdown} />
     </PageSection>
 
     <ContainedGrid>
@@ -108,6 +110,8 @@ const Documents = ({
 Documents.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,
+  introHeading: PropTypes.string.isRequired,
+  introMarkdown: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
