@@ -5,10 +5,16 @@ import styled from 'styled-components'
 import DocumentDownloadBox from './DocumentDownloadBox'
 import FilePropType from '../../propTypes/file'
 import { smBreakpoint } from '../../styling/breakpoints'
+import { extraExtraSmallSpacing } from '../../styling/sizes'
 
 const Title = styled.p`
   font-weight: bold;
-  margin-bottom: 0;
+  margin-bottom: ${extraExtraSmallSpacing};
+  margin-top: ${extraExtraSmallSpacing};
+
+  @media (min-width: ${smBreakpoint}) {
+    margin-top: 0; 
+  }
 `
 
 const Description = styled.p`
