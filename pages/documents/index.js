@@ -15,17 +15,13 @@ import { getLocaleFromQuery } from '../../utils/locale'
 import Head from '../../components/Head'
 import { smBreakpoint } from '../../styling/breakpoints'
 import teamMemberProps from '../../propTypes/teamMember'
-import { headerFont, rem } from '../../styling/typography'
-import { largeSpacing, mediumSpacing } from '../../styling/sizes'
+import { subsectionTitleText } from '../../styling/typography'
+import { largeSpacing } from '../../styling/sizes'
 
 const Heading = styled.h2`
-  font-family: ${headerFont};
-  font-size: ${rem('32px')};
-  font-weight: 500;
-  color: ${({ theme }) => theme.pineCone};
+  ${subsectionTitleText};
   text-align: center;
-  margin-bottom: ${mediumSpacing};
-  
+
   @media (min-width: ${smBreakpoint}) {
     text-align: left;
   }
