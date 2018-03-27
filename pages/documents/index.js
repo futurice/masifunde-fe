@@ -8,7 +8,6 @@ import PageSection from '../../components/PageSection'
 import ContainedGrid from '../../components/ContainedGrid'
 import CenteredText from '../../components/CenteredText'
 import Divider from '../../components/Divider'
-import TeamMember from '../../components/TeamMember'
 import Banner from '../../components/Banner'
 import { fetchDocumentPage } from '../../api/document'
 import { getLocaleFromQuery } from '../../utils/locale'
@@ -17,6 +16,7 @@ import { smBreakpoint } from '../../styling/breakpoints'
 import teamMemberProps from '../../propTypes/teamMember'
 import { subsectionTitleText } from '../../styling/typography'
 import { largeSpacing } from '../../styling/sizes'
+import TextWithTeamMember from '../../components/TextWithTeamMember'
 
 const Heading = styled.h2`
   ${subsectionTitleText};
@@ -50,6 +50,8 @@ const Documents = ({
   section3heading,
   documentsList3,
   bannerTitle,
+  contactTextHeading,
+  contactText,
   teamMember,
   bannerButtonText,
   bannerButtonUrl,
@@ -80,18 +82,19 @@ const Documents = ({
 
         <ExtendedDivider color="orange" />
       </PageSection>
-
-      <PageSection contained={false}>
-        <TeamMemberContainer>
-          <TeamMember
-            imageUrl={teamMember.image.url}
-            title={teamMember.name}
-            email={teamMember.email}
-          />
-        </TeamMemberContainer>
-      </PageSection>
     </ContainedGrid>
 
+    <PageSection>
+      <TeamMemberContainer>
+        <TextWithTeamMember
+          header={contactTextHeading}
+          text={contactText}
+          teamMemberTitle={teamMember.name}
+          teamMemberSubtitle={teamMember.responsibilityArea}
+          teamMember={teamMember}
+        />
+      </TeamMemberContainer>
+    </PageSection>
 
     <Banner
       headline={bannerTitle}
@@ -114,6 +117,8 @@ Documents.propTypes = {
   documentsList2: DocumentsList.propTypes.documents.isRequired,
   section3heading: PropTypes.string.isRequired,
   documentsList3: DocumentsList.propTypes.documents.isRequired,
+  contactTextHeading: PropTypes.string.isRequired,
+  contactText: PropTypes.string.isRequired,
   teamMember: PropTypes.shape(teamMemberProps).isRequired,
 }
 
