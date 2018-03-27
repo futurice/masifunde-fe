@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container } from 'reactstrap'
 import styled, { css } from 'styled-components'
 import { smBreakpoint } from '../styling/breakpoints'
 
@@ -15,7 +14,7 @@ const pageSectionStyle = css`
   }
 `
 
-const ContainedPageSection = styled(Container)`
+const ContainedPageSection = styled.div.attrs({ className: 'container' })`
   ${pageSectionStyle}
 `
 
