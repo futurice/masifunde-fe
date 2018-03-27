@@ -16,6 +16,7 @@ import withQueryParams from '../../components/withQueryParams'
 import DonationForm from '../../components/DonationForm'
 import imagePropTypes from '../../propTypes/image'
 import teamMemmberPropTypes from '../../propTypes/teamMember'
+import ContainedGrid from '../../components/ContainedGrid'
 
 const StyledRoundedImage = RoundedImage.extend`
   margin-bottom: 1rem;
@@ -50,40 +51,36 @@ const Campaign = ({
       <CenteredText source={introMarkdown} />
     </PageSection>
 
-    <div className="container">
-      <div className="row">
-        <div className="offset-lg-1 col-lg-10">
-          <PageSection>
-            <div className="row">
-              <div className="col-md">
-                {imageList.map(({ url, title }) => (
-                  <StyledRoundedImage
-                    className="img-fluid"
-                    key={url}
-                    src={url}
-                    alt={title}
-                  />
-                ))}
-              </div>
-              <div className="col-md">
-                <Markdown source={contentMarkdown} />
-              </div>
-            </div>
-          </PageSection>
-
-          <PageSection>
-            <TeamMemberHeadline>{teamMemberHeading}</TeamMemberHeadline>
-            <div>
-              <TeamMember
-                imageUrl={teamMember.image.url}
-                title={teamMember.name}
-                email={teamMember.email}
+    <ContainedGrid>
+      <PageSection contained={false}>
+        <div className="row">
+          <div className="col-md">
+            {imageList.map(({ url, title }) => (
+              <StyledRoundedImage
+                className="img-fluid"
+                key={url}
+                src={url}
+                alt={title}
               />
-            </div>
-          </PageSection>
+            ))}
+          </div>
+          <div className="col-md">
+            <Markdown source={contentMarkdown} />
+          </div>
         </div>
-      </div>
-    </div>
+      </PageSection>
+
+      <PageSection contained={false}>
+        <TeamMemberHeadline>{teamMemberHeading}</TeamMemberHeadline>
+        <div>
+          <TeamMember
+            imageUrl={teamMember.image.url}
+            title={teamMember.name}
+            email={teamMember.email}
+          />
+        </div>
+      </PageSection>
+    </ContainedGrid>
 
     <DonationForm
       amounts={amounts}

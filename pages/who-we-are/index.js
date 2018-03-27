@@ -140,7 +140,7 @@ const WhoWeAre = ({
       <PageSection>
         <h2>{patronsHeadline}</h2>
         <PatronsText source={patronsText} />
-        <ContainedGrid>
+        <ContainedGrid withoutContainer>
           <TestimonialList testimonials={patronsList} />
         </ContainedGrid>
       </PageSection>
