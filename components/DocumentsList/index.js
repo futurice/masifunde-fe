@@ -25,7 +25,7 @@ const BoxContainerCol = styled.div`
   }
 `
 
-const BoxContainer = styled.div`
+const ContentContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -44,13 +44,13 @@ const Document = ({ expandList, documents }) => (
         }) => (
           <BoxContainerCol className="col-md-6" key={file.url}>
             <div className="row">
-              <BoxContainer className="col-sm-auto">
+              <ContentContainer className="col-sm-auto">
                 <DocumentDownloadBox title={title} fileUrl={file.url} />
-              </BoxContainer>
-              <BoxContainer className="col">
+              </ContentContainer>
+              <ContentContainer className="col">
                 <Title>{longTitle}</Title>
                 <Description>{description}</Description>
-              </BoxContainer>
+              </ContentContainer>
             </div>
           </BoxContainerCol>
         ))}
