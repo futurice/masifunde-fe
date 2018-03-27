@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { rem } from '../../styling/typography'
 import { extraExtraSmallSpacing } from '../../styling/sizes'
+import { wordBreak } from '../../styling/utils'
 
 const BoxContainer = styled.a`
   align-items: center;
@@ -31,6 +32,7 @@ const Headline = styled.div`
   font-weight: bold;
   max-width: 100%;
   text-align: center;
+  ${wordBreak};
 `
 
 const DownloadIcon = styled.div`
