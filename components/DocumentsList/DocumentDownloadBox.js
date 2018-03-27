@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { rem } from '../../styling/typography'
-import { extraExtraSmallSpacing } from '../../styling/sizes'
+import { extraExtraSmallSpacing, extraSmallSpacing } from '../../styling/sizes'
 import { wordBreak } from '../../styling/utils'
 
 const BoxContainer = styled.a`
@@ -14,7 +14,7 @@ const BoxContainer = styled.a`
   flex-direction: column;
   justify-content: center;
   min-height: 130px;
-  padding: 1rem;
+  padding: ${extraSmallSpacing};
   transition: background-color 0.2s, border 0.2s;
   width: 160px;
 
