@@ -53,13 +53,12 @@ const StyledButton = styled(Button)`
   font-weight: bold;
   background-color: transparent;
   outline: none;
-  box-shadow: none !important;
   padding: 0.5rem ${smallSpacing};
   border-radius: 47px;
   border-width: 3px;
   cursor: pointer;
   white-space: normal;
-  
+
   ${({ rounded }) => rounded && css`
     width: 50px;
     height: 50px;
@@ -70,7 +69,7 @@ const StyledButton = styled(Button)`
     border-radius: 50%;
   `}
 
-  &:hover, &:focus {
+  &:hover {
     color: white;
   }
 
@@ -81,8 +80,12 @@ const StyledButton = styled(Button)`
     padding-top: 0.35rem;
     padding-bottom: 0.35rem;
 
-    &:hover, &:focus {
+    &:hover {
       background-color: ${props.theme.green};
+    }
+
+    &:focus {
+      box-shadow: 0px 0px 0px 3px ${props.theme.greenAlpha};
     }
 
     ${props.isActive && `
@@ -95,8 +98,12 @@ const StyledButton = styled(Button)`
     color: ${props.theme.orangeRed};
     border-color: ${props.theme.orangeRed};
 
-    &:hover, &:focus {
+    &:hover {
       background-color: ${props.theme.orangeRed};
+    }
+
+    &:focus {
+      box-shadow: 0px 0px 0px 3px ${props.theme.orangeRedAlpha};
     }
 
     ${props.isActive && `
@@ -109,10 +116,15 @@ const StyledButton = styled(Button)`
     color: white;
     border-color: white;
 
-    &:hover, &:focus {
+    &:hover {
       color: ${props.theme.orange};
       background-color: white;
     }
+
+    &:focus {
+      box-shadow: 0px 0px 0px 3px ${props.theme.whiteAlpha};
+    }
+
   `}
 `
 
