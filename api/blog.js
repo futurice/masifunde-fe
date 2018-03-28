@@ -40,15 +40,47 @@ function fetchBlogPostPageTemplate(locale) {
   return fetchSingleEntry('pageBlogPost', locale)
 }
 
+async function fetchPreviousBlogPostSlug(locale, date) {
+  const entries = await fetchEntriesForContentType('blogPost', {
+    locale,
+    limit: 1,
+    order: '-fields.date',
+    'fields.date[lt]': date,
+    'fields.slug[exists]': true,
+  })
+
+  return (entries && entries.length > 0) ? entries[0].fields.slug : null
+}
+
+async function fetchNextBlogPostSlug(locale, date) {
+  const entries = await fetchEntriesForContentType('blogPost', {
+    locale,
+    limit: 1,
+    order: 'fields.date',
+    'fields.date[gt]': date,
+    'fields.slug[exists]': true,
+  })
+
+  return (entries && entries.length > 0) ? entries[0].fields.slug : null
+}
+
 export async function fetchBlogPostPage(locale, slug) {
   try {
     const [page, post] = await Promise.all([
       fetchBlogPostPageTemplate(locale),
       fetchBlogPost(locale, slug),
     ])
+
+    const [prev, next] = await Promise.all([
+      fetchPreviousBlogPostSlug(locale, post.date),
+      fetchNextBlogPostSlug(locale, post.date),
+    ])
+
     return {
       ...page,
       ...post,
+      previousPost: prev ? `/blog/${prev}` : null,
+      nextPost: next ? `/blog/${next}` : null,
     }
   } catch (error) {
     if (error.name === 'PostNotFoundError') {
