@@ -13,13 +13,13 @@ import formatDate from '../../utils/date'
 const TeaserImageContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items: flex-start;  
+  align-items: flex-start;
 `
 
 const TeaserText = styled.span`
   color: ${({ theme }) => theme.pineCone};
   font-size: ${rem('16px')};
-  
+
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('20px')};
   }
@@ -39,9 +39,9 @@ const BlogPostTitle = styled.h2`
   text-align: left;
   width: 100%;
   color: ${({ theme }) => theme.black};
-  
+
   ${wordBreak}
-  
+
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('32px')};
     line-height: ${rem('40px')};;
@@ -65,11 +65,7 @@ const BlogPostLink = ({ children, slug }) => (
   <Link
     route={RouteNames.BlogPost}
     passHref
-    params={{
-      slug,
-      previousPostRoute: '/FIXME: slug',
-      nextPostRoute: '/FIXME: slug',
-    }}
+    params={{ slug }}
   >
     <Anchor>
       {children}

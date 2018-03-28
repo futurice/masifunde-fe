@@ -308,19 +308,18 @@ const NavButton = styled(Button)`
 `
 
 const BlogPostNav = ({
-  previousPostRoute,
+  previousPost,
   previousPostText,
   blogHomeText,
-  nextPostRoute,
+  nextPost,
   nextPostText,
 }) => (
   <div className="container">
     <div className="row">
       <div className="offset-lg-2 col-lg-8">
         <DividerWithMargin />
-
         <NavContainer>
-          <Link route={previousPostRoute} passHref>
+          <Link route={previousPost} passHref>
             <NavButton type="secondary">
               <span className="longNavText">{previousPostText}</span>
               <span className="shortNavText">{'<'}</span>
@@ -329,7 +328,7 @@ const BlogPostNav = ({
           <Link route={routes.Blog} passHref>
             <NavButton type="secondary">{blogHomeText}</NavButton>
           </Link>
-          <Link route={nextPostRoute} passHref>
+          <Link route={nextPost} passHref>
             <NavButton type="secondary">
               <span className="longNavText">{nextPostText}</span>
               <span className="shortNavText">{'>'}</span>
@@ -341,19 +340,20 @@ const BlogPostNav = ({
   </div>
 )
 
+
 BlogPostNav.propTypes = {
-  previousPostRoute: PropTypes.string,
+  previousPost: PropTypes.string,
   previousPostText: PropTypes.string,
-  nextPostRoute: PropTypes.string,
+  nextPost: PropTypes.string,
   blogHomeText: PropTypes.string,
   nextPostText: PropTypes.string,
 }
 
 BlogPostNav.defaultProps = {
-  previousPostRoute: null,
+  previousPost: null,
   previousPostText: '',
   blogHomeText: '',
-  nextPostRoute: null,
+  nextPost: null,
   nextPostText: '',
 }
 
@@ -384,17 +384,7 @@ BlogPost.defaultProps = {
 }
 
 BlogPost.getInitialProps = async function initialProps({ query }) {
-  const {
-    previousPostRoute,
-    nextPostRoute,
-  } = query
-
   return fetchBlogPostPage(getLocaleFromQuery(query), query.slug)
-    .then(result => ({
-      previousPostRoute,
-      nextPostRoute,
-      ...result,
-    }))
 }
 
 export default withLayout(BlogPost)
