@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
+import { rgba } from 'polished'
 
 import { defaultFont, rem } from '../styling/typography'
 import { smallSpacing } from '../styling/sizes'
@@ -17,6 +18,7 @@ const Button = ({
   isActive,
   rounded,
   href,
+  theme,
   ...rest
 }) => (
   <ButtonContainer center={center}>
@@ -85,7 +87,7 @@ const StyledButton = styled(Button)`
     }
 
     &:focus {
-      box-shadow: 0px 0px 0px 3px ${props.theme.greenAlpha};
+      box-shadow: 0px 0px 0px 3px ${rgba(props.theme.green, 0.5)};
     }
 
     ${props.isActive && `
@@ -103,7 +105,7 @@ const StyledButton = styled(Button)`
     }
 
     &:focus {
-      box-shadow: 0px 0px 0px 3px ${props.theme.orangeRedAlpha};
+      box-shadow: 0px 0px 0px 3px ${rgba(props.theme.orangeRed, 0.5)};
     }
 
     ${props.isActive && `
@@ -122,7 +124,7 @@ const StyledButton = styled(Button)`
     }
 
     &:focus {
-      box-shadow: 0px 0px 0px 3px ${props.theme.whiteAlpha};
+      box-shadow: 0px 0px 0px 3px ${rgba('white', 0.5)};
     }
 
   `}
