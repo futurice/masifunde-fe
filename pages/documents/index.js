@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import withLayout from '../../components/withLayout'
 import DocumentsList from '../../components/DocumentsList'
 import PageSection from '../../components/PageSection'
-import ContainedGrid from '../../components/ContainedGrid'
+import CenteredGrid from '../../components/CenteredGrid'
 import CenteredText from '../../components/CenteredText'
 import Divider from '../../components/Divider'
 import Banner from '../../components/Banner'
@@ -66,7 +66,7 @@ const Documents = ({
       <CenteredText source={introMarkdown} />
     </PageSection>
 
-    <ContainedGrid>
+    <CenteredGrid>
       <PageSection contained={false}>
         <Heading>{section1heading}</Heading>
         <DocumentsList documents={documentsList1} />
@@ -84,7 +84,7 @@ const Documents = ({
 
         <ExtendedDivider color="orange" />
       </PageSection>
-    </ContainedGrid>
+    </CenteredGrid>
 
     <PageSection>
       <TeamMemberContainer>

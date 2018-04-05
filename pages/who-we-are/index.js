@@ -20,7 +20,7 @@ import { lgBreakpoint } from '../../styling/breakpoints'
 import Link from '../../components/Link'
 import featureFlags from '../../featureFlags'
 import TestimonialList from '../../components/TestimonialList'
-import ContainedGrid from '../../components/ContainedGrid'
+import CenteredGrid from '../../components/CenteredGrid'
 
 const Image = styled.img`
   width: 100%;
@@ -140,9 +140,9 @@ const WhoWeAre = ({
       <PageSection>
         <h2>{patronsHeadline}</h2>
         <PatronsText source={patronsText} />
-        <ContainedGrid withoutContainer>
+        <CenteredGrid withoutContainer>
           <TestimonialList testimonials={patronsList} />
-        </ContainedGrid>
+        </CenteredGrid>
       </PageSection>
     )}
 

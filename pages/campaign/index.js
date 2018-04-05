@@ -16,7 +16,7 @@ import withQueryParams from '../../components/withQueryParams'
 import DonationForm from '../../components/DonationForm'
 import imagePropTypes from '../../propTypes/image'
 import teamMemmberPropTypes from '../../propTypes/teamMember'
-import ContainedGrid from '../../components/ContainedGrid'
+import CenteredGrid from '../../components/CenteredGrid'
 
 const StyledRoundedImage = RoundedImage.extend`
   margin-bottom: 1rem;
@@ -51,7 +51,7 @@ const Campaign = ({
       <CenteredText source={introMarkdown} />
     </PageSection>
 
-    <ContainedGrid>
+    <CenteredGrid>
       <PageSection contained={false}>
         <div className="row">
           <div className="col-md">
@@ -80,7 +80,7 @@ const Campaign = ({
           />
         </div>
       </PageSection>
-    </ContainedGrid>
+    </CenteredGrid>
 
     <DonationForm
       amounts={amounts}

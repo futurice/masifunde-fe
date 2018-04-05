@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ContainedGrid = ({
+const CenteredGrid = ({
   children,
   className,
   withoutContainer,
@@ -15,15 +15,15 @@ const ContainedGrid = ({
   </div>
 )
 
-ContainedGrid.propTypes = {
+CenteredGrid.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   withoutContainer: PropTypes.bool,
 }
 
-ContainedGrid.defaultProps = {
+CenteredGrid.defaultProps = {
   className: '',
   withoutContainer: false,
 }
 
-export default ContainedGrid
+export default CenteredGrid
