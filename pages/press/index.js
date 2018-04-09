@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import withLayout from '../../components/withLayout'
 import PageSection from '../../components/PageSection'
 import CenteredText from '../../components/CenteredText'
-import ContainedGrid from '../../components/ContainedGrid'
+import CenteredGrid from '../../components/CenteredGrid'
 import Head from '../../components/Head'
 import { getLocaleFromQuery } from '../../utils/locale'
 import { fetchPressPage } from '../../api/press'
@@ -55,7 +55,7 @@ const Press = ({
       <CenteredText source={introText} />
     </PageSection>
 
-    <ContainedGrid>
+    <CenteredGrid>
       <PageSection contained={false}>
         <Heading>{section1heading}</Heading>
         <DocumentsList documents={documentsList1} />
@@ -66,7 +66,7 @@ const Press = ({
         <DocumentsList documents={documentsList2} expandList />
       </PageSection>
       <ExtendedDivider color="orange" />
-    </ContainedGrid>
+    </CenteredGrid>
 
     <PageSection>
       <TextWithTeamMember
