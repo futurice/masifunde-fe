@@ -5,7 +5,11 @@
   },
   "source": "Source",
   "blog": {
-    "readMore": "Read more"
+    "readMore": "Read more",
+    "errorHeadTitle": "Post not found",
+    "errorHeadMeta": "The requested blog post could not be found.",
+    "errorHeading": "Oops",
+    "errorText": "The requested blog post could not be found."
   },
   "donation": {
     "required": "Required",
