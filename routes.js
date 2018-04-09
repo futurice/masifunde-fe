@@ -50,6 +50,7 @@ const Contact = '/contact'
 const Impressum = '/impressum'
 const Datenschutz = '/datenschutz'
 const Campaign = '/campaign'
+const Press = '/press'
 const Documents = '/documents'
 
 // Register the routes
@@ -75,6 +76,7 @@ if (featureFlags.release10) {
   addRoute('/blog', Blog)
   addRoute('/blog/:slug', BlogPost)
   addRoute('/spendenaktion', Campaign)
+  addRoute('/presse', Press)
   addRoute('/dokumente', Documents)
 }
 
@@ -100,6 +102,7 @@ nextRoutes.RouteNames = {
   Datenschutz,
   Impressum,
   Campaign,
+  Press,
   Documents,
 }
 
