@@ -13,7 +13,7 @@ const Title = styled.p`
   margin-top: ${extraExtraSmallSpacing};
 
   @media (min-width: ${smBreakpoint}) {
-    margin-top: 0; 
+    margin-top: 0;
   }
 `
 
@@ -27,7 +27,7 @@ const BoxContainerCol = styled.div`
   justify-content: center;
 
   @media (min-width: ${smBreakpoint}) {
-    display: block; 
+    display: block;
   }
 `
 
@@ -37,7 +37,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
 
   @media (min-width: ${smBreakpoint}) {
-    display: block; 
+    display: block;
   }
 `
 
@@ -64,7 +64,7 @@ const Document = ({ expandList, documents }) => (
     ) : (
       <div className="row">
         {documents.map(({ title, file }) => (
-          <BoxContainerCol key={file.key} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
+          <BoxContainerCol key={file.url} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
             <DocumentDownloadBox title={title} fileUrl={file.url} />
           </BoxContainerCol>
         ))}
