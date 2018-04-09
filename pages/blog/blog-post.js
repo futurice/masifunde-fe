@@ -7,6 +7,7 @@ import {
 } from 'react-share'
 import FaFacebook from 'react-icons/lib/fa/facebook'
 import FaTwitter from 'react-icons/lib/fa/twitter'
+import T from 'i18n-react'
 
 import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
@@ -30,23 +31,15 @@ import formatDate from '../../utils/date'
 
 // BlogPostError
 
-const BlogPostError = ({ error }) => (
+const BlogPostError = () => (
   <div>
-    <Head title="FIXME: Oops" description="FIXME: Something went wrong" />
+    <Head title={T.translate('blog.errorHeadTitle')} description={T.translate('blog.errorHeadMeta')} />
     <PageSection>
-      <h1>FIXME: Oops</h1>
-      <p className="offset-lg-2 col-lg-8">{error}</p>
+      <h1>{T.translate('blog.errorHeading')}</h1>
+      <p className="offset-lg-2 col-lg-8">{T.translate('blog.errorText')}</p>
     </PageSection>
   </div>
 )
-
-BlogPostError.propTypes = {
-  error: PropTypes.string,
-}
-
-BlogPostError.defaultProps = {
-  error: null,
-}
 
 // BlogPostContent
 
@@ -362,7 +355,7 @@ BlogPostNav.defaultProps = {
 const BlogPost = (props) => {
   const { error } = props
   return error
-    ? <BlogPostError {...props} />
+    ? <BlogPostError />
     : (
       <div>
         <BlogPostContent {...props} />
@@ -373,13 +366,11 @@ const BlogPost = (props) => {
 
 BlogPost.propTypes = {
   ...BlogPostContent.propTypes,
-  ...BlogPostError.propTypes,
   ...BlogPostNav.propTypes,
 }
 
 BlogPost.defaultProps = {
   ...BlogPostContent.defaultProps,
-  ...BlogPostError.defaultProps,
   ...BlogPostNav.defaultProps,
 }
 

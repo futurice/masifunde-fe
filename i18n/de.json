@@ -5,7 +5,11 @@
   },
   "source": "Quelle",
   "blog": {
-    "readMore": "Mehr lesen"
+    "readMore": "Mehr lesen",
+    "errorHeadTitle": "Nicht gefunden",
+    "errorHeadMeta": "Der gewünschte Blogpost konnte nicht gefunden werden.",
+    "errorHeading": "Oops",
+    "errorText": "Der gewünschte Blogpost konnte nicht gefunden werden."
   },
   "donation": {
     "required": "Pflichtfeld",
