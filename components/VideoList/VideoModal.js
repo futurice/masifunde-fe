@@ -15,6 +15,7 @@ import { wordBreak } from '../../styling/utils'
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
+  // Global styles are used only for react-modal component
   .ReactModal__Body--open{
     overflow: hidden;
   }
