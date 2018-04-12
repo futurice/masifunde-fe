@@ -127,7 +127,6 @@ class VideoModal extends Component {
       // To get vimeo thumbnail the API request is required
       getVimeoThumbnail(videoUrl)
         .then((thumbnailUrl) => {
-          console.log(thumbnailUrl)
           this.setState({
             thumbnail: thumbnailUrl,
           })
