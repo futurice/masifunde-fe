@@ -14,9 +14,11 @@ import DocumentsList from '../../components/DocumentsList'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 import Divider from '../../components/Divider'
 import { smBreakpoint } from '../../styling/breakpoints'
-import { subsectionTitleText } from '../../styling/typography'
+import { subsectionTitleText, titleText, rem } from '../../styling/typography'
 import { largeSpacing } from '../../styling/sizes'
 import teamMemberProps from '../../propTypes/teamMember'
+import VideoList from '../../components/VideoList'
+import theme from '../../styling/theme'
 
 
 const Heading = styled.h2`
@@ -25,6 +27,20 @@ const Heading = styled.h2`
 
   @media (min-width: ${smBreakpoint}) {
     text-align: left;
+  }
+`
+
+const SubHeading = styled.h3`
+  ${titleText};
+  color: ${theme.pineCone};
+  font-size: ${rem('20px')};
+  font-weight: 500;
+  line-height: 1.39;
+  text-align: center;
+
+  @media (min-width: ${smBreakpoint}) {
+    text-align: left;
+    font-size: ${rem('22px')};
   }
 `
 
@@ -38,7 +54,10 @@ const Press = ({
   introHeading,
   introText,
   section1heading,
+  documentsSubHeading,
   documentsList1,
+  videosSubHeading,
+  videosList,
   section2heading,
   documentsList2,
   teamMember,
@@ -58,7 +77,12 @@ const Press = ({
     <CenteredGrid>
       <PageSection contained={false}>
         <Heading>{section1heading}</Heading>
+        <SubHeading>{documentsSubHeading}</SubHeading>
         <DocumentsList documents={documentsList1} />
+      </PageSection>
+      <PageSection contained={false}>
+        <SubHeading>{videosSubHeading}</SubHeading>
+        <VideoList videos={videosList} />
       </PageSection>
 
       <PageSection contained={false}>
@@ -92,7 +116,10 @@ Press.propTypes = {
   introHeading: PropTypes.string.isRequired,
   introText: PropTypes.string.isRequired,
   section1heading: PropTypes.string.isRequired,
+  documentsSubHeading: PropTypes.string.isRequired,
   documentsList1: DocumentsList.propTypes.documents.isRequired,
+  videosSubHeading: PropTypes.string.isRequired,
+  videosList: VideoList.propTypes.videos.isRequired,
   section2heading: PropTypes.string.isRequired,
   documentsList2: DocumentsList.propTypes.documents.isRequired,
   contactTextHeading: PropTypes.string.isRequired,
