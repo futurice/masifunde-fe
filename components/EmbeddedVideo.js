@@ -1,10 +1,14 @@
-/* eslint-disable no-useless-escape */
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import ConditionalContainer from './ConditionalContainer'
 import { mdBreakpoint } from '../styling/breakpoints'
+import {
+  createVimeoSrc,
+  createYouTubeSrc,
+  isYouTubeVideo,
+} from '../utils/video'
 
 const VideoIframe = styled.iframe`
   position: absolute;
@@ -13,22 +17,6 @@ const VideoIframe = styled.iframe`
   width: 100%;
   height: 100%;
 `
-
-const isYouTubeVideo = videoUrl => videoUrl.includes('youtube') || videoUrl.includes('youtu.be')
-
-const createYouTubeSrc = (videoUrl) => {
-  const youtubeVideoIdRegex = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/
-  const match = youtubeVideoIdRegex.exec(videoUrl)
-  const videoId = (!!match && match.length > 2) ? match[2] : ''
-  return `https://www.youtube.com/embed/${videoId}?rel=0&amp;showinfo=1`
-}
-
-const createVimeoSrc = (videoUrl) => {
-  const vimeoVideoIdRegex = /(http|https)?:\/\/(www\.|player\.)?vimeo.com\/(?:video\/(?:\w+\/)?|channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|)(\d+)/
-  const match = vimeoVideoIdRegex.exec(videoUrl)
-  const videoId = (!!match && match.length > 4) ? match[4] : ''
-  return `https://player.vimeo.com/video/${videoId}`
-}
 
 const VideoIframeContainer = ({
   videoUrl,
@@ -65,16 +53,25 @@ const EmbeddedVideoContainer = styled.div`
   margin: 0 auto;
   
   @media (min-width: ${mdBreakpoint}) {
-    width: 80%;
+    width: ${({ alwaysFullWidth }) => (alwaysFullWidth ? '100%' : '80%')};
   }
 `
 
-const ContainedEmbeddedVideo = props => (
-  <ConditionalContainer containAfter="md" >
-    <EmbeddedVideoContainer>
-      <EmbeddedVideo {...props} />
+const ContainedEmbeddedVideo = ({ alwaysFullWidth, ...rest }) => (
+  <ConditionalContainer containAfter={alwaysFullWidth ? 'never' : 'md'} >
+    <EmbeddedVideoContainer alwaysFullWidth={alwaysFullWidth}>
+      <EmbeddedVideo {...rest} />
     </EmbeddedVideoContainer>
   </ConditionalContainer>
 )
+
+ContainedEmbeddedVideo.propTypes = {
+  alwaysFullWidth: PropTypes.bool,
+}
+
+ContainedEmbeddedVideo.defaultProps = {
+  alwaysFullWidth: false,
+}
+
 
 export default ContainedEmbeddedVideo

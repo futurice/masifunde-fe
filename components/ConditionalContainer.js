@@ -13,6 +13,8 @@ const Div = styled.div`
         return '991.99px'
       case 'lg':
         return '1199.99px'
+      case 'never':
+        return '100vw'
       default:
         return '767.99px'
     }
