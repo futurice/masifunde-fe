@@ -14,12 +14,10 @@ import DocumentsList from '../../components/DocumentsList'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 import Divider from '../../components/Divider'
 import { smBreakpoint } from '../../styling/breakpoints'
-import { subsectionTitleText, titleText, rem } from '../../styling/typography'
+import { subsectionTitleText } from '../../styling/typography'
 import { largeSpacing } from '../../styling/sizes'
 import teamMemberProps from '../../propTypes/teamMember'
 import VideoList from '../../components/VideoList'
-import theme from '../../styling/theme'
-
 
 const Heading = styled.h2`
   ${subsectionTitleText};
@@ -27,20 +25,6 @@ const Heading = styled.h2`
 
   @media (min-width: ${smBreakpoint}) {
     text-align: left;
-  }
-`
-
-const SubHeading = styled.h3`
-  ${titleText};
-  color: ${theme.pineCone};
-  font-size: ${rem('20px')};
-  font-weight: 500;
-  line-height: 1.39;
-  text-align: center;
-
-  @media (min-width: ${smBreakpoint}) {
-    text-align: left;
-    font-size: ${rem('22px')};
   }
 `
 
@@ -53,12 +37,11 @@ const Press = ({
   metaDescription,
   introHeading,
   introText,
-  section1heading,
-  documentsSubHeading,
+  pressKitHeading,
   documentsList1,
-  videosSubHeading,
+  videosHeading,
   videosList,
-  section2heading,
+  pressReleaseHeading,
   documentsList2,
   teamMember,
   contactTextHeading,
@@ -76,17 +59,17 @@ const Press = ({
 
     <CenteredGrid>
       <PageSection contained={false}>
-        <Heading>{section1heading}</Heading>
-        <SubHeading>{documentsSubHeading}</SubHeading>
+        <Heading>{pressKitHeading}</Heading>
         <DocumentsList documents={documentsList1} />
       </PageSection>
+
       <PageSection contained={false}>
-        <SubHeading>{videosSubHeading}</SubHeading>
+        <Heading>{videosHeading}</Heading>
         <VideoList videos={videosList} />
       </PageSection>
 
       <PageSection contained={false}>
-        <Heading>{section2heading}</Heading>
+        <Heading>{pressReleaseHeading}</Heading>
         <DocumentsList documents={documentsList2} expandList />
       </PageSection>
       <ExtendedDivider color="orange" />
@@ -115,12 +98,11 @@ Press.propTypes = {
   metaDescription: PropTypes.string,
   introHeading: PropTypes.string.isRequired,
   introText: PropTypes.string.isRequired,
-  section1heading: PropTypes.string.isRequired,
-  documentsSubHeading: PropTypes.string.isRequired,
+  pressKitHeading: PropTypes.string.isRequired,
   documentsList1: DocumentsList.propTypes.documents.isRequired,
-  videosSubHeading: PropTypes.string.isRequired,
+  videosHeading: PropTypes.string.isRequired,
   videosList: VideoList.propTypes.videos.isRequired,
-  section2heading: PropTypes.string.isRequired,
+  pressReleaseHeading: PropTypes.string.isRequired,
   documentsList2: DocumentsList.propTypes.documents.isRequired,
   contactTextHeading: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
