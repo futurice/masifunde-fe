@@ -33,7 +33,13 @@ export function getVimeoThumbnail(videoUrl) {
   const videoId = getVimeoId(videoUrl)
   return fetch(`https://vimeo.com/api/v2/video/${videoId}.json`)
     .then(response => response.json())
-    .then(videoData => videoData[0].thumbnail_medium)
+    .then((videoData) => {
+      if (videoData && videoData.length === 1) {
+        return videoData[0].thumbnail_medium
+      }
+
+      return Promise.reject(new Error('Failed to fetch thumbnail'))
+    })
 }
 
 export const createYouTubeSrc = (videoUrl) => {
