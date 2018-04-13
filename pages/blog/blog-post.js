@@ -325,7 +325,7 @@ const BlogPostNav = ({
               <span className="shortNavText">{'<'}</span>
             </NavButton>
           </Link>
-          <Link route={routes.Blog} passHref>
+          <Link route={routes.Blog} passHref params={{ page: '1' }}>
             <NavButton type="secondary">{blogHomeText}</NavButton>
           </Link>
           <Link route={nextPost} passHref>
