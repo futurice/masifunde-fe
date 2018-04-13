@@ -10,4 +10,7 @@ module.exports = {
 
   // Preview mode
   IS_PREVIEW: process.env.IS_PREVIEW || undefined,
+
+  // Blog
+  BLOG_POSTS_PER_PAGE: process.env.BLOG_POSTS_PER_PAGE || 10,
 }

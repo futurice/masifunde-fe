@@ -83,9 +83,11 @@ const BankDetailDescription = styled.span`
   font-weight: bold;
 `
 
-const FooterLink = ({ route, text, className }) => (
+const FooterLink = ({
+  route, text, className, ...rest
+}) => (
   <li className={className}>
-    <Link route={route} passHref>
+    <Link route={route} passHref {...rest} >
       <a>{text}</a>
     </Link>
   </li>
@@ -170,7 +172,7 @@ function Footer({
                   <ContactLink route={RouteNames.Contact} text={contactText} />
                   {featureFlags.release10 && (
                     <Fragment>
-                      <FooterLink route={RouteNames.Blog} text={blogText} />
+                      <FooterLink route={RouteNames.Blog} params={{ page: '1' }} text={blogText} />
                       <FooterLink route={RouteNames.Documents} text={documentsText} />
                       <FooterLink route={RouteNames.Press} text={pressText} />
                     </Fragment>
