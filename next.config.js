@@ -101,6 +101,22 @@ async function blogPostsPathMap() {
       }
     })
   })
+
+  const numPages = Math.ceil(posts.length / env.BLOG_POSTS_PER_PAGE)
+
+  for (let n = 1; n <= numPages; n += 1) {
+    locales.forEach((locale) => {
+      const path = putLocale(`/blog/page/${n}`, locale)
+      pathMap[path] = {
+        page: Routes.RouteNames.Blog,
+        query: {
+          page: n,
+          locale: locale === 'de' ? undefined : locale,
+        },
+      }
+    })
+  }
+
   return pathMap
 }
 

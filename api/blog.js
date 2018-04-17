@@ -1,6 +1,7 @@
 import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 import { unwrapTeamMember, unwrapImage } from './common'
 import { jpegQuality } from '../utils/constants'
+import { BLOG_POSTS_PER_PAGE } from '../env'
 
 function blogPostFromEntry(entry) {
   return {
@@ -90,7 +91,7 @@ export async function fetchBlogPostPage(locale, slug) {
   }
 }
 
-const blogPostsPerPage = 10
+const blogPostsPerPage = BLOG_POSTS_PER_PAGE
 
 export function fetchBlogPostsList(locale, page) {
   const skip = blogPostsPerPage * (page - 1)

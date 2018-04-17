@@ -73,7 +73,7 @@ addRoute('/impressum', Impressum)
 addRoute('/datenschutz', Datenschutz)
 
 if (featureFlags.release10) {
-  addRoute('/blog', Blog)
+  addRoute('/blog/page/:page', Blog)
   addRoute('/blog/:slug', BlogPost)
   addRoute('/spendenaktion', Campaign)
   addRoute('/presse', Press)
