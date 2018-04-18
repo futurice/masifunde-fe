@@ -117,6 +117,16 @@ const WhoWeAre = ({
       </div>
     </PageSection>
 
+    {featureFlags.release10 && (
+      <PageSection>
+        <h2>{patronsHeadline}</h2>
+        <PatronsText source={patronsText} />
+        <CenteredGrid withoutContainer>
+          <TestimonialList testimonials={patronsList} />
+        </CenteredGrid>
+      </PageSection>
+    )}
+
     <PageSection>
       <h1>{paragraphTwoTitle}</h1>
       <CenteredText source={paragraphTwoText} />
@@ -135,16 +145,6 @@ const WhoWeAre = ({
         ))}
       </AwardsContainer>
     </PageSection>
-
-    {featureFlags.release10 && (
-      <PageSection>
-        <h2>{patronsHeadline}</h2>
-        <PatronsText source={patronsText} />
-        <CenteredGrid withoutContainer>
-          <TestimonialList testimonials={patronsList} />
-        </CenteredGrid>
-      </PageSection>
-    )}
 
     <Banner
       headline={bannerHeadline}
