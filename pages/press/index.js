@@ -17,7 +17,7 @@ import { smBreakpoint } from '../../styling/breakpoints'
 import { subsectionTitleText } from '../../styling/typography'
 import { largeSpacing } from '../../styling/sizes'
 import teamMemberProps from '../../propTypes/teamMember'
-
+import VideoList from '../../components/VideoList'
 
 const Heading = styled.h2`
   ${subsectionTitleText};
@@ -37,9 +37,11 @@ const Press = ({
   metaDescription,
   introHeading,
   introText,
-  section1heading,
+  pressKitHeading,
   documentsList1,
-  section2heading,
+  videosHeading,
+  videosList,
+  pressReleaseHeading,
   documentsList2,
   teamMember,
   contactTextHeading,
@@ -57,12 +59,17 @@ const Press = ({
 
     <CenteredGrid>
       <PageSection contained={false}>
-        <Heading>{section1heading}</Heading>
+        <Heading>{pressKitHeading}</Heading>
         <DocumentsList documents={documentsList1} />
       </PageSection>
 
       <PageSection contained={false}>
-        <Heading>{section2heading}</Heading>
+        <Heading>{videosHeading}</Heading>
+        <VideoList videos={videosList} />
+      </PageSection>
+
+      <PageSection contained={false}>
+        <Heading>{pressReleaseHeading}</Heading>
         <DocumentsList documents={documentsList2} expandList />
       </PageSection>
       <ExtendedDivider color="orange" />
@@ -91,9 +98,11 @@ Press.propTypes = {
   metaDescription: PropTypes.string,
   introHeading: PropTypes.string.isRequired,
   introText: PropTypes.string.isRequired,
-  section1heading: PropTypes.string.isRequired,
+  pressKitHeading: PropTypes.string.isRequired,
   documentsList1: DocumentsList.propTypes.documents.isRequired,
-  section2heading: PropTypes.string.isRequired,
+  videosHeading: PropTypes.string.isRequired,
+  videosList: VideoList.propTypes.videos.isRequired,
+  pressReleaseHeading: PropTypes.string.isRequired,
   documentsList2: DocumentsList.propTypes.documents.isRequired,
   contactTextHeading: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,

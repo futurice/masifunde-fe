@@ -1,0 +1,11 @@
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ICO_playvideo_hover" fill-rule="nonzero">
+            <circle id="Oval" fill="#FF621D" cx="25" cy="25" r="24.5"></circle>
+            <path d="M36.6,23.21 L19.2,14.43 C18.5793747,14.1172632 17.8408945,14.1491237 17.2495102,14.5141505 C16.6581258,14.8791774 16.2986292,15.5250337 16.3,16.22 L16.3,33.78 C16.2986292,34.4749663 16.6581258,35.1208226 17.2495102,35.4858495 C17.8408945,35.8508763 18.5793747,35.8827368 19.2,35.57 L36.6,26.79 C37.278829,26.451673 37.7078677,25.7584682 37.7078677,25 C37.7078677,24.2415318 37.278829,23.548327 36.6,23.21 Z" id="Shape" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>
