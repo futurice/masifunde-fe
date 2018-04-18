@@ -34,7 +34,7 @@ export function getVimeoThumbnail(videoUrl) {
   return fetch(`https://vimeo.com/api/v2/video/${videoId}.json`)
     .then(response => response.json())
     .then((videoData) => {
-      if (videoData && videoData.length === 1) {
+      if (videoData && Array.isArray(videoData) && videoData.length > 0) {
         return videoData[0].thumbnail_medium
       }
 
