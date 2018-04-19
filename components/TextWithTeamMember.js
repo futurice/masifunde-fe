@@ -15,11 +15,11 @@ const TextWithTeamMember = ({
   <div className="row">
     <div className="col-lg-8 offset-lg-2">
       <div className="row">
-        <div className="col-md-9">
+        <div className="col-sm-8">
           { header && <h3>{header}</h3> }
           <Markdown source={text} />
         </div>
-        <div className="col-md-3">
+        <div className="col-sm-3">
           <TeamMember
             imageUrl={teamMember.image.url}
             title={teamMemberTitle}
@@ -27,6 +27,7 @@ const TextWithTeamMember = ({
             email={teamMember.email}
           />
         </div>
+        <div className="col-sm-1" />
       </div>
     </div>
   </div>
