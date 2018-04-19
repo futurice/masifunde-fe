@@ -142,7 +142,10 @@ const mobileImageHidden = mobileImage => mobileImage.offsetHeight === 0
 
 class MasifundeCarousel extends Component {
   componentDidMount = () => {
-    window.requestAnimationFrame(() => this.resizeCarousel())
+    // Hacky timeout to try and get our height fix to happen after
+    // nuka-carousel is done with its broken calc. It unfortunately
+    // needs to be that large for it to work (most of the time).
+    setTimeout(() => this.resizeCarousel(), 1000)
     window.addEventListener('resize', this.resizeCarousel, true)
   }
 
@@ -152,9 +155,10 @@ class MasifundeCarousel extends Component {
 
   setSlideContainerHeight = () => {
     const sliderList = this.carouselComponent.querySelector('ul.slider-list')
-    const firstSlide = sliderList.firstChild
+    const slideHeights = Array.from(sliderList.childNodes).map(node => node.offsetHeight)
+    const maxSlideHeight = Math.max(...slideHeights)
     requestAnimationFrame(() => {
-      sliderList.style.height = `${firstSlide.offsetHeight}px`
+      sliderList.style.height = `${maxSlideHeight}px`
     })
   }
 
