@@ -137,7 +137,8 @@ function Footer({
       <footer>
 
         <div className="row">
-          <div className="col-sm">
+
+          <div className="col-md">
             <div className="row">
               <div className="col">
                 <ul className="list-unstyled">
@@ -156,7 +157,8 @@ function Footer({
               </div>
             </div>
           </div>
-          <div className="col-sm">
+
+          <div className="col-md">
             <div className="row">
               <div className="col">
                 <ul className="list-unstyled">
@@ -181,6 +183,7 @@ function Footer({
               </div>
             </div>
           </div>
+
         </div>
 
         <SocialLinksContainer>
