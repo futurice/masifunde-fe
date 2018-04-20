@@ -75,7 +75,9 @@ const StyledCarousel = styled(Carousel)`
 
   &:hover {
     .slider-decorator-0, .slider-decorator-1 {
-      opacity: 1;
+      button {
+        opacity: 1;
+      }
     }
   }
 
@@ -88,28 +90,23 @@ const StyledCarousel = styled(Carousel)`
       font-size: ${rem('48px')} !important;
     }
   }
+`
 
-  .slider-decorator-0, .slider-decorator-1 {
-    opacity: 0;
-    transition: 300ms;
-    background-image: url(/static/images/carousel-arrow.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+const StyledArrowButton = styled.button`
+  background-color: transparent;
+  padding: ${extraSmallSpacing};
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 300ms;
+
+  img {
     width: ${sliderArrowSize};
     height: ${sliderArrowSize};
-
-    @media (min-width: ${mdBreakpoint}) {
-      top: 50% !important;
-    }
-
-    button {
-      opacity: 0 !important;
-    }
   }
 
-  .slider-decorator-0 {
-    transform: rotateY(180deg) translateY(-50%) !important;
+  :focus {
+    outline: 0;
   }
 `
 
@@ -139,6 +136,30 @@ const mapPortraitToCarouselItems = (portrait) => {
 }
 
 const mobileImageHidden = mobileImage => mobileImage.offsetHeight === 0
+
+const ArrowButton = (props) => {
+  const {
+    direction,
+    previousSlide,
+    nextSlide,
+  } = props
+  return (
+    <StyledArrowButton onClick={direction === 'left' ? previousSlide : nextSlide}>
+      {direction === 'left'
+        ? <img src="/static/images/carousel-arrow-left.svg" alt="links" />
+        : <img src="/static/images/carousel-arrow-right.svg" alt="rechts" />
+      }
+    </StyledArrowButton>
+  )
+}
+
+ArrowButton.propTypes = {
+  direction: PropTypes.string.isRequired,
+
+  // These two are passed through by nuka-carousel
+  previousSlide: PropTypes.func.isRequired,
+  nextSlide: PropTypes.func.isRequired,
+}
 
 class MasifundeCarousel extends Component {
   componentDidMount = () => {
@@ -183,10 +204,17 @@ class MasifundeCarousel extends Component {
       const leftArrow = this.carouselComponent.querySelector('.slider-decorator-0')
       const rightArrow = this.carouselComponent.querySelector('.slider-decorator-1')
 
-      // This assumes all slide images have the same height, which is currently the case.
-      const firstSlideImage = this.carouselComponent.querySelector('li.slider-slide img')
-      leftArrow.style.top = `calc(${firstSlideImage.offsetHeight}px / 2)`
-      rightArrow.style.top = `calc(${firstSlideImage.offsetHeight}px / 2)`
+      const mq = window.matchMedia(`(min-width: ${mdBreakpoint})`)
+      if (mq.matches) {
+        const firstSlide = this.carouselComponent.querySelector('li.slider-slide')
+        leftArrow.style.top = `calc(${firstSlide.offsetHeight}px / 2)`
+        rightArrow.style.top = `calc(${firstSlide.offsetHeight}px / 2)`
+      } else {
+        // This assumes all slide images have the same height, which is currently the case.
+        const firstSlideImage = this.carouselComponent.querySelector('li.slider-slide img')
+        leftArrow.style.top = `calc(${firstSlideImage.offsetHeight}px / 2)`
+        rightArrow.style.top = `calc(${firstSlideImage.offsetHeight}px / 2)`
+      }
     })
   }
 
@@ -206,6 +234,13 @@ class MasifundeCarousel extends Component {
     const { portrait } = this.props
     const settings = {
       wrapAround: true,
+      decorators: [{
+        component: props => <ArrowButton direction="left" {...props} />,
+        position: 'CenterLeft',
+      }, {
+        component: props => <ArrowButton direction="right" {...props} />,
+        position: 'CenterRight',
+      }],
     }
     const items = mapPortraitToCarouselItems(portrait)
     return (
