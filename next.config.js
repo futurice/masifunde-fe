@@ -106,7 +106,7 @@ async function blogPostsPathMap() {
 
   for (let n = 1; n <= numPages; n += 1) {
     locales.forEach((locale) => {
-      const path = putLocale(`/blog/page/${n}`, locale)
+      const path = putLocale(`/:locale?/blog/page/${n}`, locale)
       pathMap[path] = {
         page: Routes.RouteNames.Blog,
         query: {
