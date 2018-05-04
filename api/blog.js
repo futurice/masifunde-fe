@@ -2,6 +2,7 @@ import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulServic
 import { unwrapTeamMember, unwrapImage } from './common'
 import { jpegQuality } from '../utils/constants'
 import { BLOG_POSTS_PER_PAGE } from '../env'
+import replaceLocale from '../utils/replaceLocale'
 
 function blogPostFromEntry(entry) {
   return {
@@ -24,14 +25,20 @@ export async function fetchNewestBlogPosts(locale, limit) {
 }
 
 export async function fetchBlogPost(locale, slug) {
-  const entries = await fetchEntriesForContentType('blogPost', {
+  let entries = await fetchEntriesForContentType('blogPost', {
     locale,
     'fields.slug': slug,
   })
   if (entries.length === 0) {
-    const e = new Error(`Could not find blog post with slug: ${slug}`)
-    e.name = 'PostNotFoundError'
-    throw e
+    entries = await fetchEntriesForContentType('blogPost', {
+      locale: 'de',
+      'fields.slug': slug,
+    })
+    if (entries.length === 0) {
+      const e = new Error(`Could not find blog post with slug: ${slug}`)
+      e.name = 'PostNotFoundError'
+      throw e
+    }
   }
   const entry = entries[0]
   return blogPostFromEntry(entry)
@@ -42,7 +49,7 @@ function fetchBlogPostPageTemplate(locale) {
 }
 
 async function fetchPreviousBlogPostSlug(locale, date) {
-  const entries = await fetchEntriesForContentType('blogPost', {
+  let entries = await fetchEntriesForContentType('blogPost', {
     locale,
     limit: 1,
     order: '-fields.date',
@@ -50,17 +57,37 @@ async function fetchPreviousBlogPostSlug(locale, date) {
     'fields.slug[exists]': true,
   })
 
+  if (entries.length === 0) {
+    entries = await fetchEntriesForContentType('blogPost', {
+      locale: 'de',
+      limit: 1,
+      order: '-fields.date',
+      'fields.date[lt]': date,
+      'fields.slug[exists]': true,
+    })
+  }
+
   return (entries && entries.length > 0) ? entries[0].fields.slug : null
 }
 
 async function fetchNextBlogPostSlug(locale, date) {
-  const entries = await fetchEntriesForContentType('blogPost', {
+  let entries = await fetchEntriesForContentType('blogPost', {
     locale,
     limit: 1,
     order: 'fields.date',
     'fields.date[gt]': date,
     'fields.slug[exists]': true,
   })
+
+  if (entries.length === 0) {
+    entries = await fetchEntriesForContentType('blogPost', {
+      locale: 'de',
+      limit: 1,
+      order: 'fields.date',
+      'fields.date[gt]': date,
+      'fields.slug[exists]': true,
+    })
+  }
 
   return (entries && entries.length > 0) ? entries[0].fields.slug : null
 }
@@ -80,8 +107,8 @@ export async function fetchBlogPostPage(locale, slug) {
     return {
       ...page,
       ...post,
-      previousPost: prev ? `/blog/${prev}` : null,
-      nextPost: next ? `/blog/${next}` : null,
+      previousPost: prev ? replaceLocale(`/:locale?/blog/${prev}`, locale) : null,
+      nextPost: next ? replaceLocale(`/:locale?/blog/${next}`, locale) : null,
     }
   } catch (error) {
     if (error.name === 'PostNotFoundError') {
@@ -103,7 +130,6 @@ export function fetchBlogPostsList(locale, page) {
       skip,
       limit: blogPostsPerPage,
       order: '-fields.date',
-      'fields.title[exists]': true,
     },
   )
     .then((response) => {

@@ -5,18 +5,13 @@ const fs = require('fs')
 const env = require('./env')
 const featureFlags = require('./featureFlags')
 const locales = require('./i18n/locales')
+const replaceLocale = require('./utils/replaceLocale')
 const Routes = require('./routes')
 const createSitemap = require('./utils/sitemap')
 
 function isStaticPath(path) {
   // Check that the path contains no param placeholders (e.g. :id)
   return !path.includes(':')
-}
-
-function putLocale(pattern, locale) {
-  const localePrefix = locale === 'de' ? '' : `/${locale}`
-  const patternWithLocale = pattern.replace(/\/:locale[^/]*/, localePrefix)
-  return patternWithLocale || '/'
 }
 
 /**
@@ -28,8 +23,7 @@ function staticRoutesPathMap() {
 
   locales.forEach((locale) => {
     Routes.routes.forEach(({ pattern, page }) => {
-      const path = putLocale(pattern, locale)
-
+      const path = replaceLocale(pattern, locale)
       if (isStaticPath(path)) {
         pathMap[path] = {
           page,
@@ -82,21 +76,24 @@ async function blogPostsPathMap() {
 
   posts.forEach((post) => {
     locales.forEach((locale) => {
-      const slug = post.fields.slug[locale]
+      const localizedSlug = post.fields.slug[locale]
+      const deSlug = post.fields.slug.de
+      const slug = localizedSlug || deSlug
 
-      // Without a slug, we cannot generate a path for the blog post.
       if (!slug) {
+        // Without a slug, we cannot generate a path for the blog post
         // eslint-disable-next-line no-console
         console.warn(`Post ${post.sys.id} has no slug for locale [${locale}], skipping`)
         return
       }
 
-      const path = putLocale(`/:locale?/blog/${slug}`, locale)
+      const path = replaceLocale(`/:locale?/blog/${slug}`, locale)
       pathMap[path] = {
         page: Routes.RouteNames.BlogPost,
         query: {
           slug,
-          locale: locale === 'de' ? undefined : locale,
+          // show non-localized blog posts in German
+          locale: locale === 'de' || !localizedSlug ? undefined : locale,
         },
       }
     })
@@ -106,7 +103,7 @@ async function blogPostsPathMap() {
 
   for (let n = 1; n <= numPages; n += 1) {
     locales.forEach((locale) => {
-      const path = putLocale(`/:locale?/blog/page/${n}`, locale)
+      const path = replaceLocale(`/:locale?/blog/page/${n}`, locale)
       pathMap[path] = {
         page: Routes.RouteNames.Blog,
         query: {
