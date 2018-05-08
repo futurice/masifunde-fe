@@ -48,22 +48,22 @@ function fetchBlogPostPageTemplate(locale) {
   return fetchSingleEntry('pageBlogPost', locale)
 }
 
+
 async function fetchPreviousBlogPostSlug(locale, date) {
-  let entries = await fetchEntriesForContentType('blogPost', {
+  const fetchParams = {
     locale,
     limit: 1,
     order: '-fields.date',
     'fields.date[lt]': date,
     'fields.slug[exists]': true,
-  })
+  }
+
+  let entries = await fetchEntriesForContentType('blogPost', fetchParams)
 
   if (entries.length === 0) {
     entries = await fetchEntriesForContentType('blogPost', {
+      ...fetchParams,
       locale: 'de',
-      limit: 1,
-      order: '-fields.date',
-      'fields.date[lt]': date,
-      'fields.slug[exists]': true,
     })
   }
 
@@ -71,21 +71,20 @@ async function fetchPreviousBlogPostSlug(locale, date) {
 }
 
 async function fetchNextBlogPostSlug(locale, date) {
-  let entries = await fetchEntriesForContentType('blogPost', {
+  const fetchParams = {
     locale,
     limit: 1,
     order: 'fields.date',
     'fields.date[gt]': date,
     'fields.slug[exists]': true,
-  })
+  }
+
+  let entries = await fetchEntriesForContentType('blogPost', fetchParams)
 
   if (entries.length === 0) {
     entries = await fetchEntriesForContentType('blogPost', {
+      ...fetchParams,
       locale: 'de',
-      limit: 1,
-      order: 'fields.date',
-      'fields.date[gt]': date,
-      'fields.slug[exists]': true,
     })
   }
 
