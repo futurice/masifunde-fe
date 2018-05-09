@@ -105,9 +105,11 @@ const StyledArrowButton = styled.button`
     height: ${sliderArrowSize};
   }
 
-  :focus {
+  &:focus {
     outline: 0;
+    filter: drop-shadow(0px 0px 3px white);
   }
+
 `
 
 const SlideRow = styled.div`
