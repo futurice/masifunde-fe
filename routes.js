@@ -49,6 +49,7 @@ const BlogPost = '/blog/blog-post'
 const Contact = '/contact'
 const Impressum = '/impressum'
 const Datenschutz = '/datenschutz'
+const Transparency = '/transparency'
 const Campaign = '/campaign'
 const Press = '/press'
 const Documents = '/documents'
@@ -78,6 +79,7 @@ if (featureFlags.release10) {
   addRoute('/spendenaktion', Campaign)
   addRoute('/presse', Press)
   addRoute('/dokumente', Documents)
+  addRoute('/transparenz', Transparency)
 }
 
 // Share route names
@@ -101,6 +103,7 @@ nextRoutes.RouteNames = {
   BlogPost,
   Datenschutz,
   Impressum,
+  Transparency,
   Campaign,
   Press,
   Documents,
