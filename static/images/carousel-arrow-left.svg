@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="74px" height="74px" viewBox="0 0 74 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>carousel-arrow copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="carousel-arrow-copy" transform="translate(37.000000, 37.000000) scale(-1, 1) translate(-37.000000, -37.000000) translate(2.000000, 2.000000)" stroke="#FFFFFF">
+            <polyline id="Path-20-Copy-7" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="translate(37.000000, 35.000000) rotate(-180.000000) translate(-37.000000, -35.000000) " points="48 18 26 36.525893 48 52"></polyline>
+            <circle id="Oval-2" stroke-width="3" cx="35" cy="35" r="35"></circle>
+        </g>
+    </g>
+</svg>
