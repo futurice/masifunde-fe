@@ -300,6 +300,29 @@ const NavButton = styled(Button)`
   visibility: ${props => (props.href ? 'visible' : 'hidden')};
 `
 
+// Nav buttons
+const NextPostButton = ({ nextPostText, ...rest }) => (
+  <NavButton type="secondary" {...rest} >
+    <span className="longNavText">{nextPostText}</span>
+    <span className="shortNavText">{'>'}</span>
+  </NavButton>
+)
+
+NextPostButton.propTypes = {
+  nextPostText: PropTypes.string.isRequired,
+}
+
+const PreviousPostButton = ({ previousPostText, ...rest }) => (
+  <NavButton type="secondary" {...rest}>
+    <span className="longNavText">{previousPostText}</span>
+    <span className="shortNavText">{'<'}</span>
+  </NavButton>
+)
+
+PreviousPostButton.propTypes = {
+  previousPostText: PropTypes.string.isRequired,
+}
+
 const BlogPostNav = ({
   previousPost,
   previousPostText,
@@ -312,21 +335,24 @@ const BlogPostNav = ({
       <div className="offset-lg-2 col-lg-8">
         <DividerWithMargin />
         <NavContainer>
-          <Link route={previousPost} passHref>
-            <NavButton type="secondary">
-              <span className="longNavText">{previousPostText}</span>
-              <span className="shortNavText">{'<'}</span>
-            </NavButton>
-          </Link>
+          {previousPost ? (
+            <Link route={previousPost} passHref>
+              <PreviousPostButton previousPostText={previousPostText} />
+            </Link>
+          ) : (
+            <PreviousPostButton previousPostText={previousPostText} />
+          )}
+
           <Link route={routes.Blog} passHref params={{ page: '1' }}>
             <NavButton type="secondary">{blogHomeText}</NavButton>
           </Link>
-          <Link route={nextPost} passHref>
-            <NavButton type="secondary">
-              <span className="longNavText">{nextPostText}</span>
-              <span className="shortNavText">{'>'}</span>
-            </NavButton>
-          </Link>
+          {nextPost ? (
+            <Link route={nextPost} passHref>
+              <NextPostButton nextPostText={nextPostText} />
+            </Link>
+          ) : (
+            <NextPostButton nextPostText={nextPostText} />
+          )}
         </NavContainer>
       </div>
     </div>
