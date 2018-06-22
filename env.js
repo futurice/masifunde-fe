@@ -1,12 +1,5 @@
-const featureFlags = require('./featureFlags')
-
-const spaceId = featureFlags.release10
-  ? '7wl9zvp70267'
-  : '6jocdllnp50q'
-
-const accessToken = featureFlags.release10
-  ? '0afa27121adcd096d9046e06f1e23983af0b2816f4f57380a55ae6359d1b1ce3'
-  : '5c8090d12bc2bf8dc695353cc398cd5e48eb56c214325884284bfdbfef4ba5ed'
+const spaceId = '7wl9zvp70267'
+const accessToken = '0afa27121adcd096d9046e06f1e23983af0b2816f4f57380a55ae6359d1b1ce3'
 
 module.exports = {
   // Contentful

@@ -5,7 +5,6 @@ import FaFacebook from 'react-icons/lib/fa/facebook'
 import styled from 'styled-components'
 import T from 'i18n-react'
 
-import featureFlags from '../featureFlags'
 import { RouteNames } from '../routes'
 import Link from './Link'
 import PageSection from './PageSection'
@@ -172,13 +171,11 @@ function Footer({
               <div className="col">
                 <ul className="list-unstyled">
                   <ContactLink route={RouteNames.Contact} text={contactText} />
-                  {featureFlags.release10 && (
-                    <Fragment>
-                      <FooterLink route={RouteNames.Blog} params={{ page: '1' }} text={blogText} />
-                      <FooterLink route={RouteNames.Documents} text={documentsText} />
-                      <FooterLink route={RouteNames.Press} text={pressText} />
-                    </Fragment>
-                  )}
+                  <Fragment>
+                    <FooterLink route={RouteNames.Blog} params={{ page: '1' }} text={blogText} />
+                    <FooterLink route={RouteNames.Documents} text={documentsText} />
+                    <FooterLink route={RouteNames.Press} text={pressText} />
+                  </Fragment>
                 </ul>
               </div>
             </div>

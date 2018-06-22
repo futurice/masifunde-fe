@@ -1,11 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { fetchNewestBlogPosts } from '../api/blog'
 import { fetchHomePage } from '../api/home'
-import featureFlags from '../featureFlags'
 import withLayout from '../components/withLayout'
 import Head from '../components/Head'
 import Hero from '../components/Hero'
@@ -110,50 +109,46 @@ const Home = ({
       <EmbeddedVideo videoUrl={videoUrl} />
     </PageSection>
 
-    {featureFlags.release10 && (
-      <Fragment>
-        {campaign.isActive && (
-          <PageSection>
-            <h2>{bannersTitle}</h2>
+    {campaign.isActive && (
+      <PageSection>
+        <h2>{bannersTitle}</h2>
 
-            <ExtendedBanner
-              subHeadline={campaign.bannerSmallTitle}
-              headline={campaign.introHeading}
-              description={campaign.introMarkdown}
-              image={campaign.imageList[0].url}
-              buttonLink={RouteNames.Campaign}
-              buttonText={campaign.bannerButtonText}
-            />
+        <ExtendedBanner
+          subHeadline={campaign.bannerSmallTitle}
+          headline={campaign.introHeading}
+          description={campaign.introMarkdown}
+          image={campaign.imageList[0].url}
+          buttonLink={RouteNames.Campaign}
+          buttonText={campaign.bannerButtonText}
+        />
 
-            {announcement && (
-              <Banner
-                subHeadline={announcement.subHeading}
-                headline={announcement.heading}
-                description={announcement.description}
-                image={announcement.image.url}
-                buttonLink={announcement.buttonLink}
-                buttonText={announcement.buttonText}
-                showImageOnRight
-              />
-            )}
-          </PageSection>
+        {announcement && (
+          <Banner
+            subHeadline={announcement.subHeading}
+            headline={announcement.heading}
+            description={announcement.description}
+            image={announcement.image.url}
+            buttonLink={announcement.buttonLink}
+            buttonText={announcement.buttonText}
+            showImageOnRight
+          />
         )}
-
-        <PageSection>
-          <Container>
-            <h2>{featuredBlogPostsTitle}</h2>
-          </Container>
-
-          <BlogPostList className="row">
-            {featuredBlogPosts.map(post => (
-              <BlogPostListItem key={post.slug} className="col-md-4">
-                <BlogPostCard post={post} />
-              </BlogPostListItem>
-            ))}
-          </BlogPostList>
-        </PageSection>
-      </Fragment>
+      </PageSection>
     )}
+
+    <PageSection>
+      <Container>
+        <h2>{featuredBlogPostsTitle}</h2>
+      </Container>
+
+      <BlogPostList className="row">
+        {featuredBlogPosts.map(post => (
+          <BlogPostListItem key={post.slug} className="col-md-4">
+            <BlogPostCard post={post} />
+          </BlogPostListItem>
+        ))}
+      </BlogPostList>
+    </PageSection>
 
     <PageSection contained={false}>
       <Container>
