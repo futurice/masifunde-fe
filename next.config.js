@@ -3,7 +3,6 @@ const contentful = require('contentful')
 const fs = require('fs')
 
 const env = require('./env')
-const featureFlags = require('./featureFlags')
 const locales = require('./i18n/locales')
 const replaceLocale = require('./utils/replaceLocale')
 const Routes = require('./routes')
@@ -122,7 +121,7 @@ module.exports = {
 
   async exportPathMap() {
     const staticRoutesMap = staticRoutesPathMap()
-    const blogPostsMap = featureFlags.release10 ? await blogPostsPathMap() : {}
+    const blogPostsMap = await blogPostsPathMap()
     const pathMap = Object.assign({}, staticRoutesMap, blogPostsMap)
 
     // Save routes as sitemap (https://www.sitemaps.org/)

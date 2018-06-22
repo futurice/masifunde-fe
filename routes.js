@@ -1,7 +1,6 @@
 // NOTE: Using CommonJS imports / exports for use in next.config.js
 
 const nextRoutes = require('next-routes')()
-const featureFlags = require('./featureFlags')
 const locales = require('./i18n/locales')
 
 /**
@@ -24,7 +23,7 @@ function withLocale(pattern) {
 function addRoute(pattern, page) {
   nextRoutes.add({
     name: page,
-    pattern: featureFlags.localization ? withLocale(pattern) : pattern,
+    pattern: withLocale(pattern),
     page,
   })
 }
@@ -72,15 +71,12 @@ addRoute('/wie-sie-helfen/spenden', Donate)
 addRoute('/kontakt', Contact)
 addRoute('/impressum', Impressum)
 addRoute('/datenschutz', Datenschutz)
-
-if (featureFlags.release10) {
-  addRoute('/blog/page/:page', Blog)
-  addRoute('/blog/:slug', BlogPost)
-  addRoute('/spendenaktion', Campaign)
-  addRoute('/presse', Press)
-  addRoute('/dokumente', Documents)
-  addRoute('/transparenz', Transparency)
-}
+addRoute('/blog/page/:page', Blog)
+addRoute('/blog/:slug', BlogPost)
+addRoute('/spendenaktion', Campaign)
+addRoute('/presse', Press)
+addRoute('/dokumente', Documents)
+addRoute('/transparenz', Transparency)
 
 // Share route names
 nextRoutes.RouteNames = {

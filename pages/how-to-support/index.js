@@ -17,7 +17,6 @@ import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import RoundedImage from '../../components/RoundedImage'
 import Banner from '../../components/Banner'
-import * as featureFlags from '../../featureFlags'
 import campaignPageBannerPropTypes from '../../propTypes/campaignPageBanner'
 
 const SectionContainer = styled(PageSection)`
@@ -149,7 +148,7 @@ const HowToSupport = ({
     />
 
     <PageSection>
-      {campaign.isActive && featureFlags.release10 && (
+      {campaign.isActive && (
         <Banner
           subHeadline={campaign.bannerSmallTitle}
           headline={campaign.introHeading}

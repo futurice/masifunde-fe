@@ -3,9 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'next/router'
 
-import featureFlags from '../featureFlags'
 import { Link as NextLink } from '../routes'
-
 
 const Link = ({
   children,
@@ -15,11 +13,10 @@ const Link = ({
 }) => (
   <NextLink
     {...rest}
-    params={
-      featureFlags.localization
-        ? { locale: router.query.locale, ...params }
-        : params
-    }
+    params={{
+      locale: router.query.locale,
+       ...params,
+    }}
   >
     {children}
   </NextLink>

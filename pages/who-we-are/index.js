@@ -18,7 +18,6 @@ import Award from '../../components/Award'
 import { largeSpacing, mediumSpacing, extraSmallSpacing } from '../../styling/sizes'
 import { lgBreakpoint } from '../../styling/breakpoints'
 import Link from '../../components/Link'
-import featureFlags from '../../featureFlags'
 import TestimonialList from '../../components/TestimonialList'
 import CenteredGrid from '../../components/CenteredGrid'
 
@@ -117,15 +116,13 @@ const WhoWeAre = ({
       </div>
     </PageSection>
 
-    {featureFlags.release10 && (
-      <PageSection>
-        <h2>{patronsHeadline}</h2>
-        <PatronsText source={patronsText} />
-        <CenteredGrid withoutContainer>
-          <TestimonialList testimonials={patronsList} />
-        </CenteredGrid>
-      </PageSection>
-    )}
+    <PageSection>
+      <h2>{patronsHeadline}</h2>
+      <PatronsText source={patronsText} />
+      <CenteredGrid withoutContainer>
+        <TestimonialList testimonials={patronsList} />
+      </CenteredGrid>
+    </PageSection>
 
     <PageSection>
       <h1>{paragraphTwoTitle}</h1>
