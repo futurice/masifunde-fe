@@ -5,7 +5,6 @@ https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 # Redirects
 /ueber-uns/news-archiv/news/:slug /blog/:slug
 /ueber-uns/* /wer-wir-sind
-/transparenz /was-wir-machen
 /projekte/*  /was-wir-machen
 /ihre-unterstuetzung/*  /wie-sie-helfen
 /du-bei-masifunde/*  /wie-sie-helfen/aktiv-werden

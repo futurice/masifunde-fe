@@ -3,6 +3,11 @@ import React from 'react'
 
 import { IS_PREVIEW } from '../env'
 
+// WARNING! Don't use, it doesn't actually work. __NEXT_DATA__ only contains the data for
+// the initially loaded static page. As soon as the user follows a link on the preview site.
+// __NEXT_DATA__ is wrong and will cause weird shit to happen, like loading the wrong blog post
+// after the correct one was shown.
+//
 // Checks if we're currently running on the preview environment.
 // If we are, fetch all the data directly from Contentful.
 //
