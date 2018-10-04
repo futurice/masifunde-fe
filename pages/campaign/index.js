@@ -37,6 +37,8 @@ const Campaign = ({
   contentMarkdown,
   teamMemberHeading,
   teamMember,
+  section2Title,
+  section2ReferenceList,
   amountHeading,
   amounts,
   formHeading,
@@ -89,7 +91,9 @@ const Campaign = ({
       fundraisingboxIframeTitle={fundraisingboxIframeHeading}
       fundraisingboxFormHash="vm0g01lokj4l5e58"
       iframeStatus={query && query.status}
-      disableIntervalSelection
+      disableIntervalSelection={!section2ReferenceList.length}
+      intervals={section2ReferenceList}
+      intervalTitle={section2Title}
       enableOtherAmount
     />
   </Fragment>
@@ -104,6 +108,11 @@ Campaign.propTypes = {
   contentMarkdown: PropTypes.string.isRequired,
   teamMemberHeading: PropTypes.string.isRequired,
   teamMember: PropTypes.shape(teamMemmberPropTypes).isRequired,
+  section2Title: PropTypes.string.isRequired,
+  section2ReferenceList: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired).isRequired,
   amountHeading: PropTypes.string.isRequired,
   amounts: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
