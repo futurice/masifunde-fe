@@ -7,6 +7,8 @@ export async function fetchCampaignPage(locale) {
     ...content,
     imageList: unwrapImages(content.imageList),
     amounts: content.amounts.map(unwrapFields),
+    section2ReferenceList:
+      content && content.section2ReferenceList && content.section2ReferenceList.map(unwrapFields) || [],
     teamMember: unwrapTeamMember(content.teamMember),
   }
 }
