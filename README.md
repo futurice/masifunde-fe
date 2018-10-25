@@ -50,6 +50,8 @@ the [Netlify "Deploy Contexts" documentation][deploy-contexts]. (Hopefully in
 the future, Netlify will hide the settings that we define in `netlify.toml`
 to reduce confusion.)
 
+To log in to Netlify, use the credentials in the Password Safe under *Masifunde netlify*.
+
 [deploy-contexts]: https://www.netlify.com/docs/continuous-deployment/#deploy-contexts
 
 ## Configuration
