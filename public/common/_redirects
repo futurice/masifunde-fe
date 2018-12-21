@@ -2,7 +2,7 @@
 http://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 
-# Redirects
+# Redirects from old site
 /ueber-uns/news-archiv/news/:slug /blog/:slug
 /ueber-uns/* /wer-wir-sind
 /projekte/*  /was-wir-machen
@@ -11,6 +11,7 @@ https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 /unterwegs-in-de/* /was-wir-machen/ansatz-de/
 /jetzt-spenden/* /wie-sie-helfen/spenden
 /wie-sie-helfen/pate-werden /wie-sie-helfen/masifunde-gemeinschaft
+/grundschule /wie-sie-helfen
 
 # 404 page
 /en/*  /en/404  404
