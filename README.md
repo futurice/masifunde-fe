@@ -1,6 +1,6 @@
 # Masifunde
 
-Frontend for the Masifunde website. https://masifunde.netlify.com
+Frontend for the Masifunde website. https://masifunde.de
 
 ## Installing / Getting started
 
