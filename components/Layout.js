@@ -121,7 +121,7 @@ const Layout = ({
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
           <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
           <script src="https://cdn.jsdelivr.net/npm/core-js@2/client/shim.min.js" />
-
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141682105-2" />
           <script dangerouslySetInnerHTML={{
             // Google Analytics
             __html: `
