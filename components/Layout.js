@@ -121,6 +121,16 @@ const Layout = ({
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
           <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
           <script src="https://cdn.jsdelivr.net/npm/core-js@2/client/shim.min.js" />
+
+          <script dangerouslySetInnerHTML={{
+            // Google Analytics
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments); }
+              gtag('js', new Date());
+              gtag('config', 'UA-141682105-2');
+            `
+          }}/>
         </Head>
         <Header height={theme.headerHeight} {...headerData} />
         <Content>
