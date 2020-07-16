@@ -44,7 +44,7 @@
     "final-form-calculate": "^1.0.2",
     "i18n-react": "^0.6.3",
     "isomorphic-unfetch": "^2.0.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.19",
     "next": "^5.0.0",
     "next-routes": "^1.3.0",
     "nprogress": "^0.2.0",
