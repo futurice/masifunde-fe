@@ -17,6 +17,7 @@ import teamMemberProps from '../../propTypes/teamMember'
 import { subsectionTitleText } from '../../styling/typography'
 import { largeSpacing } from '../../styling/sizes'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
+import VideoList from '../../components/VideoList'
 
 const Heading = styled.h2`
   ${subsectionTitleText};
@@ -30,7 +31,7 @@ const Heading = styled.h2`
 const TeamMemberContainer = styled.div`
   display: flex;
   justify-content: center;
-  
+
   @media (min-width: ${smBreakpoint}) {
     display: block;
   }
@@ -40,6 +41,7 @@ const ExtendedDivider = Divider.extend`
   margin-top: ${largeSpacing} !important;
 `
 
+//TODO missing press page heading>
 const Documents = ({
   metaDescription,
   metaTitle,
@@ -57,6 +59,13 @@ const Documents = ({
   teamMember,
   bannerButtonText,
   bannerButtonUrl,
+  videosList,
+  documentsList1Press,
+  documentsList2Press,
+  teamMemberPress,
+  pressKitHeading,
+  videosHeading,
+  pressReleaseHeading,
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
@@ -77,15 +86,28 @@ const Documents = ({
         <DocumentsList documents={documentsList2} />
       </PageSection>
 
-
       <PageSection contained={false}>
         <Heading>{section3heading}</Heading>
         <DocumentsList documents={documentsList3} expandList />
+      </PageSection>
 
-        <ExtendedDivider color="orange" />
+      <PageSection contained={false} >
+        <Heading>{pressKitHeading}</Heading>
+        <DocumentsList documents={documentsList1Press} />
+      </PageSection>
+
+      <PageSection contained={false}>
+        <Heading>{videosHeading}</Heading>
+        <VideoList videos={videosList} />
+      </PageSection>
+
+      <PageSection contained={false}>
+        <Heading>{pressReleaseHeading}</Heading>
+        <DocumentsList documents={documentsList2Press} expandList />
       </PageSection>
     </CenteredGrid>
 
+    <ExtendedDivider color="orange" />
     <PageSection>
       <TeamMemberContainer>
         <TextWithTeamMember
@@ -94,6 +116,20 @@ const Documents = ({
           teamMemberTitle={teamMember.name}
           teamMemberSubtitle={teamMember.responsibilityArea}
           teamMember={teamMember}
+        />
+      </TeamMemberContainer>
+    </PageSection>
+    <ExtendedDivider color="orange" />
+    <PageSection>
+      <TeamMemberContainer>
+        <TextWithTeamMember
+          //TODO update this so that it uses the right content.
+          //Check how to switch the contactTextHeading
+          header={contactTextHeading}
+          text={contactText}
+          teamMemberTitle={teamMemberPress.name}
+          teamMemberSubtitle={teamMemberPress.responsibilityArea}
+          teamMember={teamMemberPress}
         />
       </TeamMemberContainer>
     </PageSection>
@@ -124,6 +160,14 @@ Documents.propTypes = {
   contactTextHeading: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
   teamMember: PropTypes.shape(teamMemberProps).isRequired,
+  videosList: VideoList.propTypes.videos.isRequired,
+  documentsList1Press:DocumentsList.propTypes.documents.isRequired,
+  documentsList2Press: DocumentsList.propTypes.documents.isRequired,
+  teamMemberPress: PropTypes.shape(teamMemberProps).isRequired,
+  pressKitHeading: PropTypes.string.isRequired,
+  videosHeading: PropTypes.string.isRequired,
+  pressReleaseHeading: PropTypes.string.isRequired,
+
 }
 
 Documents.defaultProps = {
