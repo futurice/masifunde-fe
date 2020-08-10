@@ -41,6 +41,7 @@ const ContentContainer = styled.div`
   }
 `
 
+
 const Podcast = ({ expandList, podcast }) => (
   <Fragment>
     {expandList ? (
@@ -63,9 +64,21 @@ const Podcast = ({ expandList, podcast }) => (
       </div>
     ) : (
       <div className="row">
-        {podcast.map(({ podcastTitle, podcastAudio }) => (
+        {podcast.map(({ podcastTitle, podcastAudio, podcastImage }) => (
           <BoxContainerCol key={podcastAudio.url} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
             <DocumentDownloadBox title={podcastTitle} fileUrl={podcastAudio.url} />
+            <figure>
+            <img src={podcastImage ?
+               (podcastImage.file ? podcastImage.file.url : podcastImage.file)
+                : podcastImage }/>
+            <figcaption>{podcastTitle}</figcaption>
+              <audio
+                controls
+                src={podcastAudio.file ? podcastAudio.file.url : podcastAudio.file}>
+                    Your browser does not support the
+                      <code>audio</code> element.
+              </audio>
+            </figure>
           </BoxContainerCol>
         ))}
       </div>
