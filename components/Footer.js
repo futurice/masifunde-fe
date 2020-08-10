@@ -122,7 +122,7 @@ function Footer({
   contactText,
   blogText,
   documentsText,
-  pressText,
+  podcastText,
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
@@ -174,7 +174,7 @@ function Footer({
                   <Fragment>
                     <FooterLink route={RouteNames.Blog} params={{ page: '1' }} text={blogText} />
                     <FooterLink route={RouteNames.Documents} text={documentsText} />
-                    <FooterLink route={RouteNames.Press} text={pressText} />
+                    <FooterLink route={RouteNames.Podcast} text={podcastText} />
                   </Fragment>
                 </ul>
               </div>
@@ -284,7 +284,7 @@ export const propTypes = {
   contactText: PropTypes.string.isRequired,
   blogText: PropTypes.string.isRequired,
   documentsText: PropTypes.string.isRequired,
-  pressText: PropTypes.string.isRequired,
+  podcastText: PropTypes.string.isRequired,
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,

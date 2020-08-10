@@ -7,20 +7,30 @@ import withLayout from '../../components/withLayout'
 import Head from '../../components/Head'
 import PageSection from '../../components/PageSection'
 import { getLocaleFromQuery } from '../../utils/locale'
-import { fetchBlogLandingPage } from '../../api/blog'
+
+import { fetchPodcastPage } from '../../api/podcast'
 import { pageTitleWidth, rem } from '../../styling/typography'
 import { lgBreakpoint } from '../../styling/breakpoints'
+import { smBreakpoint } from '../../styling/breakpoints'
 import Divider from '../../components/Divider'
 import BlogListItem from '../../components/Blog/BlogListItem'
 import BlogListNavigationButtons from '../../components/Blog/BlogListNavigationButtons'
+import DocumentsList from '../../components/DocumentsList'
+import PodcastList from '../../components/Podcast'
+import teamMemberProps from '../../propTypes/teamMember'
+import TextWithTeamMember from '../../components/TextWithTeamMember'
+import CenteredText from '../../components/CenteredText'
+import Banner from '../../components/Banner'
 
-const BlogPostsList = styled.ol`
+
+
+const PodcastPostsList = styled.ol`
   list-style-type: none;
   padding: 0;
   margin-left: auto;
   margin-right: auto;
 
-  > * {
+  > * {wq3w
     margin-bottom: ${rem('70px')};
   }
 
@@ -29,16 +39,32 @@ const BlogPostsList = styled.ol`
   }
 `
 
-const BlogPostsListHeading = styled.h1`
+const PodcastSubHeading = styled.h2`
+  text-align: center;
+  color: #271b19;
+  font-weight: normal;
+  font-size: 1.1rem;
+`
+
+const PodcastPostsListHeading = styled.h1`
   text-align: left;
 `
 
-const BlogListFooter = styled.div`
+const PodcastListFooter = styled.div`
   margin-left: auto;
   margin-right: auto;
 
   @media (min-width: ${lgBreakpoint}) {
     width: 60%;
+  }
+`
+
+const TeamMemberContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: ${smBreakpoint}) {
+    display: block;
   }
 `
 
@@ -57,40 +83,54 @@ class Podcast extends Component {
     const {
       metaTitle,
       metaDescription,
-      blogListTitle,
-      blogPosts,
-      previousPageButtonText,
-      nextPageButtonText,
-      page,
-      isLastPage,
-      totalNumberOfPages,
+      introHeading,
+      introSubHeading,
+      introMarkdown,
+      //blogListTitle,
+      podcast,
+      //previousPageButtonText,
+      //nextPageButtonText,
+      //page,
+      //isLastPage,
+      //totalNumberOfPages,
+      contactTextHeading,
+      contactText,
+      teamMember,
+      bannerTitle,
+      bannerButtonText,
+      bannerButtonUrl,
     } = this.props
-
     return (
       <div>
         <Head title={metaTitle} description={metaDescription} />
-
         <PageSection>
-          <BlogPostsListHeading>
-            {blogListTitle}
-          </BlogPostsListHeading>
-          <BlogPostsList>
-            {blogPosts.map(({ id, ...rest }) => <BlogListItem key={id} {...rest} />)}
-          </BlogPostsList>
+          <h1>{introHeading}</h1>
+          <PodcastSubHeading>{introSubHeading}</PodcastSubHeading>
+          <CenteredText source={introMarkdown} />
         </PageSection>
 
-        <Container>
-          <BlogListFooter>
-            <Divider color="grey" size="large" />
-            <BlogListNavigationButtons
-              previousPageButtonText={previousPageButtonText}
-              nextPageButtonText={nextPageButtonText}
-              page={page}
-              isLastPage={isLastPage}
-              totalNumberOfPages={totalNumberOfPages}
+        <PageSection>
+          <PodcastList podcast={podcast}/>
+        </PageSection>
+
+        <PageSection>
+          <TeamMemberContainer>
+            <TextWithTeamMember
+              header={contactTextHeading}
+              text={contactText}
+              teamMemberTitle={teamMember.name}
+              teamMemberSubtitle={teamMember.responsibilityArea}
+              teamMember={teamMember}
             />
-          </BlogListFooter>
-        </Container>
+          </TeamMemberContainer>
+        </PageSection>
+
+        <Banner
+          headline={bannerTitle}
+          buttonText={bannerButtonText}
+          buttonLink={bannerButtonUrl}
+        />
+
       </div>
     )
   }
@@ -104,24 +144,29 @@ class Podcast extends Component {
 Podcast.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string.isRequired,
-  blogListTitle: PropTypes.string.isRequired,
-  ...BlogListNavigationButtons.propTypes,
-  page: PropTypes.number.isRequired,
-  isLastPage: PropTypes.bool.isRequired,
-  totalNumberOfPages: PropTypes.number.isRequired,
-  blogPosts: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    ...BlogListItem.propTypes,
-  })),
+  podcast: PodcastList.propTypes.podcast.isRequired,
+  introHeading: PropTypes.string.isRequired,
+  introSubHeading:PropTypes.string.isRequired,
+  introMarkdown: PropTypes.string.isRequired,
+  //...BlogListNavigationButtons.propTypes,
+  //page: PropTypes.number.isRequired,
+  //isLastPage: PropTypes.bool.isRequired,
+  //totalNumberOfPages: PropTypes.number.isRequired,
+  contactTextHeading: PropTypes.string.isRequired,
+  contactText: PropTypes.string.isRequired,
+  teamMember:PropTypes.shape(teamMemberProps).isRequired,
+  bannerTitle: PropTypes.string.isRequired,
+  bannerButtonText: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
 }
 
 Podcast.defaultProps = {
-  blogPosts: [],
+  podcast: [],
 }
 
 Podcast.getInitialProps = function initialProps({ query }) {
   const { page } = query
-  return fetchBlogLandingPage(getLocaleFromQuery(query), page)
+  return fetchPodcastPage(getLocaleFromQuery(query), page)
 }
 
 export default withLayout(Podcast)
