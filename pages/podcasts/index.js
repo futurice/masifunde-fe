@@ -21,7 +21,7 @@ import teamMemberProps from '../../propTypes/teamMember'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 import CenteredText from '../../components/CenteredText'
 import Banner from '../../components/Banner'
-
+import { largeSpacing } from '../../styling/sizes'
 
 
 const PodcastPostsList = styled.ol`
@@ -68,6 +68,9 @@ const TeamMemberContainer = styled.div`
   }
 `
 
+const ExtendedDivider = Divider.extend`
+  margin-top: ${largeSpacing} !important;
+`
 
 
 class Podcast extends Component {
@@ -105,6 +108,7 @@ class Podcast extends Component {
         <Head title={metaTitle} description={metaDescription} />
         <PageSection>
           <h1>{introHeading}</h1>
+          {console.log(podcast)}
           <PodcastSubHeading>{introSubHeading}</PodcastSubHeading>
           <CenteredText source={introMarkdown} />
         </PageSection>
@@ -112,7 +116,7 @@ class Podcast extends Component {
         <PageSection>
           <PodcastList podcast={podcast}/>
         </PageSection>
-
+        <ExtendedDivider color="orange" />
         <PageSection>
           <TeamMemberContainer>
             <TextWithTeamMember
