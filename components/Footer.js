@@ -174,7 +174,7 @@ function Footer({
                   <Fragment>
                     <FooterLink route={RouteNames.Blog} params={{ page: '1' }} text={blogText} />
                     <FooterLink route={RouteNames.Documents} text={documentsText} />
-                    <FooterLink route={RouteNames.Podcast} text={podcastText} />
+                    <FooterLink route={RouteNames.Podcast} params={{ page: '1' }} text={podcastText} />
                   </Fragment>
                 </ul>
               </div>

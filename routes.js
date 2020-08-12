@@ -78,7 +78,7 @@ addRoute('/spendenaktion', Campaign)
 addRoute('/presse', Press)
 addRoute('/dokumente', Documents)
 addRoute('/transparenz', Transparency)
-addRoute('/podcasts', Podcast)
+addRoute('/podcasts/page/:page', Podcast)
 
 // Share route names
 nextRoutes.RouteNames = {

@@ -14,7 +14,7 @@ import { lgBreakpoint } from '../../styling/breakpoints'
 import { smBreakpoint } from '../../styling/breakpoints'
 import Divider from '../../components/Divider'
 import BlogListItem from '../../components/Blog/BlogListItem'
-import BlogListNavigationButtons from '../../components/Blog/BlogListNavigationButtons'
+import PodcastListNavigationButtons from '../../components/Podcast/PodcastListNavigationButtons'
 import DocumentsList from '../../components/DocumentsList'
 import PodcastList from '../../components/Podcast'
 import teamMemberProps from '../../propTypes/teamMember'
@@ -89,13 +89,12 @@ class Podcast extends Component {
       introHeading,
       introSubHeading,
       introMarkdown,
-      //blogListTitle,
       podcast,
-      //previousPageButtonText,
-      //nextPageButtonText,
-      //page,
-      //isLastPage,
-      //totalNumberOfPages,
+      previousPageButtonText,
+      nextPageButtonText,
+      page,
+      isLastPage,
+      totalNumberOfPages,
       contactTextHeading,
       contactText,
       teamMember,
@@ -115,6 +114,21 @@ class Podcast extends Component {
         <PageSection>
           <PodcastList podcast={podcast}/>
         </PageSection>
+
+
+        <Container>
+          <PodcastListFooter>
+            <Divider color="grey" size="large" />
+            <PodcastListNavigationButtons
+              previousPageButtonText={previousPageButtonText}
+              nextPageButtonText={nextPageButtonText}
+              page={page}
+              isLastPage={isLastPage}
+              totalNumberOfPages={totalNumberOfPages}
+            />
+          </PodcastListFooter>
+        </Container>
+
         <ExtendedDivider color="orange" />
         <PageSection>
           <TeamMemberContainer>
@@ -147,20 +161,21 @@ class Podcast extends Component {
 Podcast.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string.isRequired,
-  podcast: PodcastList.propTypes.podcast.isRequired,
   introHeading: PropTypes.string.isRequired,
   introSubHeading:PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
-  //...BlogListNavigationButtons.propTypes,
-  //page: PropTypes.number.isRequired,
-  //isLastPage: PropTypes.bool.isRequired,
-  //totalNumberOfPages: PropTypes.number.isRequired,
+  podcast: PodcastList.propTypes.podcast.isRequired,
+  ...PodcastListNavigationButtons.propTypes,
+  page: PropTypes.number.isRequired,
+  isLastPage: PropTypes.bool.isRequired,
+  totalNumberOfPages: PropTypes.number.isRequired,
   contactTextHeading: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
   teamMember:PropTypes.shape(teamMemberProps).isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
+
 }
 
 Podcast.defaultProps = {

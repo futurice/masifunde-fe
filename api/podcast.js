@@ -1,14 +1,61 @@
 import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
-import { unwrapTeamMember, unwrapFiles } from './common'
+import { unwrapTeamMember, unwrapFile, unwrapImage } from './common'
 import { PODCAST_POSTS_PER_PAGE } from '../env'
 import replaceLocale from '../utils/replaceLocale'
+import { jpegQuality } from '../utils/constants'
 
 
-export async function fetchPodcastPage(locale) {
-  const content = await fetchSingleEntry('pagepodcast', locale)
+const podcastPerPage = PODCAST_POSTS_PER_PAGE
+
+export function fetchPodcastList(locale, page) {
+  const skip = podcastPerPage * (page - 1)
+  const fetchParams= {
+    unpackItems: false,
+    locale,
+    skip,
+    limit: podcastPerPage,
+    order: '-fields.date',
+  }
+  return fetchEntriesForContentType('podcast', fetchParams)
+  .then((response) => {
+    const totalNumberOfPodcasts = response.total
+    const totalNumberOfPages = Math.ceil(totalNumberOfPodcasts / podcastPerPage)
+    const entries = response.items
+    const numberOfLastPostOnPage = skip + entries.length
+    const isLastPage = numberOfLastPostOnPage >= totalNumberOfPodcasts
+
+    const podcast = entries.map(({ sys, fields }) => {
+      const podcastAudio = unwrapFile(fields.podcastAudio)
+      const podcastImage = unwrapImage(fields.podcastImage, { q: jpegQuality, w: 1000 })
+      return ({
+        id: sys.id,
+        podcastTitle: fields.podcastTitle,
+        date: fields.date,
+        podcastAudio,
+        podcastImage,
+      })
+    })
+
+    return ({
+      totalNumberOfPages,
+      isLastPage,
+      podcast,
+    })
+  })
+}
+
+export async function fetchPodcastPage(locale, page = 1) {
+  const [
+    content,
+    fetchPodcastResults,
+   ] = await Promise.all([
+     fetchSingleEntry('pagepodcast', locale),
+     fetchPodcastList(locale, page),
+   ])
   return {
     ...content,
+    ...fetchPodcastResults,
     teamMember: unwrapTeamMember(content.teamMember),
-    podcast: unwrapFiles(content.podcast),
+    page: Number(page),
   }
 }
