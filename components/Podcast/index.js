@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import imagePropShape from '../../propTypes/image'
 import DocumentDownloadBox from '../DocumentsList/DocumentDownloadBox'
 import FilePropType from '../../propTypes/file'
 import { smBreakpoint } from '../../styling/breakpoints'
@@ -89,7 +90,7 @@ const Podcast = ({ expandList, podcast }) => (
 Podcast.propTypes = {
   expandList: PropTypes.bool,
   podcast: PropTypes.arrayOf(PropTypes.shape({
-    podcastImage: PropTypes.string,
+    podcastImage: PropTypes.shape(imagePropShape),
     podcastTitle: PropTypes.string,
     podcastAudio: PropTypes.shape(FilePropType),
   })),
