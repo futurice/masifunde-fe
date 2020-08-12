@@ -50,6 +50,7 @@ const Podcast = ({ expandList, podcast }) => (
         {podcast.map(({
           podcastTitle, podcastImage, podcastAudio,
         }) => (
+
           <BoxContainerCol className="col-md-6" key={podcastAudio.url}>
             <div className="row">
               <ContentContainer className="col-sm-auto">
@@ -65,17 +66,18 @@ const Podcast = ({ expandList, podcast }) => (
       </div>
     ) : (
       <div className="row">
+      {console.log(podcast)}
         {podcast.map(({ podcastTitle, podcastAudio, podcastImage }) => (
           <BoxContainerCol key={podcastAudio.url} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
             <DocumentDownloadBox title={podcastTitle} fileUrl={podcastAudio.url} />
             <figure>
             <img src={podcastImage ?
-               (podcastImage.file ? podcastImage.file.url : podcastImage.file)
+               (podcastImage.url ? "https:" + podcastImage.url : podcastImage.url)
                 : podcastImage }/>
             <figcaption>{podcastTitle}</figcaption>
               <audio
                 controls
-                src={podcastAudio.file ? podcastAudio.file.url : podcastAudio.file}>
+                src={podcastAudio.url ? "https:" + podcastAudio.url : podcastAudio.url}>
                     Your browser does not support the
                       <code>audio</code> element.
               </audio>
