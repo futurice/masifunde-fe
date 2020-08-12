@@ -112,7 +112,7 @@ class Podcast extends Component {
           {console.log(podcast)}
           {console.log(typeof(page))}
           {
-            //<PodcastList podcast={podcast}/>
+            <PodcastList podcast={podcast}/>
           }
         </PageSection>
 
