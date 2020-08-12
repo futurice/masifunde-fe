@@ -108,7 +108,6 @@ class Podcast extends Component {
         <Head title={metaTitle} description={metaDescription} />
         <PageSection>
           <h1>{introHeading}</h1>
-          {console.log(podcast)}
           <PodcastSubHeading>{introSubHeading}</PodcastSubHeading>
           <CenteredText source={introMarkdown} />
         </PageSection>
