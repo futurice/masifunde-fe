@@ -14,7 +14,7 @@ import { lgBreakpoint } from '../../styling/breakpoints'
 import { smBreakpoint } from '../../styling/breakpoints'
 import Divider from '../../components/Divider'
 import BlogListItem from '../../components/Blog/BlogListItem'
-import BlogListNavigationButtons from '../../components/Blog/BlogListNavigationButtons'
+import PodcastListNavigationButtons from '../../components/Podcast/PodcastListNavigationButtons'
 import DocumentsList from '../../components/DocumentsList'
 import PodcastList from '../../components/Podcast'
 import teamMemberProps from '../../propTypes/teamMember'
@@ -119,7 +119,7 @@ class Podcast extends Component {
         <Container>
           <PodcastListFooter>
             <Divider color="grey" size="large" />
-            <BlogListNavigationButtons
+            <PodcastListNavigationButtons
               previousPageButtonText={previousPageButtonText}
               nextPageButtonText={nextPageButtonText}
               page={page}
@@ -164,7 +164,7 @@ Podcast.propTypes = {
   introSubHeading:PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
   podcast: PodcastList.propTypes.podcast.isRequired,
-  ...BlogListNavigationButtons.propTypes,
+  ...PodcastListNavigationButtons.propTypes,
   page: PropTypes.number.isRequired,
   isLastPage: PropTypes.bool.isRequired,
   totalNumberOfPages: PropTypes.number.isRequired,
