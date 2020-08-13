@@ -32,7 +32,7 @@ const DateAuthorText = styled.span`
 
 const BlogPostTitle = styled.h2`
   font-size: ${rem('24px')};
-  line-height: ${rem('30px')};;
+  line-height: ${rem('30px')};
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 0.5rem;
@@ -44,7 +44,7 @@ const BlogPostTitle = styled.h2`
 
   @media (min-width: ${mdBreakpoint}) {
     font-size: ${rem('32px')};
-    line-height: ${rem('40px')};;
+    line-height: ${rem('40px')};
   }
 `
 

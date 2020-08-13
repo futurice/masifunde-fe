@@ -118,7 +118,6 @@ class Podcast extends Component {
 
         <Container>
           <PodcastListFooter>
-            <Divider color="grey" size="large" />
             <PodcastListNavigationButtons
               previousPageButtonText={previousPageButtonText}
               nextPageButtonText={nextPageButtonText}

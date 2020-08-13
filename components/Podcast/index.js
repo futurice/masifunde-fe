@@ -7,59 +7,40 @@ import DocumentDownloadBox from '../DocumentsList/DocumentDownloadBox'
 import FilePropType from '../../propTypes/file'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { extraExtraSmallSpacing } from '../../styling/sizes'
-
-const Title = styled.p`
-  font-weight: bold;
-  margin-bottom: ${extraExtraSmallSpacing};
-  margin-top: ${extraExtraSmallSpacing};
-
-  @media (min-width: ${smBreakpoint}) {
-    margin-top: 0;
-  }
-`
-
-const Description = styled.p`
-  margin: 0;
-`
+import PodcastCard from './PodcastCard'
 
 const BoxContainerCol = styled.div`
+  flex: 1 0 28%; /* explanation below */
+  margin: 5px;
   margin-bottom: 30px; // To match up bootstrap gutters
-  display: flex;
+
+  @media (min-width: ${smBreakpoint}) {
+    display: block;
+  }
+`
+const Box = styled.div`
   justify-content: center;
-
-  @media (min-width: ${smBreakpoint}) {
-    display: block;
-  }
-`
-
-const ContentContainer = styled.div`
   display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  @media (min-width: ${smBreakpoint}) {
-    display: block;
-  }
+  flex-wrap: wrap;
 `
+
 
 
 const Podcast = ({ expandList, podcast }) => (
   <Fragment>
+  <Box>
+  {console.log('expandList')}
+    {console.log(expandList)}
     {expandList ? (
       <div className="row">
         {podcast.map(({
-          podcastTitle, podcastImage, podcastAudio,
+          podcastTitle, podcastImage, podcastAudio, date, duration
         }) => (
 
           <BoxContainerCol className="col-md-6" key={podcastAudio.url}>
             <div className="row">
-              <ContentContainer className="col-sm-auto">
-                <DocumentDownloadBox title={podcastTitle} fileUrl={podcastAudio.url} />
-              </ContentContainer>
-              <ContentContainer className="col">
-                <Title>{podcastTitle}</Title>
-                <Description>{podcastImage}</Description>
-              </ContentContainer>
+            <PodcastCard podcastTitle={podcastTitle} podcastImage={podcastImage}
+             podcastAudio={podcastAudio} date={date} duration={duration}/>
             </div>
           </BoxContainerCol>
         ))}
@@ -67,25 +48,15 @@ const Podcast = ({ expandList, podcast }) => (
     ) : (
       <div className="row">
       {console.log(podcast)}
-        {podcast.map(({ podcastTitle, podcastAudio, podcastImage }) => (
+        {podcast.map(({ podcastTitle, podcastAudio, podcastImage, date, duration }) => (
           <BoxContainerCol key={podcastAudio.url} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
-            <DocumentDownloadBox title={podcastTitle} fileUrl={podcastAudio.url} />
-            <figure>
-            <img src={podcastImage ?
-               (podcastImage.url ? "https:" + podcastImage.url : podcastImage.url)
-                : podcastImage }/>
-            <figcaption>{podcastTitle}</figcaption>
-              <audio
-                controls
-                src={podcastAudio.url ? "https:" + podcastAudio.url : podcastAudio.url}>
-                    Your browser does not support the
-                      <code>audio</code> element.
-              </audio>
-            </figure>
+            <PodcastCard podcastTitle={podcastTitle} podcastImage={podcastImage}
+             podcastAudio={podcastAudio} date={date} duration={duration}/>
           </BoxContainerCol>
         ))}
       </div>
     )}
+    </Box>
   </Fragment>
 )
 
@@ -95,6 +66,8 @@ Podcast.propTypes = {
     podcastImage: PropTypes.shape(imagePropShape),
     podcastTitle: PropTypes.string,
     podcastAudio: PropTypes.shape(FilePropType),
+    date: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired
   })),
 }
 
