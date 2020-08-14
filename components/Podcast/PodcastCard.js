@@ -77,8 +77,12 @@ const PodcastCard = ({
                 <CenterImage src="/static/images/play.svg"/>
               </PlayButton>
               <PauseButton onClick={()=>(document.getElementById(podcastTitle).pause())} >
-               <CenterImage src="/static/images/play.svg"/>
+               <CenterImage src="/static/images/pause.svg"/>
               </PauseButton>
+              <CenterImage src="/static/images/share.svg"/>
+              <a href={"https:" + podcastAudio.url} download={podcastTitle}>
+               <CenterImage src="/static/images/download.svg"/>
+              </a>
             </div>
         </figure>
       </PodcastBodyContainer>
