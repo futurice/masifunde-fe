@@ -32,13 +32,8 @@ const PodcastBodyContainer = styled.div`
   height:200px;
 `
 
-const PlayButton = styled.button`
-  border-radius:50px;
-  border: none;
-  background-color:white;
-`
-const PauseButton = styled.button`
-  border-radius:50px;
+const AudioButton = styled.button`
+  height:65px;
   border: none;
   background-color:white;
 `
@@ -47,6 +42,48 @@ const CenterImage = styled.img`
   position: relative;
   margin: auto;
 `
+
+
+class PausePlayButton extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      isPlaying: false,
+    }
+  }
+
+  togglePlaying(props){
+    if (this.state.isPlaying){
+      document.getElementById(this.props.podcastTitle).pause()
+    } else {
+      document.getElementById(this.props.podcastTitle).play()
+    }
+    this.setState({
+      isPlaying: !this.state.isPlaying
+    })
+  }
+
+  render(){
+    const isPlaying = this.state.isPlaying
+    if (isPlaying){
+      return (
+        <AudioButton onClick={()=>this.togglePlaying(this.props.podcastTitle)} >
+         <CenterImage src="/static/images/pause.svg"/>
+        </AudioButton>
+      )
+    } else {
+      return(
+        <AudioButton onClick={()=>this.togglePlaying(this.props.podcastTitle)} >
+          <CenterImage src="/static/images/play.svg"/>
+        </AudioButton>
+      )
+    }
+
+  }
+
+}
+
+
 
 const PodcastCard = ({
       podcastTitle,
@@ -70,19 +107,13 @@ const PodcastCard = ({
                 Your browser does not support the
                   <code>audio</code> element.
           </audio>
-          <p>{formatDate(date)}</p>
-          <p>{duration}</p>
+          <p>{duration + " | " + formatDate(date)}</p>
+            <PausePlayButton podcastTitle={podcastTitle}/>
             <div>
-              <PlayButton onClick={()=>(document.getElementById(podcastTitle).play())} >
-                <CenterImage src="/static/images/play.svg"/>
-              </PlayButton>
-              <PauseButton onClick={()=>(document.getElementById(podcastTitle).pause())} >
-               <CenterImage src="/static/images/pause.svg"/>
-              </PauseButton>
-              <CenterImage src="/static/images/share.svg"/>
-              <a href={"https:" + podcastAudio.url} download={podcastTitle}>
-               <CenterImage src="/static/images/download.svg"/>
-              </a>
+            <CenterImage src="/static/images/share.svg"/>
+            <a href={"http:" + podcastAudio.url} download>
+             <CenterImage src="/static/images/download.svg"/>
+            </a>
             </div>
         </figure>
       </PodcastBodyContainer>
