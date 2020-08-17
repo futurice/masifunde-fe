@@ -21,6 +21,15 @@ const PodcastImageContainer = styled.div`
   padding-bottom: 20px;
   width:100%;
 `
+const PodcastTitleContainter = styled.div`
+  padding-top: 20px;
+  display:block;
+  height:90px;
+  max-width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+`
+
 const PodcastBodyContainer = styled.div`
   background: white;
   text-align: center;
@@ -30,6 +39,11 @@ const PodcastBodyContainer = styled.div`
   letter-spacing: 0px;
   width:100%;
   height:200px;
+`
+const PodcastInfo = styled.div`
+  text-align: center;
+  font-weight: 200;
+  margin-bottom: 10px;
 `
 
 const AudioButton = styled.button`
@@ -41,6 +55,17 @@ const AudioButton = styled.button`
 const CenterImage = styled.img`
   position: relative;
   margin: auto;
+  display:inline;
+`
+
+const ShareIcon = styled.img`
+  margin-right:5px;
+`
+
+const IconContainer = styled.div`
+  position:absolute;
+  bottom:12px;
+  right:25px;
 `
 
 
@@ -83,7 +108,9 @@ class PausePlayButton extends React.Component{
 
 }
 
+function copyUrl(url){
 
+}
 
 const PodcastCard = ({
       podcastTitle,
@@ -100,22 +127,21 @@ const PodcastCard = ({
             : podcastImage }/>
         </PodcastImageContainer>
         <PodcastBodyContainer>
-        <figure>
-          <figcaption>{podcastTitle}</figcaption>
+          <PodcastTitleContainter>{podcastTitle}</PodcastTitleContainter>
           <audio id = {podcastTitle}
             src={podcastAudio.url ? "https:" + podcastAudio.url : podcastAudio.url}>
                 Your browser does not support the
                   <code>audio</code> element.
           </audio>
-          <p>{duration + " | " + formatDate(date)}</p>
+          <PodcastInfo>{duration + " | " + date}</PodcastInfo>
             <PausePlayButton podcastTitle={podcastTitle}/>
-            <div>
-            <CenterImage src="/static/images/share.svg"/>
-            <a href={"http:" + podcastAudio.url} download>
-             <CenterImage src="/static/images/download.svg"/>
+            <IconContainer>
+            <ShareIcon src="/static/images/share.svg"
+            onClick={ copyUrl(podcastAudio.url) }/>
+            <a href={podcastAudio.url} download>
+             <img src="/static/images/download.svg"/>
             </a>
-            </div>
-        </figure>
+            </IconContainer>
       </PodcastBodyContainer>
     </Fragment>
 )
