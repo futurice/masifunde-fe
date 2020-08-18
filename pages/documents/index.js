@@ -17,11 +17,11 @@ import teamMemberProps from '../../propTypes/teamMember'
 import { subsectionTitleText } from '../../styling/typography'
 import { largeSpacing } from '../../styling/sizes'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
+import VideoList from '../../components/VideoList'
 
 const Heading = styled.h2`
   ${subsectionTitleText};
   text-align: center;
-
   @media (min-width: ${smBreakpoint}) {
     text-align: left;
   }
@@ -30,7 +30,6 @@ const Heading = styled.h2`
 const TeamMemberContainer = styled.div`
   display: flex;
   justify-content: center;
-  
   @media (min-width: ${smBreakpoint}) {
     display: block;
   }
@@ -57,6 +56,12 @@ const Documents = ({
   teamMember,
   bannerButtonText,
   bannerButtonUrl,
+  videosHeading,
+  videosList,
+  pressKitHeading,
+  pressKitList,
+  pressReleaseHeading,
+  pressReleaseList,
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
@@ -77,15 +82,28 @@ const Documents = ({
         <DocumentsList documents={documentsList2} />
       </PageSection>
 
-
       <PageSection contained={false}>
         <Heading>{section3heading}</Heading>
         <DocumentsList documents={documentsList3} expandList />
+      </PageSection>
 
-        <ExtendedDivider color="orange" />
+      <PageSection contained={false} >
+        <Heading>{pressKitHeading}</Heading>
+        <DocumentsList documents={pressKitList} />
+      </PageSection>
+
+      <PageSection contained={false}>
+        <Heading>{videosHeading}</Heading>
+        <VideoList videos={videosList} />
+      </PageSection>
+
+      <PageSection contained={false}>
+        <Heading>{pressReleaseHeading}</Heading>
+        <DocumentsList documents={pressReleaseList} expandList />
       </PageSection>
     </CenteredGrid>
 
+    <ExtendedDivider color="orange" />
     <PageSection>
       <TeamMemberContainer>
         <TextWithTeamMember
@@ -124,6 +142,12 @@ Documents.propTypes = {
   contactTextHeading: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
   teamMember: PropTypes.shape(teamMemberProps).isRequired,
+  pressKitHeading: PropTypes.string.isRequired,
+  pressKitList:DocumentsList.propTypes.documents.isRequired,
+  pressReleaseHeading: PropTypes.string.isRequired,
+  pressReleaseList: DocumentsList.propTypes.documents.isRequired,
+  videosHeading: PropTypes.string.isRequired,
+  videosList: VideoList.propTypes.videos.isRequired,
 }
 
 Documents.defaultProps = {
