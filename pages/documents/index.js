@@ -59,13 +59,13 @@ const Documents = ({
   teamMember,
   bannerButtonText,
   bannerButtonUrl,
-  videosList,
-  documentsList1Press,
-  documentsList2Press,
-  teamMemberPress,
-  pressKitHeading,
   videosHeading,
+  videosList,
+  pressKitHeading,
+  pressKitList,
   pressReleaseHeading,
+  pressReleaseList,
+  teamMemberPress,
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
@@ -93,7 +93,7 @@ const Documents = ({
 
       <PageSection contained={false} >
         <Heading>{pressKitHeading}</Heading>
-        <DocumentsList documents={documentsList1Press} />
+        <DocumentsList documents={pressKitList} />
       </PageSection>
 
       <PageSection contained={false}>
@@ -103,7 +103,7 @@ const Documents = ({
 
       <PageSection contained={false}>
         <Heading>{pressReleaseHeading}</Heading>
-        <DocumentsList documents={documentsList2Press} expandList />
+        <DocumentsList documents={pressReleaseList} expandList />
       </PageSection>
     </CenteredGrid>
 
@@ -116,20 +116,6 @@ const Documents = ({
           teamMemberTitle={teamMember.name}
           teamMemberSubtitle={teamMember.responsibilityArea}
           teamMember={teamMember}
-        />
-      </TeamMemberContainer>
-    </PageSection>
-    <ExtendedDivider color="orange" />
-    <PageSection>
-      <TeamMemberContainer>
-        <TextWithTeamMember
-          //TODO update this so that it uses the right content.
-          //Check how to switch the contactTextHeading
-          header={contactTextHeading}
-          text={contactText}
-          teamMemberTitle={teamMemberPress.name}
-          teamMemberSubtitle={teamMemberPress.responsibilityArea}
-          teamMember={teamMemberPress}
         />
       </TeamMemberContainer>
     </PageSection>
@@ -160,14 +146,12 @@ Documents.propTypes = {
   contactTextHeading: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
   teamMember: PropTypes.shape(teamMemberProps).isRequired,
-  videosList: VideoList.propTypes.videos.isRequired,
-  documentsList1Press:DocumentsList.propTypes.documents.isRequired,
-  documentsList2Press: DocumentsList.propTypes.documents.isRequired,
-  teamMemberPress: PropTypes.shape(teamMemberProps).isRequired,
   pressKitHeading: PropTypes.string.isRequired,
-  videosHeading: PropTypes.string.isRequired,
+  pressKitList:DocumentsList.propTypes.documents.isRequired,
   pressReleaseHeading: PropTypes.string.isRequired,
-
+  pressReleaseList: DocumentsList.propTypes.documents.isRequired,
+  videosHeading: PropTypes.string.isRequired,
+  videosList: VideoList.propTypes.videos.isRequired,
 }
 
 Documents.defaultProps = {
