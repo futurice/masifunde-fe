@@ -41,7 +41,6 @@ const ExtendedDivider = Divider.extend`
   margin-top: ${largeSpacing} !important;
 `
 
-//TODO missing press page heading>
 const Documents = ({
   metaDescription,
   metaTitle,
