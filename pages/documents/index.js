@@ -22,7 +22,6 @@ import VideoList from '../../components/VideoList'
 const Heading = styled.h2`
   ${subsectionTitleText};
   text-align: center;
-
   @media (min-width: ${smBreakpoint}) {
     text-align: left;
   }
@@ -31,7 +30,6 @@ const Heading = styled.h2`
 const TeamMemberContainer = styled.div`
   display: flex;
   justify-content: center;
-
   @media (min-width: ${smBreakpoint}) {
     display: block;
   }
@@ -64,7 +62,6 @@ const Documents = ({
   pressKitList,
   pressReleaseHeading,
   pressReleaseList,
-  teamMemberPress,
 }) => (
   <Fragment>
     <Head title={metaTitle} description={metaDescription} />
