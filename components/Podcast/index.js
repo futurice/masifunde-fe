@@ -7,70 +7,51 @@ import DocumentDownloadBox from '../DocumentsList/DocumentDownloadBox'
 import FilePropType from '../../propTypes/file'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { extraExtraSmallSpacing } from '../../styling/sizes'
-
-const Title = styled.p`
-  font-weight: bold;
-  margin-bottom: ${extraExtraSmallSpacing};
-  margin-top: ${extraExtraSmallSpacing};
-
-  @media (min-width: ${smBreakpoint}) {
-    margin-top: 0;
-  }
-`
-
-const Description = styled.p`
-  margin: 0;
-`
+import PodcastCard from './PodcastCard'
 
 const BoxContainerCol = styled.div`
+  flex: 1 0 28%; /* explanation below */
+  margin: 5px;
   margin-bottom: 30px; // To match up bootstrap gutters
-  display: flex;
-  justify-content: center;
 
   @media (min-width: ${smBreakpoint}) {
     display: block;
   }
 `
 
-const ContentContainer = styled.div`
+const Box = styled.div`
+  justify-content: center;
   display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  @media (min-width: ${smBreakpoint}) {
-    display: block;
-  }
+  flex-wrap: wrap;
 `
 
 const Podcast = ({ expandList, podcast }) => (
   <Fragment>
+  <Box>
     {expandList ? (
       <div className="row">
         {podcast.map(({
-          podcastTitle, podcastImage, podcastAudio,
+          podcastTitle, podcastImage, podcastAudio, date, duration
         }) => (
           <BoxContainerCol className="col-md-6" key={podcastAudio.url}>
             <div className="row">
-              <ContentContainer className="col-sm-auto">
-                <DocumentDownloadBox title={podcastTitle} fileUrl={podcastAudio.url} />
-              </ContentContainer>
-              <ContentContainer className="col">
-                <Title>{podcastTitle}</Title>
-                <Description>{podcastImage}</Description>
-              </ContentContainer>
+            <PodcastCard podcastTitle={podcastTitle} podcastImage={podcastImage}
+             podcastAudio={podcastAudio} date={date} duration={duration}/>
             </div>
           </BoxContainerCol>
         ))}
       </div>
     ) : (
       <div className="row">
-        {podcast.map(({ podcastTitle, podcastAudio }) => (
+        {podcast.map(({ podcastTitle, podcastAudio, podcastImage, date, duration }) => (
           <BoxContainerCol key={podcastAudio.url} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
-            <DocumentDownloadBox title={podcastTitle} fileUrl={podcastAudio.url} />
+            <PodcastCard podcastTitle={podcastTitle} podcastImage={podcastImage}
+             podcastAudio={podcastAudio} date={date} duration={duration}/>
           </BoxContainerCol>
         ))}
       </div>
     )}
+    </Box>
   </Fragment>
 )
 
@@ -80,6 +61,8 @@ Podcast.propTypes = {
     podcastImage: PropTypes.shape(imagePropShape),
     podcastTitle: PropTypes.string,
     podcastAudio: PropTypes.shape(FilePropType),
+    date: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired
   })),
 }
 

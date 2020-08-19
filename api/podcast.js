@@ -33,6 +33,7 @@ export function fetchPodcastList(locale, page) {
         date: fields.date,
         podcastAudio,
         podcastImage,
+        duration: fields.duration,
       })
     })
 

@@ -19,9 +19,9 @@ import DocumentsList from '../../components/DocumentsList'
 import PodcastList from '../../components/Podcast'
 import teamMemberProps from '../../propTypes/teamMember'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
-import CenteredText from '../../components/CenteredText'
 import Banner from '../../components/Banner'
 import { largeSpacing } from '../../styling/sizes'
+import { extraSmallSpacing } from '../../styling/sizes'
 
 
 const PodcastPostsList = styled.ol`
@@ -44,6 +44,19 @@ const PodcastSubHeading = styled.h2`
   color: #271b19;
   font-weight: normal;
   font-size: 1.1rem;
+`
+
+const PodcastMarkdown = styled.div`
+  margin: 0 auto;
+  text-align: left;
+
+  @media (min-width: ${lgBreakpoint}) {
+    width: 100%;
+  }
+
+  h1 + & {
+    margin-top: -${extraSmallSpacing};
+  }
 `
 
 const PodcastPostsListHeading = styled.h1`
@@ -108,7 +121,7 @@ class Podcast extends Component {
         <PageSection>
           <h1>{introHeading}</h1>
           <PodcastSubHeading>{introSubHeading}</PodcastSubHeading>
-          <CenteredText source={introMarkdown} />
+          <PodcastMarkdown> {introMarkdown} </PodcastMarkdown>
         </PageSection>
 
         <PageSection>
@@ -118,7 +131,6 @@ class Podcast extends Component {
 
         <Container>
           <PodcastListFooter>
-            <Divider color="grey" size="large" />
             <PodcastListNavigationButtons
               previousPageButtonText={previousPageButtonText}
               nextPageButtonText={nextPageButtonText}
