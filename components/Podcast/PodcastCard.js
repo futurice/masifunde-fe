@@ -108,10 +108,6 @@ class PausePlayButton extends React.Component{
 
 }
 
-function copyUrl(url){
-
-}
-
 const PodcastCard = ({
       podcastTitle,
       podcastAudio,
@@ -122,22 +118,19 @@ const PodcastCard = ({
   <Fragment>
     <PodcastImageContainer>
       <PodcastImage
-        src={podcastImage ?
-          (podcastImage.url ? "https:" + podcastImage.url : podcastImage.url)
-            : podcastImage }/>
+        src={podcastImage.url}/>
         </PodcastImageContainer>
         <PodcastBodyContainer>
           <PodcastTitleContainter>{podcastTitle}</PodcastTitleContainter>
           <audio id = {podcastTitle}
-            src={podcastAudio.url ? "https:" + podcastAudio.url : podcastAudio.url}>
+            src={podcastAudio.url}>
                 Your browser does not support the
                   <code>audio</code> element.
           </audio>
           <PodcastInfo>{duration + " | " + date}</PodcastInfo>
             <PausePlayButton podcastTitle={podcastTitle}/>
             <IconContainer>
-            <ShareIcon src="/static/images/share.svg"
-            onClick={ copyUrl(podcastAudio.url) }/>
+            <ShareIcon src="/static/images/share.svg"/>
             <a href={podcastAudio.url} download>
              <img src="/static/images/download.svg"/>
             </a>

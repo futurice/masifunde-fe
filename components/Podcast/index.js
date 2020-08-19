@@ -18,25 +18,21 @@ const BoxContainerCol = styled.div`
     display: block;
   }
 `
+
 const Box = styled.div`
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
 `
 
-
-
 const Podcast = ({ expandList, podcast }) => (
   <Fragment>
   <Box>
-  {console.log('expandList')}
-    {console.log(expandList)}
     {expandList ? (
       <div className="row">
         {podcast.map(({
           podcastTitle, podcastImage, podcastAudio, date, duration
         }) => (
-
           <BoxContainerCol className="col-md-6" key={podcastAudio.url}>
             <div className="row">
             <PodcastCard podcastTitle={podcastTitle} podcastImage={podcastImage}
@@ -47,7 +43,6 @@ const Podcast = ({ expandList, podcast }) => (
       </div>
     ) : (
       <div className="row">
-      {console.log(podcast)}
         {podcast.map(({ podcastTitle, podcastAudio, podcastImage, date, duration }) => (
           <BoxContainerCol key={podcastAudio.url} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
             <PodcastCard podcastTitle={podcastTitle} podcastImage={podcastImage}
