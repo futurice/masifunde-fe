@@ -15,6 +15,8 @@ import { smBreakpoint } from '../../styling/breakpoints'
 import Divider from '../../components/Divider'
 import BlogListItem from '../../components/Blog/BlogListItem'
 import PodcastListNavigationButtons from '../../components/Podcast/PodcastListNavigationButtons'
+import Subscribe from '../../components/Podcast/Subscribe'
+import Share from '../../components/Podcast/Share'
 import DocumentsList from '../../components/DocumentsList'
 import PodcastList from '../../components/Podcast'
 import teamMemberProps from '../../propTypes/teamMember'
@@ -85,6 +87,19 @@ const ExtendedDivider = Divider.extend`
   margin-top: ${largeSpacing} !important;
 `
 
+const SubscribeAndShare = styled.div`
+  margin-top: 24px;
+  display:inline-block;
+  width:100%;
+`
+
+const PodcastSection = styled.div.attrs({ className: 'container' })`
+  margin-top:3rem;
+
+  @media (min-width: ${smBreakpoint}) {
+    margin-top: 2rem;
+  }
+`
 
 class Podcast extends Component {
   componentWillReceiveProps(newProps, props) {
@@ -102,6 +117,10 @@ class Podcast extends Component {
       introHeading,
       introSubHeading,
       introMarkdown,
+      subscribeText,
+      subscribeLinks,
+      shareText,
+      shareLinks,
       podcast,
       previousPageButtonText,
       nextPageButtonText,
@@ -122,11 +141,17 @@ class Podcast extends Component {
           <h1>{introHeading}</h1>
           <PodcastSubHeading>{introSubHeading}</PodcastSubHeading>
           <PodcastMarkdown> {introMarkdown} </PodcastMarkdown>
+          <SubscribeAndShare>
+            <Subscribe subscribeText={subscribeText}
+              subscribeLinks={subscribeLinks} />
+            <Share shareText={shareText}
+              shareLinks={shareLinks} />
+          </SubscribeAndShare>
         </PageSection>
 
-        <PageSection>
+        <PodcastSection>
           <PodcastList podcast={podcast}/>
-        </PageSection>
+        </PodcastSection>
 
 
         <Container>
@@ -176,6 +201,10 @@ Podcast.propTypes = {
   introHeading: PropTypes.string.isRequired,
   introSubHeading:PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
+  subscribeText: PropTypes.string.isRequired,
+  subscribeLinks : PropTypes.object.isRequired,
+  shareText: PropTypes.string.isRequired,
+  shareLinks: PropTypes.object.isRequired,
   podcast: PodcastList.propTypes.podcast.isRequired,
   ...PodcastListNavigationButtons.propTypes,
   page: PropTypes.number.isRequired,

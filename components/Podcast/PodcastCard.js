@@ -130,7 +130,6 @@ const PodcastCard = ({
           <PodcastInfo>{duration + " | " + date}</PodcastInfo>
             <PausePlayButton podcastTitle={podcastTitle}/>
             <IconContainer>
-            <ShareIcon src="/static/images/share.svg"/>
             <a href={podcastAudio.url} download>
              <img src="/static/images/download.svg"/>
             </a>
