@@ -15,6 +15,8 @@ import { smBreakpoint } from '../../styling/breakpoints'
 import Divider from '../../components/Divider'
 import BlogListItem from '../../components/Blog/BlogListItem'
 import PodcastListNavigationButtons from '../../components/Podcast/PodcastListNavigationButtons'
+import Subscribe from '../../components/Podcast/Subscribe'
+import Share from '../../components/Podcast/Share'
 import DocumentsList from '../../components/DocumentsList'
 import PodcastList from '../../components/Podcast'
 import teamMemberProps from '../../propTypes/teamMember'
@@ -85,6 +87,11 @@ const ExtendedDivider = Divider.extend`
   margin-top: ${largeSpacing} !important;
 `
 
+const CenterImage = styled.img`
+  position: relative;
+  margin: auto;
+  display:inline;
+`
 
 class Podcast extends Component {
   componentWillReceiveProps(newProps, props) {
@@ -127,17 +134,10 @@ class Podcast extends Component {
           <PodcastSubHeading>{introSubHeading}</PodcastSubHeading>
           <PodcastMarkdown> {introMarkdown} </PodcastMarkdown>
           <div>
-            <div>
-              <p>{subscribeText}</p>
-              <p>{subscribeLinks.iTunes}</p>
-              <p>{subscribeLinks.Spotify}</p>
-              <p>{subscribeLinks.Deezer}</p>
-            </div>
-            <div>
-              <p>{shareText}</p>
-              <p>{shareLinks.facebook}</p>
-              <p>{shareLinks.twitter}</p>
-            </div>
+            <Subscribe subscribeText={subscribeText}
+              subscribeLinks={subscribeLinks} />
+            <Share shareText={shareText}
+              shareLinks={shareLinks} />
           </div>
         </PageSection>
 
