@@ -87,10 +87,18 @@ const ExtendedDivider = Divider.extend`
   margin-top: ${largeSpacing} !important;
 `
 
-const CenterImage = styled.img`
-  position: relative;
-  margin: auto;
-  display:inline;
+const SubscribeAndShare = styled.div`
+  margin-top: 24px;
+  display:inline-block;
+  width:100%;
+`
+
+const PodcastSection = styled.div.attrs({ className: 'container' })`
+  margin-top:3rem;
+
+  @media (min-width: ${smBreakpoint}) {
+    margin-top: 2rem;
+  }
 `
 
 class Podcast extends Component {
@@ -133,17 +141,17 @@ class Podcast extends Component {
           <h1>{introHeading}</h1>
           <PodcastSubHeading>{introSubHeading}</PodcastSubHeading>
           <PodcastMarkdown> {introMarkdown} </PodcastMarkdown>
-          <div>
+          <SubscribeAndShare>
             <Subscribe subscribeText={subscribeText}
               subscribeLinks={subscribeLinks} />
             <Share shareText={shareText}
               shareLinks={shareLinks} />
-          </div>
+          </SubscribeAndShare>
         </PageSection>
 
-        <PageSection>
+        <PodcastSection>
           <PodcastList podcast={podcast}/>
-        </PageSection>
+        </PodcastSection>
 
 
         <Container>
