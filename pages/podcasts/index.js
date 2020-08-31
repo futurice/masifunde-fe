@@ -102,6 +102,10 @@ class Podcast extends Component {
       introHeading,
       introSubHeading,
       introMarkdown,
+      subscribeText,
+      subscribeLinks,
+      shareText,
+      shareLinks,
       podcast,
       previousPageButtonText,
       nextPageButtonText,
@@ -122,6 +126,19 @@ class Podcast extends Component {
           <h1>{introHeading}</h1>
           <PodcastSubHeading>{introSubHeading}</PodcastSubHeading>
           <PodcastMarkdown> {introMarkdown} </PodcastMarkdown>
+          <div>
+            <div>
+              <p>{subscribeText}</p>
+              <p>{subscribeLinks.iTunes}</p>
+              <p>{subscribeLinks.Spotify}</p>
+              <p>{subscribeLinks.Deezer}</p>
+            </div>
+            <div>
+              <p>{shareText}</p>
+              <p>{shareLinks.facebook}</p>
+              <p>{shareLinks.twitter}</p>
+            </div>
+          </div>
         </PageSection>
 
         <PageSection>
@@ -176,6 +193,10 @@ Podcast.propTypes = {
   introHeading: PropTypes.string.isRequired,
   introSubHeading:PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
+  subscribeText: PropTypes.string.isRequired,
+  subscribeLinks : PropTypes.object.isRequired,
+  shareText: PropTypes.string.isRequired,
+  shareLinks: PropTypes.object.isRequired,
   podcast: PodcastList.propTypes.podcast.isRequired,
   ...PodcastListNavigationButtons.propTypes,
   page: PropTypes.number.isRequired,
