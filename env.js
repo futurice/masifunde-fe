@@ -15,4 +15,7 @@ module.exports = {
 
   // Blog
   BLOG_POSTS_PER_PAGE: process.env.BLOG_POSTS_PER_PAGE || 10,
+
+  // Podcast
+  PODCAST_POSTS_PER_PAGE: process.env.PODCAST_POSTS_PER_PAGE || 9,
 }

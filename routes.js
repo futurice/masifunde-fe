@@ -52,6 +52,7 @@ const Transparency = '/transparency'
 const Campaign = '/campaign'
 const Press = '/press'
 const Documents = '/documents'
+const Podcast = '/podcasts'
 
 // Register the routes
 addRoute('/', Index)
@@ -77,6 +78,7 @@ addRoute('/spendenaktion', Campaign)
 addRoute('/presse', Press)
 addRoute('/dokumente', Documents)
 addRoute('/transparenz', Transparency)
+addRoute('/podcasts/page/:page', Podcast)
 
 // Share route names
 nextRoutes.RouteNames = {
@@ -103,6 +105,7 @@ nextRoutes.RouteNames = {
   Campaign,
   Press,
   Documents,
+  Podcast,
 }
 
 module.exports = nextRoutes
