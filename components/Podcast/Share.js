@@ -35,12 +35,12 @@ const Share = ({
     <ShareText>{shareText}</ShareText>
     <ShareIconContainer>
       <ShareIcon>
-        <a href={shareLinks.twitter} >
+        <a href={shareLinks.Twitter} >
          <img src="/static/images/Icon-twitter.svg"/>
         </a>
       </ShareIcon>
       <ShareIcon>
-        <a href={shareLinks.facebook} >
+        <a href={shareLinks.Facebook} >
          <img src="/static/images/Icon-facebook.svg"/>
         </a>
       </ShareIcon>
