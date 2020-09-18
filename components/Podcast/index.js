@@ -10,9 +10,9 @@ import { extraExtraSmallSpacing } from '../../styling/sizes'
 import PodcastCard from './PodcastCard'
 
 const BoxContainerCol = styled.div`
-  flex: 1 0 28%; /* explanation below */
+  flex: 1 0 28%;
   margin: 5px;
-  margin-bottom: 30px; // To match up bootstrap gutters
+  margin-bottom: 30px;
 
   @media (min-width: ${smBreakpoint}) {
     display: block;
