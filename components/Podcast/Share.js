@@ -8,10 +8,13 @@ const ShareText = styled.h3`
   font-size:18px;
   font-weight:600;
   margin-bottom:0px;
+  text-align: right;
 `
 
 const ShareContainer = styled.div`
   float: right;
+  min-width: 8em;
+  text-align:right;
 `
 
 const ShareIconContainer = styled.div`
@@ -20,11 +23,11 @@ const ShareIconContainer = styled.div`
     clear: both;
     display: table;
   }
-  text-align:right;
+
 `
 const ShareIcon = styled.div`
   float: right;
-  width: 50%;
+  width: 33.33%;
 `
 
 const Share = ({
@@ -42,6 +45,11 @@ const Share = ({
       <ShareIcon>
         <a href={shareLinks.Facebook} >
          <img src="/static/images/Icon-facebook.svg"/>
+        </a>
+      </ShareIcon>
+      <ShareIcon>
+        <a href={shareLinks.Instagram} >
+         <img src="/static/images/Icon-instagram.svg"/>
         </a>
       </ShareIcon>
     </ShareIconContainer>

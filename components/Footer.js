@@ -126,6 +126,7 @@ function Footer({
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
+  masifundeInstagramUrl,
   ibanText,
   bicText,
   impressumText,
@@ -201,6 +202,14 @@ function Footer({
                 rel="noopener noreferrer"
               >
                 <FaFacebook />
+              </SocialLink>
+              <SocialLink
+                aria-label={T.translate('footer.visitInstagram')}
+                href={masifundeInstagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/static/images/Icon-instagram.svg"/>
               </SocialLink>
             </div>
           </div>
