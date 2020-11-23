@@ -122,10 +122,11 @@ function Footer({
   contactText,
   blogText,
   documentsText,
-  pressText,
+  podcastText,
   copyrightText,
   masifundeYouTubeUrl,
   masifundeFacebookUrl,
+  masifundeInstagramUrl,
   ibanText,
   bicText,
   impressumText,
@@ -174,7 +175,7 @@ function Footer({
                   <Fragment>
                     <FooterLink route={RouteNames.Blog} params={{ page: '1' }} text={blogText} />
                     <FooterLink route={RouteNames.Documents} text={documentsText} />
-                    <FooterLink route={RouteNames.Press} text={pressText} />
+                    <FooterLink route={RouteNames.Podcast} params={{ page: '1' }} text={podcastText} />
                   </Fragment>
                 </ul>
               </div>
@@ -201,6 +202,14 @@ function Footer({
                 rel="noopener noreferrer"
               >
                 <FaFacebook />
+              </SocialLink>
+              <SocialLink
+                aria-label={T.translate('footer.visitInstagram')}
+                href={masifundeInstagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/static/images/Icon-instagram.svg"/>
               </SocialLink>
             </div>
           </div>
@@ -284,7 +293,7 @@ export const propTypes = {
   contactText: PropTypes.string.isRequired,
   blogText: PropTypes.string.isRequired,
   documentsText: PropTypes.string.isRequired,
-  pressText: PropTypes.string.isRequired,
+  podcastText: PropTypes.string.isRequired,
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
