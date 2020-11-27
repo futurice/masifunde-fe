@@ -116,13 +116,70 @@ async function blogPostsPathMap() {
   return pathMap
 }
 
+
+async function fetchAllPodcastPosts() {
+  const client = contentful.createClient({
+    space: env.CONTENTFUL_SPACE_ID,
+    accessToken: env.CONTENTFUL_ACCESS_TOKEN,
+    host: env.CONTENTFUL_HOST,
+  })
+
+  let posts = []
+  let skip = 0
+  let fetchResult
+
+  // The Contentful API only allows getting 1000 items at a time.
+  // For the case where there are more posts, we need to do multiple
+  // requests.
+  do {
+    // eslint-disable-next-line no-await-in-loop
+    fetchResult = await client.getEntries({
+      content_type: 'podcast',
+      locale: '*',
+      skip,
+      limit: 1,
+    })
+    posts = posts.concat(fetchResult.items)
+    skip = fetchResult.skip + fetchResult.items.length
+  } while (skip < fetchResult.total)
+
+  return posts
+}
+
+/**
+ * Generates an exportPathMap with the routes of all podcast posts currently
+ * published in Contentful.
+ */
+async function podcastPostsPathMap() {
+  const posts = await fetchAllPodcastPosts()
+  const pathMap = {}
+
+  const numPages = Math.ceil(posts.length / env.PODCAST_POSTS_PER_PAGE)
+
+  for (let n = 1; n <= numPages; n += 1) {
+    locales.forEach((locale) => {
+      const path = replaceLocale(`/:locale?/podcasts/page/${n}`, locale)
+      pathMap[path] = {
+        page: Routes.RouteNames.Podcast,
+        query: {
+          page: n,
+          locale: locale === 'de' ? undefined : locale,
+        },
+      }
+    })
+  }
+
+  return pathMap
+}
+
 module.exports = {
   useFileSystemPublicRoutes: false,
 
   async exportPathMap() {
     const staticRoutesMap = staticRoutesPathMap()
     const blogPostsMap = await blogPostsPathMap()
-    const pathMap = Object.assign({}, staticRoutesMap, blogPostsMap)
+    const podcastPostsMap = await podcastPostsPathMap()
+    const pathMap = Object.assign({}, staticRoutesMap, blogPostsMap, podcastPostsMap)
 
     // Save routes as sitemap (https://www.sitemaps.org/)
     fs.writeFileSync(
