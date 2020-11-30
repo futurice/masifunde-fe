@@ -10,12 +10,13 @@ import { extraExtraSmallSpacing } from '../../styling/sizes'
 import PodcastCard from './PodcastCard'
 
 const BoxContainerCol = styled.div`
-  flex: 1 0 28%;
+  flex: 1 0 32%;
   margin: 5px;
   margin-bottom: 30px;
 
-  @media (min-width: ${smBreakpoint}) {
+  @media (max-width: ${smBreakpoint}) {
     display: block;
+    min-width: 50%;
   }
 `
 

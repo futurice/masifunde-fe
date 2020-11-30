@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
+import { smBreakpoint } from '../../styling/breakpoints'
 
 const ShareText = styled.h3`
   color: #77695C;
@@ -9,12 +9,22 @@ const ShareText = styled.h3`
   font-weight:600;
   margin-bottom:0px;
   text-align: right;
+  @media (max-width: ${smBreakpoint}) {
+    text-align: center;
+  }
 `
 
 const ShareContainer = styled.div`
   float: right;
   min-width: 8em;
   text-align:right;
+  @media (max-width: ${smBreakpoint}) {
+    float: none;
+    display:block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `
 
 const ShareIconContainer = styled.div`
@@ -28,6 +38,11 @@ const ShareIconContainer = styled.div`
 const ShareIcon = styled.div`
   float: right;
   width: 33.33%;
+  @media (max-width: ${smBreakpoint}) {
+    float: none;
+    display: inline-block;
+    text-align: center;
+  }
 `
 
 const Share = ({

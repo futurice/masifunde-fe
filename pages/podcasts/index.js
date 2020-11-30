@@ -10,8 +10,7 @@ import { getLocaleFromQuery } from '../../utils/locale'
 
 import { fetchPodcastPage } from '../../api/podcast'
 import { pageTitleWidth, rem } from '../../styling/typography'
-import { lgBreakpoint } from '../../styling/breakpoints'
-import { smBreakpoint } from '../../styling/breakpoints'
+import { lgBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import Divider from '../../components/Divider'
 import BlogListItem from '../../components/Blog/BlogListItem'
 import PodcastListNavigationButtons from '../../components/Podcast/PodcastListNavigationButtons'
@@ -142,15 +141,19 @@ class Podcast extends Component {
           <PodcastSubHeading>{introSubHeading}</PodcastSubHeading>
           <PodcastMarkdown> {introMarkdown} </PodcastMarkdown>
           <SubscribeAndShare>
-            <Subscribe subscribeText={subscribeText}
-              subscribeLinks={subscribeLinks} />
-            <Share shareText={shareText}
-              shareLinks={shareLinks} />
+            <Subscribe
+              subscribeText={subscribeText}
+              subscribeLinks={subscribeLinks}
+            />
+            <Share
+              shareText={shareText}
+              shareLinks={shareLinks}
+            />
           </SubscribeAndShare>
         </PageSection>
 
         <PodcastSection>
-          <PodcastList podcast={podcast}/>
+          <PodcastList podcast={podcast} />
         </PodcastSection>
 
 
@@ -191,18 +194,14 @@ class Podcast extends Component {
 }
 
 
-
-
-
-
 Podcast.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string.isRequired,
   introHeading: PropTypes.string.isRequired,
-  introSubHeading:PropTypes.string.isRequired,
+  introSubHeading: PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
   subscribeText: PropTypes.string.isRequired,
-  subscribeLinks : PropTypes.object.isRequired,
+  subscribeLinks: PropTypes.object.isRequired,
   shareText: PropTypes.string.isRequired,
   shareLinks: PropTypes.object.isRequired,
   podcast: PodcastList.propTypes.podcast.isRequired,
@@ -212,7 +211,7 @@ Podcast.propTypes = {
   totalNumberOfPages: PropTypes.number.isRequired,
   contactTextHeading: PropTypes.string.isRequired,
   contactText: PropTypes.string.isRequired,
-  teamMember:PropTypes.shape(teamMemberProps).isRequired,
+  teamMember: PropTypes.shape(teamMemberProps).isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
