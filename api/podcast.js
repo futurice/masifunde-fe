@@ -30,7 +30,8 @@ export function fetchPodcastList(locale, page) {
       return ({
         id: sys.id,
         podcastTitle: fields.podcastTitle,
-        date: fields.date,
+        //using date2 until this can be cleaned up in confluence as well
+        date: fields.date2,
         podcastAudio,
         podcastImage,
         duration: fields.duration,
