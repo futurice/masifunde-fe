@@ -14,7 +14,8 @@ export function fetchPodcastList(locale, page) {
     locale,
     skip,
     limit: podcastPerPage,
-    order: '-fields.date',
+    //using date2 until this can be cleaned up in contenful as well
+    order: '-fields.date2',
   }
   return fetchEntriesForContentType('podcast', fetchParams)
   .then((response) => {
