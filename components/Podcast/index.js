@@ -34,7 +34,7 @@ const Podcast = ({ expandList, podcast }) => (
         {podcast.map(({
           podcastTitle, podcastImage, podcastAudio, date, duration
         }) => (
-          <BoxContainerCol className="col-md-6" key={podcastAudio.url}>
+          <BoxContainerCol className="col-md-6" key={podcastAudio ? podcastAudio.url : "no-URl" }>
             <div className="row">
             <PodcastCard podcastTitle={podcastTitle} podcastImage={podcastImage}
              podcastAudio={podcastAudio} date={date} duration={duration}/>
@@ -44,8 +44,9 @@ const Podcast = ({ expandList, podcast }) => (
       </div>
     ) : (
       <div className="row">
+      //TODO check if this undefined is not being handled else where and causing the issue
         {podcast.map(({ podcastTitle, podcastAudio, podcastImage, date, duration }) => (
-          <BoxContainerCol key={podcastAudio.url} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
+          <BoxContainerCol key={podcastAudio ? podcastAudio.url : "" } className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
             <PodcastCard podcastTitle={podcastTitle} podcastImage={podcastImage}
              podcastAudio={podcastAudio} date={date} duration={duration}/>
           </BoxContainerCol>

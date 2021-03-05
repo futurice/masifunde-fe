@@ -123,7 +123,7 @@ const PodcastCard = ({
         <PodcastBodyContainer>
           <PodcastTitleContainter>{podcastTitle}</PodcastTitleContainter>
           <audio id = {podcastTitle}
-            src={podcastAudio.url}>
+            src={podcastAudio ? podcastAudio.url : "" }>
                 Your browser does not support the
                   <code>audio</code> element.
           </audio>
