@@ -123,11 +123,11 @@ const PodcastCard = ({
         <PodcastBodyContainer>
           <PodcastTitleContainter>{podcastTitle}</PodcastTitleContainter>
           <audio id = {podcastTitle}
-            src={podcastAudio.url}>
+            src={podcastAudio ? podcastAudio.url : "" }>
                 Your browser does not support the
                   <code>audio</code> element.
           </audio>
-          <PodcastInfo>{duration + " | " + date}</PodcastInfo>
+          <PodcastInfo>{duration.concat(" | ", formatDate(date))}</PodcastInfo>
             <PausePlayButton podcastTitle={podcastTitle}/>
             <IconContainer>
             <a href={podcastAudio.url} download>

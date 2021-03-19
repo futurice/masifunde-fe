@@ -14,7 +14,8 @@ export function fetchPodcastList(locale, page) {
     locale,
     skip,
     limit: podcastPerPage,
-    order: '-fields.date',
+    //using date2 until this can be cleaned up in contenful as well
+    order: '-fields.date2',
   }
   return fetchEntriesForContentType('podcast', fetchParams)
   .then((response) => {
@@ -30,7 +31,8 @@ export function fetchPodcastList(locale, page) {
       return ({
         id: sys.id,
         podcastTitle: fields.podcastTitle,
-        date: fields.date,
+        //using date2 until this can be cleaned up in contentful as well
+        date: fields.date2,
         podcastAudio,
         podcastImage,
         duration: fields.duration,
