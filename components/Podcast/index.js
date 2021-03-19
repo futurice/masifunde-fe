@@ -44,7 +44,6 @@ const Podcast = ({ expandList, podcast }) => (
       </div>
     ) : (
       <div className="row">
-      //TODO check if this undefined is not being handled else where and causing the issue
         {podcast.map(({ podcastTitle, podcastAudio, podcastImage, date, duration }) => (
           <BoxContainerCol key={podcastAudio ? podcastAudio.url : "" } className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
             <PodcastCard podcastTitle={podcastTitle} podcastImage={podcastImage}
