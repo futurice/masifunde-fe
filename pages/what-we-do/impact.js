@@ -47,19 +47,18 @@ const Impact = ({
         backgroundPositionX="35%"
       />
 
-      <Tagline
-        text={title}
-        hideTopRuler
-      />
+      <Tagline text={title} hideTopRuler />
 
-      <PageSection>
-        <EmbeddedVideo videoUrl={videoUrl} />
-      </PageSection>
+      {videoUrl && (
+        <PageSection>
+          <EmbeddedVideo videoUrl={videoUrl} />
+        </PageSection>
+      )}
 
       <PageSection>
         <h2>{stats1Title}</h2>
         <StatList>
-          {stats1.map(stat => (
+          {stats1.map((stat) => (
             <Stat
               key={`${stat.number} ${stat.description}`}
               {...stat}
@@ -70,25 +69,29 @@ const Impact = ({
         </StatList>
       </PageSection>
 
-      <PageSection>
-        <h2>{stats2Title}</h2>
-        <StatList>
-          {stats2.map(stat => (
-            <Stat
-              key={`${stat.number} ${stat.description}`}
-              {...stat}
-              superscriptText={stat.sourceMarkdown ? (superscript += 1) : null}
-              sourceId={`impact-source-${superscript}`}
-            />
-          ))}
-        </StatList>
-      </PageSection>
+      {stats2 && stats2.length > 0 && (
+        <PageSection>
+          <h2>{stats2Title}</h2>
+          <StatList>
+            {stats2.map((stat) => (
+              <Stat
+                key={`${stat.number} ${stat.description}`}
+                {...stat}
+                superscriptText={
+                  stat.sourceMarkdown ? (superscript += 1) : null
+                }
+                sourceId={`impact-source-${superscript}`}
+              />
+            ))}
+          </StatList>
+        </PageSection>
+      )}
 
-      <PageSection contained={false} >
+      <PageSection contained={false}>
         <Carousel portrait={portrait1} />
       </PageSection>
 
-      <PageSection contained={false} >
+      <PageSection contained={false}>
         <Carousel portrait={portrait2} />
       </PageSection>
 

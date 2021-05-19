@@ -70,8 +70,8 @@ export async function fetchImpactPage(locale) {
   const content = await fetchSingleEntry('pageImpact', locale)
   return {
     ...content,
-    stats1: content && content.stats1.map(unwrapStat),
-    stats2: content && content.stats2.map(unwrapStat),
+    stats1: content && (content.stats1 || []).map(unwrapStat),
+    stats2: content && (content.stats2 || []).map(unwrapStat),
     portrait1: unwrapPortrait(content && content.portrait1),
     portrait2: unwrapPortrait(content && content.portrait2),
     bannerButtonUrl: unwrapPageUrl(content.bannerButtonUrl),
