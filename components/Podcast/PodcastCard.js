@@ -118,7 +118,7 @@ const PodcastCard = ({
   <Fragment>
     <PodcastImageContainer>
       <PodcastImage
-        src={podcastImage.url}/>
+        src={podcastImage ? podcastImage.url : undefined} />
         </PodcastImageContainer>
         <PodcastBodyContainer>
           <PodcastTitleContainter>{podcastTitle}</PodcastTitleContainter>
