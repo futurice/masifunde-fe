@@ -8,7 +8,6 @@ import T from 'i18n-react'
 
 import withAnalytics from './withAnalytics'
 import withLoadingIndicator from './withLoadingIndicator'
-import withReloadOnUpdate from './withReloadOnUpdate'
 import CookieNotice from './CookieNotice'
 import Header, { propTypes as headerPropTypes } from './Header'
 import Footer, { propTypes as footerPropTypes } from './Footer'
@@ -122,15 +121,17 @@ const Layout = ({
           <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800" rel="stylesheet" />
           <script src="https://cdn.jsdelivr.net/npm/core-js@2/client/shim.min.js" />
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141682105-2" />
-          <script dangerouslySetInnerHTML={{
-            // Google Analytics
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments); }
-              gtag('js', new Date());
-              gtag('config', 'UA-141682105-2');
-            `
-          }}/>
+          <script
+            dangerouslySetInnerHTML={{
+              // Google Analytics
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-141682105-2');
+              `,
+            }}
+          />
         </Head>
         <Header height={theme.headerHeight} {...headerData} />
         <Content>
@@ -155,6 +156,5 @@ Layout.propTypes = {
 export default _flow(
   withLoadingIndicator,
   withAnalytics,
-  withReloadOnUpdate,
   withRouter,
 )(Layout)

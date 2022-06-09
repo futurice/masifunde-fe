@@ -48,10 +48,10 @@ function withFormState(View) {
       const errorsRequired = checkRequiredValues(
         [
           // If the project selection is not enabled there is no need to validate it
-          ...(enableProjectSelection && {
+          ...(enableProjectSelection ? [{
             fieldName: PROJECT_ID,
             errorMessage: T.translate('donation.requiredProject'),
-          }),
+          }] : []),
           { fieldName: AMOUNT },
           {
             fieldName: PAYMENT_INTERVAL,
