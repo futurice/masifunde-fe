@@ -26,10 +26,6 @@ export function onRouteChangeError(listener) {
   listeners.routeChangeError.push(listener)
 }
 
-export function onAppUpdated(listener) {
-  listeners.appUpdated.push(listener)
-}
-
 const makeMultiListener = subListeners => (...args) => {
   subListeners.forEach((listener) => {
     try {
@@ -44,4 +40,3 @@ const makeMultiListener = subListeners => (...args) => {
 Router.onRouteChangeStart = makeMultiListener(listeners.routeChangeStart)
 Router.onRouteChangeComplete = makeMultiListener(listeners.routeChangeComplete)
 Router.onRouteChangeError = makeMultiListener(listeners.routeChangeError)
-Router.onAppUpdated = makeMultiListener(listeners.appUpdated)
