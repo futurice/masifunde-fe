@@ -66,7 +66,7 @@
     "reactstrap": "^5.0.0-alpha.4",
     "sitemap": "^1.13.0",
     "styled-components": "^3.1.6",
-    "validator": "^9.4.1"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
