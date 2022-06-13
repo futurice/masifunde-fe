@@ -48,7 +48,7 @@
     "next": "^8.0.0",
     "next-routes": "^1.4.2",
     "nprogress": "^0.2.0",
-    "nuka-carousel": "^3.0.1",
+    "nuka-carousel": "^5.1.1",
     "nvm": "0.0.4",
     "polished": "^1.9.2",
     "promise-memoize": "^1.2.1",
