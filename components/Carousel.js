@@ -1,9 +1,8 @@
 /* eslint-disable no-param-reassign */
-import React, { Component } from 'react'
-import Carousel from 'nuka-carousel'
+import React, { useState } from 'react'
+import NukaCarousel from 'nuka-carousel'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import _throttle from 'lodash/throttle'
 
 import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
@@ -69,7 +68,7 @@ const MobileImage = styled.img`
   }
 `
 
-const StyledCarousel = styled(Carousel)`
+const StyledCarousel = styled(NukaCarousel)`
   background: ${props => props.theme.blue};
   width: 100% !important;
 
@@ -97,7 +96,7 @@ const StyledArrowButton = styled.button`
   padding: ${extraSmallSpacing};
   border: none;
   cursor: pointer;
-  opacity: 0;
+  opacity: ${props => (props.focused ? 1 : 0)};
   transition: opacity 300ms;
 
   img {
@@ -113,8 +112,8 @@ const StyledArrowButton = styled.button`
 `
 
 const SlideRow = styled.div`
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   height: 100%;
 `
 
@@ -137,16 +136,18 @@ const mapPortraitToCarouselItems = (portrait) => {
   return [item1, item2, item3]
 }
 
-const mobileImageHidden = mobileImage => mobileImage.offsetHeight === 0
-
 const ArrowButton = (props) => {
   const {
     direction,
+    focused,
     previousSlide,
     nextSlide,
   } = props
   return (
-    <StyledArrowButton onClick={direction === 'left' ? previousSlide : nextSlide}>
+    <StyledArrowButton
+      focused={focused}
+      onClick={direction === 'left' ? previousSlide : nextSlide}
+    >
       {direction === 'left'
         ? <img src="/static/images/carousel-arrow-left.svg" alt="links" />
         : <img src="/static/images/carousel-arrow-right.svg" alt="rechts" />
@@ -157,97 +158,33 @@ const ArrowButton = (props) => {
 
 ArrowButton.propTypes = {
   direction: PropTypes.string.isRequired,
+  focused: PropTypes.bool.isRequired,
 
   // These two are passed through by nuka-carousel
   previousSlide: PropTypes.func.isRequired,
   nextSlide: PropTypes.func.isRequired,
 }
 
-class MasifundeCarousel extends Component {
-  componentDidMount = () => {
-    // Hacky timeout to try and get our height fix to happen after
-    // nuka-carousel is done with its broken calc. It unfortunately
-    // needs to be that large for it to work (most of the time).
-    setTimeout(() => this.resizeCarousel(), 1000)
-    window.addEventListener('resize', this.resizeCarousel, true)
-  }
+export default function Carousel({ portrait }) {
+  const items = mapPortraitToCarouselItems(portrait)
+  const [focused, setFocused] = useState(false)
 
-  componentWillUnmount = () => {
-    window.removeEventListener('resize', this.resizeCarousel, true)
-  }
+  const handleFocusIn = () => setFocused(true)
+  const handleFocusOut = () => setFocused(false)
 
-  setSlideContainerHeight = () => {
-    const sliderList = this.carouselComponent.querySelector('ul.slider-list')
-    const slideHeights = Array.from(sliderList.childNodes).map(node => node.offsetHeight)
-    const maxSlideHeight = Math.max(...slideHeights)
-    requestAnimationFrame(() => {
-      sliderList.style.height = `${maxSlideHeight}px`
-    })
-  }
-
-  adjustSlideHeightsToDisplayImage = () => {
-    const slides = Array.from(this.carouselComponent.querySelectorAll('li.slider-slide'))
-
-    requestAnimationFrame(() => {
-      slides.forEach((slide) => {
-        const mobileImage = slide.querySelector('img')
-
-        if (mobileImageHidden(mobileImage)) {
-          slide.style.height = '100%'
-        } else {
-          slide.style.height = 'auto'
-        }
-      })
-    })
-  }
-
-  repositionArrowsInMobileCarousel = () => {
-    requestAnimationFrame(() => {
-      const leftArrow = this.carouselComponent.querySelector('.slider-decorator-0')
-      const rightArrow = this.carouselComponent.querySelector('.slider-decorator-1')
-
-      const mq = window.matchMedia(`(min-width: ${mdBreakpoint})`)
-      if (mq.matches) {
-        const firstSlide = this.carouselComponent.querySelector('li.slider-slide')
-        leftArrow.style.top = `calc(${firstSlide.offsetHeight}px / 2)`
-        rightArrow.style.top = `calc(${firstSlide.offsetHeight}px / 2)`
-      } else {
-        // This assumes all slide images have the same height, which is currently the case.
-        const firstSlideImage = this.carouselComponent.querySelector('li.slider-slide img')
-        leftArrow.style.top = `calc(${firstSlideImage.offsetHeight}px / 2)`
-        rightArrow.style.top = `calc(${firstSlideImage.offsetHeight}px / 2)`
-      }
-    })
-  }
-
-  resizeCarousel = _throttle(() => {
-    /*
-    The nuka-carousel component doesn't properly size items.
-    It tries to calculate the height too early.
-    Hence we need to go programatically adjust the height.
-    The timeouts make sure the render has indeed happened before calculating the height.
-    */
-    this.setSlideContainerHeight()
-    this.adjustSlideHeightsToDisplayImage()
-    this.repositionArrowsInMobileCarousel()
-  }, 300)
-
-  render() {
-    const { portrait } = this.props
-    const settings = {
-      wrapAround: true,
-      decorators: [{
-        component: props => <ArrowButton direction="left" {...props} />,
-        position: 'CenterLeft',
-      }, {
-        component: props => <ArrowButton direction="right" {...props} />,
-        position: 'CenterRight',
-      }],
-    }
-    const items = mapPortraitToCarouselItems(portrait)
-    return (
-      <CarouselContainer innerRef={(carousel) => { this.carouselComponent = carousel }}>
-        <StyledCarousel {...settings}>
+  return (
+    <ConditionalContainer containAfter="md">
+      <CarouselContainer
+        onFocus={handleFocusIn}
+        onMouseEnter={handleFocusIn}
+        onBlur={handleFocusOut}
+        onMouseLeave={handleFocusOut}
+      >
+        <StyledCarousel
+          wrapAround
+          renderCenterLeftControls={props => <ArrowButton direction="left" focused={focused} {...props} />}
+          renderCenterRightControls={props => <ArrowButton direction="right" focused={focused} {...props} />}
+        >
           {items.map(item => (
             <SlideRow className="row" key={`${item.heading} ${item.image.url}`}>
               <Image className="col-md-4" src={item.image.url} alt="" />
@@ -260,18 +197,10 @@ class MasifundeCarousel extends Component {
           ))}
         </StyledCarousel>
       </CarouselContainer>
-    )
-  }
+    </ConditionalContainer>
+  )
 }
 
-MasifundeCarousel.propTypes = {
+Carousel.propTypes = {
   portrait: PropTypes.shape(portraitPropTypes).isRequired,
 }
-
-const ContainedCarousel = props => (
-  <ConditionalContainer containAfter="md" >
-    <MasifundeCarousel {...props} />
-  </ConditionalContainer>
-)
-
-export default ContainedCarousel
