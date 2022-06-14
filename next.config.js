@@ -182,9 +182,10 @@ module.exports = {
     const pathMap = Object.assign({}, staticRoutesMap, blogPostsMap, podcastPostsMap)
 
     // Save routes as sitemap (https://www.sitemaps.org/)
+    const sitemapXml = await createSitemap(pathMap);
     fs.writeFileSync(
       `${__dirname}/public/production/sitemap.xml`,
-      createSitemap(pathMap),
+      sitemapXml
     )
 
     return pathMap

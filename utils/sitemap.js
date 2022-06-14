@@ -1,4 +1,6 @@
-const sm = require('sitemap')
+const { Readable } = require('stream')
+const { SitemapStream, streamToPromise } = require('sitemap')
+
 const locales = require('../i18n/locales')
 
 function getLocalePathPrefix(locale) {
@@ -36,20 +38,21 @@ function createAlternateLinks(path) {
   }))
 }
 
-function createSitemap(routes) {
-  const urls = Object.keys(routes)
+async function createSitemap(routes) {
+  const links = Object.keys(routes)
     .filter(path => !path.includes('404'))
     .map(path => ({
       url: path,
       links: createAlternateLinks(path),
     }))
 
-  const sitemap = sm.createSitemap({
+  const sitemapStream = new SitemapStream({
     hostname: 'https://www.masifunde.de',
-    urls,
   })
 
-  return sitemap.toString()
+  const outputStream = Readable.from(links).pipe(sitemapStream)
+  const data = await streamToPromise(outputStream)
+  return data.toString()
 }
 
 module.exports = createSitemap
