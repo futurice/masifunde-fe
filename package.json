@@ -7,6 +7,7 @@
     "node": ">= 8"
   },
   "scripts": {
+    "prepare": "husky install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch server.js --watch routes.js server.js",
     "build": "npm run build:production",
@@ -19,7 +20,6 @@
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint --ignore-path .gitignore --ext .js,.js .",
     "lint-fix": "npm run lint -- --fix",
-    "precommit": "lint-staged",
     "serve": "serve -s out"
   },
   "repository": {
@@ -42,31 +42,30 @@
     "contentful": "^5.1.3",
     "final-form": "^4.20.7",
     "final-form-calculate": "^1.3.2",
-    "i18n-react": "^0.6.3",
-    "isomorphic-unfetch": "^2.0.0",
-    "lodash": "^4.17.5",
+    "i18n-react": "^0.7.0",
+    "isomorphic-unfetch": "^3.1.0",
+    "lodash": "^4.17.21",
     "next": "^8.0.0",
     "next-routes": "^1.4.2",
     "nprogress": "^0.2.0",
     "nuka-carousel": "^5.1.1",
-    "nvm": "0.0.4",
-    "polished": "^1.9.2",
+    "polished": "^4.2.2",
     "promise-memoize": "^1.2.1",
     "prop-types": "^15.6.1",
     "qs": "^6.5.1",
     "react": "^16.14.0",
-    "react-async-script": "^0.9.1",
+    "react-async-script": "^1.2.0",
     "react-dom": "^16.14.0",
     "react-final-form": "^3.7.0",
-    "react-ga": "^2.4.1",
+    "react-ga": "^3.3.0",
     "react-icons": "^2.2.7",
-    "react-markdown": "^2.5.1",
+    "react-markdown": "^6.0.3",
     "react-modal": "^3.3.2",
-    "react-share": "^2.0.0",
+    "react-share": "^4.4.0",
     "reactstrap": "^5.0.0-alpha.4",
     "sitemap": "^1.13.0",
     "styled-components": "^3.1.6",
-    "validator": "^9.4.1"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
@@ -80,11 +79,11 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "husky": "^0.14.3",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.0",
-    "nodemon": "^1.17.1",
-    "rimraf": "^2.7.1",
-    "serve": "^6.5.2",
-    "slug": "^0.9.1"
+    "nodemon": "^2.0.16",
+    "rimraf": "^3.0.2",
+    "serve": "^13.0.2",
+    "slug": "^5.3.0"
   }
 }

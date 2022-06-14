@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Markdown from 'react-markdown'
 import styled from 'styled-components'
 
+import Markdown from './Markdown'
 import imageShape from '../propTypes/image'
 import { smallFontSize } from '../styling/typography'
 import { mediumSpacing } from '../styling/sizes'

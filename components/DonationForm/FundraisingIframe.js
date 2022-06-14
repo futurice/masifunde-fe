@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import ReactAsyncScript from 'react-async-script'
+import React, { Component, useMemo } from 'react'
+import makeAsyncScriptLoader from 'react-async-script'
 import qs from 'qs'
 import PropTypes from 'prop-types'
 
@@ -91,12 +91,16 @@ function ScriptParametersWrapper({
     wants_newsletter: wantsNewsletter,
     wants_receipt: wantsReceipt,
   }
-  const FullUrl = `${baseUrl}?${qs.stringify(parameters)}`
 
-  const Form = ReactAsyncScript(FundraisingIframe, FullUrl, {
-    globalName: 'FundRaisingBox',
-    removeOnUnmount: true,
-  })
+  const fullUrl = `${baseUrl}?${qs.stringify(parameters)}`
+
+  const Form = useMemo(
+    () => makeAsyncScriptLoader(fullUrl, {
+      globalName: 'FundRaisingBox',
+      removeOnUnmount: true,
+    })(FundraisingIframe),
+    [fullUrl],
+  )
 
   return <Form {...rest} />
 }
