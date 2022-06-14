@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { smBreakpoint } from '../../styling/breakpoints'
@@ -45,18 +45,18 @@ const Subscribe = ({
     <SubscribeText>{subscribeText}</SubscribeText>
     <SubscribeIconContainer>
       <SubscribeIcon>
-        <a href={subscribeLinks.iTunes} >
-         <img src="/static/images/Icon-itunes.svg"/>
+        <a href={subscribeLinks.iTunes} title="iTunes">
+         <img src="/static/images/Icon-itunes.svg" alt=""/>
         </a>
       </SubscribeIcon>
       <SubscribeIcon>
-        <a href={subscribeLinks.Spotify} >
-         <img src="/static/images/Icon-spotify.svg"/>
+        <a href={subscribeLinks.Spotify} title="Spotify">
+         <img src="/static/images/Icon-spotify.svg" alt=""/>
         </a>
       </SubscribeIcon>
       <SubscribeIcon>
-        <a href={subscribeLinks.Deezer} >
-         <img src="/static/images/Icon-deezer.svg"/>
+        <a href={subscribeLinks.Deezer} title="Deezer">
+         <img src="/static/images/Icon-deezer.svg" alt=""/>
         </a>
       </SubscribeIcon>
     </SubscribeIconContainer>

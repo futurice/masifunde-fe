@@ -9,36 +9,16 @@ import PageSection from '../../components/PageSection'
 import { getLocaleFromQuery } from '../../utils/locale'
 
 import { fetchPodcastPage } from '../../api/podcast'
-import { pageTitleWidth, rem } from '../../styling/typography'
 import { lgBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import Divider from '../../components/Divider'
-import BlogListItem from '../../components/Blog/BlogListItem'
 import PodcastListNavigationButtons from '../../components/Podcast/PodcastListNavigationButtons'
 import Subscribe from '../../components/Podcast/Subscribe'
 import Share from '../../components/Podcast/Share'
-import DocumentsList from '../../components/DocumentsList'
 import PodcastList from '../../components/Podcast'
 import teamMemberProps from '../../propTypes/teamMember'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 import Banner from '../../components/Banner'
-import { largeSpacing } from '../../styling/sizes'
-import { extraSmallSpacing } from '../../styling/sizes'
-
-
-const PodcastPostsList = styled.ol`
-  list-style-type: none;
-  padding: 0;
-  margin-left: auto;
-  margin-right: auto;
-
-  > * {wq3w
-    margin-bottom: ${rem('70px')};
-  }
-
-  @media (min-width: ${lgBreakpoint}) {
-    width: ${pageTitleWidth};
-  }
-`
+import { largeSpacing , extraSmallSpacing } from '../../styling/sizes'
 
 const PodcastSubHeading = styled.h2`
   text-align: center;
@@ -58,10 +38,6 @@ const PodcastMarkdown = styled.div`
   h1 + & {
     margin-top: -${extraSmallSpacing};
   }
-`
-
-const PodcastPostsListHeading = styled.h1`
-  text-align: left;
 `
 
 const PodcastListFooter = styled.div`
@@ -101,7 +77,7 @@ const PodcastSection = styled.div.attrs({ className: 'container' })`
 `
 
 class Podcast extends Component {
-  componentWillReceiveProps(newProps, props) {
+  UNSAFE_componentWillReceiveProps(newProps, props) {
     if (newProps.page !== props.page) {
       this.resetFocus()
     }

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import teamMemberShape from '../propTypes/teamMember'
 import Markdown from './Markdown'
 import TeamMember from './TeamMember'
-import teamMemberShape from '../propTypes/teamMember'
 
 const TextWithTeamMember = ({
   header,

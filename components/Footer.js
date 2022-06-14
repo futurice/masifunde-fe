@@ -6,10 +6,10 @@ import styled from 'styled-components'
 import T from 'i18n-react'
 
 import { RouteNames } from '../routes'
-import Link from './Link'
-import PageSection from './PageSection'
 import { largeSpacing, extraSmallSpacing, smallSpacing } from '../styling/sizes'
 import { footerText, rem } from '../styling/typography'
+import Link from './Link'
+import PageSection from './PageSection'
 import SocialLink from './SocialLink'
 
 const Text = styled.div`
@@ -209,7 +209,7 @@ function Footer({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src="/static/images/Icon-instagram.svg"/>
+                <img src="/static/images/Icon-instagram.svg" alt="" />
               </SocialLink>
             </div>
           </div>
@@ -297,6 +297,7 @@ export const propTypes = {
   copyrightText: PropTypes.string.isRequired,
   masifundeYouTubeUrl: PropTypes.string.isRequired,
   masifundeFacebookUrl: PropTypes.string.isRequired,
+  masifundeInstagramUrl: PropTypes.string.isRequired,
   ibanText: PropTypes.string.isRequired,
   bicText: PropTypes.string.isRequired,
   impressumText: PropTypes.string.isRequired,

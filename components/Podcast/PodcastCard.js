@@ -58,16 +58,11 @@ const CenterImage = styled.img`
   display:inline;
 `
 
-const ShareIcon = styled.img`
-  margin-right:5px;
-`
-
 const IconContainer = styled.div`
   position:absolute;
   bottom:12px;
   right:25px;
 `
-
 
 class PausePlayButton extends React.Component{
   constructor(props){
@@ -77,7 +72,7 @@ class PausePlayButton extends React.Component{
     }
   }
 
-  togglePlaying(props){
+  togglePlaying(){
     if (this.state.isPlaying){
       document.getElementById(this.props.podcastTitle).pause()
     } else {
@@ -108,6 +103,10 @@ class PausePlayButton extends React.Component{
 
 }
 
+PausePlayButton.propTypes = {
+  podcastTitle: PropTypes.string,
+}
+
 const PodcastCard = ({
       podcastTitle,
       podcastAudio,
@@ -122,6 +121,7 @@ const PodcastCard = ({
         </PodcastImageContainer>
         <PodcastBodyContainer>
           <PodcastTitleContainter>{podcastTitle}</PodcastTitleContainter>
+          {/*  eslint-disable-next-line jsx-a11y/media-has-caption */}
           <audio id = {podcastTitle}
             src={podcastAudio ? podcastAudio.url : "" }>
                 Your browser does not support the
@@ -130,8 +130,8 @@ const PodcastCard = ({
           <PodcastInfo>{duration.concat(" | ", formatDate(date))}</PodcastInfo>
             <PausePlayButton podcastTitle={podcastTitle}/>
             <IconContainer>
-            <a href={podcastAudio.url} download>
-             <img src="/static/images/download.svg"/>
+            <a href={podcastAudio.url} download title="Download">
+             <img src="/static/images/download.svg" alt=""/>
             </a>
             </IconContainer>
       </PodcastBodyContainer>

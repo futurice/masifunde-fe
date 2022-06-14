@@ -1,3 +1,4 @@
+import { jpegQuality } from '../utils/constants'
 import { fetchMemoizedSingleEntry, fetchSingleEntry } from './contentfulService'
 import {
   unwrapCampaignPageBanner,
@@ -8,7 +9,6 @@ import {
   unwrapTeamMember,
   unwrapTestimonials,
 } from './common'
-import { jpegQuality } from '../utils/constants'
 
 export async function fetchDonatePage(locale) {
   const content = await fetchMemoizedSingleEntry('pageDonate', locale)

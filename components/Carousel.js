@@ -4,12 +4,12 @@ import NukaCarousel from 'nuka-carousel'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import Markdown from './Markdown'
 import portraitPropTypes from '../propTypes/portrait'
 import { bodyText, rem, subsectionTitleText } from '../styling/typography'
-import ConditionalContainer from './ConditionalContainer'
 import { mdBreakpoint } from '../styling/breakpoints'
 import { largeSpacing, extraSmallSpacing, smallSpacing } from '../styling/sizes'
+import ConditionalContainer from './ConditionalContainer'
+import Markdown from './Markdown'
 
 const sliderArrowSize = '70px'
 

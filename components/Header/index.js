@@ -5,9 +5,9 @@ import styled from 'styled-components'
 import T from 'i18n-react'
 
 import { RouteNames } from '../../routes'
-import NavigationLink from './NavigationLink'
 import { rem } from '../../styling/typography'
 import Link from '../Link'
+import NavigationLink from './NavigationLink'
 
 const HeaderWrapper = styled.header`
   background-color: #f4e3d6;

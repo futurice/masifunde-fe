@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 
+import { fundraisingFormSpacing } from '../../utils/constants'
+import { smBreakpoint } from '../../styling/breakpoints'
 import PageSection from './PageSection'
 import SubHeader from './SubHeader'
 import RadioButton from './RadioButton'
 import ErrorMessage from './ErrorMessage'
-import { fundraisingFormSpacing } from '../../utils/constants'
-import { smBreakpoint } from '../../styling/breakpoints'
 
 const CountryLabelContainer = styled.div`
   margin-right: ${fundraisingFormSpacing};

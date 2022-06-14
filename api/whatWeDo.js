@@ -1,4 +1,5 @@
 import { RouteNames } from '../routes'
+import { jpegQuality } from '../utils/constants'
 import { fetchSingleEntry } from './contentfulService'
 import {
   unwrapFields,
@@ -10,7 +11,6 @@ import {
   unwrapProjects,
   unwrapStats,
 } from './common'
-import { jpegQuality } from '../utils/constants'
 
 export async function fetchWhatWeDoPage(locale) {
   const content = await fetchSingleEntry('pageWasWirMachen', locale)

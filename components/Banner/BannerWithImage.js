@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { propTypes, defaultProps } from './propTypes'
 import { rem, headerFont } from '../../styling/typography'
 import {
   extraExtraSmallSpacing,
@@ -11,10 +10,11 @@ import {
 } from '../../styling/sizes'
 import Link from '../Link'
 import Button from '../Button'
-import Headline from './Headline'
-import { background } from './styles'
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 import Markdown from '../../components/Markdown'
+import Headline from './Headline'
+import { background } from './styles'
+import { propTypes, defaultProps } from './propTypes'
 
 const Container = styled.div`
   margin-right: 0;

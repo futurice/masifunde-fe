@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 import styled from 'styled-components'
 
+import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
+import { fundraisingFormSpacing } from '../../utils/constants'
 import ErrorMessage from './ErrorMessage'
 import SubHeader from './SubHeader'
 import PageSection from './PageSection'
 import RadioButton from './RadioButton'
-import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
-import { fundraisingFormSpacing } from '../../utils/constants'
 
 const StyledErrorMessage = styled(ErrorMessage)`
   margin-top: -0.4rem;

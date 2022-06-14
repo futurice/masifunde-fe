@@ -4,8 +4,8 @@ import { Tooltip } from 'reactstrap'
 import styled, { injectGlobal } from 'styled-components'
 import T from 'i18n-react'
 
-import Markdown from './Markdown'
 import { smBreakpoint } from '../styling/breakpoints'
+import Markdown from './Markdown'
 
 const SourceTooltip = styled(Tooltip)`
   &.tooltip.show {

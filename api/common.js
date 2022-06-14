@@ -1,9 +1,9 @@
 import qs from 'qs'
 import { stripUnit } from 'polished'
 
-import { fetchMemoizedSingleEntry } from './contentfulService'
 import { jpegQuality, teamMemberAndPartnerWidth } from '../utils/constants'
 import { RouteNames } from '../routes'
+import { fetchMemoizedSingleEntry } from './contentfulService'
 
 export async function fetchHeaderData(locale) {
   return fetchMemoizedSingleEntry('header', locale)

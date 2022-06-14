@@ -6,9 +6,9 @@ import {
   fetchHeaderData,
   fetchFooterData,
 } from '../api/common'
-import Layout from './Layout'
 import { propTypes as headerPropTypes } from '../components/Header/index'
 import { propTypes as footerPropTypes } from '../components/Footer'
+import Layout from './Layout'
 
 function withLayout(Page) {
   const GetInitialPropsWrapper = ({ headerData, footerData, ...rest }) => (

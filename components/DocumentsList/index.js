@@ -2,10 +2,10 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import DocumentDownloadBox from './DocumentDownloadBox'
 import FilePropType from '../../propTypes/file'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { extraExtraSmallSpacing } from '../../styling/sizes'
+import DocumentDownloadBox from './DocumentDownloadBox'
 
 const Title = styled.p`
   font-weight: bold;

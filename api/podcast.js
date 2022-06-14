@@ -1,8 +1,7 @@
+import { PODCAST_POSTS_PER_PAGE } from '../env'
+import { jpegQuality } from '../utils/constants'
 import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
 import { unwrapTeamMember, unwrapFile, unwrapImage } from './common'
-import { PODCAST_POSTS_PER_PAGE } from '../env'
-import replaceLocale from '../utils/replaceLocale'
-import { jpegQuality } from '../utils/constants'
 
 
 const podcastPerPage = PODCAST_POSTS_PER_PAGE

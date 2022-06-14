@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import Project from './Project'
 import { mdBreakpoint } from '../styling/breakpoints'
 import { mediumSpacing } from '../styling/sizes'
+import Project from './Project'
 
 const ListContainer = styled.div`
   margin-top: ${mediumSpacing};

@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import RoundedImage from './RoundedImage'
 import { rem } from '../styling/typography'
 import { teamMemberAndPartnerWidth } from '../utils/constants'
+import RoundedImage from './RoundedImage'
 
 const TeamMemberContainer = styled.div`
   max-width: ${teamMemberAndPartnerWidth};

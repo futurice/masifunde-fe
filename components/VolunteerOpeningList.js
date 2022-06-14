@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import Markdown from './Markdown'
 import { smallFontSize } from '../styling/typography'
+import Markdown from './Markdown'
 
 const VolunteerOpeningsContainer = styled.div`
   font-size: ${smallFontSize};

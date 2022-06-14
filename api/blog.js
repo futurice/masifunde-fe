@@ -1,8 +1,8 @@
-import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
-import { unwrapTeamMember, unwrapImage } from './common'
 import { jpegQuality } from '../utils/constants'
 import { BLOG_POSTS_PER_PAGE } from '../env'
 import replaceLocale from '../utils/replaceLocale'
+import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
+import { unwrapTeamMember, unwrapImage } from './common'
 
 function blogPostFromEntry(entry) {
   return {

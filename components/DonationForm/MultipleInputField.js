@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Field } from 'react-final-form'
 
+import { mdBreakpoint } from '../../styling/breakpoints'
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './FormLabel'
 import { FORM_LABEL_BOOTSTRAP_CLASSES } from './constants/formValues'
-import { mdBreakpoint } from '../../styling/breakpoints'
 import { formInputClassFactory } from './utils/formInputClassFactory'
 
 const SecondInputContainer = styled.div`

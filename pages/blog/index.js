@@ -43,7 +43,7 @@ const BlogListFooter = styled.div`
 `
 
 class Blog extends Component {
-  componentWillReceiveProps(newProps, props) {
+  UNSAFE_componentWillReceiveProps(newProps, props) {
     if (newProps.page !== props.page) {
       this.resetFocus()
     }

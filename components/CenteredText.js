@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-import Markdown from './Markdown'
 import { lgBreakpoint } from '../styling/breakpoints'
 import { extraSmallSpacing } from '../styling/sizes'
+import Markdown from './Markdown'
 
 const CenteredText = styled(Markdown)`
   margin: 0 auto;

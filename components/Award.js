@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Markdown from './Markdown'
 import imageShape from '../propTypes/image'
 import { smBreakpoint } from '../styling/breakpoints'
 import { mediumSpacing, smallSpacing } from '../styling/sizes'
+import Markdown from './Markdown'
 
 const ImageContainer = styled.div`
   display: flex;
