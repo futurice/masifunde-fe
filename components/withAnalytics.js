@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactGA from 'react-ga'
+import * as ReactGA from 'react-ga'
 
 import { GOOGLE_ANALYTICS_ID } from '../env'
 

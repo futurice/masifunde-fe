@@ -1,4 +1,3 @@
-/* eslint-disable no-console, import/no-extraneous-dependencies */
 const fs = require('fs')
 const contentfulManagement = require('contentful-management')
 const slug = require('slug')

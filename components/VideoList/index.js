@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import VideoModal from './VideoModal'
 import { smBreakpoint } from '../../styling/breakpoints'
+import VideoModal from './VideoModal'
 
 const ContentContainer = styled.div`
   margin-bottom: 30px; //bootrsrap gutter

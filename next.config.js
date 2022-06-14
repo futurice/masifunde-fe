@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-const contentful = require('contentful')
 const fs = require('fs')
+const contentful = require('contentful')
 
 const env = require('./env')
 const locales = require('./i18n/locales')

@@ -6,11 +6,6 @@ import _flow from 'lodash/flow'
 import { withRouter } from 'next/router'
 import T from 'i18n-react'
 
-import withAnalytics from './withAnalytics'
-import withLoadingIndicator from './withLoadingIndicator'
-import CookieNotice from './CookieNotice'
-import Header, { propTypes as headerPropTypes } from './Header'
-import Footer, { propTypes as footerPropTypes } from './Footer'
 import {
   bodyText,
   pageTitleText,
@@ -25,6 +20,11 @@ import { mdBreakpoint } from '../styling/breakpoints'
 import { getLocaleFromQuery } from '../utils/locale'
 import deLocale from '../i18n/de.json'
 import enLocale from '../i18n/en.json'
+import Footer, { propTypes as footerPropTypes } from './Footer'
+import Header, { propTypes as headerPropTypes } from './Header'
+import CookieNotice from './CookieNotice'
+import withLoadingIndicator from './withLoadingIndicator'
+import withAnalytics from './withAnalytics'
 
 const locales = {
   de: deLocale,

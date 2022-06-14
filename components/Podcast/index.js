@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import imagePropShape from '../../propTypes/image'
-import DocumentDownloadBox from '../DocumentsList/DocumentDownloadBox'
 import FilePropType from '../../propTypes/file'
 import { smBreakpoint } from '../../styling/breakpoints'
-import { extraExtraSmallSpacing } from '../../styling/sizes'
 import PodcastCard from './PodcastCard'
 
 const BoxContainerCol = styled.div`

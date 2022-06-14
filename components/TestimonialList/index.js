@@ -3,10 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import Supporter from './Supporter'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { mediumSpacing, extraSmallSpacing } from '../../styling/sizes'
 import Markdown from '../Markdown'
+import Supporter from './Supporter'
 
 const List = styled.div`
   /* Counter bottom margin of TestimonialList in last line */

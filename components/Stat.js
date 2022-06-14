@@ -2,8 +2,8 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import { handwrittenText, rem } from '../styling/typography'
-import Source from './Source'
 import { smBreakpoint } from '../styling/breakpoints'
+import Source from './Source'
 import IconImage from './IconImage'
 
 const StatContainer = styled.div`

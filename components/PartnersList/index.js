@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Partner, { propTypes as partnerPropTypes } from './Partner'
 import List from '../List'
 import { mediumSpacing } from '../../styling/sizes'
+import Partner, { propTypes as partnerPropTypes } from './Partner'
 
 const StyledList = List.extend`
   margin-top: ${mediumSpacing};

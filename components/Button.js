@@ -15,10 +15,7 @@ const Button = ({
   center,
   children,
   className,
-  isActive,
-  rounded,
   href,
-  theme,
   ...rest
 }) => (
   <ButtonContainer center={center}>
@@ -133,6 +130,9 @@ const StyledButton = styled(Button)`
 StyledButton.propTypes = {
   ...Button.propTypes,
   type: PropTypes.oneOf(['primary', 'secondary', 'banner']),
+  isActive: PropTypes.bool,
+  rounded: PropTypes.bool,
+  theme: PropTypes.object,
 }
 
 StyledButton.defaultProps = {

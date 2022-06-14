@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { smBreakpoint } from '../../styling/breakpoints'
@@ -53,18 +53,18 @@ const Share = ({
     <ShareText>{shareText}</ShareText>
     <ShareIconContainer>
       <ShareIcon>
-        <a href={shareLinks.Twitter} >
-         <img src="/static/images/Icon-twitter.svg"/>
+        <a href={shareLinks.Twitter} title="Twitter">
+         <img src="/static/images/Icon-twitter.svg" alt="" />
         </a>
       </ShareIcon>
       <ShareIcon>
-        <a href={shareLinks.Facebook} >
-         <img src="/static/images/Icon-facebook.svg"/>
+        <a href={shareLinks.Facebook} title="Facebook">
+         <img src="/static/images/Icon-facebook.svg" alt="" />
         </a>
       </ShareIcon>
       <ShareIcon>
-        <a href={shareLinks.Instagram} >
-         <img src="/static/images/Icon-instagram.svg"/>
+        <a href={shareLinks.Instagram} title="Instagram">
+         <img src="/static/images/Icon-instagram.svg" alt="" />
         </a>
       </ShareIcon>
     </ShareIconContainer>

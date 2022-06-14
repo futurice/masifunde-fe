@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import ConditionalContainer from './ConditionalContainer'
 import { mdBreakpoint } from '../styling/breakpoints'
 import {
   createVimeoSrc,
   createYouTubeSrc,
   isYouTubeVideo,
 } from '../utils/video'
+import ConditionalContainer from './ConditionalContainer'
 
 const VideoIframe = styled.iframe`
   position: absolute;
