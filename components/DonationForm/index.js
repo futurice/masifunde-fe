@@ -1,3 +1,4 @@
+import { noop } from 'lodash'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -101,7 +102,7 @@ const DonationForm = ({
     <Fragment>
       {!isIframeStatusFailureOrSuccess && (
         <Form
-          onSubmit={() => {}}
+          onSubmit={noop}
           decorators={decorators}
           initialValues={{
             [WANTS_RECEIPT]: RECEIPT_NOW_OPTION_VALUE,
