@@ -4,10 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 const Markdown = ({ source }) => (
-  <ReactMarkdown
-    softBreak="br"
-    linkTarget="_blank"
-  >
+  <ReactMarkdown softBreak="br" linkTarget="_blank">
     {source}
   </ReactMarkdown>
 )

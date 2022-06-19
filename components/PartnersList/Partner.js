@@ -33,12 +33,7 @@ const PartnerName = styled.div`
   margin-top: 0.25rem;
 `
 
-const Partner = ({
-  image,
-  name,
-  link,
-  className,
-}) => (
+const Partner = ({ image, name, link, className }) => (
   <PartnerContainer className={className}>
     <Link href={link}>
       <ImageContainer>

@@ -60,7 +60,7 @@ const EuroPostfix = styled.span`
   font-style: normal;
 
   font-family: ${defaultFont};
-  color: ${props => props.theme.pineCone};
+  color: ${(props) => props.theme.pineCone};
 `
 
 const AmountDescription = styled.div`
@@ -107,46 +107,46 @@ const AmountFormSection = ({
   return (
     <Field name={fieldName}>
       {({ input, meta }) => {
-      const amountDescription = findAmountDescription(input.value, amounts)
-      return (
-        <PageSection>
-          <SubHeader className="row">{title}</SubHeader>
-          <AmountLabelsContainer className="row">
-            {filteredAmounts.map(({ text, value }) => (
-              <AmountRadioButton
-                {...input}
-                key={value}
-                id={`amountInputOption${value}`}
-                label={text}
-                value={value}
-                isActive={Number(input.value) === value}
-              />
-            ))}
-            {enableOtherAmount && (
-              <Fragment>
-                <OtherAmountContainer>
-                  <EuroPostfix>€</EuroPostfix>
-                  <input
-                    {...input}
-                    className="form-control"
-                    type="text"
-                    placeholder={otherAmountPlaceholder}
-                    aria-label={otherAmountPlaceholder}
-                  />
-                </OtherAmountContainer>
-                {amountDescription && (
-                  <AmountDescription>
-                    <span>{input.value}€ </span>
-                    <span>= {amountDescription}</span>
-                  </AmountDescription>
-                )}
-              </Fragment>
-            )}
-          </AmountLabelsContainer>
-          <ErrorMessage className="row" meta={meta} />
-        </PageSection>
-      )
-    }}
+        const amountDescription = findAmountDescription(input.value, amounts)
+        return (
+          <PageSection>
+            <SubHeader className="row">{title}</SubHeader>
+            <AmountLabelsContainer className="row">
+              {filteredAmounts.map(({ text, value }) => (
+                <AmountRadioButton
+                  {...input}
+                  key={value}
+                  id={`amountInputOption${value}`}
+                  label={text}
+                  value={value}
+                  isActive={Number(input.value) === value}
+                />
+              ))}
+              {enableOtherAmount && (
+                <Fragment>
+                  <OtherAmountContainer>
+                    <EuroPostfix>€</EuroPostfix>
+                    <input
+                      {...input}
+                      className="form-control"
+                      type="text"
+                      placeholder={otherAmountPlaceholder}
+                      aria-label={otherAmountPlaceholder}
+                    />
+                  </OtherAmountContainer>
+                  {amountDescription && (
+                    <AmountDescription>
+                      <span>{input.value}€ </span>
+                      <span>= {amountDescription}</span>
+                    </AmountDescription>
+                  )}
+                </Fragment>
+              )}
+            </AmountLabelsContainer>
+            <ErrorMessage className="row" meta={meta} />
+          </PageSection>
+        )
+      }}
     </Field>
   )
 }
@@ -157,10 +157,12 @@ AmountFormSection.propTypes = {
   enableOtherAmount: PropTypes.bool,
   otherAmountPlaceholder: PropTypes.string,
   interval: PropTypes.string,
-  amounts: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  amounts: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   minimumYearlyAmount: PropTypes.string,
 }
 

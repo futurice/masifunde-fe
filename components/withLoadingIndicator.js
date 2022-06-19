@@ -97,12 +97,9 @@ onRouteChangeComplete(() => NProgress.done())
 onRouteChangeError(() => NProgress.done())
 
 const withLoaderIndicator = (WrappedComponent) => {
-  const LoadingIndicatorWrapper = props => (
-    <WrappedComponent {...props} />
-  )
+  const LoadingIndicatorWrapper = (props) => <WrappedComponent {...props} />
 
   return LoadingIndicatorWrapper
 }
-
 
 export default withLoaderIndicator

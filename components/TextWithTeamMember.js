@@ -16,7 +16,7 @@ const TextWithTeamMember = ({
     <div className="col-lg-8 offset-lg-2">
       <div className="row">
         <div className="col-sm-8">
-          { header && <h3>{header}</h3> }
+          {header && <h3>{header}</h3>}
           <Markdown source={text} />
         </div>
         <div className="col-sm-3">

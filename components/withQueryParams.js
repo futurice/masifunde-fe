@@ -10,7 +10,9 @@ import qs from 'qs'
 export default function withQueryParams(WrappedComponent) {
   class SetQueryParams extends Component {
     static async getInitialProps(ctx) {
-      return WrappedComponent.getInitialProps ? WrappedComponent.getInitialProps(ctx) : {}
+      return WrappedComponent.getInitialProps
+        ? WrappedComponent.getInitialProps(ctx)
+        : {}
     }
 
     state = {
@@ -18,7 +20,9 @@ export default function withQueryParams(WrappedComponent) {
     }
 
     componentDidMount = () => {
-      const query = qs.parse(window.location.search, { ignoreQueryPrefix: true })
+      const query = qs.parse(window.location.search, {
+        ignoreQueryPrefix: true,
+      })
 
       this.setState({ query })
     }

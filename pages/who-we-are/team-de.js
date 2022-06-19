@@ -44,9 +44,9 @@ const TeamDe = ({
       <h2>{sectionTwoTitle}</h2>
       <TeamMemberList
         members={teamMembers}
-        title={member => member.name}
-        subtitle={member => member.responsibilityArea}
-        imageUrl={member => member.image.url}
+        title={(member) => member.name}
+        subtitle={(member) => member.responsibilityArea}
+        imageUrl={(member) => member.image.url}
       />
     </PageSection>
 
@@ -72,18 +72,22 @@ TeamDe.propTypes = {
   regionalGroups: PropTypes.shape({
     name: PropTypes.string.isRequired,
     image: imagePropTypes.isRequired,
-    regions: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      contactPerson: PropTypes.string,
-      email: PropTypes.string,
-    }).isRequired).isRequired,
+    regions: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        contactPerson: PropTypes.string,
+        email: PropTypes.string,
+      }).isRequired
+    ).isRequired,
   }).isRequired,
-  teamMembers: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    image: imagePropTypes.isRequired,
-    responsibilityArea: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  teamMembers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      image: imagePropTypes.isRequired,
+      responsibilityArea: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 }
 
 TeamDe.defaultProps = {

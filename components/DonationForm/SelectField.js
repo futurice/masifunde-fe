@@ -5,7 +5,10 @@ import { Field } from 'react-final-form'
 
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './FormLabel'
-import { FORM_INPUT_BOOTSTRAP_CLASSES, FORM_LABEL_BOOTSTRAP_CLASSES } from './constants/formValues'
+import {
+  FORM_INPUT_BOOTSTRAP_CLASSES,
+  FORM_LABEL_BOOTSTRAP_CLASSES,
+} from './constants/formValues'
 import { formInputClassFactory } from './utils/formInputClassFactory'
 
 const SelectField = ({
@@ -16,7 +19,10 @@ const SelectField = ({
   autoComplete,
 }) => (
   <div className="form-group row">
-    <FormLabel className={`${FORM_LABEL_BOOTSTRAP_CLASSES} col-form-label`} htmlFor={fieldName}>
+    <FormLabel
+      className={`${FORM_LABEL_BOOTSTRAP_CLASSES} col-form-label`}
+      htmlFor={fieldName}
+    >
       {label}
     </FormLabel>
     <div className={inputClassName}>
@@ -31,7 +37,7 @@ const SelectField = ({
               aria-labelledby={fieldName}
             >
               <option value={null} disabled hidden />
-              {options.map(option => (
+              {options.map((option) => (
                 <option value={option.value} key={option.value}>
                   {option.text}
                 </option>
@@ -52,7 +58,7 @@ SelectField.propTypes = {
     PropTypes.shape({
       value: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-    }),
+    })
   ).isRequired,
   autoComplete: PropTypes.string,
   inputClassName: PropTypes.string,

@@ -7,9 +7,11 @@ import BannerWithoutImage from './BannerWithoutImage'
 const Banner = (props) => {
   const { image } = props
 
-  return image
-    ? <BannerWithImage {...props} />
-    : <BannerWithoutImage {...props} />
+  return image ? (
+    <BannerWithImage {...props} />
+  ) : (
+    <BannerWithoutImage {...props} />
+  )
 }
 
 Banner.propTypes = propTypes

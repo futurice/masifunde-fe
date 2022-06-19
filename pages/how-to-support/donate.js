@@ -107,7 +107,7 @@ Donate.propTypes = {
     PropTypes.shape({
       value: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-    }).isRequired,
+    }).isRequired
   ).isRequired,
   section3Title: PropTypes.string.isRequired,
   section3Text: PropTypes.string.isRequired,
@@ -116,7 +116,7 @@ Donate.propTypes = {
       text: PropTypes.string.isRequired,
       value: PropTypes.number.isRequired,
       description: PropTypes.string.isRequired,
-    }).isRequired,
+    }).isRequired
   ).isRequired,
   section4Title: PropTypes.string.isRequired,
   section5Title: PropTypes.string.isRequired,

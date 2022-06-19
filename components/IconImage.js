@@ -29,13 +29,13 @@ IconImage.defaultProps = {
 
 const StyledIconImage = styled(IconImage)`
   display: flex;
-  align-items: center;  
+  align-items: center;
   justify-content: center;
   margin-bottom: ${extraExtraSmallSpacing};
   max-width: ${({ size }) => size};
   max-height: ${({ size }) => size};
 
-  @media(min-width: ${smBreakpoint}) {
+  @media (min-width: ${smBreakpoint}) {
     margin-bottom: 0;
     width: ${({ size }) => size};
     height: ${({ size }) => size};

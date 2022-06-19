@@ -78,12 +78,11 @@ const ProjectText = styled.p`
    * hopefully unlikely -- though not impossible, of course...
    */
   min-height: calc(2em * ${bodyTextLineHeight});
-
 `
 
 const ProjectList = ({ projects }) => (
   <ProjectListContainer className="row">
-    {projects.map(project => (
+    {projects.map((project) => (
       <Project
         className="col-sm-6"
         key={`${project.image.url} ${project.name}`}
@@ -91,7 +90,7 @@ const ProjectList = ({ projects }) => (
         <IconImage src={project.image.url} alt="" />
         <ProjectText>{project.name}</ProjectText>
       </Project>
-      ))}
+    ))}
   </ProjectListContainer>
 )
 
@@ -117,16 +116,18 @@ const ProjectsGridCell = styled.div`
   justify-content: center;
 
   @media (min-width: ${mdBreakpoint}) {
-    grid-row: ${props => props.row};
-    grid-column: ${props => props.column};
-    -ms-grid-row: ${props => props.row};
-    -ms-grid-column: ${props => props.column};
+    grid-row: ${(props) => props.row};
+    grid-column: ${(props) => props.column};
+    -ms-grid-row: ${(props) => props.row};
+    -ms-grid-column: ${(props) => props.column};
 
     margin-right: ${projectsGridColumnGap / 2}rem;
 
-    ${props => props.column > 1 && css`
-      margin-left: ${projectsGridColumnGap / 2}rem;
-    `}
+    ${(props) =>
+      props.column > 1 &&
+      css`
+        margin-left: ${projectsGridColumnGap / 2}rem;
+      `}
   }
 `
 
@@ -139,7 +140,6 @@ const ProjectsGridTitleCell = ProjectsGridCell.extend`
 
   @media (min-width: ${mdBreakpoint}) {
     margin-top: 0;
-
   }
 `
 
@@ -255,10 +255,12 @@ const WhatWeDo = ({
             superscriptText={index + 1}
             sourceId={`stat-${index}`}
           />
-          ))}
+        ))}
       </StatList>
       <Link route={RouteNames.Impact} passHref>
-        <ImpactButton center type="secondary">{statsButton}</ImpactButton>
+        <ImpactButton center type="secondary">
+          {statsButton}
+        </ImpactButton>
       </Link>
     </PageSection>
 
@@ -277,7 +279,6 @@ const WhatWeDo = ({
     />
   </div>
 )
-
 
 WhatWeDo.propTypes = {
   centerHeading: PropTypes.string.isRequired,
@@ -298,7 +299,7 @@ WhatWeDo.propTypes = {
     PropTypes.shape({
       number: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-    }).isRequired,
+    }).isRequired
   ).isRequired,
   statsButton: PropTypes.string.isRequired,
   statsHeading: PropTypes.string.isRequired,

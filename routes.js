@@ -9,7 +9,7 @@ const locales = require('./i18n/locales')
  * @param {string} pattern
  */
 function withLocale(pattern) {
-  const localeConstraint = locales.filter(l => l !== 'de').join('|')
+  const localeConstraint = locales.filter((l) => l !== 'de').join('|')
   const localePrefix = `/:locale(${localeConstraint})?`
   return pattern === '/' ? localePrefix : `${localePrefix}${pattern}`
 }

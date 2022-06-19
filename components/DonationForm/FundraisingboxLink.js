@@ -1,7 +1,11 @@
 import React from 'react'
 
 const FundraisingboxLink = () => (
-  <a target="_blank" rel="noopener noreferrer" href="http://www.fundraisingbox.com">
+  <a
+    target="_blank"
+    rel="noopener noreferrer"
+    href="http://www.fundraisingbox.com"
+  >
     <img
       border="0"
       style={{ border: '0 !important' }}

@@ -60,23 +60,16 @@ class Source extends Component {
     open: false,
   }
   toggle = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       open: !prevState.open,
     }))
   }
   render() {
-    const {
-      superscriptText,
-      sourceMarkdown,
-      placement,
-      id,
-    } = this.props
+    const { superscriptText, sourceMarkdown, placement, id } = this.props
     const sourceId = `Tooltip-${id}`
     return (
       <Fragment>
-        <Sup id={sourceId}>
-          {superscriptText}
-        </Sup>
+        <Sup id={sourceId}>{superscriptText}</Sup>
         <SourceTooltip
           isOpen={this.state.open}
           placement={placement}
@@ -93,9 +86,11 @@ class Source extends Component {
 }
 
 Source.propTypes = {
-  superscriptText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  superscriptText: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
   sourceMarkdown: PropTypes.string.isRequired,
-  id: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  id: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
   placement: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
 }
 

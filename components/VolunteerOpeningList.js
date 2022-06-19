@@ -11,7 +11,7 @@ const VolunteerOpeningsContainer = styled.div`
 
 const VolunteerOpeningsList = ({ volunteerOpenings }) => (
   <VolunteerOpeningsContainer className="row">
-    {volunteerOpenings.map(opening => (
+    {volunteerOpenings.map((opening) => (
       <div className="col-md-4" key={opening.description}>
         <h3>{opening.title}</h3>
         <Markdown source={opening.description} />
@@ -21,10 +21,12 @@ const VolunteerOpeningsList = ({ volunteerOpenings }) => (
 )
 
 VolunteerOpeningsList.propTypes = {
-  volunteerOpenings: PropTypes.arrayOf(PropTypes.shape({
-    description: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  })),
+  volunteerOpenings: PropTypes.arrayOf(
+    PropTypes.shape({
+      description: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
 }
 
 VolunteerOpeningsList.defaultProps = {

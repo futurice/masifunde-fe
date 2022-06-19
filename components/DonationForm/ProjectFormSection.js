@@ -53,7 +53,7 @@ const ProjectFormSection = ({
         </div>
         <ErrorMessage meta={meta} />
       </PageSection>
-      )}
+    )}
   </Field>
 )
 

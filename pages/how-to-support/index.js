@@ -37,7 +37,12 @@ const SectionImage = RoundedImage.extend`
 `
 
 const Section = ({
-  image, title, markdown, buttonText, buttonType, buttonLink,
+  image,
+  title,
+  markdown,
+  buttonText,
+  buttonType,
+  buttonLink,
 }) => (
   <SectionContainer>
     <Link route={buttonLink} passHref>

@@ -26,8 +26,10 @@ const Headline = styled.p`
     font-size: ${rem('34px')};
     line-height: 1.11;
     ${({ shadow }) => shadow && 'text-shadow: 0 2px 34px rgba(0, 0, 0, 0.5);'};
-    margin-left: ${({ placement }) => (placement === HEADLINE_MIDDLE ? '32px' : '32px')};
-    margin-bottom: ${({ placement }) => (placement === HEADLINE_MIDDLE ? '32px' : '32px')};
+    margin-left: ${({ placement }) =>
+      placement === HEADLINE_MIDDLE ? '32px' : '32px'};
+    margin-bottom: ${({ placement }) =>
+      placement === HEADLINE_MIDDLE ? '32px' : '32px'};
     padding: ${mediumSpacing};
   }
 
@@ -42,7 +44,11 @@ const Headline = styled.p`
 
 const GradientShadow = styled.div`
   min-height: 40%;
-  background-image: linear-gradient(to bottom, rgba(48, 42, 31, 0), rgba(48, 42, 31, 0.7));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(48, 42, 31, 0),
+    rgba(48, 42, 31, 0.7)
+  );
 
   @media screen and (min-width: ${mdBreakpoint}) {
     min-height: 60%;
@@ -57,7 +63,11 @@ const HeroHeadline = ({
 }) => {
   if (headline) {
     const title = (
-      <Headline maxWidth={maxWidth} shadow={headlineShadow} placement={headlinePlacement}>
+      <Headline
+        maxWidth={maxWidth}
+        shadow={headlineShadow}
+        placement={headlinePlacement}
+      >
         {headline}
       </Headline>
     )

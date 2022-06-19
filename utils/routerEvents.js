@@ -26,16 +26,18 @@ export function onRouteChangeError(listener) {
   listeners.routeChangeError.push(listener)
 }
 
-const makeMultiListener = subListeners => (...args) => {
-  subListeners.forEach((listener) => {
-    try {
-      listener(...args)
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error)
-    }
-  })
-}
+const makeMultiListener =
+  (subListeners) =>
+  (...args) => {
+    subListeners.forEach((listener) => {
+      try {
+        listener(...args)
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error)
+      }
+    })
+  }
 
 Router.onRouteChangeStart = makeMultiListener(listeners.routeChangeStart)
 Router.onRouteChangeComplete = makeMultiListener(listeners.routeChangeComplete)

@@ -23,7 +23,8 @@ const ButtonsContainer = styled.nav`
   }
 
   > div {
-    &:first-of-type, &:nth-of-type(3) {
+    &:first-of-type,
+    &:nth-of-type(3) {
       flex-grow: 1;
 
       a {
@@ -50,10 +51,7 @@ const PodcastListNavigationLink = ({
       page,
     }}
   >
-    <Button
-      isActive={currentPage && (currentPage === page)}
-      rounded={rounded}
-    >
+    <Button isActive={currentPage && currentPage === page} rounded={rounded}>
       {buttonText || page}
     </Button>
   </Link>
@@ -71,7 +69,6 @@ PodcastListNavigationLink.defaultProps = {
   currentPage: undefined,
   rounded: false,
 }
-
 
 const PageButtonsContainer = styled.div`
   display: flex;
@@ -121,21 +118,41 @@ const PodcastListNavigationButtons = ({
     <ButtonsContainer>
       <div>
         {isNotFirstPage && (
-          <PodcastListNavigationLink rel="prev" page={page - 1} buttonText={previousPageButtonText} />
+          <PodcastListNavigationLink
+            rel="prev"
+            page={page - 1}
+            buttonText={previousPageButtonText}
+          />
         )}
       </div>
       <PageButtonsContainer>
         {moreThanOnePage && (
-          <PodcastListNavigationLink currentPage={page} page={firstPageButton} rounded />
+          <PodcastListNavigationLink
+            currentPage={page}
+            page={firstPageButton}
+            rounded
+          />
         )}
-        <PodcastListNavigationLink currentPage={page} page={secondPageButton} rounded />
+        <PodcastListNavigationLink
+          currentPage={page}
+          page={secondPageButton}
+          rounded
+        />
         {threeOrMorePages && (
-          <PodcastListNavigationLink currentPage={page} page={thirdPageButton} rounded />
+          <PodcastListNavigationLink
+            currentPage={page}
+            page={thirdPageButton}
+            rounded
+          />
         )}
       </PageButtonsContainer>
       <div>
         {isNotLastPage && (
-          <PodcastListNavigationLink rel="next" page={page + 1} buttonText={nextPageButtonText} />
+          <PodcastListNavigationLink
+            rel="next"
+            page={page + 1}
+            buttonText={nextPageButtonText}
+          />
         )}
       </div>
     </ButtonsContainer>

@@ -10,21 +10,17 @@ const StyledLink = styled.a`
   margin-right: ${extraSmallSpacing};
 
   color: inherit !important;
-  margin-top: ${props => props.activeBorderThickness};
+  margin-top: ${(props) => props.activeBorderThickness};
 
-  margin-bottom: ${props => (
-    props.isActive
-      ? 0
-      : `${props.activeBorderThickness}`
-  )};
+  margin-bottom: ${(props) =>
+    props.isActive ? 0 : `${props.activeBorderThickness}`};
 
-  border-bottom: ${props => (
+  border-bottom: ${(props) =>
     props.isActive
       ? `${props.activeBorderThickness} solid #FE9933 !important`
-      : 0
-  )};
+      : 0};
 
-  @media screen and (max-width: ${mdBreakpoint}){
+  @media screen and (max-width: ${mdBreakpoint}) {
     text-align: center;
     margin-right: 0;
   }
@@ -33,7 +29,8 @@ const StyledLink = styled.a`
     margin-right: ${smallSpacing};
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-bottom: 3px solid ${({ theme }) => theme.pineCone};
     margin-bottom: 0;
   }

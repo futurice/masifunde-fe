@@ -1,10 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {
-  TwitterShareButton,
-  FacebookShareButton,
-} from 'react-share'
+import { TwitterShareButton, FacebookShareButton } from 'react-share'
 import FaFacebook from 'react-icons/lib/fa/facebook'
 import FaTwitter from 'react-icons/lib/fa/twitter'
 import T from 'i18n-react'
@@ -19,7 +16,11 @@ import teamMemberShape from '../../propTypes/teamMember'
 import imageShape from '../../propTypes/image'
 import Hero from '../../components/Hero'
 import Markdown from '../../components/Markdown'
-import { smBreakpoint, mdBreakpoint, lgBreakpoint } from '../../styling/breakpoints'
+import {
+  smBreakpoint,
+  mdBreakpoint,
+  lgBreakpoint,
+} from '../../styling/breakpoints'
 import { rem, footerText } from '../../styling/typography'
 import Button from '../../components/Button'
 import Link from '../../components/Link'
@@ -33,7 +34,10 @@ import formatDate from '../../utils/date'
 
 const BlogPostError = () => (
   <div>
-    <Head title={T.translate('blog.errorHeadTitle')} description={T.translate('blog.errorHeadMeta')} />
+    <Head
+      title={T.translate('blog.errorHeadTitle')}
+      description={T.translate('blog.errorHeadMeta')}
+    />
     <PageSection>
       <h1>{T.translate('blog.errorHeading')}</h1>
       <p className="offset-lg-2 col-lg-8">{T.translate('blog.errorText')}</p>
@@ -53,28 +57,28 @@ const BlogTitle = styled.h2`
 
 const BlogMarkdown = styled(Markdown)`
   p:first-child {
-    font-size: ${rem('24px')}
+    font-size: ${rem('24px')};
   }
 
   p img {
     width: 100%;
   }
 
-  @media(min-width: ${smBreakpoint}) {
+  @media (min-width: ${smBreakpoint}) {
     p img {
       margin: 0 -25px;
       width: calc(100% + 50px);
     }
   }
 
-  @media(min-width: ${mdBreakpoint}) {
+  @media (min-width: ${mdBreakpoint}) {
     p img {
       margin: 0 -30px;
       width: calc(100% + 60px);
     }
   }
 
-  @media(min-width: ${lgBreakpoint}) {
+  @media (min-width: ${lgBreakpoint}) {
     p img {
       margin: 0 -120px;
       width: calc(100% + 240px);
@@ -132,25 +136,22 @@ const SocialShareLink = SocialLink.withComponent('div').extend`
   margin: 0;
 `
 
-const AuthorSection = ({
-  authorTeamMember,
-  authorExternal,
-  authorText,
-}) => {
-  const heading = (authorTeamMember || authorExternal) ? <H4>{authorText}</H4> : ''
+const AuthorSection = ({ authorTeamMember, authorExternal, authorText }) => {
+  const heading =
+    authorTeamMember || authorExternal ? <H4>{authorText}</H4> : ''
 
   let author = null
   if (authorTeamMember || authorExternal) {
-    author = authorTeamMember
-      ? (
-        <TeamMemberAuthor
-          imageUrl={authorTeamMember.image.url}
-          title={authorTeamMember.name}
-          subtitle={authorTeamMember.responsibilityArea}
-          email={authorTeamMember.email}
-        />
-      )
-      : <p>{authorExternal}</p>
+    author = authorTeamMember ? (
+      <TeamMemberAuthor
+        imageUrl={authorTeamMember.image.url}
+        title={authorTeamMember.name}
+        subtitle={authorTeamMember.responsibilityArea}
+        email={authorTeamMember.email}
+      />
+    ) : (
+      <p>{authorExternal}</p>
+    )
   }
 
   return (
@@ -193,13 +194,13 @@ const BlogPostContent = ({
     <div>
       <Head title={title} description={metaDescription} />
 
-      {heroImage &&
+      {heroImage && (
         <Hero
           heroSize="small"
           backgroundPositionX="70%"
           imageUrl={heroImage.url}
         />
-      }
+      )}
 
       <PageSection>
         <div className="row">
@@ -218,19 +219,13 @@ const BlogPostContent = ({
               <ShareContainer className="col-6">
                 <H4>{shareText}</H4>
                 <ShareButtonRow>
-                  <FacebookShareButton
-                    url={pageUrl}
-                    quote={shareMessage}
-                  >
+                  <FacebookShareButton url={pageUrl} quote={shareMessage}>
                     <SocialShareLink>
                       <FaFacebook size={shareIconSize} />
                     </SocialShareLink>
                   </FacebookShareButton>
 
-                  <TwitterShareButton
-                    url={pageUrl}
-                    title={shareMessage}
-                  >
+                  <TwitterShareButton url={pageUrl} title={shareMessage}>
                     <SocialShareLink>
                       <FaTwitter size={shareIconSize} />
                     </SocialShareLink>
@@ -241,7 +236,6 @@ const BlogPostContent = ({
           </div>
         </div>
       </PageSection>
-
     </div>
   )
 }
@@ -286,7 +280,7 @@ const NavContainer = styled.nav`
     display: inline;
   }
 
-  @media(min-width: ${smBreakpoint}) {
+  @media (min-width: ${smBreakpoint}) {
     .longNavText {
       display: inline;
     }
@@ -297,7 +291,7 @@ const NavContainer = styled.nav`
 `
 
 const NavButton = styled(Button)`
-  visibility: ${props => (props.href ? 'visible' : 'hidden')};
+  visibility: ${(props) => (props.href ? 'visible' : 'hidden')};
 `
 
 const BlogPostNav = ({
@@ -333,7 +327,6 @@ const BlogPostNav = ({
   </div>
 )
 
-
 BlogPostNav.propTypes = {
   previousPost: PropTypes.string,
   previousPostText: PropTypes.string,
@@ -354,14 +347,14 @@ BlogPostNav.defaultProps = {
 
 const BlogPost = (props) => {
   const { error } = props
-  return error
-    ? <BlogPostError />
-    : (
-      <div>
-        <BlogPostContent {...props} />
-        <BlogPostNav {...props} />
-      </div>
-    )
+  return error ? (
+    <BlogPostError />
+  ) : (
+    <div>
+      <BlogPostContent {...props} />
+      <BlogPostNav {...props} />
+    </div>
+  )
 }
 
 BlogPost.propTypes = {

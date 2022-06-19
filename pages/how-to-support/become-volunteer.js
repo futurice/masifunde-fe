@@ -136,7 +136,8 @@ BecomeVolunteer.propTypes = {
   deVolunteerOpeningsHeading: PropTypes.string.isRequired,
   deTestimonialsHeading: PropTypes.string.isRequired,
   deTestimonials: TestimonialList.propTypes.testimonials.isRequired,
-  deVolunteerOpenings: VolunteerOpeningsList.propTypes.volunteerOpenings.isRequired,
+  deVolunteerOpenings:
+    VolunteerOpeningsList.propTypes.volunteerOpenings.isRequired,
 
   saVolunteerOpening1Heading: PropTypes.string.isRequired,
   saVolunteerOpening1Text: PropTypes.string.isRequired,

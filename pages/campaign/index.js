@@ -109,16 +109,20 @@ Campaign.propTypes = {
   teamMemberHeading: PropTypes.string.isRequired,
   teamMember: PropTypes.shape(teamMemmberPropTypes).isRequired,
   section2Title: PropTypes.string.isRequired,
-  section2ReferenceList: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  section2ReferenceList: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   amountHeading: PropTypes.string.isRequired,
-  amounts: PropTypes.arrayOf(PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  amounts: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   formHeading: PropTypes.string.isRequired,
   fundraisingboxIframeHeading: PropTypes.string.isRequired,
   query: PropTypes.shape({

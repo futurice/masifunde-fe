@@ -14,7 +14,7 @@ const StatContainer = styled.div`
   flex: 1;
   flex-basis: auto;
 
-  @media(min-width: ${smBreakpoint}) {
+  @media (min-width: ${smBreakpoint}) {
     flex-basis: 0;
   }
 
@@ -33,7 +33,7 @@ const CenteredSpan = styled.span`
 
 const Number = CenteredSpan.extend`
   ${handwrittenText};
-  ${props =>
+  ${(props) =>
     props.highlight &&
     css`
       color: ${props.theme.blue};
@@ -59,14 +59,16 @@ const Stat = ({
           <CenteredSpan>{textAbove}</CenteredSpan>
         </FixedHeight>
       )}
-      {hasImage && (
-        <IconImage src={icon.url} alt="" />
-      )}
+      {hasImage && <IconImage src={icon.url} alt="" />}
       <Number highlight={!hasImage}>{number}</Number>
       <CenteredSpan>
         {description}
         {sourceMarkdown && superscriptText && sourceId ? (
-          <Source superscriptText={superscriptText} sourceMarkdown={sourceMarkdown} id={sourceId} />
+          <Source
+            superscriptText={superscriptText}
+            sourceMarkdown={sourceMarkdown}
+            id={sourceId}
+          />
         ) : null}
       </CenteredSpan>
     </StatContainer>

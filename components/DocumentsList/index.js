@@ -45,9 +45,7 @@ const Document = ({ expandList, documents }) => (
   <Fragment>
     {expandList ? (
       <div className="row">
-        {documents.map(({
-          title, longTitle, description, file,
-        }) => (
+        {documents.map(({ title, longTitle, description, file }) => (
           <BoxContainerCol className="col-md-6" key={file.url}>
             <div className="row">
               <ContentContainer className="col-sm-auto">
@@ -64,7 +62,10 @@ const Document = ({ expandList, documents }) => (
     ) : (
       <div className="row">
         {documents.map(({ title, file }) => (
-          <BoxContainerCol key={file.url} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
+          <BoxContainerCol
+            key={file.url}
+            className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto"
+          >
             <DocumentDownloadBox title={title} fileUrl={file.url} />
           </BoxContainerCol>
         ))}
@@ -75,12 +76,14 @@ const Document = ({ expandList, documents }) => (
 
 Document.propTypes = {
   expandList: PropTypes.bool,
-  documents: PropTypes.arrayOf(PropTypes.shape({
-    description: PropTypes.string,
-    longTitle: PropTypes.string,
-    title: PropTypes.string,
-    file: PropTypes.shape(FilePropType),
-  })),
+  documents: PropTypes.arrayOf(
+    PropTypes.shape({
+      description: PropTypes.string,
+      longTitle: PropTypes.string,
+      title: PropTypes.string,
+      file: PropTypes.shape(FilePropType),
+    })
+  ),
 }
 
 Document.defaultProps = {

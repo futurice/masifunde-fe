@@ -28,18 +28,13 @@ const Title = styled.div`
   color: ${({ theme }) => theme.pineCone};
 `
 
-const Supporter = ({
-  image: { url: imageUrl },
-  name,
-  title,
-  ...rest
-}) => (
-  <div {...rest} >
+const Supporter = ({ image: { url: imageUrl }, name, title, ...rest }) => (
+  <div {...rest}>
     <ImageContainer>
       <RoundedImage className="img-fluid" src={imageUrl} alt="" />
     </ImageContainer>
-    { name && <Name>{name}</Name>}
-    { title && <Title>{title}</Title>}
+    {name && <Name>{name}</Name>}
+    {title && <Title>{title}</Title>}
   </div>
 )
 

@@ -24,23 +24,16 @@ const InnerContainer = styled(Container)`
   height: auto;
   min-height: ${rem('350px')};
   padding-top: ${rem('45px')};
-  padding-bottom: ${rem('45px')}
+  padding-bottom: ${rem('45px')};
 `
 
-function BannerWithoutImage({
-  headline,
-  buttonText,
-  buttonLink,
-  className,
-}) {
+function BannerWithoutImage({ headline, buttonText, buttonLink, className }) {
   return (
     <OuterContainer className={className}>
       <InnerContainer>
         <Headline>{headline}</Headline>
         <Link route={buttonLink} passHref>
-          <Button type="banner">
-            {buttonText}
-          </Button>
+          <Button type="banner">{buttonText}</Button>
         </Link>
       </InnerContainer>
     </OuterContainer>

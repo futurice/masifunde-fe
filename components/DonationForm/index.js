@@ -73,17 +73,29 @@ const DonationForm = ({
     }
   }
 
-  const countriesOptions = Object.entries(countries).map(([countryKey, country]) => ({
-    value: countryKey,
-    text: country,
-  }))
+  const countriesOptions = Object.entries(countries).map(
+    ([countryKey, country]) => ({
+      value: countryKey,
+      text: country,
+    })
+  )
   const receiptOptions = [
     { value: RECEIPT_NOW_OPTION_VALUE, text: 'Ja, so schnell wie möglich' },
-    { value: 'receipt_end_of_year', text: 'Ja, konsolidiert am Ende des Jahres' },
-    { value: NO_RECEIPT_OPTION_VALUE, text: 'Nein, ich brauche keine Quittung' },
+    {
+      value: 'receipt_end_of_year',
+      text: 'Ja, konsolidiert am Ende des Jahres',
+    },
+    {
+      value: NO_RECEIPT_OPTION_VALUE,
+      text: 'Nein, ich brauche keine Quittung',
+    },
   ]
-  const salutationOptions = [{ value: 'Mrs.', text: 'Frau' }, { value: 'Mr.', text: 'Herr' }]
-  const isIframeStatusFailureOrSuccess = iframeStatus === 'successful' || iframeStatus === 'failure'
+  const salutationOptions = [
+    { value: 'Mrs.', text: 'Frau' },
+    { value: 'Mr.', text: 'Herr' },
+  ]
+  const isIframeStatusFailureOrSuccess =
+    iframeStatus === 'successful' || iframeStatus === 'failure'
 
   return (
     <Fragment>
@@ -142,10 +154,7 @@ const DonationForm = ({
                     autoComplete="honorific-prefix"
                   />
 
-                  <InputField
-                    fieldName={TITLE}
-                    label="Titel (optional)"
-                  />
+                  <InputField fieldName={TITLE} label="Titel (optional)" />
 
                   <InputField
                     fieldName={FIRST_NAME}

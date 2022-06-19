@@ -82,16 +82,14 @@ const Home = ({
 
     <PageSection>
       <StatList>
-        {
-          stats.map((stat, index) => (
-            <Stat
-              key={`${stat.icon.url} ${stat.number}`}
-              {...stat}
-              superscriptText={index + 1}
-              sourceId={`home-stat-${index}`}
-            />
-          ))
-        }
+        {stats.map((stat, index) => (
+          <Stat
+            key={`${stat.icon.url} ${stat.number}`}
+            {...stat}
+            superscriptText={index + 1}
+            sourceId={`home-stat-${index}`}
+          />
+        ))}
       </StatList>
     </PageSection>
 
@@ -142,7 +140,7 @@ const Home = ({
       </Container>
 
       <BlogPostList className="row">
-        {featuredBlogPosts.map(post => (
+        {featuredBlogPosts.map((post) => (
           <BlogPostListItem key={post.slug} className="col-md-4">
             <BlogPostCard post={post} />
           </BlogPostListItem>
@@ -196,7 +194,7 @@ Home.defaultProps = {
 Home.getInitialProps = async function initialProps({ query }) {
   const locale = getLocaleFromQuery(query)
   return {
-    ...await fetchHomePage(locale),
+    ...(await fetchHomePage(locale)),
     featuredBlogPosts: await fetchNewestBlogPosts(locale, 3),
   }
 }

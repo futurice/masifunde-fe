@@ -82,7 +82,9 @@ async function blogPostsPathMap() {
       if (!slug) {
         // Without a slug, we cannot generate a path for the blog post
         // eslint-disable-next-line no-console
-        console.warn(`Post ${post.sys.id} has no slug for locale [${locale}], skipping`)
+        console.warn(
+          `Post ${post.sys.id} has no slug for locale [${locale}], skipping`
+        )
         return
       }
 
@@ -115,7 +117,6 @@ async function blogPostsPathMap() {
 
   return pathMap
 }
-
 
 async function fetchAllPodcastPosts() {
   const client = contentful.createClient({
@@ -179,14 +180,16 @@ module.exports = {
     const staticRoutesMap = staticRoutesPathMap()
     const blogPostsMap = await blogPostsPathMap()
     const podcastPostsMap = await podcastPostsPathMap()
-    const pathMap = Object.assign({}, staticRoutesMap, blogPostsMap, podcastPostsMap)
+    const pathMap = Object.assign(
+      {},
+      staticRoutesMap,
+      blogPostsMap,
+      podcastPostsMap
+    )
 
     // Save routes as sitemap (https://www.sitemaps.org/)
-    const sitemapXml = await createSitemap(pathMap);
-    fs.writeFileSync(
-      `${__dirname}/public/production/sitemap.xml`,
-      sitemapXml
-    )
+    const sitemapXml = await createSitemap(pathMap)
+    fs.writeFileSync(`${__dirname}/public/production/sitemap.xml`, sitemapXml)
 
     return pathMap
   },

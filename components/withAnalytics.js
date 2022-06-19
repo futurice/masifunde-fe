@@ -13,7 +13,7 @@ if (GOOGLE_ANALYTICS_ID) {
   })
 }
 
-const withAnalytics = WrappedComponent =>
+const withAnalytics = (WrappedComponent) =>
   class GaWrapper extends Component {
     componentDidMount = () => {
       if (GOOGLE_ANALYTICS_ID) {
@@ -21,7 +21,9 @@ const withAnalytics = WrappedComponent =>
       }
     }
 
-    trackPageView = (path = window.location.pathname + window.location.search) => {
+    trackPageView = (
+      path = window.location.pathname + window.location.search
+    ) => {
       ReactGA.pageview(path)
     }
 

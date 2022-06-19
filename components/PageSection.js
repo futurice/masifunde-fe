@@ -8,7 +8,7 @@ const sectionSpacingMobile = '4rem'
 
 const pageSectionStyle = css`
   margin-top: ${sectionSpacingMobile};
-  
+
   @media (min-width: ${smBreakpoint}) {
     margin-top: ${sectionSpacing};
   }
@@ -22,11 +22,12 @@ const UncontainedPageSection = styled.div`
   ${pageSectionStyle}
 `
 
-const PageSection = ({ children, contained, ...rest }) => (
-  contained
-    ? <ContainedPageSection {...rest}>{children}</ContainedPageSection>
-    : <UncontainedPageSection {...rest}>{children}</UncontainedPageSection>
-)
+const PageSection = ({ children, contained, ...rest }) =>
+  contained ? (
+    <ContainedPageSection {...rest}>{children}</ContainedPageSection>
+  ) : (
+    <UncontainedPageSection {...rest}>{children}</UncontainedPageSection>
+  )
 
 PageSection.propTypes = {
   children: PropTypes.node.isRequired,

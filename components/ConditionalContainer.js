@@ -4,21 +4,21 @@ import PropTypes from 'prop-types'
 
 const Div = styled.div`
   @media (max-width: ${(props) => {
-    switch (props.containAfter) {
-      case 'xs':
-        return '575.99px'
-      case 'sm':
-        return '767.99px'
-      case 'md':
-        return '991.99px'
-      case 'lg':
-        return '1199.99px'
-      case 'never':
-        return '100vw'
-      default:
-        return '767.99px'
-    }
-  }}) {
+      switch (props.containAfter) {
+        case 'xs':
+          return '575.99px'
+        case 'sm':
+          return '767.99px'
+        case 'md':
+          return '991.99px'
+        case 'lg':
+          return '1199.99px'
+        case 'never':
+          return '100vw'
+        default:
+          return '767.99px'
+      }
+    }}) {
     padding-left: 0;
     padding-right: 0;
     margin-left: 0;

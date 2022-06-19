@@ -3,7 +3,7 @@ import PageSection from '../PageSection'
 
 const DonationFormPageSection = styled(PageSection)`
   margin-top: 3rem;
-  
+
   ${({ contained }) => contained && 'padding-right: 0;'}
 `
 

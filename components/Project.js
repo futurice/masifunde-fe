@@ -22,14 +22,13 @@ const StyledIconImage = IconImage.extend`
   margin: 0 auto;
 `
 
-const Project = ({
-  className, image, name, description,
-}) => (
+const Project = ({ className, image, name, description }) => (
   <ProjectContainer className={className}>
     <StyledIconImage src={image.url} alt="" />
     <H4>{name}</H4>
     <Markdown source={description} />
-  </ProjectContainer>)
+  </ProjectContainer>
+)
 
 Project.propTypes = {
   className: PropTypes.string,

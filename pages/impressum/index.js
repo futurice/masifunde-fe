@@ -19,7 +19,10 @@ const Impressum = ({
     <PageSection>
       <h1>{impressumTitle}</h1>
       <div className="row">
-        <Markdown className="offset-lg-1 col-lg-10" source={impressumMarkdown} />
+        <Markdown
+          className="offset-lg-1 col-lg-10"
+          source={impressumMarkdown}
+        />
       </div>
     </PageSection>
   </div>

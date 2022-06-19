@@ -26,14 +26,11 @@ function FundraisingIframeContainer({
   scrollToIframe,
   ...rest
 }) {
-  useEffect(
-    () => {
-      if (scrollToIframe) {
-        window.location.hash = IFRAME_SCROLL_ID
-      }
-    },
-    [scrollToIframe],
-  )
+  useEffect(() => {
+    if (scrollToIframe) {
+      window.location.hash = IFRAME_SCROLL_ID
+    }
+  }, [scrollToIframe])
 
   return (
     <PageSection contained={false}>
@@ -43,10 +40,7 @@ function FundraisingIframeContainer({
         </FormContainer>
       )}
       <ScrollDiv id={IFRAME_SCROLL_ID} />
-      <FundraisingIframe
-        {...fields}
-        {...rest}
-      />
+      <FundraisingIframe {...fields} {...rest} />
       <FormContainer>
         <FundraisingboxLink />
       </FormContainer>

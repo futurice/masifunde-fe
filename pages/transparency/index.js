@@ -8,12 +8,7 @@ import { fetchTransparenzPage } from '../../api/transparency'
 import Markdown from '../../components/Markdown'
 import PageSection from '../../components/PageSection'
 
-const Transparenz = ({
-  metaTitle,
-  metaDescription,
-  heading,
-  markdown,
-}) => (
+const Transparenz = ({ metaTitle, metaDescription, heading, markdown }) => (
   <div>
     <Head title={metaTitle} description={metaDescription} />
     <PageSection>

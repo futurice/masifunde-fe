@@ -32,9 +32,7 @@ class FundraisingIframe extends Component {
     this.props.onMouseHover()
   }
   render() {
-    return (
-      <div id={IFRAME_ID} style={{ position: 'relative' }} />
-    )
+    return <div id={IFRAME_ID} style={{ position: 'relative' }} />
   }
 }
 
@@ -95,11 +93,12 @@ function ScriptParametersWrapper({
   const fullUrl = `${baseUrl}?${qs.stringify(parameters)}`
 
   const Form = useMemo(
-    () => makeAsyncScriptLoader(fullUrl, {
-      globalName: 'FundRaisingBox',
-      removeOnUnmount: true,
-    })(FundraisingIframe),
-    [fullUrl],
+    () =>
+      makeAsyncScriptLoader(fullUrl, {
+        globalName: 'FundRaisingBox',
+        removeOnUnmount: true,
+      })(FundraisingIframe),
+    [fullUrl]
   )
 
   return <Form {...rest} />

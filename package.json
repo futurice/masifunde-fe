@@ -20,6 +20,8 @@
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint --ignore-path .gitignore --ext .js .",
     "lint-fix": "npm run lint -- --fix",
+    "prettier-check": "prettier --list-different components i18n pages propTypes styling utils *.js",
+    "prettier-fix": "prettier --write components i18n pages propTypes styling utils *.js",
     "serve": "serve -s out"
   },
   "repository": {
@@ -34,7 +36,8 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint"
+      "eslint",
+      "prettier --list-different"
     ]
   },
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
@@ -80,6 +83,7 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.0",
     "nodemon": "^2.0.16",
+    "prettier": "^2.7.0",
     "rimraf": "^3.0.2",
     "serve": "^13.0.2",
     "slug": "^5.3.0"

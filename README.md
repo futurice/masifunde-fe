@@ -16,11 +16,12 @@ This will run nodemon with `server.js` which will run next.js development enviro
 
 ### Built With
 
-[Next.js](https://github.com/zeit/next.js/), [React](https://reactjs.org/),
-[Styled-components](https://www.styled-components.com/),
-[Bootstrap 4](https://getbootstrap.com),
-[Contentful](https://www.contentful.com/),
-[Fundraisingbox](https://www.fundraisingbox.com/).
+- [Next.js](https://github.com/zeit/next.js/)
+- [React](https://reactjs.org/)
+- [Styled-components](https://www.styled-components.com/)
+- [Bootstrap 4](https://getbootstrap.com)
+- [Contentful](https://www.contentful.com/)
+- [Fundraisingbox](https://www.fundraisingbox.com/)
 
 ### Prerequisites
 
@@ -109,9 +110,9 @@ To configure the iframe, sign in to [Masifunde's Fundraisingbox admin interface]
 To fully customize the form, we hide most of the inputs in iframe, while rendering our own form fields outside of the iframe. We then [populate the iframe with these custom form field values](https://developer.fundraisingbox.com/v1.0/docs/form-prepopulation-api). This forces a reload and rerender of the iframe, which causes flickering. So we only do this when all custom form fields have values.
 
 ### Einbettungsadresse (form embed url)
-The _Einbettungsadresse_ should specify the full url of the page this form is used (e.g `https://www.masifunde.de/wie-sie-helfen/spenden`), and not just the host `https://www.masifunde.de`. 
-On a successful (or failed) donation attempt, the user gets redirected to the exact url in _Einbettungsadresse_ with a `status` query param. 
-Then a `success` or `error` message is displayed in the iframe. 
+The _Einbettungsadresse_ should specify the full url of the page this form is used (e.g `https://www.masifunde.de/wie-sie-helfen/spenden`), and not just the host `https://www.masifunde.de`.
+On a successful (or failed) donation attempt, the user gets redirected to the exact url in _Einbettungsadresse_ with a `status` query param.
+Then a `success` or `error` message is displayed in the iframe.
 If the page doesn't have the Fundraisingbox iframe, no `success` or `error` message will be displayed.
 
 ### iframe styling
@@ -123,7 +124,7 @@ By checking the box for `Keine Standard-Stylesheets laden` the Fundraisingbox if
 
 Note: This has to be standard css, *no scss or less*.
 
-For version control and backup purposes we also store this css in the file `Fundraisingbox_custom_css.css` in this repo. 
+For version control and backup purposes we also store this css in the file `Fundraisingbox_custom_css.css` in this repo.
 
 ### Testing Fundraisingbox locally
 
@@ -179,8 +180,12 @@ For each section of the page, we prefix the fields with "section<number>":
 
 No tests for now.
 
-## Style guide
+## Style
 
-Project uses [ESLint Airbnb style guide](https://github.com/airbnb/javascript) with some tweaks (like no semicolons). The `precommit` git hook will
-automatically run ESLint to check if the code complies with the rules. If it fails then it will not
-push to the repo.
+This project uses [Prettier](https://prettier.io) for all formatting needs.
+We recommend installing the Prettier plugin for your editor / IDE and enabling
+format-on-save.
+
+We also use [ESLint](https://eslint.org) for various checks (such as unused
+variables / imports, React pitfalls, etc.). Install the ESLint plugin for
+your editor / IDE to see ESLint errors and warnings in realtime.

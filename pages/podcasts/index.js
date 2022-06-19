@@ -18,7 +18,7 @@ import PodcastList from '../../components/Podcast'
 import teamMemberProps from '../../propTypes/teamMember'
 import TextWithTeamMember from '../../components/TextWithTeamMember'
 import Banner from '../../components/Banner'
-import { largeSpacing , extraSmallSpacing } from '../../styling/sizes'
+import { largeSpacing, extraSmallSpacing } from '../../styling/sizes'
 
 const PodcastSubHeading = styled.h2`
   text-align: center;
@@ -64,12 +64,12 @@ const ExtendedDivider = Divider.extend`
 
 const SubscribeAndShare = styled.div`
   margin-top: 24px;
-  display:inline-block;
-  width:100%;
+  display: inline-block;
+  width: 100%;
 `
 
 const PodcastSection = styled.div.attrs({ className: 'container' })`
-  margin-top:3rem;
+  margin-top: 3rem;
 
   @media (min-width: ${smBreakpoint}) {
     margin-top: 2rem;
@@ -121,17 +121,13 @@ class Podcast extends Component {
               subscribeText={subscribeText}
               subscribeLinks={subscribeLinks}
             />
-            <Share
-              shareText={shareText}
-              shareLinks={shareLinks}
-            />
+            <Share shareText={shareText} shareLinks={shareLinks} />
           </SubscribeAndShare>
         </PageSection>
 
         <PodcastSection>
           <PodcastList podcast={podcast} />
         </PodcastSection>
-
 
         <Container>
           <PodcastListFooter>
@@ -163,12 +159,10 @@ class Podcast extends Component {
           buttonText={bannerButtonText}
           buttonLink={bannerButtonUrl}
         />
-
       </div>
     )
   }
 }
-
 
 Podcast.propTypes = {
   metaTitle: PropTypes.string.isRequired,
@@ -191,7 +185,6 @@ Podcast.propTypes = {
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,
   bannerButtonUrl: PropTypes.string.isRequired,
-
 }
 
 Podcast.defaultProps = {

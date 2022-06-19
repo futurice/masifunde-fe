@@ -14,7 +14,8 @@ const Head = ({ title, description }) => (
   <NextJsHead>
     <title>{createTitle(title)}</title>
     {description && <meta name="description" content={description} />}
-  </NextJsHead>)
+  </NextJsHead>
+)
 
 Head.propTypes = {
   title: PropTypes.string,
