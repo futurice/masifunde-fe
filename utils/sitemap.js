@@ -8,9 +8,10 @@ function getLocalePathPrefix(locale) {
 }
 
 function getLocale(path) {
-  const localesWithoutDefault = locales.filter(l => l !== 'de')
-  const pathLocale = localesWithoutDefault.find(locale =>
-    path.startsWith(`/${locale}/`) || path === `${locale}`)
+  const localesWithoutDefault = locales.filter((l) => l !== 'de')
+  const pathLocale = localesWithoutDefault.find(
+    (locale) => path.startsWith(`/${locale}/`) || path === `${locale}`
+  )
   return pathLocale || 'de'
 }
 
@@ -32,7 +33,7 @@ function createAlternateLinks(path) {
     return []
   }
 
-  return locales.map(locale => ({
+  return locales.map((locale) => ({
     lang: locale,
     url: replaceLocale(path, locale),
   }))
@@ -40,8 +41,8 @@ function createAlternateLinks(path) {
 
 async function createSitemap(routes) {
   const links = Object.keys(routes)
-    .filter(path => !path.includes('404'))
-    .map(path => ({
+    .filter((path) => !path.includes('404'))
+    .map((path) => ({
       url: path,
       links: createAlternateLinks(path),
     }))

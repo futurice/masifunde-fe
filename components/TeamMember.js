@@ -31,22 +31,12 @@ const Email = styled.a`
   font-size: ${rem('12px')};
 `
 
-const TeamMember = ({
-  imageUrl,
-  title,
-  subtitle,
-  email,
-  className,
-}) => (
+const TeamMember = ({ imageUrl, title, subtitle, email, className }) => (
   <TeamMemberContainer className={className}>
-    <Image
-      className="img-fluid"
-      src={imageUrl}
-      alt=""
-    />
+    <Image className="img-fluid" src={imageUrl} alt="" />
     <Title>{title}</Title>
     <Subtitle>{subtitle}</Subtitle>
-    {email && (<Email href={`mailto:${email}`}>{email}</Email>)}
+    {email && <Email href={`mailto:${email}`}>{email}</Email>}
   </TeamMemberContainer>
 )
 

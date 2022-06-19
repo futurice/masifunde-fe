@@ -93,7 +93,7 @@ const ImageContainer = styled.div`
     left: 50%;
     margin-right: -50%;
   }
-  
+
   &:hover {
     &:before {
       background: url('/static/images/playvideo-hover-icon.svg');
@@ -106,7 +106,7 @@ const CloseButton = styled.button`
   width: 25px;
   height: 25px;
   padding: 5px;
-  background: transparent url("/static/images/close-icon.svg") no-repeat;
+  background: transparent url('/static/images/close-icon.svg') no-repeat;
   cursor: pointer;
 `
 
@@ -125,12 +125,11 @@ class VideoModal extends Component {
       })
     } else {
       // To get vimeo thumbnail the API request is required
-      getVimeoThumbnail(videoUrl)
-        .then((thumbnailUrl) => {
-          this.setState({
-            thumbnail: thumbnailUrl,
-          })
+      getVimeoThumbnail(videoUrl).then((thumbnailUrl) => {
+        this.setState({
+          thumbnail: thumbnailUrl,
         })
+      })
     }
   }
 
@@ -145,10 +144,7 @@ class VideoModal extends Component {
   }
 
   render() {
-    const {
-      title,
-      videoUrl,
-    } = this.props
+    const { title, videoUrl } = this.props
     const { thumbnail } = this.state
 
     return (

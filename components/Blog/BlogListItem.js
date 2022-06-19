@@ -50,7 +50,8 @@ const BlogPostTitle = styled.h2`
 
 const Anchor = styled.a`
   width: 100%;
-  :hover, :focus {
+  :hover,
+  :focus {
     color: ${({ theme }) => theme.black};
     text-decoration: underline;
   }
@@ -62,14 +63,8 @@ const TeaserImage = styled.img`
 `
 
 const BlogPostLink = ({ children, slug }) => (
-  <Link
-    route={RouteNames.BlogPost}
-    passHref
-    params={{ slug }}
-  >
-    <Anchor>
-      {children}
-    </Anchor>
+  <Link route={RouteNames.BlogPost} passHref params={{ slug }}>
+    <Anchor>{children}</Anchor>
   </Link>
 )
 

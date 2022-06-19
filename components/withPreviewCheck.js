@@ -26,23 +26,21 @@ export default function withPreviewCheck(Page) {
     componentDidMount() {
       const context = window.__NEXT_DATA__
       if (IS_PREVIEW) {
-        Page.getInitialProps(context)
-          .then((response) => {
-            this.setState({ ...response })
-          })
+        Page.getInitialProps(context).then((response) => {
+          this.setState({ ...response })
+        })
       }
     }
 
     render() {
-      return (
-        <Page {...this.props} {...this.state} />
-      )
+      return <Page {...this.props} {...this.state} />
     }
   }
 
-  GetInitialPropsWrapper.getInitialProps = async function getInitialPropsWrapper(ctx) {
-    return Page.getInitialProps ? Page.getInitialProps(ctx) : {}
-  }
+  GetInitialPropsWrapper.getInitialProps =
+    async function getInitialPropsWrapper(ctx) {
+      return Page.getInitialProps ? Page.getInitialProps(ctx) : {}
+    }
 
   return GetInitialPropsWrapper
 }

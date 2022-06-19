@@ -1,7 +1,7 @@
 /* eslint-disable no-confusing-arrow */
 
 const formatDate = (inputDateString) => {
-  const padZero = number => number < 10 ? `0${number}` : number
+  const padZero = (number) => (number < 10 ? `0${number}` : number)
   const dateObj = new Date(inputDateString)
 
   const date = dateObj.getDate()

@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import { smBreakpoint } from '../../styling/breakpoints'
 
 const ShareText = styled.h3`
-  color: #77695C;
-  font-size:18px;
-  font-weight:600;
-  margin-bottom:0px;
+  color: #77695c;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 0px;
   text-align: right;
   @media (max-width: ${smBreakpoint}) {
     text-align: center;
@@ -17,10 +17,10 @@ const ShareText = styled.h3`
 const ShareContainer = styled.div`
   float: right;
   min-width: 8em;
-  text-align:right;
+  text-align: right;
   @media (max-width: ${smBreakpoint}) {
     float: none;
-    display:block;
+    display: block;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -28,12 +28,11 @@ const ShareContainer = styled.div`
 `
 
 const ShareIconContainer = styled.div`
-  &::after{
-    content: "";
+  &::after {
+    content: '';
     clear: both;
     display: table;
   }
-
 `
 const ShareIcon = styled.div`
   float: right;
@@ -45,41 +44,34 @@ const ShareIcon = styled.div`
   }
 `
 
-const Share = ({
-      shareText,
-      shareLinks,
-}) =>(
+const Share = ({ shareText, shareLinks }) => (
   <ShareContainer>
     <ShareText>{shareText}</ShareText>
     <ShareIconContainer>
       <ShareIcon>
         <a href={shareLinks.Twitter} title="Twitter">
-         <img src="/static/images/Icon-twitter.svg" alt="" />
+          <img src="/static/images/Icon-twitter.svg" alt="" />
         </a>
       </ShareIcon>
       <ShareIcon>
         <a href={shareLinks.Facebook} title="Facebook">
-         <img src="/static/images/Icon-facebook.svg" alt="" />
+          <img src="/static/images/Icon-facebook.svg" alt="" />
         </a>
       </ShareIcon>
       <ShareIcon>
         <a href={shareLinks.Instagram} title="Instagram">
-         <img src="/static/images/Icon-instagram.svg" alt="" />
+          <img src="/static/images/Icon-instagram.svg" alt="" />
         </a>
       </ShareIcon>
     </ShareIconContainer>
   </ShareContainer>
 )
 
-
-
 Share.propTypes = {
   shareText: PropTypes.string,
-  shareLinks : PropTypes.object.isRequired,
+  shareLinks: PropTypes.object.isRequired,
 }
 
-Share.defaultProps = {
-
-}
+Share.defaultProps = {}
 
 export default Share

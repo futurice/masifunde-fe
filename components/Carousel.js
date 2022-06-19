@@ -41,7 +41,7 @@ const CarouselTextTitle = styled.p`
 `
 
 const Image = styled.div`
-  background: url(${props => props.src});
+  background: url(${(props) => props.src});
   padding-right: 0;
   background-position: center;
   background-repeat: no-repeat;
@@ -69,11 +69,12 @@ const MobileImage = styled.img`
 `
 
 const StyledCarousel = styled(NukaCarousel)`
-  background: ${props => props.theme.blue};
+  background: ${(props) => props.theme.blue};
   width: 100% !important;
 
   &:hover {
-    .slider-decorator-0, .slider-decorator-1 {
+    .slider-decorator-0,
+    .slider-decorator-1 {
       button {
         opacity: 1;
       }
@@ -85,7 +86,7 @@ const StyledCarousel = styled(NukaCarousel)`
     z-index: 10;
 
     li button {
-      color: ${props => props.theme.pineCone} !important;
+      color: ${(props) => props.theme.pineCone} !important;
       font-size: ${rem('48px')} !important;
     }
   }
@@ -96,7 +97,7 @@ const StyledArrowButton = styled.button`
   padding: ${extraSmallSpacing};
   border: none;
   cursor: pointer;
-  opacity: ${props => (props.focused ? 1 : 0)};
+  opacity: ${(props) => (props.focused ? 1 : 0)};
   transition: opacity 300ms;
 
   img {
@@ -108,7 +109,6 @@ const StyledArrowButton = styled.button`
     outline: 0;
     filter: drop-shadow(0px 0px 3px white);
   }
-
 `
 
 const SlideRow = styled.div`
@@ -137,21 +137,17 @@ const mapPortraitToCarouselItems = (portrait) => {
 }
 
 const ArrowButton = (props) => {
-  const {
-    direction,
-    focused,
-    previousSlide,
-    nextSlide,
-  } = props
+  const { direction, focused, previousSlide, nextSlide } = props
   return (
     <StyledArrowButton
       focused={focused}
       onClick={direction === 'left' ? previousSlide : nextSlide}
     >
-      {direction === 'left'
-        ? <img src="/static/images/carousel-arrow-left.svg" alt="links" />
-        : <img src="/static/images/carousel-arrow-right.svg" alt="rechts" />
-      }
+      {direction === 'left' ? (
+        <img src="/static/images/carousel-arrow-left.svg" alt="links" />
+      ) : (
+        <img src="/static/images/carousel-arrow-right.svg" alt="rechts" />
+      )}
     </StyledArrowButton>
   )
 }
@@ -182,10 +178,14 @@ export default function Carousel({ portrait }) {
       >
         <StyledCarousel
           wrapAround
-          renderCenterLeftControls={props => <ArrowButton direction="left" focused={focused} {...props} />}
-          renderCenterRightControls={props => <ArrowButton direction="right" focused={focused} {...props} />}
+          renderCenterLeftControls={(props) => (
+            <ArrowButton direction="left" focused={focused} {...props} />
+          )}
+          renderCenterRightControls={(props) => (
+            <ArrowButton direction="right" focused={focused} {...props} />
+          )}
         >
-          {items.map(item => (
+          {items.map((item) => (
             <SlideRow className="row" key={`${item.heading} ${item.image.url}`}>
               <Image className="col-md-4" src={item.image.url} alt="" />
               <MobileImage src={item.image.url} alt="" />

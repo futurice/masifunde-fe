@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container } from 'reactstrap'
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  Container,
+} from 'reactstrap'
 import styled from 'styled-components'
 import T from 'i18n-react'
 
@@ -28,7 +35,7 @@ const StyledNavbar = styled(Navbar)`
 `
 
 const StyledNavbarBrand = styled(NavbarBrand)`
-  height: ${props => props.height};
+  height: ${(props) => props.height};
   padding-top: 0;
   padding-bottom: 0;
 `
@@ -39,13 +46,12 @@ class Header extends Component {
   }
 
   toggle = () => {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }))
+    this.setState((prevState) => ({ isOpen: !prevState.isOpen }))
   }
 
   render() {
-    const {
-      donateText, howToSupportText, whoWeAreText, whatWeDoText, height,
-    } = this.props
+    const { donateText, howToSupportText, whoWeAreText, whatWeDoText, height } =
+      this.props
 
     return (
       <HeaderWrapper className="fixed-top d-flex align-items-center">
@@ -59,13 +65,24 @@ class Header extends Component {
                 <Logo src="/static/images/logo.svg" alt="Masifunde Home" />
               </StyledNavbarBrand>
             </Link>
-            <NavbarToggler title={T.translate('header.openNavigation')} onClick={this.toggle} />
+            <NavbarToggler
+              title={T.translate('header.openNavigation')}
+              onClick={this.toggle}
+            />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto d-flex align-items-center" navbar>
-                <NavigationLink type="link" href={RouteNames.WhatWeDo}>{whatWeDoText}</NavigationLink>
-                <NavigationLink type="link" href={RouteNames.WhoWeAre}>{whoWeAreText}</NavigationLink>
-                <NavigationLink type="link" href={RouteNames.HowToSupport}>{howToSupportText}</NavigationLink>
-                <NavigationLink type="button" href={RouteNames.Donate}>{donateText}</NavigationLink>
+                <NavigationLink type="link" href={RouteNames.WhatWeDo}>
+                  {whatWeDoText}
+                </NavigationLink>
+                <NavigationLink type="link" href={RouteNames.WhoWeAre}>
+                  {whoWeAreText}
+                </NavigationLink>
+                <NavigationLink type="link" href={RouteNames.HowToSupport}>
+                  {howToSupportText}
+                </NavigationLink>
+                <NavigationLink type="button" href={RouteNames.Donate}>
+                  {donateText}
+                </NavigationLink>
               </Nav>
             </Collapse>
           </StyledNavbar>

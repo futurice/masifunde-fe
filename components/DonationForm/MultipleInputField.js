@@ -11,7 +11,7 @@ import { formInputClassFactory } from './utils/formInputClassFactory'
 
 const SecondInputContainer = styled.div`
   margin-top: 0.5rem;
-  
+
   @media (min-width: ${mdBreakpoint}) {
     padding-left: 0;
     margin-top: 0;
@@ -27,7 +27,10 @@ const MultipleInputField = ({
   type,
 }) => (
   <div className="form-group row">
-    <FormLabel className={`${FORM_LABEL_BOOTSTRAP_CLASSES} col-form-label`} htmlFor={fieldName1}>
+    <FormLabel
+      className={`${FORM_LABEL_BOOTSTRAP_CLASSES} col-form-label`}
+      htmlFor={fieldName1}
+    >
       {label}
     </FormLabel>
     <Field name={fieldName1}>

@@ -25,11 +25,7 @@ const List = styled.div`
   }
 `
 
-const StatList = ({ children }) => (
-  <List>
-    {children}
-  </List>
-)
+const StatList = ({ children }) => <List>{children}</List>
 
 StatList.propTypes = {
   children: PropTypes.node.isRequired,

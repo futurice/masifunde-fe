@@ -9,8 +9,8 @@ const ContentContainer = styled.div`
   margin-bottom: 30px; //bootrsrap gutter
   display: flex;
   justify-content: center;
-  
-  @media(min-width: ${smBreakpoint}) {
+
+  @media (min-width: ${smBreakpoint}) {
     display: block;
   }
 `
@@ -18,7 +18,10 @@ const ContentContainer = styled.div`
 const VideoList = ({ videos }) => (
   <div className="row">
     {videos.map(({ videoUrl, title }) => (
-      <ContentContainer key={videoUrl} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto">
+      <ContentContainer
+        key={videoUrl}
+        className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto"
+      >
         <VideoModal videoUrl={videoUrl} title={title} />
       </ContentContainer>
     ))}
@@ -26,10 +29,12 @@ const VideoList = ({ videos }) => (
 )
 
 VideoList.propTypes = {
-  videos: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    videoUrl: PropTypes.string.isRequired,
-  })),
+  videos: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      videoUrl: PropTypes.string.isRequired,
+    })
+  ),
 }
 
 VideoList.defaultProps = {

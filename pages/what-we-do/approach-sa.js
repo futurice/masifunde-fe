@@ -72,14 +72,16 @@ ApproachSa.propTypes = {
   title: PropTypes.string.isRequired,
   introTitle: PropTypes.string.isRequired,
   introMarkdown: PropTypes.string.isRequired,
-  projects: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    image: PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired,
-  })).isRequired,
+  projects: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    })
+  ).isRequired,
   videoUrl: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,
   bannerButtonText: PropTypes.string.isRequired,

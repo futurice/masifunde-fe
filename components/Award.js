@@ -10,7 +10,7 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  
+
   @media (min-width: ${smBreakpoint}) {
     justify-content: flex-end;
   }
@@ -22,7 +22,7 @@ const Image = styled.img`
   max-width: 160px;
   margin-bottom: ${smallSpacing};
   margin-top: 2rem;
-  
+
   @media (min-width: ${smBreakpoint}) {
     margin-bottom: 0;
   }
@@ -30,7 +30,7 @@ const Image = styled.img`
 
 const Title = styled.h3`
   text-align: center;
-  
+
   @media (min-width: ${smBreakpoint}) {
     text-align: left;
   }
@@ -45,10 +45,7 @@ const AwardContainer = styled.div`
 const Award = ({ description, image, name }) => (
   <AwardContainer className="row">
     <ImageContainer className="col-xs-12 col-sm-3">
-      <Image
-        alt={name}
-        src={image.url}
-      />
+      <Image alt={name} src={image.url} />
     </ImageContainer>
     <div className="col-sm-8">
       <Title>{name}</Title>

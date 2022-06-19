@@ -1,5 +1,6 @@
 const spaceId = '7wl9zvp70267'
-const accessToken = '0afa27121adcd096d9046e06f1e23983af0b2816f4f57380a55ae6359d1b1ce3'
+const accessToken =
+  '0afa27121adcd096d9046e06f1e23983af0b2816f4f57380a55ae6359d1b1ce3'
 
 module.exports = {
   // Contentful

@@ -27,11 +27,7 @@ const IntervalRadioButton = styled(RadioButton)`
   }
 `
 
-const IntervalFormSection = ({
-  fieldName,
-  title,
-  intervals,
-}) => (
+const IntervalFormSection = ({ fieldName, title, intervals }) => (
   <Field name={fieldName}>
     {({ input, meta }) => (
       <PageSection>
@@ -57,10 +53,12 @@ const IntervalFormSection = ({
 IntervalFormSection.propTypes = {
   fieldName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  intervals: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired),
+  intervals: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired
+  ),
 }
 
 IntervalFormSection.defaultProps = {

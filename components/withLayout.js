@@ -2,10 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { getLocaleFromQuery } from '../utils/locale'
-import {
-  fetchHeaderData,
-  fetchFooterData,
-} from '../api/common'
+import { fetchHeaderData, fetchFooterData } from '../api/common'
 import { propTypes as headerPropTypes } from '../components/Header/index'
 import { propTypes as footerPropTypes } from '../components/Footer'
 import Layout from './Layout'
@@ -22,20 +19,23 @@ function withLayout(Page) {
     footerData: PropTypes.shape(footerPropTypes).isRequired,
   }
 
-  GetInitialPropsWrapper.getInitialProps = async function getInitialPropsWrapper(ctx) {
-    const locale = getLocaleFromQuery(ctx.query)
-    const headerData = await fetchHeaderData(locale)
-    const footerData = await fetchFooterData(locale)
-    const pageInitialProps = Page.getInitialProps ? await Page.getInitialProps(ctx) : {}
+  GetInitialPropsWrapper.getInitialProps =
+    async function getInitialPropsWrapper(ctx) {
+      const locale = getLocaleFromQuery(ctx.query)
+      const headerData = await fetchHeaderData(locale)
+      const footerData = await fetchFooterData(locale)
+      const pageInitialProps = Page.getInitialProps
+        ? await Page.getInitialProps(ctx)
+        : {}
 
-    return {
-      headerData,
-      footerData,
-      ...pageInitialProps,
+      return {
+        headerData,
+        footerData,
+        ...pageInitialProps,
+      }
     }
-  }
 
   return GetInitialPropsWrapper
 }
 
-export default Page => withLayout(Page)
+export default (Page) => withLayout(Page)

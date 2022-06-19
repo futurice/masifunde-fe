@@ -1,17 +1,21 @@
 {
-  "presets": [
-    "next/babel"
-  ],
+  "presets": ["next/babel"],
   "plugins": ["polished", "transform-inline-environment-variables"],
   "env": {
     "development": {
       "plugins": [
-        ["styled-components", { "ssr": true, "displayName": true, "preprocess": false } ]
+        [
+          "styled-components",
+          { "ssr": true, "displayName": true, "preprocess": false }
+        ]
       ]
     },
     "production": {
       "plugins": [
-        ["styled-components", { "ssr": false, "displayName": false, "preprocess": false } ]
+        [
+          "styled-components",
+          { "ssr": false, "displayName": false, "preprocess": false }
+        ]
       ]
     }
   }

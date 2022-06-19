@@ -19,12 +19,14 @@ const Datenschutz = ({
     <PageSection>
       <h1>{datenschutzTitle}</h1>
       <div className="row">
-        <Markdown className="offset-lg-1 col-lg-10" source={datenschutzMarkdown} />
+        <Markdown
+          className="offset-lg-1 col-lg-10"
+          source={datenschutzMarkdown}
+        />
       </div>
     </PageSection>
   </div>
 )
-
 
 Datenschutz.propTypes = {
   metaTitle: PropTypes.string.isRequired,

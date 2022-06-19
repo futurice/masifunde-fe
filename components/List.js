@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components'
-import { smBreakpoint, mdBreakpoint, lgBreakpoint } from '../styling/breakpoints'
+import {
+  smBreakpoint,
+  mdBreakpoint,
+  lgBreakpoint,
+} from '../styling/breakpoints'
 import { extraSmallSpacing, mediumSpacing } from '../styling/sizes'
 
 const centerIfSingleLine = (breakpoint, maxEntiresPerLine, numberOfEntries) => {
@@ -25,9 +29,12 @@ const List = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  ${({ entries }) => centerIfSingleLine(smBreakpoint, smEntriesPerLine, entries.length)}
-  ${({ entries }) => centerIfSingleLine(mdBreakpoint, mdEntriesPerLine, entries.length)}
-  ${({ entries }) => centerIfSingleLine(lgBreakpoint, lgEntriesPerLine, entries.length)}
+  ${({ entries }) =>
+    centerIfSingleLine(smBreakpoint, smEntriesPerLine, entries.length)}
+  ${({ entries }) =>
+    centerIfSingleLine(mdBreakpoint, mdEntriesPerLine, entries.length)}
+  ${({ entries }) =>
+    centerIfSingleLine(lgBreakpoint, lgEntriesPerLine, entries.length)}
 
   margin-bottom: -${listItemBottomMargin};
 

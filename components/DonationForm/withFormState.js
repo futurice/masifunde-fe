@@ -43,15 +43,23 @@ function withFormState(View) {
       const errorsIsIntegerValues = checkIsIntegerValues([AMOUNT], fields)
       const wantsReceiptRequiredValues =
         fields[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE
-          ? [{ fieldName: ADDRESS }, { fieldName: CITY }, { fieldName: POST_CODE }]
+          ? [
+              { fieldName: ADDRESS },
+              { fieldName: CITY },
+              { fieldName: POST_CODE },
+            ]
           : []
       const errorsRequired = checkRequiredValues(
         [
           // If the project selection is not enabled there is no need to validate it
-          ...(enableProjectSelection ? [{
-            fieldName: PROJECT_ID,
-            errorMessage: T.translate('donation.requiredProject'),
-          }] : []),
+          ...(enableProjectSelection
+            ? [
+                {
+                  fieldName: PROJECT_ID,
+                  errorMessage: T.translate('donation.requiredProject'),
+                },
+              ]
+            : []),
           { fieldName: AMOUNT },
           {
             fieldName: PAYMENT_INTERVAL,
@@ -65,7 +73,7 @@ function withFormState(View) {
           { fieldName: WANTS_RECEIPT },
           ...wantsReceiptRequiredValues,
         ],
-        fields,
+        fields
       )
       const errorsEmails = checkEmails([EMAIL], fields)
       const errorsMinValues = checkMinValues([AMOUNT], fields, 1)

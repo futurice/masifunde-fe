@@ -69,11 +69,11 @@ class Blog extends Component {
         <Head title={metaTitle} description={metaDescription} />
 
         <PageSection>
-          <BlogPostsListHeading>
-            {blogListTitle}
-          </BlogPostsListHeading>
+          <BlogPostsListHeading>{blogListTitle}</BlogPostsListHeading>
           <BlogPostsList>
-            {blogPosts.map(({ id, ...rest }) => <BlogListItem key={id} {...rest} />)}
+            {blogPosts.map(({ id, ...rest }) => (
+              <BlogListItem key={id} {...rest} />
+            ))}
           </BlogPostsList>
         </PageSection>
 
@@ -102,10 +102,12 @@ Blog.propTypes = {
   page: PropTypes.number.isRequired,
   isLastPage: PropTypes.bool.isRequired,
   totalNumberOfPages: PropTypes.number.isRequired,
-  blogPosts: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    ...BlogListItem.propTypes,
-  })),
+  blogPosts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      ...BlogListItem.propTypes,
+    })
+  ),
 }
 
 Blog.defaultProps = {

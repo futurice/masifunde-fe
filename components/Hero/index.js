@@ -2,10 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-import {
-  lgBreakpoint,
-  mdBreakpoint,
-} from '../../styling/breakpoints'
+import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 import Headline, {
   HEADLINE_MIDDLE,
   propTypes as headlinePropTypes,
@@ -18,13 +15,13 @@ const HERO_SMALL = 'small'
 const HeroImage = styled.div`
   height: 400px;
   width: 100%;
-  background: url("${({ imageUrl }) => imageUrl}") no-repeat;
+  background: url('${({ imageUrl }) => imageUrl}') no-repeat;
   background-position: ${({ backgroundPositionX }) => backgroundPositionX} 50%;
   background-size: cover;
-  max-height: calc(100vh - ${props => props.theme.headerHeight});
-  margin-top: -${props => props.theme.pagePaddingMobile};
+  max-height: calc(100vh - ${(props) => props.theme.headerHeight});
+  margin-top: -${(props) => props.theme.pagePaddingMobile};
   @media (min-width: ${mdBreakpoint}) {
-    margin-top: -${props => props.theme.pagePadding};
+    margin-top: -${(props) => props.theme.pagePadding};
   }
 
   @media screen and (min-width: ${mdBreakpoint}) {
@@ -35,21 +32,23 @@ const HeroImage = styled.div`
     height: 700px;
   }
 
-  ${({ size }) => size === HERO_SMALL && css`
-    height: 300px;
+  ${({ size }) =>
+    size === HERO_SMALL &&
+    css`
+      height: 300px;
 
-    @media screen and (min-width: ${mdBreakpoint}) {
-      height: 400px;
-    }
+      @media screen and (min-width: ${mdBreakpoint}) {
+        height: 400px;
+      }
 
-    @media screen and (min-width: ${lgBreakpoint}) {
-      height: 500px;
-    }
-  `}
+      @media screen and (min-width: ${lgBreakpoint}) {
+        height: 500px;
+      }
+    `}
 `
 
-const getPlacementClass = headlinePlacement =>
-  (headlinePlacement === HEADLINE_MIDDLE ? 'justify-content-md-center' : '')
+const getPlacementClass = (headlinePlacement) =>
+  headlinePlacement === HEADLINE_MIDDLE ? 'justify-content-md-center' : ''
 
 function Hero({
   headline,

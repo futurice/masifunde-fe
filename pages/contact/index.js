@@ -49,10 +49,10 @@ const Contact = ({
       <TeamMemberListTitle>{contactsHeading}</TeamMemberListTitle>
       <TeamMemberList
         members={contacts}
-        title={member => member.responsibilityArea}
-        subtitle={member => member.name}
-        imageUrl={member => member.image.url}
-        email={member => member.email}
+        title={(member) => member.responsibilityArea}
+        subtitle={(member) => member.name}
+        imageUrl={(member) => member.image.url}
+        email={(member) => member.email}
       />
     </PageSection>
 
@@ -60,10 +60,10 @@ const Contact = ({
       <TeamMemberListTitle>{regionalContactsHeading}</TeamMemberListTitle>
       <TeamMemberList
         members={regionalContacts}
-        title={member => member.region}
-        subtitle={member => member.name}
-        imageUrl={member => member.image.url}
-        email={member => member.email}
+        title={(member) => member.region}
+        subtitle={(member) => member.name}
+        imageUrl={(member) => member.image.url}
+        email={(member) => member.email}
       />
     </PageSection>
 
@@ -72,12 +72,9 @@ const Contact = ({
       <ContactDetailsContainer className="col-sm ">
         <Markdown source={address} />
         <span>{telephone}</span>
-        <a href={`mailto:${email}`}>
-          {email}
-        </a>
+        <a href={`mailto:${email}`}>{email}</a>
       </ContactDetailsContainer>
     </PageSection>
-
 
     <PageSection contained={false}>
       <Divider color="grey" />
@@ -94,7 +91,7 @@ const contactListPropType = PropTypes.arrayOf(
     region: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     email: PropTypes.string,
-  }).isRequired,
+  }).isRequired
 )
 
 Contact.propTypes = {

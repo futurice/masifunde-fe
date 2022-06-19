@@ -31,12 +31,12 @@ const ContentContainer = styled.span`
   ${background};
   padding: ${smallSpacing};
   color: white;
-  
-  @media(min-width: ${mdBreakpoint}) {
+
+  @media (min-width: ${mdBreakpoint}) {
     padding: ${mediumSpacing};
   }
-  
-  @media(min-width: ${lgBreakpoint}) {
+
+  @media (min-width: ${lgBreakpoint}) {
     padding: ${mediumSpacing} ${extraLargeSpacing};
   }
 `
@@ -55,7 +55,7 @@ const ExtendedHeadline = Headline.extend`
 `
 const Description = styled(Markdown)`
   p {
-    margin-bottom: ${smallSpacing}; 
+    margin-bottom: ${smallSpacing};
   }
 `
 

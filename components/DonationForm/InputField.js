@@ -4,17 +4,18 @@ import { Field } from 'react-final-form'
 
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './FormLabel'
-import { FORM_INPUT_BOOTSTRAP_CLASSES, FORM_LABEL_BOOTSTRAP_CLASSES } from './constants/formValues'
+import {
+  FORM_INPUT_BOOTSTRAP_CLASSES,
+  FORM_LABEL_BOOTSTRAP_CLASSES,
+} from './constants/formValues'
 import { formInputClassFactory } from './utils/formInputClassFactory'
 
-const InputField = ({
-  fieldName,
-  label,
-  autoComplete,
-  type,
-}) => (
+const InputField = ({ fieldName, label, autoComplete, type }) => (
   <div className="form-group row">
-    <FormLabel className={`${FORM_LABEL_BOOTSTRAP_CLASSES} col-form-label`} htmlFor={fieldName}>
+    <FormLabel
+      className={`${FORM_LABEL_BOOTSTRAP_CLASSES} col-form-label`}
+      htmlFor={fieldName}
+    >
       {label}
     </FormLabel>
     <div className={FORM_INPUT_BOOTSTRAP_CLASSES}>

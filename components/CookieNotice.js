@@ -85,9 +85,7 @@ export default class CookieNotice extends Component {
 
     return (
       <Banner>
-        <Text>
-          {T.translate('cookieNotice.text')}
-        </Text>
+        <Text>{T.translate('cookieNotice.text')}</Text>
 
         <Buttons>
           <Link route={RouteNames.Datenschutz} passHref>

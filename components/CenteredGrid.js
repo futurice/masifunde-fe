@@ -1,16 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const CenteredGrid = ({
-  children,
-  className,
-  withoutContainer,
-}) => (
+const CenteredGrid = ({ children, className, withoutContainer }) => (
   <div className={`${className} ${withoutContainer ? '' : 'container'}`}>
     <div className="row">
-      <div className="offset-lg-1 col-lg-10">
-        {children}
-      </div>
+      <div className="offset-lg-1 col-lg-10">{children}</div>
     </div>
   </div>
 )

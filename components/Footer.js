@@ -17,9 +17,9 @@ const Text = styled.div`
 `
 
 const Anchor = styled.a`
-  color: ${props => props.theme.pineCone};
+  color: ${(props) => props.theme.pineCone};
   &:visited {
-    color: ${props => props.theme.pineCone};
+    color: ${(props) => props.theme.pineCone};
   }
 `
 
@@ -27,7 +27,8 @@ const FooterSection = styled(PageSection)`
   ${footerText};
   margin-top: ${largeSpacing};
 
-  a, a:visited {
+  a,
+  a:visited {
     color: ${({ theme }) => theme.pineCone};
   }
 
@@ -82,11 +83,9 @@ const BankDetailDescription = styled.span`
   font-weight: bold;
 `
 
-const FooterLink = ({
-  route, text, className, ...rest
-}) => (
+const FooterLink = ({ route, text, className, ...rest }) => (
   <li className={className}>
-    <Link route={route} passHref {...rest} >
+    <Link route={route} passHref {...rest}>
       <a>{text}</a>
     </Link>
   </li>
@@ -135,16 +134,20 @@ function Footer({
   return (
     <FooterSection>
       <footer>
-
         <div className="row">
-
           <div className="col-md">
             <div className="row">
               <div className="col">
                 <ul className="list-unstyled">
                   <FooterLink route={RouteNames.WhatWeDo} text={whatWeDoText} />
-                  <FooterLink route={RouteNames.ApproachSA} text={approachSaText} />
-                  <FooterLink route={RouteNames.ApproachDE} text={approachDeText} />
+                  <FooterLink
+                    route={RouteNames.ApproachSA}
+                    text={approachSaText}
+                  />
+                  <FooterLink
+                    route={RouteNames.ApproachDE}
+                    text={approachDeText}
+                  />
                   <FooterLink route={RouteNames.Impact} text={impactText} />
                 </ul>
               </div>
@@ -162,26 +165,48 @@ function Footer({
             <div className="row">
               <div className="col">
                 <ul className="list-unstyled">
-                  <FooterLink route={RouteNames.HowToSupport} text={howToSupportText} />
+                  <FooterLink
+                    route={RouteNames.HowToSupport}
+                    text={howToSupportText}
+                  />
                   <FooterLink route={RouteNames.Donate} text={donateText} />
-                  <FooterLink route={RouteNames.BecomeSponsor} text={becomeSponsorText} />
-                  <FooterLink route={RouteNames.BecomeVolunteer} text={becomeVolunteerText} />
-                  <FooterLink route={RouteNames.BecomePartner} text={becomePartnerText} />
+                  <FooterLink
+                    route={RouteNames.BecomeSponsor}
+                    text={becomeSponsorText}
+                  />
+                  <FooterLink
+                    route={RouteNames.BecomeVolunteer}
+                    text={becomeVolunteerText}
+                  />
+                  <FooterLink
+                    route={RouteNames.BecomePartner}
+                    text={becomePartnerText}
+                  />
                 </ul>
               </div>
               <div className="col">
                 <ul className="list-unstyled">
                   <ContactLink route={RouteNames.Contact} text={contactText} />
                   <Fragment>
-                    <FooterLink route={RouteNames.Blog} params={{ page: '1' }} text={blogText} />
-                    <FooterLink route={RouteNames.Documents} text={documentsText} />
-                    <FooterLink route={RouteNames.Podcast} params={{ page: '1' }} text={podcastText} />
+                    <FooterLink
+                      route={RouteNames.Blog}
+                      params={{ page: '1' }}
+                      text={blogText}
+                    />
+                    <FooterLink
+                      route={RouteNames.Documents}
+                      text={documentsText}
+                    />
+                    <FooterLink
+                      route={RouteNames.Podcast}
+                      params={{ page: '1' }}
+                      text={podcastText}
+                    />
                   </Fragment>
                 </ul>
               </div>
             </div>
           </div>
-
         </div>
 
         <SocialLinksContainer>
@@ -217,20 +242,18 @@ function Footer({
 
         <InformationSection>
           <div className="row">
-            <Text className="col">
-              {copyrightText}
-            </Text>
+            <Text className="col">{copyrightText}</Text>
           </div>
 
           <BankDetails>
             <div className="row">
               <Text className="col">
-                <BankDetailDescription>IBAN</BankDetailDescription>{' '}{ibanText}
+                <BankDetailDescription>IBAN</BankDetailDescription> {ibanText}
               </Text>
             </div>
             <div className="row">
               <Text className="col">
-                <BankDetailDescription>BIC</BankDetailDescription>{' '}{bicText}
+                <BankDetailDescription>BIC</BankDetailDescription> {bicText}
               </Text>
             </div>
           </BankDetails>
@@ -269,9 +292,7 @@ function Footer({
               alt="Built by Futurice"
             />
           </PoweredByLink>
-
         </PoweredBySection>
-
       </footer>
     </FooterSection>
   )

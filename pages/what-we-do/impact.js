@@ -112,7 +112,6 @@ const Impact = ({
   )
 }
 
-
 Impact.propTypes = {
   metaTitle: PropTypes.string.isRequired,
   metaDescription: PropTypes.string,

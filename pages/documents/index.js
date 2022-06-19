@@ -87,7 +87,7 @@ const Documents = ({
         <DocumentsList documents={documentsList3} expandList />
       </PageSection>
 
-      <PageSection contained={false} >
+      <PageSection contained={false}>
         <Heading>{pressKitHeading}</Heading>
         <DocumentsList documents={pressKitList} />
       </PageSection>
@@ -121,7 +121,6 @@ const Documents = ({
       buttonText={bannerButtonText}
       buttonLink={bannerButtonUrl}
     />
-
   </Fragment>
 )
 
@@ -143,7 +142,7 @@ Documents.propTypes = {
   contactText: PropTypes.string.isRequired,
   teamMember: PropTypes.shape(teamMemberProps).isRequired,
   pressKitHeading: PropTypes.string.isRequired,
-  pressKitList:DocumentsList.propTypes.documents.isRequired,
+  pressKitList: DocumentsList.propTypes.documents.isRequired,
   pressReleaseHeading: PropTypes.string.isRequired,
   pressReleaseList: DocumentsList.propTypes.documents.isRequired,
   videosHeading: PropTypes.string.isRequired,

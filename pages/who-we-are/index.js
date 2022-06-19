@@ -10,12 +10,18 @@ import Button from '../../components/Button'
 import { RouteNames } from '../../routes'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
-import PartnersList, { propTypes as partnersListPropTypes } from '../../components/PartnersList'
+import PartnersList, {
+  propTypes as partnersListPropTypes,
+} from '../../components/PartnersList'
 import imagePropTypes from '../../propTypes/image'
 import CenteredText from '../../components/CenteredText'
 import PageSection from '../../components/PageSection'
 import Award from '../../components/Award'
-import { largeSpacing, mediumSpacing, extraSmallSpacing } from '../../styling/sizes'
+import {
+  largeSpacing,
+  mediumSpacing,
+  extraSmallSpacing,
+} from '../../styling/sizes'
 import { lgBreakpoint } from '../../styling/breakpoints'
 import Link from '../../components/Link'
 import TestimonialList from '../../components/TestimonialList'
@@ -46,7 +52,11 @@ const TeamButton = Button.extend`
 const CountryMap = ({ buttonText, image, route }) => (
   <CountryContainer className="col-md-6 d-flex flex-column align-items-center">
     <ImageContainer className="d-flex justify-content-center w-100 align-items-center">
-      <Image className="col-xs-8 col-sm-10 col-md-11 col-lg-10" src={image.url} alt={image.title} />
+      <Image
+        className="col-xs-8 col-sm-10 col-md-11 col-lg-10"
+        src={image.url}
+        alt={image.title}
+      />
     </ImageContainer>
     <Link route={route} passHref>
       <TeamButton>{buttonText}</TeamButton>
@@ -111,8 +121,16 @@ const WhoWeAre = ({
       <h1>{paragraphOneTitle}</h1>
       <CenteredText source={paragraphOneText} />
       <div className="row justify-content-md-center">
-        <CountryMap route={RouteNames.TeamDE} buttonText={teamDeButtonText} image={teamDeImage} />
-        <CountryMap route={RouteNames.TeamSA} buttonText={teamSaButtonText} image={teamSaImage} />
+        <CountryMap
+          route={RouteNames.TeamDE}
+          buttonText={teamDeButtonText}
+          image={teamDeImage}
+        />
+        <CountryMap
+          route={RouteNames.TeamSA}
+          buttonText={teamSaButtonText}
+          image={teamSaImage}
+        />
       </div>
     </PageSection>
 
@@ -137,7 +155,7 @@ const WhoWeAre = ({
       <h1>{paragraphThreeTitle}</h1>
       <CenteredText source={paragraphThreeText} />
       <AwardsContainer>
-        {awards.map(award => (
+        {awards.map((award) => (
           <Award key={award.name} {...award} />
         ))}
       </AwardsContainer>

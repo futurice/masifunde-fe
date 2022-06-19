@@ -110,15 +110,19 @@ BecomeSponsor.propTypes = {
   image: PropTypes.shape(imagePropTypes).isRequired,
   donationFormTitle: PropTypes.string.isRequired,
   section2Title: PropTypes.string.isRequired,
-  section2ReferenceList: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  section2ReferenceList: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   section3Title: PropTypes.string.isRequired,
-  section3ReferenceList: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  section3ReferenceList: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   section4Title: PropTypes.string.isRequired,
   section5Title: PropTypes.string.isRequired,
   bannerTitle: PropTypes.string.isRequired,

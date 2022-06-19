@@ -22,26 +22,29 @@ const Label = Button.withComponent('label').extend`
     background-color: transparent;
   }
 
-  ${props => props.isActive && css`
-    color: white;
-    border: solid 2px ${({ theme }) => theme.orange};
-    background-color: ${({ theme }) => theme.orange};
-
-    &:hover, input:focus + & {
-      background-color: ${({ theme }) => theme.orange};
+  ${(props) =>
+    props.isActive &&
+    css`
       color: white;
-    }
+      border: solid 2px ${({ theme }) => theme.orange};
+      background-color: ${({ theme }) => theme.orange};
 
-    input:focus + & {
-      border-color: ${({ theme }) => theme.orangeRed};
-    }
-  `}
+      &:hover,
+      input:focus + & {
+        background-color: ${({ theme }) => theme.orange};
+        color: white;
+      }
+
+      input:focus + & {
+        border-color: ${({ theme }) => theme.orangeRed};
+      }
+    `}
 `
 
 const Input = styled.input.attrs({ type: 'radio', autoComplete: 'off' })`
   /* Hide input (copied from boostrap) */
   position: absolute;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   pointer-events: none;
 `
 
@@ -62,12 +65,7 @@ const RadioButton = ({
       value={value}
       checked={isActive}
     />
-    <Label
-      {...inputProps}
-      className="btn"
-      htmlFor={id}
-      isActive={isActive}
-    >
+    <Label {...inputProps} className="btn" htmlFor={id} isActive={isActive}>
       {label}
     </Label>
   </div>

@@ -1,4 +1,3 @@
-
 const defaultLocale = 'de'
 
 export function getLocaleFromQuery(queryObject) {

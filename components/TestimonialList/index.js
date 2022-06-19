@@ -46,9 +46,7 @@ const TestimonialText = styled(Markdown)`
 
 const TestimonialList = ({ testimonials, className }) => (
   <List className={`row ${className}`}>
-    {testimonials.map(({
-      testimonialMarkdown, title, name, image,
-    }) => (
+    {testimonials.map(({ testimonialMarkdown, title, name, image }) => (
       <TestimonialContainer className="col-lg-6" key={name}>
         <div className="row">
           <StyledSupporter
@@ -68,10 +66,12 @@ const TestimonialList = ({ testimonials, className }) => (
 
 TestimonialList.propTypes = {
   className: PropTypes.string,
-  testimonials: PropTypes.arrayOf(PropTypes.shape({
-    ...Supporter.propTypes,
-    testimonialMarkdown: PropTypes.string,
-  })),
+  testimonials: PropTypes.arrayOf(
+    PropTypes.shape({
+      ...Supporter.propTypes,
+      testimonialMarkdown: PropTypes.string,
+    })
+  ),
 }
 
 TestimonialList.defaultProps = {

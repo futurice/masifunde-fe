@@ -5,26 +5,24 @@ import FilePropType from '../../propTypes/file'
 import imagePropShape from '../../propTypes/image'
 import formatDate from '../../utils/date'
 
-
-
 const PodcastImage = styled.img`
   margin: auto;
   width: auto;
   display: block;
 `
 const PodcastImageContainer = styled.div`
-  background:#F2DAC9;
+  background: #f2dac9;
   margin: auto;
   display: block;
-  opacity:1;
+  opacity: 1;
   padding-top: 20px;
   padding-bottom: 20px;
-  width:100%;
+  width: 100%;
 `
 const PodcastTitleContainter = styled.div`
   padding-top: 20px;
-  display:block;
-  height:90px;
+  display: block;
+  height: 90px;
   max-width: 90%;
   margin: 0 auto;
   overflow: hidden;
@@ -34,11 +32,11 @@ const PodcastBodyContainer = styled.div`
   background: white;
   text-align: center;
   word-wrap: break-word;
-  color: #4F463F;
+  color: #4f463f;
   font: Bold 18px/22px Lato;
   letter-spacing: 0px;
-  width:100%;
-  height:200px;
+  width: 100%;
+  height: 200px;
 `
 const PodcastInfo = styled.div`
   text-align: center;
@@ -47,60 +45,62 @@ const PodcastInfo = styled.div`
 `
 
 const AudioButton = styled.button`
-  height:65px;
+  height: 65px;
   border: none;
-  background-color:white;
+  background-color: white;
 `
 
 const CenterImage = styled.img`
   position: relative;
   margin: auto;
-  display:inline;
+  display: inline;
 `
 
 const IconContainer = styled.div`
-  position:absolute;
-  bottom:12px;
-  right:25px;
+  position: absolute;
+  bottom: 12px;
+  right: 25px;
 `
 
-class PausePlayButton extends React.Component{
-  constructor(props){
+class PausePlayButton extends React.Component {
+  constructor(props) {
     super(props)
     this.state = {
       isPlaying: false,
     }
   }
 
-  togglePlaying(){
-    if (this.state.isPlaying){
+  togglePlaying() {
+    if (this.state.isPlaying) {
       document.getElementById(this.props.podcastTitle).pause()
     } else {
       document.getElementById(this.props.podcastTitle).play()
     }
     this.setState({
-      isPlaying: !this.state.isPlaying
+      isPlaying: !this.state.isPlaying,
     })
   }
 
-  render(){
+  render() {
     const isPlaying = this.state.isPlaying
-    if (isPlaying){
+    if (isPlaying) {
       return (
-        <AudioButton onClick={()=>this.togglePlaying(this.props.podcastTitle)} >
-         <CenterImage src="/static/images/pause.svg"/>
+        <AudioButton
+          onClick={() => this.togglePlaying(this.props.podcastTitle)}
+        >
+          <CenterImage src="/static/images/pause.svg" />
         </AudioButton>
       )
     } else {
-      return(
-        <AudioButton onClick={()=>this.togglePlaying(this.props.podcastTitle)} >
-          <CenterImage src="/static/images/play.svg"/>
+      return (
+        <AudioButton
+          onClick={() => this.togglePlaying(this.props.podcastTitle)}
+        >
+          <CenterImage src="/static/images/play.svg" />
         </AudioButton>
       )
     }
-
   }
-
 }
 
 PausePlayButton.propTypes = {
@@ -108,37 +108,33 @@ PausePlayButton.propTypes = {
 }
 
 const PodcastCard = ({
-      podcastTitle,
-      podcastAudio,
-      podcastImage,
-      date,
-      duration,
-}) =>(
+  podcastTitle,
+  podcastAudio,
+  podcastImage,
+  date,
+  duration,
+}) => (
   <Fragment>
     <PodcastImageContainer>
-      <PodcastImage
-        src={podcastImage ? podcastImage.url : undefined} />
-        </PodcastImageContainer>
-        <PodcastBodyContainer>
-          <PodcastTitleContainter>{podcastTitle}</PodcastTitleContainter>
-          {/*  eslint-disable-next-line jsx-a11y/media-has-caption */}
-          <audio id = {podcastTitle}
-            src={podcastAudio ? podcastAudio.url : "" }>
-                Your browser does not support the
-                  <code>audio</code> element.
-          </audio>
-          <PodcastInfo>{duration.concat(" | ", formatDate(date))}</PodcastInfo>
-            <PausePlayButton podcastTitle={podcastTitle}/>
-            <IconContainer>
-            <a href={podcastAudio.url} download title="Download">
-             <img src="/static/images/download.svg" alt=""/>
-            </a>
-            </IconContainer>
-      </PodcastBodyContainer>
-    </Fragment>
+      <PodcastImage src={podcastImage ? podcastImage.url : undefined} />
+    </PodcastImageContainer>
+    <PodcastBodyContainer>
+      <PodcastTitleContainter>{podcastTitle}</PodcastTitleContainter>
+      {/*  eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <audio id={podcastTitle} src={podcastAudio ? podcastAudio.url : ''}>
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
+      <PodcastInfo>{duration.concat(' | ', formatDate(date))}</PodcastInfo>
+      <PausePlayButton podcastTitle={podcastTitle} />
+      <IconContainer>
+        <a href={podcastAudio.url} download title="Download">
+          <img src="/static/images/download.svg" alt="" />
+        </a>
+      </IconContainer>
+    </PodcastBodyContainer>
+  </Fragment>
 )
-
-
 
 PodcastCard.propTypes = {
   podcastTitle: PropTypes.string,
@@ -148,8 +144,6 @@ PodcastCard.propTypes = {
   duration: PropTypes.string,
 }
 
-PodcastCard.defaultProps = {
-
-}
+PodcastCard.defaultProps = {}
 
 export default PodcastCard

@@ -5,7 +5,8 @@ import { lgBreakpoint, mdBreakpoint } from './breakpoints'
 import theme from './theme'
 import { extraSmallSpacing } from './sizes'
 
-export const defaultFont = 'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+export const defaultFont =
+  'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
 export const headerFont = 'Raleway, sans-serif'
 export const handwrittenFont = 'banaueregular, sans-serif'
 

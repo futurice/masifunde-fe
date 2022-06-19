@@ -10,7 +10,7 @@ const taglineTextMargin = '2.3rem'
 
 const TaglineText = styled.p`
   ${subsectionTitleText};
-  color: ${props => props.theme.orange};
+  color: ${(props) => props.theme.orange};
   font-weight: bold;
   text-align: center;
   margin-bottom: ${taglineTextMargin};

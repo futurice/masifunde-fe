@@ -18,7 +18,7 @@ const ListContainer = styled.div`
 
 const ProjectList = ({ projects }) => (
   <ListContainer className="row">
-    {projects.map(project => (
+    {projects.map((project) => (
       <Project
         key={`${project.name}${project.image}`}
         className={`col-12 ${projects.length === 3 ? 'col-md-4' : 'col-md-6'}`}

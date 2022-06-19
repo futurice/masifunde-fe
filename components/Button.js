@@ -11,13 +11,7 @@ const ButtonContainer = styled.div`
   justify-content: ${({ center }) => (center ? 'center' : 'flex-start')};
 `
 
-const Button = ({
-  center,
-  children,
-  className,
-  href,
-  ...rest
-}) => (
+const Button = ({ center, children, className, href, ...rest }) => (
   <ButtonContainer center={center}>
     {href ? (
       <a {...rest} href={href} className={`btn ${className}`}>
@@ -58,73 +52,82 @@ const StyledButton = styled(Button)`
   cursor: pointer;
   white-space: normal;
 
-  ${({ rounded }) => rounded && css`
-    width: 50px;
-    height: 50px;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-  `}
+  ${({ rounded }) =>
+    rounded &&
+    css`
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    `}
 
   &:hover {
     color: white;
   }
 
-  ${props => props.type === 'primary' && css`
-    font-weight: 900;
-    color: ${props.theme.darkGreen};
-    border-color: ${props.theme.green};
-    padding-top: 0.35rem;
-    padding-bottom: 0.35rem;
+  ${(props) =>
+    props.type === 'primary' &&
+    css`
+      font-weight: 900;
+      color: ${props.theme.darkGreen};
+      border-color: ${props.theme.green};
+      padding-top: 0.35rem;
+      padding-bottom: 0.35rem;
 
-    &:hover {
-      background-color: ${props.theme.green};
-    }
+      &:hover {
+        background-color: ${props.theme.green};
+      }
 
-    &:focus {
-      box-shadow: 0px 0px 0px 3px ${rgba(props.theme.green, 0.5)};
-    }
+      &:focus {
+        box-shadow: 0px 0px 0px 3px ${rgba(props.theme.green, 0.5)};
+      }
 
-    ${props.isActive && `
+      ${props.isActive &&
+      `
       background-color: ${props.theme.green};
       color: white;
     `}
-  `}
+    `}
 
-  ${props => props.type === 'secondary' && css`
-    color: ${props.theme.orangeRed};
-    border-color: ${props.theme.orangeRed};
+  ${(props) =>
+    props.type === 'secondary' &&
+    css`
+      color: ${props.theme.orangeRed};
+      border-color: ${props.theme.orangeRed};
 
-    &:hover {
-      background-color: ${props.theme.orangeRed};
-    }
+      &:hover {
+        background-color: ${props.theme.orangeRed};
+      }
 
-    &:focus {
-      box-shadow: 0px 0px 0px 3px ${rgba(props.theme.orangeRed, 0.5)};
-    }
+      &:focus {
+        box-shadow: 0px 0px 0px 3px ${rgba(props.theme.orangeRed, 0.5)};
+      }
 
-    ${props.isActive && `
+      ${props.isActive &&
+      `
       background-color: ${props.theme.orangeRed};
       color: white;
     `}
-  `}
+    `}
 
-  ${props => props.type === 'banner' && css`
-    color: white;
-    border-color: white;
+  ${(props) =>
+    props.type === 'banner' &&
+    css`
+      color: white;
+      border-color: white;
 
-    &:hover {
-      color: ${props.theme.orange};
-      background-color: white;
-    }
+      &:hover {
+        color: ${props.theme.orange};
+        background-color: white;
+      }
 
-    &:focus {
-      box-shadow: 0px 0px 0px 3px ${rgba('white', 0.5)};
-    }
-
-  `}
+      &:focus {
+        box-shadow: 0px 0px 0px 3px ${rgba('white', 0.5)};
+      }
+    `}
 `
 
 StyledButton.propTypes = {

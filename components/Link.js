@@ -5,17 +5,12 @@ import { withRouter } from 'next/router'
 
 import { Link as NextLink } from '../routes'
 
-const Link = ({
-  children,
-  router,
-  params,
-  ...rest
-}) => (
+const Link = ({ children, router, params, ...rest }) => (
   <NextLink
     {...rest}
     params={{
       locale: router.query.locale,
-       ...params,
+      ...params,
     }}
   >
     {children}
