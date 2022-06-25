@@ -46,16 +46,16 @@ async function fetchAllBlogPosts() {
   let skip = 0
   let fetchResult
 
-  // The Contentful API only allows getting 1000 items at a time.
-  // For the case where there are more posts, we need to do multiple
-  // requests.
+  // The Contentful API limits the maximum response body size, so fetching
+  // all posts at once is not possible. Do multiple paginated requests
+  // instead.
   do {
     // eslint-disable-next-line no-await-in-loop
     fetchResult = await client.getEntries({
       content_type: 'blogPost',
       locale: '*',
       skip,
-      limit: 1,
+      limit: 100,
       select: 'fields.slug',
     })
     posts = posts.concat(fetchResult.items)
