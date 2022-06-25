@@ -13,7 +13,7 @@
     "build": "npm run build:production",
     "build:production": "npm run _build && npm run _copy:production",
     "build:preview": "npm run _build && npm run _copy:preview",
-    "_build": "rimraf node_modules/.cache && next build && next export && npm run _copy:common",
+    "_build": "rimraf node_modules/.cache && next build && next export --threads 1 --concurrency 1 && npm run _copy:common",
     "_copy:common": "cpx 'public/common/**/*' out --verbose",
     "_copy:production": "cpx 'public/production/**/*' out --verbose",
     "_copy:preview": "cpx 'public/preview/**/*' out --verbose",
