@@ -40,6 +40,8 @@ async function fetchAllBlogPosts() {
     space: env.CONTENTFUL_SPACE_ID,
     accessToken: env.CONTENTFUL_ACCESS_TOKEN,
     host: env.CONTENTFUL_HOST,
+    retryOnError: true,
+    retryLimit: 15,
   })
 
   let posts = []
