@@ -2,6 +2,16 @@
 
 Frontend for the Masifunde website. https://masifunde.de
 
+## Usage & Maintenance
+
+- Content is uploaded via Contentful (https://app.contentful.com/spaces/7wl9zvp70267/home)
+- Website can be previewed and is build via Netlify (https://app.netlify.com/sites/masifunde/overview)
+  - Netlify also shows if errors have occured during the deployment
+  - Limited number of build-minutes per month   
+- Codebase is here (https://github.com/futurice/masifunde-fe/)
+
+* for access to above ressources, please contact felix.rimbakowsky@masifunde.de
+
 ## Installing / Getting started
 
 ```shell
