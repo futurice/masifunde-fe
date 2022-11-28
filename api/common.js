@@ -13,6 +13,24 @@ export async function fetchFooterData(locale) {
   return fetchMemoizedSingleEntry('footer', locale)
 }
 
+/**
+ * Returns true if the passed Contentful entry is a link to another
+ * entry that was not included in the Content Delivery API response.
+ * This can have one of the following reasons:
+ *
+ * - The linked entry does not exist anymore (broken link).
+ * - The linked entry is not published (not an issue with the Preview API).
+ * - The link is too deply nested (nesting level >10 by default).
+ *
+ * https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/links
+ *
+ * @param {object} entry - The entry to check.
+ * @returns {boolean} True if the entry an unresolved link.
+ */
+export function isUnresolvedLink(entry) {
+  return entry && entry.sys && entry.sys.type === 'Link'
+}
+
 export function unwrapFields(response) {
   return response && response.fields
 }
@@ -30,15 +48,24 @@ export const unwrapFile = (fileObject) => {
   }
 }
 
-export const unwrapFiles = (wrappedContent = []) =>
-  wrappedContent.map((content) => {
-    const unwrappedFields = unwrapFields(content)
-
-    return {
-      ...unwrappedFields,
-      file: unwrapFile(unwrappedFields.file),
-    }
-  })
+/**
+ * Flattens Contentful entries with content type "Document".
+ * https://app.contentful.com/spaces/7wl9zvp70267/content_types/document/fields
+ */
+export const unwrapDocuments = (documents) =>
+  documents
+    // Skip broken links (e.g., to a non-existent or unpublished Document)
+    // and documents whose file is missing or not published
+    .filter(
+      (document) =>
+        !isUnresolvedLink(document) &&
+        document.fields.file &&
+        document.fields.file.url
+    )
+    .map((document) => ({
+      ...document.fields,
+      file: unwrapFile(document.fields.file),
+    }))
 
 // For a list of valid image URL parameters, see the Contentful API docs:
 // https://www.contentful.com/developers/docs/references/images-api
@@ -58,9 +85,10 @@ export const unwrapImage = (image, urlParams) => {
 }
 
 export const unwrapImages = (images = [], urlParams) =>
-  images.map(image => unwrapImage(image, urlParams))
+  images.map((image) => unwrapImage(image, urlParams))
 
-export const unwrapRegion = region => region && region.fields && region.fields.name
+export const unwrapRegion = (region) =>
+  region && region.fields && region.fields.name
 
 export const unwrapPortrait = (portrait) => {
   const imageParams = {
@@ -70,13 +98,22 @@ export const unwrapPortrait = (portrait) => {
 
   return {
     ...portrait.fields,
-    page1Image: unwrapImage(portrait && portrait.fields.page1Image, imageParams),
-    page2Image: unwrapImage(portrait && portrait.fields.page2Image, imageParams),
-    page3Image: unwrapImage(portrait && portrait.fields.page3Image, imageParams),
+    page1Image: unwrapImage(
+      portrait && portrait.fields.page1Image,
+      imageParams
+    ),
+    page2Image: unwrapImage(
+      portrait && portrait.fields.page2Image,
+      imageParams
+    ),
+    page3Image: unwrapImage(
+      portrait && portrait.fields.page3Image,
+      imageParams
+    ),
   }
 }
 
-export const unwrapStat = stat => ({
+export const unwrapStat = (stat) => ({
   ...stat.fields,
   icon: unwrapImage(stat && stat.fields && stat.fields.icon),
 })
@@ -108,12 +145,11 @@ const unwrapRegionWithContactDetails = ({ fields }) => ({
   ...fields,
 })
 
-export const unwrapRegionalGroups = regionalGroups => ({
-  name:
-    regionalGroups &&
-    regionalGroups.fields &&
-    regionalGroups.fields.name,
-  image: unwrapImage(regionalGroups && regionalGroups.fields && regionalGroups.fields.image),
+export const unwrapRegionalGroups = (regionalGroups) => ({
+  name: regionalGroups && regionalGroups.fields && regionalGroups.fields.name,
+  image: unwrapImage(
+    regionalGroups && regionalGroups.fields && regionalGroups.fields.image
+  ),
   regions:
     regionalGroups &&
     regionalGroups.fields &&
@@ -141,9 +177,10 @@ export const unwrapTeamMember = (teamMember) => {
   }
 }
 
-export const unwrapTeamMembers = (teamMembers = []) => teamMembers.map(unwrapTeamMember)
+export const unwrapTeamMembers = (teamMembers = []) =>
+  teamMembers.map(unwrapTeamMember)
 
-export const unwrapPartner = partner => ({
+export const unwrapPartner = (partner) => ({
   ...partner.fields,
   image: unwrapImage(partner && partner.fields && partner.fields.logo, {
     w: stripUnit(teamMemberAndPartnerWidth) * 2, // double the size for retina screens
@@ -153,9 +190,9 @@ export const unwrapPartner = partner => ({
   }),
 })
 
-export const unwrapPartners = partners => partners.map(unwrapPartner)
+export const unwrapPartners = (partners) => partners.map(unwrapPartner)
 
-export const unwrapAward = award => ({
+export const unwrapAward = (award) => ({
   ...award.fields,
   image: unwrapImage(award && award.fields && award.fields.logo, {
     w: 320,
@@ -203,4 +240,3 @@ export const unwrapAnnouncement = (announcement = {}) => {
     image: unwrapImage(unwrappedContent.image),
   }
 }
-

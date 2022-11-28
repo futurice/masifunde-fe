@@ -1,22 +1,24 @@
 import { fetchSingleEntry } from './contentfulService'
 import {
+  isUnresolvedLink,
   unwrapFields,
-  unwrapFiles,
+  unwrapDocuments,
   unwrapTeamMember,
 } from './common'
 
-const unwrapVideos = (videos = []) => videos.map(unwrapFields)
+const unwrapVideos = (videos = []) =>
+  videos.filter((video) => !isUnresolvedLink(video)).map(unwrapFields)
 
 export async function fetchDocumentPage(locale) {
   const content = await fetchSingleEntry('pageDokumente', locale)
   return {
     ...content,
     teamMember: unwrapTeamMember(content.teamMember),
-    documentsList1: unwrapFiles(content.documentsList1),
-    documentsList2: unwrapFiles(content.documentsList2),
-    documentsList3: unwrapFiles(content.documentsList3),
+    documentsList1: unwrapDocuments(content.documentsList1 || []),
+    documentsList2: unwrapDocuments(content.documentsList2 || []),
+    documentsList3: unwrapDocuments(content.documentsList3 || []),
     videosList: unwrapVideos(content.videosList),
-    pressKitList: unwrapFiles(content.pressKitList),
-    pressReleaseList: unwrapFiles(content.pressReleaseList),
+    pressKitList: unwrapDocuments(content.pressKitList || []),
+    pressReleaseList: unwrapDocuments(content.pressReleaseList || []),
   }
 }
