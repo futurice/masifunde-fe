@@ -2,7 +2,7 @@ import qs from 'qs'
 import { stripUnit } from 'polished'
 
 import { jpegQuality, teamMemberAndPartnerWidth } from '../utils/constants'
-import { RouteNames } from '../routes'
+import * as pages from '../routes/pages'
 import { fetchMemoizedSingleEntry } from './contentfulService'
 
 export async function fetchHeaderData(locale) {
@@ -122,7 +122,7 @@ export const unwrapStats = (stats = []) => stats.map(unwrapStat)
 
 export const unwrapPageUrl = (pageUrl) => {
   if (!pageUrl) {
-    return RouteNames.Index
+    return pages.index
   }
 
   // Contentful allows the editors to input either 'http' or 'https'.
@@ -135,7 +135,7 @@ export const unwrapPageUrl = (pageUrl) => {
     const matchLength = matches[0].length
     // remove the part of the url that matches the regex
     const internalUrl = pageUrl.substring(matchLength)
-    return internalUrl || RouteNames.Index
+    return internalUrl || pages.index
   }
 
   return pageUrl

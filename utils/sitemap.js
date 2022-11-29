@@ -39,8 +39,8 @@ function createAlternateLinks(path) {
   }))
 }
 
-async function createSitemap(routes) {
-  const links = Object.keys(routes)
+async function createSitemap(pathMap) {
+  const links = Object.keys(pathMap)
     .filter((path) => !path.includes('404'))
     .map((path) => ({
       url: path,

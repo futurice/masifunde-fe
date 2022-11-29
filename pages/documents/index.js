@@ -154,7 +154,9 @@ Documents.defaultProps = {
 }
 
 Documents.getInitialProps = async function initialProps({ query }) {
-  return fetchDocumentPage(getLocaleFromQuery(query))
+  const data = await fetchDocumentPage(getLocaleFromQuery(query))
+  console.log(data)
+  return data
 }
 
 export default withLayout(Documents)
