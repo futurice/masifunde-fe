@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react'
 import Modal from 'react-modal'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import { bodyText } from '../../styling/typography'
@@ -12,43 +12,6 @@ import {
   isYouTubeVideo,
 } from '../../utils/video'
 import { wordBreak } from '../../styling/utils'
-
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
-  // Global styles are used only for react-modal component
-  .ReactModal__Body--open{
-    overflow: hidden;
-  }
-  
-  .ReactModal__Overlay {
-    z-index: 10000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.70);
-  }
-
-  .ReactModal__Content {
-    top: 50%;
-    right: auto;
-    bottom: auto;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    margin-right: -50%;
-   
-    position: absolute;
-    border: 1px solid rgb(204, 204, 204);
-    background-color: #faf2e6;
-    overflow: auto;
-    border-radius: 4px;
-    outline: none;
-    padding: 20px;
-    max-width: 900px;
-    width: calc(100vw - 30px);
-  }
-`
 
 const ImageButton = styled.button`
   margin: 0;

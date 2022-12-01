@@ -1,6 +1,13 @@
-const exportPathMap = require('./routes/exportPathMap')
-
 module.exports = {
-  useFileSystemPublicRoutes: false,
-  exportPathMap,
+  trailingSlash: true,
+
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/de',
+        permanent: false,
+      },
+    ]
+  },
 }

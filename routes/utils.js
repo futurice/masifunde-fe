@@ -109,12 +109,16 @@ function findPathMappingByLocalizedPath(path) {
       return true
     }
 
-    if (path == '/blog/page/1' || path === '/en/blog/page/1') {
-      return mapping.page === '/blog'
+    if (
+      path === '/blog' ||
+      path === '/blog/page/1' ||
+      path === '/en/blog/page/1'
+    ) {
+      return mapping.page === '/[locale]/blog/list/[page]'
     }
 
-    if (path == '/podcasts/page/1' || path === '/en/podcasts/page/1') {
-      return mapping.page === '/podcasts'
+    if (path === '/podcasts/page/1' || path === '/en/podcasts/page/1') {
+      return mapping.page === '/[locale]/podcasts'
     }
 
     return false

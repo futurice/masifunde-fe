@@ -70,4 +70,7 @@ typings/
 .vscode/
 
 # this file is generated
-/public/production/sitemap.xml
+/public/sitemap.xml
+
+# Local Netlify folder
+.netlify

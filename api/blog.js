@@ -1,6 +1,7 @@
 import { jpegQuality } from '../utils/constants'
 import { BLOG_POSTS_PER_PAGE } from '../env'
 import {
+  client as contentfulClient,
   fetchEntriesForContentType,
   fetchSingleEntry,
 } from './contentfulService'
@@ -149,8 +150,8 @@ export function fetchBlogPostsList(locale, page) {
         id: sys.id,
         title: fields.title,
         date: fields.date,
-        author,
-        teaserText: fields.metaDescription,
+        author: author || null,
+        teaserText: fields.metaDescription || '',
         teaserImage,
         slug: fields.slug,
       }
@@ -175,4 +176,38 @@ export async function fetchBlogLandingPage(locale, page = 1) {
     ...fetchBlogPostsResult,
     page: Number(page),
   }
+}
+
+export async function fetchAllBlogPostSlugs() {
+  let slugs = []
+  let skip = 0
+  let response
+
+  // The Contentful API limits the maximum response body size, so fetching
+  // all posts at once is not possible. Make multiple paginated requests
+  // instead.
+  do {
+    // eslint-disable-next-line no-await-in-loop
+    response = await contentfulClient.getEntries({
+      content_type: 'blogPost',
+      locale: '*',
+      skip,
+      limit: 100,
+      select: 'fields.slug',
+    })
+    slugs = slugs.concat(response.items.map((item) => item.fields.slug))
+    skip = response.skip + response.items.length
+  } while (skip < response.total)
+
+  return slugs
+}
+
+export async function fetchBlogPostPageCount() {
+  const response = await contentfulClient.getEntries({
+    content_type: 'blogPost',
+    locale: '*',
+    limit: 1,
+    select: 'fields.slug',
+  })
+  return Math.ceil(response.total / BLOG_POSTS_PER_PAGE)
 }

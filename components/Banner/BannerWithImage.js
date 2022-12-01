@@ -48,7 +48,7 @@ const SubHeading = styled.span`
   font-weight: 500;
 `
 
-const ExtendedHeadline = Headline.extend`
+const ExtendedHeadline = styled(Headline)`
   display: block;
   text-align: left;
   margin-bottom: ${extraExtraSmallSpacing};

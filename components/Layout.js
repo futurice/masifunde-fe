@@ -1,107 +1,36 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import styled, { injectGlobal, ThemeProvider } from 'styled-components'
-import _flow from 'lodash/flow'
-import { withRouter } from 'next/router'
+import styled, { ThemeProvider } from 'styled-components'
+import { useRouter } from 'next/router'
 import T from 'i18n-react'
 
-import {
-  bodyText,
-  pageTitleText,
-  sectionTitleText,
-  subsectionTitleText,
-  componentTitleText,
-  rootFontSize,
-} from '../styling/typography'
 import theme from '../styling/theme'
-import { extraSmallSpacing, smallSpacing } from '../styling/sizes'
-import { mdBreakpoint } from '../styling/breakpoints'
-import { getLocaleFromQuery } from '../utils/locale'
 import deLocale from '../i18n/de.json'
 import enLocale from '../i18n/en.json'
+import { fetchFooterData, fetchHeaderData } from '../api/common'
 import Footer, { propTypes as footerPropTypes } from './Footer'
 import Header, { propTypes as headerPropTypes } from './Header'
 import CookieNotice from './CookieNotice'
-import withLoadingIndicator from './withLoadingIndicator'
-import withAnalytics from './withAnalytics'
+import GlobalStyle from './GlobalStyle'
 
 const locales = {
   de: deLocale,
   en: enLocale,
 }
 
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
-  html {
-    font-size: ${rootFontSize};
- }
-
-  body {
-    background-color: ${theme.orangeBackgroundLight};
-    ${bodyText}
-  }
-
-  @font-face {
-    font-family: 'banaueregular';
-    src: url('/static/fonts/banaue-regular-webfont.woff2') format('woff2'),
-         url('/static/fonts/banaue-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  a {
-    color: ${theme.linkBlue};
-  }
-
-  h1 {
-    ${pageTitleText}
-  }
-
-  h2 {
-    ${sectionTitleText}
-  }
-
-  h3 {
-    ${subsectionTitleText}
-  }
-
-  h4 {
-    ${componentTitleText}
-  }
-
-  p + p {
-    margin-top: ${smallSpacing};
-  }
-
-  .is-invalid {
-    border-color: ${theme.error} !important
-  }
-
-  //Bootstrap overrides
-  button.navbar-toggler {
-    border: 0;
-  }
-
-  .nav-item {
-    @media screen and (max-width: ${mdBreakpoint}) {
-      padding: ${extraSmallSpacing} 0;
-    }
-  }
-
-  .form-control {
-    background-color: #FFFDFB !important;
-  }
-`
-
 const Content = styled.main.attrs({ role: 'main' })`
   padding-top: ${(props) => props.theme.headerHeight};
 `
-const Layout = ({ headerData, children, footerData, router }) => {
-  const locale = getLocaleFromQuery(router.query)
+const Layout = ({ headerData, children, footerData }) => {
+  const router = useRouter()
+  const { locale } = router.query
+
   T.setTexts(locales[locale])
+
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Fragment>
         <Head>
           <meta
@@ -166,12 +95,42 @@ const Layout = ({ headerData, children, footerData, router }) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  locale: PropTypes.string.isRequired,
   headerData: PropTypes.shape(headerPropTypes).isRequired,
   footerData: PropTypes.shape(footerPropTypes).isRequired,
-  router: PropTypes.shape({
-    query: PropTypes.shape(),
-  }).isRequired,
+  children: PropTypes.node.isRequired,
 }
 
-export default _flow(withLoadingIndicator, withAnalytics, withRouter)(Layout)
+/**
+ * Fetches the data required by the Layout component.
+ *
+ * Call this from each page's `getServerSideProps` function and
+ * spread the result into the page's props object:
+ *
+ * ```js
+ * export async function getServerSideProps({ query: { locale } }) {
+ *   return {
+ *     props: {
+ *       ...(await getLayoutProps(locale)),
+ *       // page-specific props
+ *    }
+ * }
+ * ```
+ *
+ * These will then be forwarded
+ * to the Layout (see `pages/_app.js`).
+ *
+ * @param {string} locale - The page's locale.
+ * @returns {object} The props needed by `Layout`.
+ */
+export async function getLayoutProps(locale) {
+  return {
+    layoutProps: {
+      locale,
+      headerData: await fetchHeaderData(locale),
+      footerData: await fetchFooterData(locale),
+    },
+  }
+}
+
+export default Layout

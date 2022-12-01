@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Tooltip } from 'reactstrap'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import T from 'i18n-react'
 
 import { smBreakpoint } from '../styling/breakpoints'
@@ -22,25 +22,6 @@ const SourceTooltip = styled(Tooltip)`
     @media screen and (min-width: ${smBreakpoint}) {
       max-width: 450px !important;
     }
-  }
-`
-
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
-  .tooltip.bs-tooltip-top .arrow::before {
-    border-top-color: white !important;
-  }
-
-  .tooltip.bs-tooltip-bottom .arrow::before {
-    border-bottom-color: white !important;
-  }
-
-  .tooltip.bs-tooltip-left .arrow::before {
-    border-left-color: white !important;
-  }
-
-  .tooltip.bs-tooltip-right .arrow::before {
-    border-right-color: white !important;
   }
 `
 

@@ -1,14 +1,17 @@
 import { PODCAST_POSTS_PER_PAGE } from '../env'
 import { jpegQuality } from '../utils/constants'
-import { fetchEntriesForContentType, fetchSingleEntry } from './contentfulService'
+import {
+  client as contentfulClient,
+  fetchEntriesForContentType,
+  fetchSingleEntry,
+} from './contentfulService'
 import { unwrapTeamMember, unwrapFile, unwrapImage } from './common'
-
 
 const podcastPerPage = PODCAST_POSTS_PER_PAGE
 
 export function fetchPodcastList(locale, page) {
   const skip = podcastPerPage * (page - 1)
-  const fetchParams= {
+  const fetchParams = {
     unpackItems: false,
     locale,
     skip,
@@ -16,8 +19,7 @@ export function fetchPodcastList(locale, page) {
     //using date2 until this can be cleaned up in contenful as well
     order: '-fields.date2',
   }
-  return fetchEntriesForContentType('podcast', fetchParams)
-  .then((response) => {
+  return fetchEntriesForContentType('podcast', fetchParams).then((response) => {
     const totalNumberOfPodcasts = response.total
     const totalNumberOfPages = Math.ceil(totalNumberOfPodcasts / podcastPerPage)
     const entries = response.items
@@ -26,8 +28,11 @@ export function fetchPodcastList(locale, page) {
 
     const podcast = entries.map(({ sys, fields }) => {
       const podcastAudio = unwrapFile(fields.podcastAudio)
-      const podcastImage = unwrapImage(fields.podcastImage, { q: jpegQuality, w: 1000 })
-      return ({
+      const podcastImage = unwrapImage(fields.podcastImage, {
+        q: jpegQuality,
+        w: 1000,
+      })
+      return {
         id: sys.id,
         podcastTitle: fields.podcastTitle,
         //using date2 until this can be cleaned up in contentful as well
@@ -35,29 +40,36 @@ export function fetchPodcastList(locale, page) {
         podcastAudio,
         podcastImage,
         duration: fields.duration,
-      })
+      }
     })
 
-    return ({
+    return {
       totalNumberOfPages,
       isLastPage,
       podcast,
-    })
+    }
   })
 }
 
 export async function fetchPodcastPage(locale, page = 1) {
-  const [
-    content,
-    fetchPodcastResults,
-   ] = await Promise.all([
-     fetchSingleEntry('pagepodcast', locale),
-     fetchPodcastList(locale, page),
-   ])
+  const [content, fetchPodcastResults] = await Promise.all([
+    fetchSingleEntry('pagepodcast', locale),
+    fetchPodcastList(locale, page),
+  ])
   return {
     ...content,
     ...fetchPodcastResults,
     teamMember: unwrapTeamMember(content.teamMember),
     page: Number(page),
   }
+}
+
+export async function fetchPodcastPageCount() {
+  const response = await contentfulClient.getEntries({
+    content_type: 'podcast',
+    locale: '*',
+    limit: 1,
+  })
+
+  return Math.ceil(response.total / PODCAST_POSTS_PER_PAGE)
 }

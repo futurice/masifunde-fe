@@ -2,10 +2,9 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import withLayout from '../components/withLayout'
+import { getLayoutProps } from '../components/Layout'
 import Head from '../components/Head'
 import Banner from '../components/Banner'
-import { getLocaleFromQuery } from '../utils/locale'
 import PageSection from '../components/PageSection'
 import Markdown from '../components/Markdown'
 import { fetchErrorPage404 } from '../api/404'
@@ -47,8 +46,15 @@ ErrorPage404.propTypes = {
   bannerButtonUrl: PropTypes.string.isRequired,
 }
 
-ErrorPage404.getInitialProps = async function initialProps({ query }) {
-  return fetchErrorPage404(getLocaleFromQuery(query))
+export async function getStaticProps() {
+  return {
+    // We cannot get the `locale` query parameter in `getStaticProps()`.
+    // Use only the German version for now.
+    props: {
+      ...(await getLayoutProps('de')),
+      ...(await fetchErrorPage404('de')),
+    },
+  }
 }
 
-export default withLayout(ErrorPage404)
+export default ErrorPage404

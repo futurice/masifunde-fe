@@ -18,7 +18,7 @@ const ProjectContainer = styled.div`
   margin-bottom: ${mediumSpacing};
 `
 
-const StyledIconImage = IconImage.extend`
+const StyledIconImage = styled(IconImage)`
   margin: 0 auto;
 `
 

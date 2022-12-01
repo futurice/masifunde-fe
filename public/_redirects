@@ -1,0 +1,50 @@
+# Redirect from masifunde.netlify.com to masifunde.de
+http://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
+https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
+
+# Redirects from old site
+/ueber-uns/news-archiv/news/:slug /blog/:slug
+/ueber-uns/* /wer-wir-sind
+/projekte/*  /was-wir-machen
+/ihre-unterstuetzung/*  /wie-sie-helfen
+/du-bei-masifunde/*  /wie-sie-helfen/aktiv-werden
+/unterwegs-in-de/* /was-wir-machen/ansatz-de/
+/jetzt-spenden/* /wie-sie-helfen/spenden
+/wie-sie-helfen/pate-werden /wie-sie-helfen/masifunde-gemeinschaft
+/grundschule /wie-sie-helfen
+
+# Redirects from paths without locale prefix to /de variant
+/ /de
+/404 /de/404
+/was-wir-machen /de/was-wir-machen
+/was-wir-machen/ansatz-de /de/was-wir-machen/ansatz-de
+/was-wir-machen/ansatz-sa /de/was-wir-machen/ansatz-sa
+/was-wir-machen/effekte /de/was-wir-machen/effekte
+/wer-wir-sind /de/wer-wir-sind
+/wer-wir-sind/team-de /de/wer-wir-sind/team-de
+/wer-wir-sind/team-sa /de/wer-wir-sind/team-sa
+/wie-sie-helfen /de/wie-sie-helfen
+/wie-sie-helfen/spenden /de/wie-sie-helfen/spenden
+/wie-sie-helfen/masifunde-gemeinschaft /de/wie-sie-helfen/masifunde-gemeinschaft
+/wie-sie-helfen/aktiv-werden /de/wie-sie-helfen/aktiv-werden
+/wie-sie-helfen/partner-werden /de/wie-sie-helfen/partner-werden
+/blog/page/:page /de/blog/page/:page
+/blog/:slug /de/blog/:slug
+/kontakt /de/kontakt
+/impressum /de/impressum
+/datenschutz /de/datenschutz
+/transparenz /de/transparenz
+/spendenaktion /de/spendenaktion
+/presse /de/presse
+/dokumente /de/dokumente
+/podcasts/page/:page /de/podcasts/page/:page
+
+# Shorthands for blog and podcasts
+/blog /de/blog/page/1
+/en/blog /en/blog/page/1
+/podcasts /de/blog/page/1
+/en/podcasts /en/blog/page/1
+
+# 404 page
+/en/*  /en/404  404
+/*     /404     404
