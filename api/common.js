@@ -56,12 +56,7 @@ export const unwrapDocuments = (documents) =>
   documents
     // Skip broken links (e.g., to a non-existent or unpublished Document)
     // and documents whose file is missing or not published
-    .filter(
-      (document) =>
-        !isUnresolvedLink(document) &&
-        document.fields.file &&
-        document.fields.file.url
-    )
+    .filter((document) => !isUnresolvedLink(document) && document.fields.file)
     .map((document) => ({
       ...document.fields,
       file: unwrapFile(document.fields.file),
