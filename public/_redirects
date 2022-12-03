@@ -1,8 +1,17 @@
-# Redirect from masifunde.netlify.com to masifunde.de
+# Redirect configuration for Netlify.
+# See: https://docs.netlify.com/routing/redirects/
+#
+# These redirects are used in the deployed website and when
+# testing the production build (`npm run build && npm run serve`).
+# For redirects in the Next.js development server (`npm run dev`),
+# see `routes/redirects.js`.
+
+# Redirect from masifunde.netlify.com to masifunde.de.
 http://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 
-# Redirects from old site
+# Redirect paths from the old Masifunde.de site to equivalent pages
+# in the curent site.
 /ueber-uns/news-archiv/news/:slug /blog/:slug
 /ueber-uns/* /wer-wir-sind
 /projekte/*  /was-wir-machen
@@ -13,7 +22,8 @@ https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 /wie-sie-helfen/pate-werden /wie-sie-helfen/masifunde-gemeinschaft
 /grundschule /wie-sie-helfen
 
-# Redirects from paths without locale prefix to /de variant
+# Redirect from locale-less paths (e.g., `/was-wir-machen`)
+# to the corresponding German route paths (`/de/was-wir-machen`).
 / /de
 /404 /de/404
 /was-wir-machen /de/was-wir-machen
@@ -39,12 +49,12 @@ https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 /dokumente /de/dokumente
 /podcasts/page/:page /de/podcasts/page/:page
 
-# Shorthands for blog and podcasts
+# Shorthands for blog and podcasts.
 /blog /de/blog/page/1
 /en/blog /en/blog/page/1
 /podcasts /de/blog/page/1
 /en/podcasts /en/blog/page/1
 
-# 404 page
+# Redirect unknown paths to the 404 page.
 /en/*  /en/404  404
 /*     /404     404
