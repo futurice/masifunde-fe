@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 import styled from 'styled-components'
@@ -123,7 +122,7 @@ const AmountFormSection = ({
                 />
               ))}
               {enableOtherAmount && (
-                <Fragment>
+                <>
                   <OtherAmountContainer>
                     <EuroPostfix>€</EuroPostfix>
                     <input
@@ -140,7 +139,7 @@ const AmountFormSection = ({
                       <span>= {amountDescription}</span>
                     </AmountDescription>
                   )}
-                </Fragment>
+                </>
               )}
             </AmountLabelsContainer>
             <ErrorMessage className="row" meta={meta} />

@@ -1,5 +1,3 @@
-/* eslint-disable function-paren-newline */
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
@@ -156,7 +154,7 @@ const CountryDescription = styled.div`
 `
 
 const ProjectsGridColumn = ({ column, country }) => (
-  <Fragment>
+  <>
     <ProjectsGridTitleCell column={column} row={1}>
       <CountryTitle>{country.title}</CountryTitle>
     </ProjectsGridTitleCell>
@@ -171,7 +169,7 @@ const ProjectsGridColumn = ({ column, country }) => (
         <Button type="secondary">{country.button}</Button>
       </Link>
     </ProjectsGridCell>
-  </Fragment>
+  </>
 )
 
 ProjectsGridColumn.propTypes = {

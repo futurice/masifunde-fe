@@ -1,5 +1,4 @@
 import { noop } from 'lodash'
-import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Form } from 'react-final-form'
@@ -99,7 +98,7 @@ const DonationForm = ({
     iframeStatus === 'successful' || iframeStatus === 'failure'
 
   return (
-    <Fragment>
+    <>
       {!isIframeStatusFailureOrSuccess && (
         <Form
           onSubmit={noop}
@@ -183,7 +182,7 @@ const DonationForm = ({
                   />
 
                   {values[WANTS_RECEIPT] !== NO_RECEIPT_OPTION_VALUE && (
-                    <Fragment>
+                    <>
                       <InputField
                         fieldName={COMPANY_NAME}
                         label="Firma (optional)"
@@ -203,7 +202,7 @@ const DonationForm = ({
                         autoComplete2="address-level2"
                         label="PLZ / Ort"
                       />
-                    </Fragment>
+                    </>
                   )}
 
                   <SelectField
@@ -234,7 +233,7 @@ const DonationForm = ({
         scrollToIframe={isIframeStatusFailureOrSuccess}
         fields={fields}
       />
-    </Fragment>
+    </>
   )
 }
 

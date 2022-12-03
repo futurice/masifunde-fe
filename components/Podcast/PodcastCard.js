@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import FilePropType from '../../propTypes/file'
@@ -62,7 +62,7 @@ const IconContainer = styled.div`
   right: 25px;
 `
 
-class PausePlayButton extends React.Component {
+class PausePlayButton extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -114,7 +114,7 @@ const PodcastCard = ({
   date,
   duration,
 }) => (
-  <Fragment>
+  <>
     <PodcastImageContainer>
       <PodcastImage src={podcastImage ? podcastImage.url : undefined} />
     </PodcastImageContainer>
@@ -133,7 +133,7 @@ const PodcastCard = ({
         </a>
       </IconContainer>
     </PodcastBodyContainer>
-  </Fragment>
+  </>
 )
 
 PodcastCard.propTypes = {

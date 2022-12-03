@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -25,7 +24,7 @@ const Box = styled.div`
 `
 
 const Podcast = ({ expandList, podcast }) => (
-  <Fragment>
+  <>
     <Box>
       {expandList ? (
         <div className="row">
@@ -69,7 +68,7 @@ const Podcast = ({ expandList, podcast }) => (
         </div>
       )}
     </Box>
-  </Fragment>
+  </>
 )
 
 Podcast.propTypes = {

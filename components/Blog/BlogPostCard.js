@@ -1,6 +1,5 @@
 import T from 'i18n-react'
 import PropTypes from 'prop-types'
-import React from 'react'
 import styled from 'styled-components'
 
 import blogPostShape from '../../propTypes/blogPost'

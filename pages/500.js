@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -13,14 +12,14 @@ const StyledMarkdown = styled(Markdown)`
 `
 
 const ErrorPage500 = ({ metaTitle, title, descriptionMarkdown }) => (
-  <Fragment>
+  <>
     <Head title={metaTitle} />
 
     <PageSection>
       <h1>{title}</h1>
       <StyledMarkdown source={descriptionMarkdown} />
     </PageSection>
-  </Fragment>
+  </>
 )
 
 ErrorPage500.propTypes = {

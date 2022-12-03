@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import createDecorator from 'final-form-calculate'
 import styled from 'styled-components'
@@ -55,7 +54,7 @@ const BecomeSponsor = ({
   const searchParams = useURLSearchParams()
 
   return (
-    <Fragment>
+    <>
       <Head title={metaTitle} description={metaDescription} />
 
       <PageSection>
@@ -98,7 +97,7 @@ const BecomeSponsor = ({
         buttonText={bannerButtonText}
         buttonLink={bannerButtonUrl}
       />
-    </Fragment>
+    </>
   )
 }
 

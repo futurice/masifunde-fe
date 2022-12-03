@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -62,7 +61,7 @@ const Documents = ({
   pressReleaseHeading,
   pressReleaseList,
 }) => (
-  <Fragment>
+  <>
     <Head title={metaTitle} description={metaDescription} />
 
     <PageSection>
@@ -120,7 +119,7 @@ const Documents = ({
       buttonText={bannerButtonText}
       buttonLink={bannerButtonUrl}
     />
-  </Fragment>
+  </>
 )
 
 Documents.propTypes = {

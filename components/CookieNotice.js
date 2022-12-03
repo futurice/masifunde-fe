@@ -1,5 +1,5 @@
 import T from 'i18n-react'
-import React, { Component } from 'react'
+import { Component } from 'react'
 import styled from 'styled-components'
 
 import * as pages from '../routes/pages'

@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -21,7 +20,7 @@ const ErrorPage404 = ({
   section1Markdown,
   section1Title,
 }) => (
-  <Fragment>
+  <>
     <Head title={metaTitle} />
 
     <PageSection>
@@ -34,7 +33,7 @@ const ErrorPage404 = ({
       buttonText={bannerButtonText}
       buttonLink={bannerButtonUrl}
     />
-  </Fragment>
+  </>
 )
 
 ErrorPage404.propTypes = {

@@ -1,10 +1,8 @@
-import React from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { TwitterShareButton, FacebookShareButton } from 'react-share'
-import FaFacebook from 'react-icons/lib/fa/facebook'
-import FaTwitter from 'react-icons/lib/fa/twitter'
+import { FaFacebook, FaTwitter } from 'react-icons/fa'
 import T from 'i18n-react'
 
 import Head from '../../../components/Head'
@@ -121,15 +119,7 @@ const shareButtonSpacing = '10px'
 const ShareButtonRow = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: -${shareButtonSpacing};
-
-  > * {
-    padding: ${shareButtonSpacing};
-  }
-
-  > :last-child {
-    margin-right: -${shareButtonSpacing};
-  }
+  gap: ${shareButtonSpacing};
 `
 
 const SocialShareLink = styled(SocialLink.withComponent('div'))`
