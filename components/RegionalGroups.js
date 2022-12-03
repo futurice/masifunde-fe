@@ -47,11 +47,11 @@ const Span = styled.span`
   display: block;
 `
 
-const GroupName = Span.extend`
+const GroupName = styled(Span)`
   font-weight: bold;
 `
 
-const Email = Span.withComponent('a').extend`
+const Email = styled(Span.withComponent('a'))`
   display: block;
   word-break: break-all;
 `

@@ -31,7 +31,7 @@ const CenteredSpan = styled.span`
   max-width: 200px;
 `
 
-const Number = CenteredSpan.extend`
+const Number = styled(CenteredSpan)`
   ${handwrittenText};
   ${(props) =>
     props.highlight &&

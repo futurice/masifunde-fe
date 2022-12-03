@@ -6,7 +6,7 @@ import Button from '../../components/Button'
 import { rem } from '../../styling/typography'
 import { fundraisingFormSpacing } from '../../utils/constants'
 
-const Label = Button.withComponent('label').extend`
+const Label = styled(Button.withComponent('label'))`
   margin-bottom: ${fundraisingFormSpacing};
   font-size: ${rem('18px')};
   padding: 0.3rem 0 0.3rem 0;
@@ -15,8 +15,8 @@ const Label = Button.withComponent('label').extend`
   border-radius: 8px;
   border: solid 2px rgba(179, 170, 161, 0.6);
 
-
-  &:hover, input:focus + & {
+  &:hover,
+  input:focus + & {
     border: solid 2px ${({ theme }) => theme.orange};
     color: ${({ theme }) => theme.black};
     background-color: transparent;

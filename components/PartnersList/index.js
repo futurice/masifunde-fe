@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import List from '../List'
 import { mediumSpacing } from '../../styling/sizes'
 import Partner, { propTypes as partnerPropTypes } from './Partner'
 
-const StyledList = List.extend`
+const StyledList = styled(List)`
   margin-top: ${mediumSpacing};
 `
 

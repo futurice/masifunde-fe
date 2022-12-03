@@ -1,35 +1,34 @@
 /**
- * The page file paths of all pages of the website.
- * For instance, `/home` is the page defined by `pages/home.js`.
- *
- * Note that while these are the paths that need to be used for Next.js'
- * <Link> component, they are not the paths in the actual page URLs.
- * These are defined in `routes/mappings.js`.
+ * The route paths of all pages of the website.
+ * These correspond to the files in `pages/`.
  *
  * @module
  */
 
-export const index = '/home'
-export const errorPage404 = '/404'
-export const whatWeDo = '/what-we-do'
-export const approachDE = '/what-we-do/approach-de'
-export const approachSA = '/what-we-do/approach-sa'
-export const impact = '/what-we-do/impact'
-export const whoWeAre = '/who-we-are'
-export const teamDE = '/who-we-are/team-de'
-export const teamSA = '/who-we-are/team-sa'
-export const howToSupport = '/how-to-support'
-export const donate = '/how-to-support/donate'
-export const becomeSponsor = '/how-to-support/become-sponsor'
-export const becomeVolunteer = '/how-to-support/become-volunteer'
-export const becomePartner = '/how-to-support/become-partner'
-export const blog = '/blog'
-export const blogPost = '/blog/blog-post'
-export const contact = '/contact'
-export const impressum = '/impressum'
-export const datenschutz = '/datenschutz'
-export const transparency = '/transparency'
-export const campaign = '/campaign'
-export const press = '/press'
-export const documents = '/documents'
-export const podcast = '/podcasts'
+// NOTE: This is a CommonJS module so that it can be used in the Next.js
+// configuration file (`next.config.js`) for redirects.
+
+exports.index = '/[locale]'
+exports.errorPage404 = '/[locale]/404'
+exports.whatWeDo = '/[locale]/was-wir-machen'
+exports.approachDE = '/[locale]/was-wir-machen/approach-de'
+exports.approachSA = '/[locale]/was-wir-machen/approach-sa'
+exports.impact = '/[locale]/was-wir-machen/effekte'
+exports.whoWeAre = '/[locale]/wer-wir-sind'
+exports.teamDE = '/[locale]/wer-wir-sind/team-de'
+exports.teamSA = '/[locale]/wer-wir-sind/team-sa'
+exports.howToSupport = '/[locale]/wie-sie-helfen'
+exports.donate = '/[locale]/wie-sie-helfen/spenden'
+exports.becomeSponsor = '/[locale]/wie-sie-helfen/masifunde-gemeinschaft'
+exports.becomeVolunteer = '/[locale]/wie-sie-helfen/aktiv-werden'
+exports.becomePartner = '/[locale]/wie-sie-helfen/partner-werden'
+exports.blog = '/[locale]/blog/page/[page]'
+exports.blogPost = '/[locale]/blog/[slug]'
+exports.contact = '/[locale]/kontakt'
+exports.impressum = '/[locale]/impressum'
+exports.datenschutz = '/[locale]/datenschutz'
+exports.transparency = '/[locale]/transparenz'
+exports.campaign = '/[locale]/spendenaktion'
+exports.press = '/[locale]/presse'
+exports.documents = '/[locale]/dokumente'
+exports.podcast = '/[locale]/podcasts/page/[page]'

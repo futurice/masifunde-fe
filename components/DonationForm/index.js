@@ -214,7 +214,7 @@ const DonationForm = ({
                   />
 
                   <HiddenButton
-                    innerRef={(form) => {
+                    ref={(form) => {
                       formRef = form
                     }}
                   >

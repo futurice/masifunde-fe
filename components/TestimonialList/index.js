@@ -17,7 +17,7 @@ const TestimonialContainer = styled.div`
   margin-bottom: ${mediumSpacing};
 `
 
-const StyledSupporter = Supporter.extend`
+const StyledSupporter = styled(Supporter)`
   @media (max-width: ${smBreakpoint}) {
     display: flex;
     flex-direction: column;

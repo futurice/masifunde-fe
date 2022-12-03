@@ -11,7 +11,7 @@ const TeamMemberContainer = styled.div`
   white-space: nowrap;
 `
 
-const Image = RoundedImage.extend`
+const Image = styled(RoundedImage)`
   width: 100%;
   margin-bottom: 0.7rem;
 `

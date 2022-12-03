@@ -73,7 +73,7 @@ export const unwrapImage = (image, urlParams) => {
   const imageFile = unwrapFile(image)
 
   if (!imageFile) {
-    return undefined
+    return null
   }
 
   const urlQuery = urlParams ? `?${qs.stringify(urlParams)}` : ''
@@ -88,7 +88,7 @@ export const unwrapImages = (images = [], urlParams) =>
   images.map((image) => unwrapImage(image, urlParams))
 
 export const unwrapRegion = (region) =>
-  region && region.fields && region.fields.name
+  (region && region.fields && region.fields.name) || null
 
 export const unwrapPortrait = (portrait) => {
   const imageParams = {
@@ -159,7 +159,7 @@ export const unwrapRegionalGroups = (regionalGroups) => ({
 
 export const unwrapTeamMember = (teamMember) => {
   if (!teamMember) {
-    return undefined
+    return null
   }
 
   const { fields } = teamMember

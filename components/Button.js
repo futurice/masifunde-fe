@@ -1,3 +1,4 @@
+import { omit } from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
@@ -11,19 +12,24 @@ const ButtonContainer = styled.div`
   justify-content: ${({ center }) => (center ? 'center' : 'flex-start')};
 `
 
-const Button = ({ center, children, className, href, ...rest }) => (
-  <ButtonContainer center={center}>
-    {href ? (
-      <a {...rest} href={href} className={`btn ${className}`}>
-        {children}
-      </a>
-    ) : (
-      <button {...rest} className={`btn ${className}`}>
-        {children}
-      </button>
-    )}
-  </ButtonContainer>
-)
+const Button = ({ center, children, className, href, ...rest }) => {
+  // Filter out props meant only for styling
+  const forwardedProps = omit(rest, ['type', 'isActive', 'rounded'])
+
+  return (
+    <ButtonContainer center={center}>
+      {href ? (
+        <a {...forwardedProps} href={href} className={`btn ${className}`}>
+          {children}
+        </a>
+      ) : (
+        <button {...forwardedProps} className={`btn ${className}`}>
+          {children}
+        </button>
+      )}
+    </ButtonContainer>
+  )
+}
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
@@ -53,7 +59,7 @@ const StyledButton = styled(Button)`
   white-space: normal;
 
   ${({ rounded }) =>
-    rounded &&
+    rounded === 'true' &&
     css`
       width: 50px;
       height: 50px;
