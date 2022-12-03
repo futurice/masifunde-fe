@@ -1,11 +1,6 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:import/recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:jsx-a11y/recommended"
-  ],
+  "root": true,
+  "extends": "next/core-web-vitals",
   "parserOptions": {
     "ecmaVersion": 2022,
     "sourceType": "module",
@@ -25,10 +20,10 @@
     "jest": true
   },
   "rules": {
+    "@next/next/no-img-element": "off",
     "import/order": "error",
     "import/prefer-default-export": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/no-typos": "off"
   }
 }

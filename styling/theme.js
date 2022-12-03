@@ -1,4 +1,4 @@
-export default {
+const colors = {
   black: '#4F463F',
   orange: '#FE9933',
   orangeRed: '#FF621D',
@@ -14,3 +14,5 @@ export default {
   soialLinkGrey: '#444444',
   headerHeight: '3.9rem',
 }
+
+export default colors

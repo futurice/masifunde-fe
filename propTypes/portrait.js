@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import imagePropTypes from './image'
 
-export default {
+const Portrait = {
   page1Image: PropTypes.shape(imagePropTypes).isRequired,
   page1Heading: PropTypes.string.isRequired,
   page1Text: PropTypes.string.isRequired,
@@ -12,3 +12,5 @@ export default {
   page3Heading: PropTypes.string.isRequired,
   page3Text: PropTypes.string.isRequired,
 }
+
+export default Portrait

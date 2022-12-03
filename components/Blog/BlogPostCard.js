@@ -74,7 +74,7 @@ const BlogPostCard = ({ post }) => (
   >
     <Card>
       <ImageContainer>
-        {post.teaserImage && <Image src={post.teaserImage.url} />}
+        {post.teaserImage && <Image alt="" src={post.teaserImage.url} />}
       </ImageContainer>
       <CardContent>
         <Metadata>{formatDate(post.date)}</Metadata>

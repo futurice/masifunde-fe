@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import imagePropTypes from './image'
 
-export default {
+const Announcement = {
   subHeading: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -9,3 +9,5 @@ export default {
   buttonLink: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
 }
+
+export default Announcement
