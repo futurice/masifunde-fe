@@ -1,0 +1,24 @@
+Package                                              Current   Wanted   Latest  Location                                                          Depended by
+babel-plugin-styled-components                        1.13.3   1.13.3    2.0.7  node_modules/babel-plugin-styled-components                       masifunde-fe
+babel-plugin-transform-inline-environment-variables    0.3.0    0.3.0    0.4.4  node_modules/babel-plugin-transform-inline-environment-variables  masifunde-fe
+contentful                                            9.1.32   9.2.14   9.2.14  node_modules/contentful                                           masifunde-fe
+contentful-management                                  4.2.2    4.2.2  10.21.5  node_modules/contentful-management                                masifunde-fe
+eslint                                                8.17.0   8.29.0   8.29.0  node_modules/eslint                                               masifunde-fe
+eslint-plugin-jsx-a11y                                 6.5.1    6.6.1    6.6.1  node_modules/eslint-plugin-jsx-a11y                               masifunde-fe
+eslint-plugin-react                                   7.30.0  7.31.11  7.31.11  node_modules/eslint-plugin-react                                  masifunde-fe
+husky                                                  8.0.1    8.0.2    8.0.2  node_modules/husky                                                masifunde-fe
+lint-staged                                           13.0.1   13.0.4   13.0.4  node_modules/lint-staged                                          masifunde-fe
+next                                                  10.2.3   10.2.3   13.0.6  node_modules/next                                                 masifunde-fe
+nodemon                                               2.0.16   2.0.20   2.0.20  node_modules/nodemon                                              masifunde-fe
+nuka-carousel                                          5.1.1    5.4.1    5.4.1  node_modules/nuka-carousel                                        masifunde-fe
+prettier                                               2.7.0    2.8.0    2.8.0  node_modules/prettier                                             masifunde-fe
+qs                                                    6.10.5   6.11.0   6.11.0  node_modules/qs                                                   masifunde-fe
+react                                                 17.0.2   17.0.2   18.2.0  node_modules/react                                                masifunde-fe
+react-dom                                             17.0.2   17.0.2   18.2.0  node_modules/react-dom                                            masifunde-fe
+react-ga                                               3.3.0    3.3.1    3.3.1  node_modules/react-ga                                             masifunde-fe
+react-markdown                                         6.0.3    6.0.3    8.0.4  node_modules/react-markdown                                       masifunde-fe
+react-modal                                           3.15.1   3.16.1   3.16.1  node_modules/react-modal                                          masifunde-fe
+react-share                                            4.4.0    4.4.1    4.4.1  node_modules/react-share                                          masifunde-fe
+reactstrap                                            8.10.1   8.10.1    9.1.5  node_modules/reactstrap                                           masifunde-fe
+slug                                                   5.3.0    5.3.0    8.2.2  node_modules/slug                                                 masifunde-fe
+styled-components                                      4.4.1    4.4.1    5.3.6  node_modules/styled-components                                    masifunde-fe

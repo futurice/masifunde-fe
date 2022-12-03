@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Tooltip } from 'reactstrap'
 import styled from 'styled-components'
@@ -49,7 +49,7 @@ class Source extends Component {
     const { superscriptText, sourceMarkdown, placement, id } = this.props
     const sourceId = `Tooltip-${id}`
     return (
-      <Fragment>
+      <>
         <Sup id={sourceId}>{superscriptText}</Sup>
         <SourceTooltip
           isOpen={this.state.open}
@@ -61,7 +61,7 @@ class Source extends Component {
           <Span>{T.translate('source')}</Span>
           <Markdown source={sourceMarkdown} />
         </SourceTooltip>
-      </Fragment>
+      </>
     )
   }
 }

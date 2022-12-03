@@ -1,7 +1,5 @@
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import FaYoutubePlay from 'react-icons/lib/fa/youtube-play'
-import FaFacebook from 'react-icons/lib/fa/facebook'
+import { FaFacebook, FaYoutube } from 'react-icons/fa'
 import styled from 'styled-components'
 import T from 'i18n-react'
 
@@ -74,9 +72,15 @@ const BankDetails = styled.div`
 `
 
 const SocialLinksContainer = styled.div`
-  text-align: center;
+  display: flex;
+  justify-content: center;
   font-size: ${rem('27px')};
   margin-top: ${extraSmallSpacing};
+`
+
+const SocialLinksRow = styled.div.attrs({ className: 'col' })`
+  display: flex;
+  justify-content: center;
 `
 
 const BankDetailDescription = styled.span`
@@ -181,7 +185,7 @@ function Footer({
               <div className="col">
                 <ul className="list-unstyled">
                   <ContactLink href={pages.contact} text={contactText} />
-                  <Fragment>
+                  <>
                     <FooterLink
                       href={{
                         pathname: pages.blog,
@@ -197,7 +201,7 @@ function Footer({
                       }}
                       text={podcastText}
                     />
-                  </Fragment>
+                  </>
                 </ul>
               </div>
             </div>
@@ -206,14 +210,14 @@ function Footer({
 
         <SocialLinksContainer>
           <div className="row">
-            <div className="col">
+            <SocialLinksRow>
               <SocialLink
                 aria-label={T.translate('footer.visitYouTube')}
                 href={masifundeYouTubeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaYoutubePlay />
+                <FaYoutube />
               </SocialLink>
               <SocialLink
                 aria-label={T.translate('footer.visitFacebook')}
@@ -231,7 +235,7 @@ function Footer({
               >
                 <img src="/static/images/Icon-instagram.svg" alt="" />
               </SocialLink>
-            </div>
+            </SocialLinksRow>
           </div>
         </SocialLinksContainer>
 

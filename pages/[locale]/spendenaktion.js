@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -46,7 +45,7 @@ const Campaign = ({
   const urlSearchParams = useURLSearchParams()
 
   return (
-    <Fragment>
+    <>
       <Head title={metaTitle} description={metaDescription} />
 
       <PageSection>
@@ -97,7 +96,7 @@ const Campaign = ({
         intervalTitle={section2Title}
         enableOtherAmount
       />
-    </Fragment>
+    </>
   )
 }
 

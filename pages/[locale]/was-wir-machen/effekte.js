@@ -1,5 +1,3 @@
-/* eslint-disable no-return-assign */
-import React from 'react'
 import PropTypes from 'prop-types'
 
 import { fetchImpactPage } from '../../../api/whatWeDo'

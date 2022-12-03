@@ -1,4 +1,4 @@
-import React, { Component, useMemo } from 'react'
+import { Component, useMemo } from 'react'
 import makeAsyncScriptLoader from 'react-async-script'
 import qs from 'qs'
 import PropTypes from 'prop-types'

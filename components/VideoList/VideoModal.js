@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react'
+import { Component } from 'react'
 import Modal from 'react-modal'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -111,7 +111,7 @@ class VideoModal extends Component {
     const { thumbnail } = this.state
 
     return (
-      <Fragment>
+      <>
         <ImageButton onClick={this.openModal}>
           <ImageContainer>
             <Image className="img-fluid" src={thumbnail} alt="" />
@@ -135,7 +135,7 @@ class VideoModal extends Component {
           </ModalHeader>
           <EmbeddedVideo alwaysFullWidth videoUrl={videoUrl} />
         </Modal>
-      </Fragment>
+      </>
     )
   }
 }

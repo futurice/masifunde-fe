@@ -1,5 +1,3 @@
-/* eslint-disable function-paren-newline */
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -54,7 +52,7 @@ const Donate = ({
   const urlSearchParams = useURLSearchParams()
 
   return (
-    <Fragment>
+    <>
       <Head title={metaTitle} description={metaDescription} />
 
       <PageSection>
@@ -91,7 +89,7 @@ const Donate = ({
         buttonText={bannerButtonText}
         buttonLink={bannerButtonUrl}
       />
-    </Fragment>
+    </>
   )
 }
 

@@ -10,6 +10,10 @@ const SocialLink = styled.a`
   margin-right: 10px;
   cursor: pointer;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &:hover {
     color: ${socialLinkGrey} !important;
     opacity: 1;

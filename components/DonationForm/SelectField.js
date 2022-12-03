@@ -1,5 +1,4 @@
 /* eslint-disable function-paren-newline */
-import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 

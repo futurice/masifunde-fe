@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { propTypes, defaultProps } from './propTypes'
 import BannerWithImage from './BannerWithImage'
 import BannerWithoutImage from './BannerWithoutImage'

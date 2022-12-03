@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -42,7 +41,7 @@ const ContentContainer = styled.div`
 `
 
 const Document = ({ expandList, documents }) => (
-  <Fragment>
+  <>
     {expandList ? (
       <div className="row">
         {documents.map(({ title, longTitle, description, file }) => (
@@ -71,7 +70,7 @@ const Document = ({ expandList, documents }) => (
         ))}
       </div>
     )}
-  </Fragment>
+  </>
 )
 
 Document.propTypes = {

@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { useState } from 'react'
+import { useState } from 'react'
 import NukaCarousel from 'nuka-carousel'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'

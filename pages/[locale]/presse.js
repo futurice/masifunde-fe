@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -49,7 +48,7 @@ const Press = ({
   bannerButtonText,
   bannerButtonUrl,
 }) => (
-  <Fragment>
+  <>
     <Head title={metaTitle} description={metaDescription} />
     <PageSection>
       <h1>{introHeading}</h1>
@@ -89,7 +88,7 @@ const Press = ({
       buttonText={bannerButtonText}
       buttonLink={bannerButtonUrl}
     />
-  </Fragment>
+  </>
 )
 
 Press.propTypes = {
