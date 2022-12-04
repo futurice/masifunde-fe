@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 import { useEffect } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import Layout from '../components/Layout'
+import '../styling/font-faces.css'
 import { initializeAnalytics, trackPageView } from '../utils/analytics'
 
 const MasifundeApp = ({ Component, pageProps }) => {
@@ -21,9 +23,18 @@ const MasifundeApp = ({ Component, pageProps }) => {
   }
 
   return (
-    <Layout {...layoutProps}>
-      <Component {...props} />
-    </Layout>
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+      </Head>
+
+      <Layout {...layoutProps}>
+        <Component {...props} />
+      </Layout>
+    </>
   )
 }
 

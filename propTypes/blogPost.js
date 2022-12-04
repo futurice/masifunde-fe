@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import imageShape from './image'
 import teamMemberShape from './teamMember'
 
-export default {
+const BlogPost = {
   title: PropTypes.string,
   slug: PropTypes.string,
   metaDescription: PropTypes.string,
@@ -13,3 +13,5 @@ export default {
   authorTeamMember: PropTypes.shape(teamMemberShape),
   authorExternal: PropTypes.string,
 }
+
+export default BlogPost
