@@ -17,10 +17,12 @@ const Privacy = ({
     <PageSection>
       <h1>{datenschutzTitle}</h1>
       <div className="row">
-        <Markdown
-          className="offset-lg-1 col-lg-10"
-          source={datenschutzMarkdown}
-        />
+        <div className="col">
+          <Markdown
+            className="offset-lg-1 col-lg-10"
+            source={datenschutzMarkdown}
+          />
+        </div>
       </div>
     </PageSection>
   </div>
