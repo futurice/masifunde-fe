@@ -15,12 +15,12 @@
     "build:production": "npm run _build && npm run _robots:production",
     "build:preview": "npm run _build && npm run _robots:preview",
     "_build": "next build && next export --threads 1",
-    "_robots:production": "cp robots.production.txt out/robots.txt",
-    "_robots:preview": "cp robots.preview.txt out/robots.txt",
-    "lint": "eslint --ignore-path .gitignore --ext .js .",
-    "lint-fix": "npm run lint -- --fix",
-    "prettier-check": "prettier --list-different components i18n pages propTypes styling utils *.js",
-    "prettier-fix": "prettier --write components i18n pages propTypes styling utils *.js",
+    "_robots:production": "cp src/robots.production.txt out/robots.txt",
+    "_robots:preview": "cp src/robots.preview.txt out/robots.txt",
+    "lint": "eslint '*.js' 'src/**/*.js'",
+    "lint-fix": "eslint --fix '*.js' 'src/**/*.js'",
+    "prettier-check": "prettier --list-different '*.js' 'src/**/*.js'",
+    "prettier-fix": "prettier --write '*.js' 'src/**/*.js'",
     "serve": "netlify dev -d out"
   },
   "repository": {

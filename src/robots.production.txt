@@ -1,0 +1,5 @@
+# Instructions for web crawlers (preview builds)
+# https://www.robotstxt.org
+
+# Point to sitemap
+Sitemap: https://masifunde.de/sitemap.xml

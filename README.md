@@ -133,7 +133,7 @@ By checking the box for `Keine Standard-Stylesheets laden` the Fundraisingbox if
 
 Note: This has to be standard css, *no scss or less*.
 
-For version control and backup purposes we also store this css in the file `Fundraisingbox_custom_css.css` in this repo.
+For version control and backup purposes we also store this css in the file `src/Fundraisingbox_custom_css.css` in this repo.
 
 ### Testing Fundraisingbox locally
 

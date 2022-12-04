@@ -1,4 +1,4 @@
-const { getRedirects } = require('./routes/redirects')
+const { getRedirects } = require('./src/routes/redirects')
 
 module.exports = {
   swcMinify: true,
