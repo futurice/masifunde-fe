@@ -1,0 +1,6 @@
+# Instructions for web crawlers (preview builds)
+# https://www.robotstxt.org
+
+# Don't allow the preview site to be crawled
+User-agent: *
+Disallow: /

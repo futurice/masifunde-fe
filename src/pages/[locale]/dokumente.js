@@ -1,0 +1,177 @@
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+
+import DocumentsList from '../../components/DocumentsList'
+import { getLayoutProps } from '../../components/Layout'
+import PageSection from '../../components/PageSection'
+import CenteredGrid from '../../components/CenteredGrid'
+import CenteredText from '../../components/CenteredText'
+import Divider from '../../components/Divider'
+import Banner from '../../components/Banner'
+import { fetchDocumentPage } from '../../content/document'
+import Head from '../../components/Head'
+import { smBreakpoint } from '../../styling/breakpoints'
+import teamMemberProps from '../../propTypes/teamMember'
+import { subsectionTitleText } from '../../styling/typography'
+import { largeSpacing } from '../../styling/sizes'
+import TextWithTeamMember from '../../components/TextWithTeamMember'
+import VideoList from '../../components/VideoList'
+
+const Heading = styled.h2`
+  ${subsectionTitleText};
+  text-align: center;
+  @media (min-width: ${smBreakpoint}) {
+    text-align: left;
+  }
+`
+
+const TeamMemberContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  @media (min-width: ${smBreakpoint}) {
+    display: block;
+  }
+`
+
+const ExtendedDivider = styled(Divider)`
+  margin-top: ${largeSpacing} !important;
+`
+
+const Documents = ({
+  metaDescription,
+  metaTitle,
+  introHeading,
+  introMarkdown,
+  section1heading,
+  documentsList1,
+  section2heading,
+  documentsList2,
+  section3heading,
+  documentsList3,
+  bannerTitle,
+  contactTextHeading,
+  contactText,
+  teamMember,
+  bannerButtonText,
+  bannerButtonUrl,
+  videosHeading,
+  videosList,
+  pressKitHeading,
+  pressKitList,
+  pressReleaseHeading,
+  pressReleaseList,
+}) => (
+  <>
+    <Head title={metaTitle} description={metaDescription} />
+
+    <PageSection>
+      <h1>{introHeading}</h1>
+      <CenteredText source={introMarkdown} />
+    </PageSection>
+
+    <CenteredGrid>
+      <PageSection contained={false}>
+        <Heading>{section1heading}</Heading>
+        <DocumentsList documents={documentsList1} />
+      </PageSection>
+
+      <PageSection contained={false}>
+        <Heading>{section2heading}</Heading>
+        <DocumentsList documents={documentsList2} />
+      </PageSection>
+
+      <PageSection contained={false}>
+        <Heading>{section3heading}</Heading>
+        <DocumentsList documents={documentsList3} expandList />
+      </PageSection>
+
+      <PageSection contained={false}>
+        <Heading>{pressKitHeading}</Heading>
+        <DocumentsList documents={pressKitList} />
+      </PageSection>
+
+      <PageSection contained={false}>
+        <Heading>{videosHeading}</Heading>
+        <VideoList videos={videosList} />
+      </PageSection>
+
+      <PageSection contained={false}>
+        <Heading>{pressReleaseHeading}</Heading>
+        <DocumentsList documents={pressReleaseList} expandList />
+      </PageSection>
+    </CenteredGrid>
+
+    <ExtendedDivider color="orange" />
+    <PageSection>
+      <TeamMemberContainer>
+        <TextWithTeamMember
+          header={contactTextHeading}
+          text={contactText}
+          teamMemberTitle={teamMember.name}
+          teamMemberSubtitle={teamMember.responsibilityArea}
+          teamMember={teamMember}
+        />
+      </TeamMemberContainer>
+    </PageSection>
+
+    <Banner
+      headline={bannerTitle}
+      buttonText={bannerButtonText}
+      buttonLink={bannerButtonUrl}
+    />
+  </>
+)
+
+Documents.propTypes = {
+  metaTitle: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string,
+  introHeading: PropTypes.string.isRequired,
+  introMarkdown: PropTypes.string.isRequired,
+  bannerTitle: PropTypes.string.isRequired,
+  bannerButtonText: PropTypes.string.isRequired,
+  bannerButtonUrl: PropTypes.string.isRequired,
+  section1heading: PropTypes.string.isRequired,
+  documentsList1: DocumentsList.propTypes.documents.isRequired,
+  section2heading: PropTypes.string.isRequired,
+  documentsList2: DocumentsList.propTypes.documents.isRequired,
+  section3heading: PropTypes.string.isRequired,
+  documentsList3: DocumentsList.propTypes.documents.isRequired,
+  contactTextHeading: PropTypes.string.isRequired,
+  contactText: PropTypes.string.isRequired,
+  teamMember: PropTypes.shape(teamMemberProps).isRequired,
+  pressKitHeading: PropTypes.string.isRequired,
+  pressKitList: DocumentsList.propTypes.documents.isRequired,
+  pressReleaseHeading: PropTypes.string.isRequired,
+  pressReleaseList: DocumentsList.propTypes.documents.isRequired,
+  videosHeading: PropTypes.string.isRequired,
+  videosList: VideoList.propTypes.videos.isRequired,
+}
+
+Documents.defaultProps = {
+  metaDescription: '',
+}
+
+export async function getStaticProps({ params: { locale } }) {
+  return {
+    props: {
+      ...(await getLayoutProps(locale)),
+      ...(await fetchDocumentPage(locale)),
+    },
+  }
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      {
+        params: { locale: 'de' },
+      },
+      {
+        params: { locale: 'en' },
+      },
+    ],
+    fallback: false,
+  }
+}
+
+export default Documents
