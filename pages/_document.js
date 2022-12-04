@@ -1,11 +1,27 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import Script from 'next/script'
+import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    return {
-      ...(await Document.getInitialProps(ctx)),
-      lang: ctx.pathname.startsWith('/en') ? 'en' : 'de',
+    const sheet = new ServerStyleSheet()
+    const originalRenderPage = ctx.renderPage
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        })
+
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: [initialProps.styles, sheet.getStyleElement()],
+        lang: ctx.pathname.startsWith('/en') ? 'en' : 'de',
+      }
+    } finally {
+      sheet.seal()
     }
   }
 
