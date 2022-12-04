@@ -65,7 +65,7 @@
     "react-share": "^4.4.0",
     "reactstrap": "^8.8.0",
     "sitemap": "^7.1.1",
-    "styled-components": "^4.0.0",
+    "styled-components": "^5.3.6",
     "validator": "^13.7.0"
   },
   "devDependencies": {
