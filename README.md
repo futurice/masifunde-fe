@@ -7,7 +7,7 @@ Frontend for the Masifunde website. https://masifunde.de
 - Content is uploaded via Contentful (https://app.contentful.com/spaces/7wl9zvp70267/home)
 - Website can be previewed and is build via Netlify (https://app.netlify.com/sites/masifunde/overview)
   - Netlify also shows if errors have occured during the deployment
-  - Limited number of build-minutes per month   
+  - Limited number of build-minutes per month
 - Codebase is here (https://github.com/futurice/masifunde-fe/)
 
 * for access to above ressources, please contact felix.rimbakowsky@masifunde.de
@@ -19,8 +19,7 @@ npm install
 npm run dev
 ```
 
-This will run nodemon with `server.js` which will run next.js development environment on port
-`3000`.
+This will run the Next.js development server on port `3000`.
 
 ## Developing
 
