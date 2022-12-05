@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 
-import { fetchImpressumPage } from '../../content/impressum'
+import { fetchImpressumPage } from '../../content/impressum-content'
 import Head from '../../components/Head'
 import { getLayoutProps } from '../../components/Layout'
-import Markdown from '../../components/Markdown'
-import PageSection from '../../components/PageSection'
+import Markdown from '../../components/shared/Markdown'
+import PageSection from '../../components/shared/PageSection'
 
 const Impressum = ({
   metaTitle,

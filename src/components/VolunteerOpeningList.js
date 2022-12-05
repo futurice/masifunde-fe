@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { smallFontSize } from '../styling/typography'
-import Markdown from './Markdown'
+import Markdown from './shared/Markdown'
 
 const VolunteerOpeningsContainer = styled.div`
   font-size: ${smallFontSize};

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /**
  * Defines path redirects for the Next.js development server.
  * See: https://nextjs.org/docs/content-reference/next.config.js/redirects

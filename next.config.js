@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { getRedirects } = require('./src/routes/redirects')
 
 module.exports = {

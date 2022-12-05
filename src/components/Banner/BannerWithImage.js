@@ -10,7 +10,7 @@ import {
 import Link from '../Link'
 import Button from '../Button'
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
-import Markdown from '../../components/Markdown'
+import Markdown from '../shared/Markdown'
 import Headline from './Headline'
 import { background } from './styles'
 import { propTypes, defaultProps } from './propTypes'

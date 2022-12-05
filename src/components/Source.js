@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import T from 'i18n-react'
 
 import { smBreakpoint } from '../styling/breakpoints'
-import Markdown from './Markdown'
+import Markdown from './shared/Markdown'
 
 const SourceTooltip = styled(Tooltip)`
   &.tooltip.show {

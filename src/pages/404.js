@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import { getLayoutProps } from '../components/Layout'
 import Head from '../components/Head'
 import Banner from '../components/Banner'
-import PageSection from '../components/PageSection'
-import Markdown from '../components/Markdown'
-import { fetchErrorPage404 } from '../content/404'
+import PageSection from '../components/shared/PageSection'
+import Markdown from '../components/shared/Markdown'
+import { fetchErrorPage404 } from '../content/404-content'
 
 const StyledMarkdown = styled(Markdown)`
   text-align: center;

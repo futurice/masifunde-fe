@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { smBreakpoint } from '../../styling/breakpoints'
 import { mediumSpacing, extraSmallSpacing } from '../../styling/sizes'
-import Markdown from '../Markdown'
+import Markdown from '../shared/Markdown'
 import Supporter from './Supporter'
 
 const List = styled.div`

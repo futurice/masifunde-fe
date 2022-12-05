@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 
 import { getLayoutProps } from '../../components/Layout'
 import Head from '../../components/Head'
-import { fetchTransparenzPage } from '../../content/transparency'
-import Markdown from '../../components/Markdown'
-import PageSection from '../../components/PageSection'
+import { fetchTransparenzPage } from '../../content/tranparenz-content'
+import Markdown from '../../components/shared/Markdown'
+import PageSection from '../../components/shared/PageSection'
 
 const Transparency = ({ metaTitle, metaDescription, heading, markdown }) => (
   <div>

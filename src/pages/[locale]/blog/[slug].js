@@ -6,13 +6,16 @@ import { FaFacebook, FaTwitter } from 'react-icons/fa'
 import T from 'i18n-react'
 
 import Head from '../../../components/Head'
-import { fetchAllBlogPostSlugs, fetchBlogPostPage } from '../../../content/blog'
-import PageSection from '../../../components/PageSection'
+import {
+  fetchAllBlogPostSlugs,
+  fetchBlogPostPage,
+} from '../../../content/blog-content'
+import PageSection from '../../../components/shared/PageSection'
 import TeamMember from '../../../components/TeamMember'
 import teamMemberShape from '../../../propTypes/teamMember'
 import imageShape from '../../../propTypes/image'
 import Hero from '../../../components/Hero'
-import Markdown from '../../../components/Markdown'
+import Markdown from '../../../components/shared/Markdown'
 import {
   smBreakpoint,
   mdBreakpoint,

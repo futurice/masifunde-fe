@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import { bodyText } from '../../styling/typography'
 import { extraExtraSmallSpacing } from '../../styling/sizes'
-import EmbeddedVideo from '../EmbeddedVideo'
+import EmbeddedVideo from '../shared/EmbeddedVideo'
 import {
   getVimeoThumbnail,
   getYoutubeThumbnail,

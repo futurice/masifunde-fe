@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { Readable } = require('stream')
 const { SitemapStream, streamToPromise } = require('sitemap')
 

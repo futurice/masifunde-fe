@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { fetchWhoWeArePage } from '../../../content/whoWeAre'
+import { fetchWhoWeArePage } from '../../../content/wer-wir-sind-content'
 import { getLayoutProps } from '../../../components/Layout'
 import Head from '../../../components/Head'
 import Button from '../../../components/Button'
@@ -13,7 +13,7 @@ import PartnersList, {
 } from '../../../components/PartnersList'
 import imagePropTypes from '../../../propTypes/image'
 import CenteredText from '../../../components/CenteredText'
-import PageSection from '../../../components/PageSection'
+import PageSection from '../../../components/shared/PageSection'
 import Award from '../../../components/Award'
 import {
   largeSpacing,

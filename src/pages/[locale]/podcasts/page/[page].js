@@ -5,11 +5,11 @@ import { Container } from 'reactstrap'
 
 import { getLayoutProps } from '../../../../components/Layout'
 import Head from '../../../../components/Head'
-import PageSection from '../../../../components/PageSection'
+import PageSection from '../../../../components/shared/PageSection'
 import {
   fetchPodcastPage,
   fetchPodcastPageCount,
-} from '../../../../content/podcast'
+} from '../../../../content/podcast-content'
 import { lgBreakpoint, smBreakpoint } from '../../../../styling/breakpoints'
 import Divider from '../../../../components/Divider'
 import PodcastListNavigationButtons from '../../../../components/Podcast/PodcastListNavigationButtons'
