@@ -110,7 +110,7 @@ export default Layout
  * spread the result into the page's props object:
  *
  * ```js
- * export async function getServerSideProps({ query: { locale } }) {
+ * export async function getStaticProps({ params: { locale } }) {
  *   return {
  *     props: {
  *       ...(await getLayoutProps(locale)),
@@ -119,8 +119,7 @@ export default Layout
  * }
  * ```
  *
- * These will then be forwarded
- * to the Layout (see `pages/_app.js`).
+ * These will then be forwarded to the Layout (see `pages/_app.js`).
  *
  * @param {string} locale - The page's locale.
  * @returns {object} The props needed by `Layout`.
