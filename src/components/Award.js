@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import imageShape from '../propTypes/image'
 import { smBreakpoint } from '../styling/breakpoints'
 import { mediumSpacing, smallSpacing } from '../styling/sizes'
-import Markdown from './Markdown'
+import Markdown from './shared/Markdown'
 
 const ImageContainer = styled.div`
   display: flex;

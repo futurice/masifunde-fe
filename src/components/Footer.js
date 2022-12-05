@@ -7,7 +7,7 @@ import * as pages from '../routes/pages'
 import { largeSpacing, extraSmallSpacing, smallSpacing } from '../styling/sizes'
 import { footerText, rem } from '../styling/typography'
 import Link from './Link'
-import PageSection from './PageSection'
+import PageSection from './shared/PageSection'
 import SocialLink from './SocialLink'
 
 const Text = styled.div`

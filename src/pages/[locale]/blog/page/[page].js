@@ -5,11 +5,11 @@ import { Container } from 'reactstrap'
 
 import Head from '../../../../components/Head'
 import { getLayoutProps } from '../../../../components/Layout'
-import PageSection from '../../../../components/PageSection'
+import PageSection from '../../../../components/shared/PageSection'
 import {
   fetchBlogLandingPage,
   fetchBlogPostPageCount,
-} from '../../../../content/blog'
+} from '../../../../content/blog-content'
 import { pageTitleWidth, rem } from '../../../../styling/typography'
 import { lgBreakpoint } from '../../../../styling/breakpoints'
 import Divider from '../../../../components/Divider'

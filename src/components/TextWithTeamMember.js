@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 import teamMemberShape from '../propTypes/teamMember'
-import Markdown from './Markdown'
+import Markdown from './shared/Markdown'
 import TeamMember from './TeamMember'
 
 const TextWithTeamMember = ({

@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
 
-import { fetchTeamDePage } from '../../../content/whoWeAre'
+import { fetchTeamDePage } from '../../../content/wer-wir-sind-content'
 import { getLayoutProps } from '../../../components/Layout'
 import Banner from '../../../components/Banner'
 import TeamMemberList from '../../../components/TeamMemberList'
 import Head from '../../../components/Head'
 import RegionalGroups from '../../../components/RegionalGroups'
 import imagePropTypes from '../../../propTypes/image'
-import PageSection from '../../../components/PageSection'
+import PageSection from '../../../components/shared/PageSection'
 import CenteredText from '../../../components/CenteredText'
 
 const TeamDe = ({

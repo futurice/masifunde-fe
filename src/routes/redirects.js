@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /**
  * Defines path redirects for the Next.js development server.
  * See: https://nextjs.org/docs/content-reference/next.config.js/redirects
@@ -39,8 +40,8 @@ function redirectsToGermanLocalePaths() {
     return {
       // Add trailing slashes to the source and destination paths
       // to match the `trailingSlash` flag in `next.config.js`.
-      source: withoutLocale + '/',
-      destination: withGermanLocale + '/',
+      source: addTrailingSlash(withoutLocale),
+      destination: addTrailingSlash(withGermanLocale),
       permanent: false,
     }
   })
@@ -78,4 +79,8 @@ function toPathPatternSyntax(path) {
   // Replace '[name]' (dynamic route parameter syntax)
   // with ':name' (path match syntax).
   return path.replace(/\[(\w+)\]/, ':$1')
+}
+
+function addTrailingSlash(path) {
+  return path.endsWith('/') ? path : `${path}/`
 }

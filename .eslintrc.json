@@ -1,6 +1,9 @@
 {
   "root": true,
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 2022,
     "sourceType": "module",
@@ -21,6 +24,7 @@
   },
   "rules": {
     "@next/next/no-img-element": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "import/order": "error",
     "import/prefer-default-export": "off",
     "jsx-a11y/anchor-is-valid": "off",

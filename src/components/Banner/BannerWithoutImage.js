@@ -2,7 +2,7 @@ import { Container } from 'reactstrap'
 import styled from 'styled-components'
 
 import Button from '../Button'
-import PageSection from '../PageSection'
+import PageSection from '../shared/PageSection'
 import { rem } from '../../styling/typography'
 import Link from '../Link'
 import Headline from './Headline'

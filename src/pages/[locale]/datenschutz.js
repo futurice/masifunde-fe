@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 
 import { getLayoutProps } from '../../components/Layout'
 import Head from '../../components/Head'
-import { fetchDatenschutzPage } from '../../content/datenschutz'
-import Markdown from '../../components/Markdown'
-import PageSection from '../../components/PageSection'
+import { fetchDatenschutzPage } from '../../content/datenschutz-content'
+import Markdown from '../../components/shared/Markdown'
+import PageSection from '../../components/shared/PageSection'
 
 const Privacy = ({
   metaTitle,

@@ -41,5 +41,3 @@ json.assets = json.assets.map((a) => {
   const newFields = changeFields(a.fields)
   return { ...a, fields: newFields }
 })
-
-console.log(JSON.stringify(json, null, 2))
