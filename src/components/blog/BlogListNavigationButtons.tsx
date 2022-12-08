@@ -1,11 +1,24 @@
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
-
 import Button from '../Button'
-import Link from '../../components/Link'
+import Link from '../Link'
 import * as pages from '../../routes/pages'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { largeSpacing } from '../../styling/sizes'
+
+// Props
+// =====
+
+export type Props = {
+  previousPageButtonText: string
+  nextPageButtonText: string
+  page: number
+  totalNumberOfPages: number
+  isLastPage: boolean
+}
+
+// Helpers
+// =======
 
 const ButtonsContainer = styled.nav`
   margin-top: ${largeSpacing};
@@ -37,7 +50,21 @@ const ButtonsContainer = styled.nav`
   }
 `
 
-const BlogListNavigationLink = ({ buttonText, currentPage, page, rounded }) => (
+type BlogListNavigationLinkProps = {
+  page: number
+  buttonText?: string
+  currentPage?: number
+  rel?: string
+  rounded?: boolean
+}
+
+const BlogListNavigationLink: FC<BlogListNavigationLinkProps> = ({
+  buttonText,
+  currentPage,
+  page,
+  rel,
+  rounded = false,
+}) => (
   <Link
     href={{
       pathname: pages.blog,
@@ -45,24 +72,15 @@ const BlogListNavigationLink = ({ buttonText, currentPage, page, rounded }) => (
     }}
     passHref
   >
-    <Button isActive={currentPage && currentPage === page} rounded={rounded}>
+    <Button
+      rel={rel}
+      isActive={currentPage && currentPage === page}
+      rounded={rounded}
+    >
       {buttonText || page}
     </Button>
   </Link>
 )
-
-BlogListNavigationLink.propTypes = {
-  page: PropTypes.number.isRequired,
-  currentPage: PropTypes.number,
-  buttonText: PropTypes.string,
-  rounded: PropTypes.bool,
-}
-
-BlogListNavigationLink.defaultProps = {
-  buttonText: undefined,
-  currentPage: undefined,
-  rounded: false,
-}
 
 const PageButtonsContainer = styled.div`
   display: flex;
@@ -79,16 +97,17 @@ const PageButtonsContainer = styled.div`
   }
 `
 
-const BlogListNavigationButtons = ({
+// Component
+// =========
+
+const BlogListNavigationButtons: FC<Props> = ({
   previousPageButtonText,
   nextPageButtonText,
   page,
-  isLastPage,
   totalNumberOfPages,
 }) => {
   const isFirstPage = page === 1
-  const isNotFirstPage = !isFirstPage
-  const isNotLastPage = !isLastPage
+  const isLastPage = page === totalNumberOfPages
   const moreThanOnePage = totalNumberOfPages !== 1
   const threeOrMorePages = totalNumberOfPages >= 3
 
@@ -111,7 +130,7 @@ const BlogListNavigationButtons = ({
   return (
     <ButtonsContainer>
       <div>
-        {isNotFirstPage && (
+        {!isFirstPage && (
           <BlogListNavigationLink
             rel="prev"
             page={page - 1}
@@ -119,6 +138,7 @@ const BlogListNavigationButtons = ({
           />
         )}
       </div>
+
       <PageButtonsContainer>
         {moreThanOnePage && (
           <BlogListNavigationLink
@@ -140,8 +160,9 @@ const BlogListNavigationButtons = ({
           />
         )}
       </PageButtonsContainer>
+
       <div>
-        {isNotLastPage && (
+        {!isLastPage && (
           <BlogListNavigationLink
             rel="next"
             page={page + 1}
@@ -151,14 +172,6 @@ const BlogListNavigationButtons = ({
       </div>
     </ButtonsContainer>
   )
-}
-
-BlogListNavigationButtons.propTypes = {
-  previousPageButtonText: PropTypes.string.isRequired,
-  nextPageButtonText: PropTypes.string.isRequired,
-  page: PropTypes.number.isRequired,
-  totalNumberOfPages: PropTypes.number.isRequired,
-  isLastPage: PropTypes.bool.isRequired,
 }
 
 export default BlogListNavigationButtons

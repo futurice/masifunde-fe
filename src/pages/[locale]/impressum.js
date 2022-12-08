@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 import { fetchImpressumPage } from '../../content/impressum-content'
-import Head from '../../components/Head'
+import Head from '../../components/shared/Head'
 import { getLayoutProps } from '../../components/Layout'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 import { getLayoutProps } from '../../../components/Layout'
 import Banner from '../../../components/Banner'
-import Head from '../../../components/Head'
+import Head from '../../../components/shared/Head'
 import { fetchBecomeAPartnerPage } from '../../../content/wie-sie-helfen-content'
 import { propTypes as partnerPropTypes } from '../../../components/PartnersList/Partner'
 import imagePropTypes from '../../../propTypes/image'

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import { rem } from '../../styling/typography'
-import Head from '../../components/Head'
+import Head from '../../components/shared/Head'
 import PageSection from '../../components/shared/PageSection'
 import CenteredText from '../../components/CenteredText'
 import TeamMember from '../../components/TeamMember'

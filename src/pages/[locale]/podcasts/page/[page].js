@@ -4,14 +4,14 @@ import styled from 'styled-components'
 import { Container } from 'reactstrap'
 
 import { getLayoutProps } from '../../../../components/Layout'
-import Head from '../../../../components/Head'
+import Head from '../../../../components/shared/Head'
 import PageSection from '../../../../components/shared/PageSection'
 import {
   fetchPodcastPage,
   fetchPodcastPageCount,
 } from '../../../../content/podcast-content'
 import { lgBreakpoint, smBreakpoint } from '../../../../styling/breakpoints'
-import Divider from '../../../../components/Divider'
+import Divider from '../../../../components/shared/Divider'
 import PodcastListNavigationButtons from '../../../../components/Podcast/PodcastListNavigationButtons'
 import Subscribe from '../../../../components/Podcast/Subscribe'
 import Share from '../../../../components/Podcast/Share'

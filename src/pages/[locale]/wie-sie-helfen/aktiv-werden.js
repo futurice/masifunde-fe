@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 import { fetchBecomeAVolunteerPage } from '../../../content/wie-sie-helfen-content'
 import { getLayoutProps } from '../../../components/Layout'
-import Head from '../../../components/Head'
+import Head from '../../../components/shared/Head'
 import Hero from '../../../components/Hero'
 import Banner from '../../../components/Banner'
 import CenteredText from '../../../components/CenteredText'
@@ -11,7 +11,7 @@ import TextWithTeamMember from '../../../components/TextWithTeamMember'
 import TestimonialList from '../../../components/TestimonialList'
 import VolunteerOpeningsList from '../../../components/VolunteerOpeningList'
 import teamMemberProps from '../../../propTypes/teamMember'
-import Divider from '../../../components/Divider'
+import Divider from '../../../components/shared/Divider'
 
 const BecomeVolunteer = ({
   metaTitle,

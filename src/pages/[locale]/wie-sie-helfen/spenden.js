@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Banner from '../../../components/Banner'
-import Head from '../../../components/Head'
+import Head from '../../../components/shared/Head'
 import { fetchDonatePage } from '../../../content/wie-sie-helfen-content'
 import { getLayoutProps } from '../../../components/Layout'
 import DonationForm from '../../../components/DonationForm'

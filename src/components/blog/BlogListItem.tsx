@@ -1,13 +1,26 @@
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import imagePropShape from '../../propTypes/image'
+import { FC, ReactNode } from 'react'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import { rem } from '../../styling/typography'
 import * as pages from '../../routes/pages'
-import Link from '../../components/Link'
+import Link from '../Link'
 import { wordBreak } from '../../styling/utils'
 import formatDate from '../../utils/date'
+
+// Props
+// =====
+
+export type Props = {
+  slug: string
+  title: string
+  date: string
+  teaserImageUrl: string
+  teaserText: string
+  author?: string
+}
+
+// Helpers
+// =======
 
 const TeaserImageContainer = styled.div`
   display: flex;
@@ -61,63 +74,54 @@ const TeaserImage = styled.img`
   max-width: 100%;
 `
 
-const BlogPostLink = ({ children, slug }) => (
+type BlogPostLinkProps = {
+  slug: string
+  children: ReactNode
+}
+
+const BlogPostLink: FC<BlogPostLinkProps> = ({ children, slug }) => (
   <Link href={{ pathname: pages.blogPost, query: { slug } }} passHref>
     <Anchor>{children}</Anchor>
   </Link>
 )
 
-BlogPostLink.propTypes = {
-  children: PropTypes.node.isRequired,
-  slug: PropTypes.string.isRequired,
-}
+// Component
+// =========
 
-const BlogListItem = ({
-  author,
+const BlogListItem: FC<Props> = ({
+  slug,
   title,
   date,
+  teaserImageUrl,
   teaserText,
-  teaserImage,
-  slug,
+  author,
 }) => (
   <li className="row">
     <TeaserImageContainer className="col-4">
       <BlogPostLink slug={slug}>
-        <TeaserImage src={teaserImage.url} alt="" />
+        <TeaserImage src={teaserImageUrl} alt="" />
       </BlogPostLink>
     </TeaserImageContainer>
+
     <div className="col-8">
       <div className="row">
         <DateAuthorText className="col">
           {formatDate(date)}
-          {author ? ' - ' : null}
-          {author}
+          {author && ` - ${author}`}
         </DateAuthorText>
       </div>
+
       <span className="row">
         <BlogPostLink slug={slug}>
           <BlogPostTitle className="col">{title}</BlogPostTitle>
         </BlogPostLink>
       </span>
+
       <span className="row">
         <TeaserText className="col">{teaserText}</TeaserText>
       </span>
     </div>
   </li>
 )
-
-BlogListItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  teaserImage: PropTypes.shape(imagePropShape).isRequired,
-  date: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  author: PropTypes.string,
-  teaserText: PropTypes.string,
-}
-
-BlogListItem.defaultProps = {
-  author: '',
-  teaserText: '',
-}
 
 export default BlogListItem

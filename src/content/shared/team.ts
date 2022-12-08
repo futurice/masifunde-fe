@@ -17,15 +17,15 @@ const regionalGroupWithoutContactPersonSchema = object({
  */
 export const teamMemberSchema = object({
   name: string().required(),
-  responsibilityArea: string().required(),
-  profileImage: assetSchema,
+  responsibilityArea: string().optional().default(undefined),
+  profileImage: assetSchema.optional().default(undefined),
   email: string(),
   // `region` is a reference to a "Regional Group" entry, which in
   // turn as a `contactPerson` field which is a reference to a
   // "Team Member". To avoid the recursion (which confuses TypeScript),
   // inline the definition of "Regional Group" but leave off
   // `contactPerson`.
-  region: regionalGroupWithoutContactPersonSchema.default(undefined),
+  region: regionalGroupWithoutContactPersonSchema.optional().default(undefined),
 })
 
 /**
@@ -43,7 +43,7 @@ export const contactPersonSchema = teamMemberSchema.concat(
 export const regionalGroupSchema =
   regionalGroupWithoutContactPersonSchema.concat(
     object({
-      contactPerson: teamMemberSchema.default(undefined),
+      contactPerson: teamMemberSchema.optional().default(undefined),
     })
   )
 

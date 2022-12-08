@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import Head from '../../../components/Head'
+import Head from '../../../components/shared/Head'
 import Banner from '../../../components/Banner'
 import { fetchTeamSaPage } from '../../../content/wer-wir-sind-content'
 import { getLayoutProps } from '../../../components/Layout'

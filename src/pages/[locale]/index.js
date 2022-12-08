@@ -2,16 +2,16 @@ import { Container } from 'reactstrap'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { fetchNewestBlogPosts } from '../../content/blog-content'
+import { getNewestBlogPosts } from '../../content/blog-content'
 import { fetchHomePage } from '../../content/index-content'
-import Head from '../../components/Head'
+import Head from '../../components/shared/Head'
 import Hero from '../../components/Hero'
 import Banner from '../../components/Banner'
 import Carousel from '../../components/Carousel'
 import { getLayoutProps } from '../../components/Layout'
 import portraitPropTypes from '../../propTypes/portrait'
 import Stat from '../../components/Stat'
-import BlogPostCard from '../../components/Blog/BlogPostCard'
+import BlogPostCard from '../../components/blog/BlogPostCard'
 import EmbeddedVideo from '../../components/shared/EmbeddedVideo'
 import PageSection from '../../components/shared/PageSection'
 import StatList from '../../components/StatList'
@@ -194,7 +194,7 @@ export async function getStaticProps({ params: { locale } }) {
     props: {
       ...(await getLayoutProps(locale)),
       ...(await fetchHomePage(locale)),
-      featuredBlogPosts: await fetchNewestBlogPosts(locale, 3),
+      featuredBlogPosts: await getNewestBlogPosts(3, locale),
     },
   }
 }
