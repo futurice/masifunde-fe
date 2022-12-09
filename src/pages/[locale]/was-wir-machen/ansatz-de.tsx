@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
 import { getLayoutProps, LayoutPageProps } from '../../../components/Layout'
-import Head from '../../../components/Head'
+import Head from '../../../components/shared/Head'
 import {
   ApproachDEContent,
   getApproachDEContent,
@@ -99,9 +99,9 @@ const ApproachDE: FC<Props> = ({
       <ContactDetails
         title={section1Title}
         markdownText={section1Markdown}
-        contactPersonImageUrl={teamMember.profileImage.file.url}
+        contactPersonImageUrl={teamMember.profileImage!.file.url}
         contactPersonTitle={teamMember.name}
-        contactPersonSubtitle={teamMember.responsibilityArea}
+        contactPersonSubtitle={teamMember.responsibilityArea ?? ''}
         contactPersonEmail={teamMember.email}
       />
     </PageSection>

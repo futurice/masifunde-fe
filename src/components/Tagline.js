@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { subsectionTitleText } from '../styling/typography'
-import Divider from './Divider'
+import Divider from './shared/Divider'
 import PageSection from './shared/PageSection'
 
 const taglineTextMargin = '2.3rem'

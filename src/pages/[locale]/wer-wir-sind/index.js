@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { fetchWhoWeArePage } from '../../../content/wer-wir-sind-content'
 import { getLayoutProps } from '../../../components/Layout'
-import Head from '../../../components/Head'
+import Head from '../../../components/shared/Head'
 import Button from '../../../components/Button'
 import * as pages from '../../../routes/pages'
 import Hero from '../../../components/Hero'

@@ -2,12 +2,12 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { fetchContactPage } from '../../content/kontakt-content'
-import Head from '../../components/Head'
+import Head from '../../components/shared/Head'
 import Markdown from '../../components/shared/Markdown'
 import { getLayoutProps } from '../../components/Layout'
 import PageSection from '../../components/shared/PageSection'
 import TeamMemberList from '../../components/TeamMemberList'
-import Divider from '../../components/Divider'
+import Divider from '../../components/shared/Divider'
 import { smallSpacing } from '../../styling/sizes'
 
 const ContactDetailsContainer = styled.div`

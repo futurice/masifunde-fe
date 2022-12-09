@@ -91,15 +91,19 @@ export async function getSingletonEntryContent<T>(
 ): Promise<T> {
   const { schema, ...query } = options
   const client = contentfulClient.withoutUnresolvableLinks
-  const { total, items } = await client.getEntries({ ...query, limit: 1 })
 
-  if (items.length === 0) {
-    throw new Error(`No entry for query: "${query}"`)
+  const {
+    total,
+    items: [item],
+  } = await client.getEntries({ ...query, limit: 1 })
+
+  if (!item) {
+    throw new Error(`No entry for query: "${JSON.stringify(query)}"`)
   } else if (total > 1) {
-    throw new Error(`More than one entry for query: ${query}`)
+    throw new Error(`More than one entry for query: ${JSON.stringify(query)}`)
   }
 
-  return extractContent(items[0], schema)
+  return extractContent(item, schema)
 }
 
 /**

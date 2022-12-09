@@ -1,13 +1,22 @@
 import T from 'i18n-react'
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
-
-import blogPostShape from '../../propTypes/blogPost'
+import { BlogPost } from '../../content/blog-content'
 import * as pages from '../../routes/pages'
 import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
 import { footerText } from '../../styling/typography'
 import formatDate from '../../utils/date'
 import Link from '../Link'
+
+// Props
+// =====
+
+export type Props = {
+  post: BlogPost
+}
+
+// Helpers
+// =======
 
 const Card = styled.a`
   background-color: ${({ theme }) => theme.orangeBackgroundMedium};
@@ -64,7 +73,10 @@ const ReadMore = styled.span`
   white-space: pre-line;
 `
 
-const BlogPostCard = ({ post }) => (
+// Component
+// =========
+
+const BlogPostCard: FC<Props> = ({ post }) => (
   <Link
     href={{
       pathname: pages.blogPost,
@@ -74,7 +86,7 @@ const BlogPostCard = ({ post }) => (
   >
     <Card>
       <ImageContainer>
-        {post.teaserImage && <Image alt="" src={post.teaserImage.url} />}
+        {post.teaserImage && <Image alt="" src={post.teaserImage.file.url} />}
       </ImageContainer>
       <CardContent>
         <Metadata>{formatDate(post.date)}</Metadata>
@@ -90,9 +102,5 @@ const BlogPostCard = ({ post }) => (
     </Card>
   </Link>
 )
-
-BlogPostCard.propTypes = {
-  post: PropTypes.shape(blogPostShape).isRequired,
-}
 
 export default BlogPostCard

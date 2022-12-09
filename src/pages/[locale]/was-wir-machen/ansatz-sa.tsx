@@ -6,7 +6,7 @@ import {
 } from '../../../content/was-wir-machen-content'
 import { getLayoutProps, LayoutPageProps } from '../../../components/Layout'
 import Hero from '../../../components/Hero'
-import Head from '../../../components/Head'
+import Head from '../../../components/shared/Head'
 import Banner from '../../../components/Banner'
 import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
 import PageSection from '../../../components/shared/PageSection'

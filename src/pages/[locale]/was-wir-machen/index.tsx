@@ -6,7 +6,7 @@ import {
   getWhatWeDoContent,
   WhatWeDoContent,
 } from '../../../content/was-wir-machen-content'
-import Head from '../../../components/Head'
+import Head from '../../../components/shared/Head'
 import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
 import Stat from '../../../components/Stat'
 import * as pages from '../../../routes/pages'

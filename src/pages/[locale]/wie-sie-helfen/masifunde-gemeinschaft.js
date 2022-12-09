@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { getLayoutProps } from '../../../components/Layout'
 import Banner from '../../../components/Banner'
-import Head from '../../../components/Head'
+import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import { fetchBecomeASponsorPage } from '../../../content/wie-sie-helfen-content'
 import imagePropTypes from '../../../propTypes/image'

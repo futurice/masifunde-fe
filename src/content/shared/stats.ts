@@ -9,7 +9,7 @@ export const statSchema = object({
   number: string().default(''),
   textAbove: string().default(''),
   sourceMarkdown: string().default(''),
-  icon: assetSchema.default(undefined),
+  icon: assetSchema.optional().default(undefined),
 })
 
 export type Stat = InferType<typeof statSchema>

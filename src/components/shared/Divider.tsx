@@ -1,10 +1,14 @@
-import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { smBreakpoint } from '../styling/breakpoints'
+import { smBreakpoint } from '../../styling/breakpoints'
 
-const Divider = styled.hr.attrs({ role: 'presentation' })`
+export type Props = {
+  color?: 'grey' | 'orange'
+  size?: 'small' | 'large'
+}
+
+const Divider = styled.hr.attrs({ role: 'presentation' })<Props>`
   ${({ size }) =>
-    size === 'small'
+    (size ?? 'small') === 'small'
       ? css`
           margin: 0 12%;
           @media (min-width: ${smBreakpoint}) {
@@ -16,7 +20,7 @@ const Divider = styled.hr.attrs({ role: 'presentation' })`
         `}
 
   ${({ color, theme }) =>
-    color === 'grey' || color === 'gray'
+    (color ?? 'grey') === 'grey'
       ? css`
           border-color: ${theme.pineCone};
           border-width: 2px;
@@ -26,15 +30,5 @@ const Divider = styled.hr.attrs({ role: 'presentation' })`
           border-color: ${theme.orange};
         `}
 `
-
-Divider.propTypes = {
-  color: PropTypes.oneOf(['grey', 'gray', 'orange']),
-  size: PropTypes.oneOf(['small', 'large']),
-}
-
-Divider.defaultProps = {
-  color: 'grey',
-  size: 'small',
-}
 
 export default Divider

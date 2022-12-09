@@ -5,7 +5,7 @@ import {
   ImpactContent,
 } from '../../../content/was-wir-machen-content'
 import { getLayoutProps, LayoutPageProps } from '../../../components/Layout'
-import Head from '../../../components/Head'
+import Head from '../../../components/shared/Head'
 import Hero from '../../../components/Hero'
 import Banner from '../../../components/Banner'
 import Stat from '../../../components/Stat'

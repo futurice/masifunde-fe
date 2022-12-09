@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 import { getLayoutProps } from '../../components/Layout'
-import Head from '../../components/Head'
+import Head from '../../components/shared/Head'
 import { fetchTransparenzPage } from '../../content/tranparenz-content'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'
