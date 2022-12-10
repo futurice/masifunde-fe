@@ -1,9 +1,19 @@
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
+import { FC } from 'react'
 import { rem } from '../../styling/typography'
 import { extraExtraSmallSpacing, extraSmallSpacing } from '../../styling/sizes'
 import { wordBreak } from '../../styling/utils'
+
+// Props
+// =====
+
+export type Props = {
+  title: string
+  fileUrl: string
+}
+
+// Helpers
+// =======
 
 const BoxContainer = styled.a`
   align-items: center;
@@ -41,16 +51,14 @@ const DownloadIcon = styled.div`
   width: 48px;
 `
 
-const Box = ({ title, fileUrl }) => (
+// Component
+// =========
+
+const DocumentsListItem: FC<Props> = ({ title, fileUrl }) => (
   <BoxContainer href={fileUrl} download>
     <DownloadIcon />
     <Headline>{title}</Headline>
   </BoxContainer>
 )
 
-Box.propTypes = {
-  title: PropTypes.string.isRequired,
-  fileUrl: PropTypes.string.isRequired,
-}
-
-export default Box
+export default DocumentsListItem

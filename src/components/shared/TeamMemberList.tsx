@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import { TeamMember } from '../../content/shared/team'
 import List, { ListItem } from './List'
 import PortraitPhoto from './PortraitPhoto'
