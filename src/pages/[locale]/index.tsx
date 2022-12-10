@@ -1,24 +1,37 @@
-import PropTypes from 'prop-types'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { FC } from 'react'
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
 import Banner from '../../components/Banner'
-import Carousel from '../../components/Carousel'
 import Hero from '../../components/Hero'
-import { getLayoutProps } from '../../components/Layout'
+import { LayoutPageProps, getLayoutProps } from '../../components/Layout'
 import Stat from '../../components/Stat'
 import StatList from '../../components/StatList'
 import BlogPostCard from '../../components/blog/BlogPostCard'
 import EmbeddedVideo from '../../components/shared/EmbeddedVideo'
 import Head from '../../components/shared/Head'
 import PageSection from '../../components/shared/PageSection'
-import { getNewestBlogPosts } from '../../content/blog-content'
-import { fetchHomePage } from '../../content/index-content'
-import announcementPropTypes from '../../propTypes/announcement'
-import campaignPageBannerPropTypes from '../../propTypes/campaignPageBanner'
-import portraitPropTypes from '../../propTypes/portrait'
+import StoryCarousel from '../../components/shared/StoryCarousel'
+import { BlogPost, getNewestBlogPosts } from '../../content/blog-content'
+import { HomeContent, getHomeContent } from '../../content/home-content'
 import * as pages from '../../routes/pages'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import { mediumSpacing, smallSpacing } from '../../styling/sizes'
+
+// Props & Path Params
+// ===================
+
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps &
+  HomeContent & {
+    featuredBlogPosts: BlogPost[]
+  }
+
+// Helpers
+// =======
 
 const BlogPostList = styled.ul`
   list-style: none;
@@ -46,7 +59,10 @@ const ExtendedBanner = styled(Banner)`
   margin-bottom: ${mediumSpacing};
 `
 
-const Home = ({
+// Component
+// =========
+
+const Home: FC<Props> = ({
   metaTitle,
   metaDescription,
   heroTitle,
@@ -81,7 +97,7 @@ const Home = ({
       <StatList>
         {stats.map((stat, index) => (
           <Stat
-            key={`${stat.icon.url} ${stat.number}`}
+            key={`${stat.number} ${stat.description}`}
             {...stat}
             superscriptText={index + 1}
             sourceId={`home-stat-${index}`}
@@ -96,15 +112,18 @@ const Home = ({
       buttonLink={banner1ButtonUrl}
     />
 
-    <PageSection contained={false}>
-      <Container>
-        <h2>{videoTitle}</h2>
-      </Container>
+    {videoUrl && (
+      <PageSection contained={false}>
+        {videoTitle && (
+          <Container>
+            <h2>{videoTitle}</h2>
+          </Container>
+        )}
+        <EmbeddedVideo videoUrl={videoUrl} />
+      </PageSection>
+    )}
 
-      <EmbeddedVideo videoUrl={videoUrl} />
-    </PageSection>
-
-    {campaign.isActive && (
+    {campaign?.isActive && (
       <PageSection>
         <h2>{bannersTitle}</h2>
 
@@ -112,7 +131,7 @@ const Home = ({
           subHeadline={campaign.bannerSmallTitle}
           headline={campaign.introHeading}
           description={campaign.introMarkdown}
-          image={campaign.imageList[0].url}
+          image={campaign.imageList[0]?.file.url}
           buttonLink={pages.campaign}
           buttonText={campaign.bannerButtonText}
         />
@@ -122,7 +141,7 @@ const Home = ({
             subHeadline={announcement.subHeading}
             headline={announcement.heading}
             description={announcement.description}
-            image={announcement.image.url}
+            image={announcement.image.file.url}
             buttonLink={announcement.buttonLink}
             buttonText={announcement.buttonText}
             showImageOnRight
@@ -145,13 +164,33 @@ const Home = ({
       </BlogPostList>
     </PageSection>
 
-    <PageSection contained={false}>
-      <Container>
-        <h2>{section1Title}</h2>
-      </Container>
+    {portrait && (
+      <PageSection contained={false}>
+        <Container>
+          <h2>{section1Title}</h2>
+        </Container>
 
-      <Carousel portrait={portrait} />
-    </PageSection>
+        <StoryCarousel
+          slides={[
+            {
+              imageUrl: portrait.page1Image.file.url,
+              heading: portrait.page1Heading,
+              text: portrait.page1Text,
+            },
+            {
+              imageUrl: portrait.page2Image.file.url,
+              heading: portrait.page2Heading,
+              text: portrait.page2Text,
+            },
+            {
+              imageUrl: portrait.page3Image.file.url,
+              heading: portrait.page3Heading,
+              text: portrait.page3Text,
+            },
+          ]}
+        />
+      </PageSection>
+    )}
 
     <Banner
       headline={banner2Title}
@@ -161,44 +200,18 @@ const Home = ({
   </div>
 )
 
-Home.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string,
-  heroTitle: PropTypes.string.isRequired,
-  stats: PropTypes.arrayOf(PropTypes.shape(Stat.propTypes)).isRequired,
-  banner1Title: PropTypes.string.isRequired,
-  banner1ButtonText: PropTypes.string.isRequired,
-  banner1ButtonUrl: PropTypes.string.isRequired,
-  banner2Title: PropTypes.string.isRequired,
-  banner2ButtonText: PropTypes.string.isRequired,
-  banner2ButtonUrl: PropTypes.string.isRequired,
-  section1Title: PropTypes.string.isRequired,
-  portrait: PropTypes.shape(portraitPropTypes).isRequired,
-  videoTitle: PropTypes.string.isRequired,
-  videoUrl: PropTypes.string.isRequired,
-  bannersTitle: PropTypes.string.isRequired,
-  campaign: PropTypes.shape(campaignPageBannerPropTypes).isRequired,
-  announcement: PropTypes.shape(announcementPropTypes),
-  featuredBlogPostsTitle: PropTypes.string.isRequired,
-  featuredBlogPosts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-}
-
-Home.defaultProps = {
-  metaDescription: undefined,
-  announcement: undefined,
-}
-
-export async function getStaticProps({ params: { locale } }) {
+export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
+  const { locale } = ctx.params!
   return {
     props: {
       ...(await getLayoutProps(locale)),
-      ...(await fetchHomePage(locale)),
+      ...(await getHomeContent(locale)),
       featuredBlogPosts: await getNewestBlogPosts(3, locale),
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     paths: [
       {
