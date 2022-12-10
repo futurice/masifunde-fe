@@ -1,14 +1,29 @@
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import { fetchContactPage } from '../../content/kontakt-content'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { FC } from 'react'
+import {
+  ContactContent,
+  getContactContent,
+} from '../../content/kontakt-content'
 import Head from '../../components/shared/Head'
 import Markdown from '../../components/shared/Markdown'
-import { getLayoutProps } from '../../components/Layout'
+import { getLayoutProps, LayoutPageProps } from '../../components/Layout'
 import PageSection from '../../components/shared/PageSection'
-import TeamMemberList from '../../components/TeamMemberList'
+import TeamMemberList from '../../components/shared/TeamMemberList'
 import Divider from '../../components/shared/Divider'
 import { smallSpacing } from '../../styling/sizes'
+
+// Props & Path Params
+// ===================
+
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps & ContactContent
+
+// Helpers
+// =======
 
 const ContactDetailsContainer = styled.div`
   text-align: center;
@@ -23,7 +38,10 @@ const TeamMemberListTitle = styled.h3`
   margin-bottom: ${smallSpacing};
 `
 
-const Contact = ({
+// Component
+// =========
+
+const Contact: FC<Props> = ({
   metaTitle,
   metaDescription,
   mainHeading,
@@ -47,9 +65,9 @@ const Contact = ({
       <TeamMemberListTitle>{contactsHeading}</TeamMemberListTitle>
       <TeamMemberList
         members={contacts}
-        title={(member) => member.responsibilityArea}
+        title={(member) => member.responsibilityArea!}
         subtitle={(member) => member.name}
-        imageUrl={(member) => member.image.url}
+        imageUrl={(member) => member.profileImage.file.url}
         email={(member) => member.email}
       />
     </PageSection>
@@ -58,9 +76,9 @@ const Contact = ({
       <TeamMemberListTitle>{regionalContactsHeading}</TeamMemberListTitle>
       <TeamMemberList
         members={regionalContacts}
-        title={(member) => member.region}
+        title={(member) => member.responsibilityArea}
         subtitle={(member) => member.name}
-        imageUrl={(member) => member.image.url}
+        imageUrl={(member) => member.profileImage.file.url}
         email={(member) => member.email}
       />
     </PageSection>
@@ -80,51 +98,17 @@ const Contact = ({
   </div>
 )
 
-const contactListPropType = PropTypes.arrayOf(
-  PropTypes.shape({
-    image: PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired,
-    region: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string,
-  }).isRequired
-)
-
-Contact.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string,
-  mainHeading: PropTypes.string.isRequired,
-  contactsHeading: PropTypes.string.isRequired,
-  regionalContactsHeading: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/no-typos
-  contacts: contactListPropType.isRequired,
-  // eslint-disable-next-line react/no-typos
-  regionalContacts: contactListPropType.isRequired,
-  contactDetailsHeading: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  telephone: PropTypes.string.isRequired,
-}
-
-Contact.defaultProps = {
-  metaDescription: undefined,
-}
-
-export async function getStaticProps(context) {
-  const {
-    params: { locale },
-  } = context
+export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
+  const { locale } = ctx.params!
   return {
     props: {
       ...(await getLayoutProps(locale)),
-      ...(await fetchContactPage(locale)),
+      ...(await getContactContent(locale)),
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     paths: [
       {

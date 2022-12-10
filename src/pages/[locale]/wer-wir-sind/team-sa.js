@@ -8,7 +8,7 @@ import { getLayoutProps } from '../../../components/Layout'
 import imagePropTypes from '../../../propTypes/image'
 import PageSection from '../../../components/shared/PageSection'
 import CenteredText from '../../../components/CenteredText'
-import TeamMemberList from '../../../components/TeamMemberList'
+import TeamMemberList from '../../../components/shared/TeamMemberList'
 import { smallSpacing } from '../../../styling/sizes'
 
 const Image = styled.img`
