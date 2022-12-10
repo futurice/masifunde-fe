@@ -7,7 +7,7 @@ import Hero from '../../../components/Hero'
 import Banner from '../../../components/Banner'
 import CenteredText from '../../../components/CenteredText'
 import PageSection from '../../../components/shared/PageSection'
-import TextWithTeamMember from '../../../components/TextWithTeamMember'
+import TextWithPortraitPhoto from '../../../components/shared/TextWithPortraitPhoto'
 import TestimonialList from '../../../components/TestimonialList'
 import VolunteerOpeningsList from '../../../components/VolunteerOpeningList'
 import teamMemberProps from '../../../propTypes/teamMember'
@@ -67,12 +67,13 @@ const BecomeVolunteer = ({
     </PageSection>
 
     <PageSection>
-      <TextWithTeamMember
+      <TextWithPortraitPhoto
         header={deVolunteerContactHeading}
         text={deVolunteerContactText}
-        teamMember={deVolunteerContact}
-        teamMemberTitle={deVolunteerContact.name}
-        teamMemberSubtitle={deVolunteerContact.responsibilityArea}
+        portraitPhotoTitle={deVolunteerContact.name}
+        portraitPhotoSubtitle={deVolunteerContact.responsibilityArea}
+        portraitPhotoImageUrl={deVolunteerContact.image.url}
+        portraitPhotoEmail={deVolunteerContact.email}
       />
     </PageSection>
 
@@ -86,12 +87,13 @@ const BecomeVolunteer = ({
     </PageSection>
 
     <PageSection>
-      <TextWithTeamMember
+      <TextWithPortraitPhoto
         header={saVolunteerOpening1ContactHeading}
         text={saVolunteerOpening1ContactText}
-        teamMember={saVolunteerOpening1Contact}
-        teamMemberTitle={saVolunteerOpening1Contact.name}
-        teamMemberSubtitle={saVolunteerOpening1Contact.responsibilityArea}
+        portraitPhotoTitle={saVolunteerOpening1Contact.name}
+        portraitPhotoSubtitle={saVolunteerOpening1Contact.responsibilityArea}
+        portraitPhotoImageUrl={saVolunteerOpening1Contact.image.url}
+        portraitPhotoEmail={saVolunteerOpening1Contact.email}
       />
     </PageSection>
 
@@ -101,12 +103,13 @@ const BecomeVolunteer = ({
     </PageSection>
 
     <PageSection>
-      <TextWithTeamMember
+      <TextWithPortraitPhoto
         header={saVolunteerOpening2ContactHeading}
         text={saVolunteerOpening2ContactText}
-        teamMember={saVolunteerOpening2Contact}
-        teamMemberTitle={saVolunteerOpening2Contact.name}
-        teamMemberSubtitle={saVolunteerOpening2Contact.responsibilityArea}
+        portraitPhotoTitle={saVolunteerOpening2Contact.name}
+        portraitPhotoSubtitle={saVolunteerOpening2Contact.responsibilityArea}
+        portraitPhotoImageUrl={saVolunteerOpening2Contact.image.url}
+        portraitPhotoEmail={saVolunteerOpening2Contact.email}
       />
     </PageSection>
 

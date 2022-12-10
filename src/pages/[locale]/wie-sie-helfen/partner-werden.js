@@ -9,7 +9,7 @@ import imagePropTypes from '../../../propTypes/image'
 import PageSection from '../../../components/shared/PageSection'
 import PartnersList from '../../../components/PartnersList'
 import CenteredText from '../../../components/CenteredText'
-import TextWithTeamMember from '../../../components/TextWithTeamMember'
+import TextWithPortraitPhoto from '../../../components/shared/TextWithPortraitPhoto'
 
 const BecomePartner = ({
   metaTitle,
@@ -34,12 +34,13 @@ const BecomePartner = ({
     </PageSection>
 
     <PageSection>
-      <TextWithTeamMember
+      <TextWithPortraitPhoto
         header={section1Title}
         text={section1Markdown}
-        teamMember={teamMember}
-        teamMemberTitle={teamMember.name}
-        teamMemberSubtitle={teamMember.responsibilityArea}
+        portraitPhotoTitle={teamMember.name}
+        portraitPhotoSubtitle={teamMember.responsibilityArea}
+        portraitPhotoImageUrl={teamMember.image.url}
+        portraitPhotoEmail={teamMember.email}
       />
     </PageSection>
 

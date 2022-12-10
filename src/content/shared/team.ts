@@ -17,8 +17,8 @@ const regionalGroupWithoutContactPersonSchema = object({
  */
 export const teamMemberSchema = object({
   name: string().required(),
+  profileImage: assetSchema.required(),
   responsibilityArea: string().optional().default(undefined),
-  profileImage: assetSchema.optional().default(undefined),
   email: string(),
   // `region` is a reference to a "Regional Group" entry, which in
   // turn as a `contactPerson` field which is a reference to a
@@ -33,7 +33,6 @@ export const teamMemberSchema = object({
  */
 export const contactPersonSchema = teamMemberSchema.concat(
   object({
-    profileImage: assetSchema.required(),
     email: string().required(),
   })
 )

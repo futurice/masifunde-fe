@@ -17,7 +17,7 @@ import Subscribe from '../../../../components/Podcast/Subscribe'
 import Share from '../../../../components/Podcast/Share'
 import PodcastList from '../../../../components/Podcast'
 import teamMemberProps from '../../../../propTypes/teamMember'
-import TextWithTeamMember from '../../../../components/TextWithTeamMember'
+import TextWithPortraitPhoto from '../../../../components/shared/TextWithPortraitPhoto'
 import Banner from '../../../../components/Banner'
 import { largeSpacing, extraSmallSpacing } from '../../../../styling/sizes'
 
@@ -145,12 +145,13 @@ class Podcasts extends Component {
         <ExtendedDivider color="orange" />
         <PageSection>
           <TeamMemberContainer>
-            <TextWithTeamMember
+            <TextWithPortraitPhoto
               header={contactTextHeading}
               text={contactText}
-              teamMemberTitle={teamMember.name}
-              teamMemberSubtitle={teamMember.responsibilityArea}
-              teamMember={teamMember}
+              portraitPhotoTitle={teamMember.name}
+              portraitPhotoSubtitle={teamMember.responsibilityArea}
+              portraitPhotoImageUrl={teamMember.image.url}
+              portraitPhotoEmail={teamMember.email}
             />
           </TeamMemberContainer>
         </PageSection>

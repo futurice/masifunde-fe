@@ -1,10 +1,20 @@
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
-
-import FilePropType from '../../propTypes/file'
+import { Document } from '../../content/dokumente-content'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { extraExtraSmallSpacing } from '../../styling/sizes'
-import DocumentDownloadBox from './DocumentDownloadBox'
+import DocumentDownloadBox from './DocumentsListItem'
+
+// Props
+// =====
+
+type Props = {
+  documents: Document[]
+  expandList?: boolean
+}
+
+// Helpers
+// =======
 
 const Title = styled.p`
   font-weight: bold;
@@ -24,10 +34,6 @@ const BoxContainerCol = styled.div`
   margin-bottom: 30px; // To match up bootstrap gutters
   display: flex;
   justify-content: center;
-
-  @media (min-width: ${smBreakpoint}) {
-    display: block;
-  }
 `
 
 const ContentContainer = styled.div`
@@ -40,15 +46,21 @@ const ContentContainer = styled.div`
   }
 `
 
-const Document = ({ expandList, documents }) => (
+// Component
+// =========
+
+const DocumentsList: FC<Props> = ({ expandList, documents }) => (
   <>
     {expandList ? (
       <div className="row">
-        {documents.map(({ title, longTitle, description, file }) => (
+        {documents.map(({ longTitle, description, file: { file } }) => (
           <BoxContainerCol className="col-md-6" key={file.url}>
             <div className="row">
               <ContentContainer className="col-sm-auto">
-                <DocumentDownloadBox title={title} fileUrl={file.url} />
+                <DocumentDownloadBox
+                  title={document.title}
+                  fileUrl={file.url}
+                />
               </ContentContainer>
               <ContentContainer className="col">
                 <Title>{longTitle}</Title>
@@ -60,7 +72,7 @@ const Document = ({ expandList, documents }) => (
       </div>
     ) : (
       <div className="row">
-        {documents.map(({ title, file }) => (
+        {documents.map(({ title, file: { file } }) => (
           <BoxContainerCol
             key={file.url}
             className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-auto"
@@ -73,21 +85,4 @@ const Document = ({ expandList, documents }) => (
   </>
 )
 
-Document.propTypes = {
-  expandList: PropTypes.bool,
-  documents: PropTypes.arrayOf(
-    PropTypes.shape({
-      description: PropTypes.string,
-      longTitle: PropTypes.string,
-      title: PropTypes.string,
-      file: PropTypes.shape(FilePropType),
-    })
-  ),
-}
-
-Document.defaultProps = {
-  expandList: false,
-  documents: [],
-}
-
-export default Document
+export default DocumentsList
