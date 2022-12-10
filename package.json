@@ -34,12 +34,6 @@
   "bugs": {
     "url": "https://github.com/futurice/masifunde-fe/issues"
   },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint",
-      "prettier --list-different"
-    ]
-  },
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
   "dependencies": {
     "contentful": "^10.0.0-beta-v10.8",
@@ -76,7 +70,6 @@
     "eslint": "^8.0.0",
     "eslint-config-next": "^13.0.6",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.0",
     "netlify-cli": "^12.2.8",
     "prettier": "^2.7.0",
     "rimraf": "^3.0.2"
