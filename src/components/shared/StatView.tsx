@@ -1,9 +1,27 @@
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled, { css } from 'styled-components'
-import { smBreakpoint } from '../styling/breakpoints'
-import { handwrittenText, rem } from '../styling/typography'
-import IconImage from './IconImage'
-import Source from './Source'
+import { Asset } from '../../content/shared/assets'
+import { smBreakpoint } from '../../styling/breakpoints'
+import { handwrittenText, rem } from '../../styling/typography'
+import IconImage from '../IconImage'
+import Source from '../Source'
+
+// Props
+// =====
+
+export type Props = {
+  description: string
+  number: string
+  textAbove: string
+  sourceMarkdown: string
+  icon?: Asset
+  superscriptText?: string
+  sourceId?: string
+  className?: string
+}
+
+// Helpers
+// =======
 
 const StatContainer = styled.div`
   display: flex;
@@ -30,7 +48,7 @@ const CenteredSpan = styled.span`
   max-width: 200px;
 `
 
-const Number = styled(CenteredSpan)`
+const Number = styled(CenteredSpan)<{ highlight: boolean }>`
   ${handwrittenText};
   ${(props) =>
     props.highlight &&
@@ -40,26 +58,25 @@ const Number = styled(CenteredSpan)`
     `};
 `
 
-const Stat = ({
+const StatView: FC<Props> = ({
   textAbove,
   description,
   icon,
   number,
-  className,
   sourceMarkdown,
   superscriptText,
   sourceId,
+  className,
 }) => {
-  const hasImage = !!icon && !!icon.url
   return (
-    <StatContainer className={`${className}`}>
+    <StatContainer className={className}>
       {!!textAbove && (
         <FixedHeight className="d-flex align-items-center">
           <CenteredSpan>{textAbove}</CenteredSpan>
         </FixedHeight>
       )}
-      {hasImage && <IconImage src={icon.url} alt="" />}
-      <Number highlight={!hasImage}>{number}</Number>
+      {icon && <IconImage src={icon.file.url} alt="" />}
+      <Number highlight={!icon}>{number}</Number>
       <CenteredSpan>
         {description}
         {sourceMarkdown && superscriptText && sourceId ? (
@@ -74,27 +91,4 @@ const Stat = ({
   )
 }
 
-Stat.propTypes = {
-  className: PropTypes.string,
-  textAbove: PropTypes.string,
-  icon: PropTypes.shape({
-    url: PropTypes.string,
-    title: PropTypes.string,
-  }),
-  number: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  sourceMarkdown: PropTypes.string,
-  superscriptText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  sourceId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-}
-
-Stat.defaultProps = {
-  textAbove: undefined,
-  className: '',
-  icon: undefined,
-  sourceMarkdown: undefined,
-  superscriptText: undefined,
-  sourceId: undefined,
-}
-
-export default Stat
+export default StatView

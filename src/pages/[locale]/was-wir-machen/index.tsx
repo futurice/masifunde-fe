@@ -7,13 +7,13 @@ import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
 import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import Link from '../../../components/Link'
-import Stat from '../../../components/Stat'
 import StatList from '../../../components/StatList'
 import Tagline from '../../../components/Tagline'
 import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
+import StatView from '../../../components/shared/StatView'
 import ProjectsGrid from '../../../components/was-wir-machen/ProjectsGrid'
 import {
   WhatWeDoContent,
@@ -124,10 +124,10 @@ const WhatWeDo: FC<Props> = ({
       <h1>{statsHeading}</h1>
       <StatList>
         {stats.map((stat, index) => (
-          <Stat
+          <StatView
             key={`${stat.number} ${stat.description}`}
             {...stat}
-            superscriptText={index + 1}
+            superscriptText={String(index + 1)}
             sourceId={`stat-${index}`}
           />
         ))}
