@@ -1,12 +1,27 @@
-import PropTypes from 'prop-types'
-
-import { fetchImpressumPage } from '../../content/impressum-content'
+import { FC } from 'react'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import {
+  getLegalNoticeContent,
+  LegalNoticeContent,
+} from '../../content/impressum-content'
 import Head from '../../components/shared/Head'
-import { getLayoutProps } from '../../components/Layout'
+import { getLayoutProps, LayoutPageProps } from '../../components/Layout'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'
 
-const Impressum = ({
+// Props & Path Params
+// ===================
+
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps & LegalNoticeContent
+
+// Component
+// =========
+
+const LegalNotice: FC<Props> = ({
   metaTitle,
   metaDescription,
   impressumTitle,
@@ -26,27 +41,17 @@ const Impressum = ({
   </div>
 )
 
-Impressum.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string,
-  impressumTitle: PropTypes.string.isRequired,
-  impressumMarkdown: PropTypes.string.isRequired,
-}
-
-Impressum.defaultProps = {
-  metaDescription: undefined,
-}
-
-export async function getStaticProps({ params: { locale } }) {
+export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
+  const { locale } = ctx.params!
   return {
     props: {
       ...(await getLayoutProps(locale)),
-      ...(await fetchImpressumPage(locale)),
+      ...(await getLegalNoticeContent(locale)),
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     paths: [
       {
@@ -60,4 +65,4 @@ export async function getStaticPaths() {
   }
 }
 
-export default Impressum
+export default LegalNotice

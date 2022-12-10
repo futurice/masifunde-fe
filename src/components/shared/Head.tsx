@@ -3,7 +3,7 @@ import { FC, ReactNode } from 'react'
 
 export type Props = {
   title?: string
-  description: string
+  description?: string
   children?: ReactNode
 }
 
