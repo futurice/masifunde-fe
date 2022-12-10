@@ -1,6 +1,6 @@
-import { propTypes, defaultProps } from './propTypes'
 import BannerWithImage from './BannerWithImage'
 import BannerWithoutImage from './BannerWithoutImage'
+import { defaultProps, propTypes } from './propTypes'
 
 const Banner = (props) => {
   const { image } = props

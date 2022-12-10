@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { array, bool, InferType, object, string } from 'yup'
+import { InferType, array, bool, object, string } from 'yup'
 import { blogPostsPerPage } from '../config'
 import {
   extractContent,

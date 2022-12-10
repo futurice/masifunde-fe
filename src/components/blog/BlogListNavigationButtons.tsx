@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import styled from 'styled-components'
-import Button from '../Button'
-import Link from '../Link'
 import * as pages from '../../routes/pages'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { largeSpacing } from '../../styling/sizes'
+import Button from '../Button'
+import Link from '../Link'
 
 // Props
 // =====

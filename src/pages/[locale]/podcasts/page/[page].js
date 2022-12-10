@@ -1,25 +1,24 @@
-import { Component } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import { Component } from 'react'
 import { Container } from 'reactstrap'
-
+import styled from 'styled-components'
+import Banner from '../../../../components/Banner'
 import { getLayoutProps } from '../../../../components/Layout'
+import PodcastList from '../../../../components/Podcast'
+import PodcastListNavigationButtons from '../../../../components/Podcast/PodcastListNavigationButtons'
+import Share from '../../../../components/Podcast/Share'
+import Subscribe from '../../../../components/Podcast/Subscribe'
+import Divider from '../../../../components/shared/Divider'
 import Head from '../../../../components/shared/Head'
 import PageSection from '../../../../components/shared/PageSection'
+import TextWithPortraitPhoto from '../../../../components/shared/TextWithPortraitPhoto'
 import {
   fetchPodcastPage,
   fetchPodcastPageCount,
 } from '../../../../content/podcast-content'
-import { lgBreakpoint, smBreakpoint } from '../../../../styling/breakpoints'
-import Divider from '../../../../components/shared/Divider'
-import PodcastListNavigationButtons from '../../../../components/Podcast/PodcastListNavigationButtons'
-import Subscribe from '../../../../components/Podcast/Subscribe'
-import Share from '../../../../components/Podcast/Share'
-import PodcastList from '../../../../components/Podcast'
 import teamMemberProps from '../../../../propTypes/teamMember'
-import TextWithPortraitPhoto from '../../../../components/shared/TextWithPortraitPhoto'
-import Banner from '../../../../components/Banner'
-import { largeSpacing, extraSmallSpacing } from '../../../../styling/sizes'
+import { lgBreakpoint, smBreakpoint } from '../../../../styling/breakpoints'
+import { extraSmallSpacing, largeSpacing } from '../../../../styling/sizes'
 
 const PodcastSubHeading = styled.h2`
   text-align: center;

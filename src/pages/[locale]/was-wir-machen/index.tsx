@@ -1,25 +1,25 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
-import { getLayoutProps, LayoutPageProps } from '../../../components/Layout'
-import {
-  getWhatWeDoContent,
-  WhatWeDoContent,
-} from '../../../content/was-wir-machen-content'
-import Head from '../../../components/shared/Head'
-import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
-import Stat from '../../../components/Stat'
-import * as pages from '../../../routes/pages'
-import Link from '../../../components/Link'
-import Hero from '../../../components/Hero'
 import Banner from '../../../components/Banner'
+import Button from '../../../components/Button'
 import CenteredText from '../../../components/CenteredText'
+import Hero from '../../../components/Hero'
+import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
+import Link from '../../../components/Link'
+import Stat from '../../../components/Stat'
+import StatList from '../../../components/StatList'
+import Tagline from '../../../components/Tagline'
+import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
+import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
-import Tagline from '../../../components/Tagline'
-import StatList from '../../../components/StatList'
 import ProjectsGrid from '../../../components/was-wir-machen/ProjectsGrid'
-import Button from '../../../components/Button'
+import {
+  WhatWeDoContent,
+  getWhatWeDoContent,
+} from '../../../content/was-wir-machen-content'
+import * as pages from '../../../routes/pages'
 import { smallSpacing } from '../../../styling/sizes'
 
 // Props & Path Params

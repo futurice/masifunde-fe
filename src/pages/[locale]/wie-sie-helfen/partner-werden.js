@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types'
-
-import { getLayoutProps } from '../../../components/Layout'
 import Banner from '../../../components/Banner'
-import Head from '../../../components/shared/Head'
-import { fetchBecomeAPartnerPage } from '../../../content/wie-sie-helfen-content'
-import { propTypes as partnerPropTypes } from '../../../components/PartnersList/Partner'
-import imagePropTypes from '../../../propTypes/image'
-import PageSection from '../../../components/shared/PageSection'
-import PartnersList from '../../../components/PartnersList'
 import CenteredText from '../../../components/CenteredText'
+import { getLayoutProps } from '../../../components/Layout'
+import PartnersList from '../../../components/PartnersList'
+import { propTypes as partnerPropTypes } from '../../../components/PartnersList/Partner'
+import Head from '../../../components/shared/Head'
+import PageSection from '../../../components/shared/PageSection'
 import TextWithPortraitPhoto from '../../../components/shared/TextWithPortraitPhoto'
+import { fetchBecomeAPartnerPage } from '../../../content/wie-sie-helfen-content'
+import imagePropTypes from '../../../propTypes/image'
 
 const BecomePartner = ({
   metaTitle,

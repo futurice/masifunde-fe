@@ -1,12 +1,11 @@
+import { withRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import { NavItem } from 'reactstrap'
-import { withRouter } from 'next/router'
 import styled from 'styled-components'
-
+import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
+import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
 import Button from '../Button'
 import Link from '../Link'
-import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
-import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 
 const activeLinkBorderThickness = '3px'
 

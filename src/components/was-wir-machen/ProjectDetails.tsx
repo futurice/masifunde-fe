@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import styled from 'styled-components'
-import { smallFontSize } from '../../styling/typography'
 import { mediumSpacing } from '../../styling/sizes'
-import Markdown from '../shared/Markdown'
+import { smallFontSize } from '../../styling/typography'
 import IconImage from '../IconImage'
+import Markdown from '../shared/Markdown'
 
 // Props
 // =====

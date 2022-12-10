@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import { lgBreakpoint } from '../styling/breakpoints'
 import { extraSmallSpacing } from '../styling/sizes'
 import Markdown from './shared/Markdown'

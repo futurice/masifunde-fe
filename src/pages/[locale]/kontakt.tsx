@@ -1,16 +1,16 @@
-import styled from 'styled-components'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
+import styled from 'styled-components'
+import { LayoutPageProps, getLayoutProps } from '../../components/Layout'
+import Divider from '../../components/shared/Divider'
+import Head from '../../components/shared/Head'
+import Markdown from '../../components/shared/Markdown'
+import PageSection from '../../components/shared/PageSection'
+import TeamMemberList from '../../components/shared/TeamMemberList'
 import {
   ContactContent,
   getContactContent,
 } from '../../content/kontakt-content'
-import Head from '../../components/shared/Head'
-import Markdown from '../../components/shared/Markdown'
-import { getLayoutProps, LayoutPageProps } from '../../components/Layout'
-import PageSection from '../../components/shared/PageSection'
-import TeamMemberList from '../../components/shared/TeamMemberList'
-import Divider from '../../components/shared/Divider'
 import { smallSpacing } from '../../styling/sizes'
 
 // Props & Path Params

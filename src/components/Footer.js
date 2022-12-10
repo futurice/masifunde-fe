@@ -1,14 +1,13 @@
+import T from 'i18n-react'
 import PropTypes from 'prop-types'
 import { FaFacebook, FaYoutube } from 'react-icons/fa'
 import styled from 'styled-components'
-import T from 'i18n-react'
-
 import * as pages from '../routes/pages'
-import { largeSpacing, extraSmallSpacing, smallSpacing } from '../styling/sizes'
+import { extraSmallSpacing, largeSpacing, smallSpacing } from '../styling/sizes'
 import { footerText, rem } from '../styling/typography'
 import Link from './Link'
-import PageSection from './shared/PageSection'
 import SocialLink from './SocialLink'
+import PageSection from './shared/PageSection'
 
 const Text = styled.div`
   text-align: center;

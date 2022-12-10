@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
+import Banner from '../components/Banner'
 import { getLayoutProps } from '../components/Layout'
 import Head from '../components/shared/Head'
-import Banner from '../components/Banner'
-import PageSection from '../components/shared/PageSection'
 import Markdown from '../components/shared/Markdown'
+import PageSection from '../components/shared/PageSection'
 import { fetchErrorPage404 } from '../content/404-content'
 
 const StyledMarkdown = styled(Markdown)`

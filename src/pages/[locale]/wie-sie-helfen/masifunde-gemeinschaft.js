@@ -1,15 +1,7 @@
-import PropTypes from 'prop-types'
 import createDecorator from 'final-form-calculate'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import { getLayoutProps } from '../../../components/Layout'
 import Banner from '../../../components/Banner'
-import Head from '../../../components/shared/Head'
-import Markdown from '../../../components/shared/Markdown'
-import { fetchBecomeASponsorPage } from '../../../content/wie-sie-helfen-content'
-import imagePropTypes from '../../../propTypes/image'
-import PageSection from '../../../components/shared/PageSection'
-import RoundedImage from '../../../components/RoundedImage'
 import DonationForm from '../../../components/DonationForm'
 import {
   AMOUNT,
@@ -17,6 +9,13 @@ import {
   PROJECT_ID,
 } from '../../../components/DonationForm/constants/fieldNames'
 import { LEARN_4_LIFE_PROJECT_ID } from '../../../components/DonationForm/constants/formValues'
+import { getLayoutProps } from '../../../components/Layout'
+import RoundedImage from '../../../components/RoundedImage'
+import Head from '../../../components/shared/Head'
+import Markdown from '../../../components/shared/Markdown'
+import PageSection from '../../../components/shared/PageSection'
+import { fetchBecomeASponsorPage } from '../../../content/wie-sie-helfen-content'
+import imagePropTypes from '../../../propTypes/image'
 import useURLSearchParams from '../../../utils/useURLSearchParams'
 
 const Image = styled(RoundedImage)`

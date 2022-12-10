@@ -1,17 +1,16 @@
-import { FC, ReactNode } from 'react'
-import styled, { ThemeProvider } from 'styled-components'
-import { useRouter } from 'next/router'
 import T from 'i18n-react'
+import { useRouter } from 'next/router'
+import { FC, ReactNode } from 'react'
 import { IconContext } from 'react-icons'
-
-import theme from '../styling/theme'
+import styled, { ThemeProvider } from 'styled-components'
+import { fetchFooterData, fetchHeaderData } from '../content/shared/common'
 import translationsDE from '../i18n/de.json'
 import translationsEN from '../i18n/en.json'
-import { fetchFooterData, fetchHeaderData } from '../content/shared/common'
-import Footer from './Footer'
-import Header from './Header'
+import theme from '../styling/theme'
 import CookieNotice from './CookieNotice'
+import Footer from './Footer'
 import GlobalStyle from './GlobalStyle'
+import Header from './Header'
 
 // Props
 // =====

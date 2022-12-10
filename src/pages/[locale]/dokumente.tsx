@@ -1,23 +1,23 @@
-import styled from 'styled-components'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
-import DocumentsList from '../../components/dokumente/DocumentsList'
-import { getLayoutProps, LayoutPageProps } from '../../components/Layout'
-import PageSection from '../../components/shared/PageSection'
+import styled from 'styled-components'
+import Banner from '../../components/Banner'
 import CenteredGrid from '../../components/CenteredGrid'
 import CenteredText from '../../components/CenteredText'
+import { LayoutPageProps, getLayoutProps } from '../../components/Layout'
+import VideoList from '../../components/VideoList'
+import DocumentsList from '../../components/dokumente/DocumentsList'
 import Divider from '../../components/shared/Divider'
-import Banner from '../../components/Banner'
+import Head from '../../components/shared/Head'
+import PageSection from '../../components/shared/PageSection'
+import TextWithPortraitPhoto from '../../components/shared/TextWithPortraitPhoto'
 import {
   DocumentsContent,
   getDocumentsContent,
 } from '../../content/dokumente-content'
-import Head from '../../components/shared/Head'
 import { smBreakpoint } from '../../styling/breakpoints'
-import { subsectionTitleText } from '../../styling/typography'
 import { largeSpacing } from '../../styling/sizes'
-import TextWithPortraitPhoto from '../../components/shared/TextWithPortraitPhoto'
-import VideoList from '../../components/VideoList'
+import { subsectionTitleText } from '../../styling/typography'
 
 // Props & Path Params
 // ===================

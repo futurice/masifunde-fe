@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types'
-
-import { fetchBecomeAVolunteerPage } from '../../../content/wie-sie-helfen-content'
-import { getLayoutProps } from '../../../components/Layout'
-import Head from '../../../components/shared/Head'
-import Hero from '../../../components/Hero'
 import Banner from '../../../components/Banner'
 import CenteredText from '../../../components/CenteredText'
-import PageSection from '../../../components/shared/PageSection'
-import TextWithPortraitPhoto from '../../../components/shared/TextWithPortraitPhoto'
+import Hero from '../../../components/Hero'
+import { getLayoutProps } from '../../../components/Layout'
 import TestimonialList from '../../../components/TestimonialList'
 import VolunteerOpeningsList from '../../../components/VolunteerOpeningList'
-import teamMemberProps from '../../../propTypes/teamMember'
 import Divider from '../../../components/shared/Divider'
+import Head from '../../../components/shared/Head'
+import PageSection from '../../../components/shared/PageSection'
+import TextWithPortraitPhoto from '../../../components/shared/TextWithPortraitPhoto'
+import { fetchBecomeAVolunteerPage } from '../../../content/wie-sie-helfen-content'
+import teamMemberProps from '../../../propTypes/teamMember'
 
 const BecomeVolunteer = ({
   metaTitle,

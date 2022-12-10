@@ -1,20 +1,20 @@
-import { FC } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import {
-  getImpactContent,
-  ImpactContent,
-} from '../../../content/was-wir-machen-content'
-import { getLayoutProps, LayoutPageProps } from '../../../components/Layout'
-import Head from '../../../components/shared/Head'
-import Hero from '../../../components/Hero'
+import { FC } from 'react'
 import Banner from '../../../components/Banner'
+import Hero from '../../../components/Hero'
+import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import Stat from '../../../components/Stat'
-import Tagline from '../../../components/Tagline'
-import PageSection from '../../../components/shared/PageSection'
 import StatList from '../../../components/StatList'
-import Markdown from '../../../components/shared/Markdown'
+import Tagline from '../../../components/Tagline'
 import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
+import Head from '../../../components/shared/Head'
+import Markdown from '../../../components/shared/Markdown'
+import PageSection from '../../../components/shared/PageSection'
 import StoryCarousel from '../../../components/shared/StoryCarousel'
+import {
+  ImpactContent,
+  getImpactContent,
+} from '../../../content/was-wir-machen-content'
 
 // Props & Path Params
 // ===================

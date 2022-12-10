@@ -5,7 +5,7 @@ import {
   fetchEntriesForContentType,
   fetchSingleEntry,
 } from '../utils/contentful-legacy'
-import { unwrapTeamMember, unwrapFile, unwrapImage } from './shared/common'
+import { unwrapFile, unwrapImage, unwrapTeamMember } from './shared/common'
 
 const podcastPerPage = PODCAST_POSTS_PER_PAGE
 

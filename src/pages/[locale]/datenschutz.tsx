@@ -1,13 +1,13 @@
-import { FC } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getLayoutProps, LayoutPageProps } from '../../components/Layout'
+import { FC } from 'react'
+import { LayoutPageProps, getLayoutProps } from '../../components/Layout'
 import Head from '../../components/shared/Head'
+import Markdown from '../../components/shared/Markdown'
+import PageSection from '../../components/shared/PageSection'
 import {
   PrivacyPolicyContent,
   getPrivacyPolicyContent,
 } from '../../content/datenschutz-content'
-import Markdown from '../../components/shared/Markdown'
-import PageSection from '../../components/shared/PageSection'
 
 // Props & Path Params
 // ===================

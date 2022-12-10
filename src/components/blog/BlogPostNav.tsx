@@ -4,8 +4,8 @@ import * as pages from '../../routes/pages'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { largeSpacing } from '../../styling/sizes'
 import Button from '../Button'
-import Divider from '../shared/Divider'
 import Link from '../Link'
+import Divider from '../shared/Divider'
 
 export type Props = {
   previousPostSlug?: string

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-
-import { rem, subsectionTitleText } from '../../styling/typography'
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
+import { rem, subsectionTitleText } from '../../styling/typography'
 
 const Headline = styled.span`
   ${subsectionTitleText};

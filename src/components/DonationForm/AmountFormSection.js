@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 import styled from 'styled-components'
-
-import { defaultFont } from '../../styling/typography'
 import { mdBreakpoint, smBreakpoint } from '../../styling/breakpoints'
+import { defaultFont } from '../../styling/typography'
 import { fundraisingFormSpacing } from '../../utils/constants'
-import RadioButton from './RadioButton'
 import ErrorMessage from './ErrorMessage'
-import SubHeader from './SubHeader'
 import PageSection from './PageSection'
+import RadioButton from './RadioButton'
+import SubHeader from './SubHeader'
 import { MONTHS_IN_YEAR } from './constants/formValues'
 
 const otherAmountInputWidth = '30%'

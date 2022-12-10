@@ -1,9 +1,9 @@
-import { array, object, string, InferType } from 'yup'
+import { InferType, array, object, string } from 'yup'
 import { getSingletonEntryContent } from '../utils/contentful'
 import { assetSchema } from './shared/assets'
+import { individualPortraitSchema } from './shared/portrait'
 import { statSchema } from './shared/stats'
 import { contactPersonSchema } from './shared/team'
-import { individualPortraitSchema } from './shared/portrait'
 
 // Schemas
 // =======

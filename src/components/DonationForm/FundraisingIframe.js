@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types'
+import qs from 'qs'
 import { Component, useMemo } from 'react'
 import makeAsyncScriptLoader from 'react-async-script'
-import qs from 'qs'
-import PropTypes from 'prop-types'
 
 const IFRAME_ID = 'fbIframeDiv'
 

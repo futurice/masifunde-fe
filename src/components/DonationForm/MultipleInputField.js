@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { Field } from 'react-final-form'
-
+import styled from 'styled-components'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './FormLabel'

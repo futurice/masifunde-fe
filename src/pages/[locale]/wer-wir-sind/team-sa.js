@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import Head from '../../../components/shared/Head'
 import Banner from '../../../components/Banner'
-import { fetchTeamSaPage } from '../../../content/wer-wir-sind-content'
-import { getLayoutProps } from '../../../components/Layout'
-import imagePropTypes from '../../../propTypes/image'
-import PageSection from '../../../components/shared/PageSection'
 import CenteredText from '../../../components/CenteredText'
+import { getLayoutProps } from '../../../components/Layout'
+import Head from '../../../components/shared/Head'
+import PageSection from '../../../components/shared/PageSection'
 import TeamMemberList from '../../../components/shared/TeamMemberList'
+import { fetchTeamSaPage } from '../../../content/wer-wir-sind-content'
+import imagePropTypes from '../../../propTypes/image'
 import { smallSpacing } from '../../../styling/sizes'
 
 const Image = styled.img`

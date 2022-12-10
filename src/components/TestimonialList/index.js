@@ -1,9 +1,8 @@
 import T from 'i18n-react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
 import { smBreakpoint } from '../../styling/breakpoints'
-import { mediumSpacing, extraSmallSpacing } from '../../styling/sizes'
+import { extraSmallSpacing, mediumSpacing } from '../../styling/sizes'
 import Markdown from '../shared/Markdown'
 import Supporter from './Supporter'
 

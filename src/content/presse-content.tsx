@@ -1,4 +1,4 @@
-import { array, InferType, object, string } from 'yup'
+import { InferType, array, object, string } from 'yup'
 import { getSingletonEntryContent } from '../utils/contentful'
 import { documentSchema } from './dokumente-content'
 import { teamMemberSchema } from './shared/team'

@@ -1,33 +1,33 @@
-import { FC } from 'react'
 import { GetStaticProps } from 'next'
-import styled from 'styled-components'
-import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import { FC } from 'react'
 import { FaFacebook, FaTwitter } from 'react-icons/fa'
+import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import styled from 'styled-components'
+import Hero from '../../../components/Hero'
+import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
+import SocialLink from '../../../components/SocialLink'
+import BlogPostNav from '../../../components/blog/BlogPostNav'
+import Head from '../../../components/shared/Head'
+import Markdown from '../../../components/shared/Markdown'
+import PageSection from '../../../components/shared/PageSection'
+import PortraitPhoto from '../../../components/shared/PortraitPhoto'
 import {
   BlogPost,
+  StaticBlogPostContent,
   getAllBlogPostSlugs,
   getBlogPost,
   getNextBlogPostSlug,
   getPreviousBlogPostSlug as getPreviousBlogPostSlug,
   getStaticBlogPostContent,
-  StaticBlogPostContent,
 } from '../../../content/blog-content'
-import { getLayoutProps, LayoutPageProps } from '../../../components/Layout'
-import BlogPostNav from '../../../components/blog/BlogPostNav'
-import Head from '../../../components/shared/Head'
-import Hero from '../../../components/Hero'
-import PageSection from '../../../components/shared/PageSection'
-import Markdown from '../../../components/shared/Markdown'
+import { TeamMember } from '../../../content/shared/team'
 import {
   lgBreakpoint,
   mdBreakpoint,
   smBreakpoint,
 } from '../../../styling/breakpoints'
-import PortraitPhoto from '../../../components/shared/PortraitPhoto'
 import { smallSpacing } from '../../../styling/sizes'
 import { footerText, rem } from '../../../styling/typography'
-import { TeamMember } from '../../../content/shared/team'
-import SocialLink from '../../../components/SocialLink'
 import formatDate from '../../../utils/date'
 
 // Props & Path Params

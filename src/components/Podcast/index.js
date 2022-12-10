@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import imagePropShape from '../../propTypes/image'
 import FilePropType from '../../propTypes/file'
+import imagePropShape from '../../propTypes/image'
 import { smBreakpoint } from '../../styling/breakpoints'
 import PodcastCard from './PodcastCard'
 

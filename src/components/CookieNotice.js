@@ -1,10 +1,9 @@
 import T from 'i18n-react'
 import { Component } from 'react'
 import styled from 'styled-components'
-
 import * as pages from '../routes/pages'
 import { smBreakpoint } from '../styling/breakpoints'
-import { extraSmallSpacing, extraExtraSmallSpacing } from '../styling/sizes'
+import { extraExtraSmallSpacing, extraSmallSpacing } from '../styling/sizes'
 import { haveCookiesBeenAccepted, markCookiesAccepted } from '../utils/cookies'
 import Button from './Button'
 import Link from './Link'

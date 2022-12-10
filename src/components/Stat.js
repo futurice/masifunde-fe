@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
-import { handwrittenText, rem } from '../styling/typography'
+import styled, { css } from 'styled-components'
 import { smBreakpoint } from '../styling/breakpoints'
-import Source from './Source'
+import { handwrittenText, rem } from '../styling/typography'
 import IconImage from './IconImage'
+import Source from './Source'
 
 const StatContainer = styled.div`
   display: flex;

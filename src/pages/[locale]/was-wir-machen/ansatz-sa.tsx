@@ -1,19 +1,19 @@
-import { FC } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { FC } from 'react'
+import Banner from '../../../components/Banner'
+import CenteredText from '../../../components/CenteredText'
+import Hero from '../../../components/Hero'
+import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
+import Tagline from '../../../components/Tagline'
+import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
+import Head from '../../../components/shared/Head'
+import Markdown from '../../../components/shared/Markdown'
+import PageSection from '../../../components/shared/PageSection'
+import ProjectDetailsList from '../../../components/was-wir-machen/ProjectDetailsList'
 import {
   ApproachSAContent,
   getApproachSAContent,
 } from '../../../content/was-wir-machen-content'
-import { getLayoutProps, LayoutPageProps } from '../../../components/Layout'
-import Hero from '../../../components/Hero'
-import Head from '../../../components/shared/Head'
-import Banner from '../../../components/Banner'
-import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
-import PageSection from '../../../components/shared/PageSection'
-import CenteredText from '../../../components/CenteredText'
-import Tagline from '../../../components/Tagline'
-import Markdown from '../../../components/shared/Markdown'
-import ProjectDetailsList from '../../../components/was-wir-machen/ProjectDetailsList'
 
 // Props & Path Params
 // ===================

@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
 import {
-  smBreakpoint,
-  mdBreakpoint,
   lgBreakpoint,
+  mdBreakpoint,
+  smBreakpoint,
 } from '../../styling/breakpoints'
 import { extraSmallSpacing, mediumSpacing } from '../../styling/sizes'
 

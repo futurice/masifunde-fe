@@ -1,9 +1,8 @@
-import { Component } from 'react'
+import T from 'i18n-react'
 import PropTypes from 'prop-types'
+import { Component } from 'react'
 import { Tooltip } from 'reactstrap'
 import styled from 'styled-components'
-import T from 'i18n-react'
-
 import { smBreakpoint } from '../styling/breakpoints'
 import Markdown from './shared/Markdown'
 

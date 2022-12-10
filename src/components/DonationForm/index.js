@@ -1,20 +1,34 @@
 import { noop } from 'lodash'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Form } from 'react-final-form'
-
+import styled from 'styled-components'
 import countries from '../../utils/countries'
-import SubHeader from './SubHeader'
-import PageSection from './PageSection'
+import AmountFormSection from './AmountFormSection'
 import FormContainer from './FormContainer'
 import FundraisingIframeContainer from './FundraisingIframeContainer'
 import InputField from './InputField'
-import SelectField from './SelectField'
-import MultipleInputField from './MultipleInputField'
-import ProjectFormSection from './ProjectFormSection'
 import IntervalFormSection from './IntervalFormSection'
-import AmountFormSection from './AmountFormSection'
-import withFormState from './withFormState'
+import MultipleInputField from './MultipleInputField'
+import PageSection from './PageSection'
+import ProjectFormSection from './ProjectFormSection'
+import SelectField from './SelectField'
+import SubHeader from './SubHeader'
+import {
+  ADDRESS,
+  AMOUNT,
+  CITY,
+  COMPANY_NAME,
+  COUNTRY,
+  EMAIL,
+  FIRST_NAME,
+  LAST_NAME,
+  PAYMENT_INTERVAL,
+  POST_CODE,
+  PROJECT_ID,
+  SALUTATION,
+  TITLE,
+  WANTS_RECEIPT,
+} from './constants/fieldNames'
 import {
   COUNTRY_GERMANY,
   DE_PROJECT_ID,
@@ -22,22 +36,7 @@ import {
   RECEIPT_NOW_OPTION_VALUE,
   SA_PROJECT_ID,
 } from './constants/formValues'
-import {
-  WANTS_RECEIPT,
-  COUNTRY,
-  PAYMENT_INTERVAL,
-  AMOUNT,
-  SALUTATION,
-  TITLE,
-  FIRST_NAME,
-  LAST_NAME,
-  EMAIL,
-  COMPANY_NAME,
-  ADDRESS,
-  POST_CODE,
-  CITY,
-  PROJECT_ID,
-} from './constants/fieldNames'
+import withFormState from './withFormState'
 
 const HiddenButton = styled.button`
   display: none;

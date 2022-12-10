@@ -1,7 +1,7 @@
 import { fetchSingleEntry } from '../utils/contentful-legacy'
 import {
-  unwrapCampaignPageBanner,
   unwrapAnnouncement,
+  unwrapCampaignPageBanner,
   unwrapPageUrl,
   unwrapPortrait,
   unwrapStats,
