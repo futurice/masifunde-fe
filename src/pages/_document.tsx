@@ -1,9 +1,27 @@
-import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Document, {
+  DocumentContext,
+  DocumentInitialProps,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from 'next/document'
 import Script from 'next/script'
 import { ServerStyleSheet } from 'styled-components'
 
-export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+type ExtraDocumentProps = {
+  htmlLang: string
+}
+
+type InitialProps = DocumentInitialProps & ExtraDocumentProps
+
+export default class MasifundeDocument extends Document<ExtraDocumentProps> {
+  static async getInitialProps(ctx: DocumentContext): Promise<InitialProps> {
+    // Pre-compile styled-components styles so that they can be includeded
+    // as <style> tags in the static HTML.
+    //
+    // https://styled-components.com/docs/advanced#nextjs
+
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 
@@ -15,10 +33,13 @@ export default class MyDocument extends Document {
         })
 
       const initialProps = await Document.getInitialProps(ctx)
+
       return {
         ...initialProps,
         styles: [initialProps.styles, sheet.getStyleElement()],
-        lang: ctx.pathname.startsWith('/en') ? 'en' : 'de',
+        // Dervie the value to use for the HTML `lang` attribute
+        // from the page path.
+        htmlLang: ctx.pathname.startsWith('/en') ? 'en' : 'de',
       }
     } finally {
       sheet.seal()
@@ -26,10 +47,10 @@ export default class MyDocument extends Document {
   }
 
   render() {
-    const { lang, styles } = this.props
+    const { htmlLang, styles } = this.props
 
     return (
-      <Html lang={lang}>
+      <Html lang={htmlLang}>
         <Head>
           {/* Favicon */}
           <link

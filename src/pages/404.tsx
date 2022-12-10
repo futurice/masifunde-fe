@@ -1,17 +1,33 @@
-import PropTypes from 'prop-types'
+import { GetStaticProps } from 'next'
+import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../components/Banner'
-import { getLayoutProps } from '../components/Layout'
+import { LayoutPageProps, getLayoutProps } from '../components/Layout'
 import Head from '../components/shared/Head'
 import Markdown from '../components/shared/Markdown'
 import PageSection from '../components/shared/PageSection'
-import { fetchErrorPage404 } from '../content/404-content'
+import { Error404Content, getError404Content } from '../content/404-content'
+
+// Props & Path Params
+// ===================
+
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps & Error404Content
+
+// Helpers
+// =======
 
 const StyledMarkdown = styled(Markdown)`
   text-align: center;
 `
 
-const ErrorPage404 = ({
+// Component
+// =========
+
+const ErrorPage404: FC<Props> = ({
   bannerButtonText,
   bannerButtonUrl,
   bannerTitle,
@@ -35,22 +51,13 @@ const ErrorPage404 = ({
   </>
 )
 
-ErrorPage404.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  section1Title: PropTypes.string.isRequired,
-  section1Markdown: PropTypes.string.isRequired,
-  bannerTitle: PropTypes.string.isRequired,
-  bannerButtonText: PropTypes.string.isRequired,
-  bannerButtonUrl: PropTypes.string.isRequired,
-}
-
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<Props, Params> = async () => {
   return {
-    // We cannot get the `locale` query parameter in `getStaticProps()`.
-    // Use only the German version for now.
     props: {
+      // As the URL of an error page is fixed, it's not possible to get
+      // the locale as a path param. Assume German for now.
       ...(await getLayoutProps('de')),
-      ...(await fetchErrorPage404('de')),
+      ...(await getError404Content('de')),
     },
   }
 }
