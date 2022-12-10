@@ -1,12 +1,19 @@
+import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import PropTypes from 'prop-types'
-import { useEffect } from 'react'
-import Layout from '../components/Layout'
+import { FC, useEffect } from 'react'
+import Layout, { Props as LayoutProps } from '../components/Layout'
 import '../styling/font-faces.css'
 import { initializeAnalytics, trackPageView } from '../utils/analytics'
 
-const MasifundeApp = ({ Component, pageProps }) => {
+type PageProps = {
+  layoutProps?: LayoutProps
+  [prop: string]: unknown
+}
+
+type Props = AppProps<PageProps>
+
+const MasifundeApp: FC<Props> = ({ Component, pageProps }) => {
   const { asPath } = useRouter()
 
   useEffect(() => initializeAnalytics(), [])
@@ -35,11 +42,6 @@ const MasifundeApp = ({ Component, pageProps }) => {
       </Layout>
     </>
   )
-}
-
-MasifundeApp.propTypes = {
-  Component: PropTypes.func.isRequired,
-  pageProps: PropTypes.object.isRequired,
 }
 
 export default MasifundeApp
