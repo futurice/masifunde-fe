@@ -3,13 +3,13 @@ import { FC } from 'react'
 import Banner from '../../../components/Banner'
 import Hero from '../../../components/Hero'
 import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
-import Stat from '../../../components/Stat'
 import StatList from '../../../components/StatList'
 import Tagline from '../../../components/Tagline'
 import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
+import StatView from '../../../components/shared/StatView'
 import StoryCarousel from '../../../components/shared/StoryCarousel'
 import {
   ImpactContent,
@@ -70,10 +70,12 @@ const Impact: FC<Props> = ({
         <h2>{stats1Title}</h2>
         <StatList>
           {stats1.map((stat) => (
-            <Stat
+            <StatView
               key={`${stat.number} ${stat.description}`}
               {...stat}
-              superscriptText={stat.sourceMarkdown ? (superscript += 1) : null}
+              superscriptText={
+                stat.sourceMarkdown ? String((superscript += 1)) : undefined
+              }
               sourceId={`impact-source-${superscript}`}
             />
           ))}
@@ -85,11 +87,11 @@ const Impact: FC<Props> = ({
           <h2>{stats2Title}</h2>
           <StatList>
             {stats2.map((stat) => (
-              <Stat
+              <StatView
                 key={`${stat.number} ${stat.description}`}
                 {...stat}
                 superscriptText={
-                  stat.sourceMarkdown ? (superscript += 1) : null
+                  stat.sourceMarkdown ? String((superscript += 1)) : undefined
                 }
                 sourceId={`impact-source-${superscript}`}
               />

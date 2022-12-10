@@ -5,12 +5,12 @@ import styled from 'styled-components'
 import Banner from '../../components/Banner'
 import Hero from '../../components/Hero'
 import { LayoutPageProps, getLayoutProps } from '../../components/Layout'
-import Stat from '../../components/Stat'
 import StatList from '../../components/StatList'
 import BlogPostCard from '../../components/blog/BlogPostCard'
 import EmbeddedVideo from '../../components/shared/EmbeddedVideo'
 import Head from '../../components/shared/Head'
 import PageSection from '../../components/shared/PageSection'
+import StatView from '../../components/shared/StatView'
 import StoryCarousel from '../../components/shared/StoryCarousel'
 import { BlogPost, getNewestBlogPosts } from '../../content/blog-content'
 import { HomeContent, getHomeContent } from '../../content/home-content'
@@ -96,10 +96,10 @@ const Home: FC<Props> = ({
     <PageSection>
       <StatList>
         {stats.map((stat, index) => (
-          <Stat
+          <StatView
             key={`${stat.number} ${stat.description}`}
             {...stat}
-            superscriptText={index + 1}
+            superscriptText={String(index + 1)}
             sourceId={`home-stat-${index}`}
           />
         ))}

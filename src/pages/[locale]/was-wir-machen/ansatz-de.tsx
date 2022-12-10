@@ -6,12 +6,12 @@ import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
 import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import RoundedImage from '../../../components/RoundedImage'
-import Stat from '../../../components/Stat'
 import StatList from '../../../components/StatList'
 import Tagline from '../../../components/Tagline'
 import ContactDetails from '../../../components/shared/ContactDetails'
 import Head from '../../../components/shared/Head'
 import PageSection from '../../../components/shared/PageSection'
+import StatView from '../../../components/shared/StatView'
 import ProjectDetailsList from '../../../components/was-wir-machen/ProjectDetailsList'
 import {
   ApproachDEContent,
@@ -85,10 +85,10 @@ const ApproachDE: FC<Props> = ({
       <h2>{statsTitle}</h2>
       <StatList>
         {stats.map((stat, index) => (
-          <Stat
+          <StatView
             key={`${stat.number} ${stat.description}`}
             {...stat}
-            superscriptText={index + 1}
+            superscriptText={String(index + 1)}
             sourceId={`impact-source-${index}`}
           />
         ))}
