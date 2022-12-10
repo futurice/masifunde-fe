@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types'
-import { useEffect } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-
+import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 import Layout from '../components/Layout'
 import '../styling/font-faces.css'
 import { initializeAnalytics, trackPageView } from '../utils/analytics'

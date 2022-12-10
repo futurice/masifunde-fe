@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
 import { smallFontSize } from '../styling/typography'
 import Markdown from './shared/Markdown'
 

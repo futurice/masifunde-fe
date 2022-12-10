@@ -1,4 +1,4 @@
-import { object, string, InferType } from 'yup'
+import { InferType, object, string } from 'yup'
 
 /**
  * Schema for the file information of a Contentful asset.

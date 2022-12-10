@@ -1,11 +1,10 @@
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
-
+import styled from 'styled-components'
 import { lgBreakpoint, smBreakpoint } from '../styling/breakpoints'
 import {
+  extraSmallSpacing,
   largeSpacing,
   mediumSpacing,
-  extraSmallSpacing,
 } from '../styling/sizes'
 
 const LocationsList = styled.ul`

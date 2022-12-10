@@ -1,7 +1,6 @@
 /* eslint-disable function-paren-newline */
 import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
-
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './FormLabel'
 import {

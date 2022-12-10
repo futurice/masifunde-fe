@@ -17,7 +17,7 @@
     "_build": "next build && next export --threads 1",
     "_robots:production": "cp src/robots.production.txt out/robots.txt",
     "_robots:preview": "cp src/robots.preview.txt out/robots.txt",
-    "lint": "eslint '*.{js,ts,tsx}' 'src/**/*.{js,ts,tsx}'",
+    "lint": "eslint --max-warnings 0 '*.{js,ts,tsx}' 'src/**/*.{js,ts,tsx}'",
     "lint-fix": "eslint --fix '*.{js,ts,tsx}' 'src/**/*.{js,ts,tsx}'",
     "prettier-check": "prettier --list-different '*.{js,ts,tsx}' 'src/**/*.{js,ts,tsx}'",
     "prettier-fix": "prettier --write '*.{js,ts,tsx}' 'src/**/*.{js,ts,tsx}'",

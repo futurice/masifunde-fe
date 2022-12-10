@@ -1,22 +1,22 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
-import { getLayoutProps, LayoutPageProps } from '../../../components/Layout'
+import Banner from '../../../components/Banner'
+import CenteredText from '../../../components/CenteredText'
+import Hero from '../../../components/Hero'
+import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
+import RoundedImage from '../../../components/RoundedImage'
+import Stat from '../../../components/Stat'
+import StatList from '../../../components/StatList'
+import Tagline from '../../../components/Tagline'
+import ContactDetails from '../../../components/shared/ContactDetails'
 import Head from '../../../components/shared/Head'
+import PageSection from '../../../components/shared/PageSection'
+import ProjectDetailsList from '../../../components/was-wir-machen/ProjectDetailsList'
 import {
   ApproachDEContent,
   getApproachDEContent,
 } from '../../../content/was-wir-machen-content'
-import Banner from '../../../components/Banner'
-import Hero from '../../../components/Hero'
-import PageSection from '../../../components/shared/PageSection'
-import Tagline from '../../../components/Tagline'
-import ProjectDetailsList from '../../../components/was-wir-machen/ProjectDetailsList'
-import CenteredText from '../../../components/CenteredText'
-import RoundedImage from '../../../components/RoundedImage'
-import StatList from '../../../components/StatList'
-import Stat from '../../../components/Stat'
-import ContactDetails from '../../../components/shared/ContactDetails'
 
 // Props & Path Params
 // ===================

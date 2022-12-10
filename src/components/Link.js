@@ -1,9 +1,8 @@
 /* eslint-disable react/forbid-prop-types */
-import PropTypes from 'prop-types'
 import NextLink from 'next/link'
-
-import { normalizeHref } from '../routes/utils'
+import PropTypes from 'prop-types'
 import useLocale from '../i18n/useLocale'
+import { normalizeHref } from '../routes/utils'
 
 const Link = ({ children, href, passHref, as }) => {
   const locale = useLocale()

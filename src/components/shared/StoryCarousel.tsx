@@ -1,13 +1,13 @@
 import NukaCarousel from 'nuka-carousel'
 import { FC, useCallback, useState } from 'react'
 import styled from 'styled-components'
-import { bodyText, rem, subsectionTitleText } from '../../styling/typography'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import {
-  largeSpacing,
   extraSmallSpacing,
+  largeSpacing,
   smallSpacing,
 } from '../../styling/sizes'
+import { bodyText, rem, subsectionTitleText } from '../../styling/typography'
 import ConditionalContainer from '../ConditionalContainer'
 import Markdown from './Markdown'
 

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
 import { smBreakpoint } from '../../styling/breakpoints'
 import VideoModal from './VideoModal'
 

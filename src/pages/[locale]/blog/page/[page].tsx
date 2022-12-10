@@ -1,9 +1,12 @@
-import { FC } from 'react'
-import styled from 'styled-components'
-import { Container } from 'reactstrap'
 import { GetStaticProps } from 'next'
+import { FC } from 'react'
+import { Container } from 'reactstrap'
+import styled from 'styled-components'
+import { LayoutPageProps, getLayoutProps } from '../../../../components/Layout'
+import BlogListItem from '../../../../components/blog/BlogListItem'
+import BlogListNavigationButtons from '../../../../components/blog/BlogListNavigationButtons'
+import Divider from '../../../../components/shared/Divider'
 import Head from '../../../../components/shared/Head'
-import { getLayoutProps, LayoutPageProps } from '../../../../components/Layout'
 import PageSection from '../../../../components/shared/PageSection'
 import {
   BlogHomeContent,
@@ -12,11 +15,8 @@ import {
   getBlogPostListPage,
   getBlogPostPageCount,
 } from '../../../../content/blog-content'
-import { pageTitleWidth, rem } from '../../../../styling/typography'
 import { lgBreakpoint } from '../../../../styling/breakpoints'
-import Divider from '../../../../components/shared/Divider'
-import BlogListItem from '../../../../components/blog/BlogListItem'
-import BlogListNavigationButtons from '../../../../components/blog/BlogListNavigationButtons'
+import { pageTitleWidth, rem } from '../../../../styling/typography'
 
 // Props & Params
 // ==============

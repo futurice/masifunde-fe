@@ -1,19 +1,18 @@
 import styled from 'styled-components'
-
-import { rem, headerFont } from '../../styling/typography'
+import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 import {
   extraExtraSmallSpacing,
-  smallSpacing,
-  mediumSpacing,
   extraLargeSpacing,
+  mediumSpacing,
+  smallSpacing,
 } from '../../styling/sizes'
-import Link from '../Link'
+import { headerFont, rem } from '../../styling/typography'
 import Button from '../Button'
-import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
+import Link from '../Link'
 import Markdown from '../shared/Markdown'
 import Headline from './Headline'
+import { defaultProps, propTypes } from './propTypes'
 import { background } from './styles'
-import { propTypes, defaultProps } from './propTypes'
 
 const Container = styled.div`
   margin-right: 0;

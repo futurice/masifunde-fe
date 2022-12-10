@@ -1,11 +1,11 @@
-import styled from 'styled-components'
 import { FC, ReactNode } from 'react'
+import styled from 'styled-components'
+import * as pages from '../../routes/pages'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import { rem } from '../../styling/typography'
-import * as pages from '../../routes/pages'
-import Link from '../Link'
 import { wordBreak } from '../../styling/utils'
 import formatDate from '../../utils/date'
+import Link from '../Link'
 
 // Props
 // =====

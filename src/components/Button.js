@@ -1,10 +1,9 @@
 import { omit } from 'lodash'
+import { rgba } from 'polished'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { rgba } from 'polished'
-
-import { defaultFont, rem } from '../styling/typography'
 import { smallSpacing } from '../styling/sizes'
+import { defaultFont, rem } from '../styling/typography'
 
 const ButtonContainer = styled.div`
   display: flex;

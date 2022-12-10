@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import List, { ListItem } from '../shared/List'
 import { mediumSpacing } from '../../styling/sizes'
+import List, { ListItem } from '../shared/List'
 import Partner, { propTypes as partnerPropTypes } from './Partner'
 
 const StyledList = styled(List)`

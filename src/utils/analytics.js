@@ -6,7 +6,6 @@
  */
 
 import * as ReactGA from 'react-ga'
-
 import { GOOGLE_ANALYTICS_ID } from '../env'
 
 /**

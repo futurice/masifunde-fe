@@ -6,7 +6,7 @@
  * @module
  */
 
-import { createClient, EntriesQueries, Entry } from 'contentful'
+import { EntriesQueries, Entry, createClient } from 'contentful'
 import { Schema, mixed } from 'yup'
 import {
   CONTENTFUL_ACCESS_TOKEN,

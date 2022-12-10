@@ -1,8 +1,7 @@
-import qs from 'qs'
 import { stripUnit } from 'polished'
-
-import { jpegQuality, teamMemberAndPartnerWidth } from '../../utils/constants'
+import qs from 'qs'
 import * as pages from '../../routes/pages'
+import { jpegQuality, teamMemberAndPartnerWidth } from '../../utils/constants'
 import { fetchMemoizedSingleEntry } from '../../utils/contentful-legacy'
 
 export async function fetchHeaderData(locale) {

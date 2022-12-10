@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-
 import imageShape from './image'
 import teamMemberShape from './teamMember'
 

@@ -1,13 +1,13 @@
-import { FC } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getLayoutProps, LayoutPageProps } from '../../components/Layout'
+import { FC } from 'react'
+import { LayoutPageProps, getLayoutProps } from '../../components/Layout'
 import Head from '../../components/shared/Head'
-import {
-  getTransparencyContent,
-  TransparencyContent,
-} from '../../content/tranparenz-content'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'
+import {
+  TransparencyContent,
+  getTransparencyContent,
+} from '../../content/tranparenz-content'
 
 // Props & Path Params
 // ===================

@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import Button from '../Button'
 import Link from '../../components/Link'
 import * as pages from '../../routes/pages'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { largeSpacing } from '../../styling/sizes'
+import Button from '../Button'
 
 const ButtonsContainer = styled.nav`
   margin-top: ${largeSpacing};

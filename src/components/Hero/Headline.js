@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
+import { largeSpacing, mediumSpacing, smallSpacing } from '../../styling/sizes'
 import { headerFont, rem } from '../../styling/typography'
-import { smallSpacing, mediumSpacing, largeSpacing } from '../../styling/sizes'
 
 export const HEADLINE_MIDDLE = 'middle'
 export const HEADLINE_BOTTOM = 'bottom'

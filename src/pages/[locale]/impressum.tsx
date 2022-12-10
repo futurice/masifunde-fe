@@ -1,13 +1,13 @@
-import { FC } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import {
-  getLegalNoticeContent,
-  LegalNoticeContent,
-} from '../../content/impressum-content'
+import { FC } from 'react'
+import { LayoutPageProps, getLayoutProps } from '../../components/Layout'
 import Head from '../../components/shared/Head'
-import { getLayoutProps, LayoutPageProps } from '../../components/Layout'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'
+import {
+  LegalNoticeContent,
+  getLegalNoticeContent,
+} from '../../content/impressum-content'
 
 // Props & Path Params
 // ===================

@@ -1,16 +1,15 @@
-import { Component } from 'react'
+import T from 'i18n-react'
 import PropTypes from 'prop-types'
+import { Component } from 'react'
 import {
   Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
   Container,
+  Nav,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
 } from 'reactstrap'
 import styled from 'styled-components'
-import T from 'i18n-react'
-
 import * as pages from '../../routes/pages'
 import { rem } from '../../styling/typography'
 import Link from '../Link'

@@ -1,4 +1,4 @@
-import { object, string, InferType } from 'yup'
+import { InferType, object, string } from 'yup'
 
 /**
  * Schema for the "Video" (`video`) content type.

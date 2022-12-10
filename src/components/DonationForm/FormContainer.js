@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types'
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import { lgBreakpoint } from '../../styling/breakpoints'
 
 const SubContainer = styled.div`

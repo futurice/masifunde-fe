@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 import Headline, {
   HEADLINE_MIDDLE,
-  propTypes as headlinePropTypes,
   defaultProps as headlineDefaultProps,
+  propTypes as headlinePropTypes,
 } from './Headline'
 
 const HERO_LARGE = 'large'

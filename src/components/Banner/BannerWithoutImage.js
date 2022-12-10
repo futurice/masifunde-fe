@@ -1,12 +1,11 @@
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
-
-import Button from '../Button'
-import PageSection from '../shared/PageSection'
 import { rem } from '../../styling/typography'
+import Button from '../Button'
 import Link from '../Link'
+import PageSection from '../shared/PageSection'
 import Headline from './Headline'
-import { propTypes, defaultProps } from './propTypes'
+import { defaultProps, propTypes } from './propTypes'
 import { background } from './styles'
 
 const OuterContainer = styled(PageSection).attrs({ contained: false })`

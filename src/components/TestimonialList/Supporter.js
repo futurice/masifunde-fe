@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
 import ImagePropTypes from '../../propTypes/image'
 import { rem } from '../../styling/typography'
 import { wordBreak } from '../../styling/utils'

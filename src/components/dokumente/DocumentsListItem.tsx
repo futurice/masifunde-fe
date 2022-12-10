@@ -1,7 +1,7 @@
-import styled from 'styled-components'
 import { FC } from 'react'
-import { rem } from '../../styling/typography'
+import styled from 'styled-components'
 import { extraExtraSmallSpacing, extraSmallSpacing } from '../../styling/sizes'
+import { rem } from '../../styling/typography'
 import { wordBreak } from '../../styling/utils'
 
 // Props

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
 import { subsectionTitleText } from '../styling/typography'
 import Divider from './shared/Divider'
 import PageSection from './shared/PageSection'

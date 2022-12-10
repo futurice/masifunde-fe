@@ -1,17 +1,16 @@
+import PropTypes from 'prop-types'
 import { Component } from 'react'
 import Modal from 'react-modal'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
-
-import { bodyText } from '../../styling/typography'
 import { extraExtraSmallSpacing } from '../../styling/sizes'
-import EmbeddedVideo from '../shared/EmbeddedVideo'
+import { bodyText } from '../../styling/typography'
+import { wordBreak } from '../../styling/utils'
 import {
   getVimeoThumbnail,
   getYoutubeThumbnail,
   isYouTubeVideo,
 } from '../../utils/video'
-import { wordBreak } from '../../styling/utils'
+import EmbeddedVideo from '../shared/EmbeddedVideo'
 
 const ImageButton = styled.button`
   margin: 0;

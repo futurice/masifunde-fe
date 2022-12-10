@@ -1,28 +1,28 @@
-import { Component } from 'react'
-import _debounce from 'lodash/debounce'
 import T from 'i18n-react'
-import {
-  checkEmails,
-  checkMaxValues,
-  checkMinValues,
-  checkIsIntegerValues,
-  checkRequiredValues,
-} from './utils/formValidation'
-import { NO_RECEIPT_OPTION_VALUE } from './constants/formValues'
+import _debounce from 'lodash/debounce'
+import { Component } from 'react'
 import {
   ADDRESS,
-  WANTS_RECEIPT,
-  CITY,
-  POST_CODE,
-  PROJECT_ID,
   AMOUNT,
-  PAYMENT_INTERVAL,
+  CITY,
   COUNTRY,
   EMAIL,
   FIRST_NAME,
   LAST_NAME,
+  PAYMENT_INTERVAL,
+  POST_CODE,
+  PROJECT_ID,
   SALUTATION,
+  WANTS_RECEIPT,
 } from './constants/fieldNames'
+import { NO_RECEIPT_OPTION_VALUE } from './constants/formValues'
+import {
+  checkEmails,
+  checkIsIntegerValues,
+  checkMaxValues,
+  checkMinValues,
+  checkRequiredValues,
+} from './utils/formValidation'
 
 function withFormState(View) {
   return class FormDataWrapper extends Component {

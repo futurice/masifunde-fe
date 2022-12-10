@@ -1,9 +1,8 @@
-import { css } from 'styled-components'
 import { rem as polishedRem } from 'polished'
-
+import { css } from 'styled-components'
 import { lgBreakpoint, mdBreakpoint } from './breakpoints'
-import theme from './theme'
 import { extraSmallSpacing } from './sizes'
+import theme from './theme'
 
 export const defaultFont =
   'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'

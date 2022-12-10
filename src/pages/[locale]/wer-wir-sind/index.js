@@ -1,29 +1,28 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-import { fetchWhoWeArePage } from '../../../content/wer-wir-sind-content'
-import { getLayoutProps } from '../../../components/Layout'
-import Head from '../../../components/shared/Head'
-import Button from '../../../components/Button'
-import * as pages from '../../../routes/pages'
-import Hero from '../../../components/Hero'
+import Award from '../../../components/Award'
 import Banner from '../../../components/Banner'
+import Button from '../../../components/Button'
+import CenteredGrid from '../../../components/CenteredGrid'
+import CenteredText from '../../../components/CenteredText'
+import Hero from '../../../components/Hero'
+import { getLayoutProps } from '../../../components/Layout'
+import Link from '../../../components/Link'
 import PartnersList, {
   propTypes as partnersListPropTypes,
 } from '../../../components/PartnersList'
-import imagePropTypes from '../../../propTypes/image'
-import CenteredText from '../../../components/CenteredText'
+import TestimonialList from '../../../components/TestimonialList'
+import Head from '../../../components/shared/Head'
 import PageSection from '../../../components/shared/PageSection'
-import Award from '../../../components/Award'
+import { fetchWhoWeArePage } from '../../../content/wer-wir-sind-content'
+import imagePropTypes from '../../../propTypes/image'
+import * as pages from '../../../routes/pages'
+import { lgBreakpoint } from '../../../styling/breakpoints'
 import {
+  extraSmallSpacing,
   largeSpacing,
   mediumSpacing,
-  extraSmallSpacing,
 } from '../../../styling/sizes'
-import { lgBreakpoint } from '../../../styling/breakpoints'
-import Link from '../../../components/Link'
-import TestimonialList from '../../../components/TestimonialList'
-import CenteredGrid from '../../../components/CenteredGrid'
 
 const Image = styled.img`
   width: 100%;
