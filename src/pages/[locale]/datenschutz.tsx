@@ -1,12 +1,27 @@
-import PropTypes from 'prop-types'
-
-import { getLayoutProps } from '../../components/Layout'
+import { FC } from 'react'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { getLayoutProps, LayoutPageProps } from '../../components/Layout'
 import Head from '../../components/shared/Head'
-import { fetchDatenschutzPage } from '../../content/datenschutz-content'
+import {
+  PrivacyPolicyContent,
+  getPrivacyPolicyContent,
+} from '../../content/datenschutz-content'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'
 
-const Privacy = ({
+// Props & Path Params
+// ===================
+
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps & PrivacyPolicyContent
+
+// Component
+// =========
+
+const PrivacyPolicy: FC<Props> = ({
   metaTitle,
   metaDescription,
   datenschutzTitle,
@@ -28,27 +43,17 @@ const Privacy = ({
   </div>
 )
 
-Privacy.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string,
-  datenschutzTitle: PropTypes.string.isRequired,
-  datenschutzMarkdown: PropTypes.string.isRequired,
-}
-
-Privacy.defaultProps = {
-  metaDescription: undefined,
-}
-
-export async function getStaticProps({ params: { locale } }) {
+export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
+  const { locale } = ctx.params!
   return {
     props: {
       ...(await getLayoutProps(locale)),
-      ...(await fetchDatenschutzPage(locale)),
+      ...(await getPrivacyPolicyContent(locale)),
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     paths: [
       {
@@ -62,4 +67,4 @@ export async function getStaticPaths() {
   }
 }
 
-export default Privacy
+export default PrivacyPolicy
