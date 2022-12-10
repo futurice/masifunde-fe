@@ -3,10 +3,14 @@ import {
   smBreakpoint,
   mdBreakpoint,
   lgBreakpoint,
-} from '../styling/breakpoints'
-import { extraSmallSpacing, mediumSpacing } from '../styling/sizes'
+} from '../../styling/breakpoints'
+import { extraSmallSpacing, mediumSpacing } from '../../styling/sizes'
 
-const centerIfSingleLine = (breakpoint, maxEntiresPerLine, numberOfEntries) => {
+const centerIfSingleLine = (
+  breakpoint: string,
+  maxEntiresPerLine: number,
+  numberOfEntries: number
+) => {
   if (numberOfEntries < maxEntiresPerLine) {
     return css`
       @media (min-width: ${breakpoint}) {
@@ -18,12 +22,11 @@ const centerIfSingleLine = (breakpoint, maxEntiresPerLine, numberOfEntries) => {
 }
 
 const listItemBottomMargin = mediumSpacing
-
 const smEntriesPerLine = 2
 const mdEntriesPerLine = 3
 const lgEntriesPerLine = 4
 
-const List = styled.div`
+const List = styled.div<{ entries: unknown[] }>`
   flex-grow: 0;
 
   display: flex;
@@ -57,7 +60,7 @@ const List = styled.div`
   }
 `
 
-List.Item = styled.div`
+export const ListItem = styled.div`
   display: flex;
   justify-content: center;
 `

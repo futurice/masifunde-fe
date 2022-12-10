@@ -33,6 +33,7 @@ export const teamMemberSchema = object({
  */
 export const contactPersonSchema = teamMemberSchema.concat(
   object({
+    profileImage: assetSchema.required(),
     email: string().required(),
   })
 )

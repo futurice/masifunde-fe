@@ -40,10 +40,11 @@ export type GetEntriesContentOptions<T> = EntriesQueries & {
 /**
  * Options for {@link getSingletonEntryContent}.
  */
-export type GetSingletonEntryContentOptions<T> = Omit<
-  GetEntriesContentOptions<T>,
-  'limit'
->
+export type GetSingletonEntryContentOptions<T> = EntriesQueries & {
+  locale: string // make sure that `locale` is passed
+  limit?: never // do not allow `limit` as it will be overridden anyway
+  schema: Schema<T>
+}
 
 // Functions
 // =========
