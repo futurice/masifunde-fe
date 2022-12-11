@@ -4,7 +4,7 @@ import * as pages from '../../routes/pages'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import { rem } from '../../styling/typography'
 import { wordBreak } from '../../styling/utils'
-import formatDate from '../../utils/date'
+import formatDate from '../../utils/formatDate'
 import Link from '../Link'
 
 // Props

@@ -28,7 +28,7 @@ import {
 } from '../../../styling/breakpoints'
 import { smallSpacing } from '../../../styling/sizes'
 import { footerText, rem } from '../../../styling/typography'
-import formatDate from '../../../utils/date'
+import formatDate from '../../../utils/formatDate'
 
 // Props & Path Params
 // ===================
