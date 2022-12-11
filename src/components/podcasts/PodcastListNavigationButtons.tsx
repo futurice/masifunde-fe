@@ -1,10 +1,23 @@
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
-import Link from '../../components/Link'
 import * as pages from '../../routes/pages'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { largeSpacing } from '../../styling/sizes'
 import Button from '../Button'
+import Link from '../Link'
+
+// Props
+// =====
+
+export type Props = {
+  previousPageButtonText: string
+  nextPageButtonText: string
+  page: number
+  totalNumberOfPages: number
+}
+
+// Helpers
+// =======
 
 const ButtonsContainer = styled.nav`
   margin-top: ${largeSpacing};
@@ -36,37 +49,37 @@ const ButtonsContainer = styled.nav`
   }
 `
 
-const PodcastListNavigationLink = ({
-  buttonText,
+type PodcastListNavigationLinkProps = {
+  destinationPage: number
+  currentPage: number
+  buttonText?: string
+  rel?: 'prev' | 'next'
+  rounded?: boolean
+}
+
+const PodcastListNavigationLink: FC<PodcastListNavigationLinkProps> = ({
+  destinationPage,
   currentPage,
-  page,
+  buttonText,
+  rel,
   rounded,
 }) => (
   <Link
     href={{
       pathname: pages.podcast,
-      query: { page },
+      query: { page: String(destinationPage) },
     }}
     passHref
   >
-    <Button isActive={currentPage && currentPage === page} rounded={rounded}>
-      {buttonText || page}
+    <Button
+      rel={rel}
+      isActive={currentPage && currentPage === destinationPage}
+      rounded={rounded}
+    >
+      {buttonText || destinationPage}
     </Button>
   </Link>
 )
-
-PodcastListNavigationLink.propTypes = {
-  page: PropTypes.number.isRequired,
-  currentPage: PropTypes.number,
-  buttonText: PropTypes.string,
-  rounded: PropTypes.bool,
-}
-
-PodcastListNavigationLink.defaultProps = {
-  buttonText: undefined,
-  currentPage: undefined,
-  rounded: false,
-}
 
 const PageButtonsContainer = styled.div`
   display: flex;
@@ -83,16 +96,17 @@ const PageButtonsContainer = styled.div`
   }
 `
 
-const PodcastListNavigationButtons = ({
+// Component
+// =========
+
+const PodcastListNavigationButtons: FC<Props> = ({
   previousPageButtonText,
   nextPageButtonText,
   page,
-  isLastPage,
   totalNumberOfPages,
 }) => {
   const isFirstPage = page === 1
-  const isNotFirstPage = !isFirstPage
-  const isNotLastPage = !isLastPage
+  const isLastPage = page === totalNumberOfPages
   const moreThanOnePage = totalNumberOfPages !== 1
   const threeOrMorePages = totalNumberOfPages >= 3
 
@@ -115,54 +129,50 @@ const PodcastListNavigationButtons = ({
   return (
     <ButtonsContainer>
       <div>
-        {isNotFirstPage && (
+        {!isFirstPage && (
           <PodcastListNavigationLink
             rel="prev"
-            page={page - 1}
+            destinationPage={page - 1}
+            currentPage={page}
             buttonText={previousPageButtonText}
           />
         )}
       </div>
+
       <PageButtonsContainer>
         {moreThanOnePage && (
           <PodcastListNavigationLink
             currentPage={page}
-            page={firstPageButton}
+            destinationPage={firstPageButton}
             rounded
           />
         )}
         <PodcastListNavigationLink
           currentPage={page}
-          page={secondPageButton}
+          destinationPage={secondPageButton}
           rounded
         />
         {threeOrMorePages && (
           <PodcastListNavigationLink
             currentPage={page}
-            page={thirdPageButton}
+            destinationPage={thirdPageButton}
             rounded
           />
         )}
       </PageButtonsContainer>
+
       <div>
-        {isNotLastPage && (
+        {!isLastPage && (
           <PodcastListNavigationLink
             rel="next"
-            page={page + 1}
+            destinationPage={page + 1}
+            currentPage={page}
             buttonText={nextPageButtonText}
           />
         )}
       </div>
     </ButtonsContainer>
   )
-}
-
-PodcastListNavigationButtons.propTypes = {
-  previousPageButtonText: PropTypes.string.isRequired,
-  nextPageButtonText: PropTypes.string.isRequired,
-  page: PropTypes.number.isRequired,
-  totalNumberOfPages: PropTypes.number.isRequired,
-  isLastPage: PropTypes.bool.isRequired,
 }
 
 export default PodcastListNavigationButtons

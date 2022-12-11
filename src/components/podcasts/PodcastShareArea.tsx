@@ -1,6 +1,18 @@
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
+import { StaticPodcastPageContent } from '../../content/podcast-content'
 import { smBreakpoint } from '../../styling/breakpoints'
+
+// Props
+// =====
+
+export type Props = {
+  shareText: string
+  shareLinks: StaticPodcastPageContent['shareLinks']
+}
+
+// Helpers
+// =======
 
 const ShareText = styled.h3`
   color: #77695c;
@@ -43,7 +55,10 @@ const ShareIcon = styled.div`
   }
 `
 
-const Share = ({ shareText, shareLinks }) => (
+// Component
+// =========
+
+const Share: FC<Props> = ({ shareText, shareLinks }) => (
   <ShareContainer>
     <ShareText>{shareText}</ShareText>
     <ShareIconContainer>
@@ -65,12 +80,5 @@ const Share = ({ shareText, shareLinks }) => (
     </ShareIconContainer>
   </ShareContainer>
 )
-
-Share.propTypes = {
-  shareText: PropTypes.string,
-  shareLinks: PropTypes.object.isRequired,
-}
-
-Share.defaultProps = {}
 
 export default Share
