@@ -1,8 +1,9 @@
 import { InferType, array, number, object, string } from 'yup'
 import { getSingletonEntryContent } from '../utils/contentful'
 import { assetSchema } from './shared/assets'
+import { donationAmountSchema, donationIntervalSchema } from './shared/donation'
 import { teamMemberSchema } from './shared/team'
-import { campaignContentSchema } from './spendenaktion-content'
+import { campaignSummarySchema } from './spendenaktion-content'
 import { partnerSchema, testimonialSchema } from './wer-wir-sind-content'
 
 // Schema
@@ -14,23 +15,6 @@ import { partnerSchema, testimonialSchema } from './wer-wir-sind-content'
 export const volunteerOpeningSchema = object({
   title: string().required(),
   description: string().required(),
-})
-
-/**
- * Schema for the "Donation Interval" (`formFrequency`) content type.
- */
-export const donationIntervalSchema = object({
-  name: string().required(),
-  value: string().required(),
-})
-
-/**
- * Schema for the "Donation Amount" (`formPrices`) content type.
- */
-export const donationAmountSchema = object({
-  text: string().required(),
-  value: number().required(),
-  description: string(),
 })
 
 /**
@@ -59,7 +43,7 @@ export const howToHelpContentSchema = object({
   section4Title: string().required(),
   section4Markdown: string().required(),
   section4ButtonText: string().required(),
-  campaign: campaignContentSchema.optional().default(undefined),
+  campaign: campaignSummarySchema.optional().default(undefined),
 })
 
 /**

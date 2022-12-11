@@ -1,19 +1,33 @@
-import PropTypes from 'prop-types'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { FC } from 'react'
 import styled from 'styled-components'
 import CenteredGrid from '../../components/CenteredGrid'
 import CenteredText from '../../components/CenteredText'
-import { getLayoutProps } from '../../components/Layout'
+import { LayoutPageProps, getLayoutProps } from '../../components/Layout'
 import RoundedImage from '../../components/RoundedImage'
 import TeamMember from '../../components/TeamMember'
 import Head from '../../components/shared/Head'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'
 import DonationForm from '../../components/wie-sie-helfen/DonationForm'
-import { fetchCampaignPage } from '../../content/spendenaktion-content'
-import imagePropTypes from '../../propTypes/image'
-import teamMemmberPropTypes from '../../propTypes/teamMember'
+import {
+  CampaignContent,
+  getCampaignContent,
+} from '../../content/spendenaktion-content'
 import { rem } from '../../styling/typography'
 import useURLSearchParams from '../../utils/useURLSearchParams'
+
+// Props & Path Params
+// ===================
+
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps & CampaignContent
+
+// Helpers
+// =======
 
 const StyledRoundedImage = styled(RoundedImage)`
   margin-bottom: 1rem;
@@ -25,7 +39,10 @@ const TeamMemberHeadline = styled.div`
   font-size: ${rem('18px')};
 `
 
-const Campaign = ({
+// Component
+// =========
+
+const Campaign: FC<Props> = ({
   metaTitle,
   metaDescription,
   introHeading,
@@ -56,12 +73,12 @@ const Campaign = ({
         <PageSection contained={false}>
           <div className="row">
             <div className="col-md">
-              {imageList.map(({ url, title }) => (
+              {imageList.map((image) => (
                 <StyledRoundedImage
                   className="img-fluid"
-                  key={url}
-                  src={url}
-                  alt={title}
+                  key={image.file.url}
+                  src={image.file.url}
+                  alt={image.title}
                 />
               ))}
             </div>
@@ -75,7 +92,7 @@ const Campaign = ({
           <TeamMemberHeadline>{teamMemberHeading}</TeamMemberHeadline>
           <div>
             <TeamMember
-              imageUrl={teamMember.image.url}
+              imageUrl={teamMember.profileImage.file.url}
               title={teamMember.name}
               email={teamMember.email}
             />
@@ -99,48 +116,17 @@ const Campaign = ({
   )
 }
 
-Campaign.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string,
-  introHeading: PropTypes.string.isRequired,
-  introMarkdown: PropTypes.string.isRequired,
-  imageList: PropTypes.arrayOf(PropTypes.shape(imagePropTypes)).isRequired,
-  contentMarkdown: PropTypes.string.isRequired,
-  teamMemberHeading: PropTypes.string.isRequired,
-  teamMember: PropTypes.shape(teamMemmberPropTypes).isRequired,
-  section2Title: PropTypes.string.isRequired,
-  section2ReferenceList: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  amountHeading: PropTypes.string.isRequired,
-  amounts: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired,
-      description: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  formHeading: PropTypes.string.isRequired,
-  fundraisingboxIframeHeading: PropTypes.string.isRequired,
-}
-
-Campaign.defaultProps = {
-  metaDescription: '',
-}
-
-export async function getStaticProps({ params: { locale } }) {
+export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
+  const { locale } = ctx.params!
   return {
     props: {
       ...(await getLayoutProps(locale)),
-      ...(await fetchCampaignPage(locale)),
+      ...(await getCampaignContent(locale)),
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     paths: [
       {

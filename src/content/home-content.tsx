@@ -3,7 +3,7 @@ import { getSingletonEntryContent } from '../utils/contentful'
 import { assetSchema } from './shared/assets'
 import { individualPortraitSchema } from './shared/portrait'
 import { statSchema } from './shared/stats'
-import { campaignContentSchema } from './spendenaktion-content'
+import { campaignSummarySchema } from './spendenaktion-content'
 
 const announcementSchema = object({
   heading: string().required(),
@@ -33,7 +33,7 @@ export const homeContentSchema = object({
   videoUrl: string(),
   // Campaign
   bannersTitle: string(),
-  campaign: campaignContentSchema.optional().default(undefined),
+  campaign: campaignSummarySchema.optional().default(undefined),
   // Announcement
   announcement: announcementSchema.optional().default(undefined),
   // Featured Blog Posts
