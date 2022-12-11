@@ -1,7 +1,8 @@
-import { array, boolean, object, string } from 'yup'
-import { fetchSingleEntry } from '../utils/contentful-legacy'
+import { InferType, array, boolean, object, string } from 'yup'
+import { getSingletonEntryContent } from '../utils/contentful'
 import { assetSchema } from './shared/assets'
-import { unwrapFields, unwrapImages, unwrapTeamMember } from './shared/common'
+import { donationAmountSchema, donationIntervalSchema } from './shared/donation'
+import { teamMemberSchema } from './shared/team'
 
 // Schema
 // ======
@@ -15,25 +16,47 @@ export const campaignContentSchema = object({
   isActive: boolean().default(false),
   introHeading: string().required(),
   introMarkdown: string().required(),
+  imageList: array(assetSchema).default([]),
+  contentMarkdown: string().required(),
+  teamMemberHeading: string().required(),
+  teamMember: teamMemberSchema.required(),
   bannerSmallTitle: string().required(),
   bannerButtonText: string().required(),
-  imageList: array(assetSchema).default([]),
+  // Donation Form
+  section2Title: string().required(),
+  section2ReferenceList: array(donationIntervalSchema).default([]),
+  amountHeading: string().required(),
+  amounts: array(donationAmountSchema).default([]),
+  formHeading: string().required(),
+  fundraisingboxIframeHeading: string().required(),
 })
 
-// (Legacy)
-// ========
+/**
+ * The subset of {@link campaignContentSchema} used to link to the
+ * campaign from other pages.
+ */
+export const campaignSummarySchema = campaignContentSchema.pick([
+  'isActive',
+  'introHeading',
+  'introMarkdown',
+  'imageList',
+  'bannerSmallTitle',
+  'bannerButtonText',
+])
 
-export async function fetchCampaignPage(locale: string) {
-  const content = await fetchSingleEntry('pageCampaign', locale)
-  return {
-    ...content,
-    imageList: unwrapImages(content.imageList),
-    amounts: content.amounts.map(unwrapFields),
-    section2ReferenceList:
-      (content &&
-        content.section2ReferenceList &&
-        content.section2ReferenceList.map(unwrapFields)) ||
-      [],
-    teamMember: unwrapTeamMember(content.teamMember),
-  }
+// Types
+// =====
+
+export type CampaignContent = InferType<typeof campaignContentSchema>
+export type CampaignSummary = InferType<typeof campaignSummarySchema>
+
+// Functions
+// =========
+
+export function getCampaignContent(locale: string): Promise<CampaignContent> {
+  return getSingletonEntryContent({
+    content_type: 'pageCampaign',
+    schema: campaignContentSchema,
+    locale,
+  })
 }
