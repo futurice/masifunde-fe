@@ -1,7 +1,7 @@
 import { FC, useRef } from 'react'
 import styled from 'styled-components'
 import { Podcast } from '../../content/podcast-content'
-import formatDate from '../../utils/date'
+import formatDate from '../../utils/formatDate'
 import PlayPauseButton from './PlayPauseButton'
 
 // Props

@@ -5,7 +5,7 @@ import { BlogPost } from '../../content/blog-content'
 import * as pages from '../../routes/pages'
 import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
 import { footerText } from '../../styling/typography'
-import formatDate from '../../utils/date'
+import formatDate from '../../utils/formatDate'
 import Link from '../Link'
 
 // Props
