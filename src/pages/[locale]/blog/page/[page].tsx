@@ -59,6 +59,9 @@ const BlogListFooter = styled.div`
   }
 `
 
+// Component
+// =========
+
 const Blog: FC<Props> = ({
   metaTitle,
   metaDescription,

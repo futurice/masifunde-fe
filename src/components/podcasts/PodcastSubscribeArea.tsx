@@ -1,6 +1,18 @@
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
+import { StaticPodcastPageContent } from '../../content/podcast-content'
 import { smBreakpoint } from '../../styling/breakpoints'
+
+// Props
+// =====
+
+export type Props = {
+  subscribeText: string
+  subscribeLinks: StaticPodcastPageContent['subscribeLinks']
+}
+
+// Helpers
+// =======
 
 const SubscribeText = styled.h3`
   color: #77695c;
@@ -35,7 +47,10 @@ const SubscribeIcon = styled.div`
   width: 33.33%;
 `
 
-const Subscribe = ({ subscribeText, subscribeLinks }) => (
+// Component
+// =========
+
+const Subscribe: FC<Props> = ({ subscribeText, subscribeLinks }) => (
   <SubscribeContainer>
     <SubscribeText>{subscribeText}</SubscribeText>
     <SubscribeIconContainer>
@@ -57,12 +72,5 @@ const Subscribe = ({ subscribeText, subscribeLinks }) => (
     </SubscribeIconContainer>
   </SubscribeContainer>
 )
-
-Subscribe.propTypes = {
-  subscribeText: PropTypes.string.isRequired,
-  subscribeLinks: PropTypes.object.isRequired,
-}
-
-Subscribe.defaultProps = {}
 
 export default Subscribe
