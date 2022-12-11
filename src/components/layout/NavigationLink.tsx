@@ -1,5 +1,5 @@
-import { withRouter } from 'next/router'
-import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
+import { FC, ReactNode } from 'react'
 import { NavItem } from 'reactstrap'
 import styled from 'styled-components'
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
@@ -7,13 +7,33 @@ import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
 import Button from '../Button'
 import Link from '../Link'
 
+// Props
+// =====
+
+export type Props = {
+  type: 'link' | 'button'
+  href: string
+  children: ReactNode
+}
+
+// Constants
+// =========
+
 const activeLinkBorderThickness = '3px'
 
-const StyledButton = styled(Button)`
+// Helpers
+// =======
+
+const NavigationLinkButton = styled(Button)`
   font-size: 18px;
 `
 
-const StyledAnchor = styled.a`
+type NavigationLinkAnchorProps = {
+  activeBorderThickness: string
+  isActive: boolean
+}
+
+const NavigationLinkAnchor = styled.a<NavigationLinkAnchorProps>`
   font-weight: bold;
   text-align: right;
   white-space: nowrap;
@@ -42,36 +62,29 @@ const StyledAnchor = styled.a`
   }
 `
 
-function NavigationLink({ children, router, href, type }) {
+// Component
+// =========
+
+const NavigationLink: FC<Props> = ({ type, href, children }) => {
+  const router = useRouter()
+
   return (
     <NavItem>
       <Link href={href} passHref>
         {type === 'link' ? (
-          <StyledAnchor
+          <NavigationLinkAnchor
             activeBorderThickness={activeLinkBorderThickness}
             className="nav-link"
             isActive={router.pathname.includes(href)}
           >
             {children}
-          </StyledAnchor>
+          </NavigationLinkAnchor>
         ) : (
-          <StyledButton type="primary">{children}</StyledButton>
+          <NavigationLinkButton type="primary">{children}</NavigationLinkButton>
         )}
       </Link>
     </NavItem>
   )
 }
 
-NavigationLink.propTypes = {
-  children: PropTypes.node.isRequired,
-  href: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  router: PropTypes.any.isRequired,
-  type: PropTypes.oneOf(['link', 'button']),
-}
-
-NavigationLink.defaultProps = {
-  type: 'link',
-}
-
-export default withRouter(NavigationLink)
+export default NavigationLink

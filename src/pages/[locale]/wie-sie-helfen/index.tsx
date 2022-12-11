@@ -5,9 +5,12 @@ import Banner from '../../../components/Banner'
 import Button from '../../../components/Button'
 import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
-import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import Link from '../../../components/Link'
 import RoundedImage from '../../../components/RoundedImage'
+import {
+  LayoutPageProps,
+  getLayoutProps,
+} from '../../../components/layout/Layout'
 import Divider from '../../../components/shared/Divider'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'

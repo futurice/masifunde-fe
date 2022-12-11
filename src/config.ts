@@ -12,6 +12,11 @@ export const contentfulAccessToken =
   '0afa27121adcd096d9046e06f1e23983af0b2816f4f57380a55ae6359d1b1ce3'
 
 /**
+ * The host to send Contentful API requests to.
+ */
+export const contentfulHost = process.env.CONTENTFUL_HOST ?? undefined
+
+/**
  * The maximum number of blog posts on each blog list page.
  */
 export const blogPostsPerPage = 10

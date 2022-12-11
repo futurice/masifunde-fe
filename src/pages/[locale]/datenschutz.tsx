@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
-import { LayoutPageProps, getLayoutProps } from '../../components/Layout'
+import { LayoutPageProps, getLayoutProps } from '../../components/layout/Layout'
 import Head from '../../components/shared/Head'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'

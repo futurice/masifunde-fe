@@ -2,9 +2,12 @@ import { GetStaticProps } from 'next'
 import { FC } from 'react'
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
-import { LayoutPageProps, getLayoutProps } from '../../../../components/Layout'
 import BlogListItem from '../../../../components/blog/BlogListItem'
 import BlogListNavigationButtons from '../../../../components/blog/BlogListNavigationButtons'
+import {
+  LayoutPageProps,
+  getLayoutProps,
+} from '../../../../components/layout/Layout'
 import Divider from '../../../../components/shared/Divider'
 import Head from '../../../../components/shared/Head'
 import PageSection from '../../../../components/shared/PageSection'

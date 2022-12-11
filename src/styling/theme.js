@@ -11,7 +11,7 @@ const colors = {
   linkBlue: '#225DBC',
   pineCone: '#77695C',
   error: '#FF621D',
-  soialLinkGrey: '#444444',
+  socialLinkGrey: '#444444',
   headerHeight: '3.9rem',
 }
 

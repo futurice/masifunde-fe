@@ -2,7 +2,7 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC, useEffect } from 'react'
-import Layout, { Props as LayoutProps } from '../components/Layout'
+import Layout, { Props as LayoutProps } from '../components/layout/Layout'
 import '../styling/font-faces.css'
 import { initializeAnalytics, trackPageView } from '../utils/analytics'
 

@@ -4,9 +4,12 @@ import { FaFacebook, FaTwitter } from 'react-icons/fa'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
 import styled from 'styled-components'
 import Hero from '../../../components/Hero'
-import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import SocialLink from '../../../components/SocialLink'
 import BlogPostNav from '../../../components/blog/BlogPostNav'
+import {
+  LayoutPageProps,
+  getLayoutProps,
+} from '../../../components/layout/Layout'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'

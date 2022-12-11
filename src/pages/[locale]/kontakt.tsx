@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
-import { LayoutPageProps, getLayoutProps } from '../../components/Layout'
+import { LayoutPageProps, getLayoutProps } from '../../components/layout/Layout'
 import Divider from '../../components/shared/Divider'
 import Head from '../../components/shared/Head'
 import Markdown from '../../components/shared/Markdown'
