@@ -8,9 +8,10 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "next start",
     "dev": "next dev",
+    "test": "jest",
+    "test-watch": "jest --watch",
     "build": "npm run build:production",
     "build:production": "npm run _build && npm run _robots:production",
     "build:preview": "npm run _build && npm run _robots:preview",
