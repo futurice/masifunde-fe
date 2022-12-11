@@ -20,7 +20,7 @@ export const fileSchema = object({
  * https://www.contentful.com/developers/docs/references/content-delivery-api/
  */
 export const assetSchema = object({
-  title: string().required(),
+  title: string().default(''),
   file: fileSchema.required(),
 })
 
