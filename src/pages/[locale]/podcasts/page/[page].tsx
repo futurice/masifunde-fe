@@ -3,7 +3,10 @@ import { FC } from 'react'
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
 import Banner from '../../../../components/Banner'
-import { LayoutPageProps, getLayoutProps } from '../../../../components/Layout'
+import {
+  LayoutPageProps,
+  getLayoutProps,
+} from '../../../../components/layout/Layout'
 import PodcastList from '../../../../components/podcasts/PodcastList'
 import PodcastListNavigationButtons from '../../../../components/podcasts/PodcastListNavigationButtons'
 import Share from '../../../../components/podcasts/PodcastShareArea'

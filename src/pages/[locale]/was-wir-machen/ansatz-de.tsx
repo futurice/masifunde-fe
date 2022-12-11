@@ -4,10 +4,13 @@ import styled from 'styled-components'
 import Banner from '../../../components/Banner'
 import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
-import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import RoundedImage from '../../../components/RoundedImage'
 import StatList from '../../../components/StatList'
 import Tagline from '../../../components/Tagline'
+import {
+  LayoutPageProps,
+  getLayoutProps,
+} from '../../../components/layout/Layout'
 import ContactDetails from '../../../components/shared/ContactDetails'
 import Head from '../../../components/shared/Head'
 import PageSection from '../../../components/shared/PageSection'

@@ -9,19 +9,19 @@
 import { EntriesQueries, Entry, createClient } from 'contentful'
 import { Schema, mixed } from 'yup'
 import {
-  CONTENTFUL_ACCESS_TOKEN,
-  CONTENTFUL_HOST,
-  CONTENTFUL_SPACE_ID,
-} from '../env'
+  contentfulAccessToken,
+  contentfulHost,
+  contentfulSpaceId,
+} from '../config'
 
 /**
  * A Contentful client pre-configured with Contentful credentials for
  * the Masifunde.de space.
  */
 export const contentfulClient = createClient({
-  space: CONTENTFUL_SPACE_ID,
-  accessToken: CONTENTFUL_ACCESS_TOKEN,
-  host: CONTENTFUL_HOST,
+  space: contentfulSpaceId,
+  accessToken: contentfulAccessToken,
+  host: contentfulHost,
   retryOnError: true,
   retryLimit: 15,
 })

@@ -3,7 +3,10 @@ import { FC } from 'react'
 import Banner from '../../../components/Banner'
 import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
-import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
+import {
+  LayoutPageProps,
+  getLayoutProps,
+} from '../../../components/layout/Layout'
 import Divider from '../../../components/shared/Divider'
 import Head from '../../../components/shared/Head'
 import PageSection from '../../../components/shared/PageSection'

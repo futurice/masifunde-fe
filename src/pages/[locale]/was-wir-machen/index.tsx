@@ -5,10 +5,13 @@ import Banner from '../../../components/Banner'
 import Button from '../../../components/Button'
 import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
-import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import Link from '../../../components/Link'
 import StatList from '../../../components/StatList'
 import Tagline from '../../../components/Tagline'
+import {
+  LayoutPageProps,
+  getLayoutProps,
+} from '../../../components/layout/Layout'
 import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'

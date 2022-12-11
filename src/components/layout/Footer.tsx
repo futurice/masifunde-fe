@@ -1,13 +1,22 @@
 import T from 'i18n-react'
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import { FaFacebook, FaYoutube } from 'react-icons/fa'
 import styled from 'styled-components'
-import * as pages from '../routes/pages'
-import { extraSmallSpacing, largeSpacing, smallSpacing } from '../styling/sizes'
-import { footerText, rem } from '../styling/typography'
-import Link from './Link'
-import SocialLink from './SocialLink'
-import PageSection from './shared/PageSection'
+import { FooterContent } from '../../content/layout-content'
+import * as pages from '../../routes/pages'
+import { HrefObject } from '../../routes/utils'
+import {
+  extraSmallSpacing,
+  largeSpacing,
+  smallSpacing,
+} from '../../styling/sizes'
+import { footerText, rem } from '../../styling/typography'
+import Link from '../Link'
+import SocialLink from '../SocialLink'
+import PageSection from '../shared/PageSection'
+
+// Helpers
+// =======
 
 const Text = styled.div`
   text-align: center;
@@ -86,29 +95,38 @@ const BankDetailDescription = styled.span`
   font-weight: bold;
 `
 
-const FooterLink = ({ href, text, className, ...rest }) => (
+type FooterLinkProps = {
+  href: string | HrefObject
+  text: string
+  className?: string
+  rel?: string
+  target?: string
+}
+
+const FooterLink: FC<FooterLinkProps> = ({
+  href,
+  text,
+  className,
+  rel,
+  target,
+}) => (
   <li className={className}>
-    <Link href={href} passHref {...rest}>
-      <a>{text}</a>
+    <Link href={href} passHref>
+      <a rel={rel} target={target}>
+        {text}
+      </a>
     </Link>
   </li>
 )
-
-FooterLink.propTypes = {
-  href: Link.propTypes.href,
-  text: PropTypes.string.isRequired,
-  className: PropTypes.string,
-}
-
-FooterLink.defaultProps = {
-  className: undefined,
-}
 
 const ContactLink = styled(FooterLink)`
   font-weight: inherit !important;
 `
 
-function Footer({
+// Component
+// =========
+
+const Footer: FC<FooterContent> = ({
   whatWeDoText,
   approachSaText,
   approachDeText,
@@ -133,7 +151,7 @@ function Footer({
   bicText,
   impressumText,
   datenschutzText,
-}) {
+}) => {
   return (
     <FooterSection>
       <footer>
@@ -211,7 +229,7 @@ function Footer({
           <div className="row">
             <SocialLinksRow>
               <SocialLink
-                aria-label={T.translate('footer.visitYouTube')}
+                aria-label={T.translate('footer.visitYouTube') as string}
                 href={masifundeYouTubeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -219,7 +237,7 @@ function Footer({
                 <FaYoutube />
               </SocialLink>
               <SocialLink
-                aria-label={T.translate('footer.visitFacebook')}
+                aria-label={T.translate('footer.visitFacebook') as string}
                 href={masifundeFacebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -227,7 +245,7 @@ function Footer({
                 <FaFacebook />
               </SocialLink>
               <SocialLink
-                aria-label={T.translate('footer.visitInstagram')}
+                aria-label={T.translate('footer.visitInstagram') as string}
                 href={masifundeInstagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -295,34 +313,5 @@ function Footer({
     </FooterSection>
   )
 }
-
-export const propTypes = {
-  whatWeDoText: PropTypes.string.isRequired,
-  approachSaText: PropTypes.string.isRequired,
-  approachDeText: PropTypes.string.isRequired,
-  impactText: PropTypes.string.isRequired,
-  whoWeAreText: PropTypes.string.isRequired,
-  teamSaText: PropTypes.string.isRequired,
-  teamDeText: PropTypes.string.isRequired,
-  howToSupportText: PropTypes.string.isRequired,
-  donateText: PropTypes.string.isRequired,
-  becomeSponsorText: PropTypes.string.isRequired,
-  becomeVolunteerText: PropTypes.string.isRequired,
-  becomePartnerText: PropTypes.string.isRequired,
-  contactText: PropTypes.string.isRequired,
-  blogText: PropTypes.string.isRequired,
-  documentsText: PropTypes.string.isRequired,
-  podcastText: PropTypes.string.isRequired,
-  copyrightText: PropTypes.string.isRequired,
-  masifundeYouTubeUrl: PropTypes.string.isRequired,
-  masifundeFacebookUrl: PropTypes.string.isRequired,
-  masifundeInstagramUrl: PropTypes.string.isRequired,
-  ibanText: PropTypes.string.isRequired,
-  bicText: PropTypes.string.isRequired,
-  impressumText: PropTypes.string.isRequired,
-  datenschutzText: PropTypes.string.isRequired,
-}
-
-Footer.propTypes = propTypes
 
 export default Footer

@@ -3,13 +3,16 @@ import { useRouter } from 'next/router'
 import { FC, ReactNode } from 'react'
 import { IconContext } from 'react-icons'
 import styled, { ThemeProvider } from 'styled-components'
-import { fetchFooterData, fetchHeaderData } from '../content/shared/common'
-import translationsDE from '../i18n/de.json'
-import translationsEN from '../i18n/en.json'
-import theme from '../styling/theme'
-import CookieNotice from './CookieNotice'
+import {
+  getFooterContent,
+  getHeaderContent,
+} from '../../content/layout-content'
+import translationsDE from '../../i18n/de.json'
+import translationsEN from '../../i18n/en.json'
+import theme from '../../styling/theme'
+import CookieNotice from '../CookieNotice'
+import GlobalStyle from '../GlobalStyle'
 import Footer from './Footer'
-import GlobalStyle from './GlobalStyle'
 import Header from './Header'
 
 // Props
@@ -17,8 +20,8 @@ import Header from './Header'
 
 export type Props = {
   locale: string
-  headerData: HeaderProps
-  footerData: FooterProps
+  header: HeaderProps
+  footer: FooterProps
   children: ReactNode
 }
 
@@ -75,7 +78,7 @@ const Content = styled.main.attrs({ role: 'main' })`
 // Component
 // =========
 
-const Layout: FC<Props> = ({ headerData, children, footerData }) => {
+const Layout: FC<Props> = ({ header, footer, children }) => {
   const router = useRouter()
   const locale = router.query.locale as 'de' | 'en'
   T.setTexts(translations[locale])
@@ -85,12 +88,12 @@ const Layout: FC<Props> = ({ headerData, children, footerData }) => {
       <GlobalStyle />
       <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
         <>
-          <Header height={theme.headerHeight} {...headerData} />
+          <Header height={theme.headerHeight} {...header} />
           <Content>
             <CookieNotice />
             {children}
           </Content>
-          <Footer {...footerData} />
+          <Footer {...footer} />
         </>
       </IconContext.Provider>
     </ThemeProvider>
@@ -127,8 +130,8 @@ export async function getLayoutProps(locale: string): Promise<LayoutPageProps> {
   return {
     layoutProps: {
       locale,
-      headerData: await fetchHeaderData(locale),
-      footerData: await fetchFooterData(locale),
+      header: await getHeaderContent(locale),
+      footer: await getFooterContent(locale),
     },
   }
 }
