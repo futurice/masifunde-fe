@@ -1,9 +1,16 @@
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
-import ImagePropTypes from '../../propTypes/image'
+import { Asset } from '../../content/shared/assets'
 import { rem } from '../../styling/typography'
 import { wordBreak } from '../../styling/utils'
 import RoundedImage from '../RoundedImage'
+
+export type Props = {
+  name: string
+  title: string
+  image: Asset
+  className?: string
+}
 
 const maxImageSize = '160px'
 const ImageContainer = styled.div`
@@ -26,32 +33,18 @@ const Title = styled.div`
   color: ${({ theme }) => theme.pineCone};
 `
 
-const Supporter = ({ image: { url: imageUrl }, name, title, ...rest }) => (
-  <div {...rest}>
+const PartnersListItem: FC<Props> = ({ image, name, title, className }) => (
+  <div className={className}>
     <ImageContainer>
-      <RoundedImage className="img-fluid" src={imageUrl} alt="" />
+      <RoundedImage className="img-fluid" src={image.file.url} alt="" />
     </ImageContainer>
     {name && <Name>{name}</Name>}
     {title && <Title>{title}</Title>}
   </div>
 )
 
-Supporter.propTypes = {
-  image: PropTypes.shape(ImagePropTypes).isRequired,
-  name: PropTypes.string,
-  title: PropTypes.string,
-}
-
-Supporter.defaultProps = {
-  name: undefined,
-  title: undefined,
-}
-
-const StyledPatron = styled(Supporter)`
+const StyledPartnersListItem = styled(PartnersListItem)`
   ${wordBreak}
 `
 
-StyledPatron.propTypes = Supporter.propTypes
-StyledPatron.defaultProps = Supporter.defaultProps
-
-export default StyledPatron
+export default StyledPartnersListItem

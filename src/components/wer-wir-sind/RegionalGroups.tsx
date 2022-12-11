@@ -1,11 +1,22 @@
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
-import { lgBreakpoint, smBreakpoint } from '../styling/breakpoints'
+import { RegionalGroupCountry } from '../../content/wer-wir-sind-content'
+import { lgBreakpoint, smBreakpoint } from '../../styling/breakpoints'
 import {
   extraSmallSpacing,
   largeSpacing,
   mediumSpacing,
-} from '../styling/sizes'
+} from '../../styling/sizes'
+
+// Props
+// =====
+
+export type Props = {
+  regionalGroups: RegionalGroupCountry
+}
+
+// Helpers
+// =======
 
 const LocationsList = styled.ul`
   @media (min-width: ${smBreakpoint}) {
@@ -58,28 +69,26 @@ const Image = styled.img`
   height: 320px;
 `
 
-const RegionalGroups = ({ regionalGroups }) => (
+// Component
+// =========
+
+const RegionalGroups: FC<Props> = ({ regionalGroups }) => (
   <GroupsContainer className="row">
     <Image
       className="col-md-5"
-      src={regionalGroups.image.url}
+      src={regionalGroups.image.file.url}
       alt={regionalGroups.image.title}
     />
     <LocationsList className="list-unstyled col-xl-6">
-      {regionalGroups.regions.map((place) => (
-        <LocationListItem key={place.name}>
-          <GroupName>{place.name}</GroupName>
-          <Span>{place.contactPerson}</Span>
-          <Email href={`mailto:${place.email}`}>{place.email}</Email>
+      {regionalGroups.regions.map((group) => (
+        <LocationListItem key={group.name}>
+          <GroupName>{group.name}</GroupName>
+          <Span>{group.contactPerson}</Span>
+          <Email href={`mailto:${group.email}`}>{group.email}</Email>
         </LocationListItem>
       ))}
     </LocationsList>
   </GroupsContainer>
 )
-
-RegionalGroups.propTypes = {
-  regionalGroups: PropTypes.oneOfType([PropTypes.array, PropTypes.shape()])
-    .isRequired,
-}
 
 export default RegionalGroups

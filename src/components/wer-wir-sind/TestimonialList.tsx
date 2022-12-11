@@ -1,10 +1,16 @@
 import T from 'i18n-react'
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
+import { Testimonial } from '../../content/wer-wir-sind-content'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { extraSmallSpacing, mediumSpacing } from '../../styling/sizes'
 import Markdown from '../shared/Markdown'
-import Supporter from './Supporter'
+import TestimonialListItem from './TestimonialListItem'
+
+export type Props = {
+  testimonials: Testimonial[]
+  className?: string
+}
 
 const List = styled.div`
   /* Counter bottom margin of TestimonialList in last line */
@@ -15,7 +21,7 @@ const TestimonialContainer = styled.div`
   margin-bottom: ${mediumSpacing};
 `
 
-const StyledSupporter = styled(Supporter)`
+const StyledTestimonialListItem = styled(TestimonialListItem)`
   @media (max-width: ${smBreakpoint}) {
     display: flex;
     flex-direction: column;
@@ -31,23 +37,23 @@ const TestimonialText = styled(Markdown)`
     display: inline;
     /* Use arrow function to ensure translation happens dynamically
      * (and not just once at component definition time) */
-    content: '${() => T.translate('quote.open')}';
+    content: '${() => T.translate('quote.open') as string}';
   }
 
   p:last-child::after {
     display: inline;
     /* Use arrow function to ensure translation happens dynamically
      * (and not just once at component definition time) */
-    content: '${() => T.translate('quote.close')}';
+    content: '${() => T.translate('quote.close') as string}';
   }
 `
 
-const TestimonialList = ({ testimonials, className }) => (
+const TestimonialList: FC<Props> = ({ testimonials, className }) => (
   <List className={`row ${className}`}>
     {testimonials.map(({ testimonialMarkdown, title, name, image }) => (
       <TestimonialContainer className="col-lg-6" key={name}>
         <div className="row">
-          <StyledSupporter
+          <StyledTestimonialListItem
             className="col-sm-4 col-md-3 col-lg-4"
             image={image}
             name={name}
@@ -61,21 +67,6 @@ const TestimonialList = ({ testimonials, className }) => (
     ))}
   </List>
 )
-
-TestimonialList.propTypes = {
-  className: PropTypes.string,
-  testimonials: PropTypes.arrayOf(
-    PropTypes.shape({
-      ...Supporter.propTypes,
-      testimonialMarkdown: PropTypes.string,
-    })
-  ),
-}
-
-TestimonialList.defaultProps = {
-  testimonials: [],
-  className: '',
-}
 
 const StyledTestimonialList = styled(TestimonialList)`
   // Center when there is only one element in the list

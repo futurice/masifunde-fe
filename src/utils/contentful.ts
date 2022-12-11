@@ -33,17 +33,17 @@ export const contentfulClient = createClient({
  * Options for {@link getEntriesContent}.
  */
 export type GetEntriesContentOptions<T> = EntriesQueries & {
-  locale: string // make sure that `locale` is passed
   schema: Schema<T>
+  locale: string // make sure that `locale` is passed
 }
 
 /**
  * Options for {@link getSingletonEntryContent}.
  */
 export type GetSingletonEntryContentOptions<T> = EntriesQueries & {
+  schema: Schema<T>
   locale: string // make sure that `locale` is passed
   limit?: never // do not allow `limit` as it will be overridden anyway
-  schema: Schema<T>
 }
 
 // Functions
@@ -96,7 +96,10 @@ export async function getSingletonEntryContent<T>(
   const {
     total,
     items: [item],
-  } = await client.getEntries({ ...query, limit: 1 })
+  } = await client.getEntries({
+    ...query,
+    limit: 1,
+  })
 
   if (!item) {
     throw new Error(`No entry for query: "${JSON.stringify(query)}"`)

@@ -1,9 +1,20 @@
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
-import imageShape from '../propTypes/image'
-import { smBreakpoint } from '../styling/breakpoints'
-import { mediumSpacing, smallSpacing } from '../styling/sizes'
-import Markdown from './shared/Markdown'
+import { smBreakpoint } from '../../styling/breakpoints'
+import { mediumSpacing, smallSpacing } from '../../styling/sizes'
+import Markdown from '../shared/Markdown'
+
+// Props
+// =====
+
+export type Props = {
+  name: string
+  logoUrl: string
+  description: string
+}
+
+// Helpers
+// =======
 
 const ImageContainer = styled.div`
   display: flex;
@@ -41,10 +52,13 @@ const AwardContainer = styled.div`
   }
 `
 
-const Award = ({ description, image, name }) => (
+// Component
+// =========
+
+const AwardsListItem: FC<Props> = ({ name, logoUrl, description }) => (
   <AwardContainer className="row">
     <ImageContainer className="col-xs-12 col-sm-3">
-      <Image alt={name} src={image.url} />
+      <Image alt={name} src={logoUrl} />
     </ImageContainer>
     <div className="col-sm-8">
       <Title>{name}</Title>
@@ -53,10 +67,4 @@ const Award = ({ description, image, name }) => (
   </AwardContainer>
 )
 
-Award.propTypes = {
-  description: PropTypes.string.isRequired,
-  image: PropTypes.shape(imageShape).isRequired,
-  name: PropTypes.string.isRequired,
-}
-
-export default Award
+export default AwardsListItem

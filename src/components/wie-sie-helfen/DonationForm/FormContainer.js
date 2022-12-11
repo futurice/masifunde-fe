@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
-import { lgBreakpoint } from '../../styling/breakpoints'
+import { lgBreakpoint } from '../../../styling/breakpoints'
 
 const SubContainer = styled.div`
   margin: 0 auto;

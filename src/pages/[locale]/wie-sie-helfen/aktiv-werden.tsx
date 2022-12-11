@@ -1,23 +1,31 @@
-import PropTypes from 'prop-types'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { FC } from 'react'
 import Banner from '../../../components/Banner'
 import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
-import { getLayoutProps } from '../../../components/Layout'
-import TestimonialList from '../../../components/TestimonialList'
-import VolunteerOpeningsList from '../../../components/VolunteerOpeningList'
+import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import Divider from '../../../components/shared/Divider'
 import Head from '../../../components/shared/Head'
 import PageSection from '../../../components/shared/PageSection'
 import TextWithPortraitPhoto from '../../../components/shared/TextWithPortraitPhoto'
-import { fetchBecomeAVolunteerPage } from '../../../content/wie-sie-helfen-content'
-import teamMemberProps from '../../../propTypes/teamMember'
+import TestimonialList from '../../../components/wer-wir-sind/TestimonialList'
+import VolunteerOpeningsList from '../../../components/wie-sie-helfen/VolunteerOpeningList'
+import {
+  BecomeVolunteerContent,
+  getBecomeVolunteerContent,
+} from '../../../content/wie-sie-helfen-content'
 
-const BecomeVolunteer = ({
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps & BecomeVolunteerContent
+
+const BecomeVolunteer: FC<Props> = ({
   metaTitle,
   metaDescription,
   introTitle,
   introMarkdown,
-
   deTestimonialsHeading,
   deTestimonials,
   deVolunteerOpeningsHeading,
@@ -25,7 +33,6 @@ const BecomeVolunteer = ({
   deVolunteerContactHeading,
   deVolunteerContactText,
   deVolunteerContact,
-
   saVolunteerOpening1Heading,
   saVolunteerOpening1Text,
   saVolunteerOpening1ContactHeading,
@@ -36,7 +43,6 @@ const BecomeVolunteer = ({
   saVolunteerOpening2ContactHeading,
   saVolunteerOpening2ContactText,
   saVolunteerOpening2Contact,
-
   bannerTitle,
   bannerButtonText,
   bannerButtonUrl,
@@ -71,7 +77,7 @@ const BecomeVolunteer = ({
         text={deVolunteerContactText}
         portraitPhotoTitle={deVolunteerContact.name}
         portraitPhotoSubtitle={deVolunteerContact.responsibilityArea}
-        portraitPhotoImageUrl={deVolunteerContact.image.url}
+        portraitPhotoImageUrl={deVolunteerContact.profileImage.file.url}
         portraitPhotoEmail={deVolunteerContact.email}
       />
     </PageSection>
@@ -91,7 +97,7 @@ const BecomeVolunteer = ({
         text={saVolunteerOpening1ContactText}
         portraitPhotoTitle={saVolunteerOpening1Contact.name}
         portraitPhotoSubtitle={saVolunteerOpening1Contact.responsibilityArea}
-        portraitPhotoImageUrl={saVolunteerOpening1Contact.image.url}
+        portraitPhotoImageUrl={saVolunteerOpening1Contact.profileImage.file.url}
         portraitPhotoEmail={saVolunteerOpening1Contact.email}
       />
     </PageSection>
@@ -107,7 +113,7 @@ const BecomeVolunteer = ({
         text={saVolunteerOpening2ContactText}
         portraitPhotoTitle={saVolunteerOpening2Contact.name}
         portraitPhotoSubtitle={saVolunteerOpening2Contact.responsibilityArea}
-        portraitPhotoImageUrl={saVolunteerOpening2Contact.image.url}
+        portraitPhotoImageUrl={saVolunteerOpening2Contact.profileImage.file.url}
         portraitPhotoEmail={saVolunteerOpening2Contact.email}
       />
     </PageSection>
@@ -120,51 +126,17 @@ const BecomeVolunteer = ({
   </div>
 )
 
-BecomeVolunteer.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string,
-  introTitle: PropTypes.string.isRequired,
-  introMarkdown: PropTypes.string.isRequired,
-
-  deVolunteerContactHeading: PropTypes.string.isRequired,
-  deVolunteerContactText: PropTypes.string.isRequired,
-  deVolunteerContact: PropTypes.shape(teamMemberProps).isRequired,
-  deVolunteerOpeningsHeading: PropTypes.string.isRequired,
-  deTestimonialsHeading: PropTypes.string.isRequired,
-  deTestimonials: TestimonialList.propTypes.testimonials.isRequired,
-  deVolunteerOpenings:
-    VolunteerOpeningsList.propTypes.volunteerOpenings.isRequired,
-
-  saVolunteerOpening1Heading: PropTypes.string.isRequired,
-  saVolunteerOpening1Text: PropTypes.string.isRequired,
-  saVolunteerOpening1ContactHeading: PropTypes.string.isRequired,
-  saVolunteerOpening1ContactText: PropTypes.string.isRequired,
-  saVolunteerOpening1Contact: PropTypes.shape(teamMemberProps).isRequired,
-  saVolunteerOpening2Heading: PropTypes.string.isRequired,
-  saVolunteerOpening2Text: PropTypes.string.isRequired,
-  saVolunteerOpening2ContactHeading: PropTypes.string.isRequired,
-  saVolunteerOpening2ContactText: PropTypes.string.isRequired,
-  saVolunteerOpening2Contact: PropTypes.shape(teamMemberProps).isRequired,
-
-  bannerTitle: PropTypes.string.isRequired,
-  bannerButtonText: PropTypes.string.isRequired,
-  bannerButtonUrl: PropTypes.string.isRequired,
-}
-
-BecomeVolunteer.defaultProps = {
-  metaDescription: undefined,
-}
-
-export async function getStaticProps({ params: { locale } }) {
+export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
+  const { locale } = ctx.params!
   return {
     props: {
       ...(await getLayoutProps(locale)),
-      ...(await fetchBecomeAVolunteerPage(locale)),
+      ...(await getBecomeVolunteerContent(locale)),
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     paths: [
       {

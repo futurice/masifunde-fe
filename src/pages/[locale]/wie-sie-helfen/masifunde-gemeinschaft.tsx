@@ -1,22 +1,37 @@
 import createDecorator from 'final-form-calculate'
-import PropTypes from 'prop-types'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
-import DonationForm from '../../../components/DonationForm'
-import {
-  AMOUNT,
-  PAYMENT_INTERVAL,
-  PROJECT_ID,
-} from '../../../components/DonationForm/constants/fieldNames'
-import { LEARN_4_LIFE_PROJECT_ID } from '../../../components/DonationForm/constants/formValues'
-import { getLayoutProps } from '../../../components/Layout'
+import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import RoundedImage from '../../../components/RoundedImage'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
-import { fetchBecomeASponsorPage } from '../../../content/wie-sie-helfen-content'
-import imagePropTypes from '../../../propTypes/image'
+import DonationForm from '../../../components/wie-sie-helfen/DonationForm'
+import {
+  AMOUNT,
+  PAYMENT_INTERVAL,
+  PROJECT_ID,
+} from '../../../components/wie-sie-helfen/DonationForm/constants/fieldNames'
+import { LEARN_4_LIFE_PROJECT_ID } from '../../../components/wie-sie-helfen/DonationForm/constants/formValues'
+import {
+  BecomeSponsorContent,
+  getBecomeSponsorContent,
+} from '../../../content/wie-sie-helfen-content'
 import useURLSearchParams from '../../../utils/useURLSearchParams'
+
+// Props & Path Params
+// ===================
+
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps & BecomeSponsorContent
+
+// Helpers
+// =======
 
 const Image = styled(RoundedImage)`
   width: 100%;
@@ -29,7 +44,10 @@ const changeAmountValueOnPaymentInterval = createDecorator({
   },
 })
 
-const BecomeSponsor = ({
+// Component
+// =========
+
+const BecomeSponsor: FC<Props> = ({
   metaTitle,
   metaDescription,
   title,
@@ -67,7 +85,7 @@ const BecomeSponsor = ({
             <Markdown source={introMarkdown2} />
           </div>
           <div className="col-12 col-md-5">
-            <Image src={image.url} alt={image.title} />
+            <Image src={image.file.url} alt={image.title} />
           </div>
         </div>
       </PageSection>
@@ -75,6 +93,7 @@ const BecomeSponsor = ({
       <PageSection>
         <h2>{donationFormTitle}</h2>
       </PageSection>
+
       <DonationForm
         amounts={section3ReferenceList}
         amountTitle={section3Title}
@@ -100,55 +119,17 @@ const BecomeSponsor = ({
   )
 }
 
-BecomeSponsor.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  introSubtitle1: PropTypes.string.isRequired,
-  introMarkdown1: PropTypes.string.isRequired,
-  introSubtitle2: PropTypes.string.isRequired,
-  introMarkdown2: PropTypes.string.isRequired,
-  image: PropTypes.shape(imagePropTypes).isRequired,
-  donationFormTitle: PropTypes.string.isRequired,
-  section2Title: PropTypes.string.isRequired,
-  section2ReferenceList: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  section3Title: PropTypes.string.isRequired,
-  section3ReferenceList: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  section4Title: PropTypes.string.isRequired,
-  section5Title: PropTypes.string.isRequired,
-  bannerTitle: PropTypes.string.isRequired,
-  bannerButtonText: PropTypes.string.isRequired,
-  bannerButtonUrl: PropTypes.string.isRequired,
-  minimumYearlyAmount: PropTypes.number.isRequired,
-  query: PropTypes.shape({
-    status: PropTypes.string,
-  }).isRequired,
-}
-
-BecomeSponsor.defaultProps = {
-  metaDescription: undefined,
-}
-
-export async function getStaticProps({ params: { locale } }) {
+export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
+  const { locale } = ctx.params!
   return {
     props: {
       ...(await getLayoutProps(locale)),
-      ...(await fetchBecomeASponsorPage(locale)),
+      ...(await getBecomeSponsorContent(locale)),
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     paths: [
       {
