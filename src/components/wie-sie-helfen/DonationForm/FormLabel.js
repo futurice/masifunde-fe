@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { mdBreakpoint } from '../../styling/breakpoints'
+import { mdBreakpoint } from '../../../styling/breakpoints'
 
 const FormLabel = styled.label`
   text-align: left;

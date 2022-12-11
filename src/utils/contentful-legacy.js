@@ -43,11 +43,12 @@ export function fetchSingleEntry(contentType, locale = 'de') {
 }
 
 export async function fetchMemoizedSingleEntry(contentType, locale = 'de') {
-  if (singleEntryCache.has(contentType)) {
-    return singleEntryCache.get(contentType)
+  const cacheKey = `${contentType}/${locale}`
+  if (singleEntryCache.has(cacheKey)) {
+    return singleEntryCache.get(cacheKey)
   } else {
     const entry = await fetchSingleEntry(contentType, locale)
-    singleEntryCache.set(contentType, entry)
+    singleEntryCache.set(cacheKey, entry)
     return entry
   }
 }

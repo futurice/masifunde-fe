@@ -1,20 +1,35 @@
-import PropTypes from 'prop-types'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
 import Button from '../../../components/Button'
 import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
-import { getLayoutProps } from '../../../components/Layout'
+import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import Link from '../../../components/Link'
 import RoundedImage from '../../../components/RoundedImage'
 import Divider from '../../../components/shared/Divider'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
-import { fetchHowToSupportPage } from '../../../content/wie-sie-helfen-content'
-import campaignPageBannerPropTypes from '../../../propTypes/campaignPageBanner'
+import {
+  HowToHelpContent,
+  getHowToHelpContent,
+} from '../../../content/wie-sie-helfen-content'
 import * as pages from '../../../routes/pages'
 import { smBreakpoint } from '../../../styling/breakpoints'
+
+// Props & Path Params
+// ===================
+
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps & HowToHelpContent
+
+// Helpers
+// =======
 
 const SectionContainer = styled(PageSection)`
   display: flex;
@@ -33,8 +48,19 @@ const SectionImage = styled(RoundedImage)`
   max-height: 240px;
 `
 
-const Section = ({
-  image,
+type SectionProps = {
+  imageUrl: string
+  imageTitle: string
+  title: string
+  markdown: string
+  buttonText: string
+  buttonType: string
+  buttonLink: string
+}
+
+const Section: FC<SectionProps> = ({
+  imageUrl,
+  imageTitle,
   title,
   markdown,
   buttonText,
@@ -44,7 +70,7 @@ const Section = ({
   <SectionContainer>
     <Link href={buttonLink} passHref>
       <SectionImageContainer className="col-md-4 offset-lg-1 col-lg-3">
-        <SectionImage src={image.url} alt={image.title} />
+        <SectionImage src={imageUrl} alt={imageTitle} />
       </SectionImageContainer>
     </Link>
     <div className="col-md-8 col-lg-7">
@@ -57,19 +83,10 @@ const Section = ({
   </SectionContainer>
 )
 
-Section.propTypes = {
-  image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  title: PropTypes.string.isRequired,
-  markdown: PropTypes.string.isRequired,
-  buttonText: PropTypes.string.isRequired,
-  buttonType: PropTypes.string.isRequired,
-  buttonLink: PropTypes.string.isRequired,
-}
+// Component
+// =========
 
-const HowToSupport = ({
+const HowToHelp: FC<Props> = ({
   metaTitle,
   metaDescription,
   heroTitle,
@@ -113,7 +130,8 @@ const HowToSupport = ({
       buttonText={section1ButtonText}
       title={section1Title}
       markdown={section1Markdown}
-      image={section1Image}
+      imageUrl={section1Image.file.url}
+      imageTitle={section1Image.title}
       buttonType="primary"
       buttonLink={pages.donate}
     />
@@ -122,7 +140,8 @@ const HowToSupport = ({
       buttonText={section2ButtonText}
       title={section2Title}
       markdown={section2Markdown}
-      image={section2Image}
+      imageUrl={section2Image.file.url}
+      imageTitle={section2Image.title}
       buttonType="secondary"
       buttonLink={pages.becomeSponsor}
     />
@@ -135,7 +154,8 @@ const HowToSupport = ({
       buttonText={section3ButtonText}
       title={section3Title}
       markdown={section3Markdown}
-      image={section3Image}
+      imageUrl={section3Image.file.url}
+      imageTitle={section3Image.title}
       buttonType="secondary"
       buttonLink={pages.becomeVolunteer}
     />
@@ -144,18 +164,19 @@ const HowToSupport = ({
       buttonText={section4ButtonText}
       title={section4Title}
       markdown={section4Markdown}
-      image={section4Image}
+      imageUrl={section4Image.file.url}
+      imageTitle={section4Image.title}
       buttonType="secondary"
       buttonLink={pages.becomePartner}
     />
 
     <PageSection>
-      {campaign.isActive && (
+      {campaign?.isActive && (
         <Banner
           subHeadline={campaign.bannerSmallTitle}
           headline={campaign.introHeading}
           description={campaign.introMarkdown}
-          image={campaign.imageList[0].url}
+          image={campaign.imageList[0]?.file.url}
           buttonLink={pages.campaign}
           buttonText={campaign.bannerButtonText}
         />
@@ -164,57 +185,17 @@ const HowToSupport = ({
   </>
 )
 
-HowToSupport.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string,
-  heroTitle: PropTypes.string.isRequired,
-  introHeading: PropTypes.string.isRequired,
-  introMarkdown: PropTypes.string.isRequired,
-  section1Image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  section1Title: PropTypes.string.isRequired,
-  section1Markdown: PropTypes.string.isRequired,
-  section1ButtonText: PropTypes.string.isRequired,
-  section2Image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  section2Title: PropTypes.string.isRequired,
-  section2Markdown: PropTypes.string.isRequired,
-  section2ButtonText: PropTypes.string.isRequired,
-  section3Image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  section3Title: PropTypes.string.isRequired,
-  section3Markdown: PropTypes.string.isRequired,
-  section3ButtonText: PropTypes.string.isRequired,
-  section4Image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  section4Title: PropTypes.string.isRequired,
-  section4Markdown: PropTypes.string.isRequired,
-  section4ButtonText: PropTypes.string.isRequired,
-  campaign: PropTypes.shape(campaignPageBannerPropTypes).isRequired,
-}
-
-HowToSupport.defaultProps = {
-  metaDescription: undefined,
-}
-
-export async function getStaticProps({ params: { locale } }) {
+export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
+  const { locale } = ctx.params!
   return {
     props: {
       ...(await getLayoutProps(locale)),
-      ...(await fetchHowToSupportPage(locale)),
+      ...(await getHowToHelpContent(locale)),
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     paths: [
       {
@@ -228,4 +209,4 @@ export async function getStaticPaths() {
   }
 }
 
-export default HowToSupport
+export default HowToHelp

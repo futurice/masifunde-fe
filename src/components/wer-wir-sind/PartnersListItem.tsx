@@ -1,6 +1,14 @@
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import styled from 'styled-components'
+import { Asset } from '../../content/shared/assets'
 import { teamMemberAndPartnerWidth } from '../../utils/constants'
+
+export type Props = {
+  name: string
+  logo: Asset
+  link: string
+  className?: string
+}
 
 const PartnerContainer = styled.div`
   width: ${teamMemberAndPartnerWidth};
@@ -32,31 +40,15 @@ const PartnerName = styled.div`
   margin-top: 0.25rem;
 `
 
-const Partner = ({ image, name, link, className }) => (
+const PartnersListItem: FC<Props> = ({ name, logo, link, className }) => (
   <PartnerContainer className={className}>
     <Link href={link}>
       <ImageContainer>
-        <Image src={image.url} alt="" />
+        <Image src={logo.file.url} alt="" />
       </ImageContainer>
       <PartnerName>{name}</PartnerName>
     </Link>
   </PartnerContainer>
 )
 
-export const propTypes = {
-  image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  link: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  className: PropTypes.string,
-}
-
-Partner.propTypes = propTypes
-
-Partner.defaultProps = {
-  className: '',
-}
-
-export default Partner
+export default PartnersListItem

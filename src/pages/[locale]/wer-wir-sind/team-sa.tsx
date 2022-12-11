@@ -1,14 +1,29 @@
-import PropTypes from 'prop-types'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
 import CenteredText from '../../../components/CenteredText'
-import { getLayoutProps } from '../../../components/Layout'
+import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import Head from '../../../components/shared/Head'
 import PageSection from '../../../components/shared/PageSection'
 import TeamMemberList from '../../../components/shared/TeamMemberList'
-import { fetchTeamSaPage } from '../../../content/wer-wir-sind-content'
-import imagePropTypes from '../../../propTypes/image'
+import {
+  TeamSaContent,
+  getTeamSaContent,
+} from '../../../content/wer-wir-sind-content'
 import { smallSpacing } from '../../../styling/sizes'
+
+// Props & Path Params
+// ===================
+
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps & TeamSaContent
+
+// Helpers
+// =======
 
 const Image = styled.img`
   width: 100%;
@@ -24,7 +39,10 @@ const ImageContainer = styled.div`
   margin-bottom: ${smallSpacing};
 `
 
-const TeamSa = ({
+// Component
+// =========
+
+const TeamSa: FC<Props> = ({
   metaTitle,
   metaDescription,
   introTitle,
@@ -44,7 +62,7 @@ const TeamSa = ({
       <ImageContainer>
         <Image
           className="col-sm-7 col-md-6 col-lg-5"
-          src={introImage.url}
+          src={introImage.file.url}
           alt={introImage.title}
         />
       </ImageContainer>
@@ -55,7 +73,7 @@ const TeamSa = ({
         members={teamMembers}
         title={(member) => member.name}
         subtitle={(member) => member.responsibilityArea}
-        imageUrl={(member) => member.image.url}
+        imageUrl={(member) => member.profileImage.file.url}
       />
     </PageSection>
 
@@ -67,38 +85,17 @@ const TeamSa = ({
   </div>
 )
 
-TeamSa.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string,
-  introTitle: PropTypes.string.isRequired,
-  introMarkdown: PropTypes.string.isRequired,
-  introImage: PropTypes.shape(imagePropTypes).isRequired,
-  teamMembers: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      image: PropTypes.shape(imagePropTypes).isRequired,
-      responsibilityArea: PropTypes.string,
-    })
-  ).isRequired,
-  bannerTitle: PropTypes.string.isRequired,
-  bannerButtonText: PropTypes.string.isRequired,
-  bannerButtonUrl: PropTypes.string.isRequired,
-}
-
-TeamSa.defaultProps = {
-  metaDescription: undefined,
-}
-
-export async function getStaticProps({ params: { locale } }) {
+export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
+  const { locale } = ctx.params!
   return {
     props: {
       ...(await getLayoutProps(locale)),
-      ...(await fetchTeamSaPage(locale)),
+      ...(await getTeamSaContent(locale)),
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     paths: [
       {

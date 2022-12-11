@@ -1,18 +1,34 @@
-import PropTypes from 'prop-types'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
 import CenteredText from '../../../components/CenteredText'
-import DonationForm from '../../../components/DonationForm'
-import FormContainer from '../../../components/DonationForm/FormContainer'
-import { PROJECT_ID } from '../../../components/DonationForm/constants/fieldNames'
-import { SA_PROJECT_ID } from '../../../components/DonationForm/constants/formValues'
-import { getLayoutProps } from '../../../components/Layout'
+import { LayoutPageProps, getLayoutProps } from '../../../components/Layout'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
-import { fetchDonatePage } from '../../../content/wie-sie-helfen-content'
+import DonationForm from '../../../components/wie-sie-helfen/DonationForm'
+import FormContainer from '../../../components/wie-sie-helfen/DonationForm/FormContainer'
+import { PROJECT_ID } from '../../../components/wie-sie-helfen/DonationForm/constants/fieldNames'
+import { SA_PROJECT_ID } from '../../../components/wie-sie-helfen/DonationForm/constants/formValues'
+import {
+  DonateContent,
+  getDonateContent,
+} from '../../../content/wie-sie-helfen-content'
 import { extraSmallSpacing } from '../../../styling/sizes'
 import useURLSearchParams from '../../../utils/useURLSearchParams'
+
+// Props & Path Params
+// ===================
+
+type Params = {
+  locale: string
+}
+
+type Props = LayoutPageProps & DonateContent
+
+// Helpers
+// =======
 
 const MainHeading = styled.h1`
   width: 100%;
@@ -28,7 +44,10 @@ const MarkdownWithCustomList = styled(Markdown)`
   }
 `
 
-const Donate = ({
+// Component
+// =========
+
+const Donate: FC<Props> = ({
   bannerButtonText,
   bannerButtonUrl,
   bannerTitle,
@@ -92,55 +111,17 @@ const Donate = ({
   )
 }
 
-Donate.propTypes = {
-  metaTitle: PropTypes.string.isRequired,
-  metaDescription: PropTypes.string,
-  introHeading: PropTypes.string.isRequired,
-  introMarkdown: PropTypes.string.isRequired,
-  intro2Markdown: PropTypes.string.isRequired,
-  section1title: PropTypes.string.isRequired,
-  section1MarkdownDe: PropTypes.string.isRequired,
-  section1MarkdownSa: PropTypes.string.isRequired,
-  section2title: PropTypes.string.isRequired,
-  section2ReferenceList: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  section3Title: PropTypes.string.isRequired,
-  section3Text: PropTypes.string.isRequired,
-  section3ReferenceList: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired,
-      description: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  section4Title: PropTypes.string.isRequired,
-  section5Title: PropTypes.string.isRequired,
-  bannerTitle: PropTypes.string.isRequired,
-  bannerButtonText: PropTypes.string.isRequired,
-  bannerButtonUrl: PropTypes.string.isRequired,
-  query: PropTypes.shape({
-    status: PropTypes.string,
-  }).isRequired,
-}
-
-Donate.defaultProps = {
-  metaDescription: undefined,
-}
-
-export async function getStaticProps({ params: { locale } }) {
+export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
+  const { locale } = ctx.params!
   return {
     props: {
       ...(await getLayoutProps(locale)),
-      ...(await fetchDonatePage(locale)),
+      ...(await getDonateContent(locale)),
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<Params> = () => {
   return {
     paths: [
       {
