@@ -29,19 +29,25 @@ exports.getRedirects = function () {
  * to the corresponding German route paths (`/de/was-wir-machen`).
  */
 function redirectsToGermanLocalePaths() {
+  const pagesToNotRedirect = [
+    pages.errorPage404, // No locale prefix supported
+    pages.donate, // Path must be unprefixed for Fundraisingbox to work
+    pages.campaign, // Path must be unprefixed for Fundraisingbox to work
+  ]
+
   const pathsToRedirect = Object.values(pages)
-    .filter((path) => path !== pages.errorPage404)
+    .filter((path) => !pagesToNotRedirect.includes(path))
     .map(toPathPatternSyntax)
 
   return pathsToRedirect.map((path) => {
     const withoutLocale = path.replace(/^\/:locale\/?/, '/')
-    const withGermanLocale = path.replace(/^\/:locale\/?/, '/de/')
+    const withGermanLocale = path.replace(/^\/:locale/, '/de')
 
     return {
       // Add trailing slashes to the source and destination paths
       // to match the `trailingSlash` flag in `next.config.js`.
-      source: addTrailingSlash(withoutLocale),
-      destination: addTrailingSlash(withGermanLocale),
+      source: removeTrailingSlash(withoutLocale),
+      destination: removeTrailingSlash(withGermanLocale),
       permanent: false,
     }
   })
@@ -53,23 +59,23 @@ function redirectsToGermanLocalePaths() {
 function shorthands() {
   return [
     {
-      source: '/blog/',
-      destination: '/de/blog/page/1/',
+      source: '/blog',
+      destination: '/de/blog/page/1',
       permanent: false,
     },
     {
-      source: '/en/blog/',
-      destination: '/en/blog/page/1/',
+      source: '/en/blog',
+      destination: '/en/blog/page/1',
       permanent: false,
     },
     {
-      source: '/podcasts/',
-      destination: '/en/podcasts/page/1/',
+      source: '/podcasts',
+      destination: '/en/podcasts/page/1',
       permanent: false,
     },
     {
-      source: '/en/podcasts/',
-      destination: '/en/podcasts/page/1/',
+      source: '/en/podcasts',
+      destination: '/en/podcasts/page/1',
       permanent: false,
     },
   ]
@@ -78,9 +84,9 @@ function shorthands() {
 function toPathPatternSyntax(path) {
   // Replace '[name]' (dynamic route parameter syntax)
   // with ':name' (path match syntax).
-  return path.replace(/\[(\w+)\]/, ':$1')
+  return path.replace(/\[(\w+)\]/g, ':$1')
 }
 
-function addTrailingSlash(path) {
-  return path.endsWith('/') ? path : `${path}/`
+function removeTrailingSlash(path) {
+  return path.replace(/^(.+)\/$/, '\\1')
 }

@@ -23,7 +23,8 @@ https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 /grundschule /wie-sie-helfen
 
 # Redirect from locale-less paths (e.g., `/was-wir-machen`)
-# to the corresponding German route paths (`/de/was-wir-machen`).
+# to the corresponding German route paths (`/de/was-wir-machen`),
+# but not for pages embedding Fundraisingbox (see below).
 / /de
 /404 /de/404
 /was-wir-machen /de/was-wir-machen
@@ -34,7 +35,6 @@ https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 /wer-wir-sind/team-de /de/wer-wir-sind/team-de
 /wer-wir-sind/team-sa /de/wer-wir-sind/team-sa
 /wie-sie-helfen /de/wie-sie-helfen
-/wie-sie-helfen/spenden /de/wie-sie-helfen/spenden
 /wie-sie-helfen/masifunde-gemeinschaft /de/wie-sie-helfen/masifunde-gemeinschaft
 /wie-sie-helfen/aktiv-werden /de/wie-sie-helfen/aktiv-werden
 /wie-sie-helfen/partner-werden /de/wie-sie-helfen/partner-werden
@@ -44,10 +44,16 @@ https://masifunde.netlify.com/* https://www.masifunde.de/:splat 301!
 /impressum /de/impressum
 /datenschutz /de/datenschutz
 /transparenz /de/transparenz
-/spendenaktion /de/spendenaktion
 /presse /de/presse
 /dokumente /de/dokumente
 /podcasts/page/:page /de/podcasts/page/:page
+
+# For those pages containing donation forms, we need to continue using
+# the locale-less paths; otherwise, the Fundraisingbox iframe doesn't load
+# because the "Einbettungsadresse" (embedding URL) configured there
+# wouldn't match.
+/wie-sie-helfen/spenden /de/wie-sie-helfen/spenden 200
+/spendenaktion /de/spendenaktion 200
 
 # Shorthands for blog and podcasts.
 /blog /de/blog/page/1

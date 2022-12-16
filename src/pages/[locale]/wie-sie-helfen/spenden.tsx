@@ -19,6 +19,7 @@ import {
   getDonateContent,
 } from '../../../content/wie-sie-helfen-content'
 import { extraSmallSpacing } from '../../../styling/sizes'
+import useGuaranteedPath from '../../../utils/useGuaranteedPath'
 import useURLSearchParams from '../../../utils/useURLSearchParams'
 
 // Props & Path Params
@@ -70,7 +71,15 @@ const Donate: FC<Props> = ({
   section4Title,
   section5Title,
 }) => {
+  // WORKAROUND: Currently, the "Einbettungsaddresse" ("embedding URL")
+  // configured in Fundraisingbox does not have a locale prefix. To make
+  // sure that the Fundraising iframe loads, we need to redirect to the
+  // locale-less path so that the browser URL matches the iframe's
+  // expectations.
+  useGuaranteedPath('/wie-sie-helfen/spenden')
+
   const urlSearchParams = useURLSearchParams()
+  const iframeStatus = urlSearchParams.get('status')
 
   return (
     <>
@@ -102,7 +111,7 @@ const Donate: FC<Props> = ({
         }}
         enableProjectSelection
         enableOtherAmount
-        iframeStatus={urlSearchParams.get('status')}
+        iframeStatus={iframeStatus}
       />
 
       <Banner

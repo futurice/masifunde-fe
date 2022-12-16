@@ -15,6 +15,7 @@ import {
   getCampaignContent,
 } from '../../content/spendenaktion-content'
 import { rem } from '../../styling/typography'
+import useGuaranteedPath from '../../utils/useGuaranteedPath'
 import useURLSearchParams from '../../utils/useURLSearchParams'
 
 // Props & Path Params
@@ -58,7 +59,15 @@ const Campaign: FC<Props> = ({
   formHeading,
   fundraisingboxIframeHeading,
 }) => {
+  // WORKAROUND: Currently, the "Einbettungsaddresse" ("embedding URL")
+  // configured in Fundraisingbox does not have a locale prefix. To make
+  // sure that the Fundraising iframe loads, we need to redirect to the
+  // locale-less path so that the browser URL matches the iframe's
+  // expectations.
+  useGuaranteedPath('/spendenaktion')
+
   const urlSearchParams = useURLSearchParams()
+  const iframeStatus = urlSearchParams.get('status')
 
   return (
     <>
@@ -106,7 +115,7 @@ const Campaign: FC<Props> = ({
         formTitle={formHeading}
         fundraisingboxIframeTitle={fundraisingboxIframeHeading}
         fundraisingboxFormHash="vm0g01lokj4l5e58"
-        iframeStatus={urlSearchParams.get('status')}
+        iframeStatus={iframeStatus}
         disableIntervalSelection={!section2ReferenceList.length}
         intervals={section2ReferenceList}
         intervalTitle={section2Title}
