@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
-import Button from '../../../components/Button'
 import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
 import Link from '../../../components/Link'
@@ -12,6 +11,7 @@ import {
   LayoutPageProps,
   getLayoutProps,
 } from '../../../components/layout/Layout'
+import Button from '../../../components/shared/Button'
 import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
@@ -136,7 +136,7 @@ const WhatWeDo: FC<Props> = ({
         ))}
       </StatList>
       <Link href={pages.impact} passHref>
-        <ImpactButton center type="secondary">
+        <ImpactButton center variant="secondary">
           {statsButton}
         </ImpactButton>
       </Link>

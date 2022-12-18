@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
-import Button from '../../../components/Button'
 import CenteredGrid from '../../../components/CenteredGrid'
 import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
@@ -11,6 +10,7 @@ import {
   LayoutPageProps,
   getLayoutProps,
 } from '../../../components/layout/Layout'
+import Button from '../../../components/shared/Button'
 import Head from '../../../components/shared/Head'
 import PageSection from '../../../components/shared/PageSection'
 import AwardsListItem from '../../../components/wer-wir-sind/AwardsListItem'
