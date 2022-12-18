@@ -11,13 +11,16 @@ import {
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
-import DonationForm from '../../../components/wie-sie-helfen/DonationForm'
+import DonationForm, {
+  DonationFormDecorator,
+} from '../../../components/shared/donation/DonationForm'
 import {
   AMOUNT,
   PAYMENT_INTERVAL,
   PROJECT_ID,
-} from '../../../components/wie-sie-helfen/DonationForm/constants/fieldNames'
-import { LEARN_4_LIFE_PROJECT_ID } from '../../../components/wie-sie-helfen/DonationForm/constants/formValues'
+} from '../../../components/shared/donation/constants/fieldNames'
+import { LEARN_4_LIFE_PROJECT_ID } from '../../../components/shared/donation/constants/formValues'
+import { DonationFormValues } from '../../../components/shared/donation/data/donation-form-values'
 import {
   BecomeSponsorContent,
   getBecomeSponsorContent,
@@ -40,12 +43,13 @@ const Image = styled(RoundedImage)`
   width: 100%;
 `
 
-const changeAmountValueOnPaymentInterval = createDecorator({
-  field: PAYMENT_INTERVAL,
-  updates: {
-    [AMOUNT]: () => undefined,
-  },
-})
+const changeAmountValueOnPaymentInterval: DonationFormDecorator =
+  createDecorator<DonationFormValues>({
+    field: PAYMENT_INTERVAL,
+    updates: {
+      [AMOUNT]: () => undefined,
+    },
+  })
 
 // Component
 // =========

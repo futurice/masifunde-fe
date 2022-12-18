@@ -1,5 +1,4 @@
-/* eslint-disable function-paren-newline */
-import PropTypes from 'prop-types'
+import { FC } from 'react'
 import { Field } from 'react-final-form'
 import ErrorMessage from './ErrorMessage'
 import FormLabel from './FormLabel'
@@ -9,12 +8,25 @@ import {
 } from './constants/formValues'
 import { formInputClassFactory } from './utils/formInputClassFactory'
 
-const SelectField = ({
+export type Option = {
+  value: string
+  text: string
+}
+
+export type Props = {
+  fieldName: string
+  label: string
+  options: Option[]
+  autoComplete?: string
+  inputClassName?: string
+}
+
+const SelectField: FC<Props> = ({
   fieldName,
-  inputClassName,
   label,
   options,
-  autoComplete,
+  autoComplete = 'on',
+  inputClassName = FORM_INPUT_BOOTSTRAP_CLASSES,
 }) => (
   <div className="form-group row">
     <FormLabel
@@ -34,7 +46,7 @@ const SelectField = ({
               className={formInputClassFactory(meta)}
               aria-labelledby={fieldName}
             >
-              <option value={null} disabled hidden />
+              <option value={undefined} disabled hidden />
               {options.map((option) => (
                 <option value={option.value} key={option.value}>
                   {option.text}
@@ -48,23 +60,5 @@ const SelectField = ({
     </div>
   </div>
 )
-
-SelectField.propTypes = {
-  fieldName: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  autoComplete: PropTypes.string,
-  inputClassName: PropTypes.string,
-}
-
-SelectField.defaultProps = {
-  autoComplete: 'on',
-  inputClassName: FORM_INPUT_BOOTSTRAP_CLASSES,
-}
 
 export default SelectField

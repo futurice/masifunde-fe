@@ -18,8 +18,8 @@
     "greaterThanZero": "Bitte wählen Sie eine Betrag größer als Null",
     "invalidEmail": "Falsche E-Mail",
     "mustBeANumber": "Der Wert muss eine Zahl sein",
-    "cantBeLessThan": "Der Betrag darf nicht kleiner als {value} sein",
-    "cantBeGreaterThan": "Der Betrag darf nicht mehr als {value} betragen"
+    "cantBeLessThan": "Der Betrag darf nicht kleiner als {min}€ sein",
+    "cantBeGreaterThan": "Der Betrag darf nicht mehr als {max}€ betragen"
   },
   "header": {
     "openNavigation": "Navigationsmenü öffnen"

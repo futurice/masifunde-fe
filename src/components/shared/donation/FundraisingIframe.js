@@ -130,7 +130,7 @@ ScriptParametersWrapper.propTypes = {
     'eps',
   ]),
   postCode: PropTypes.string,
-  projectId: PropTypes.number,
+  projectId: PropTypes.string,
   salutation: PropTypes.oneOf(['Mr.', 'Mrs.']),
   title: PropTypes.string,
   wantsNewsletter: PropTypes.oneOf([0, '0', 1, '1']),

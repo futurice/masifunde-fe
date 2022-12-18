@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<label
+  class="sc-47980618-1-label sc-41983549-0 KISAm bBQhoO btn"
+  for="amountInputOption10"
+>
+  10€
+</label>
+`;
+
+exports[`renders 2`] = `
+<label
+  class="sc-47980618-1-label sc-41983549-0 KISAm bBQhoO btn"
+  for="amountInputOption20"
+>
+  20€
+</label>
+`;
+
+exports[`renders 3`] = `
+<label
+  class="sc-47980618-1-label sc-41983549-0 KISAm bBQhoO btn"
+  for="amountInputOption30"
+>
+  30€
+</label>
+`;

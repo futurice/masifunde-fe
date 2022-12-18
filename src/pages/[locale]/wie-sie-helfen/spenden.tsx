@@ -10,10 +10,10 @@ import {
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
-import DonationForm from '../../../components/wie-sie-helfen/DonationForm'
-import FormContainer from '../../../components/wie-sie-helfen/DonationForm/FormContainer'
-import { PROJECT_ID } from '../../../components/wie-sie-helfen/DonationForm/constants/fieldNames'
-import { SA_PROJECT_ID } from '../../../components/wie-sie-helfen/DonationForm/constants/formValues'
+import DonationForm from '../../../components/shared/donation/DonationForm'
+import FormContainer from '../../../components/shared/donation/FormContainer'
+import { PROJECT_ID } from '../../../components/shared/donation/constants/fieldNames'
+import { SA_PROJECT_ID } from '../../../components/shared/donation/constants/formValues'
 import {
   DonateContent,
   getDonateContent,

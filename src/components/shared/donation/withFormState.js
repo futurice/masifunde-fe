@@ -26,15 +26,10 @@ import {
 
 function withFormState(View) {
   return class FormDataWrapper extends Component {
-    static propTypes = {
-      enableProjectSelection: View.propTypes.enableProjectSelection,
-    }
-    static defaultProps = {
-      enableProjectSelection: View.defaultProps.enableProjectSelection,
-    }
     state = {
       fields: {},
     }
+
     debounceSetState = _debounce(this.setState, 500)
 
     validateForm = (fields) => {

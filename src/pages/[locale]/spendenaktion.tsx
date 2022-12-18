@@ -9,7 +9,7 @@ import { LayoutPageProps, getLayoutProps } from '../../components/layout/Layout'
 import Head from '../../components/shared/Head'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'
-import DonationForm from '../../components/wie-sie-helfen/DonationForm'
+import DonationForm from '../../components/shared/donation/DonationForm'
 import {
   CampaignContent,
   getCampaignContent,
