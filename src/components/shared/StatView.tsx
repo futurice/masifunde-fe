@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components'
 import { Asset } from '../../content/shared/assets'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { handwrittenText, rem } from '../../styling/typography'
-import IconImage from '../IconImage'
 import Source from '../Source'
+import IconImage from './IconImage'
 
 // Props
 // =====

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import styled from 'styled-components'
 import { mediumSpacing } from '../../styling/sizes'
 import { smallFontSize } from '../../styling/typography'
-import IconImage from '../IconImage'
+import IconImage from '../shared/IconImage'
 import Markdown from '../shared/Markdown'
 
 // Props
