@@ -6,7 +6,7 @@ import {
   createYouTubeSrc,
   isYouTubeVideo,
 } from '../../utils/video'
-import ConditionalContainer from '../ConditionalContainer'
+import ConditionalContainer from './ConditionalContainer'
 
 export type Props = {
   videoUrl: string
