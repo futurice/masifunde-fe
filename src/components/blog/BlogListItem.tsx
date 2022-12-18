@@ -5,7 +5,7 @@ import { mdBreakpoint } from '../../styling/breakpoints'
 import { rem } from '../../styling/typography'
 import { wordBreak } from '../../styling/utils'
 import formatDate from '../../utils/formatDate'
-import Link from '../Link'
+import Link from '../shared/Link'
 
 // Props
 // =====

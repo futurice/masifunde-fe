@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import { HeaderContent } from '../../content/layout-content'
 import * as pages from '../../routes/pages'
 import { rem } from '../../styling/typography'
-import Link from '../Link'
+import Link from '../shared/Link'
 import NavigationLink from './NavigationLink'
 
 // Props

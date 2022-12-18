@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components'
 import { Asset } from '../../content/shared/assets'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import { mediumSpacing } from '../../styling/sizes'
-import Link from '../Link'
 import Button from '../shared/Button'
+import Link from '../shared/Link'
 import ProjectList from './ProjectList'
 
 // Props

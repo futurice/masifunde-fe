@@ -5,8 +5,8 @@ import * as pages from '../routes/pages'
 import { smBreakpoint } from '../styling/breakpoints'
 import { extraExtraSmallSpacing, extraSmallSpacing } from '../styling/sizes'
 import { haveCookiesBeenAccepted, markCookiesAccepted } from '../utils/cookies'
-import Link from './Link'
 import Button from './shared/Button'
+import Link from './shared/Link'
 
 const Banner = styled.div.attrs({ role: 'dialog' })`
   background-color: ${({ theme }) => theme.orange};

@@ -4,8 +4,8 @@ import { NavItem } from 'reactstrap'
 import styled from 'styled-components'
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
-import Link from '../Link'
 import Button from '../shared/Button'
+import Link from '../shared/Link'
 
 // Props
 // =====

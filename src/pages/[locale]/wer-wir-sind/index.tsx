@@ -3,7 +3,6 @@ import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
 import Hero from '../../../components/Hero'
-import Link from '../../../components/Link'
 import {
   LayoutPageProps,
   getLayoutProps,
@@ -12,6 +11,7 @@ import Button from '../../../components/shared/Button'
 import CenteredGrid from '../../../components/shared/CenteredGrid'
 import CenteredText from '../../../components/shared/CenteredText'
 import Head from '../../../components/shared/Head'
+import Link from '../../../components/shared/Link'
 import PageSection from '../../../components/shared/PageSection'
 import AwardsListItem from '../../../components/wer-wir-sind/AwardsListItem'
 import CountryMap from '../../../components/wer-wir-sind/CountryMap'

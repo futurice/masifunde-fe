@@ -7,8 +7,8 @@ import {
   smallSpacing,
 } from '../../styling/sizes'
 import { headerFont, rem } from '../../styling/typography'
-import Link from '../Link'
 import Button from '../shared/Button'
+import Link from '../shared/Link'
 import Markdown from '../shared/Markdown'
 import Headline from './Headline'
 import { defaultProps, propTypes } from './propTypes'

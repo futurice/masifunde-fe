@@ -11,7 +11,7 @@ import {
   smallSpacing,
 } from '../../styling/sizes'
 import { footerText, rem } from '../../styling/typography'
-import Link from '../Link'
+import Link from '../shared/Link'
 import PageSection from '../shared/PageSection'
 import SocialLink from '../shared/SocialLink'
 
