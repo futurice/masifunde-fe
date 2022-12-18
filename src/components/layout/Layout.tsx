@@ -11,7 +11,7 @@ import translationsDE from '../../i18n/de.json'
 import translationsEN from '../../i18n/en.json'
 import theme from '../../styling/theme'
 import CookieNotice from '../CookieNotice'
-import GlobalStyle from '../GlobalStyle'
+import GlobalStyle from '../shared/GlobalStyle'
 import Footer from './Footer'
 import Header from './Header'
 

@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
-import { mdBreakpoint } from '../styling/breakpoints'
-import { extraSmallSpacing, smallSpacing } from '../styling/sizes'
-import theme from '../styling/theme'
+import { mdBreakpoint } from '../../styling/breakpoints'
+import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
+import theme from '../../styling/theme'
 import {
   bodyText,
   componentTitleText,
@@ -9,7 +9,7 @@ import {
   rootFontSize,
   sectionTitleText,
   subsectionTitleText,
-} from '../styling/typography'
+} from '../../styling/typography'
 
 const GlobalStyle = createGlobalStyle`
   html {
