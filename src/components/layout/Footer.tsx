@@ -12,8 +12,8 @@ import {
 } from '../../styling/sizes'
 import { footerText, rem } from '../../styling/typography'
 import Link from '../Link'
-import SocialLink from '../SocialLink'
 import PageSection from '../shared/PageSection'
+import SocialLink from '../shared/SocialLink'
 
 // Helpers
 // =======
