@@ -2,11 +2,11 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
-import CenteredText from '../../../components/CenteredText'
 import {
   LayoutPageProps,
   getLayoutProps,
 } from '../../../components/layout/Layout'
+import CenteredText from '../../../components/shared/CenteredText'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'

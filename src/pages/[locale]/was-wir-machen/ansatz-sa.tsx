@@ -1,13 +1,13 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import Banner from '../../../components/Banner'
-import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
 import Tagline from '../../../components/Tagline'
 import {
   LayoutPageProps,
   getLayoutProps,
 } from '../../../components/layout/Layout'
+import CenteredText from '../../../components/shared/CenteredText'
 import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
