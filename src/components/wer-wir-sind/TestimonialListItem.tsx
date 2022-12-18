@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Asset } from '../../content/shared/assets'
 import { rem } from '../../styling/typography'
 import { wordBreak } from '../../styling/utils'
-import RoundedImage from '../RoundedImage'
+import RoundedImage from '../shared/RoundedImage'
 
 export type Props = {
   name: string

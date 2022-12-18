@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import Banner from '../../../components/Banner'
 import Hero from '../../../components/Hero'
 import Link from '../../../components/Link'
-import RoundedImage from '../../../components/RoundedImage'
 import {
   LayoutPageProps,
   getLayoutProps,
@@ -15,6 +14,7 @@ import Divider from '../../../components/shared/Divider'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
+import RoundedImage from '../../../components/shared/RoundedImage'
 import {
   HowToHelpContent,
   getHowToHelpContent,
