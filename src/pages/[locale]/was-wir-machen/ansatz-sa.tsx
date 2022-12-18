@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import Banner from '../../../components/Banner'
 import Hero from '../../../components/Hero'
-import Tagline from '../../../components/Tagline'
 import {
   LayoutPageProps,
   getLayoutProps,
@@ -12,6 +11,7 @@ import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
+import Tagline from '../../../components/shared/Tagline'
 import ProjectDetailsList from '../../../components/was-wir-machen/ProjectDetailsList'
 import {
   ApproachSAContent,

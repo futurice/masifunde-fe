@@ -3,7 +3,6 @@ import { FC } from 'react'
 import Banner from '../../../components/Banner'
 import Hero from '../../../components/Hero'
 import StatList from '../../../components/StatList'
-import Tagline from '../../../components/Tagline'
 import {
   LayoutPageProps,
   getLayoutProps,
@@ -14,6 +13,7 @@ import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
 import StatView from '../../../components/shared/StatView'
 import StoryCarousel from '../../../components/shared/StoryCarousel'
+import Tagline from '../../../components/shared/Tagline'
 import {
   ImpactContent,
   getImpactContent,

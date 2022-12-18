@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import Banner from '../../../components/Banner'
 import Hero from '../../../components/Hero'
 import StatList from '../../../components/StatList'
-import Tagline from '../../../components/Tagline'
 import {
   LayoutPageProps,
   getLayoutProps,
@@ -15,6 +14,7 @@ import Head from '../../../components/shared/Head'
 import PageSection from '../../../components/shared/PageSection'
 import RoundedImage from '../../../components/shared/RoundedImage'
 import StatView from '../../../components/shared/StatView'
+import Tagline from '../../../components/shared/Tagline'
 import ProjectDetailsList from '../../../components/was-wir-machen/ProjectDetailsList'
 import {
   ApproachDEContent,
