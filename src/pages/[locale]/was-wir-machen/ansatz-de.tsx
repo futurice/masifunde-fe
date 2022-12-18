@@ -3,7 +3,6 @@ import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
 import Hero from '../../../components/Hero'
-import StatList from '../../../components/StatList'
 import {
   LayoutPageProps,
   getLayoutProps,
@@ -13,6 +12,7 @@ import ContactDetails from '../../../components/shared/ContactDetails'
 import Head from '../../../components/shared/Head'
 import PageSection from '../../../components/shared/PageSection'
 import RoundedImage from '../../../components/shared/RoundedImage'
+import StatList from '../../../components/shared/StatList'
 import StatView from '../../../components/shared/StatView'
 import Tagline from '../../../components/shared/Tagline'
 import ProjectDetailsList from '../../../components/was-wir-machen/ProjectDetailsList'

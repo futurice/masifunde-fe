@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import Banner from '../../../components/Banner'
 import Hero from '../../../components/Hero'
 import Link from '../../../components/Link'
-import StatList from '../../../components/StatList'
 import {
   LayoutPageProps,
   getLayoutProps,
@@ -15,6 +14,7 @@ import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
+import StatList from '../../../components/shared/StatList'
 import StatView from '../../../components/shared/StatView'
 import Tagline from '../../../components/shared/Tagline'
 import ProjectsGrid from '../../../components/was-wir-machen/ProjectsGrid'
