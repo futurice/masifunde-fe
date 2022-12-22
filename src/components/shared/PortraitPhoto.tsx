@@ -2,7 +2,7 @@ import { FC } from 'react'
 import styled from 'styled-components'
 import { rem } from '../../styling/typography'
 import { teamMemberAndPartnerWidth } from '../../utils/constants'
-import RoundedImage from '../RoundedImage'
+import RoundedImage from './RoundedImage'
 
 // Prrops
 // ======

@@ -1,14 +1,14 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
-import CenteredGrid from '../../components/CenteredGrid'
-import CenteredText from '../../components/CenteredText'
-import RoundedImage from '../../components/RoundedImage'
 import TeamMember from '../../components/TeamMember'
 import { LayoutPageProps, getLayoutProps } from '../../components/layout/Layout'
+import CenteredGrid from '../../components/shared/CenteredGrid'
+import CenteredText from '../../components/shared/CenteredText'
 import Head from '../../components/shared/Head'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'
+import RoundedImage from '../../components/shared/RoundedImage'
 import DonationForm from '../../components/wie-sie-helfen/DonationForm'
 import {
   CampaignContent,

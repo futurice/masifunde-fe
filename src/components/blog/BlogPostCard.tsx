@@ -6,7 +6,7 @@ import * as pages from '../../routes/pages'
 import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
 import { footerText } from '../../styling/typography'
 import formatDate from '../../utils/formatDate'
-import Link from '../Link'
+import Link from '../shared/Link'
 
 // Props
 // =====

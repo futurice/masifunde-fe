@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components'
 import { Asset } from '../../content/shared/assets'
 import { mdBreakpoint } from '../../styling/breakpoints'
 import { mediumSpacing } from '../../styling/sizes'
-import Button from '../Button'
-import Link from '../Link'
+import Button from '../shared/Button'
+import Link from '../shared/Link'
 import ProjectList from './ProjectList'
 
 // Props
@@ -65,7 +65,7 @@ const ProjectsGridColumn: FC<ProjectsGridColumnProps> = ({
     </ProjectsGridCell>
     <ProjectsGridCell column={column} row={4}>
       <Link href={country.buttonLink} passHref>
-        <Button type="secondary">{country.button}</Button>
+        <Button variant="secondary">{country.button}</Button>
       </Link>
     </ProjectsGridCell>
   </>

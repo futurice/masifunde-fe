@@ -3,7 +3,6 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
-import RoundedImage from '../../../components/RoundedImage'
 import {
   LayoutPageProps,
   getLayoutProps,
@@ -11,6 +10,7 @@ import {
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
+import RoundedImage from '../../../components/shared/RoundedImage'
 import DonationForm from '../../../components/wie-sie-helfen/DonationForm'
 import {
   AMOUNT,

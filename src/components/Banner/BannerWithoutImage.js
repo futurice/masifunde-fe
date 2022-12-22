@@ -1,8 +1,8 @@
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
 import { rem } from '../../styling/typography'
-import Button from '../Button'
-import Link from '../Link'
+import Button from '../shared/Button'
+import Link from '../shared/Link'
 import PageSection from '../shared/PageSection'
 import Headline from './Headline'
 import { defaultProps, propTypes } from './propTypes'
@@ -31,7 +31,7 @@ function BannerWithoutImage({ headline, buttonText, buttonLink, className }) {
       <InnerContainer>
         <Headline>{headline}</Headline>
         <Link href={buttonLink} passHref>
-          <Button type="banner">{buttonText}</Button>
+          <Button variant="banner">{buttonText}</Button>
         </Link>
       </InnerContainer>
     </OuterContainer>

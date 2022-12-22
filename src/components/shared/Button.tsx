@@ -1,50 +1,55 @@
-import { omit } from 'lodash'
 import { rgba } from 'polished'
-import PropTypes from 'prop-types'
+import { FC, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
-import { smallSpacing } from '../styling/sizes'
-import { defaultFont, rem } from '../styling/typography'
+import { smallSpacing } from '../../styling/sizes'
+import { defaultFont, rem } from '../../styling/typography'
 
-const ButtonContainer = styled.div`
+// Props
+// =====
+
+export type Props = {
+  children: ReactNode
+  variant?: 'primary' | 'secondary' | 'banner'
+  center?: boolean
+  className?: string
+  href?: string
+  rel?: string
+  rounded?: boolean
+  isActive?: boolean
+}
+
+// Helpers
+// =======
+
+const ButtonContainer = styled.div<{ center: boolean }>`
   display: flex;
   justify-content: ${({ center }) => (center ? 'center' : 'flex-start')};
 `
 
-const Button = ({ center, children, className, href, ...rest }) => {
-  // Filter out props meant only for styling
-  const forwardedProps = omit(rest, ['type', 'isActive', 'rounded'])
-
+const CoreButton: FC<Props> = ({
+  children,
+  center = false,
+  className,
+  href,
+  rel,
+}) => {
   return (
     <ButtonContainer center={center}>
       {href ? (
-        <a {...forwardedProps} href={href} className={`btn ${className}`}>
+        <a href={href} rel={rel} className={`btn ${className}`}>
           {children}
         </a>
       ) : (
-        <button {...forwardedProps} className={`btn ${className}`}>
-          {children}
-        </button>
+        <button className={`btn ${className}`}>{children}</button>
       )}
     </ButtonContainer>
   )
 }
 
-Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  center: PropTypes.bool,
-  href: PropTypes.string,
-  rounded: PropTypes.bool,
-}
+// Component
+// =========
 
-Button.defaultProps = {
-  center: false,
-  className: '',
-  href: undefined,
-  rounded: false,
-}
-
-const StyledButton = styled(Button)`
+const Button = styled(CoreButton)<Props>`
   font-size: ${rem('18px')};
   font-family: ${defaultFont};
   font-weight: bold;
@@ -57,7 +62,7 @@ const StyledButton = styled(Button)`
   white-space: normal;
 
   ${({ rounded }) =>
-    rounded === 'true' &&
+    rounded &&
     css`
       width: 50px;
       height: 50px;
@@ -73,7 +78,7 @@ const StyledButton = styled(Button)`
   }
 
   ${(props) =>
-    props.type === 'primary' &&
+    props.variant === 'primary' &&
     css`
       font-weight: 900;
       color: ${props.theme.darkGreen};
@@ -97,7 +102,7 @@ const StyledButton = styled(Button)`
     `}
 
   ${(props) =>
-    props.type === 'secondary' &&
+    (!props.variant || props.variant === 'secondary') &&
     css`
       color: ${props.theme.orangeRed};
       border-color: ${props.theme.orangeRed};
@@ -118,7 +123,7 @@ const StyledButton = styled(Button)`
     `}
 
   ${(props) =>
-    props.type === 'banner' &&
+    props.variant === 'banner' &&
     css`
       color: white;
       border-color: white;
@@ -134,17 +139,4 @@ const StyledButton = styled(Button)`
     `}
 `
 
-StyledButton.propTypes = {
-  ...Button.propTypes,
-  type: PropTypes.oneOf(['primary', 'secondary', 'banner']),
-  isActive: PropTypes.bool,
-  rounded: PropTypes.bool,
-  theme: PropTypes.object,
-}
-
-StyledButton.defaultProps = {
-  ...Button.defaultProps,
-  type: 'secondary',
-}
-
-export default StyledButton
+export default Button

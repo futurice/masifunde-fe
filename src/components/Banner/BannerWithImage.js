@@ -7,8 +7,8 @@ import {
   smallSpacing,
 } from '../../styling/sizes'
 import { headerFont, rem } from '../../styling/typography'
-import Button from '../Button'
-import Link from '../Link'
+import Button from '../shared/Button'
+import Link from '../shared/Link'
 import Markdown from '../shared/Markdown'
 import Headline from './Headline'
 import { defaultProps, propTypes } from './propTypes'
@@ -73,7 +73,7 @@ const BannerWithImage = ({
       <ExtendedHeadline>{headline}</ExtendedHeadline>
       {description && <Description source={description} />}
       <Link href={buttonLink} passHref>
-        <Button type="banner">{buttonText}</Button>
+        <Button variant="banner">{buttonText}</Button>
       </Link>
     </ContentContainer>
   )

@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import * as pages from '../../routes/pages'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { largeSpacing } from '../../styling/sizes'
-import Button from '../Button'
-import Link from '../Link'
+import Button from '../shared/Button'
+import Link from '../shared/Link'
 
 // Props
 // =====
@@ -68,15 +68,11 @@ const BlogListNavigationLink: FC<BlogListNavigationLinkProps> = ({
   <Link
     href={{
       pathname: pages.blog,
-      query: { page },
+      query: { page: String(page) },
     }}
     passHref
   >
-    <Button
-      rel={rel}
-      isActive={currentPage && currentPage === page}
-      rounded={rounded}
-    >
+    <Button rel={rel} isActive={currentPage === page} rounded={rounded}>
       {buttonText || page}
     </Button>
   </Link>

@@ -8,7 +8,7 @@ import {
   smallSpacing,
 } from '../../styling/sizes'
 import { bodyText, rem, subsectionTitleText } from '../../styling/typography'
-import ConditionalContainer from '../ConditionalContainer'
+import ConditionalContainer from './ConditionalContainer'
 import Markdown from './Markdown'
 
 // Props

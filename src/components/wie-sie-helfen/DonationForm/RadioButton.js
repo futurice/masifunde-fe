@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { rem } from '../../../styling/typography'
 import { fundraisingFormSpacing } from '../../../utils/constants'
-import Button from '../../Button'
+import Button from '../../shared/Button'
 
 const Label = styled(Button.withComponent('label'))`
   margin-bottom: ${fundraisingFormSpacing};

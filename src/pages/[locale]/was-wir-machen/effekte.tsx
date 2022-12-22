@@ -2,8 +2,6 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import Banner from '../../../components/Banner'
 import Hero from '../../../components/Hero'
-import StatList from '../../../components/StatList'
-import Tagline from '../../../components/Tagline'
 import {
   LayoutPageProps,
   getLayoutProps,
@@ -12,8 +10,10 @@ import EmbeddedVideo from '../../../components/shared/EmbeddedVideo'
 import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
+import StatList from '../../../components/shared/StatList'
 import StatView from '../../../components/shared/StatView'
 import StoryCarousel from '../../../components/shared/StoryCarousel'
+import Tagline from '../../../components/shared/Tagline'
 import {
   ImpactContent,
   getImpactContent,

@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { Asset } from '../../content/shared/assets'
 import { lgBreakpoint } from '../../styling/breakpoints'
 import { extraSmallSpacing, largeSpacing } from '../../styling/sizes'
-import Button from '../Button'
-import Link from '../Link'
+import Button from '../shared/Button'
+import Link from '../shared/Link'
 
 export type Props = {
   image: Asset

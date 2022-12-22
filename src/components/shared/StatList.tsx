@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { smBreakpoint } from '../styling/breakpoints'
-import { extraSmallSpacing, largeSpacing } from '../styling/sizes'
+import { smBreakpoint } from '../../styling/breakpoints'
+import { extraSmallSpacing, largeSpacing } from '../../styling/sizes'
 
-const List = styled.div`
+const StatList = styled.div`
   margin-top: ${extraSmallSpacing};
   display: flex;
   justify-content: center;
@@ -22,11 +21,5 @@ const List = styled.div`
     }
   }
 `
-
-const StatList = ({ children }) => <List>{children}</List>
-
-StatList.propTypes = {
-  children: PropTypes.node.isRequired,
-}
 
 export default StatList

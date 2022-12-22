@@ -4,8 +4,8 @@ import { NavItem } from 'reactstrap'
 import styled from 'styled-components'
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 import { extraSmallSpacing, smallSpacing } from '../../styling/sizes'
-import Button from '../Button'
-import Link from '../Link'
+import Button from '../shared/Button'
+import Link from '../shared/Link'
 
 // Props
 // =====
@@ -80,7 +80,9 @@ const NavigationLink: FC<Props> = ({ type, href, children }) => {
             {children}
           </NavigationLinkAnchor>
         ) : (
-          <NavigationLinkButton type="primary">{children}</NavigationLinkButton>
+          <NavigationLinkButton variant="primary">
+            {children}
+          </NavigationLinkButton>
         )}
       </Link>
     </NavItem>

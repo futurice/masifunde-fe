@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import * as pages from '../../routes/pages'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { largeSpacing } from '../../styling/sizes'
-import Button from '../Button'
-import Link from '../Link'
+import Button from '../shared/Button'
 import Divider from '../shared/Divider'
+import Link from '../shared/Link'
 
 export type Props = {
   previousPostSlug?: string
@@ -70,7 +70,7 @@ const BlogPostNav: FC<Props> = ({
               }}
               passHref
             >
-              <NavButton type="secondary">
+              <NavButton variant="secondary">
                 <span className="longNavText">{previousPostText}</span>
                 <span className="shortNavText">{'<'}</span>
               </NavButton>
@@ -84,7 +84,7 @@ const BlogPostNav: FC<Props> = ({
             }}
             passHref
           >
-            <NavButton type="secondary">{blogHomeText}</NavButton>
+            <NavButton variant="secondary">{blogHomeText}</NavButton>
           </Link>
 
           {nextPostSlug && (
@@ -95,7 +95,7 @@ const BlogPostNav: FC<Props> = ({
               }}
               passHref
             >
-              <NavButton type="secondary">
+              <NavButton variant="secondary">
                 <span className="longNavText">{nextPostText}</span>
                 <span className="shortNavText">{'>'}</span>
               </NavButton>

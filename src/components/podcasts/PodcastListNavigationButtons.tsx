@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import * as pages from '../../routes/pages'
 import { smBreakpoint } from '../../styling/breakpoints'
 import { largeSpacing } from '../../styling/sizes'
-import Button from '../Button'
-import Link from '../Link'
+import Button from '../shared/Button'
+import Link from '../shared/Link'
 
 // Props
 // =====
@@ -73,7 +73,7 @@ const PodcastListNavigationLink: FC<PodcastListNavigationLinkProps> = ({
   >
     <Button
       rel={rel}
-      isActive={currentPage && currentPage === destinationPage}
+      isActive={currentPage === destinationPage}
       rounded={rounded}
     >
       {buttonText || destinationPage}

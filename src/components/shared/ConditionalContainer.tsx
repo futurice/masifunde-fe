@@ -1,7 +1,18 @@
-import PropTypes from 'prop-types'
+import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
-const Div = styled.div`
+// Props
+// =====
+
+type Props = {
+  containAfter: 'xs' | 'sm' | 'md' | 'lg' | 'never'
+  children?: ReactNode
+}
+
+// Helpers
+// =======
+
+const Div = styled.div<Props>`
   @media (max-width: ${(props) => {
       switch (props.containAfter) {
         case 'xs':
@@ -26,15 +37,13 @@ const Div = styled.div`
   }
 `
 
-const ConditionalContainer = ({ children, containAfter }) => (
+// Component
+// =========
+
+const ConditionalContainer: FC<Props> = ({ children, containAfter }) => (
   <Div className="container" containAfter={containAfter}>
     {children}
   </Div>
 )
-
-ConditionalContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-  containAfter: PropTypes.string.isRequired,
-}
 
 export default ConditionalContainer

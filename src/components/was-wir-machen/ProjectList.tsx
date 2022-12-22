@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Asset } from '../../content/shared/assets'
 import { smallSpacing } from '../../styling/sizes'
 import { bodyTextLineHeight } from '../../styling/typography'
-import IconImage from '../IconImage'
+import IconImage from '../shared/IconImage'
 
 // Props
 // =====

@@ -2,19 +2,19 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
-import Button from '../../../components/Button'
-import CenteredText from '../../../components/CenteredText'
 import Hero from '../../../components/Hero'
-import Link from '../../../components/Link'
-import RoundedImage from '../../../components/RoundedImage'
 import {
   LayoutPageProps,
   getLayoutProps,
 } from '../../../components/layout/Layout'
+import Button, { Props as ButtonProps } from '../../../components/shared/Button'
+import CenteredText from '../../../components/shared/CenteredText'
 import Divider from '../../../components/shared/Divider'
 import Head from '../../../components/shared/Head'
+import Link from '../../../components/shared/Link'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
+import RoundedImage from '../../../components/shared/RoundedImage'
 import {
   HowToHelpContent,
   getHowToHelpContent,
@@ -57,7 +57,7 @@ type SectionProps = {
   title: string
   markdown: string
   buttonText: string
-  buttonType: string
+  buttonVariant: ButtonProps['variant']
   buttonLink: string
 }
 
@@ -67,7 +67,7 @@ const Section: FC<SectionProps> = ({
   title,
   markdown,
   buttonText,
-  buttonType,
+  buttonVariant: buttonType,
   buttonLink,
 }) => (
   <SectionContainer>
@@ -80,7 +80,7 @@ const Section: FC<SectionProps> = ({
       <h3>{title}</h3>
       <Markdown source={markdown} />
       <Link href={buttonLink} passHref>
-        <Button type={buttonType}>{buttonText}</Button>
+        <Button variant={buttonType}>{buttonText}</Button>
       </Link>
     </div>
   </SectionContainer>
@@ -135,7 +135,7 @@ const HowToHelp: FC<Props> = ({
       markdown={section1Markdown}
       imageUrl={section1Image.file.url}
       imageTitle={section1Image.title}
-      buttonType="primary"
+      buttonVariant="primary"
       buttonLink={pages.donate}
     />
 
@@ -145,7 +145,7 @@ const HowToHelp: FC<Props> = ({
       markdown={section2Markdown}
       imageUrl={section2Image.file.url}
       imageTitle={section2Image.title}
-      buttonType="secondary"
+      buttonVariant="secondary"
       buttonLink={pages.becomeSponsor}
     />
 
@@ -159,7 +159,7 @@ const HowToHelp: FC<Props> = ({
       markdown={section3Markdown}
       imageUrl={section3Image.file.url}
       imageTitle={section3Image.title}
-      buttonType="secondary"
+      buttonVariant="secondary"
       buttonLink={pages.becomeVolunteer}
     />
 
@@ -169,7 +169,7 @@ const HowToHelp: FC<Props> = ({
       markdown={section4Markdown}
       imageUrl={section4Image.file.url}
       imageTitle={section4Image.title}
-      buttonType="secondary"
+      buttonVariant="secondary"
       buttonLink={pages.becomePartner}
     />
 
