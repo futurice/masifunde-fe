@@ -16,6 +16,7 @@ export type Props = {
   rel?: string
   rounded?: boolean
   isActive?: boolean
+  onClick?: () => void
 }
 
 // Helpers
@@ -32,6 +33,7 @@ const CoreButton: FC<Props> = ({
   className,
   href,
   rel,
+  onClick,
 }) => {
   return (
     <ButtonContainer center={center}>
@@ -40,7 +42,9 @@ const CoreButton: FC<Props> = ({
           {children}
         </a>
       ) : (
-        <button className={`btn ${className}`}>{children}</button>
+        <button className={`btn ${className}`} onClick={onClick}>
+          {children}
+        </button>
       )}
     </ButtonContainer>
   )

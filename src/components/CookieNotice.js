@@ -50,11 +50,11 @@ const Buttons = styled.div`
   }
 `
 
-const PrivacyPolicyButton = styled(Button).attrs({ type: 'banner' })`
+const PrivacyPolicyButton = styled(Button)`
   white-space: nowrap;
 `
 
-const AcceptButton = styled(Button).attrs({ type: 'banner' })`
+const AcceptButton = styled(Button)`
   margin-left: ${extraExtraSmallSpacing};
   white-space: nowrap;
 `
@@ -92,7 +92,7 @@ export default class CookieNotice extends Component {
               {T.translate('cookieNotice.privacyPolicy')}
             </PrivacyPolicyButton>
           </Link>
-          <AcceptButton onClick={this.handleAccept}>
+          <AcceptButton variant="banner" onClick={this.handleAccept}>
             {T.translate('cookieNotice.accept')}
           </AcceptButton>
         </Buttons>
