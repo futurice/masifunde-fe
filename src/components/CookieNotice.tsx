@@ -1,5 +1,5 @@
 import T from 'i18n-react'
-import { Component } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import * as pages from '../routes/pages'
 import { smBreakpoint } from '../styling/breakpoints'
@@ -50,53 +50,50 @@ const Buttons = styled.div`
   }
 `
 
-const PrivacyPolicyButton = styled(Button).attrs({ type: 'banner' })`
+const PrivacyPolicyButton = styled(Button).attrs({ variant: 'banner' })`
   white-space: nowrap;
 `
 
-const AcceptButton = styled(Button).attrs({ type: 'banner' })`
+const AcceptButton = styled(Button).attrs({ variant: 'banner' })`
   margin-left: ${extraExtraSmallSpacing};
   white-space: nowrap;
 `
 
-export default class CookieNotice extends Component {
-  state = { visible: false }
+const CookieNotice = () => {
+  const [visible, setVisible] = useState(false)
 
-  componentDidMount() {
+  useEffect(() => {
     // We cannot check for cookie acceptance on the server because that
     // doesn't have access to the browser's localStorage. We thus need
-    // to do the check in componentDidMount (componentWillMount also
-    // runs on the server).
-    //
-    // eslint-disable-next-line react/no-did-mount-set-state
-    this.setState({ visible: !haveCookiesBeenAccepted() })
-  }
+    // to do the check in an effect.
+    setVisible(!haveCookiesBeenAccepted())
+  }, [])
 
-  handleAccept = () => {
+  const handleAccept = () => {
     markCookiesAccepted()
-    this.setState({ visible: false })
+    setVisible(false)
   }
 
-  render() {
-    if (!this.state.visible) {
-      return null
-    }
-
-    return (
-      <Banner>
-        <Text>{T.translate('cookieNotice.text')}</Text>
-
-        <Buttons>
-          <Link href={pages.datenschutz} passHref>
-            <PrivacyPolicyButton variant="banner">
-              {T.translate('cookieNotice.privacyPolicy')}
-            </PrivacyPolicyButton>
-          </Link>
-          <AcceptButton onClick={this.handleAccept}>
-            {T.translate('cookieNotice.accept')}
-          </AcceptButton>
-        </Buttons>
-      </Banner>
-    )
+  if (!visible) {
+    return null
   }
+
+  return (
+    <Banner>
+      <Text>{T.translate('cookieNotice.text')}</Text>
+
+      <Buttons>
+        <Link href={pages.datenschutz} passHref>
+          <PrivacyPolicyButton variant="banner">
+            {T.translate('cookieNotice.privacyPolicy')}
+          </PrivacyPolicyButton>
+        </Link>
+        <AcceptButton onClick={handleAccept}>
+          {T.translate('cookieNotice.accept')}
+        </AcceptButton>
+      </Buttons>
+    </Banner>
+  )
 }
+
+export default CookieNotice
