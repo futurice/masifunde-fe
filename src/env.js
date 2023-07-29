@@ -8,9 +8,6 @@ module.exports = {
   CONTENTFUL_HOST: process.env.CONTENTFUL_HOST || undefined,
   CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN || accessToken,
 
-  // Google Analytics
-  GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID || undefined,
-
   // Preview mode
   IS_PREVIEW: process.env.IS_PREVIEW || undefined,
 

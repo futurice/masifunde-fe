@@ -4,7 +4,7 @@
   "description": "Frontend for the Masifunde website",
   "main": "index.js",
   "engines": {
-    "node": ">= 8"
+    "node": ">= 16"
   },
   "scripts": {
     "prepare": "husky install",
@@ -53,7 +53,6 @@
     "react-async-script": "^1.2.0",
     "react-dom": "^17.0.0",
     "react-final-form": "^6.5.9",
-    "react-ga": "^3.3.0",
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.0",
     "react-modal": "^3.3.2",
@@ -65,6 +64,7 @@
     "yup": "^1.0.0-beta.7"
   },
   "devDependencies": {
+    "@types/gtag.js": "^0.0.12",
     "@types/jest": "^29.2.4",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.45.0",

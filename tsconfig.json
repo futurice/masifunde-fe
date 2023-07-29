@@ -19,7 +19,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["@types/jest"]
+    "types": ["@types/gtag.js", "@types/jest"]
   },
   "include": [
     "next-env.d.ts",
