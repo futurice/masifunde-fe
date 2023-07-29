@@ -78,17 +78,15 @@ export default class MasifundeDocument extends Document<ExtraDocumentProps> {
           />
 
           {/* Google Analytics */}
-          <Script
-            src="https://www.googletagmanager.com/gtag/js?id=UA-141682105-2"
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
+          <Script src="https://www.googletagmanager.com/gtag/js?id=G-19L3TWP7GQ" />
+          <Script id="google-analytics-4">
             {`
               window.dataLayer = window.dataLayer || [];
-              function gtag(){window.dataLayer.push(arguments);}
+              function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
+              gtag('config', 'G-19L3TWP7GQ');
               gtag('config', 'UA-141682105-2');
-           `}
+            `}
           </Script>
 
           {styles}
