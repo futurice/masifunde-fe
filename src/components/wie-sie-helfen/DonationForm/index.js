@@ -92,6 +92,7 @@ const DonationForm = ({
   const salutationOptions = [
     { value: 'Mrs.', text: 'Frau' },
     { value: 'Mr.', text: 'Herr' },
+    { value: 'diverse', text: 'Divers' },
   ]
   const isIframeStatusFailureOrSuccess =
     iframeStatus === 'successful' || iframeStatus === 'failure'
