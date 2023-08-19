@@ -79,11 +79,11 @@ const DonationForm = ({
     })
   )
   const receiptOptions = [
-    { value: RECEIPT_NOW_OPTION_VALUE, text: 'Ja, so schnell wie möglich' },
     {
       value: 'receipt_end_of_year',
       text: 'Ja, konsolidiert am Ende des Jahres',
     },
+    { value: RECEIPT_NOW_OPTION_VALUE, text: 'Ja, so schnell wie möglich' },
     {
       value: NO_RECEIPT_OPTION_VALUE,
       text: 'Nein, ich brauche keine Quittung',
