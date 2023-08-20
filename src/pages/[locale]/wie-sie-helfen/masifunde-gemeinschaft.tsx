@@ -1,8 +1,8 @@
-import createDecorator from 'final-form-calculate'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
 import Banner from '../../../components/Banner'
+import FundraisingboxForm from '../../../components/FundraisingboxForm'
 import {
   LayoutPageProps,
   getLayoutProps,
@@ -11,18 +11,10 @@ import Head from '../../../components/shared/Head'
 import Markdown from '../../../components/shared/Markdown'
 import PageSection from '../../../components/shared/PageSection'
 import RoundedImage from '../../../components/shared/RoundedImage'
-import DonationForm from '../../../components/wie-sie-helfen/DonationForm'
-import {
-  AMOUNT,
-  PAYMENT_INTERVAL,
-  PROJECT_ID,
-} from '../../../components/wie-sie-helfen/DonationForm/constants/fieldNames'
-import { LEARN_4_LIFE_PROJECT_ID } from '../../../components/wie-sie-helfen/DonationForm/constants/formValues'
 import {
   BecomeSponsorContent,
   getBecomeSponsorContent,
 } from '../../../content/wie-sie-helfen-content'
-import useURLSearchParams from '../../../utils/useURLSearchParams'
 
 // Props & Path Params
 // ===================
@@ -40,13 +32,6 @@ const Image = styled(RoundedImage)`
   width: 100%;
 `
 
-const changeAmountValueOnPaymentInterval = createDecorator({
-  field: PAYMENT_INTERVAL,
-  updates: {
-    [AMOUNT]: () => undefined,
-  },
-})
-
 // Component
 // =========
 
@@ -59,20 +44,10 @@ const BecomeSponsor: FC<Props> = ({
   introSubtitle2,
   introMarkdown2,
   image,
-  donationFormTitle,
-  section2Title,
-  section2ReferenceList,
-  section3Title,
-  section3ReferenceList,
-  section4Title,
-  section5Title,
   bannerTitle,
   bannerButtonText,
   bannerButtonUrl,
-  minimumYearlyAmount,
 }) => {
-  const searchParams = useURLSearchParams()
-
   return (
     <>
       <Head title={metaTitle} description={metaDescription} />
@@ -93,25 +68,7 @@ const BecomeSponsor: FC<Props> = ({
         </div>
       </PageSection>
 
-      <PageSection>
-        <h2>{donationFormTitle}</h2>
-      </PageSection>
-
-      <DonationForm
-        amounts={section3ReferenceList}
-        amountTitle={section3Title}
-        formTitle={section4Title}
-        fundraisingboxIframeTitle={section5Title}
-        fundraisingboxFormHash="pr9pjwm89abksr2y"
-        intervals={section2ReferenceList}
-        intervalTitle={section2Title}
-        decorators={[changeAmountValueOnPaymentInterval]}
-        initialValues={{
-          [PROJECT_ID]: LEARN_4_LIFE_PROJECT_ID,
-        }}
-        minimumYearlyAmount={minimumYearlyAmount.toString()}
-        iframeStatus={searchParams.get('status')}
-      />
+      <FundraisingboxForm hash="pr9pjwm89abksr2y" />
 
       <Banner
         headline={bannerTitle}

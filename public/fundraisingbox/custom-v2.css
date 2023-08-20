@@ -1,0 +1,119 @@
+/**************************************************************************
+ * Customizations for the Fundraisingbox "Polaris" theme.
+ * https://support.fundraisingbox.com/de/support/solutions/articles/79000138949
+ **************************************************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+ :root {
+  /* Theme Colors */
+  --gray-border: rgba(179, 170, 161, 0.6);
+  --orange: #FE9933;
+  --orange-red: #FF621D;
+  --orange-background-light: #FAF2E6;
+  --pine-cone: #77695C;
+
+  /* General */
+  --fb-primary: var(--orange);
+  --fb-form-bg-color: var(--orange-background-light);
+  --fb-font-family: Lato, sans-serif;
+  --fb-font-weight: 400;
+
+  /* Focus ring (provided by Tailwind CSS) */
+  --tw-ring-color: var(--orange);
+
+  /* Inputs */
+  --fb-input-bg-color: white;
+  --fb-input-border-color: var(--gray-border);
+  --fb-input-border-color-focus: var(--orange);
+
+  /* Checkboxes */
+  --fb-checkbox-bg-color: transparent;
+  --fb-checkbox-border-color: var(--gray-border);
+  --fb-checkbox-border-width: 2px;
+
+  /* Amount Choices */
+  --fb-amount-choice-bg-color: transparent;
+  --fb-amount-choice-border-color: var(--gray-border);
+  --fb-amount-choice-border-width: 2px;
+
+  /* Payment Methods */
+  --fb-payment-method-bg-color: transparent;
+  --fb-payment-method-border-color: var(--gray-border);
+  --fb-payment-method-border-width: 2px;
+}
+
+/* Center the form on the page. */
+
+body {
+  margin: 0 auto;
+}
+
+/* Limit the form width using the same breakpoints as Bootstrap. */
+
+@media (min-width: 576px) {
+  body {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    max-width: 1140px;
+  }
+}
+
+/* Customize form section titles. */
+
+fieldset legend {
+  font-family: Raleway, sens-serif;
+  color: #77695C;
+  font-size: 1.33rem;
+  font-weight: 500;
+}
+
+/* Disable extra outline when a dropdown (<select>) is focused. */
+
+select:focus {
+  --tw-ring-shadow: none !important;
+}
+
+/* Customize checked and hover states of donation amount choices. */
+
+.choice {
+  transition-property: background-color, border-color;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+}
+
+.choice:hover {
+  border-color: var(--orange) !important;
+}
+
+.choice.checked {
+  background-color: var(--orange) !important;
+  border-color: var(--orange) !important;
+}
+
+.choice.checked:focus-within {
+  border-color: var(--orange-red) !important;
+}
+
+/* Customize the color of the custom amount input underline. */
+
+.choice.checked .input-custom-amount input {
+  --fb-amount-choice-border-color: var(--orange);
+}
