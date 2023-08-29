@@ -33,6 +33,7 @@ import {
   COUNTRY_GERMANY,
   DE_PROJECT_ID,
   NO_RECEIPT_OPTION_VALUE,
+  RECEIPT_END_OF_YEAR_OPTION_VALUE,
   RECEIPT_NOW_OPTION_VALUE,
   SA_PROJECT_ID,
 } from './constants/formValues'
@@ -80,10 +81,13 @@ const DonationForm = ({
   )
   const receiptOptions = [
     {
-      value: 'receipt_end_of_year',
+      value: RECEIPT_END_OF_YEAR_OPTION_VALUE,
       text: 'Ja, konsolidiert am Ende des Jahres',
     },
-    { value: RECEIPT_NOW_OPTION_VALUE, text: 'Ja, so schnell wie möglich' },
+    {
+      value: RECEIPT_NOW_OPTION_VALUE,
+      text: 'Ja, so schnell wie möglich',
+    },
     {
       value: NO_RECEIPT_OPTION_VALUE,
       text: 'Nein, ich brauche keine Quittung',
@@ -104,7 +108,7 @@ const DonationForm = ({
           onSubmit={noop}
           decorators={decorators}
           initialValues={{
-            [WANTS_RECEIPT]: RECEIPT_NOW_OPTION_VALUE,
+            [WANTS_RECEIPT]: RECEIPT_END_OF_YEAR_OPTION_VALUE,
             [COUNTRY]: COUNTRY_GERMANY,
             // if the interval is disabled then assume the payment will be single
             ...(disableIntervalSelection && { [PAYMENT_INTERVAL]: '0' }),
