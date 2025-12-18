@@ -64,6 +64,7 @@ const DonationForm = ({
   enableOtherAmount,
   minimumYearlyAmount,
   iframeStatus,
+  hideForm,
   disableIntervalSelection,
 }) => {
   let formRef
@@ -100,7 +101,7 @@ const DonationForm = ({
 
   return (
     <Fragment>
-      {!isIframeStatusFailureOrSuccess && (
+      {!isIframeStatusFailureOrSuccess && !hideForm && (
         <Form
           onSubmit={noop}
           decorators={decorators}
@@ -261,6 +262,7 @@ DonationForm.propTypes = {
   minimumYearlyAmount: PropTypes.string,
   iframeStatus: PropTypes.oneOf(['successful', 'failure', undefined]),
   disableIntervalSelection: PropTypes.bool,
+  hideForm: PropTypes.bool,
 }
 
 DonationForm.defaultProps = {
@@ -277,6 +279,7 @@ DonationForm.defaultProps = {
   disableIntervalSelection: false,
   intervals: IntervalFormSection.defaultProps.intervals,
   intervalTitle: '',
+  hideForm: false,
 }
 
 export default withFormState(DonationForm)

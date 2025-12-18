@@ -91,6 +91,7 @@ const Campaign = ({
       fundraisingboxIframeTitle={fundraisingboxIframeHeading}
       fundraisingboxFormHash="vm0g01lokj4l5e58"
       iframeStatus={query && query.status}
+      hideForm={true}
       disableIntervalSelection={!section2ReferenceList.length}
       intervals={section2ReferenceList}
       intervalTitle={section2Title}

@@ -80,6 +80,7 @@ const Donate = ({
       initialValues={{
         [PROJECT_ID]: SA_PROJECT_ID,
       }}
+      hideForm={true}
       enableProjectSelection
       enableOtherAmount
       iframeStatus={query && query.status}
