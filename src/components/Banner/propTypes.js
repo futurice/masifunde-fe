@@ -10,11 +10,3 @@ export const propTypes = {
   showImageOnRight: PropTypes.bool,
   className: PropTypes.string,
 }
-
-export const defaultProps = {
-  subHeadline: undefined,
-  image: undefined,
-  showImageOnRight: false,
-  description: undefined,
-  className: '',
-}

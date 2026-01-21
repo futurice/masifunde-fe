@@ -106,7 +106,7 @@ class VideoModal extends Component {
   }
 
   render() {
-    const { title, videoUrl } = this.props
+    const { title = '', videoUrl } = this.props
     const { thumbnail } = this.state
 
     return (
@@ -142,10 +142,6 @@ class VideoModal extends Component {
 VideoModal.propTypes = {
   title: PropTypes.string,
   videoUrl: PropTypes.string.isRequired,
-}
-
-VideoModal.defaultProps = {
-  title: '',
 }
 
 export default VideoModal

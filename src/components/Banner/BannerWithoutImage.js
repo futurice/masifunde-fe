@@ -5,7 +5,7 @@ import Button from '../shared/Button'
 import Link from '../shared/Link'
 import PageSection from '../shared/PageSection'
 import Headline from './Headline'
-import { defaultProps, propTypes } from './propTypes'
+import { propTypes } from './propTypes'
 import { background } from './styles'
 
 const OuterContainer = styled(PageSection).attrs({ contained: false })`
@@ -39,6 +39,5 @@ function BannerWithoutImage({ headline, buttonText, buttonLink, className }) {
 }
 
 BannerWithoutImage.propTypes = propTypes
-BannerWithoutImage.defaultProps = defaultProps
 
 export default BannerWithoutImage

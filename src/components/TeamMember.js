@@ -29,7 +29,13 @@ const Email = styled.a`
   font-size: ${rem('12px')};
 `
 
-const TeamMember = ({ imageUrl, title, subtitle, email, className }) => (
+const TeamMember = ({
+  imageUrl,
+  title,
+  subtitle = '',
+  email = '',
+  className = '',
+}) => (
   <TeamMemberContainer className={className}>
     <Image className="img-fluid" src={imageUrl} alt="" />
     <Title>{title}</Title>
@@ -44,12 +50,6 @@ TeamMember.propTypes = {
   subtitle: PropTypes.string,
   email: PropTypes.string,
   className: PropTypes.string,
-}
-
-TeamMember.defaultProps = {
-  email: '',
-  className: '',
-  subtitle: '',
 }
 
 export default TeamMember

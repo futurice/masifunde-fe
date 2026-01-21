@@ -76,7 +76,4 @@ const StyledTestimonialList = styled(TestimonialList)`
   }
 `
 
-StyledTestimonialList.propTypes = TestimonialList.propTypes
-StyledTestimonialList.defaultProps = TestimonialList.defaultProps
-
 export default StyledTestimonialList

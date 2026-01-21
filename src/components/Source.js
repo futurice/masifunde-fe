@@ -45,7 +45,12 @@ class Source extends Component {
     }))
   }
   render() {
-    const { superscriptText, sourceMarkdown, placement, id } = this.props
+    const {
+      superscriptText,
+      sourceMarkdown,
+      placement = 'bottom',
+      id,
+    } = this.props
     const sourceId = `Tooltip-${id}`
     return (
       <>
@@ -72,10 +77,6 @@ Source.propTypes = {
   id: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
   placement: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
-}
-
-Source.defaultProps = {
-  placement: 'bottom',
 }
 
 export default Source

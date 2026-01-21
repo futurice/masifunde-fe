@@ -55,9 +55,9 @@ const GradientShadow = styled.div`
 
 const HeroHeadline = ({
   headline,
-  headlineShadow,
-  headlinePlacement,
-  maxWidth,
+  headlineShadow = false,
+  headlinePlacement = HEADLINE_MIDDLE,
+  maxWidth = '660px',
 }) => {
   if (headline) {
     const title = (
@@ -91,14 +91,6 @@ export const propTypes = {
   maxWidth: PropTypes.string,
 }
 
-export const defaultProps = {
-  headlineShadow: false,
-  headline: undefined,
-  headlinePlacement: HEADLINE_MIDDLE,
-  maxWidth: '660px',
-}
-
 HeroHeadline.propTypes = propTypes
-HeroHeadline.defaultProps = defaultProps
 
 export default HeroHeadline

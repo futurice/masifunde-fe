@@ -216,7 +216,7 @@ const BlogPostPage: FC<Props> = ({
                 <ShareContainer className="col-6">
                   <H4>{shareText}</H4>
                   <ShareButtonRow>
-                    <FacebookShareButton url={pageUrl} quote="">
+                    <FacebookShareButton url={pageUrl}>
                       <SocialShareLink>
                         <FaFacebook size={24} />
                       </SocialShareLink>

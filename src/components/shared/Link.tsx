@@ -18,7 +18,7 @@ const Link: FC<Props> = ({ children, href, passHref, as }) => {
   const hrefWithLocale = { ...hrefObject, query: queryWithLocale }
 
   return (
-    <NextLink href={hrefWithLocale} passHref={passHref} as={as}>
+    <NextLink legacyBehavior href={hrefWithLocale} passHref={passHref} as={as}>
       {children}
     </NextLink>
   )

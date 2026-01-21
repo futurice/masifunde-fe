@@ -36,6 +36,7 @@ type Props = LayoutPageProps & HowToHelpContent
 
 const SectionContainer = styled(PageSection)`
   display: flex;
+  gap: 1.5rem;
 `
 
 const SectionImageContainer = styled.a`

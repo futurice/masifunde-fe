@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components'
 import { lgBreakpoint, mdBreakpoint } from '../../styling/breakpoints'
 import Headline, {
   HEADLINE_MIDDLE,
-  defaultProps as headlineDefaultProps,
   propTypes as headlinePropTypes,
 } from './Headline'
 
@@ -51,11 +50,11 @@ const getPlacementClass = (headlinePlacement) =>
 function Hero({
   headline,
   imageUrl,
-  backgroundPositionX,
+  backgroundPositionX = '50%',
   headlineMaxWidth,
   headlineShadow,
   headlinePlacement,
-  heroSize,
+  heroSize = HERO_LARGE,
 }) {
   return (
     <HeroImage
@@ -81,13 +80,6 @@ Hero.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   headlineMaxWidth: PropTypes.string,
   ...headlinePropTypes,
-}
-
-Hero.defaultProps = {
-  heroSize: HERO_LARGE,
-  backgroundPositionX: '50%',
-  headlineMaxWidth: undefined,
-  ...headlineDefaultProps,
 }
 
 export default Hero

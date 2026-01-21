@@ -11,7 +11,7 @@ import Button from '../shared/Button'
 import Link from '../shared/Link'
 import Markdown from '../shared/Markdown'
 import Headline from './Headline'
-import { defaultProps, propTypes } from './propTypes'
+import { propTypes } from './propTypes'
 import { background } from './styles'
 
 const Container = styled.div`
@@ -64,8 +64,8 @@ const BannerWithImage = ({
   image,
   buttonText,
   buttonLink,
-  showImageOnRight,
-  className,
+  showImageOnRight = false,
+  className = '',
 }) => {
   const content = (
     <ContentContainer className="col-md-8" key="content">
@@ -87,6 +87,5 @@ const BannerWithImage = ({
 }
 
 BannerWithImage.propTypes = propTypes
-BannerWithImage.defaultProps = defaultProps
 
 export default BannerWithImage
