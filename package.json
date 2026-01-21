@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/futurice/masifunde-fe#readme",
   "dependencies": {
-    "contentful": "^10.0.0-beta-v10.8",
+    "contentful": "10.0.0-beta-v10.8",
     "i18n-react": "^0.7.0",
     "lodash": "^4.17.21",
     "next": "^12.0.0",
@@ -60,6 +60,7 @@
   "devDependencies": {
     "@types/gtag.js": "^0.0.12",
     "@types/jest": "^29.2.4",
+    "@types/react": "^17.0.0",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "eslint": "^8.0.0",
