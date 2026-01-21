@@ -1,6 +1,3 @@
-/* eslint-disable no-useless-escape */
-import fetch from 'isomorphic-unfetch'
-
 export const isYouTubeVideo = (videoUrl) =>
   videoUrl.includes('youtube') || videoUrl.includes('youtu.be')
 
