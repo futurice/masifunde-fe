@@ -110,6 +110,7 @@ const Campaign: FC<Props> = ({
       </CenteredGrid>
 
       <DonationForm
+        hideCustomForm={true}
         amounts={amounts}
         amountTitle={amountHeading}
         formTitle={formHeading}

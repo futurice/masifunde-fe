@@ -95,6 +95,7 @@ const Donate: FC<Props> = ({
       </FormContainer>
 
       <DonationForm
+        hideCustomForm={true}
         amounts={section3ReferenceList}
         amountTitle={section3Title}
         buttonProjectDeText={section1MarkdownDe}
