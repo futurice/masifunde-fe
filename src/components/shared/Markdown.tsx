@@ -7,9 +7,9 @@ export type Props = {
 }
 
 const Markdown: FC<Props> = ({ source, className }) => (
-  <ReactMarkdown linkTarget="_blank" className={className}>
-    {source}
-  </ReactMarkdown>
+  <div className={className}>
+    <ReactMarkdown>{source}</ReactMarkdown>
+  </div>
 )
 
 export default Markdown
