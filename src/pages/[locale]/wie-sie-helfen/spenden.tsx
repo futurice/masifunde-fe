@@ -78,8 +78,8 @@ const Donate: FC<Props> = ({
         <MarkdownWithCustomList source={intro2Markdown} />
       </Container>
 
-      {/* <FundraisingboxForm hash="j3ip42zwp3mlewb9" /> */}
-      <FundraisingboxForm hash="bbnwvf9g9btio2va" />
+      <FundraisingboxForm hash="j3ip42zwp3mlewb9" />
+      {/* Test form: <FundraisingboxForm hash="bbnwvf9g9btio2va" /> */}
 
       <Banner
         headline={bannerTitle}
