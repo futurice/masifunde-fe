@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { FC } from 'react'
 import styled from 'styled-components'
+import FundraisingboxForm from '../../components/FundraisingboxForm'
 import TeamMember from '../../components/TeamMember'
 import { LayoutPageProps, getLayoutProps } from '../../components/layout/Layout'
 import CenteredGrid from '../../components/shared/CenteredGrid'
@@ -9,14 +10,12 @@ import Head from '../../components/shared/Head'
 import Markdown from '../../components/shared/Markdown'
 import PageSection from '../../components/shared/PageSection'
 import RoundedImage from '../../components/shared/RoundedImage'
-import DonationForm from '../../components/wie-sie-helfen/DonationForm'
 import {
   CampaignContent,
   getCampaignContent,
 } from '../../content/spendenaktion-content'
 import { rem } from '../../styling/typography'
 import useGuaranteedPath from '../../utils/useGuaranteedPath'
-import useURLSearchParams from '../../utils/useURLSearchParams'
 
 // Props & Path Params
 // ===================
@@ -52,12 +51,6 @@ const Campaign: FC<Props> = ({
   contentMarkdown,
   teamMemberHeading,
   teamMember,
-  section2Title,
-  section2ReferenceList,
-  amountHeading,
-  amounts,
-  formHeading,
-  fundraisingboxIframeHeading,
 }) => {
   // WORKAROUND: Currently, the "Einbettungsaddresse" ("embedding URL")
   // configured in Fundraisingbox does not have a locale prefix. To make
@@ -65,9 +58,6 @@ const Campaign: FC<Props> = ({
   // locale-less path so that the browser URL matches the iframe's
   // expectations.
   useGuaranteedPath('/spendenaktion')
-
-  const urlSearchParams = useURLSearchParams()
-  const iframeStatus = urlSearchParams.get('status')
 
   return (
     <>
@@ -109,19 +99,7 @@ const Campaign: FC<Props> = ({
         </PageSection>
       </CenteredGrid>
 
-      <DonationForm
-        hideCustomForm={true}
-        amounts={amounts}
-        amountTitle={amountHeading}
-        formTitle={formHeading}
-        fundraisingboxIframeTitle={fundraisingboxIframeHeading}
-        fundraisingboxFormHash="vm0g01lokj4l5e58"
-        iframeStatus={iframeStatus}
-        disableIntervalSelection={!section2ReferenceList.length}
-        intervals={section2ReferenceList}
-        intervalTitle={section2Title}
-        enableOtherAmount
-      />
+      <FundraisingboxForm hash="vm0g01lokj4l5e58" />
     </>
   )
 }

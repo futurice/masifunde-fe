@@ -1,4 +1,4 @@
-import { InferType, array, number, object, string } from 'yup'
+import { InferType, array, object, string } from 'yup'
 import { getSingletonEntryContent } from '../utils/contentful'
 import { assetSchema } from './shared/assets'
 import { donationAmountSchema, donationIntervalSchema } from './shared/donation'
@@ -127,18 +127,9 @@ export const becomeSponsorContentSchema = object({
   introSubtitle2: string().required(),
   introMarkdown2: string().required(),
   image: assetSchema.required(),
-  // Donation Form
-  donationFormTitle: string().required(),
-  section2Title: string().required(),
-  section2ReferenceList: array(donationIntervalSchema).default([]),
-  section3Title: string().required(),
-  section3ReferenceList: array(donationAmountSchema).default([]),
-  section4Title: string().required(),
-  section5Title: string().required(),
   bannerTitle: string().required(),
   bannerButtonText: string().required(),
   bannerButtonUrl: string().required(),
-  minimumYearlyAmount: number().required(),
 })
 
 /**
